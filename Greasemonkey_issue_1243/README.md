@@ -1,0 +1,1 @@
+[Greasemonkey issue 1243](http://userscripts.org/scripts/show/293020)
