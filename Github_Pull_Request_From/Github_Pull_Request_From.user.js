@@ -5,18 +5,18 @@
 // @author       jerone
 // @homepageUrl  https://github.com/jerone/UserScripts
 // @include      *://github.com/*/*/pull/*
-// @version      2
+// @version      3
 // @grant        none
 // @contribution Changes based on Firefox extension https://github.com/diegocr/GitHubExtIns by https://github.com/diegocr
 // ==/UserScript==
-(function () {
-    var targetTreeSpan = document.querySelectorAll('span.commit-ref.current-branch.css-truncate.js-selectable-text.expandable') [1],
-        branchTree = targetTreeSpan.textContent.trim() .split(':'),
+(function(){
+    var targetTreeSpan = document.querySelectorAll('span.commit-ref.current-branch.css-truncate.js-selectable-text.expandable')[1],
+        branchTree = targetTreeSpan.textContent.trim().split(':'),
         userTree = branchTree.shift(),
         urlTree = [
             '//github.com',
             userTree,
-            document.querySelector('.js-current-repository') .textContent,
+            document.querySelector('.js-current-repository').textContent,
             'tree',
             branchTree.join(':')
         ].join('/'),
@@ -25,4 +25,4 @@
     targetSpanA.innerHTML = targetTreeSpan.innerHTML;
     targetTreeSpan.innerHTML = '';
     targetTreeSpan.appendChild(targetSpanA);
-}) ();
+})();
