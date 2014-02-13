@@ -1,4 +1,4 @@
 UserScripts
 ===========
 
-[My UserScripts](http://userscripts.org/users/31497/scripts)
+[My UserScripts on Userscripts.org](http://userscripts.org/users/31497/scripts)
