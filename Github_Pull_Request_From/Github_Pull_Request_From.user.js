@@ -5,7 +5,7 @@
 // @author       jerone
 // @homepageUrl  https://github.com/jerone/UserScripts
 // @include      *://github.com/*/*/pull/*
-// @version      7
+// @version      8
 // @grant        none
 // @contribution Changes based on Firefox extension https://github.com/diegocr/GitHubExtIns by https://github.com/diegocr
 // ==/UserScript==
@@ -20,9 +20,9 @@
             'tree',
             branchTree.join(':')
         ].join('/'),
-        targetSpanA = document.createElement('a');
-    targetSpanA.setAttribute('href', urlTree);
-    targetSpanA.innerHTML = targetTreeSpan.innerHTML;
+        targetTreeA = document.createElement('a');
+    targetTreeA.setAttribute('href', urlTree);
+    targetTreeA.innerHTML = targetTreeSpan.innerHTML;
     targetTreeSpan.innerHTML = '';
-    targetTreeSpan.appendChild(targetSpanA);
+    targetTreeSpan.appendChild(targetTreeA);
 })();
