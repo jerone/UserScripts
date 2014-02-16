@@ -16,6 +16,10 @@ Fixes some issues & styles and adds some new features on [Horizon TV Gids](https
 * Add tooltips;
 * Style fixes;
 
+### Screenshots
+
+![Screenshot](https://f.cloud.github.com/assets/55841/2181542/15691594-9756-11e3-80f9-84339b59acb3.jpg)
+
 ### Compatible
 
 - [![](http://i.imgur.com/IOKeLzP.png) Greasemonkey](https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/) on [![](http://i.imgur.com/JuYGnoB.png) Mozilla Firefox Desktop](http://www.mozilla.org/en-US/firefox/fx/#desktop).
