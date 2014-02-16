@@ -16,10 +16,16 @@ Fixes some issues & styles and adds some new features on [Horizon TV Gids](https
 * Add tooltips;
 * Style fixes;
 
+### Compatible
+
+- [![](http://i.imgur.com/IOKeLzP.png) Greasemonkey](https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/) on [![](http://i.imgur.com/JuYGnoB.png) Mozilla Firefox Desktop](http://www.mozilla.org/en-US/firefox/fx/#desktop).
+
+<sub>Please [notify](https://github.com/jerone/UserScripts/issues/new) when this userscript is successfully tested in another browser...</sub>
+
 ### Notes
 
 Build for version 1.1.34
 
 ### External links
 
-[Horizon TV Fixer on userscripts.org](http://userscripts.org/scripts/show/155147) (not maintained anymore)
+[Horizon TV Fixer on userscripts.org](http://userscripts.org/scripts/show/155147) (not maintained anymore).
