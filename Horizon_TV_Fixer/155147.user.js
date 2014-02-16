@@ -3,7 +3,7 @@
 // @namespace   https://userscripts.org/scripts/show/155147
 // @description Horizon TV Fixer
 // @include     *horizon.tv*
-// @version     16
+// @version     17
 // @grant		GM_addStyle
 // ==/UserScript==
 
@@ -11,13 +11,6 @@
 
     console.log("Version: " + unsafeWindow.BBVSettingsObject.version.major + "." + unsafeWindow.BBVSettingsObject.version.minor + "." + unsafeWindow.BBVSettingsObject.version.micro);
 
-	/* Scroll into view; */
-	window.setTimeout(function(){
-		var head = document.querySelector(".channel-guide-head");
-		head && head.scrollIntoView();
-	}, 1000);
-	
-	
 	/* Social share & Program/Film info; */
 	var url = location.href,
 		socials = {
@@ -67,13 +60,13 @@
 			}
 		};
     var _orion_modules_EPG_ListingsView_prototype_showDetails = unsafeWindow.orion.modules.EPG.ListingsView.prototype.showDetails;  // https://www.horizon.tv/etc/designs/orion/upc/js/orion/modules/EPG/ListingsView.js?v=34
-    unsafeWindow.orion.modules.EPG.ListingsView.prototype.showDetails = function( imi ){
+    unsafeWindow.orion.modules.EPG.ListingsView.prototype.showDetails = function(imi){
         _orion_modules_EPG_ListingsView_prototype_showDetails.apply(this, arguments);  // execute original code;
 
-        var $listing = unsafeWindow.$('.listing[data-imi="' + imi + '"]');
-        var $channel = $listing.closest('.channel-listing'); 
-        var station = $channel.get(0);
-        var wrap = station.nextSibling;
+        var $listing = unsafeWindow.$('.listing[data-imi="' + imi + '"]'),
+        	$channel = $listing.closest('.channel-listing'),
+        	station = $channel.get(0),
+        	wrap = station.nextSibling;
         if(wrap.classList.contains("done-social")) return;  // ignore clicking multiple times on the same program;
         wrap.classList.add("done-social");
         var details = wrap.querySelector(".details"),
@@ -107,27 +100,17 @@
 
 	
 	/* Tooltips; */
-	ForEachListing("tooltip", function(listing){
+	ForEachListing("tooltip", (listing) => {
 		listing.title = listing.querySelector(".title").textContent;
 	});
 	
 	
 	/* Live/HD green square explanation is removed by CSS fixes below, so we add it back; */
 	PageLoad(function(){
-		var lives = document.querySelectorAll(".live-hd");
-		Array.forEach(lives, function(live){
+		Array.forEach(document.querySelectorAll(".live-hd"), (live) => {
 			live.title = "Kijk LIVE";
 		});
 	});
-	
-	
-	/* Favicon; */
-	var favicon = document.createElement("link");
-	favicon.setAttribute("rel", "icon");
-	favicon.setAttribute("type", "image/png");
-	favicon.setAttribute("href", "//www.horizon.tv/etc/designs/orion/upc/nl/favicon.ico");
-	document.querySelector("head").appendChild(favicon);
-	
 	
 	/* Style fixes; */
 	GM_addStyle(
@@ -138,26 +121,30 @@
 
 /* cropped header; */									"\
 .header-options {										\
-	margin-top: -60px !important;						\
+	margin-top: 5px !important;							\
 }														\
-.utility-bar .branding,									\
-.utility-bar .utility-wrapper {							\
-	height: auto;										\
-}														\
+.utility-wrapper,										\
 .utility-bar {											\
-	height: 35px;										\
+	height: 35px !important;							\
 }														\
-.branding h1 {											\
-	position: relative;									\
-	top: 150px;											\
-	left: -200px;										\
+.branding {												\
+	display: none;										\
 }														\
-.utility.UtilityBar {									\
-	position: relative;									\
-	z-index: 1;											\
+#modules {												\
+	padding-top: 0;										\
 }														\
-.navigation.NavigationBar {								\
-	z-index: 2;											\
+.channel-guide.module {									\
+	padding-top: 10px;									\
+}														\
+.channel-guide.module div.pinned {						\
+	top : 35px;											\
+	padding: 10px 0 0 0;								\
+}														\
+.navigationbar.pinned {									\
+	display: none;										\
+}														\
+.utilitybar.pinned {									\
+	background: none;									\
 }														\
 #channel-guide-head {									\
 	display: none;										\
@@ -182,19 +169,19 @@
 }														"+
 	"");
 	
-	function PageLoad(fn){
+	function PageLoad(done){
 		if(unsafeWindow.$){
 			//unsafeWindow.$(function(){console.log("events: ", unsafeWindow.$(".channel-guide").data("events") );});
-			unsafeWindow.$(".channel-guide").on("loaded", fn);  // only on-page jQuery can catch this event;
+			unsafeWindow.$(".channel-guide").on("loaded", done);  // only on-page jQuery can catch this event;
 		}
 	}
 	
-	function ForEachListing(name, fn){
+	function ForEachListing(name, done){
 		PageLoad(function(){
 			var listings = document.querySelectorAll(".listing:not(.done-"+name+")");  // get all listings that don't have been processed yet;
-			Array.forEach(listings, function(listing){
+			Array.forEach(listings, (listing) => {
 				listing.classList.add("done-"+name);  // mark element as done;
-				fn(listing);
+				done(listing);
 			});
 		});
 	}
@@ -202,12 +189,3 @@
     //unsafeWindow.orion.services.LinearDataService.getActiveListing(unsafeWindow.$(this).data('imi')).done(function(){console.log("test");});
 
 })();
-
-
-
-// ==UserStats==
-// Chars (excl. spaces): 5.896
-// Chars (incl. spaces): 7.506
-// Words: 681
-// Lines: 213
-// ==/UserStats==
