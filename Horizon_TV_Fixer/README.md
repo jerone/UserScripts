@@ -28,7 +28,7 @@ Fixes some issues & styles and adds some new features on [Horizon TV Gids](https
 
 ### Notes
 
-Build for version 1.1.34
+Build for version 1.1.37
 
 ### External links
 
