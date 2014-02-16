@@ -1,4 +1,4 @@
-# Horizon TV Fixer 
+# [Horizon TV Fixer](https://github.com/jerone/UserScripts/tree/master/Horizon_TV_Fixer)
 
 [![Install](https://f.cloud.github.com/assets/55841/2181486/f1683d62-9752-11e3-93cf-3213c1405216.jpg)](https://github.com/jerone/UserScripts/raw/master/Horizon_TV_Fixer/155147.user.js)
 
