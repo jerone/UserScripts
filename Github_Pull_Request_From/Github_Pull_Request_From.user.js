@@ -5,7 +5,7 @@
 // @author       jerone
 // @homepageUrl  https://github.com/jerone/UserScripts
 // @include      *://github.com/*/*/pull/*
-// @version      8
+// @version      9
 // @grant        none
 // @contribution Changes based on Firefox extension https://github.com/diegocr/GitHubExtIns by https://github.com/diegocr
 // ==/UserScript==
