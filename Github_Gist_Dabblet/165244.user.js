@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name        Github Gist Dabblet
 // @namespace   http://userscripts.org/scripts/show/165244
-// @description Github Gist Dabblet
+// @description Share your GitHub Gist to Dabblet.
 // @include     *://gist.github.com/*
-// @version     3
+// @version     3.1
 // ==/UserScript==
 
 /*
@@ -75,12 +75,3 @@ addMenuItem();
 
 // on pjax;
 $(document).on("pjax:success", addMenuItem);
-
-
-
-// ==UserStats==
-// Chars (excl. spaces): 2.422
-// Chars (incl. spaces): 2.915
-// Words: 250
-// Lines: 86
-// ==/UserStats==
