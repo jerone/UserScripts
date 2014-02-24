@@ -1,10 +1,13 @@
 // ==UserScript==
 // @name        Github Gist Dabblet
-// @namespace   https://github.com/jerone/UserScripts/tree/master/Github_Gist_Dabblet
+// @namespace   https://github.com/jerone/UserScripts/
 // @description Share your GitHub Gist to Dabblet.
+// @homepage    https://github.com/jerone/UserScripts/tree/master/Github_Gist_Dabblet
+// @homepageURL https://github.com/jerone/UserScripts/tree/master/Github_Gist_Dabblet
 // @downloadURL https://github.com/jerone/UserScripts/raw/master/Github_Gist_Dabblet/165244.user.js
 // @include     *://gist.github.com/*
 // @version     3.2
+// @grant       none
 // ==/UserScript==
 
 /*
