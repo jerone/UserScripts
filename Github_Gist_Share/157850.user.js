@@ -1,9 +1,13 @@
 // ==UserScript==
 // @name        Github Gist Share
-// @namespace   http://userscripts.org/scripts/show/157850
-// @description Github Gist Share
+// @namespace   https://github.com/jerone/UserScripts/
+// @description Share your GitHub Gist to Twitter, Dabblet & as userscript.
+// @homepage    https://github.com/jerone/UserScripts/tree/master/Github_Gist_Share
+// @homepageURL https://github.com/jerone/UserScripts/tree/master/Github_Gist_Share
+// @downloadURL https://github.com/jerone/UserScripts/raw/master/Github_Gist_Share/157850.user.js
 // @include     *://gist.github.com/*
-// @version     4
+// @version     4.1
+// @grant       none
 // ==/UserScript==
 
 String.format = function (string) {
@@ -123,12 +127,3 @@ addMenuItem();
 
 // on pjax;
 $(document).on("pjax:success", addMenuItem);
-
-
-
-// ==UserStats==
-// Chars (excl. spaces): 4.076
-// Chars (incl. spaces): 4.740
-// Words: 473
-// Lines: 134
-// ==/UserStats==
