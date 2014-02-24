@@ -1,11 +1,13 @@
 // ==UserScript==
 // @name         Github Pull Request From Link
-// @namespace    https://github.com/jerone/UserScripts
+// @namespace    https://github.com/jerone/UserScripts/
 // @description  Make pull request original branch linkable
 // @author       jerone
-// @homepageUrl  https://github.com/jerone/UserScripts
+// @homepage     https://github.com/jerone/UserScripts/tree/master/Github_Pull_Request_From
+// @homepageURL  https://github.com/jerone/UserScripts/tree/master/Github_Pull_Request_From
+// @downloadURL  https://github.com/jerone/UserScripts/raw/master/Github_Pull_Request_From/Github_Pull_Request_From.user.js
 // @include      *://github.com/*/*/pull/*
-// @version      9
+// @version      10
 // @grant        none
 // @contribution Changes based on Firefox extension https://github.com/diegocr/GitHubExtIns by https://github.com/diegocr
 // ==/UserScript==
