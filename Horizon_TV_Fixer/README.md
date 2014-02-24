@@ -8,17 +8,17 @@ Fixes some issues & styles and adds some new features on [Horizon TV Gids](https
 
 * Add social share to Twitter;
 * Add link to IMDb;
-* Add link to Google.nl;
+* Add link to Google;
 * Add link to YouTube;
-* Add link to KijkWijzer.nl (Dutch);
+* Add link to KijkWijzer (Dutch);
 * Add link to Uitzending Gemist (Dutch);
 * Add link to IPTorrents;
 * Add tooltips;
 * Style fixes;
 
-### Screenshots
+### Screenshot
 
-![Screenshot](https://f.cloud.github.com/assets/55841/2181542/15691594-9756-11e3-80f9-84339b59acb3.jpg)
+![Horizon TV Fixer screenshot](https://raw.github.com/jerone/UserScripts/master/Horizon_TV_Fixer/screenshot.jpg)
 
 ### Compatible
 
@@ -32,4 +32,5 @@ Build for version 1.1.37
 
 ### External links
 
-[Horizon TV Fixer on userscripts.org](http://userscripts.org/scripts/show/155147) (not maintained anymore).
+* [Greasy Fork](https://greasyfork.org/scripts/65)
+* [Userscripts.org](http://userscripts.org/scripts/show/155147) (not maintained anymore).
