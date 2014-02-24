@@ -1,13 +1,14 @@
 // ==UserScript==
 // @name        Github Gist Dabblet
-// @namespace   http://userscripts.org/scripts/show/165244
+// @namespace   https://github.com/jerone/UserScripts/tree/master/Github_Gist_Dabblet
 // @description Share your GitHub Gist to Dabblet.
+// @downloadURL https://github.com/jerone/UserScripts/raw/master/Github_Gist_Dabblet/165244.user.js
 // @include     *://gist.github.com/*
-// @version     3.1
+// @version     3.2
 // ==/UserScript==
 
 /*
- * The following urls should be converted to dabblet:
+ * The following urls should be converted to Dabblet:
  *
  *  - https://gist.github.com/jerone/3810309
  *                                   ¯¯¯¯¯¯¯
