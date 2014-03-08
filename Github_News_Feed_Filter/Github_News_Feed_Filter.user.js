@@ -7,17 +7,17 @@
 // @homepageURL https://github.com/jerone/UserScripts/tree/master/Github_News_Feed_Filter
 // @downloadURL https://github.com/jerone/UserScripts/raw/master/Github_News_Feed_Filter/Github_News_Feed_Filter.user.js
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_News_Feed_Filter/Github_News_Feed_Filter.user.js
-// @include     http*://github.com/
-// @version     1
+// @include     https://github.com/
+// @version     2.0
 // @grant       none
 // ==/UserScript==
 
-(function () {
+(function() {
 
 	function proxy(fn) {
-		return function () {
+		return function() {
 			var that = this;
-			return function (e) {
+			return function(e) {
 				var args = that.slice(0);  // clone;
 				args.unshift(e);  // prepend event;
 				fn.apply(this, args);
@@ -34,8 +34,9 @@
 		[{ text: "", icon: "octicon-comment-discussion", filter: ["*"] },
 		 { text: "Comments", icon: "octicon-comment", filter: ["issues_comment"] },
 		 { text: "Commits", icon: "octicon-git-commit", filter: ["push"] },
-		 { text: "Issue actions", icon: "octicon-issue-opened", filter: ["issues_opened", "issues_closed"] }
-		].forEach(function (item) {
+		 { text: "Pull Requests", icon: "octicon-git-pull-request", filter: ["pull_request"] },
+		 { text: "Issues", icon: "octicon-issue-opened", filter: ["issues_opened", "issues_closed"] }
+		].forEach(function(item) {
 			var li = document.createElement("li");
 			var a = document.createElement("a");
 			a.classList.add("js-selected-navigation-item");
@@ -45,22 +46,29 @@
 			s.classList.add("octicon", item.icon);
 			if (item.filter == "*") {
 				li.style.cssFloat = "left";
-				li.style.width = "49px";
+				li.style.width = "41px";
 				a.classList.add("selected");
 			} else {
 				s.style.marginRight = "6px";
 			}
 			a.appendChild(s);
 			a.appendChild(document.createTextNode(item.text));
-			a.addEventListener("click", proxy(function (e, filter) {
+			a.addEventListener("click", proxy(function(e, filter) {
 				e.preventDefault();
-				Array.forEach(container.querySelectorAll(".selected"), function (m) {
+				var alerts = container.querySelectorAll(".alert");
+				Array.forEach(alerts, function(alert) {
+					if (alert.getElementsByClassName("octicon-git-pull-request").length > 0) {
+						alert.classList.remove("issues_opened");
+						alert.classList.remove("issues_closed");
+						alert.classList.add("pull_request");
+					}
+				});
+				Array.forEach(container.querySelectorAll(".selected"), function(m) {
 					m.classList.remove("selected");
 				});
 				this.classList.add("selected");
-				var alerts = container.querySelectorAll(".alert");
-				Array.filter(alerts, function (alert) {
-					alert.style.display = filter == "*" || filter.some(function (c) {
+				Array.filter(alerts, function(alert) {
+					alert.style.display = filter == "*" || filter.some(function(c) {
 						return alert.classList.contains(c);
 					}) ? "block" : "none";
 				});
@@ -74,8 +82,8 @@
 
 		// update on clicking "More"-button;
 		var event = new Event("click");
-		$.pageUpdate(function () {
-			window.setTimeout(function () {
+		$.pageUpdate(function() {
+			window.setTimeout(function() {
 				container.querySelector(".selected").dispatchEvent(event);
 			}, 1);
 		});

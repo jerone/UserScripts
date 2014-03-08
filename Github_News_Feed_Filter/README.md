@@ -16,6 +16,15 @@ Add filters for Github homepage news feed items.
 
 <sub>Please [notify](https://github.com/jerone/UserScripts/issues/new?title=Userscript%20%3Cname%3E%20%28%3Cversion%3E%29%20also%20works%20in%20%3Cbrowser%3E%20on%20%3Cdesktop/device%3E) when this userscript is successfully tested in another browser...</sub>
 
+### Version History
+
+<dl>
+    <dt>2.0</dt>
+        <dd>Added Pull Requests filter</dd>
+    <dt>1.0</dt>
+        <dd>Initial version</dd>
+</dl> 
+
 ### TODO
 
 * Remember filter choice;
