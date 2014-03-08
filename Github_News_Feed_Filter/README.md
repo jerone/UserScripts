@@ -1,6 +1,6 @@
 # [Github News Feed Filter](https://github.com/jerone/UserScripts/tree/master/Github_News_Feed_Filter)
 
-[![Install](https://raw.github.com/jerone/UserScripts/master/_resources/Install-button.jpg)](https://github.com/jerone/UserScripts/tree/master/Github_News_Feed_Filter/Github_News_Feed_Filter.user.js)
+[![Install](https://raw.github.com/jerone/UserScripts/master/_resources/Install-button.jpg)](https://github.com/jerone/UserScripts/raw/master/Github_News_Feed_Filter/Github_News_Feed_Filter.user.js)
 
 ### Description
 
