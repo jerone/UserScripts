@@ -8,7 +8,7 @@
 // @downloadURL https://github.com/jerone/UserScripts/raw/master/Github_News_Feed_Filter/Github_News_Feed_Filter.user.js
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_News_Feed_Filter/Github_News_Feed_Filter.user.js
 // @include     https://github.com/
-// @version     3.0
+// @version     3.1
 // @grant       none
 // ==/UserScript==
 
@@ -34,7 +34,7 @@
 		container.insertBefore(ul, container.firstChild);
 		[{ text: "", icon: "octicon-comment-discussion", filter: ["*"] },
 		 { text: "Commits", icon: "octicon-git-commit", filter: ["push"] },
-		 { text: "Pull Requests", icon: "octicon-git-pull-request", filter: ["pull_request"] },
+		 { text: "Pull Requests", icon: "octicon-git-pull-request", filter: ["pull_request", "pull_request_comment"] },
 		 { text: "Issues", icon: "octicon-issue-opened", filter: ["issues_opened", "issues_comment", "issues_closed", "issues_reopened"] },
 		 { text: "Stars", icon: "octicon-star", filter: ["watch_started"] },
 		 { text: "Repo", icon: "octicon-repo", filter: ["create"] },
@@ -64,17 +64,20 @@
 					if (alert.getElementsByClassName("octicon-git-pull-request").length > 0) {
 						alert.classList.remove("issues_opened", "issues_closed");
 						alert.classList.add("pull_request");
+					} else if (alert.classList.contains("issues_comment") && alert.querySelectorAll(".title a")[1].getAttribute("href").split("/")[5] === "pull") {
+						alert.classList.remove("issues_comment");
+						alert.classList.add("pull_request_comment");
 					}
 				});
-				Array.forEach(container.querySelectorAll(".selected"), function(m) {
-					m.classList.remove("selected");
-				});
-				this.classList.add("selected");
 				Array.filter(alerts, function(alert) {
 					alert.style.display = filter == "*" || filter.some(function(c) {
 						return alert.classList.contains(c);
 					}) ? "block" : "none";
 				});
+				Array.forEach(container.querySelectorAll(".selected"), function(m) {
+					m.classList.remove("selected");
+				});
+				this.classList.add("selected");
 				return false;
 			}, item.filter));
 			li.appendChild(a);

@@ -19,6 +19,8 @@ Add filters for Github homepage news feed items.
 ### Version History
 
 <dl>
+    <dt>3.1</dt>
+        <dd>Moved PR comments to PR filter;</dd>
     <dt>3.0</dt>
         <dd>Added Stars, Repo and Wiki filter;</dd>
         <dd>Moved Comments to Issues filter;</dd>
