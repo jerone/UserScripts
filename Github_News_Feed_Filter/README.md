@@ -8,7 +8,7 @@ Add filters for Github homepage news feed items.
 
 ### Screenshot
 
-![Github News Feed Filter screenshot](https://github.com/jerone/UserScripts/tree/master/Github_News_Feed_Filter/Github_News_Feed_Filter/screenshot.jpg)
+![Github News Feed Filter screenshot](https://github.com/jerone/UserScripts/raw/master/Github_News_Feed_Filter/screenshot.jpg)
 
 ### Compatible
 

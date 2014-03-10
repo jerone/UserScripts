@@ -8,7 +8,7 @@ Adds button to show diff file for commit. Hold Shift key to open the patch file.
 
 ### Screenshot
 
-![Github Commit Diff screenshot](https://github.com/jerone/UserScripts/tree/master/Github_Commit_Diff/Github_Commit_Diff/screenshot.jpg)
+![Github Commit Diff screenshot](https://github.com/jerone/UserScripts/raw/master/Github_Commit_Diff/screenshot.jpg)
 
 ### Compatible
 
