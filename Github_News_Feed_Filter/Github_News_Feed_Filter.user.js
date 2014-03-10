@@ -8,7 +8,7 @@
 // @downloadURL https://github.com/jerone/UserScripts/raw/master/Github_News_Feed_Filter/Github_News_Feed_Filter.user.js
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_News_Feed_Filter/Github_News_Feed_Filter.user.js
 // @include     https://github.com/
-// @version     2.0
+// @version     3.0
 // @grant       none
 // ==/UserScript==
 
@@ -26,27 +26,31 @@
 	}
 
 	function addFilters() {
-		var container;
-		if (!(container = document.querySelector(".news"))) return;
+		var container = document.querySelector(".news");
+		if (!container) return;
 
 		var ul = document.createElement("ul");
 		ul.classList.add("dashboard-tabs");
+		container.insertBefore(ul, container.firstChild);
 		[{ text: "", icon: "octicon-comment-discussion", filter: ["*"] },
-		 { text: "Comments", icon: "octicon-comment", filter: ["issues_comment"] },
 		 { text: "Commits", icon: "octicon-git-commit", filter: ["push"] },
 		 { text: "Pull Requests", icon: "octicon-git-pull-request", filter: ["pull_request"] },
-		 { text: "Issues", icon: "octicon-issue-opened", filter: ["issues_opened", "issues_closed"] }
+		 { text: "Issues", icon: "octicon-issue-opened", filter: ["issues_opened", "issues_comment", "issues_closed", "issues_reopened"] },
+		 { text: "Stars", icon: "octicon-star", filter: ["watch_started"] },
+		 { text: "Repo", icon: "octicon-repo", filter: ["create"] },
+		 { text: "Wiki", icon: "octicon-book", filter: ["gollum"] }
 		].forEach(function(item) {
 			var li = document.createElement("li");
 			var a = document.createElement("a");
 			a.classList.add("js-selected-navigation-item");
 			a.setAttribute("href", "/");
 			a.setAttribute("title", item.filter.join(" & "));
+			a.style.lineHeight = "28px";
 			var s = document.createElement("span");
 			s.classList.add("octicon", item.icon);
 			if (item.filter == "*") {
 				li.style.cssFloat = "left";
-				li.style.width = "41px";
+				li.style.width = "34px";
 				a.classList.add("selected");
 			} else {
 				s.style.marginRight = "6px";
@@ -58,8 +62,7 @@
 				var alerts = container.querySelectorAll(".alert");
 				Array.forEach(alerts, function(alert) {
 					if (alert.getElementsByClassName("octicon-git-pull-request").length > 0) {
-						alert.classList.remove("issues_opened");
-						alert.classList.remove("issues_closed");
+						alert.classList.remove("issues_opened", "issues_closed");
 						alert.classList.add("pull_request");
 					}
 				});
@@ -78,13 +81,10 @@
 			ul.appendChild(li);
 		});
 
-		container.insertBefore(ul, container.firstChild);
-
 		// update on clicking "More"-button;
-		var event = new Event("click");
 		$.pageUpdate(function() {
 			window.setTimeout(function() {
-				container.querySelector(".selected").dispatchEvent(event);
+				container.querySelector(".selected").dispatchEvent(new Event("click"));
 			}, 1);
 		});
 	}
