@@ -8,7 +8,7 @@
 // @downloadURL https://github.com/jerone/UserScripts/raw/master/Github_News_Feed_Filter/Github_News_Feed_Filter.user.js
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_News_Feed_Filter/Github_News_Feed_Filter.user.js
 // @include     https://github.com/
-// @version     3.1
+// @version     4
 // @grant       none
 // ==/UserScript==
 
@@ -25,42 +25,75 @@
 		}.call([].slice.call(arguments, 1));
 	}
 
+	var filters = [
+		{ text: "All News Feed", icon: "octicon-comment-discussion", classNames: ["*"] },
+		{ text: "Commits", icon: "octicon-git-commit", classNames: ["push"] },
+		{ text: "Pull Requests", icon: "octicon-git-pull-request", classNames: ["pull_request", "pull_request_comment"] },
+		{ text: "Issues", icon: "octicon-issue-opened", classNames: ["issues_opened", "issues_comment", "issues_closed", "issues_reopened"] },
+		{ text: "Stars", icon: "octicon-star", classNames: ["watch_started"] },
+		{ text: "Repo", icon: "octicon-repo", classNames: ["create", "public", "release"] },
+		{ text: "Wiki", icon: "octicon-book", classNames: ["gollum"] },
+		{ text: "Gist", icon: "octicon-gist", classNames: ["gist"] }
+		// Pissible other classes: commit_comment & follow & fork & member_add
+	];
+
 	function addFilters() {
 		var container = document.querySelector(".news");
 		if (!container) return;
 
+		var sidebar = document.querySelector(".dashboard-sidebar");
+
+		var rule = document.createElement("div");
+		rule.classList.add("rule");
+		sidebar.insertBefore(rule, sidebar.firstChild);
+
 		var ul = document.createElement("ul");
-		ul.classList.add("dashboard-tabs");
-		container.insertBefore(ul, container.firstChild);
-		[{ text: "", icon: "octicon-comment-discussion", filter: ["*"] },
-		 { text: "Commits", icon: "octicon-git-commit", filter: ["push"] },
-		 { text: "Pull Requests", icon: "octicon-git-pull-request", filter: ["pull_request", "pull_request_comment"] },
-		 { text: "Issues", icon: "octicon-issue-opened", filter: ["issues_opened", "issues_comment", "issues_closed", "issues_reopened"] },
-		 { text: "Stars", icon: "octicon-star", filter: ["watch_started"] },
-		 { text: "Repo", icon: "octicon-repo", filter: ["create"] },
-		 { text: "Wiki", icon: "octicon-book", filter: ["gollum"] }
-		].forEach(function(item) {
-			var li = document.createElement("li");
+		ul.classList.add("filter-list");
+		sidebar.insertBefore(ul, sidebar.firstChild);
+
+		var lis = filters.map(function(filter) {
 			var a = document.createElement("a");
-			a.classList.add("js-selected-navigation-item");
+			a.classList.add("filter-item");
 			a.setAttribute("href", "/");
-			a.setAttribute("title", item.filter.join(" & "));
-			a.style.lineHeight = "28px";
+			a.setAttribute("title", filter.classNames.join(" & "));
+			if (filter.classNames[0] === "*") { a.classList.add("selected"); }
+
 			var s = document.createElement("span");
-			s.classList.add("octicon", item.icon);
-			if (item.filter == "*") {
-				li.style.cssFloat = "left";
-				li.style.width = "34px";
-				a.classList.add("selected");
-			} else {
-				s.style.marginRight = "6px";
-			}
+			s.classList.add("octicon", filter.icon);
+			s.style.marginRight = "10px";
+			s.style.cssFloat = "left";
 			a.appendChild(s);
-			a.appendChild(document.createTextNode(item.text));
-			a.addEventListener("click", proxy(function(e, filter) {
+
+			var c = document.createElement("span");
+			c.classList.add("count");
+			c.appendChild(document.createTextNode("0"));
+			a.appendChild(c);
+
+			a.appendChild(document.createTextNode(filter.text));
+
+			a.addEventListener("click", proxy(function(e, className) {
 				e.preventDefault();
-				var alerts = container.querySelectorAll(".alert");
-				Array.forEach(alerts, function(alert) {
+
+				Array.forEach(container.querySelectorAll(".alert"), function(alert) {
+					alert.style.display = className[0] === "*" || className.some(function(cl) { return alert.classList.contains(cl); }) ? "block" : "none";
+				});
+
+				Array.forEach(sidebar.querySelectorAll(".selected"), function(m) { m.classList.remove("selected"); });
+				this.classList.add("selected");
+			}, filter.classNames));
+
+			var li = document.createElement("li");
+			li.appendChild(a);
+
+			ul.appendChild(li);
+
+			return li;
+		});
+
+		// update on clicking "More"-button;
+		$.pageUpdate(function() {
+			window.setTimeout(function() {
+				Array.forEach(container.querySelectorAll(".alert"), function(alert) {
 					if (alert.getElementsByClassName("octicon-git-pull-request").length > 0) {
 						alert.classList.remove("issues_opened", "issues_closed");
 						alert.classList.add("pull_request");
@@ -69,25 +102,24 @@
 						alert.classList.add("pull_request_comment");
 					}
 				});
-				Array.filter(alerts, function(alert) {
-					alert.style.display = filter == "*" || filter.some(function(c) {
-						return alert.classList.contains(c);
-					}) ? "block" : "none";
-				});
-				Array.forEach(container.querySelectorAll(".selected"), function(m) {
-					m.classList.remove("selected");
-				});
-				this.classList.add("selected");
-				return false;
-			}, item.filter));
-			li.appendChild(a);
-			ul.appendChild(li);
-		});
 
-		// update on clicking "More"-button;
-		$.pageUpdate(function() {
-			window.setTimeout(function() {
-				container.querySelector(".selected").dispatchEvent(new Event("click"));
+				Array.forEach(sidebar.querySelectorAll(".count"), function(c) {
+					c.textContent = "0";
+				});
+				filters.forEach(function(filter, index) {
+					var c = lis[index].querySelector(".count");
+					if (filter.classNames[0] === "*") {
+						c.textContent = container.querySelectorAll(".alert").length;
+					} else {
+						Array.forEach(container.querySelectorAll(".alert"), function(alert) {
+							if (filter.classNames.some(function(cl) { return alert.classList.contains(cl); })) {
+								c.textContent = parseInt(c.textContent, 10) + 1;
+							}
+						});
+					}
+				});
+
+				sidebar.querySelector(".selected").dispatchEvent(new Event("click"));
 			}, 1);
 		});
 	}
@@ -96,6 +128,6 @@
 	addFilters();
 
 	// on pjax;
-	$(document).on('pjax:success', addFilters);
+	$(document).on("pjax:success", addFilters);
 
 })();
