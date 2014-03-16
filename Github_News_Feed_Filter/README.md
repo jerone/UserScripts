@@ -4,7 +4,20 @@
 
 ### Description
 
-Add filters for Github homepage news feed items.
+Add filters for [Github homepage](https://github.com) news feed items.
+
+Currently integrated filters:
+* Commits
+* Pull Requests & comments on PR
+* Issues
+    * Comments
+    * Opened
+    * Closed
+    * Reopened
+* Stars
+* Repo (creations, open soursing, forking, releases)
+* Wiki
+* Gist
 
 ### Screenshot
 
