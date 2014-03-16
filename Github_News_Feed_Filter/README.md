@@ -19,7 +19,10 @@ Add filters for Github homepage news feed items.
 ### Version History
 
 <dl>
-    <dt>4</dt>
+    <dt>4.1</dt>
+        <dd>Added fork filter;</dd>
+        <dd>Added sub-filters for issues (comments, opened, closed, reopened);</dd>
+    <dt>4.0</dt>
         <dd>Better integrated menu style;</dd>
     <dt>3.1</dt>
         <dd>Moved PR comments to PR filter;</dd>
