@@ -6,8 +6,9 @@
 // @homepage    https://github.com/jerone/UserScripts/tree/master/Github_Commit_Diff
 // @homepageURL https://github.com/jerone/UserScripts/tree/master/Github_Commit_Diff
 // @downloadURL https://github.com/jerone/UserScripts/raw/master/Github_Commit_Diff/Github_Commit_Diff.user.js
+// @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_Commit_Diff/Github_Commit_Diff.user.js
 // @include     https://github.com/*
-// @version     1.1
+// @version     1.2
 // @grant       none
 // ==/UserScript==
 
@@ -56,6 +57,6 @@
 	addButton();
 
 	// on pjax;
-	$(document).on('pjax:success', addButton);
+	unsafeWindow.$(document).on('pjax:success', addButton);
 
 })();

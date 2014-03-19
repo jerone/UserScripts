@@ -3,12 +3,11 @@
 // @namespace   https://github.com/jerone/UserScripts
 // @description Adds button to hide whitespaces from commit
 // @author      jerone
-// @homepageUrl https://github.com/jerone/UserScripts
 // @homepage    https://github.com/jerone/UserScripts/tree/master/Github_Commit_Whitespace
 // @homepageURL https://github.com/jerone/UserScripts/tree/master/Github_Commit_Whitespace
 // @downloadURL https://github.com/jerone/UserScripts/raw/master/Github_Commit_Whitespace/Github_Commit_Whitespace.user.js
 // @include     https://github.com/*
-// @version     1
+// @version     1.1
 // @grant       none
 // ==/UserScript==
 
@@ -48,6 +47,6 @@
 	addButton();
 
 	// on pjax;
-	$(document).on("pjax:success", addButton);
+	unsafeWindow.$(document).on("pjax:success", addButton);
 
 })();
