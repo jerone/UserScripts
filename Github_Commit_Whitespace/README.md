@@ -8,7 +8,9 @@ Adds button to hide whitespaces from commit.
 
 ### Screenshot
 
+Before:
 ![Github Commit Whitespace screenshot before](https://github.com/jerone/UserScripts/raw/master/Github_Commit_Whitespace/screenshot_before.jpg)
+After:
 ![Github Commit Whitespace screenshot after](https://github.com/jerone/UserScripts/raw/master/Github_Commit_Whitespace/screenshot_after.jpg)
 
 ### Compatible
@@ -20,9 +22,10 @@ Adds button to hide whitespaces from commit.
 
 ### Version History
 
-* 1.1
+* ** 1.1 **
     * Added to compare page;
-* 1.0
+    * Added support for Scriptish;
+* ** 1.0 **
     * Initial version;
 
 ### TODO

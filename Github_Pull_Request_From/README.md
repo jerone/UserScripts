@@ -17,6 +17,11 @@ Make pull request original branch linkable.
 
 <sub>Please [notify](https://github.com/jerone/UserScripts/issues/new?title=Userscript%20%3Cname%3E%20%28%3Cversion%3E%29%20also%20works%20in%20%3Cbrowser%3E%20on%20%3Cdesktop/device%3E) when this userscript is successfully tested in another browser...</sub>
 
+### Version History
+
+* ** 10.0 **
+    * Initial version;
+
 ### Notes
 
  -

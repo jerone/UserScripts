@@ -32,25 +32,23 @@ Currently integrated filters:
 
 ### Version History
 
-<dl>
-    <dt>4.2</dt>
-        <dd>Added support for Scriptish;</dd>
-    <dt>4.1</dt>
-        <dd>Added fork filter;</dd>
-        <dd>Added sub-filters for issues (comments, opened, closed, reopened);</dd>
-    <dt>4.0</dt>
-        <dd>Better integrated menu style;</dd>
-    <dt>3.1</dt>
-        <dd>Moved PR comments to PR filter;</dd>
-    <dt>3.0</dt>
-        <dd>Added Stars, Repo and Wiki filter;</dd>
-        <dd>Moved Comments to Issues filter;</dd>
-        <dd>Made menu lower;</dd>
-    <dt>2.0</dt>
-        <dd>Added Pull Requests filter;</dd>
-    <dt>1.0</dt>
-        <dd>Initial version</dd>
-</dl> 
+* ** 4.2 **
+    * Added support for Scriptish;
+* ** 4.1 **
+    * Added fork filter;
+    * Added sub-filters for issues (comments, opened, closed, reopened);
+* ** 4.0 **
+    * Better integrated menu style;
+* ** 3.1 **
+    * Moved PR comments to PR filter;
+* ** 3.0 **
+    * Added Stars, Repo and Wiki filter;
+    * Moved Comments to Issues filter;
+    * Made menu lower;
+* ** 2.0 **
+    * Added Pull Requests filter;
+* ** 1.0 **
+    * Initial version;
 
 ### TODO
 
