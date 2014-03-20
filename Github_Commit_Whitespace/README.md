@@ -19,10 +19,10 @@ Adds button to hide whitespaces from commit.
 
 ### Version History
 
-<dl>
-    <dt>1.0</dt>
-        <dd>Initial version</dd>
-</dl> 
+* 1.1
+    * Added to compare page;
+* 1.0
+    * Initial version;
 
 ### TODO
 

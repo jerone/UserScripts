@@ -8,7 +8,7 @@
 // @homepageURL https://github.com/jerone/UserScripts/tree/master/Github_Commit_Whitespace
 // @downloadURL https://github.com/jerone/UserScripts/raw/master/Github_Commit_Whitespace/Github_Commit_Whitespace.user.js
 // @include     https://github.com/*
-// @version     1
+// @version     1.1
 // @grant       none
 // ==/UserScript==
 
@@ -18,7 +18,8 @@
 
 	function addButton() {
 		var e;
-		if (!/\/commit\//.test(location.href) || !(e = document.querySelector(".explain"))) return;
+		if (!(/\/commit\//.test(location.href) || /\/compare\//.test(location.href)) ||
+			!(e = document.querySelector(".explain"))) return;
 
 		var r = e.querySelector(".GithubCommitWhitespaceButton");
 		if (r) r.parentElement.removeChild(r);
