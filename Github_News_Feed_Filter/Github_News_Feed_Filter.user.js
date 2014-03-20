@@ -8,7 +8,7 @@
 // @downloadURL https://github.com/jerone/UserScripts/raw/master/Github_News_Feed_Filter/Github_News_Feed_Filter.user.js
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_News_Feed_Filter/Github_News_Feed_Filter.user.js
 // @include     https://github.com/
-// @version     4.1
+// @version     4.2
 // @grant       none
 // ==/UserScript==
 
@@ -30,7 +30,7 @@
 		{ text: "Repo", icon: "octicon-repo", classNames: ["create", "public", "release", "fork"] },
 		{ text: "Wiki", icon: "octicon-book", classNames: ["gollum"] },
 		{ text: "Gist", icon: "octicon-gist", classNames: ["gist"] }
-		// Pissible other classes: commit_comment & follow & member_add
+		// Possible other classes: commit_comment & follow & member_add
 	];
 
 	function proxy(fn) {
@@ -130,7 +130,7 @@
 		});
 
 		// update on clicking "More"-button;
-		$.pageUpdate(function() {
+		unsafeWindow.$.pageUpdate(function() {
 			window.setTimeout(function() {
 				Array.forEach(container.querySelectorAll(".alert"), function(alert) {
 					if (alert.getElementsByClassName("octicon-git-pull-request").length > 0) {
@@ -165,6 +165,6 @@
 	addFilters();
 
 	// on pjax;
-	$(document).on("pjax:success", addFilters);
+	unsafeWindow.$(document).on("pjax:success", addFilters);
 
 })();
