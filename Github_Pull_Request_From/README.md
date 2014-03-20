@@ -19,7 +19,7 @@ Make pull request original branch linkable.
 
 ### Version History
 
-* ** 10.0 **
+* **10.0**
     * Initial version;
 
 ### Notes

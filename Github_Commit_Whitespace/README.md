@@ -22,10 +22,10 @@ After:
 
 ### Version History
 
-* ** 1.1 **
+* **1.1**
     * Added to compare page;
     * Added support for Scriptish;
-* ** 1.0 **
+* **1.0**
     * Initial version;
 
 ### TODO

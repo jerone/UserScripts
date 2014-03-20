@@ -36,26 +36,26 @@ Currently integrated filters:
 
 ### Version History
 
-* ** 4.3 **
+* **4.3**
     * Reordered menu;
     * Expanded Gist create & update;
     * Changed Starred in User actions and added member add;
-* ** 4.2 **
+* **4.2**
     * Added support for Scriptish;
-* ** 4.1 **
+* **4.1**
     * Added fork filter;
     * Added sub-filters for issues (comments, opened, closed, reopened);
-* ** 4.0 **
+* **4.0**
     * Better integrated menu style;
-* ** 3.1 **
+* **3.1**
     * Moved PR comments to PR filter;
-* ** 3.0 **
+* **3.0**
     * Added Stars, Repo and Wiki filter;
     * Moved Comments to Issues filter;
     * Made menu lower;
-* ** 2.0 **
+* **2.0**
     * Added Pull Requests filter;
-* ** 1.0 **
+* **1.0**
     * Initial version;
 
 ### TODO

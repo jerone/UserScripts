@@ -19,11 +19,11 @@ Adds button to show diff file for commit. Hold Shift key to open the patch file.
 
 ### Version History
 
-* ** 1.2 **
+* **1.2**
     * Added support for Scriptish;
-* ** 1.1 **
+* **1.1**
     * Clean up;
-* ** 1.0 **
+* **1.0**
     * Initial version;
 
 ### Notes
