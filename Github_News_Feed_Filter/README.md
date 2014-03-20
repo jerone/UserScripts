@@ -7,17 +7,21 @@
 Add filters for [Github homepage](https://github.com) news feed items.
 
 Currently integrated filters:
-* Commits
-* Pull Requests & comments on PR
 * Issues
     * Comments
     * Opened
     * Closed
     * Reopened
-* Stars
+* Commits
+* Pull Requests (opened, closed, merged & comments on PR)
 * Repo (creations, open sourcing, forking, releases)
+* User
+    * Starred
+    * Member added
 * Wiki
 * Gist
+    * Created
+    * Updated
 
 ### Screenshot
 
@@ -32,6 +36,10 @@ Currently integrated filters:
 
 ### Version History
 
+* ** 4.3 **
+    * Reordered menu;
+    * Expanded Gist create & update;
+    * Changed Starred in User actions and added member add;
 * ** 4.2 **
     * Added support for Scriptish;
 * ** 4.1 **

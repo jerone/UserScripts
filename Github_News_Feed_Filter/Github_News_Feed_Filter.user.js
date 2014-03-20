@@ -8,7 +8,7 @@
 // @downloadURL https://github.com/jerone/UserScripts/raw/master/Github_News_Feed_Filter/Github_News_Feed_Filter.user.js
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_News_Feed_Filter/Github_News_Feed_Filter.user.js
 // @include     https://github.com/
-// @version     4.2
+// @version     4.3
 // @grant       none
 // ==/UserScript==
 
@@ -16,8 +16,6 @@
 
 	var filters = [
 		{ text: "All News Feed", icon: "octicon-radio-tower", classNames: ["*"] },
-		{ text: "Commits", icon: "octicon-git-commit", classNames: ["push"] },
-		{ text: "Pull Requests", icon: "octicon-git-pull-request", classNames: ["pull_request", "pull_request_comment"] },
 		{
 			text: "Issues", icon: "octicon-issue-opened", classNames: ["issues_comment", "issues_opened", "issues_closed", "issues_reopened"], subFilters: [
 				{ text: "Comments", icon: "octicon-comment-discussion", classNames: ["issues_comment"] },
@@ -26,11 +24,23 @@
 				{ text: "Reopened", icon: "octicon-issue-reopened", classNames: ["issues_reopened"] }
 			]
 		},
-		{ text: "Stars", icon: "octicon-star", classNames: ["watch_started"] },
+		{ text: "Commits", icon: "octicon-git-commit", classNames: ["push"] },
+		{ text: "Pull Requests", icon: "octicon-git-pull-request", classNames: ["pull_request", "pull_request_comment"] },
 		{ text: "Repo", icon: "octicon-repo", classNames: ["create", "public", "release", "fork"] },
+		{
+			text: "User", icon: "octicon-person", classNames: ["watch_started", "member_add"], subFilters: [
+				{ text: "Starred", icon: "octicon-star", classNames: ["watch_started"] },
+				{ text: "Member added", icon: "octicon-person-add", classNames: ["member_add"] }
+			]
+		},
 		{ text: "Wiki", icon: "octicon-book", classNames: ["gollum"] },
-		{ text: "Gist", icon: "octicon-gist", classNames: ["gist"] }
-		// Possible other classes: commit_comment & follow & member_add
+		{
+			text: "Gist", icon: "octicon-gist", classNames: ["gist_created", "gist_updated"], subFilters: [
+				{ text: "Created", icon: "octicon-gist-new", classNames: ["gist_created"] },
+				{ text: "Updated", icon: "octicon-gist", classNames: ["gist_updated"] }
+			]
+		}
+		// Possible other classes: commit_comment & follow
 	];
 
 	function proxy(fn) {
@@ -139,6 +149,9 @@
 					} else if (alert.classList.contains("issues_comment") && alert.querySelectorAll(".title a")[1].getAttribute("href").split("/")[5] === "pull") {
 						alert.classList.remove("issues_comment");
 						alert.classList.add("pull_request_comment");
+					} else if (alert.classList.contains("gist")) {
+						alert.classList.remove("gist");
+						alert.classList.add("gist_" + alert.querySelector(".title span").textContent);
 					}
 				});
 
