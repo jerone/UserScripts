@@ -12,9 +12,9 @@ Currently integrated filters:
     * Opened
     * Closed
     * Reopened
-* Commits
-* Pull Requests (opened, closed, merged & comments on PR)
-* Repo (creations, open sourcing, forking, releases)
+* Commits (push & comments)
+* Pull Requests (opened, closed, merged & comments)
+* Repo (creations, open sourcing, forking & releases)
 * User
     * Starred
     * Member added
@@ -36,6 +36,9 @@ Currently integrated filters:
 
 ### Version History
 
+* **4.4**
+    * Added support for organisations;
+    * Added commit comments;
 * **4.3**
     * Reordered menu;
     * Expanded Gist create & update;

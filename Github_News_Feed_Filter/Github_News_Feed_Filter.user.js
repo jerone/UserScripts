@@ -8,7 +8,8 @@
 // @downloadURL https://github.com/jerone/UserScripts/raw/master/Github_News_Feed_Filter/Github_News_Feed_Filter.user.js
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_News_Feed_Filter/Github_News_Feed_Filter.user.js
 // @include     https://github.com/
-// @version     4.3
+// @include     https://github.com/orgs/*/dashboard
+// @version     4.4
 // @grant       none
 // ==/UserScript==
 
@@ -24,13 +25,13 @@
 				{ text: "Reopened", icon: "octicon-issue-reopened", classNames: ["issues_reopened"] }
 			]
 		},
-		{ text: "Commits", icon: "octicon-git-commit", classNames: ["push"] },
+		{ text: "Commits", icon: "octicon-git-commit", classNames: ["push", "commit_comment"] },
 		{ text: "Pull Requests", icon: "octicon-git-pull-request", classNames: ["pull_request", "pull_request_comment"] },
 		{ text: "Repo", icon: "octicon-repo", classNames: ["create", "public", "release", "fork"] },
 		{
-			text: "User", icon: "octicon-person", classNames: ["watch_started", "member_add"], subFilters: [
+			text: "User", icon: "octicon-person", classNames: ["watch_started", "member_add", "team_add"], subFilters: [
 				{ text: "Starred", icon: "octicon-star", classNames: ["watch_started"] },
-				{ text: "Member added", icon: "octicon-person-add", classNames: ["member_add"] }
+				{ text: "Member added", icon: "octicon-person-add", classNames: ["member_add", "team_add"] }
 			]
 		},
 		{ text: "Wiki", icon: "octicon-book", classNames: ["gollum"] },
@@ -40,7 +41,7 @@
 				{ text: "Updated", icon: "octicon-gist", classNames: ["gist_updated"] }
 			]
 		}
-		// Possible other classes: commit_comment & follow
+		// Possible other classes: follow
 	];
 
 	function proxy(fn) {
