@@ -57,6 +57,22 @@
 			icon: "https://si0.twimg.com/favicons/favicon.ico"
 		},
 		Dabblet: {
+			/*
+			 * The following urls should be converted to dabblet:
+			 *
+			 *  - https://gist.github.com/jerone/3810309
+			 *                                   ¯¯¯¯¯¯¯
+			 *  - https://gist.github.com/jerone/3810309/revisions
+			 *                                   ¯¯¯¯¯¯¯
+			 *  - https://gist.github.com/jerone/3810309/forks
+			 *                                   ¯¯¯¯¯¯¯
+			 *  - https://gist.github.com/jerone/3810309/stars
+			 *                                   ¯¯¯¯¯¯¯
+			 *  - https://gist.github.com/jerone/3810309/f2815cc6796ea985f74b8f5f3c717e8de3b12d37
+			 *                                   ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+			 *  - https://gist.github.com/3810309/f2815cc6796ea985f74b8f5f3c717e8de3b12d37
+			 *                            ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+			 */
 			show: function(url, user, description, files, stars, forks, revisions) {
 				// already defined in another UserScript: http://userscripts.org/users/31497/scripts
 				return !document.getElementById("Github_Gist_Dabblet");
