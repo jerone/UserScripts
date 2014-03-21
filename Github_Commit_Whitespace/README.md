@@ -8,9 +8,9 @@ Adds button to hide whitespaces from commit.
 
 ### Screenshot
 
-Before:
+#### Before
 ![Github Commit Whitespace screenshot before](https://github.com/jerone/UserScripts/raw/master/Github_Commit_Whitespace/screenshot_before.jpg)
-After:
+#### After
 ![Github Commit Whitespace screenshot after](https://github.com/jerone/UserScripts/raw/master/Github_Commit_Whitespace/screenshot_after.jpg)
 
 ### Compatible
