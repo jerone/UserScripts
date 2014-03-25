@@ -7,6 +7,7 @@
 Add filters for [Github homepage](https://github.com) news feed items.
 
 Currently integrated filters:
+
 * Issues
     * Comments
     * Opened
