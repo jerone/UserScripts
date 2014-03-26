@@ -6,6 +6,7 @@
 // @homepage    https://github.com/jerone/UserScripts/tree/master/Github_Commit_Whitespace
 // @homepageURL https://github.com/jerone/UserScripts/tree/master/Github_Commit_Whitespace
 // @downloadURL https://github.com/jerone/UserScripts/raw/master/Github_Commit_Whitespace/Github_Commit_Whitespace.user.js
+// @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_Commit_Whitespace/Github_Commit_Whitespace.user.js
 // @include     https://github.com/*
 // @version     1.1
 // @grant       none
