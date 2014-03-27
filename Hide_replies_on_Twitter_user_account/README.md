@@ -1,1 +1,0 @@
-[Hide replies on Twitter user account](http://userscripts.org/scripts/show/163703)
