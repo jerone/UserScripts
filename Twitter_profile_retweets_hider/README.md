@@ -31,5 +31,5 @@ If you installed this script before, you probably want to delete it before insta
 
 ### External links
 
-* [Greasy Fork](https://greasyfork.org/scripts/XXXXX)
+* [Greasy Fork](https://greasyfork.org/scripts/215)
 * [Userscripts.org](http://userscripts.org/scripts/show/173603) (not maintained anymore).
