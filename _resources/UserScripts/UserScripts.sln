@@ -24,6 +24,11 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "UserScripts", "http://local
 		SlnRelativePath = "..\..\..\UserScripts\"
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{ACB41116-C63E-498E-9150-8BB0451F77CC}"
+	ProjectSection(SolutionItems) = preProject
+		WE-Markdown.css = WE-Markdown.css
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
