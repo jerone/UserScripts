@@ -15,7 +15,7 @@ Currently integrated filters:
     * Reopened
 * Commits (push & comments)
 * Pull Requests (opened, closed, merged & comments)
-* Repo (creations, open sourcing, forking & releases)
+* Repo (creations, deletion, open sourcing, forking & releases)
 * User
     * Starred
     * Member added
@@ -37,6 +37,8 @@ Currently integrated filters:
 
 ### Version History
 
+* **4.5**
+    * Added branch deleting support;
 * **4.4**
     * Added support for organisations;
     * Added commit comments;

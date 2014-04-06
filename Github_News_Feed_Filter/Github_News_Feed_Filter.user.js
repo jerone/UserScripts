@@ -9,7 +9,7 @@
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_News_Feed_Filter/Github_News_Feed_Filter.user.js
 // @include     https://github.com/
 // @include     https://github.com/orgs/*/dashboard
-// @version     4.4
+// @version     4.5
 // @grant       none
 // ==/UserScript==
 
@@ -27,7 +27,7 @@
 		},
 		{ text: "Commits", icon: "octicon-git-commit", classNames: ["push", "commit_comment"] },
 		{ text: "Pull Requests", icon: "octicon-git-pull-request", classNames: ["pull_request", "pull_request_comment"] },
-		{ text: "Repo", icon: "octicon-repo", classNames: ["create", "public", "release", "fork"] },
+		{ text: "Repo", icon: "octicon-repo", classNames: ["create", "delete", "public", "release", "fork"] },
 		{
 			text: "User", icon: "octicon-person", classNames: ["watch_started", "member_add", "team_add"], subFilters: [
 				{ text: "Starred", icon: "octicon-star", classNames: ["watch_started"] },
