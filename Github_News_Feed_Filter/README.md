@@ -64,7 +64,7 @@ Currently integrated filters:
 
 ### TODO
 
-* Remember filter choice;
+- [ ] Remember filter choice;
 
 ### Notes
 
