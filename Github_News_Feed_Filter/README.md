@@ -37,6 +37,8 @@ Currently integrated filters:
 
 ### Version History
 
+* **4.6**
+    * Show message when filter has no feed items;
 * **4.5**
     * Added branch deleting support;
 * **4.4**
@@ -66,7 +68,8 @@ Currently integrated filters:
 
 ### TODO
 
-* Remember filter choice;
+- Remember filter choice;
+- Remove first alert border-top;
 
 ### Notes
 

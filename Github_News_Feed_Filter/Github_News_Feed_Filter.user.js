@@ -9,7 +9,7 @@
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_News_Feed_Filter/Github_News_Feed_Filter.user.js
 // @include     https://github.com/
 // @include     https://github.com/orgs/*/dashboard
-// @version     4.5
+// @version     4.6
 // @grant       none
 // ==/UserScript==
 
@@ -79,23 +79,33 @@
 
 		a.appendChild(document.createTextNode(filter.text));
 
-		a.addEventListener("click", proxy(function(e, className) {
+		a.addEventListener("click", proxy(function(e, classNames) {
 			e.preventDefault();
 
+			var any = false,
+				all = classNames[0] === "*",
+				some = function(alert) { return classNames.some(function(cl) { return alert.classList.contains(cl); }); };
 			Array.forEach(container.querySelectorAll(".alert"), function(alert) {
-				alert.style.display = className[0] === "*" || className.some(function(cl) { return alert.classList.contains(cl); }) ? "block" : "none";
+				alert.style.display = (all || some(alert)) && (any = true) ? "block" : "none";
 			});
+			var none = container.querySelector(".no-alerts");
+			if (any && none) {
+				none.parentNode.removeChild(none);
+			} else if (!any && !none) {
+				none = document.createElement("div");
+				none.classList.add("no-alerts");
+				none.style.padding = "0 0 1em 45px";
+				none.style.fontStyle = "italic";
+				none.appendChild(document.createTextNode("No feed items for this filter. Press the button below to load more items..."));
+				container.insertBefore(none, container.firstChild);
+			}
 
-			Array.forEach(sidebar.querySelectorAll(".filter-list.small"), function(subUl) {
-				subUl.style.display = "none";
-			});
+			Array.forEach(sidebar.querySelectorAll(".filter-list.small"), function(subUl) { subUl.style.display = "none"; });
 			var subUl = this.parentNode.querySelector("ul");
 			if (!subUl && this.parentNode.parentNode.classList.contains("filter-list") && this.parentNode.parentNode.classList.contains("small")) {
 				subUl = this.parentNode.parentNode;
 			}
-			if (subUl) {
-				subUl.style.display = "block";
-			}
+			subUl && (subUl.style.display = "block");
 
 			Array.forEach(sidebar.querySelectorAll(".selected"), function(m) { m.classList.remove("selected"); });
 			this.classList.add("selected");
