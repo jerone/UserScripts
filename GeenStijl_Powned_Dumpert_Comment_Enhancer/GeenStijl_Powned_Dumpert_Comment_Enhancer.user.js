@@ -13,7 +13,7 @@
 // @include     http*://*dumpert.nl/mediabase/*
 // @include     http*://*daskapital.nl/*
 // @include     http*://*glamora.ma/*
-// @version     1.0
+// @version     2.0
 // @grant       none
 // ==/UserScript==
 
@@ -47,28 +47,44 @@
 	};
 
 	var replyImgScr = "data:image\/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAABcSURBVChTjZBbDsAgCATl2PDFzW236RjqI+kmSsBxQS0i+q2GzKzVfBy8oOCj3L03bRIROjNHbQGBgRQx+TgC6ALQEawtGeNpzWNwETjD2xlVrGtp/et7ZpddfgEnfhsfVr//KQAAAABJRU5ErkJgggA=";
+	var permaImgScr = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAIAAAACUFjqAAAABGdBTUEAAK/INwWK6QAAAAlwSFlzAAAOwwAADsMBx2+oZAAAABZ0RVh0U29mdHdhcmUAcGFpbnQubmV0IDQuMDvo9WkAAABfSURBVChTXY9BEsAgCAP7bMqpL4euDaJ2D0xMzKDXvWFmpSYjzsyIYP4YMQ2y7+rRrlhKh2ci091XDH1DJnPtlgsIetpYsTImmoxHVLuVMsHxaDf7D+tpQr/CAjnu/gJVo8cY6M1GEAAAAABJRU5ErkJggg==";
 
 	var commentsList = document.getElementById("comments");
 	if (commentsList) {
 		wait(function() {
-			return commentsList.querySelectorAll("article,.comment").length > 0;
+			return commentsList.querySelectorAll("article .nsb,.comment .nsb").length > 0;
 		}, function() {
-			var textArea = document.getElementById("text");
-			if (textArea) {
-				Array.forEach(commentsList.querySelectorAll("article,.comment"), function(comment) {
-					var footer = comment.querySelector("footer,.footer");
+			Array.forEach(commentsList.querySelectorAll("article,.comment"), function(comment) {
+				var footer = comment.querySelector("footer,.footer");
 
+				if (comment.id) {
+					var perma = document.createElement("a");
+					perma.classList.add("nsb");
+					perma.setAttribute("href", String.format("#{0}", comment.id));
+					perma.setAttribute("title", String.format("Permalink #{0}", comment.id));
+					perma.style.backgroundImage = String.format("url('{0}')", permaImgScr);
+					perma.style.backgroundPosition = "center center";
+					perma.style.marginRight = "4px";
+					if (/https?:\/\/www\.powned\.tv\/nieuws\/.*/.test(location.href)) {  // add missing css;
+						perma.style.cursor = "pointer";
+						perma.style.cssFloat = "right";
+						perma.style.height = perma.style.width = "10px";
+					}
+					footer.appendChild(perma);
+				}
+
+				var textArea = document.getElementById("text");
+				if (textArea) {
 					var reply = document.createElement("span");
 					reply.classList.add("nsb");
 					reply.setAttribute("title", "Beantwoorden");
 					reply.style.backgroundImage = String.format("url('{0}')", replyImgScr);
 					reply.style.backgroundPosition = "center center";
-					reply.style.marginLeft = reply.style.marginRight = "4px";
+					reply.style.marginRight = "4px";
 					if (/https?:\/\/www\.powned\.tv\/nieuws\/.*/.test(location.href)) {  // add missing css;
 						reply.style.cursor = "pointer";
 						reply.style.cssFloat = "right";
-						reply.style.height = "10px";
-						reply.style.width = "10px";
+						reply.style.height = reply.style.width = "10px";
 					}
 					reply.addEventListener("click", proxy(function() {
 						textArea.value += String.format("@{0}\n", Array.map(this.childNodes, function(node) {
@@ -78,8 +94,8 @@
 						textArea.scrollIntoView();
 					}).bind(footer));
 					footer.appendChild(reply);
-				});
-			}
+				}
+			});
 		});
 	}
 

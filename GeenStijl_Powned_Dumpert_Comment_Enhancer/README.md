@@ -28,6 +28,8 @@ Currently supported sites:
 
 ### Version History
 
+* **2.0**
+    * Add permalink;
 * **1.0**
     * Initial version;
 
@@ -39,10 +41,9 @@ Currently supported sites:
 - Highlight particular comments;
 - Pre-defined comments;
 - Signature;
-- Permalink;
+- ~~Permalink~~;
 
 ### External links
 
 * [Greasy Fork](https://greasyfork.org/scripts/###)
 * [Userscripts.org](http://userscripts.org/scripts/show/35698) (not maintained anymore).
-
