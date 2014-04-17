@@ -59,19 +59,19 @@
 		Dabblet: {
 			/*
 			 * The following urls should be converted to dabblet:
-			 *
+			 *                                   _______
 			 *  - https://gist.github.com/jerone/3810309
-			 *                                   ¯¯¯¯¯¯¯
+			 *                                   _______
 			 *  - https://gist.github.com/jerone/3810309/revisions
-			 *                                   ¯¯¯¯¯¯¯
+			 *                                   _______
 			 *  - https://gist.github.com/jerone/3810309/forks
-			 *                                   ¯¯¯¯¯¯¯
+			 *                                   _______
 			 *  - https://gist.github.com/jerone/3810309/stars
-			 *                                   ¯¯¯¯¯¯¯
+			 *                                   ________________________________________________
 			 *  - https://gist.github.com/jerone/3810309/f2815cc6796ea985f74b8f5f3c717e8de3b12d37
-			 *                                   ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+			 *                            ________________________________________________
 			 *  - https://gist.github.com/3810309/f2815cc6796ea985f74b8f5f3c717e8de3b12d37
-			 *                            ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+			 *
 			 */
 			show: function(url, user, description, files, stars, forks, revisions) {
 				// already defined in another UserScript: http://userscripts.org/users/31497/scripts
