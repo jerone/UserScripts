@@ -1,13 +1,15 @@
 // ==UserScript==
 // @name        Horizon TV Fixer
-// @namespace   https://github.com/jerone/UserScripts/
+// @namespace   https://github.com/jerone/UserScripts
 // @description Fixes some issues & styles and adds some new features on Horizon TV Gids.
-// @homepage    https://github.com/jerone/UserScripts/tree/master/Horizon_TV_Fixer/
-// @homepageURL https://github.com/jerone/UserScripts/tree/master/Horizon_TV_Fixer/
+// @author      jerone
+// @homepage    https://github.com/jerone/UserScripts/tree/master/Horizon_TV_Fixer
+// @homepageURL https://github.com/jerone/UserScripts/tree/master/Horizon_TV_Fixer
 // @downloadURL https://github.com/jerone/UserScripts/raw/master/Horizon_TV_Fixer/155147.user.js
+// @updateURL   https://github.com/jerone/UserScripts/raw/master/Horizon_TV_Fixer/155147.user.js
 // @include     *horizon.tv*
-// @version     18
-// @grant       GM_addStyle
+// @version     19
+// @grant       none
 // ==/UserScript==
 
 (function HorizonTVFixer(){
@@ -116,7 +118,7 @@
 	});
 
 	/* Style fixes; */
-	GM_addStyle(
+	addStyle(
 /* removed white header; */								"\
 .servicenav.service {									\
 	display: none;										\
@@ -171,6 +173,16 @@
 	display: none;										\
 }														"+
 	"");
+
+	function addStyle(css){
+		var heads = document.getElementsByTagName("head");
+		if (heads.length > 0) {
+			var node = document.createElement("style");
+			node.type = "text/css";
+			node.appendChild(document.createTextNode(css));
+			heads[0].appendChild(node);
+		}
+	}
 
 	function PageLoad(done){
 		if(unsafeWindow.$){

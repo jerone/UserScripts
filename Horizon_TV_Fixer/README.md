@@ -13,7 +13,7 @@ Fixes some issues & styles and adds some new features on [Horizon TV Gids](https
 * Add link to KijkWijzer (Dutch);
 * Add link to Uitzending Gemist (Dutch);
 * Add link to IPTorrents;
-* Add tooltips;
+* Add missing tooltips;
 * Style fixes;
 
 ### Screenshot
@@ -23,12 +23,23 @@ Fixes some issues & styles and adds some new features on [Horizon TV Gids](https
 ### Compatible
 
 - [![](https://raw.github.com/jerone/UserScripts/master/_resources/Greasemonkey.png) Greasemonkey](https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/) on [![](https://raw.github.com/jerone/UserScripts/master/_resources/Firefox.png) Mozilla Firefox Desktop](http://www.mozilla.org/en-US/firefox/fx/#desktop).
+* [![](https://raw.github.com/jerone/UserScripts/master/_resources/Scriptish.png) Scriptish](https://addons.mozilla.org/firefox/addon/scriptish/) on [![](https://raw.github.com/jerone/UserScripts/master/_resources/Firefox.png) Mozilla Firefox Desktop](http://www.mozilla.org/en-US/firefox/fx/#desktop).
 
 <sub>Please [notify](https://github.com/jerone/UserScripts/issues/new?title=Userscript%20%3Cname%3E%20%28%3Cversion%3E%29%20also%20works%20in%20%3Cbrowser%3E%20on%20%3Cdesktop/device%3E) when this userscript is successfully tested in another browser...</sub>
 
+### Version History
+
+* **19**
+    * Removed `GM_addStyle` as it gives errors in GreaseMonkey (not Scriptish);
+    * Works with v1.1.57;
+* **19**
+    * Clean up;
+* **18**
+    * Changes for v1.1.37;
+
 ### Notes
 
-Build for version 1.1.37
+Build for version 1.1.57
 
 ### External links
 
