@@ -33,5 +33,5 @@ Add features to enhance comments on [Github](https://github.com).
 
 ### External links
 
-* [Greasy Fork](https://greasyfork.org/scripts/###)
-* [OpenUserJS](https://openuserjs.org/scripts/jerone/###)
+* [Greasy Fork](https://greasyfork.org/scripts/493-github-comment-enhancer)
+* [OpenUserJS](https://openuserjs.org/scripts/jerone/httpsgithub.comjeroneUserScripts/Github_Comment_Enhancer)
