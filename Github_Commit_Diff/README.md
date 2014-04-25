@@ -19,6 +19,9 @@ Adds button to show diff file for commit. Hold Shift key to open the patch file.
 
 ### Version History
 
+* **1.3**
+    * Added to pull requests;
+    * Added to compare page;
 * **1.2**
     * Added support for Scriptish;
 * **1.1**
@@ -28,7 +31,11 @@ Adds button to show diff file for commit. Hold Shift key to open the patch file.
 
 ### Notes
 
- -
+Use cases:
+
+* https://github.com/OpenUserJs/OpenUserJS.org/commit/64530e854874433c76a584b90b14196522ef54a8
+* https://github.com/diegocr/GitHubExtIns/pull/10/files
+* https://github.com/OpenUserJs/OpenUserJS.org/compare/master%40%7B1day%7D...master
 
 ### External links
 

@@ -8,23 +8,26 @@
 // @downloadURL https://github.com/jerone/UserScripts/raw/master/Github_Commit_Diff/Github_Commit_Diff.user.js
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_Commit_Diff/Github_Commit_Diff.user.js
 // @include     https://github.com/*
-// @version     1.2
+// @version     1.3
 // @grant       none
 // ==/UserScript==
+/* global unsafeWindow */
 
 (function() {
 
 	function addButton() {
 		var e;
-		if (!/\/commit\//.test(location.href) || !(e = document.querySelector(".explain"))) return;
+		if (!(/\/commit\//.test(location.href) || /\/compare\//.test(location.href) || /\/pull\/\d*\/files/.test(location.href)) ||
+			!(e = document.querySelector("#toc .explain"))) { return; }
 
-		var r = e.querySelector(".GithubCommitWhitespaceButton");
-		if (r) r.parentElement.removeChild(r);
+		var r = e.querySelector(".GithubCommitDiffButton");
+		if (r) { r.parentElement.removeChild(r); }
 
 		function getPatchOrDiffHref(type) {
 			return (document.querySelector("link[type='text/plain+" + type + "']")
-				|| { href: location.href + "." + type }).href;
-		};
+				 || document.querySelector("link[type='text/x-" + type + "']")
+				 || { href: location.href + "." + type }).href;
+		}
 
 		var b = e.querySelector(".minibutton");
 
@@ -58,5 +61,13 @@
 
 	// on pjax;
 	unsafeWindow.$(document).on('pjax:success', addButton);
+
+	// on PR files tab;
+	var f;
+	if ((f = document.querySelector(".js-pull-request-tab[data-container-id='files_bucket']"))) {
+		f.addEventListener("click", function() {
+			window.setTimeout(addButton, 13);
+		});
+	}
 
 })();
