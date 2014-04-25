@@ -50,4 +50,12 @@
 	// on pjax;
 	unsafeWindow.$(document).on("pjax:success", addButton);
 
+	// on PR files tab;
+	var f;
+	if ((f = document.querySelector(".js-pull-request-tab[data-container-id='files_bucket']"))) {
+		f.addEventListener("click", function() {
+			window.setTimeout(addButton, 13);
+		});
+	}
+
 })();

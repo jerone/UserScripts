@@ -22,6 +22,8 @@ Adds button to hide whitespaces from commit.
 
 ### Version History
 
+* **1.2.1**
+    * Fixed adding to pull requests;
 * **1.2**
     * Added to pull requests;
 * **1.1**
@@ -40,6 +42,7 @@ Use cases:
 
 * https://github.com/OpenUserJs/OpenUserJS.org/commit/64530e854874433c76a584b90b14196522ef54a8
 * https://github.com/diegocr/GitHubExtIns/pull/10/files
+* https://github.com/OpenUserJs/OpenUserJS.org/compare/master%40%7B1day%7D...master
 
 ### External links
 
