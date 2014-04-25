@@ -8,21 +8,20 @@
 // @downloadURL https://github.com/jerone/UserScripts/raw/master/Github_Commit_Whitespace/Github_Commit_Whitespace.user.js
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_Commit_Whitespace/Github_Commit_Whitespace.user.js
 // @include     https://github.com/*
-// @version     1.1
+// @version     1.2
 // @grant       none
 // ==/UserScript==
-
-// use case: https://github.com/OpenUserJs/OpenUserJS.org/commit/64530e854874433c76a584b90b14196522ef54a8
+/* global unsafeWindow */
 
 (function() {
 
 	function addButton() {
 		var e;
-		if (!(/\/commit\//.test(location.href) || /\/compare\//.test(location.href)) ||
-			!(e = document.querySelector(".explain"))) return;
+		if (!(/\/commit\//.test(location.href) || /\/compare\//.test(location.href) || /\/pull\/\d*\/files/.test(location.href)) ||
+			!(e = document.querySelector("#toc .explain"))) { return; }
 
 		var r = e.querySelector(".GithubCommitWhitespaceButton");
-		if (r) r.parentElement.removeChild(r);
+		if (r) { r.parentElement.removeChild(r); }
 
 		var on = /w=/.test(location.search);
 
@@ -34,7 +33,7 @@
 
 		var a = document.createElement("a");
 		a.classList.add("GithubCommitWhitespaceButton", "minibutton", "tooltipped", "tooltipped-s");
-		if (on) a.classList.add("selected");
+		if (on) { a.classList.add("selected"); }
 		a.setAttribute("href", on ? location.href.replace(location.search, "") : location.href + "?w=1");
 		a.setAttribute("title", on ? "Show commit whitespace" : "Hide commit whitespaces");
 		a.setAttribute("rel", "nofollow");

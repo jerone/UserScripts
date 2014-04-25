@@ -22,6 +22,8 @@ Adds button to hide whitespaces from commit.
 
 ### Version History
 
+* **1.2**
+    * Added to pull requests;
 * **1.1**
     * Added to compare page;
     * Added support for Scriptish;
@@ -34,8 +36,12 @@ Adds button to hide whitespaces from commit.
 
 ### Notes
 
- -
+Use cases:
+
+* https://github.com/OpenUserJs/OpenUserJS.org/commit/64530e854874433c76a584b90b14196522ef54a8
+* https://github.com/diegocr/GitHubExtIns/pull/10/files
 
 ### External links
 
-* [Greasy Fork](https://greasyfork.org/scripts/#)
+* [Greasy Fork](https://greasyfork.org/scripts/467-github-commit-whitespace)
+* [OpenUserJS](https://openuserjs.org/scripts/jerone/httpsgithub.comjeroneUserScripts/Github_Commit_Whitespace)
