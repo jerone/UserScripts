@@ -8,7 +8,7 @@
 // @downloadURL https://github.com/jerone/UserScripts/raw/master/Github_Commit_Diff/Github_Commit_Diff.user.js
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_Commit_Diff/Github_Commit_Diff.user.js
 // @include     https://github.com/*
-// @version     1.3
+// @version     1.4
 // @grant       none
 // ==/UserScript==
 /* global unsafeWindow */
@@ -48,11 +48,25 @@
 
 		b.parentNode.insertBefore(a, b);
 
-		a.addEventListener("click", function(e) {
+		a.addEventListener("mousedown", function(e) {
 			if (e.shiftKey) {
+				var patch = getPatchOrDiffHref("patch");
 				e.preventDefault();
-				location.href = getPatchOrDiffHref("patch");
+				a.setAttribute("href", patch);
+				if (e.which === 1) {  // left click;
+					location.href = patch;
+					// To prevent Firefox default behavior (opening a new window)
+					//  when pressing shift-click on a link, delete the link.
+					this.parentElement.removeChild(this);
+				} else if (e.which === 2) {  // middle click;
+					window.open(patch, "GithubCommitDiff");
+				}
+			} else {
+				a.setAttribute("href", getPatchOrDiffHref("diff"));
 			}
+		}, false);
+		a.addEventListener("mouseout", function() {
+			a.setAttribute("href", getPatchOrDiffHref("diff"));
 		}, false);
 	}
 

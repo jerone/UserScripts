@@ -19,6 +19,8 @@ Adds button to show diff file for commit. Hold Shift key to open the patch file.
 
 ### Version History
 
+* **1.4**
+    * Fixed middle & right mouse clicks;
 * **1.3**
     * Added to pull requests;
     * Added to compare page;
@@ -40,3 +42,4 @@ Use cases:
 ### External links
 
 * [Greasy Fork](https://greasyfork.org/scripts/77)
+* [OpenUserJS](https://openuserjs.org/scripts/jerone/httpsgithub.comjeroneUserScripts/Github_Commit_Diff)
