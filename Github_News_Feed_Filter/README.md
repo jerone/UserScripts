@@ -9,13 +9,30 @@ Add filters for [Github homepage](https://github.com) news feed items.
 Currently integrated filters:
 
 * Issues
-    * Comments
     * Opened
     * Closed
     * Reopened
-* Commits (push & comments)
-* Pull Requests (opened, closed, merged & comments)
-* Repo (creations, deletion, open sourcing, forking & releases)
+    * Comments
+* Commits
+    * Pushed
+    * Comments
+* Pull Requests
+    * Opened
+    * Closed
+    * Merged
+    * Comments
+* Repo
+    * Created
+    * Public
+    * Forked
+    * Branched
+        * Created
+        * Deleted
+    * Tagged
+        * Added
+        * Removed
+    * Released
+    * Deleted
 * User
     * Starred
     * Member added
@@ -37,6 +54,8 @@ Currently integrated filters:
 
 ### Version History
 
+* **5.0**
+    * More filters added;
 * **4.6**
     * Show message when filter has no feed items;
 * **4.5**
@@ -71,10 +90,7 @@ Currently integrated filters:
 - Remember filter choice;
 - Remove first alert border-top;
 
-### Notes
-
- -
-
 ### External links
 
 * [Greasy Fork](https://greasyfork.org/scripts/171)
+* [OpenUserJS](https://openuserjs.org/scripts/jerone/httpsgithub.comjeroneUserScripts/Github_News_Feed_Filter)
