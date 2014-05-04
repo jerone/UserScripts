@@ -19,6 +19,8 @@ Add features to enhance comments on [Github](https://github.com).
 
 ### Version History
 
+* **1.1.1**
+    * Fixed space being not part of selection again;
 * **1.1**
     * Fixed space being not part of selection;
     * Added new line when needed;

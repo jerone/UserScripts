@@ -8,7 +8,7 @@
 // @homepageURL https://github.com/jerone/UserScripts/tree/master/Github_Comment_Enhancer
 // @downloadURL https://github.com/jerone/UserScripts/raw/master/Github_Comment_Enhancer/Github_Comment_Enhancer.user.js
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_Comment_Enhancer/Github_Comment_Enhancer.user.js
-// @version     1.1
+// @version     1.1.1
 // @grant       none
 // @run-at      document-end
 // @include     https://github.com/*/*/issues/*
@@ -21,20 +21,20 @@
 	// Source: https://github.com/gollum/gollum/blob/9c714e768748db4560bc017cacef4afa0c751a63/lib/gollum/public/gollum/javascript/editor/langs/markdown.js
 	var MarkDown = {
 		"function-bold": {
-			search: /^([^\n]*?)([\n\s]*)$/g,
-			replace: "**$1**$2"
+			search: /^(\s*)([\s\S]*?)(\s*)$/g,
+			replace: "$1**$2**$3"
 		},
 		"function-italic": {
-			search: /^([^\n]*?)([\n\s]*)$/g,
-			replace: "_$1_$2"
+			search: /^(\s*)([\s\S]*?)(\s*)$/g,
+			replace: "$1_$2_$3"
 		},
 		"function-strikethrough": {
-			search: /^([^\n]*?)([\n\s]*)$/g,
-			replace: "~~$1~~$2"
+			search: /^(\s*)([\s\S]*?)(\s*)$/g,
+			replace: "$1~~$2~~$3"
 		},
 		"function-code": {
-			search: /^([^\n]*?)([\n\s]*)$/g,
-			replace: "`$1`$2"
+			search: /^(\s*)([\s\S]*?)(\s*)$/g,
+			replace: "$1`$2`$3"
 		},
 		"function-hr": {
 			append: "\n***\n",
