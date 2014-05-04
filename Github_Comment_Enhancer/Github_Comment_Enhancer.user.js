@@ -8,7 +8,7 @@
 // @homepageURL https://github.com/jerone/UserScripts/tree/master/Github_Comment_Enhancer
 // @downloadURL https://github.com/jerone/UserScripts/raw/master/Github_Comment_Enhancer/Github_Comment_Enhancer.user.js
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_Comment_Enhancer/Github_Comment_Enhancer.user.js
-// @version     1.0
+// @version     1.1
 // @grant       none
 // @run-at      document-end
 // @include     https://github.com/*/*/issues/*
@@ -21,27 +21,29 @@
 	// Source: https://github.com/gollum/gollum/blob/9c714e768748db4560bc017cacef4afa0c751a63/lib/gollum/public/gollum/javascript/editor/langs/markdown.js
 	var MarkDown = {
 		"function-bold": {
-			search: /([^\n]+)([\n\s]*)/g,
+			search: /^([^\n]*?)([\n\s]*)$/g,
 			replace: "**$1**$2"
 		},
 		"function-italic": {
-			search: /([^\n]+)([\n\s]*)/g,
+			search: /^([^\n]*?)([\n\s]*)$/g,
 			replace: "_$1_$2"
 		},
 		"function-strikethrough": {
-			search: /([^\n]+)([\n\s]*)/g,
+			search: /^([^\n]*?)([\n\s]*)$/g,
 			replace: "~~$1~~$2"
 		},
 		"function-code": {
-			search: /([^\n]+)([\n\s]*)/g,
+			search: /^([^\n]*?)([\n\s]*)$/g,
 			replace: "`$1`$2"
 		},
 		"function-hr": {
-			append: "\n***\n"
+			append: "\n***\n",
+			forceNewline: true
 		},
 		"function-ul": {
 			search: /(.+)([\n]?)/g,
-			replace: "* $1$2"
+			replace: "* $1$2",
+			forceNewline: true
 		},
 		"function-ol": {
 			exec: function(txt, selText, next) {
@@ -62,19 +64,23 @@
 		},
 		"function-blockquote": {
 			search: /(.+)([\n]?)/g,
-			replace: "> $1$2"
+			replace: "> $1$2",
+			forceNewline: true
 		},
 		"function-h1": {
 			search: /(.+)([\n]?)/g,
-			replace: "# $1$2"
+			replace: "# $1$2",
+			forceNewline: true
 		},
 		"function-h2": {
 			search: /(.+)([\n]?)/g,
-			replace: "## $1$2"
+			replace: "## $1$2",
+			forceNewline: true
 		},
 		"function-h3": {
 			search: /(.+)([\n]?)/g,
-			replace: "### $1$2"
+			replace: "### $1$2",
+			forceNewline: true
 		},
 		"function-link": {
 			exec: function(txt, selText, next) {
@@ -182,7 +188,7 @@
 			cursor = null;
 
 		// execute a replacement function if one exists
-		if (definitionObject.exec && typeof definitionObject.exec === "function") {
+		if (typeof definitionObject.exec === "function") {
 			definitionObject.exec(txt, selText, function(repText) {
 				replaceFieldSelection(commentForm, repText);
 			});
@@ -191,13 +197,13 @@
 
 		// execute a search/replace if they exist
 		var searchExp = /([^\n]+)/gi;
-		if (definitionObject.search && typeof definitionObject.search === "object") {
+		if (typeof definitionObject.search === "object") {
 			searchExp = null;
 			searchExp = new RegExp(definitionObject.search);
 		}
 
 		// replace text
-		if (definitionObject.replace && typeof definitionObject.replace === "string") {
+		if (typeof definitionObject.replace === "string" && definitionObject.replace.length > 0) {
 			var rt = definitionObject.replace;
 			repText = repText.replace(searchExp, rt);
 			repText = repText.replace(/\$[\d]/g, "");
@@ -211,7 +217,7 @@
 		}
 
 		// append if necessary
-		if (definitionObject.append && typeof definitionObject.append === "string") {
+		if (typeof definitionObject.append === "string" && definitionObject.append.length > 0) {
 			if (repText === selText) {
 				reselect = false;
 			}
@@ -219,6 +225,9 @@
 		}
 
 		if (repText) {
+			if (definitionObject.forceNewline === true && (selPos.start > 0 && txt.substr(Math.max(0, selPos.start - 1), 1) !== "\n")) {
+				repText = "\n" + repText;
+			}
 			replaceFieldSelection(commentForm, repText, reselect, cursor);
 		}
 	}

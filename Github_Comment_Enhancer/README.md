@@ -19,13 +19,15 @@ Add features to enhance comments on [Github](https://github.com).
 
 ### Version History
 
+* **1.1**
+    * Fixed space being not part of selection;
+    * Added new line when needed;
 * **1.0**
     * Initial version;
 
 ### TODO
 
 - Implement navigation code logic;
-- Blockquotes should always start on a new line;
 - [Fenced code blocks](https://help.github.com/articles/github-flavored-markdown#fenced-code-blocks) & [Syntax highlighting](https://help.github.com/articles/github-flavored-markdown#syntax-highlighting);
 - [Tables](https://help.github.com/articles/github-flavored-markdown#tables);
 - [Task Lists](https://help.github.com/articles/writing-on-github#task-lists);
