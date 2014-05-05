@@ -30,10 +30,10 @@ Add features to enhance comments on [Github](https://github.com).
 ### TODO
 
 - Implement navigation code logic;
-- [Fenced code blocks](https://help.github.com/articles/github-flavored-markdown#fenced-code-blocks) & [Syntax highlighting](https://help.github.com/articles/github-flavored-markdown#syntax-highlighting);
 - [Tables](https://help.github.com/articles/github-flavored-markdown#tables);
 - [Task Lists](https://help.github.com/articles/writing-on-github#task-lists);
 - [Quick quoting](https://help.github.com/articles/writing-on-github#quick-quoting);
+- [Syntax highlighting](https://help.github.com/articles/github-flavored-markdown#syntax-highlighting);
 
 ### External links
 

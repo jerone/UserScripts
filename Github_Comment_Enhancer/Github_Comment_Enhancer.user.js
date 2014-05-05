@@ -33,8 +33,10 @@
 			replace: "$1~~$2~~$3"
 		},
 		"function-code": {
-			search: /^(\s*)([\s\S]*?)(\s*)$/g,
-			replace: "$1`$2`$3"
+			exec: function(txt, selText, next) {
+				var rt = selText.indexOf("\n") > -1 ? "$1```\n$2\n```$3" : "$1`$2`$3";
+				next(selText.replace(/^(\s*)([\s\S]*?)(\s*)$/g, rt));
+			}
 		},
 		"function-hr": {
 			append: "\n***\n",
