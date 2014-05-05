@@ -187,23 +187,19 @@
 			reselect = true,
 			cursor = null;
 
-		// execute a replacement function if one exists
-		if (typeof definitionObject.exec === "function") {
+		// execute replacement function;
+		if (definitionObject.exec) {
 			definitionObject.exec(txt, selText, function(repText) {
 				replaceFieldSelection(commentForm, repText);
 			});
 			return;
 		}
 
-		// execute a search/replace if they exist
-		var searchExp = /([^\n]+)/gi;
-		if (typeof definitionObject.search === "object") {
-			searchExp = null;
-			searchExp = new RegExp(definitionObject.search);
-		}
+		// execute a search;
+		var searchExp = new RegExp(definitionObject.search || /([^\n]+)/gi);
 
-		// replace text
-		if (typeof definitionObject.replace === "string" && definitionObject.replace.length > 0) {
+		// replace text;
+		if (definitionObject.replace) {
 			var rt = definitionObject.replace;
 			repText = repText.replace(searchExp, rt);
 			repText = repText.replace(/\$[\d]/g, "");
@@ -216,8 +212,8 @@
 			}
 		}
 
-		// append if necessary
-		if (typeof definitionObject.append === "string" && definitionObject.append.length > 0) {
+		// append if necessary;
+		if (definitionObject.append) {
 			if (repText === selText) {
 				reselect = false;
 			}
