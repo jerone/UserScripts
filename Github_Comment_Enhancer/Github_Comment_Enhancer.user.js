@@ -64,6 +64,11 @@
 				next(repText);
 			}
 		},
+		"function-checklist": {
+			search: /(.+)([\n]?)/g,
+			replace: "* [ ] $1$2",
+			forceNewline: true
+		},
 		"function-blockquote": {
 			search: /(.+)([\n]?)/g,
 			replace: "> $1$2",
@@ -150,6 +155,9 @@
 			'      </a>' +
 			'      <a href="#" id="function-ol" class="minibutton function-button" title="Ordered List" tabindex="-1">' +
 			'        <span class="octicon octicon-list-ordered"></span>' +
+			'      </a>' +
+			'      <a href="#" id="function-checklist" class="minibutton function-button" title="Task List" tabindex="-1">' +
+			'        <span class="octicon octicon-checklist"></span>' +
 			'      </a>' +
 			'      <a href="#" id="function-blockquote" class="minibutton function-button" title="Blockquote" tabindex="-1">' +
 			'        <span class="octicon octicon-quote"></span>' +
