@@ -34,6 +34,11 @@ Add features to enhance comments on [Github](https://github.com).
 - [Quick quoting](https://help.github.com/articles/writing-on-github#quick-quoting);
 - [Syntax highlighting](https://help.github.com/articles/github-flavored-markdown#syntax-highlighting);
 
+### Notes
+
+- https://github.com/jerone/UserScripts/issues/new
+- https://github.com/jerone/UserScripts/wiki/_new
+
 ### External links
 
 * [Greasy Fork](https://greasyfork.org/scripts/493-github-comment-enhancer)
