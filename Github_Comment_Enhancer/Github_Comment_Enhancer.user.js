@@ -32,16 +32,44 @@
 			search: /^(\s*)([\s\S]*?)(\s*)$/g,
 			replace: "$1~~$2~~$3"
 		},
-		"function-code": {
-			exec: function(txt, selText, next) {
-				var rt = selText.indexOf("\n") > -1 ? "$1\n```\n$2\n```$3" : "$1`$2`$3";
-				next(selText.replace(/^(\s*)([\s\S]*?)(\s*)$/g, rt));
-			}
-		},
-		"function-hr": {
-			append: "\n***\n",
+
+		"function-h1": {
+			search: /(.+)([\n]?)/g,
+			replace: "# $1$2",
 			forceNewline: true
 		},
+		"function-h2": {
+			search: /(.+)([\n]?)/g,
+			replace: "## $1$2",
+			forceNewline: true
+		},
+		"function-h3": {
+			search: /(.+)([\n]?)/g,
+			replace: "### $1$2",
+			forceNewline: true
+		},
+
+		"function-link": {
+			exec: function(txt, selText, next) {
+				var isUrl = selText && /(?:https?:\/\/)|(?:www\.)/.test(selText.trim()),
+					href = window.prompt("Link href:", isUrl ? selText.trim() : ""),
+					text = window.prompt("Link text:", isUrl ? "" : selText.trim());
+				if (href) {
+					next("[" + (text || href) + "](" + href + ")");
+				}
+			}
+		},
+		"function-image": {
+			exec: function(txt, selText, next) {
+				var isUrl = selText && /(?:https?:\/\/)|(?:www\.)/.test(selText.trim()),
+					href = window.prompt("Image href:", isUrl ? selText.trim() : ""),
+					text = window.prompt("Image text:", isUrl ? "" : selText.trim());
+				if (href) {
+					next("![" + (text || href) + "](" + href + ")");
+				}
+			}
+		},
+
 		"function-ul": {
 			search: /(.+)([\n]?)/g,
 			replace: "* $1$2",
@@ -69,53 +97,41 @@
 			replace: "* [ ] $1$2",
 			forceNewline: true
 		},
+
+		"function-code": {
+			exec: function(txt, selText, next) {
+				var rt = selText.indexOf("\n") > -1 ? "$1\n```\n$2\n```$3" : "$1`$2`$3";
+				next(selText.replace(/^(\s*)([\s\S]*?)(\s*)$/g, rt));
+			}
+		},
 		"function-blockquote": {
 			search: /(.+)([\n]?)/g,
 			replace: "> $1$2",
 			forceNewline: true
 		},
-		"function-h1": {
-			search: /(.+)([\n]?)/g,
-			replace: "# $1$2",
+		"function-hr": {
+			append: "\n***\n",
 			forceNewline: true
-		},
-		"function-h2": {
-			search: /(.+)([\n]?)/g,
-			replace: "## $1$2",
-			forceNewline: true
-		},
-		"function-h3": {
-			search: /(.+)([\n]?)/g,
-			replace: "### $1$2",
-			forceNewline: true
-		},
-		"function-link": {
-			exec: function(txt, selText, next) {
-				var isUrl = selText && /(?:https?:\/\/)|(?:www\.)/.test(selText.trim()),
-					href = window.prompt("Link href:", isUrl ? selText.trim() : ""),
-					text = window.prompt("Link text:", isUrl ? "" : selText.trim());
-				if (href) {
-					next("[" + (text || href) + "](" + href + ")");
-				}
-			}
-		},
-		"function-image": {
-			exec: function(txt, selText, next) {
-				var isUrl = selText && /(?:https?:\/\/)|(?:www\.)/.test(selText.trim()),
-					href = window.prompt("Image href:", isUrl ? selText.trim() : ""),
-					text = window.prompt("Image text:", isUrl ? "" : selText.trim());
-				if (href) {
-					next("![" + (text || href) + "](" + href + ")");
-				}
-			}
 		}
 	};
 
 	Array.forEach(document.querySelectorAll(".comment-form-textarea"), function(commentForm) {
 		var gollumEditor = document.createElement("div");
 		gollumEditor.innerHTML =
-			'<div class="active" id="gollum-editor-function-bar">' +
+			'<div class="active" id="gollum-editor-function-bar" style="border:0 none;">' +
 			'  <div id="gollum-editor-function-buttons">' +
+			'    <div class="button-group">' +
+			'      <a href="#" id="function-bold" class="minibutton function-button" title="Bold" tabindex="-1">' +
+			'        <b>B</b>' +
+			'      </a>' +
+			'      <a href="#" id="function-italic" class="minibutton function-button" title="Italic" tabindex="-1">' +
+			'        <em>i</em>' +
+			'      </a>' +
+			'      <a href="#" id="function-strikethrough" class="minibutton function-button" title="Strikethrough" tabindex="-1">' +
+			'        <s>S</s>' +
+			'      </a>' +
+			'    </div>' +
+
 			'    <div class="button-group">' +
 			'      <a href="#" id="function-h1" class="minibutton function-button" title="Header 1" tabindex="-1">' +
 			'        <b>h1</b>' +
@@ -127,26 +143,13 @@
 			'        <b>h3</b>' +
 			'      </a>' +
 			'    </div>' +
+
 			'    <div class="button-group">' +
 			'      <a href="#" id="function-link" class="minibutton function-button" title="Link" tabindex="-1">' +
 			'        <span class="octicon octicon-link"></span>' +
 			'      </a>' +
 			'      <a href="#" id="function-image" class="minibutton function-button" title="Image" tabindex="-1">' +
 			'        <span class="octicon octicon-file-media"></span>' +
-			'      </a>' +
-			'    </div>' +
-			'    <div class="button-group">' +
-			'      <a href="#" id="function-bold" class="minibutton function-button" title="Bold" tabindex="-1">' +
-			'        <b>B</b>' +
-			'      </a>' +
-			'      <a href="#" id="function-italic" class="minibutton function-button" title="Italic" tabindex="-1">' +
-			'        <em>i</em>' +
-			'      </a>' +
-			'      <a href="#" id="function-strikethrough" class="minibutton function-button" title="Strikethrough" tabindex="-1">' +
-			'        <s>S</s>' +
-			'      </a>' +
-			'      <a href="#" id="function-code" class="minibutton function-button" title="Code" tabindex="-1">' +
-			'        <span class="octicon octicon-code"></span>' +
 			'      </a>' +
 			'    </div>' +
 			'    <div class="button-group">' +
@@ -159,6 +162,12 @@
 			'      <a href="#" id="function-checklist" class="minibutton function-button" title="Task List" tabindex="-1">' +
 			'        <span class="octicon octicon-checklist"></span>' +
 			'      </a>' +
+			'    </div>' +
+
+			'    <div class="button-group">' +
+			'      <a href="#" id="function-code" class="minibutton function-button" title="Code" tabindex="-1">' +
+			'        <span class="octicon octicon-code"></span>' +
+			'      </a>' +
 			'      <a href="#" id="function-blockquote" class="minibutton function-button" title="Blockquote" tabindex="-1">' +
 			'        <span class="octicon octicon-quote"></span>' +
 			'      </a>' +
@@ -166,6 +175,7 @@
 			'        <span class="octicon octicon-horizontal-rule"></span>' +
 			'      </a>' +
 			'    </div>' +
+
 			//'    <a href="#" id="function-help" class="minibutton function-button" title="Help" tabindex="-1">' +
 			//'	   <span class="octicon octicon-question"></span>' +
 			//'    </a>' +
