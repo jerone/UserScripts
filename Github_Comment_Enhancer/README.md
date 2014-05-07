@@ -32,6 +32,8 @@ Add features to enhance comments on [Github](https://github.com).
 - Implement navigation code logic;
 - [Quick quoting](https://help.github.com/articles/writing-on-github#quick-quoting);
 - [Syntax highlighting](https://help.github.com/articles/github-flavored-markdown#syntax-highlighting);
+- Override wiki menu;
+- Implement also for new code comments (commenting on existing code comments works);
 
 ### Notes
 
