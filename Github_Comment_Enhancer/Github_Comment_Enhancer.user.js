@@ -48,6 +48,21 @@
 			replace: "### $1$2",
 			forceNewline: true
 		},
+		"function-h4": {
+			search: /(.+)([\n]?)/g,
+			replace: "#### $1$2",
+			forceNewline: true
+		},
+		"function-h5": {
+			search: /(.+)([\n]?)/g,
+			replace: "##### $1$2",
+			forceNewline: true
+		},
+		"function-h6": {
+			search: /(.+)([\n]?)/g,
+			replace: "###### $1$2",
+			forceNewline: true
+		},
 
 		"function-link": {
 			exec: function(txt, selText, next) {
@@ -133,15 +148,39 @@
 			'    </div>' +
 
 			'    <div class="button-group">' +
-			'      <a href="#" id="function-h1" class="minibutton function-button" title="Header 1" tabindex="-1">' +
-			'        <b>h1</b>' +
-			'      </a>' +
-			'      <a href="#" id="function-h2" class="minibutton function-button" title="Header 2" tabindex="-1">' +
-			'        <b>h2</b>' +
-			'      </a>' +
-			'      <a href="#" id="function-h3" class="minibutton function-button" title="Header 3" tabindex="-1">' +
-			'        <b>h3</b>' +
-			'      </a>' +
+			'      <div class="select-menu js-menu-container js-select-menu js-composer-assignee-picker">' +
+			'        <span aria-haspopup="true" title="Headers" role="button" class="minibutton select-menu-button icon-only js-menu-target" style="padding:0 18px 0 7px; width:auto; border-bottom-right-radius:3px; border-top-right-radius:3px;">' +
+			'          <b>h#</b>' +
+			'        </span>' +
+			'        <div aria-hidden="false" class="select-menu-modal-holder js-menu-content js-navigation-container js-active-navigation-container" style="top: 26px;">' +
+			'          <div class="select-menu-modal" style="width:auto;">' +
+			'            <div class="select-menu-header">' +
+			'              <span class="select-menu-title">Choose header</span>' +
+			'              <span class="octicon octicon-remove-close js-menu-close"></span>' +
+			'            </div>' +
+			'            <div class="button-group">' +
+			'              <a href="#" id="function-h1" class="minibutton function-button js-menu-close" title="Header 1" tabindex="-1">' +
+			'                <b>h1</b>' +
+			'              </a>' +
+			'              <a href="#" id="function-h2" class="minibutton function-button js-menu-close" title="Header 2" tabindex="-1">' +
+			'                <b>h2</b>' +
+			'              </a>' +
+			'              <a href="#" id="function-h3" class="minibutton function-button js-menu-close" title="Header 3" tabindex="-1">' +
+			'                <b>h3</b>' +
+			'              </a>' +
+			'              <a href="#" id="function-h4" class="minibutton function-button js-menu-close" title="Header 4" tabindex="-1">' +
+			'                <b>h4</b>' +
+			'              </a>' +
+			'              <a href="#" id="function-h5" class="minibutton function-button js-menu-close" title="Header 5" tabindex="-1">' +
+			'                <b>h5</b>' +
+			'              </a>' +
+			'              <a href="#" id="function-h6" class="minibutton function-button js-menu-close" title="Header 6" tabindex="-1">' +
+			'                <b>h6</b>' +
+			'              </a>' +
+			'            </div>' +
+			'          </div>' +
+			'        </div>' +
+			'      </div>' +
 			'    </div>' +
 
 			'    <div class="button-group">' +
