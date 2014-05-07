@@ -127,6 +127,15 @@
 		"function-hr": {
 			append: "\n***\n",
 			forceNewline: true
+		},
+		"function-table": {
+			append: '\n\
+| Header | Header | Header |\n\
+| :--- | :---: | ---: |\n\
+| Cell | Cell  | Cell |\n\
+| Cell | Cell  | Cell |\n\
+',
+			forceNewline: true
 		}
 	};
 
@@ -212,6 +221,9 @@
 			'      </a>' +
 			'      <a href="#" id="function-hr" class="minibutton function-button" title="Horizontal Rule" tabindex="-1">' +
 			'        <span class="octicon octicon-horizontal-rule"></span>' +
+			'      </a>' +
+			'      <a href="#" id="function-table" class="minibutton function-button" title="Table" tabindex="-1">' +
+			'        <span class="octicon octicon-three-bars"></span>' +
 			'      </a>' +
 			'    </div>' +
 

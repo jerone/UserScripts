@@ -30,7 +30,6 @@ Add features to enhance comments on [Github](https://github.com).
 ### TODO
 
 - Implement navigation code logic;
-- [Tables](https://help.github.com/articles/github-flavored-markdown#tables);
 - [Quick quoting](https://help.github.com/articles/writing-on-github#quick-quoting);
 - [Syntax highlighting](https://help.github.com/articles/github-flavored-markdown#syntax-highlighting);
 
