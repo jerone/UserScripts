@@ -19,6 +19,14 @@ Add features to enhance comments on [Github](https://github.com).
 
 ### Version History
 
+* **1.2**
+    * Added simple table logic;
+    * Added headers 4 'til 6;
+    * Combined headers in one button;
+    * Reordered buttons;
+    * Added Task Lists https://help.github.com/articles/writing-on-github#task-lists
+    * Added fenced code blocks;
+    * Clean up;
 * **1.1.1**
     * Fixed space being not part of selection again;
 * **1.1**
