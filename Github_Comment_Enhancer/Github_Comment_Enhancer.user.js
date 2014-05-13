@@ -8,13 +8,15 @@
 // @homepageURL https://github.com/jerone/UserScripts/tree/master/Github_Comment_Enhancer
 // @downloadURL https://github.com/jerone/UserScripts/raw/master/Github_Comment_Enhancer/Github_Comment_Enhancer.user.js
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_Comment_Enhancer/Github_Comment_Enhancer.user.js
-// @version     1.2
+// @version     1.3
 // @grant       none
 // @run-at      document-end
 // @include     https://github.com/*/*/issues/*
 // @include     https://github.com/*/*/pull/*
 // @include     https://github.com/*/*/commit/*
+// @include     https://github.com/*/*/wiki/*
 // ==/UserScript==
+/* global unsafeWindow */
 
 (function() {
 
@@ -129,122 +131,101 @@
 			forceNewline: true
 		},
 		"function-table": {
-			append: '\n\
-| Header | Header | Header |\n\
-| :--- | :---: | ---: |\n\
-| Cell | Cell  | Cell |\n\
-| Cell | Cell  | Cell |\n\
-',
+			append: "\n" +
+					"| Header | Header | Header |\n" +
+					"| :--- | :---: | ---: |\n" +
+					"| Cell | Cell  | Cell |\n" +
+					"| Cell | Cell  | Cell |\n",
 			forceNewline: true
 		}
 	};
 
-	Array.forEach(document.querySelectorAll(".comment-form-textarea"), function(commentForm) {
-		var gollumEditor = document.createElement("div");
-		gollumEditor.innerHTML =
-			'<div class="active" id="gollum-editor-function-bar" style="border:0 none;">' +
-			'  <div id="gollum-editor-function-buttons">' +
-			'    <div class="button-group">' +
-			'      <a href="#" id="function-bold" class="minibutton function-button" title="Bold" tabindex="-1">' +
-			'        <b>B</b>' +
-			'      </a>' +
-			'      <a href="#" id="function-italic" class="minibutton function-button" title="Italic" tabindex="-1">' +
-			'        <em>i</em>' +
-			'      </a>' +
-			'      <a href="#" id="function-strikethrough" class="minibutton function-button" title="Strikethrough" tabindex="-1">' +
-			'        <s>S</s>' +
-			'      </a>' +
-			'    </div>' +
+	var editorHTML = (function() {
+		return '<div id="gollum-editor-function-buttons">' +
+				'	<div class="button-group">' +
+				'		<a href="#" id="function-bold" class="minibutton function-button" title="Bold" tabindex="-1">' +
+				'			<b>B</b>' +
+				'		</a>' +
+				'		<a href="#" id="function-italic" class="minibutton function-button" title="Italic" tabindex="-1">' +
+				'			<em>i</em>' +
+				'		</a>' +
+				'		<a href="#" id="function-strikethrough" class="minibutton function-button" title="Strikethrough" tabindex="-1">' +
+				'			<s>S</s>' +
+				'		</a>' +
+				'	</div>' +
 
-			'    <div class="button-group">' +
-			'      <div class="select-menu js-menu-container js-select-menu js-composer-assignee-picker">' +
-			'        <span aria-haspopup="true" title="Headers" role="button" class="minibutton select-menu-button icon-only js-menu-target" style="padding:0 18px 0 7px; width:auto; border-bottom-right-radius:3px; border-top-right-radius:3px;">' +
-			'          <b>h#</b>' +
-			'        </span>' +
-			'        <div aria-hidden="false" class="select-menu-modal-holder js-menu-content js-navigation-container js-active-navigation-container" style="top: 26px;">' +
-			'          <div class="select-menu-modal" style="width:auto;">' +
-			'            <div class="select-menu-header">' +
-			'              <span class="select-menu-title">Choose header</span>' +
-			'              <span class="octicon octicon-remove-close js-menu-close"></span>' +
-			'            </div>' +
-			'            <div class="button-group">' +
-			'              <a href="#" id="function-h1" class="minibutton function-button js-menu-close" title="Header 1" tabindex="-1">' +
-			'                <b>h1</b>' +
-			'              </a>' +
-			'              <a href="#" id="function-h2" class="minibutton function-button js-menu-close" title="Header 2" tabindex="-1">' +
-			'                <b>h2</b>' +
-			'              </a>' +
-			'              <a href="#" id="function-h3" class="minibutton function-button js-menu-close" title="Header 3" tabindex="-1">' +
-			'                <b>h3</b>' +
-			'              </a>' +
-			'              <a href="#" id="function-h4" class="minibutton function-button js-menu-close" title="Header 4" tabindex="-1">' +
-			'                <b>h4</b>' +
-			'              </a>' +
-			'              <a href="#" id="function-h5" class="minibutton function-button js-menu-close" title="Header 5" tabindex="-1">' +
-			'                <b>h5</b>' +
-			'              </a>' +
-			'              <a href="#" id="function-h6" class="minibutton function-button js-menu-close" title="Header 6" tabindex="-1">' +
-			'                <b>h6</b>' +
-			'              </a>' +
-			'            </div>' +
-			'          </div>' +
-			'        </div>' +
-			'      </div>' +
-			'    </div>' +
+				'	<div class="button-group">' +
+				'		<div class="select-menu js-menu-container js-select-menu js-composer-assignee-picker">' +
+				'			<span aria-haspopup="true" title="Headers" role="button" class="minibutton select-menu-button icon-only js-menu-target" style="padding:0 18px 0 7px; width:auto; border-bottom-right-radius:3px; border-top-right-radius:3px;">' +
+				'				<b>h#</b>' +
+				'			</span>' +
+				'			<div aria-hidden="false" class="select-menu-modal-holder js-menu-content js-navigation-container js-active-navigation-container" style="top: 26px;">' +
+				'				<div class="select-menu-modal" style="width:auto;">' +
+				'					<div class="select-menu-header">' +
+				'						<span class="select-menu-title">Choose header</span>' +
+				'						<span class="octicon octicon-remove-close js-menu-close"></span>' +
+				'					</div>' +
+				'					<div class="button-group">' +
+				'						<a href="#" id="function-h1" class="minibutton function-button js-menu-close" title="Header 1" tabindex="-1">' +
+				'							<b>h1</b>' +
+				'						</a>' +
+				'						<a href="#" id="function-h2" class="minibutton function-button js-menu-close" title="Header 2" tabindex="-1">' +
+				'							<b>h2</b>' +
+				'						</a>' +
+				'						<a href="#" id="function-h3" class="minibutton function-button js-menu-close" title="Header 3" tabindex="-1">' +
+				'							<b>h3</b>' +
+				'						</a>' +
+				'						<a href="#" id="function-h4" class="minibutton function-button js-menu-close" title="Header 4" tabindex="-1">' +
+				'							<b>h4</b>' +
+				'						</a>' +
+				'						<a href="#" id="function-h5" class="minibutton function-button js-menu-close" title="Header 5" tabindex="-1">' +
+				'							<b>h5</b>' +
+				'						</a>' +
+				'						<a href="#" id="function-h6" class="minibutton function-button js-menu-close" title="Header 6" tabindex="-1">' +
+				'							<b>h6</b>' +
+				'						</a>' +
+				'					</div>' +
+				'				</div>' +
+				'			</div>' +
+				'		</div>' +
+				'	</div>' +
 
-			'    <div class="button-group">' +
-			'      <a href="#" id="function-link" class="minibutton function-button" title="Link" tabindex="-1">' +
-			'        <span class="octicon octicon-link"></span>' +
-			'      </a>' +
-			'      <a href="#" id="function-image" class="minibutton function-button" title="Image" tabindex="-1">' +
-			'        <span class="octicon octicon-file-media"></span>' +
-			'      </a>' +
-			'    </div>' +
-			'    <div class="button-group">' +
-			'      <a href="#" id="function-ul" class="minibutton function-button" title="Unordered List" tabindex="-1">' +
-			'        <span class="octicon octicon-list-unordered"></span>' +
-			'      </a>' +
-			'      <a href="#" id="function-ol" class="minibutton function-button" title="Ordered List" tabindex="-1">' +
-			'        <span class="octicon octicon-list-ordered"></span>' +
-			'      </a>' +
-			'      <a href="#" id="function-checklist" class="minibutton function-button" title="Task List" tabindex="-1">' +
-			'        <span class="octicon octicon-checklist"></span>' +
-			'      </a>' +
-			'    </div>' +
+				'	<div class="button-group">' +
+				'		<a href="#" id="function-link" class="minibutton function-button" title="Link" tabindex="-1">' +
+				'			<span class="octicon octicon-link"></span>' +
+				'		</a>' +
+				'		<a href="#" id="function-image" class="minibutton function-button" title="Image" tabindex="-1">' +
+				'			<span class="octicon octicon-file-media"></span>' +
+				'		</a>' +
+				'	</div>' +
+				'	<div class="button-group">' +
+				'		<a href="#" id="function-ul" class="minibutton function-button" title="Unordered List" tabindex="-1">' +
+				'			<span class="octicon octicon-list-unordered"></span>' +
+				'		</a>' +
+				'		<a href="#" id="function-ol" class="minibutton function-button" title="Ordered List" tabindex="-1">' +
+				'			<span class="octicon octicon-list-ordered"></span>' +
+				'		</a>' +
+				'		<a href="#" id="function-checklist" class="minibutton function-button" title="Task List" tabindex="-1">' +
+				'			<span class="octicon octicon-checklist"></span>' +
+				'		</a>' +
+				'	</div>' +
 
-			'    <div class="button-group">' +
-			'      <a href="#" id="function-code" class="minibutton function-button" title="Code" tabindex="-1">' +
-			'        <span class="octicon octicon-code"></span>' +
-			'      </a>' +
-			'      <a href="#" id="function-blockquote" class="minibutton function-button" title="Blockquote" tabindex="-1">' +
-			'        <span class="octicon octicon-quote"></span>' +
-			'      </a>' +
-			'      <a href="#" id="function-hr" class="minibutton function-button" title="Horizontal Rule" tabindex="-1">' +
-			'        <span class="octicon octicon-horizontal-rule"></span>' +
-			'      </a>' +
-			'      <a href="#" id="function-table" class="minibutton function-button" title="Table" tabindex="-1">' +
-			'        <span class="octicon octicon-three-bars"></span>' +
-			'      </a>' +
-			'    </div>' +
-
-			//'    <a href="#" id="function-help" class="minibutton function-button" title="Help" tabindex="-1">' +
-			//'	   <span class="octicon octicon-question"></span>' +
-			//'    </a>' +
-			'  </div>' +
-			'</div>';
-		commentForm.parentNode.insertBefore(gollumEditor, commentForm.parentNode.firstChild);
-
-		Array.forEach(gollumEditor.querySelectorAll(".function-button"), function(button) {
-			button.addEventListener("click", function(e) {
-				e.preventDefault();
-
-				executeAction(MarkDown[this.id], commentForm);
-
-				return false;
-			});
-		});
-
-	});
+				'	<div class="button-group">' +
+				'		<a href="#" id="function-code" class="minibutton function-button" title="Code" tabindex="-1">' +
+				'			<span class="octicon octicon-code"></span>' +
+				'		</a>' +
+				'		<a href="#" id="function-blockquote" class="minibutton function-button" title="Blockquote" tabindex="-1">' +
+				'			<span class="octicon octicon-quote"></span>' +
+				'		</a>' +
+				'		<a href="#" id="function-hr" class="minibutton function-button" title="Horizontal Rule" tabindex="-1">' +
+				'			<span class="octicon octicon-horizontal-rule"></span>' +
+				'		</a>' +
+				'		<a href="#" id="function-table" class="minibutton function-button" title="Table" tabindex="-1">' +
+				'			<span class="octicon octicon-three-bars"></span>' +
+				'		</a>' +
+				'	</div>' +
+				'</div>';
+	})();
 
 	// Source: https://github.com/gollum/gollum/blob/9c714e768748db4560bc017cacef4afa0c751a63/lib/gollum/public/gollum/javascript/editor/gollum.editor.js#L516
 	function executeAction(definitionObject, commentForm) {
@@ -332,5 +313,71 @@
 			commentForm.scrollTop = scrollTop;
 		}
 	}
+
+	function isWiki() {
+		return /\/wiki\//.test(location.href);
+	}
+
+	var functionButtonClick = function(e) {
+		e.preventDefault();
+		executeAction(MarkDown[this.id], this.commentForm);
+		return false;
+	};
+
+	function addToolbar() {
+		if (isWiki()) {
+			// Override existing language with improved & missing functions and remove existing click events;
+			unsafeWindow.$.GollumEditor.defineLanguage("markdown", MarkDown);
+			unsafeWindow.$(".function-button:not(#function-help)").unbind("click");
+
+			// Remove existing click events when changing languages;
+			document.getElementById("wiki_format").addEventListener("change", function() {
+				unsafeWindow.$(".function-button:not(#function-help)").unbind("click");
+
+				Array.forEach(document.querySelectorAll(".comment-form-textarea .function-button"), function(button) {
+					button.removeEventListener("click", functionButtonClick);
+				});
+			});
+		}
+
+		Array.forEach(document.querySelectorAll(".comment-form-textarea"), function(commentForm) {
+			if (commentForm.classList.contains("GithubCommentEnhancer")) { return; }
+			commentForm.classList.add("GithubCommentEnhancer");
+
+			var gollumEditor;
+			if (isWiki()) {
+				gollumEditor = document.getElementById("gollum-editor-function-bar");
+				var temp = document.createElement("div");
+				temp.innerHTML = editorHTML;
+				temp.firstChild.appendChild(document.getElementById("function-help"));  // restore the help button;
+				gollumEditor.replaceChild(temp.firstChild, document.getElementById("gollum-editor-function-buttons"));
+			} else {
+				gollumEditor = document.createElement("div");
+				gollumEditor.innerHTML = editorHTML;
+				gollumEditor.id = "gollum-editor-function-bar";
+				gollumEditor.style.border = "0 none";
+				gollumEditor.classList.add("active");
+				commentForm.parentNode.insertBefore(gollumEditor, commentForm.parentNode.firstChild);
+			}
+
+			Array.forEach(gollumEditor.querySelectorAll(".function-button"), function(button) {
+				button.commentForm = commentForm;  // remove event listener doesn't accept `bind`;
+				button.addEventListener("click", functionButtonClick);
+			});
+		});
+	}
+
+	// init;
+	addToolbar();
+
+	// on pjax;
+	unsafeWindow.$(document).on("pjax:success", addToolbar);
+
+	// on page update;
+	unsafeWindow.$.pageUpdate(function() {
+		window.setTimeout(function() {
+			addToolbar();
+		}, 1);
+	});
 
 })();

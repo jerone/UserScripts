@@ -4,7 +4,7 @@
 
 ### Description
 
-Add features to enhance comments on [Github](https://github.com).
+Add features to enhance comments & wiki on [Github](https://github.com).
 
 ### Screenshot
 
@@ -19,6 +19,11 @@ Add features to enhance comments on [Github](https://github.com).
 
 ### Version History
 
+* **1.3**
+    * Navigation logic implemented;
+    * Inline comment logic implemented;
+    * Included on Wiki pages;
+    * Fixed warnings by JSHint;
 * **1.2**
     * Added simple table logic;
     * Added headers 4 'til 6;
@@ -37,16 +42,20 @@ Add features to enhance comments on [Github](https://github.com).
 
 ### TODO
 
-- Implement navigation code logic;
+- Include on [Github Gist](https://gist.github.com);
 - [Quick quoting](https://help.github.com/articles/writing-on-github#quick-quoting);
 - [Syntax highlighting](https://help.github.com/articles/github-flavored-markdown#syntax-highlighting);
-- Override wiki menu;
-- Implement also for new code comments (commenting on existing code comments works);
+- Keyboard shortcuts (https://github.com/ccampbell/mousetrap);
+- Add clear button;
 
 ### Notes
 
-- https://github.com/jerone/UserScripts/issues/new
-- https://github.com/jerone/UserScripts/wiki/_new
+Test cases:
+
+- https://github.com/jerone/UserScripts/issues/new (new issue)
+- https://github.com/jerone/UserScripts/issues/1 (new comment & edit comment)
+- https://github.com/jerone/UserScripts/commit/master (comments below & inline comments)
+- https://github.com/jerone/UserScripts/wiki/_new (new wiki)
 
 ### External links
 
