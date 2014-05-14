@@ -8,7 +8,7 @@
 // @downloadURL https://github.com/jerone/UserScripts/raw/master/Github_Commit_Whitespace/Github_Commit_Whitespace.user.js
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_Commit_Whitespace/Github_Commit_Whitespace.user.js
 // @include     https://github.com/*
-// @version     1.2
+// @version     1.2.1
 // @grant       none
 // ==/UserScript==
 /* global unsafeWindow */
