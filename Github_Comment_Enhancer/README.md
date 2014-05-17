@@ -4,7 +4,7 @@
 
 ### Description
 
-Add features to enhance comments & wiki on [Github](https://github.com).
+Add features to enhance comments & wiki on [Github](https://github.com) and comments on [Github Gist](https://gist.github.com).
 
 ### Screenshot
 
@@ -19,6 +19,8 @@ Add features to enhance comments & wiki on [Github](https://github.com).
 
 ### Version History
 
+* **1.4**
+    * Included on [Github Gist](https://gist.github.com);
 * **1.3**
     * Navigation logic implemented;
     * Inline comment logic implemented;
@@ -42,11 +44,13 @@ Add features to enhance comments & wiki on [Github](https://github.com).
 
 ### TODO
 
-- Include on [Github Gist](https://gist.github.com);
+- Allow on [edit page](https://github.com/jerone/UserScripts/edit/master/README.md);
+- Allow on editing [markdown files](https://github.com/jerone/UserScripts/edit/master/README.md);
 - [Quick quoting](https://help.github.com/articles/writing-on-github#quick-quoting);
 - [Syntax highlighting](https://help.github.com/articles/github-flavored-markdown#syntax-highlighting);
 - Keyboard shortcuts (https://github.com/ccampbell/mousetrap);
 - Add clear button;
+- Snippets (predefined and executable);
 
 ### Notes
 
@@ -56,6 +60,7 @@ Test cases:
 - https://github.com/jerone/UserScripts/issues/1 (new comment & edit comment)
 - https://github.com/jerone/UserScripts/commit/master (comments below & inline comments)
 - https://github.com/jerone/UserScripts/wiki/_new (new wiki)
+- https://gist.github.com/jerone/9526258 (new comment & edit comment)
 
 ### External links
 

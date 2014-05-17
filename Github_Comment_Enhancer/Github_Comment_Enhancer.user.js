@@ -15,6 +15,7 @@
 // @include     https://github.com/*/*/pull/*
 // @include     https://github.com/*/*/commit/*
 // @include     https://github.com/*/*/wiki/*
+// @include     https://gist.github.com/*
 // ==/UserScript==
 /* global unsafeWindow */
 
@@ -301,6 +302,9 @@
 		commentForm.value = txt.substring(0, selPos.start) + replaceText + txt.substring(selPos.end);
 		commentForm.focus();
 
+		// Gist Github requires that the comment form change event be triggered to update the preview;
+		unsafeWindow.$(commentForm).trigger("change");
+
 		if (selectNew) {
 			if (cursorOffset) {
 				commentForm.setSelectionRange(selPos.start + cursorOffset, selPos.start + cursorOffset);
@@ -340,7 +344,7 @@
 			});
 		}
 
-		Array.forEach(document.querySelectorAll(".comment-form-textarea"), function(commentForm) {
+		Array.forEach(document.querySelectorAll(".comment-form-textarea,.js-comment-field"), function(commentForm) {
 			if (commentForm.classList.contains("GithubCommentEnhancer")) { return; }
 			commentForm.classList.add("GithubCommentEnhancer");
 
@@ -356,11 +360,16 @@
 				gollumEditor.innerHTML = editorHTML;
 				gollumEditor.id = "gollum-editor-function-bar";
 				gollumEditor.style.border = "0 none";
+				gollumEditor.style.paddingBottom = "10px";
 				gollumEditor.classList.add("active");
 				commentForm.parentNode.insertBefore(gollumEditor, commentForm.parentNode.firstChild);
 			}
 
 			Array.forEach(gollumEditor.querySelectorAll(".function-button"), function(button) {
+				button.style.width = "30px";
+				button.style.textAlign = "center";
+				button.style.padding = "0px";
+				button.firstElementChild.style.marginRight = "0px";
 				button.commentForm = commentForm;  // remove event listener doesn't accept `bind`;
 				button.addEventListener("click", functionButtonClick);
 			});
