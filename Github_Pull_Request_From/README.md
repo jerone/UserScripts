@@ -22,13 +22,10 @@ Make pull request original branch linkable.
 * **10.0**
     * Initial version;
 
-### Notes
-
- -
-
 ### External links
 
 * [Greasy Fork](https://greasyfork.org/scripts/64)
+* [MonkeyGuts](https://monkeyguts.com/code.php?id=96)
 
 ### Contributions
 

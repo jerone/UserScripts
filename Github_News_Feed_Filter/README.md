@@ -94,3 +94,4 @@ Currently integrated filters:
 
 * [Greasy Fork](https://greasyfork.org/scripts/171)
 * [OpenUserJS](https://openuserjs.org/scripts/jerone/httpsgithub.comjeroneUserScripts/Github_News_Feed_Filter)
+* [MonkeyGuts](https://monkeyguts.com/code.php?id=95)
