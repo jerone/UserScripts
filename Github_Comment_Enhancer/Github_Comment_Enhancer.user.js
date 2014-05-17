@@ -21,6 +21,13 @@
 
 (function() {
 
+	String.format = function(string) {
+		var args = Array.prototype.slice.call(arguments, 1, arguments.length);
+		return string.replace(/{(\d+)}/g, function(match, number) {
+			return typeof args[number] !== "undefined" ? args[number] : match;
+		});
+	};
+
 	// Source: https://github.com/gollum/gollum/blob/9c714e768748db4560bc017cacef4afa0c751a63/lib/gollum/public/gollum/javascript/editor/langs/markdown.js
 	var MarkDown = {
 		"function-bold": {
@@ -69,21 +76,23 @@
 
 		"function-link": {
 			exec: function(txt, selText, next) {
-				var isUrl = selText && /(?:https?:\/\/)|(?:www\.)/.test(selText.trim()),
-					href = window.prompt("Link href:", isUrl ? selText.trim() : ""),
-					text = window.prompt("Link text:", isUrl ? "" : selText.trim());
+				var selTxt = selText.trim(),
+					isUrl = selTxt && /(?:https?:\/\/)|(?:www\.)/.test(selTxt),
+					href = window.prompt("Link href:", isUrl ? selTxt : ""),
+					text = window.prompt("Link text:", isUrl ? "" : selTxt);
 				if (href) {
-					next("[" + (text || href) + "](" + href + ")");
+					next(String.format("![{0}]({1}){2}", text || href, href, (/\s+$/.test(selText) ? " " : "")));
 				}
 			}
 		},
 		"function-image": {
 			exec: function(txt, selText, next) {
-				var isUrl = selText && /(?:https?:\/\/)|(?:www\.)/.test(selText.trim()),
-					href = window.prompt("Image href:", isUrl ? selText.trim() : ""),
-					text = window.prompt("Image text:", isUrl ? "" : selText.trim());
+				var selTxt = selText.trim(),
+					isUrl = selTxt && /(?:https?:\/\/)|(?:www\.)/.test(selTxt),
+					href = window.prompt("Image href:", isUrl ? selTxt : ""),
+					text = window.prompt("Image text:", isUrl ? "" : selTxt);
 				if (href) {
-					next("![" + (text || href) + "](" + href + ")");
+					next(String.format("![{0}]({1}){2}", text || href, href, (/\s+$/.test(selText) ? " " : "")));
 				}
 			}
 		},
@@ -103,7 +112,7 @@
 						hasContent = /[\w]+/;
 					for (var i = 0; i < lines.length; i++) {
 						if (hasContent.test(lines[i])) {
-							repText += (i + 1).toString() + ". " + lines[i] + "\n";
+							repText += String.format("$0. $1\n", i + 1, lines[i]);
 						}
 					}
 				}
@@ -133,10 +142,10 @@
 		},
 		"function-table": {
 			append: "\n" +
-					"| Header | Header | Header |\n" +
-					"| :--- | :---: | ---: |\n" +
-					"| Cell | Cell  | Cell |\n" +
-					"| Cell | Cell  | Cell |\n",
+					"| Head | Head | Head |\n" +
+					"| :--- | :--: | ---: |\n" +
+					"| Cell | Cell | Cell |\n" +
+					"| Cell | Cell | Cell |\n",
 			forceNewline: true
 		}
 	};
