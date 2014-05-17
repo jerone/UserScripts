@@ -25,7 +25,11 @@ This repo contains a few of my userscripts that I've build (in no particulair or
 
 ### External profiles
 
-* [Userscripts.org](http://userscripts.org/users/jerone)
+* ~~[Userscripts.org](http://userscripts.org:8080/users/jerone)~~
 * [Greasy Fork](https://greasyfork.org/users/15)
 * [OpenUserJs](https://openuserjs.org/users/jerone)
 * [MonkeyGuts](https://monkeyguts.com/author.php?un=jerone)
+
+### Contributing
+
+Please review the [guidelines for contributing](https://github.com/jerone/UserScripts/blob/master/CONTRIBUTING.md) to this repository.
