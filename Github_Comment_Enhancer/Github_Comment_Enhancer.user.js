@@ -75,7 +75,7 @@
 		},
 
 		"function-link": {
-			exec: function(txt, selText, next) {
+			exec: function(txt, selText, commentForm, next) {
 				var selTxt = selText.trim(),
 					isUrl = selTxt && /(?:https?:\/\/)|(?:www\.)/.test(selTxt),
 					href = window.prompt("Link href:", isUrl ? selTxt : ""),
@@ -86,7 +86,7 @@
 			}
 		},
 		"function-image": {
-			exec: function(txt, selText, next) {
+			exec: function(txt, selText, commentForm, next) {
 				var selTxt = selText.trim(),
 					isUrl = selTxt && /(?:https?:\/\/)|(?:www\.)/.test(selTxt),
 					href = window.prompt("Image href:", isUrl ? selTxt : ""),
@@ -103,7 +103,7 @@
 			forceNewline: true
 		},
 		"function-ol": {
-			exec: function(txt, selText, next) {
+			exec: function(txt, selText, commentForm, next) {
 				var repText = "";
 				if (!selText) {
 					repText = "1. ";
@@ -126,7 +126,7 @@
 		},
 
 		"function-code": {
-			exec: function(txt, selText, next) {
+			exec: function(txt, selText, commentForm, next) {
 				var rt = selText.indexOf("\n") > -1 ? "$1\n```\n$2\n```$3" : "$1`$2`$3";
 				next(selText.replace(/^(\s*)([\s\S]*?)(\s*)$/g, rt));
 			}
@@ -147,11 +147,18 @@
 					"| Cell | Cell | Cell |\n" +
 					"| Cell | Cell | Cell |\n",
 			forceNewline: true
+		},
+
+		"function-clear": {
+			exec: function(txt, selText, commentForm, next) {
+				commentForm.value = "";
+				next("");
+			}
 		}
 	};
 
 	var editorHTML = (function() {
-		return '<div id="gollum-editor-function-buttons">' +
+		return '<div id="gollum-editor-function-buttons" style="float: left;">' +
 				'	<div class="button-group">' +
 				'		<a href="#" id="function-bold" class="minibutton function-button" title="Bold" tabindex="-1">' +
 				'			<b>B</b>' +
@@ -234,6 +241,12 @@
 				'			<span class="octicon octicon-three-bars"></span>' +
 				'		</a>' +
 				'	</div>' +
+				'</div>' +
+
+				'<div class="button-group" style="float:right;">' +
+				'	<a href="#" id="function-clear" class="minibutton function-button" title="Clear" tabindex="-1">' +
+				'		<span class="octicon octicon-circle-slash"></span>' +
+				'	</a>' +
 				'</div>';
 	})();
 
@@ -251,7 +264,7 @@
 
 		// execute replacement function;
 		if (definitionObject.exec) {
-			definitionObject.exec(txt, selText, function(repText) {
+			definitionObject.exec(txt, selText, commentForm, function(repText) {
 				replaceFieldSelection(commentForm, repText);
 			});
 			return;
@@ -363,21 +376,30 @@
 				var temp = document.createElement("div");
 				temp.innerHTML = editorHTML;
 				temp.firstChild.appendChild(document.getElementById("function-help"));  // restore the help button;
-				gollumEditor.replaceChild(temp.firstChild, document.getElementById("gollum-editor-function-buttons"));
+				gollumEditor.replaceChild(temp.querySelector("#gollum-editor-function-buttons"), document.getElementById("gollum-editor-function-buttons"));
+				Array.forEach(temp.children, function(elm) {
+					elm.style.position = "absolute";
+					elm.style.right = "30px";
+					elm.style.top = "0";
+					commentForm.parentNode.insertBefore(elm, commentForm);
+				});
+				temp = null;
 			} else {
 				gollumEditor = document.createElement("div");
 				gollumEditor.innerHTML = editorHTML;
 				gollumEditor.id = "gollum-editor-function-bar";
 				gollumEditor.style.border = "0 none";
+				gollumEditor.style.height = "26px";
+				gollumEditor.style.margin = "10px 0";
 				gollumEditor.style.paddingBottom = "10px";
 				gollumEditor.classList.add("active");
-				commentForm.parentNode.insertBefore(gollumEditor, commentForm.parentNode.firstChild);
+				commentForm.parentNode.insertBefore(gollumEditor, commentForm);
 			}
 
-			Array.forEach(gollumEditor.querySelectorAll(".function-button"), function(button) {
-				button.style.width = "30px";
-				button.style.textAlign = "center";
+			Array.forEach(gollumEditor.parentNode.querySelectorAll(".function-button"), function(button) {
 				button.style.padding = "0px";
+				button.style.textAlign = "center";
+				button.style.width = "30px";
 				button.firstElementChild.style.marginRight = "0px";
 				button.commentForm = commentForm;  // remove event listener doesn't accept `bind`;
 				button.addEventListener("click", functionButtonClick);

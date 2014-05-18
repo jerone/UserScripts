@@ -44,12 +44,10 @@ Add features to enhance comments & wiki on [Github](https://github.com) and comm
 
 ### TODO
 
-- Allow on [edit page](https://github.com/jerone/UserScripts/edit/master/README.md);
-- Allow on editing [markdown files](https://github.com/jerone/UserScripts/edit/master/README.md);
+- Allow on editing [markdown files](https://github.com/jerone/UserScripts/edit/master/README.md) -> to hard right now, requires knowledge of [ACE](https://github.com/ajaxorg/ace);
 - [Quick quoting](https://help.github.com/articles/writing-on-github#quick-quoting);
 - [Syntax highlighting](https://help.github.com/articles/github-flavored-markdown#syntax-highlighting);
 - Keyboard shortcuts (https://github.com/ccampbell/mousetrap);
-- Add clear button;
 - Snippets (predefined and executable);
 
 ### Notes
