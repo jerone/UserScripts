@@ -19,7 +19,7 @@ Add features to enhance comments & wiki on [Github](https://github.com) and comm
 
 ### Version History
 
-* **1.4**
+* **1.?**
     * Included on [Github Gist](https://gist.github.com);
     * Added clear button;
     * Fixed issue with missing trailing space when selected; 
