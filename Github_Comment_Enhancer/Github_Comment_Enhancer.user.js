@@ -81,7 +81,7 @@
 					href = window.prompt("Link href:", isUrl ? selTxt : ""),
 					text = window.prompt("Link text:", isUrl ? "" : selTxt);
 				if (href) {
-					next(String.format("![{0}]({1}){2}", text || href, href, (/\s+$/.test(selText) ? " " : "")));
+					next(String.format("[{0}]({1}){2}", text || href, href, (/\s+$/.test(selText) ? " " : "")));
 				}
 			}
 		},
