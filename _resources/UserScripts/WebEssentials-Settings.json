@@ -13,7 +13,7 @@
   },
   "CoffeeScript": {
     "CompileOnBuild": false,
-    "CompileOnSave": true,
+    "CompileOnSave": false,
     "GenerateSourceMaps": false,
     "LintOnBuild": false,
     "LintOnSave": true,
@@ -91,7 +91,7 @@
   },
   "Less": {
     "CompileOnBuild": false,
-    "CompileOnSave": true,
+    "CompileOnSave": false,
     "EnableChainCompilation": true,
     "GenerateSourceMaps": false,
     "MinifyInPlace": false,
@@ -102,7 +102,7 @@
   },
   "LiveScript": {
     "CompileOnBuild": false,
-    "CompileOnSave": true,
+    "CompileOnSave": false,
     "GenerateSourceMaps": true,
     "MinifyInPlace": false,
     "OutputDirectory": null,
@@ -112,12 +112,12 @@
     "WrapClosure": true
   },
   "Markdown": {
-    "AutoHyperlink": false,
+    "AutoHyperlink": true,
     "AutoNewLines": false,
-    "CompileOnBuild": true,
+    "CompileOnBuild": false,
     "CompileOnSave": false,
     "EncodeProblemUrlCharacters": false,
-    "GenerateXHTML": true,
+    "GenerateXHTML": false,
     "LinkEmails": false,
     "MinifyInPlace": false,
     "OutputDirectory": null,
@@ -126,7 +126,7 @@
   },
   "Scss": {
     "CompileOnBuild": false,
-    "CompileOnSave": true,
+    "CompileOnSave": false,
     "EnableChainCompilation": true,
     "GenerateSourceMaps": true,
     "MinifyInPlace": false,
@@ -147,7 +147,7 @@
   },
   "SweetJs": {
     "CompileOnBuild": false,
-    "CompileOnSave": true,
+    "CompileOnSave": false,
     "GenerateSourceMaps": true,
     "MinifyInPlace": false,
     "OutputDirectory": null,
