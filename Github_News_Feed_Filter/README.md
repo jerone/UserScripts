@@ -87,7 +87,7 @@ Currently integrated filters:
 
 ### TODO
 
-- Remember filter choice;
+- Remember filter choice (use href);
 - Remove first alert border-top;
 
 ### External links
