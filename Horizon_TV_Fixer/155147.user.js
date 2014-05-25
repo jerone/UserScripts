@@ -3,6 +3,8 @@
 // @namespace   https://github.com/jerone/UserScripts
 // @description Fixes some issues & styles and adds some new features on Horizon TV Gids.
 // @author      jerone
+// @copyright   2014+, jerone (http://jeroenvanwarmerdam.nl)
+// @license     GNU GPLv3
 // @homepage    https://github.com/jerone/UserScripts/tree/master/Horizon_TV_Fixer
 // @homepageURL https://github.com/jerone/UserScripts/tree/master/Horizon_TV_Fixer
 // @downloadURL https://github.com/jerone/UserScripts/raw/master/Horizon_TV_Fixer/155147.user.js

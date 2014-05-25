@@ -4,7 +4,9 @@
 // @description Easy login with multiple Microsoft accounts
 // @include     http*://login.live.com*
 // @version     2.9
-// @author      jerone (http://www.jeroenvanwarmerdam.nl)
+// @author      jerone
+// @copyright   2014+, jerone (http://jeroenvanwarmerdam.nl)
+// @license     GNU GPLv3
 // @grant       GM_getValue
 // @grant       GM_setValue
 // ==/UserScript==

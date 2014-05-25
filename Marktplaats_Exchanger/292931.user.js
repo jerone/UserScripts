@@ -3,6 +3,8 @@
 // @namespace   http://userscripts.org/users/jerone
 // @description Exchange Marktplaats.nl
 // @author      jerone
+// @copyright   2014+, jerone (http://jeroenvanwarmerdam.nl)
+// @license     GNU GPLv3
 // @homepageURL http://userscripts.org/scripts/show/292931
 // @include     *://www.marktplaats.*
 // @include     *://marktplaats.*

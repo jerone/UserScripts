@@ -3,6 +3,8 @@
 // @namespace   https://github.com/jerone/UserScripts
 // @description Hide retweets on Twitter profiles
 // @author      jerone
+// @copyright   2014+, jerone (http://jeroenvanwarmerdam.nl)
+// @license     GNU GPLv3
 // @homepage    https://github.com/jerone/UserScripts/tree/master/Hide_retweets_on_Twitter_user_account
 // @homepageURL https://github.com/jerone/UserScripts/tree/master/Hide_retweets_on_Twitter_user_account
 // @downloadURL https://github.com/jerone/UserScripts/raw/master/Hide_retweets_on_Twitter_user_account/173703.user.js

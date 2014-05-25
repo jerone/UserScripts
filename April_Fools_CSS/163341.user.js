@@ -3,6 +3,8 @@
 // @description    Some CSS april fools
 // @author         jerone
 // @namespace      https://github.com/jerone/AprilFoolsCSS
+// @copyright      2014+, jerone (http://jeroenvanwarmerdam.nl)
+// @license        GNU GPLv3
 // @include        *
 // @version        1.1
 // ==/UserScript==

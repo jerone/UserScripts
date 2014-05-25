@@ -3,6 +3,8 @@
 // @namespace   https://github.com/jerone/UserScripts/
 // @description Share your GitHub Gist to Twitter, Dabblet & as userscript.
 // @author      jerone
+// @copyright   2014+, jerone (http://jeroenvanwarmerdam.nl)
+// @license     GNU GPLv3
 // @homepage    https://github.com/jerone/UserScripts/tree/master/Github_Gist_Share
 // @homepageURL https://github.com/jerone/UserScripts/tree/master/Github_Gist_Share
 // @downloadURL https://github.com/jerone/UserScripts/raw/master/Github_Gist_Share/157850.user.js

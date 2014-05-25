@@ -3,6 +3,8 @@
 // @namespace    https://github.com/jerone/UserScripts/
 // @description  Make pull request original branch linkable
 // @author       jerone
+// @copyright    2014+, jerone (http://jeroenvanwarmerdam.nl)
+// @license      GNU GPLv3
 // @homepage     https://github.com/jerone/UserScripts/tree/master/Github_Pull_Request_From
 // @homepageURL  https://github.com/jerone/UserScripts/tree/master/Github_Pull_Request_From
 // @downloadURL  https://github.com/jerone/UserScripts/raw/master/Github_Pull_Request_From/Github_Pull_Request_From.user.js

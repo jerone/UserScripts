@@ -33,3 +33,7 @@ This repo contains a few of my userscripts that I've build (in no particulair or
 ### Contributing
 
 Please review the [guidelines for contributing](https://github.com/jerone/UserScripts/blob/master/CONTRIBUTING.md) to this repository.
+
+### License
+
+All userscripts in [this repository](https://github.com/jerone/UserScripts) are [licensed under GNU GPLv3](https://github.com/jerone/UserScripts/blob/master/LICENSE.txt) unless explicitly otherwise stated.

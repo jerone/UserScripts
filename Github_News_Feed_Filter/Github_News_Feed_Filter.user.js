@@ -3,6 +3,8 @@
 // @namespace   https://github.com/jerone/UserScripts
 // @description Add filters for Github homepage news feed items
 // @author      jerone
+// @copyright   2014+, jerone (http://jeroenvanwarmerdam.nl)
+// @license     GNU GPLv3
 // @homepage    https://github.com/jerone/UserScripts/tree/master/Github_News_Feed_Filter
 // @homepageURL https://github.com/jerone/UserScripts/tree/master/Github_News_Feed_Filter
 // @downloadURL https://github.com/jerone/UserScripts/raw/master/Github_News_Feed_Filter/Github_News_Feed_Filter.user.js
