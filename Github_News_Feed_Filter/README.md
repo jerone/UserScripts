@@ -54,6 +54,8 @@ Currently integrated filters:
 
 ### Version History
 
+* **5.1**
+    * Added support for user public activity;
 * **5.0**
     * More filters added;
 * **4.6**
@@ -89,7 +91,7 @@ Currently integrated filters:
 
 - Remember filter choice (use href);
 - Remove first alert border-top;
-- Can probably run on users public activity stream too (https://github.com/jerone?tab=activity);
+- ~~Can probably run on users public activity stream too (https://github.com/jerone?tab=activity);~~ Only works on direct access.
 
 ### External links
 

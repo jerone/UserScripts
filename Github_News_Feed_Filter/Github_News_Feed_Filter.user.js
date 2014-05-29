@@ -11,7 +11,8 @@
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_News_Feed_Filter/Github_News_Feed_Filter.user.js
 // @include     https://github.com/
 // @include     https://github.com/orgs/*/dashboard
-// @version     5.0
+// @include     https://github.com/*?tab=activity
+// @version     5.1
 // @grant       none
 // ==/UserScript==
 /* global unsafeWindow,Event */
@@ -184,7 +185,7 @@
 		var container = document.querySelector(".news");
 		if (!container) { return; }
 
-		var sidebar = document.querySelector(".dashboard-sidebar");
+		var sidebar = document.querySelector(".dashboard-sidebar") || document.querySelector(".column.one-fourth.vcard");
 
 		var rule = document.createElement("div");
 		rule.classList.add("rule");
