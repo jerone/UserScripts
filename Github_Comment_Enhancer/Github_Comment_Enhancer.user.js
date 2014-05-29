@@ -156,52 +156,58 @@
 				commentForm.value = "";
 				next("");
 			}
+		},
+
+		"function-snippets-useragent": {
+			exec: function(txt, selText, commentForm, next) {
+				next("`" + navigator.userAgent + "`");
+			}
 		}
 	};
 
 	var editorHTML = (function() {
 		return '<div id="gollum-editor-function-buttons" style="float: left;">' +
 				'	<div class="button-group">' +
-				'		<a href="#" id="function-bold" class="minibutton function-button" title="Bold" tabindex="-1">' +
-				'			<b>B</b>' +
+				'		<a href="#" id="function-bold" class="minibutton function-button" title="Bold">' +
+				'			<b style="font-weight: bolder;">B</b>' +
 				'		</a>' +
-				'		<a href="#" id="function-italic" class="minibutton function-button" title="Italic" tabindex="-1">' +
+				'		<a href="#" id="function-italic" class="minibutton function-button" title="Italic">' +
 				'			<em>i</em>' +
 				'		</a>' +
-				'		<a href="#" id="function-strikethrough" class="minibutton function-button" title="Strikethrough" tabindex="-1">' +
+				'		<a href="#" id="function-strikethrough" class="minibutton function-button" title="Strikethrough">' +
 				'			<s>S</s>' +
 				'		</a>' +
 				'	</div>' +
 
 				'	<div class="button-group">' +
-				'		<div class="select-menu js-menu-container js-select-menu js-composer-assignee-picker">' +
-				'			<span aria-haspopup="true" title="Headers" role="button" class="minibutton select-menu-button icon-only js-menu-target" style="padding:0 18px 0 7px; width:auto; border-bottom-right-radius:3px; border-top-right-radius:3px;">' +
-				'				<b>h#</b>' +
+				'		<div class="select-menu js-menu-container js-select-menu">' +
+				'			<span class="minibutton select-menu-button icon-only js-menu-target" title="Headers" style="padding:0 20px 0 7px; width:auto; border-bottom-right-radius:3px; border-top-right-radius:3px;">' +
+				'		<span class="js-select-button">h#</span>' +
 				'			</span>' +
-				'			<div aria-hidden="false" class="select-menu-modal-holder js-menu-content js-navigation-container js-active-navigation-container" style="top: 26px;">' +
+				'			<div class="select-menu-modal-holder js-menu-content js-navigation-container js-active-navigation-container" style="top: 26px;">' +
 				'				<div class="select-menu-modal" style="width:auto;">' +
 				'					<div class="select-menu-header">' +
 				'						<span class="select-menu-title">Choose header</span>' +
 				'						<span class="octicon octicon-remove-close js-menu-close"></span>' +
 				'					</div>' +
 				'					<div class="button-group">' +
-				'						<a href="#" id="function-h1" class="minibutton function-button js-menu-close" title="Header 1" tabindex="-1">' +
-				'							<b>h1</b>' +
+				'						<a href="#" id="function-h1" class="minibutton function-button js-navigation-item js-menu-close" title="Header 1">' +
+				'							<b class="select-menu-item-text js-select-button-text">h1</b>' +
 				'						</a>' +
-				'						<a href="#" id="function-h2" class="minibutton function-button js-menu-close" title="Header 2" tabindex="-1">' +
-				'							<b>h2</b>' +
+				'						<a href="#" id="function-h2" class="minibutton function-button js-navigation-item js-menu-close" title="Header 2">' +
+				'							<b class="select-menu-item-text js-select-button-text">h2</b>' +
 				'						</a>' +
-				'						<a href="#" id="function-h3" class="minibutton function-button js-menu-close" title="Header 3" tabindex="-1">' +
-				'							<b>h3</b>' +
+				'						<a href="#" id="function-h3" class="minibutton function-button js-navigation-item js-menu-close" title="Header 3">' +
+				'							<b class="select-menu-item-text js-select-button-text">h3</b>' +
 				'						</a>' +
-				'						<a href="#" id="function-h4" class="minibutton function-button js-menu-close" title="Header 4" tabindex="-1">' +
-				'							<b>h4</b>' +
+				'						<a href="#" id="function-h4" class="minibutton function-button js-navigation-item js-menu-close" title="Header 4">' +
+				'							<b class="select-menu-item-text js-select-button-text">h4</b>' +
 				'						</a>' +
-				'						<a href="#" id="function-h5" class="minibutton function-button js-menu-close" title="Header 5" tabindex="-1">' +
-				'							<b>h5</b>' +
+				'						<a href="#" id="function-h5" class="minibutton function-button js-navigation-item js-menu-close" title="Header 5">' +
+				'							<b class="select-menu-item-text js-select-button-text">h5</b>' +
 				'						</a>' +
-				'						<a href="#" id="function-h6" class="minibutton function-button js-menu-close" title="Header 6" tabindex="-1">' +
-				'							<b>h6</b>' +
+				'						<a href="#" id="function-h6" class="minibutton function-button js-navigation-item js-menu-close" title="Header 6">' +
+				'							<b class="select-menu-item-text js-select-button-text">h6</b>' +
 				'						</a>' +
 				'					</div>' +
 				'				</div>' +
@@ -210,43 +216,73 @@
 				'	</div>' +
 
 				'	<div class="button-group">' +
-				'		<a href="#" id="function-link" class="minibutton function-button" title="Link" tabindex="-1">' +
+				'		<a href="#" id="function-link" class="minibutton function-button" title="Link">' +
 				'			<span class="octicon octicon-link"></span>' +
 				'		</a>' +
-				'		<a href="#" id="function-image" class="minibutton function-button" title="Image" tabindex="-1">' +
+				'		<a href="#" id="function-image" class="minibutton function-button" title="Image">' +
 				'			<span class="octicon octicon-file-media"></span>' +
 				'		</a>' +
 				'	</div>' +
 				'	<div class="button-group">' +
-				'		<a href="#" id="function-ul" class="minibutton function-button" title="Unordered List" tabindex="-1">' +
+				'		<a href="#" id="function-ul" class="minibutton function-button" title="Unordered List">' +
 				'			<span class="octicon octicon-list-unordered"></span>' +
 				'		</a>' +
-				'		<a href="#" id="function-ol" class="minibutton function-button" title="Ordered List" tabindex="-1">' +
+				'		<a href="#" id="function-ol" class="minibutton function-button" title="Ordered List">' +
 				'			<span class="octicon octicon-list-ordered"></span>' +
 				'		</a>' +
-				'		<a href="#" id="function-checklist" class="minibutton function-button" title="Task List" tabindex="-1">' +
+				'		<a href="#" id="function-checklist" class="minibutton function-button" title="Task List">' +
 				'			<span class="octicon octicon-checklist"></span>' +
 				'		</a>' +
 				'	</div>' +
 
 				'	<div class="button-group">' +
-				'		<a href="#" id="function-code" class="minibutton function-button" title="Code" tabindex="-1">' +
+				'		<a href="#" id="function-code" class="minibutton function-button" title="Code">' +
 				'			<span class="octicon octicon-code"></span>' +
 				'		</a>' +
-				'		<a href="#" id="function-blockquote" class="minibutton function-button" title="Blockquote" tabindex="-1">' +
+				'		<a href="#" id="function-blockquote" class="minibutton function-button" title="Blockquote">' +
 				'			<span class="octicon octicon-quote"></span>' +
 				'		</a>' +
-				'		<a href="#" id="function-hr" class="minibutton function-button" title="Horizontal Rule" tabindex="-1">' +
+				'		<a href="#" id="function-hr" class="minibutton function-button" title="Horizontal Rule">' +
 				'			<span class="octicon octicon-horizontal-rule"></span>' +
 				'		</a>' +
-				'		<a href="#" id="function-table" class="minibutton function-button" title="Table" tabindex="-1">' +
+				'		<a href="#" id="function-table" class="minibutton function-button" title="Table">' +
 				'			<span class="octicon octicon-three-bars"></span>' +
 				'		</a>' +
 				'	</div>' +
+
+				'	<div class="button-group">' +
+				'		<div class="select-menu js-menu-container js-select-menu">' +
+				'			<span class="minibutton select-menu-button js-menu-target" title="Snippets" style="padding:0 20px 0 7px; width:auto; border-bottom-right-radius:3px; border-top-right-radius:3px;">' +
+				'				<span class="octicon octicon-pin"></span>' +
+				'			</span>' +
+				'			<div class="select-menu-modal-holder js-menu-content js-navigation-container js-active-navigation-container">' +
+				'				<div class="select-menu-modal">' +
+				'					<div class="select-menu-header">' +
+				'						<span class="select-menu-title">Snippets</span>' +
+				'						<span class="octicon octicon-remove-close js-menu-close"></span>' +
+				'					</div>' +
+				'					<div class="select-menu-filters">' +
+				'						<div class="select-menu-text-filter">' +
+				'							<input type="text" placeholder="Filter snippets..." class="js-filterable-field js-navigation-enable" id="context-snippets-filter-field">' +
+				'						</div>' +
+				'					</div>' +
+				'					<div class="select-menu-list">' +
+				'						<div data-filterable-for="context-snippets-filter-field">' +
+				'							<a href="#" id="function-snippets-useragent" class="function-button select-menu-item js-navigation-item" title="Add UserAgent">' +
+				'								<span class="select-menu-item-text js-select-button-text">Add UserAgent</span>' +
+				'							</a>' +
+				'						</div>' +
+				'						<div class="select-menu-no-results">Nothing to show</div>' +
+				'					</div>' +
+				'				</div>' +
+				'			</div>' +
+				'		</div>' +
+				'	</div>' +
+
 				'</div>' +
 
 				'<div class="button-group" style="float:right;">' +
-				'	<a href="#" id="function-clear" class="minibutton function-button" title="Clear" tabindex="-1">' +
+				'	<a href="#" id="function-clear" class="minibutton function-button" title="Clear">' +
 				'		<span class="octicon octicon-circle-slash"></span>' +
 				'	</a>' +
 				'</div>';
@@ -399,10 +435,12 @@
 			}
 
 			Array.forEach(gollumEditor.parentNode.querySelectorAll(".function-button"), function(button) {
-				button.style.padding = "0px";
-				button.style.textAlign = "center";
-				button.style.width = "30px";
-				button.firstElementChild.style.marginRight = "0px";
+				if (button.classList.contains("minibutton")) {
+					button.style.padding = "0px";
+					button.style.textAlign = "center";
+					button.style.width = "30px";
+					button.firstElementChild.style.marginRight = "0px";
+				}
 				button.commentForm = commentForm;  // remove event listener doesn't accept `bind`;
 				button.addEventListener("click", functionButtonClick);
 			});

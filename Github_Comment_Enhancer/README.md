@@ -21,8 +21,9 @@ Add features to enhance comments & wiki on [Github](https://github.com) and comm
 
 * **1.?**
     * Included on [Github Gist](https://gist.github.com);
-    * Added clear button;
     * Fixed issue with missing trailing space when selected; 
+    * Added snippets (only useragent atm);
+    * Added clear button;
 * **1.3**
     * Navigation logic implemented;
     * Inline comment logic implemented;
@@ -50,7 +51,7 @@ Add features to enhance comments & wiki on [Github](https://github.com) and comm
 - [Quick quoting](https://help.github.com/articles/writing-on-github#quick-quoting);
 - [Syntax highlighting](https://help.github.com/articles/github-flavored-markdown#syntax-highlighting);
 - Keyboard shortcuts (https://github.com/ccampbell/mousetrap);
-- Snippets (predefined and executable);
+- Add more snippets (predefined and executable);
 
 ### Notes
 
