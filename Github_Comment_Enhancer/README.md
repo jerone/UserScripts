@@ -19,7 +19,7 @@ Add features to enhance comments & wiki on [Github](https://github.com) and comm
 
 ### Version History
 
-* **1.?**
+* **1.4**
     * Included on [Github Gist](https://gist.github.com);
     * Fixed issue with missing trailing space when selected; 
     * Added snippets (only useragent atm);

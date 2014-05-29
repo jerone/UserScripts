@@ -10,7 +10,7 @@
 // @homepageURL https://github.com/jerone/UserScripts/tree/master/Github_Comment_Enhancer
 // @downloadURL https://github.com/jerone/UserScripts/raw/master/Github_Comment_Enhancer/Github_Comment_Enhancer.user.js
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_Comment_Enhancer/Github_Comment_Enhancer.user.js
-// @version     1.3
+// @version     1.4
 // @grant       none
 // @run-at      document-end
 // @include     https://github.com/*/*/issues/*
