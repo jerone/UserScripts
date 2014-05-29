@@ -89,6 +89,7 @@ Currently integrated filters:
 
 - Remember filter choice (use href);
 - Remove first alert border-top;
+- Can probably run on users public activity stream too (https://github.com/jerone?tab=activity);
 
 ### External links
 
