@@ -67,3 +67,4 @@ Test cases:
 
 * [Greasy Fork](https://greasyfork.org/scripts/493-github-comment-enhancer)
 * [OpenUserJS](https://openuserjs.org/scripts/jerone/httpsgithub.comjeroneUserScripts/Github_Comment_Enhancer)
+* [MonkeyGuts](https://monkeyguts.com/code.php?id=180)
