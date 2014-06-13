@@ -13,13 +13,14 @@
 // @version     4.2
 // @grant       none
 // ==/UserScript==
+/* global unsafeWindow */
 
 (function() {
 
 	String.format = function(string) {
 		var args = Array.prototype.slice.call(arguments, 1, arguments.length);
 		return string.replace(/{(\d+)}/g, function(match, number) {
-			return typeof args[number] != "undefined" ? args[number] : match;
+			return typeof args[number] !== "undefined" ? args[number] : match;
 		});
 	};
 
@@ -31,12 +32,12 @@
 				if (files > 1) {
 					stats.push(files + " files");
 				}
-				if (stars == 1) {
+				if (stars === 1) {
 					stats.push(stars + " star");
 				} else if (stars > 1) {
 					stats.push(stars + " stars");
 				}
-				if (forks == 1) {
+				if (forks === 1) {
 					stats.push(forks + " fork");
 				} else if (forks > 1) {
 					stats.push(forks + " forks");
@@ -46,7 +47,7 @@
 				}
 
 				var tweet = String.format("Check out {0} #gist {1} on @github{2} |",
-											user == document.querySelector(".name").textContent.trim() ? "my" : user + "'s",
+											user === document.querySelector(".name").textContent.trim() ? "my" : user + "'s",
 											description ? "\"" + description + "\"" : "",
 											stats.length > 0 ? " | " + stats.join(", ") : "");
 
@@ -127,7 +128,7 @@
 					socialA = document.createElement("a"),
 					socialImg = document.createElement("img");
 
-				if (social.show(url, user, description, files, stars, forks, revisions) !== true) continue;
+				if (social.show(url, user, description, files, stars, forks, revisions) !== true) { continue; }
 
 				li.appendChild(socialA);
 				socialA.appendChild(socialImg);
