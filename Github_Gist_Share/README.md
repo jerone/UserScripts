@@ -23,6 +23,10 @@ Share your [GitHub Gist](https://gist.github.com) to:
 
 ### Version History
 
+* **4.3**
+    * Converted userscript icon to data uri as USO isn't available anymore;
+    * Fixed counting files;
+    * JSHint fixes;
 * **4.2**
     * Added support for Scriptish;
 * **4.1**

@@ -10,7 +10,7 @@
 // @downloadURL https://github.com/jerone/UserScripts/raw/master/Github_Gist_Share/157850.user.js
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_Gist_Share/157850.user.js
 // @include     *://gist.github.com/*
-// @version     4.2
+// @version     4.3
 // @grant       none
 // ==/UserScript==
 /* global unsafeWindow */
