@@ -25,9 +25,7 @@
 
 	var socials = {
 		Twitter: {
-			show: function(url, user, description, files, stars, forks, revisions) {
-				return true;
-			},
+			show: function(url, user, description, files, stars, forks, revisions) { return true; },
 			submit: function(url, user, description, files, stars, forks, revisions) {
 				var stats = [];
 				if (files > 1) {
@@ -100,10 +98,10 @@
 		},
 		UserScript: {
 			show: function(url, user, description, files, stars, forks, revisions) {
-				return !!document.querySelector(".bubble[id^='file-'] .raw-url[href$='.user.js']");
+				return !!document.querySelector(".file[id^='file-'] .raw-url[href$='.user.js']");
 			},
 			submit: function(url, user, description, files, stars, forks, revisions) {
-				return (document.querySelector(".bubble[id^='file-'] .raw-url[href$='.user.js']") || { href: "" }).href.trim();
+				return (document.querySelector(".file[id^='file-'] .raw-url[href$='.user.js']") || { href: "" }).href.trim();
 			},
 			icon: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAKwSURBVHjabJNJTBNRGID/mc5MQYVWVNCGTbEtNZGDBj1ogolEMR5UJA2LBmMoIokxERIj8ehJjx6MYIQoJgq4JIa6gEARkKJFTa2iFFtKWwp2oeDCzNQ+31DQCc5L/nmT/P/3749ACAFBECBxiEPFFds0Ws399DRVhtX2udc97ig0PmgOLBkIbOwjAR8uMRRdvXF7pqv/NfrqnEAOlxsdLas6j3Wk2AEpCRcbKvLydrdu1WUr0lXrITEhAZKUSkhQKvKwXiY2ppbDRzCcv29P/ZZsDaSqUkCJYVJGwKMnHTDlmWgTZ/CvjkW4sKTScP1WC+oZsKAxpwv5gyEUnAkj2xc70p88Y8Y2a8VBxT0gispOGa413UVDb23IMe6OwaEw+jTqQKMOF3pptqBSw7k74hLEPaDUOu0VmpFDV58ZCJIAkiDB5fUBz0eApmjQqbOgrqa69HhVbZO4jKUfmiBJBctysHJFPPiDYbA7J4DjeJDLaWAYGVAyErIy0uDs6RPH9OXVtULWYgfEmN3emJK8BlYrEsHl8cEvloX4ODnEyRlgKGZhV1iOhcz0VNixM7dOCCp2EBkeMF3u6DaNqDasg1U4CzlFxxSRKMyz8xjmsPAQwNmRsc2jxGPkR0esHp7n9RBFrYbyUi1DUzh1GujFG0UBQrNz8P7DR3j+9NklqTEK3VVkbNLkVNZc9AwNW5Hb60PT/gCamg6gEbsT3XvYjvIP6i9gu2ShhOWb+BvLD13O9o3azWrVdy4K3wKhv5HfWW1Q39BY19nechPbzQrVwX9bhU+iIqnyQMF+mPvJQr/FCsHwDJgG30ADhl8Y2wQ4jIUVkpdaZRnPcd6AfxomJ32AIhEwdvaC8XG7JLwwvmXPmVFn52Tu2lvQjN9Crn3M6bWY+6otr3oGpWCB/SPAAJaJRguGUxB0AAAAAElFTkSuQmCC"
 		}
@@ -116,7 +114,7 @@
 			url = link.value;
 			user = document.querySelector(".author.vcard").textContent.trim();
 			description = (document.querySelector(".gist-description") || document.querySelector(".js-current-repository") || { textContent: "" }).textContent.trim();
-			files = document.querySelectorAll(".bubble[id^='file-']").length;
+			files = document.querySelectorAll(".file[id^='file-']").length;
 			stars = (menu.querySelector("a[href$='/stars'] .counter") || { textContent: "" }).textContent.trim();
 			forks = (menu.querySelector("a[href$='/forks'] .counter") || { textContent: "" }).textContent.trim();
 			revisions = (menu.querySelector("a[href$='/revisions'] .counter") || { textContent: "" }).textContent.trim();
