@@ -12,10 +12,10 @@
 // @include     https://github.com/
 // @include     https://github.com/orgs/*/dashboard
 // @include     https://github.com/*?tab=activity
-// @version     5.1
+// @version     5.2
 // @grant       none
 // ==/UserScript==
-/* global unsafeWindow,Event */
+/* global Event */
 
 (function() {
 
@@ -181,6 +181,55 @@
 		}
 	}
 
+	function pageUpdate(container, sidebar, wrapper) {
+		Array.forEach(container.querySelectorAll(".alert"), function(alert) {
+			if (alert.getElementsByClassName("octicon-git-branch-create").length > 0) {
+				alert.classList.remove("create");
+				alert.classList.add("branch_create");
+			} else if (alert.getElementsByClassName("octicon-git-branch-delete").length > 0) {
+				alert.classList.remove("delete");
+				alert.classList.add("branch_delete");
+			} else if (alert.getElementsByClassName("octicon-tag-add").length > 0) {
+				alert.classList.remove("create");
+				alert.classList.add("tag_add");
+			} else if (alert.getElementsByClassName("octicon-tag-remove").length > 0) {
+				alert.classList.remove("delete");
+				alert.classList.add("tag_remove");
+			} else if (alert.getElementsByClassName("octicon-git-pull-request").length > 0) {
+				alert.classList.remove("issues_opened", "issues_closed");
+				if (alert.querySelector(".title span").textContent.toUpperCase() === "OPENED") {  // English localisation;
+					alert.classList.add("pull_request_opened");
+				} else if (alert.querySelector(".title span").textContent.toUpperCase() === "MERGED") {  // English localisation;
+					alert.classList.add("pull_request_merged");
+				} else if (alert.querySelector(".title span").textContent.toUpperCase() === "CLOSED") {  // English localisation;
+					alert.classList.add("pull_request_closed");
+				}
+			} else if (alert.classList.contains("issues_comment") && alert.querySelectorAll(".title a")[1].getAttribute("href").split("/")[5] === "pull") {
+				alert.classList.remove("issues_comment");
+				alert.classList.add("pull_request_comment");
+			} else if (alert.classList.contains("gist")) {
+				alert.classList.remove("gist");
+				alert.classList.add("gist_" + alert.querySelector(".title span").textContent);
+			}
+		});
+
+		Array.forEach(wrapper.querySelectorAll("li"), function(li) {
+			var c = li.querySelector(".count");
+			if (li.filterClassNames[0] === "*") {
+				c.textContent = container.querySelectorAll(".alert").length;
+			} else {
+				c.textContent = "0";
+				Array.forEach(container.querySelectorAll(".alert"), function(alert) {
+					if (li.filterClassNames.some(function(cl) { return alert.classList.contains(cl); })) {
+						c.textContent = parseInt(c.textContent, 10) + 1;
+					}
+				});
+			}
+		});
+
+		sidebar.querySelector(".selected").dispatchEvent(new Event("click"));
+	}
+
 	function addFilters() {
 		var container = document.querySelector(".news");
 		if (!container) { return; }
@@ -191,68 +240,20 @@
 		rule.classList.add("rule");
 		sidebar.insertBefore(rule, sidebar.firstChild);
 
-		var div = document.createElement("div");
-		sidebar.insertBefore(div, sidebar.firstChild);
+		var wrapper = document.createElement("div");
+		sidebar.insertBefore(wrapper, sidebar.firstChild);
 
-		addFilterMenu(FILTERS, div, container, sidebar, true);
+		addFilterMenu(FILTERS, wrapper, container, sidebar, true);
+
+		pageUpdate(container, sidebar, wrapper);
 
 		// update on clicking "More"-button;
-		unsafeWindow.$.pageUpdate(function() {
-			window.setTimeout(function() {
-				Array.forEach(container.querySelectorAll(".alert"), function(alert) {
-					if (alert.getElementsByClassName("octicon-git-branch-create").length > 0) {
-						alert.classList.remove("create");
-						alert.classList.add("branch_create");
-					} else if (alert.getElementsByClassName("octicon-git-branch-delete").length > 0) {
-						alert.classList.remove("delete");
-						alert.classList.add("branch_delete");
-					} else if (alert.getElementsByClassName("octicon-tag-add").length > 0) {
-						alert.classList.remove("create");
-						alert.classList.add("tag_add");
-					} else if (alert.getElementsByClassName("octicon-tag-remove").length > 0) {
-						alert.classList.remove("delete");
-						alert.classList.add("tag_remove");
-					} else if (alert.getElementsByClassName("octicon-git-pull-request").length > 0) {
-						alert.classList.remove("issues_opened", "issues_closed");
-						if (alert.querySelector(".title span").textContent.toUpperCase() === "OPENED") {  // English localisation;
-							alert.classList.add("pull_request_opened");
-						} else if (alert.querySelector(".title span").textContent.toUpperCase() === "MERGED") {  // English localisation;
-							alert.classList.add("pull_request_merged");
-						} else if (alert.querySelector(".title span").textContent.toUpperCase() === "CLOSED") {  // English localisation;
-							alert.classList.add("pull_request_closed");
-						}
-					} else if (alert.classList.contains("issues_comment") && alert.querySelectorAll(".title a")[1].getAttribute("href").split("/")[5] === "pull") {
-						alert.classList.remove("issues_comment");
-						alert.classList.add("pull_request_comment");
-					} else if (alert.classList.contains("gist")) {
-						alert.classList.remove("gist");
-						alert.classList.add("gist_" + alert.querySelector(".title span").textContent);
-					}
-				});
-
-				Array.forEach(div.querySelectorAll("li"), function(li) {
-					var c = li.querySelector(".count");
-					if (li.filterClassNames[0] === "*") {
-						c.textContent = container.querySelectorAll(".alert").length;
-					} else {
-						c.textContent = "0";
-						Array.forEach(container.querySelectorAll(".alert"), function(alert) {
-							if (li.filterClassNames.some(function(cl) { return alert.classList.contains(cl); })) {
-								c.textContent = parseInt(c.textContent, 10) + 1;
-							}
-						});
-					}
-				});
-
-				sidebar.querySelector(".selected").dispatchEvent(new Event("click"));
-			}, 1);
-		});
+		new MutationObserver(function() {
+			pageUpdate(container, sidebar, wrapper);
+		}).observe(container, { childList: true });
 	}
 
 	// init;
 	addFilters();
-
-	// on pjax;
-	unsafeWindow.$(document).on("pjax:success", addFilters);
 
 })();

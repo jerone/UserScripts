@@ -54,6 +54,8 @@ Currently integrated filters:
 
 ### Version History
 
+* **5.2**
+    * Fixed issues after Github site update (https://github.com/jerone/UserScripts/issues/6);
 * **5.1**
     * Added support for user public activity;
 * **5.0**
