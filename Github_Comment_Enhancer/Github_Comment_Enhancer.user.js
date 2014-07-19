@@ -10,12 +10,13 @@
 // @homepageURL https://github.com/jerone/UserScripts/tree/master/Github_Comment_Enhancer
 // @downloadURL https://github.com/jerone/UserScripts/raw/master/Github_Comment_Enhancer/Github_Comment_Enhancer.user.js
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_Comment_Enhancer/Github_Comment_Enhancer.user.js
-// @version     1.5
+// @version     1.6
 // @grant       none
 // @run-at      document-end
 // @include     https://github.com/*/*/issues/*
 // @include     https://github.com/*/*/pull/*
 // @include     https://github.com/*/*/commit/*
+// @include     https://github.com/*/*/compare/*
 // @include     https://github.com/*/*/wiki/*
 // @include     https://gist.github.com/*
 // ==/UserScript==
@@ -170,7 +171,7 @@
 		}
 	};
 
-	var editorHTML = (function() {
+	var editorHTML = (function editorHTML() {
 		return '<div id="gollum-editor-function-buttons" style="float: left;">' +
 				'	<div class="button-group">' +
 				'		<a href="#" id="function-bold" class="minibutton function-button tooltipped tooltipped-ne" aria-label="Bold">' +
@@ -186,7 +187,7 @@
 
 				'	<div class="button-group">' +
 				'		<div class="select-menu js-menu-container js-select-menu">' +
-				'			<span class="minibutton select-menu-button icon-only js-menu-target tooltipped tooltipped-ne" aria-label="Headers" style="padding:0 20px 0 7px; width:auto; border-bottom-right-radius:3px; border-top-right-radius:3px;">' +
+				'			<span class="minibutton select-menu-button icon-only js-menu-target" aria-label="Headers" style="padding:0 7px; width:auto; border-bottom-right-radius:3px; border-top-right-radius:3px;">' +
 				'		<span class="js-select-button">h#</span>' +
 				'			</span>' +
 				'			<div class="select-menu-modal-holder js-menu-content js-navigation-container js-active-navigation-container" style="top: 26px;">' +
@@ -257,7 +258,7 @@
 
 				'	<div class="button-group">' +
 				'		<div class="select-menu js-menu-container js-select-menu">' +
-				'			<span class="minibutton select-menu-button js-menu-target tooltipped tooltipped-ne" aria-label="Snippets" style="padding:0 20px 0 7px; width:auto; border-bottom-right-radius:3px; border-top-right-radius:3px;">' +
+				'			<span class="minibutton select-menu-button js-menu-target" aria-label="Snippets" style="padding:0 7px; width:auto; border-bottom-right-radius:3px; border-top-right-radius:3px;">' +
 				'				<span class="octicon octicon-pin"></span>' +
 				'			</span>' +
 				'			<div class="select-menu-modal-holder js-menu-content js-navigation-container js-active-navigation-container">' +
@@ -373,9 +374,6 @@
 		commentForm.value = txt.substring(0, selPos.start) + replaceText + txt.substring(selPos.end);
 		commentForm.focus();
 
-		// Gist Github requires that the comment form change event be triggered to update the preview;
-		unsafeWindow.$(commentForm).trigger("change");
-
 		if (selectNew) {
 			if (cursorOffset) {
 				commentForm.setSelectionRange(selPos.start + cursorOffset, selPos.start + cursorOffset);
@@ -392,6 +390,18 @@
 	function isWiki() {
 		return /\/wiki\//.test(location.href);
 	}
+	function isGist() {
+		return location.host === "gist.github.com";
+	}
+
+	function overrideGollumMarkdown() {
+		unsafeWindow.$.GollumEditor.defineLanguage("markdown", MarkDown);
+	}
+	function unbindGollumFunctions() {
+		window.setTimeout(function() {
+			unsafeWindow.$(".function-button:not(#function-help)").unbind("click");
+		}, 1);
+	}
 
 	var functionButtonClick = function(e) {
 		e.preventDefault();
@@ -402,12 +412,12 @@
 	function addToolbar() {
 		if (isWiki()) {
 			// Override existing language with improved & missing functions and remove existing click events;
-			unsafeWindow.$.GollumEditor.defineLanguage("markdown", MarkDown);
-			unsafeWindow.$(".function-button:not(#function-help)").unbind("click");
+			overrideGollumMarkdown();
+			unbindGollumFunctions();
 
 			// Remove existing click events when changing languages;
 			document.getElementById("wiki_format").addEventListener("change", function() {
-				unsafeWindow.$(".function-button:not(#function-help)").unbind("click");
+				unbindGollumFunctions();
 
 				Array.forEach(document.querySelectorAll(".comment-form-textarea .function-button"), function(button) {
 					button.removeEventListener("click", functionButtonClick);
@@ -416,37 +426,44 @@
 		}
 
 		Array.forEach(document.querySelectorAll(".comment-form-textarea,.js-comment-field"), function(commentForm) {
-			if (commentForm.classList.contains("GithubCommentEnhancer")) { return; }
-			commentForm.classList.add("GithubCommentEnhancer");
-
 			var gollumEditor;
-			if (isWiki()) {
-				gollumEditor = document.getElementById("gollum-editor-function-bar");
-				var temp = document.createElement("div");
-				temp.innerHTML = editorHTML;
-				temp.firstChild.appendChild(document.getElementById("function-help"));  // restore the help button;
-				gollumEditor.replaceChild(temp.querySelector("#gollum-editor-function-buttons"), document.getElementById("gollum-editor-function-buttons"));
-				Array.forEach(temp.children, function(elm) {
-					elm.style.position = "absolute";
-					elm.style.right = "30px";
-					elm.style.top = "0";
-					commentForm.parentNode.insertBefore(elm, commentForm);
-				});
-				temp = null;
+			if (commentForm.classList.contains("GithubCommentEnhancer")) {
+				gollumEditor = commentForm.previousSibling;
 			} else {
-				gollumEditor = document.createElement("div");
-				gollumEditor.innerHTML = editorHTML;
-				gollumEditor.id = "gollum-editor-function-bar";
-				gollumEditor.style.border = "0 none";
-				gollumEditor.style.height = "26px";
-				gollumEditor.style.margin = "10px 0";
-				gollumEditor.style.paddingBottom = "10px";
-				gollumEditor.classList.add("active");
-				commentForm.parentNode.insertBefore(gollumEditor, commentForm);
+				commentForm.classList.add("GithubCommentEnhancer");
+
+				if (isWiki()) {
+					gollumEditor = document.getElementById("gollum-editor-function-bar");
+					var temp = document.createElement("div");
+					temp.innerHTML = editorHTML;
+					temp.firstChild.appendChild(document.getElementById("function-help"));  // restore the help button;
+					gollumEditor.replaceChild(temp.querySelector("#gollum-editor-function-buttons"), document.getElementById("gollum-editor-function-buttons"));
+					Array.forEach(temp.children, function(elm) {
+						elm.style.position = "absolute";
+						elm.style.right = "30px";
+						elm.style.top = "0";
+						commentForm.parentNode.insertBefore(elm, commentForm);
+					});
+					temp = null;
+				} else {
+					gollumEditor = document.createElement("div");
+					gollumEditor.innerHTML = editorHTML;
+					gollumEditor.id = "gollum-editor-function-bar";
+					gollumEditor.style.height = "26px";
+					gollumEditor.style.margin = "10px 0";
+					gollumEditor.classList.add("active");
+					commentForm.parentNode.insertBefore(gollumEditor, commentForm);
+				}
+			}
+
+			if (isGist()) {
+				Array.forEach(gollumEditor.parentNode.querySelectorAll(".select-menu-button"), function(button) {
+					button.style.paddingRight = "25px";
+				});
 			}
 
 			Array.forEach(gollumEditor.parentNode.querySelectorAll(".function-button"), function(button) {
-				if (button.classList.contains("minibutton")) {
+				if (isGist() && button.classList.contains("minibutton")) {
 					button.style.padding = "0px";
 					button.style.textAlign = "center";
 					button.style.width = "30px";
@@ -462,13 +479,19 @@
 	addToolbar();
 
 	// on pjax;
-	unsafeWindow.$(document).on("pjax:success", addToolbar);
+	unsafeWindow.$(document).on("pjax:end", addToolbar);  // `pjax:end` also runs on history back;
 
-	// on page update;
-	unsafeWindow.$.pageUpdate(function() {
-		window.setTimeout(function() {
-			addToolbar();
-		}, 1);
+	// inline comment;
+	var files = document.querySelectorAll('.file-code');
+	Array.forEach(files, function(file) {
+		file = file.firstElementChild;
+		new MutationObserver(function(mutations) {
+			mutations.forEach(function(mutation) {
+				if (mutation.target === file) {
+					addToolbar();
+				}
+			});
+		}).observe(file, { childList: true, subtree: true });
 	});
 
 })();

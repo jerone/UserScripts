@@ -19,12 +19,17 @@ Add features to enhance comments & wiki on [Github](https://github.com) and comm
 
 ### Version History
 
+* **1.6**
+    * Removed floating arrow (fixes https://github.com/jerone/UserScripts/issues/7);
+    * Fixed history back;
+    * Fixed buttons on Github Gist;
+    * Fixed inline comments;
 * **1.5**
     * Added pinned contributing message;
     * Added tooltips for all buttons;
 * **1.4**
     * Included on [Github Gist](https://gist.github.com);
-    * Fixed issue with missing trailing space when selected; 
+    * Fixed issue with missing trailing space when selected;
     * Added snippets (only useragent atm);
     * Added clear button;
 * **1.3**
@@ -64,10 +69,11 @@ Test cases:
 - https://github.com/jerone/UserScripts/issues/1 (new comment & edit comment)
 - https://github.com/jerone/UserScripts/commit/master (comments below & inline comments)
 - https://github.com/jerone/UserScripts/wiki/_new (new wiki)
+- https://github.com/jerone/OpenUserJS.org/compare/master...app_route (new PR)
 - https://gist.github.com/jerone/9526258 (new comment & edit comment)
 
 ### External links
 
 * [Greasy Fork](https://greasyfork.org/scripts/493-github-comment-enhancer)
-* [OpenUserJS](https://openuserjs.org/scripts/jerone/httpsgithub.comjeroneUserScripts/Github_Comment_Enhancer)
+* [OpenUserJS](https://openuserjs.org/scripts/jerone/Github_Comment_Enhancer)
 * [MonkeyGuts](https://monkeyguts.com/code.php?id=180)
