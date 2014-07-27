@@ -10,7 +10,7 @@
 // @downloadURL https://github.com/jerone/UserScripts/raw/master/Github_Commit_Diff/Github_Commit_Diff.user.js
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_Commit_Diff/Github_Commit_Diff.user.js
 // @include     https://github.com/*
-// @version     1.4
+// @version     1.5
 // @grant       none
 // ==/UserScript==
 /* global unsafeWindow */
@@ -20,7 +20,7 @@
 	function addButton() {
 		var e;
 		if (!(/\/commit\//.test(location.href) || /\/compare\//.test(location.href) || /\/pull\/\d*\/files/.test(location.href)) ||
-			!(e = document.querySelector("#toc .explain"))) { return; }
+			!(e = document.getElementById("toc"))) { return; }
 
 		var r = e.querySelector(".GithubCommitDiffButton");
 		if (r) { r.parentElement.removeChild(r); }
@@ -39,14 +39,14 @@
 		s.style.color = "#333";  // set color because of css selector `p.explain .octicon`;
 
 		var a = document.createElement("a");
-		a.classList.add("GithubCommitDiffButton", "minibutton", "tooltipped", "tooltipped-s");
+		a.classList.add("GithubCommitDiffButton", "minibutton", "right", "tooltipped", "tooltipped-s");
 		a.setAttribute("href", getPatchOrDiffHref("diff"));
 		a.setAttribute("title", "Show commit diff.\r\nHold Shift to open commit patch.");
 		a.setAttribute("rel", "nofollow");
 		a.setAttribute("aria-label", a.getAttribute("title"));
 		a.style.marginLeft = "10px";  // give us some room;
 		a.appendChild(s);
-		a.appendChild(document.createTextNode("Diff"));
+		a.appendChild(document.createTextNode(" Diff"));
 
 		b.parentNode.insertBefore(a, b);
 
@@ -76,7 +76,7 @@
 	addButton();
 
 	// on pjax;
-	unsafeWindow.$(document).on('pjax:success', addButton);
+	unsafeWindow.$(document).on("pjax:end", addButton);  // `pjax:end` also runs on history back;
 
 	// on PR files tab;
 	var f;
