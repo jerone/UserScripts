@@ -22,6 +22,8 @@ Adds button to hide whitespaces from commit.
 
 ### Version History
 
+* **1.3**
+    * Fixed issues after recent layout updates (fixes https://github.com/jerone/UserScripts/issues/9);
 * **1.2.1**
     * Fixed adding to pull requests;
 * **1.2**

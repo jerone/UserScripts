@@ -10,7 +10,7 @@
 // @downloadURL https://github.com/jerone/UserScripts/raw/master/Github_Commit_Whitespace/Github_Commit_Whitespace.user.js
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_Commit_Whitespace/Github_Commit_Whitespace.user.js
 // @include     https://github.com/*
-// @version     1.2.1
+// @version     1.3
 // @grant       none
 // ==/UserScript==
 /* global unsafeWindow */
@@ -20,7 +20,7 @@
 	function addButton() {
 		var e;
 		if (!(/\/commit\//.test(location.href) || /\/compare\//.test(location.href) || /\/pull\/\d*\/files/.test(location.href)) ||
-			!(e = document.querySelector("#toc .explain"))) { return; }
+			!(e = document.getElementById("toc"))) { return; }
 
 		var r = e.querySelector(".GithubCommitWhitespaceButton");
 		if (r) { r.parentElement.removeChild(r); }
@@ -34,7 +34,7 @@
 		s.style.color = "#333";  // set color because of css selector `p.explain .octicon`;
 
 		var a = document.createElement("a");
-		a.classList.add("GithubCommitWhitespaceButton", "minibutton", "tooltipped", "tooltipped-s");
+		a.classList.add("GithubCommitWhitespaceButton", "minibutton", "right", "tooltipped", "tooltipped-s");
 		if (on) { a.classList.add("selected"); }
 		a.setAttribute("href", on ? location.href.replace(location.search, "") : location.href + "?w=1");
 		a.setAttribute("title", on ? "Show commit whitespace" : "Hide commit whitespaces");
@@ -50,7 +50,7 @@
 	addButton();
 
 	// on pjax;
-	unsafeWindow.$(document).on("pjax:success", addButton);
+	unsafeWindow.$(document).on("pjax:end", addButton);  // `pjax:end` also runs on history back;
 
 	// on PR files tab;
 	var f;
