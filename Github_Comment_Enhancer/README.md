@@ -19,6 +19,10 @@ Add features to enhance comments & wiki on [Github](https://github.com) and comm
 
 ### Version History
 
+* **2.0**
+    * Fixed issues after recent layout updates (https://github.com/blog/1866-the-new-github-issues);
+    * Fixed pjax for new issues & PR listing pages;
+    * Added reply buttons (using [to-markdown](https://github.com/domchristie/to-markdown) to convert to Markdown);
 * **1.6**
     * Removed floating arrow (fixes https://github.com/jerone/UserScripts/issues/7);
     * Fixed history back;
@@ -55,8 +59,11 @@ Add features to enhance comments & wiki on [Github](https://github.com) and comm
 
 ### TODO
 
-- Allow on editing [markdown files](https://github.com/jerone/UserScripts/edit/master/README.md) -> to hard right now, requires knowledge of [ACE](https://github.com/ajaxorg/ace);
-- [Quick quoting](https://help.github.com/articles/writing-on-github#quick-quoting);
+- ~~Allow editing [markdown files](https://github.com/jerone/UserScripts/edit/master/README.md)~~ -> to hard right now, requires knowledge of hooking into [ACE](https://github.com/ajaxorg/ace);
+- ~~[Quick quoting](https://help.github.com/articles/writing-on-github#quick-quoting);~~
+    - Replying on inline comments should be in textarea below when open (not bottom);
+    - Add reply button to newly created replies and ajax loaded comments;
+    - Update preview when replying while preview is open;
 - [Syntax highlighting](https://help.github.com/articles/github-flavored-markdown#syntax-highlighting);
 - Keyboard shortcuts (https://github.com/ccampbell/mousetrap);
 - Add more snippets (predefined and executable);
