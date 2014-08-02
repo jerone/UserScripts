@@ -10,9 +10,11 @@
 // @downloadURL https://github.com/jerone/UserScripts/raw/master/Github_News_Feed_Filter/Github_News_Feed_Filter.user.js
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_News_Feed_Filter/Github_News_Feed_Filter.user.js
 // @include     https://github.com/
+// @include     https://github.com/?*
 // @include     https://github.com/orgs/*/dashboard
-// @include     https://github.com/*?tab=activity
-// @version     5.2
+// @include     https://github.com/orgs/*/dashboard?*
+// @include     https://github.com/*tab=activity*
+// @version     5.3
 // @grant       none
 // ==/UserScript==
 /* global Event */
@@ -20,65 +22,67 @@
 (function() {
 
 	var FILTERS = [
-		{ text: "All News Feed", icon: "octicon-radio-tower", classNames: ["*"] },
+		{ id: "*", text: "All News Feed", icon: "octicon-radio-tower", classNames: ["*"] },
 		{
-			text: "Issues", icon: "octicon-issue-opened", classNames: ["issues_opened", "issues_closed", "issues_reopened", "issues_comment"], subFilters: [
-				{ text: "Opened", icon: "octicon-issue-opened", classNames: ["issues_opened"] },
-				{ text: "Closed", icon: "octicon-issue-closed", classNames: ["issues_closed"] },
-				{ text: "Reopened", icon: "octicon-issue-reopened", classNames: ["issues_reopened"] },
-				{ text: "Comments", icon: "octicon-comment-discussion", classNames: ["issues_comment"] }
+			id: "issues", text: "Issues", icon: "octicon-issue-opened", classNames: ["issues_opened", "issues_closed", "issues_reopened", "issues_comment"], subFilters: [
+				{ id: "issues opened", text: "Opened", icon: "octicon-issue-opened", classNames: ["issues_opened"] },
+				{ id: "issues closed", text: "Closed", icon: "octicon-issue-closed", classNames: ["issues_closed"] },
+				{ id: "issues reopened", text: "Reopened", icon: "octicon-issue-reopened", classNames: ["issues_reopened"] },
+				{ id: "issues comments", text: "Comments", icon: "octicon-comment-discussion", classNames: ["issues_comment"] }
 			]
 		},
 		{
-			text: "Commits", icon: "octicon-git-commit", classNames: ["push", "commit_comment"], subFilters: [
-				{ text: "Pushed", icon: "octicon-git-commit", classNames: ["push"] },
-				{ text: "Comments", icon: "octicon-comment-discussion", classNames: ["commit_comment"] }
+			id: "commits", text: "Commits", icon: "octicon-git-commit", classNames: ["push", "commit_comment"], subFilters: [
+				{ id: "commits pushed", text: "Pushed", icon: "octicon-git-commit", classNames: ["push"] },
+				{ id: "commits comments", text: "Comments", icon: "octicon-comment-discussion", classNames: ["commit_comment"] }
 			]
 		},
 		{
-			text: "Pull Requests", icon: "octicon-git-pull-request", classNames: ["pull_request_opened", "pull_request_closed", "pull_request_merged", "pull_request_comment"], subFilters: [
-				{ text: "Opened", icon: "octicon-git-pull-request", classNames: ["pull_request_opened"] },
-				{ text: "Closed", icon: "octicon-git-pull-request-abandoned", classNames: ["pull_request_closed"] },
-				{ text: "Merged", icon: "octicon-git-merge", classNames: ["pull_request_merged"] },
-				{ text: "Comments", icon: "octicon-comment-discussion", classNames: ["pull_request_comment"] }
+			id: "pr", text: "Pull Requests", icon: "octicon-git-pull-request", classNames: ["pull_request_opened", "pull_request_closed", "pull_request_merged", "pull_request_comment"], subFilters: [
+				{ id: "pr opened", text: "Opened", icon: "octicon-git-pull-request", classNames: ["pull_request_opened"] },
+				{ id: "pr closed", text: "Closed", icon: "octicon-git-pull-request-abandoned", classNames: ["pull_request_closed"] },
+				{ id: "pr merged", text: "Merged", icon: "octicon-git-merge", classNames: ["pull_request_merged"] },
+				{ id: "pr comments", text: "Comments", icon: "octicon-comment-discussion", classNames: ["pull_request_comment"] }
 			]
 		},
 		{
-			text: "Repo", icon: "octicon-repo", classNames: ["create", "public", "fork", "branch_create", "branch_delete", "tag_add", "tag_remove", "release", "delete"], subFilters: [
-				{ text: "Created", icon: "octicon-repo-create", classNames: ["create"] },
-				{ text: "Public", icon: "octicon-repo-push", classNames: ["public"] },
-				{ text: "Forked", icon: "octicon-repo-forked", classNames: ["fork"] },
+			id: "repo", text: "Repo", icon: "octicon-repo", classNames: ["create", "public", "fork", "branch_create", "branch_delete", "tag_add", "tag_remove", "release", "delete"], subFilters: [
+				{ id: "repo created", text: "Created", icon: "octicon-repo-create", classNames: ["create"] },
+				{ id: "repo public", text: "Public", icon: "octicon-repo-push", classNames: ["public"] },
+				{ id: "repo forked", text: "Forked", icon: "octicon-repo-forked", classNames: ["fork"] },
 				{
-					text: "Branched", icon: "octicon-git-branch", classNames: ["branch_create", "branch_delete"], subFilters: [
-						{ text: "Created", icon: "octicon-git-branch-create", classNames: ["branch_create"] },
-						{ text: "Deleted", icon: "octicon-git-branch-delete", classNames: ["branch_delete"] }
+					id: "repo branched", text: "Branched", icon: "octicon-git-branch", classNames: ["branch_create", "branch_delete"], subFilters: [
+						{ id: "repo branch created", text: "Created", icon: "octicon-git-branch-create", classNames: ["branch_create"] },
+						{ id: "repo branch deleted", text: "Deleted", icon: "octicon-git-branch-delete", classNames: ["branch_delete"] }
 					]
 				},
 				{
-					text: "Tagged", icon: "octicon-tag", classNames: ["tag_add", "tag_remove"], subFilters: [
-						{ text: "Added", icon: "octicon-tag-add", classNames: ["tag_add"] },
-						{ text: "Removed", icon: "octicon-tag-remove", classNames: ["tag_remove"] }
+					id: "repo tagged", text: "Tagged", icon: "octicon-tag", classNames: ["tag_add", "tag_remove"], subFilters: [
+						{ id: "repo tag added", text: "Added", icon: "octicon-tag-add", classNames: ["tag_add"] },
+						{ id: "repo tag removed", text: "Removed", icon: "octicon-tag-remove", classNames: ["tag_remove"] }
 					]
 				},
-				{ text: "Released", icon: "octicon-repo-pull", classNames: ["release"] },
-				{ text: "Deleted", icon: "octicon-repo-delete", classNames: ["delete"] }
+				{ id: "repo released", text: "Released", icon: "octicon-repo-pull", classNames: ["release"] },
+				{ id: "repo deleted", text: "Deleted", icon: "octicon-repo-delete", classNames: ["delete"] }
 			]
 		},
 		{
-			text: "User", icon: "octicon-person", classNames: ["watch_started", "member_add", "team_add"], subFilters: [
-				{ text: "Starred", icon: "octicon-star", classNames: ["watch_started"] },
-				{ text: "Member added", icon: "octicon-person-add", classNames: ["member_add", "team_add"] }
+			id: "user", text: "User", icon: "octicon-person", classNames: ["watch_started", "member_add", "team_add"], subFilters: [
+				{ id: "user starred", text: "Starred", icon: "octicon-star", classNames: ["watch_started"] },
+				{ id: "user added", text: "Member added", icon: "octicon-person-add", classNames: ["member_add", "team_add"] }
 			]
 		},
-		{ text: "Wiki", icon: "octicon-book", classNames: ["gollum"] },
+		{ id: "wiki", text: "Wiki", icon: "octicon-book", classNames: ["gollum"] },
 		{
-			text: "Gist", icon: "octicon-gist", classNames: ["gist_created", "gist_updated"], subFilters: [
-				{ text: "Created", icon: "octicon-gist-new", classNames: ["gist_created"] },
-				{ text: "Updated", icon: "octicon-gist", classNames: ["gist_updated"] }
+			id: "gist", text: "Gist", icon: "octicon-gist", classNames: ["gist_created", "gist_updated"], subFilters: [
+				{ id: "gist created", text: "Created", icon: "octicon-gist-new", classNames: ["gist_created"] },
+				{ id: "gist updated", text: "Updated", icon: "octicon-gist", classNames: ["gist_updated"] }
 			]
 		}
 		// Possible other classes: follow
 	];
+
+	var datasetId = "githubNewsFeedFilterId";
 
 	function proxy(fn) {
 		return function() {
@@ -115,10 +119,7 @@
 		a.classList.add("filter-item");
 		a.setAttribute("href", "/");
 		a.setAttribute("title", filter.classNames.join(" & "));
-		if (filter.classNames[0] === "*") {
-			a.classList.add("selected");
-			a.style.fontWeight = "bold";
-		}
+		a.dataset[datasetId] = filter.id;
 
 		var s = document.createElement("span");
 		s.classList.add("octicon", filter.icon);
@@ -162,6 +163,15 @@
 
 			Array.forEach(sidebar.querySelectorAll(".selected"), function(m) { m.classList.remove("selected"); });
 			this.classList.add("selected");
+
+			if (this.dataset[datasetId] !== "*") {
+				var urlSearch = "filter=" + encodeURIComponent(this.dataset[datasetId]);
+				history.pushState(null, null, location.search && /filter=[^&]*/g.test(location.search)
+												? location.href.replace(/filter=[^&]*/g, urlSearch)
+												: location.href + (location.search ? "&" : "?") + urlSearch);
+			} else {
+				history.pushState(null, null, location.href.replace(/(filter=[^&]*&|\?filter=[^&]*$|&filter=[^&]*)/g, ""));  // http://regexr.com/398lv
+			}
 		}, filter.classNames));
 
 		var li = document.createElement("li");
@@ -227,7 +237,10 @@
 			}
 		});
 
-		sidebar.querySelector(".selected").dispatchEvent(new Event("click"));
+		var filter = /filter=[^&]*/g.test(location.search)
+						? decodeURIComponent(/filter=([^&]*)/g.exec(location.search)[1])
+						: "*";
+		wrapper.querySelector('.filter-item[data-github-news-feed-filter-id="' + filter + '"]').dispatchEvent(new Event("click"));
 	}
 
 	function addFilters() {

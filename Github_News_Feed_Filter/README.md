@@ -6,6 +6,8 @@
 
 Add filters for [Github homepage](https://github.com) news feed items.
 
+This script also works for organizations and on user profiles [public activity](https://github.com/jerone?tab=activity).
+
 Currently integrated filters:
 
 * Issues
@@ -54,6 +56,8 @@ Currently integrated filters:
 
 ### Version History
 
+* **5.3**
+    * Added filter history support;
 * **5.2**
     * Fixed issues after Github site update (https://github.com/jerone/UserScripts/issues/6);
 * **5.1**
@@ -91,12 +95,13 @@ Currently integrated filters:
 
 ### TODO
 
-- Remember filter choice (use href);
+- ~~Remember filter choice (use href);~~
 - Remove first alert border-top;
 - ~~Can probably run on users public activity stream too (https://github.com/jerone?tab=activity);~~ Only works on direct access.
+- Filter on project;
 
 ### External links
 
 * [Greasy Fork](https://greasyfork.org/scripts/171)
-* [OpenUserJS](https://openuserjs.org/scripts/jerone/httpsgithub.comjeroneUserScripts/Github_News_Feed_Filter)
+* [OpenUserJS](https://openuserjs.org/scripts/jerone/Github_News_Feed_Filter)
 * [MonkeyGuts](https://monkeyguts.com/code.php?id=95)
