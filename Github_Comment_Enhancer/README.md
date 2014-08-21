@@ -19,6 +19,8 @@ Add features to enhance comments & wiki on [Github](https://github.com) and comm
 
 ### Version History
 
+* **2.0.1**
+    * Small bug fix with reply after another layout update from Github;
 * **2.0**
     * Fixed issues after recent layout updates (https://github.com/blog/1866-the-new-github-issues);
     * Fixed pjax for new issues & PR listing pages;

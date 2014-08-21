@@ -10,7 +10,7 @@
 // @homepageURL https://github.com/jerone/UserScripts/tree/master/Github_Comment_Enhancer
 // @downloadURL https://github.com/jerone/UserScripts/raw/master/Github_Comment_Enhancer/Github_Comment_Enhancer.user.js
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_Comment_Enhancer/Github_Comment_Enhancer.user.js
-// @version     2.0
+// @version     2.0.1
 // @grant       none
 // @run-at      document-end
 // @include     https://github.com/*/*/issues
@@ -440,7 +440,7 @@
 					gollumEditor = document.getElementById("gollum-editor-function-bar");
 					var temp = document.createElement("div");
 					temp.innerHTML = editorHTML;
-					temp.firstChild.appendChild(document.getElementById("function-help"));  // restore the help button;
+					temp.firstElementChild.appendChild(document.getElementById("function-help"));  // restore the help button;
 					gollumEditor.replaceChild(temp.querySelector("#gollum-editor-function-buttons"), document.getElementById("gollum-editor-function-buttons"));
 					Array.forEach(temp.children, function(elm) {
 						elm.style.position = "absolute";
@@ -469,7 +469,7 @@
 					sponsoredIcon.classList.add("octicon", "octicon-question");
 					sponsored.appendChild(sponsoredIcon);
 					sponsored.appendChild(document.createTextNode("Enhanced by Github Comment Enhancer"));
-					tabnavExtras.insertBefore(sponsored, tabnavExtras.firstChild);
+					tabnavExtras.insertBefore(sponsored, tabnavExtras.firstElementChild);
 				}
 			}
 
@@ -680,7 +680,7 @@
 			if (!actions) {
 				actions = document.createElement("div");
 				actions.classList.add("timeline-comment-actions");
-				header.insertBefore(actions, header.firstChild);
+				header.insertBefore(actions, header.firstElementChild);
 			}
 
 			var reply = document.createElement("a");
@@ -704,9 +704,9 @@
 				var text = newComment.value.length > 0 ? "\n" : "";
 				text += String.format('@{0} commented on [{1}]({2} "{3} - Enhanced by Github Comment Enhancer"):\n{4}\n\n',
 					comment.querySelector(".author").textContent,
-					timestamp.firstChild.getAttribute("title"),
+					timestamp.firstElementChild.getAttribute("title"),
 					timestamp.href,
-					timestamp.firstChild.getAttribute("datetime"),
+					timestamp.firstElementChild.getAttribute("datetime"),
 					commentText);
 
 				newComment.value += text;
