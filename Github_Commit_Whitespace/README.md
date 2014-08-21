@@ -49,4 +49,4 @@ Use cases:
 ### External links
 
 * [Greasy Fork](https://greasyfork.org/scripts/467-github-commit-whitespace)
-* [OpenUserJS](https://openuserjs.org/scripts/jerone/httpsgithub.comjeroneUserScripts/Github_Commit_Whitespace)
+* [OpenUserJS](https://openuserjs.org/scripts/jerone/Github_Commit_Whitespace)

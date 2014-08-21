@@ -46,5 +46,5 @@ Currently supported sites:
 ### External links
 
 * [Greasy Fork](https://greasyfork.org/scripts/465-geenstijl-powned-dumpert-comment-enhancer)
-* [OpenUserJS](https://openuserjs.org/scripts/jerone/httpsgithub.comjeroneUserScripts/GeenStijl_Powned_Dumpert_Comment_Enhancer)
+* [OpenUserJS](https://openuserjs.org/scripts/jerone/GeenStijl_Powned_Dumpert_Comment_Enhancer)
 * [Userscripts.org](http://userscripts.org/scripts/show/35698) (not maintained anymore).

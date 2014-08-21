@@ -44,4 +44,4 @@ Use cases:
 ### External links
 
 * [Greasy Fork](https://greasyfork.org/scripts/77)
-* [OpenUserJS](https://openuserjs.org/scripts/jerone/httpsgithub.comjeroneUserScripts/Github_Commit_Diff)
+* [OpenUserJS](https://openuserjs.org/scripts/jerone/Github_Commit_Diff)
