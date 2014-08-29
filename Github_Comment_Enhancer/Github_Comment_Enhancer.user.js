@@ -423,13 +423,13 @@
 			document.getElementById("wiki_format").addEventListener("change", function() {
 				unbindGollumFunctions();
 
-				Array.forEach(document.querySelectorAll(".comment-form-textarea .function-button"), function(button) {
+				Array.prototype.forEach.call(document.querySelectorAll(".comment-form-textarea .function-button"), function(button) {
 					button.removeEventListener("click", functionButtonClick);
 				});
 			});
 		}
 
-		Array.forEach(document.querySelectorAll(".comment-form-textarea,.js-comment-field"), function(commentForm) {
+		Array.prototype.forEach.call(document.querySelectorAll(".comment-form-textarea,.js-comment-field"), function(commentForm) {
 			var gollumEditor;
 			if (commentForm.classList.contains("GithubCommentEnhancer")) {
 				gollumEditor = commentForm.previousSibling;
@@ -442,7 +442,7 @@
 					temp.innerHTML = editorHTML;
 					temp.firstElementChild.appendChild(document.getElementById("function-help"));  // restore the help button;
 					gollumEditor.replaceChild(temp.querySelector("#gollum-editor-function-buttons"), document.getElementById("gollum-editor-function-buttons"));
-					Array.forEach(temp.children, function(elm) {
+					Array.prototype.forEach.call(temp.children, function(elm) {
 						elm.style.position = "absolute";
 						elm.style.right = "30px";
 						elm.style.top = "0";
@@ -474,12 +474,12 @@
 			}
 
 			if (isGist()) {
-				Array.forEach(gollumEditor.parentNode.querySelectorAll(".select-menu-button"), function(button) {
+				Array.prototype.forEach.call(gollumEditor.parentNode.querySelectorAll(".select-menu-button"), function(button) {
 					button.style.paddingRight = "25px";
 				});
 			}
 
-			Array.forEach(gollumEditor.parentNode.querySelectorAll(".function-button"), function(button) {
+			Array.prototype.forEach.call(gollumEditor.parentNode.querySelectorAll(".function-button"), function(button) {
 				if (isGist() && button.classList.contains("minibutton")) {
 					button.style.padding = "0px";
 					button.style.textAlign = "center";
@@ -671,7 +671,7 @@
 	};
 
 	function addReplyButtons() {
-		Array.forEach(document.querySelectorAll(".comment"), function(comment) {
+		Array.prototype.forEach.call(document.querySelectorAll(".comment"), function(comment) {
 			var header = comment.querySelector(".timeline-comment-header"),
 				actions = comment.querySelector(".timeline-comment-actions"),
 				newComment = document.querySelector(".timeline-new-comment .comment-form-textarea");
@@ -735,7 +735,7 @@
 
 	// for inline comments;
 	var files = document.querySelectorAll('.file-code');
-	Array.forEach(files, function(file) {
+	Array.prototype.forEach.call(files, function(file) {
 		file = file.firstElementChild;
 		new MutationObserver(function(mutations) {
 			mutations.forEach(function(mutation) {
