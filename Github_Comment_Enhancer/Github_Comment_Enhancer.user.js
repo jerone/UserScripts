@@ -672,6 +672,9 @@
 
 	function addReplyButtons() {
 		Array.forEach(document.querySelectorAll(".comment"), function(comment) {
+			var oldReply = comment.querySelector(".GithubCommentEnhancerReply");
+			if (oldReply) { oldReply.parentNode.removeChild(oldReply); }
+				
 			var header = comment.querySelector(".timeline-comment-header"),
 				actions = comment.querySelector(".timeline-comment-actions"),
 				newComment = document.querySelector(".timeline-new-comment .comment-form-textarea");
@@ -685,7 +688,7 @@
 
 			var reply = document.createElement("a");
 			reply.setAttribute("href", "#");
-			reply.classList.add("octicon", "octicon-mail-reply");
+			reply.classList.add("GithubCommentEnhancerReply", "octicon", "octicon-mail-reply");
 			reply.addEventListener("click", function(e) {
 				e.preventDefault();
 
