@@ -118,7 +118,7 @@
 							hasContent = /[\w]+/;
 						for (var i = 0; i < lines.length; i++) {
 							if (hasContent.test(lines[i])) {
-								repText += String.format("$0. $1\n", i + 1, lines[i]);
+								repText += String.format("{0}. {1}\n", i + 1, lines[i]);
 							}
 						}
 					}
