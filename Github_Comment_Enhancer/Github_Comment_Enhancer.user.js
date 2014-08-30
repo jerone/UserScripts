@@ -178,7 +178,7 @@
 	var editorHTML = (function editorHTML() {
 		return '<div id="gollum-editor-function-buttons" style="float: left;">' +
 				'	<div class="button-group">' +
-				'		<a href="#" id="function-bold" class="minibutton function-button tooltipped tooltipped-ne" aria-label="Bold">' +
+				'		<a href="#" id="function-bold" class="minibutton function-button tooltipped tooltipped-ne" aria-label="Bold" style="height:26px;">' +
 				'			<b style="font-weight: bolder;">B</b>' +
 				'		</a>' +
 				'		<a href="#" id="function-italic" class="minibutton function-button tooltipped tooltipped-ne" aria-label="Italic">' +
