@@ -4,16 +4,16 @@ Anyone can contribute to this repo, so long as you don't break anything on purpo
 ### Bug reporting
 Please [report any errors](https://github.com/jerone/UserScripts/issues/new) you're having with one of the scripts. This will help you and others and make the script better.
 
-When reporting please use the following template to speed up progress:
+When reporting an issue include the script name in the title and follow the template below for it's description:
 
-> **Script**: {name} {version}<br />
-> **Browser**: {version}<br />
-> **Greasemonkey**: {version}<br />
-> **Error Message**: {message}<br />
-> **Screenshot**: {drag&drop}<br />
-> **Description**: {description}<br />
+> **Script**: `{name}` `{version}`<br />
+> **Browser**: `{name}` `{version}`<br />
+> **Addon** (e.g. Greasemonkey): `{name}` `{version}`<br />
+> **Error Message**: `{message}`<br />
+> **Screenshot**: `{drag&drop}`<br />
+> **Description**: `{description}`<br />
 
-Or click [here](https://github.com/jerone/UserScripts/issues/new?title=Issue%20%7Bdescription%7D&body=**Script**%3A%20%7Bname%7D%20%7Bversion%7D%0A**Browser**%3A%20%7Bversion%7D%0A**Greasemonkey**%3A%20%7Bversion%7D%0A**Error%20Message**%3A%20%7Bmessage%7D%0A**Screenshot**%3A%20%7Bdrag%26drop%7D%0A**Description**%3A%20%7Bdescription%7D) to open a new issue.
+**Or click [here](https://github.com/jerone/UserScripts/issues/new?title=%28{script%20name}%29%20{summary}&body=**Script**%3A%20{name}%20{version}%0A**Browser**%3A%20{name}%20{version}%0A**Addon**%20%28e.g.%20Greasemonkey%29%3A%20{name}%20{version}%0A**Error%20Message**%3A%20%60{message}%60%0A**Screenshot**%3A%20{drag%26drop}%0A**Description**%3A%20{description}) to open a new issue.**
 
 ### Bug fixes
 If you find any sort of error, spelling mistak, etc. in this project, feel free to fix it and submit a [pull request](https://github.com/jerone/UserScripts/pulls) with your commit. Little fixes like this are welcomed and are usually accepted pretty quickly.
