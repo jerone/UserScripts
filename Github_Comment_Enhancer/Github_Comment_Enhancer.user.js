@@ -24,7 +24,7 @@
 // ==/UserScript==
 /* global unsafeWindow */
 
-(function() {
+(function(unsafeWindow) {
 
 	String.format = function(string) {
 		var args = Array.prototype.slice.call(arguments, 1, arguments.length);
@@ -749,4 +749,4 @@
 		}).observe(file, { childList: true, subtree: true });
 	});
 
-})();
+})(typeof unsafeWindow !== "undefined" ? unsafeWindow : window);
