@@ -14,11 +14,16 @@ Add features to enhance comments & wiki on [Github](https://github.com) and comm
 
 * [![](https://raw.github.com/jerone/UserScripts/master/_resources/Greasemonkey.png) Greasemonkey](https://addons.mozilla.org/firefox/addon/greasemonkey/) on [![](https://raw.github.com/jerone/UserScripts/master/_resources/Firefox.png) Mozilla Firefox Desktop](http://www.mozilla.org/en-US/firefox/fx/#desktop).
 * [![](https://raw.github.com/jerone/UserScripts/master/_resources/Scriptish.png) Scriptish](https://addons.mozilla.org/firefox/addon/scriptish/) on [![](https://raw.github.com/jerone/UserScripts/master/_resources/Firefox.png) Mozilla Firefox Desktop](http://www.mozilla.org/en-US/firefox/fx/#desktop).
+* [![](https://raw.github.com/jerone/UserScripts/master/_resources/Chromium.png) Native](http://www.chromium.org/developers/design-documents/user-scripts) on [![](https://raw.github.com/jerone/UserScripts/master/_resources/GoogleChrome.png) Google Chrome Desktop](https://www.google.com/chrome/).
+* [![](https://raw.github.com/jerone/UserScripts/master/_resources/Tampermonkey.png) TamperMonkey](http://tampermonkey.net) on [![](https://raw.github.com/jerone/UserScripts/master/_resources/GoogleChrome.png) Google Chrome Desktop](https://www.google.com/chrome/).
 
 <sub>Please [notify](https://github.com/jerone/UserScripts/issues/new?title=Userscript%20%3Cname%3E%20%28%3Cversion%3E%29%20also%20works%20in%20%3Cbrowser%3E%20on%20%3Cdesktop/device%3E) when this userscript is successfully tested in another browser...</sub>
 
 ### Version History
 
+* **2.0.2**
+    * Fix multiple reply buttons when navigating back;
+    * Added native & TamperMonkey for Google Chrome compatibility;
 * **2.0.1**
     * Small bug fix with reply after another layout update from Github;
 * **2.0**
@@ -62,12 +67,6 @@ Add features to enhance comments & wiki on [Github](https://github.com) and comm
 ### TODO
 
 - ~~Allow editing [markdown files](https://github.com/jerone/UserScripts/edit/master/README.md)~~ -> to hard right now, requires knowledge of hooking into [ACE](https://github.com/ajaxorg/ace);
-- ~~[Quick quoting](https://help.github.com/articles/writing-on-github#quick-quoting);~~
-    - Replying on inline comments should be in textarea below when open (not bottom);
-    - Add reply button to newly created replies and ajax loaded comments;
-    - Update preview when replying while preview is open;
-- [Syntax highlighting](https://help.github.com/articles/github-flavored-markdown#syntax-highlighting);
-- Keyboard shortcuts (https://github.com/ccampbell/mousetrap);
 - Add more snippets (predefined and executable);
 
 ### Notes
@@ -80,6 +79,10 @@ Test cases:
 - https://github.com/jerone/UserScripts/wiki/_new (new wiki)
 - https://github.com/jerone/OpenUserJS.org/compare/master...app_route (new PR)
 - https://gist.github.com/jerone/9526258 (new comment & edit comment)
+
+### Contributors
+
+- [tophf](https://github.com/tophf)
 
 ### External links
 
