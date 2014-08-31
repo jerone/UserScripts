@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Horizon TV Fixer
 // @namespace   https://github.com/jerone/UserScripts
-// @description Fixes some issues & styles and adds some new features on Horizon TV Gids.
+// @description Improves the Horizon TV Gids by extending the functionality and the layout of the site.
 // @author      jerone
 // @copyright   2014+, jerone (http://jeroenvanwarmerdam.nl)
 // @license     GNU GPLv3
@@ -9,12 +9,14 @@
 // @homepageURL https://github.com/jerone/UserScripts/tree/master/Horizon_TV_Fixer
 // @downloadURL https://github.com/jerone/UserScripts/raw/master/Horizon_TV_Fixer/155147.user.js
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Horizon_TV_Fixer/155147.user.js
-// @include     *horizon.tv*
-// @version     19
+// @version     20
 // @grant       none
+// @include     *horizon.tv*
 // ==/UserScript==
 
 (function HorizonTVFixer(){
+
+	if(!unsafeWindow.BBVSettingsObject){ return; }  // ignore iframes;
 
 	console.log("Version: " + unsafeWindow.BBVSettingsObject.version.major + "." + unsafeWindow.BBVSettingsObject.version.minor + "." + unsafeWindow.BBVSettingsObject.version.micro);
 
@@ -41,8 +43,8 @@
 			},
 			Twitter: {
 				submit: function(title, subtitle, channel, time){
-					return "https://twitter.com/intent/tweet?original_referer=" + encodeURIComponent(url) + 
-								"&source=tweetbutton&url=" + encodeURIComponent(url) + 
+					return "https://twitter.com/intent/tweet?original_referer=" + encodeURIComponent(url) +
+								"&source=tweetbutton&url=" + encodeURIComponent(url) +
 								"&text=" + encodeURIComponent(title + (subtitle ? " - " + subtitle : "") + " op " + channel + " om " + time + " -");
 				},
 				icon: "https://twitter.com/favicon.ico"
@@ -112,68 +114,82 @@
 	});
 
 
-	/* Live/HD green square explanation is removed by CSS fixes below, so we add it back; */
-	PageLoad(function(){
-		Array.forEach(document.querySelectorAll(".live-hd"), (live) => {
-			live.title = "Kijk LIVE";
-		});
-	});
-
 	/* Style fixes; */
 	addStyle(
-/* removed white header; */								"\
-.servicenav.service {									\
-	display: none;										\
-}														"+
+		/* removed white header; */								"\
+		.servicenav.service {									\
+			display: none;										\
+		}														"+
 
-/* cropped header; */									"\
-.header-options {										\
-	margin-top: 5px !important;							\
-}														\
-.utility-wrapper,										\
-.utility-bar {											\
-	height: 35px !important;							\
-}														\
-.branding {												\
-	display: none;										\
-}														\
-#modules {												\
-	padding-top: 0;										\
-}														\
-.channel-guide.module {									\
-	padding-top: 10px;									\
-}														\
-.channel-guide.module div.pinned {						\
-	top : 35px;											\
-	padding: 10px 0 0 0;								\
-}														\
-.navigationbar.pinned {									\
-	display: none;										\
-}														\
-.utilitybar.pinned {									\
-	background: none;									\
-}														\
-#channel-guide-head {									\
-	display: none;										\
-}														"+
+		/* cropped header; */									"\
+		.header-options {										\
+			margin-top: 5px !important;							\
+		}														\
+		.utility-wrapper,										\
+		.utility-bar {											\
+			height: 35px !important;							\
+		}														\
+		.branding {												\
+			display: none;										\
+		}														\
+		#modules {												\
+			padding-top: 0;										\
+		}														\
+		.channel-guide.module {									\
+			padding-top: 10px;									\
+		}														\
+		.channel-guide.module div.pinned {						\
+			top : 35px;											\
+			padding: 10px 0 0 0;								\
+		}														\
+		.navigationbar.pinned {									\
+			display: none;										\
+		}														\
+		.utilitybar.pinned {									\
+			background: none;									\
+		}														\
+		#channel-guide-head {									\
+			display: none;										\
+		}														"+
 
-/* always show channel logo; */							"\
-.network a.logo-active {								\
-	display: block !important;							\
-}														\
-.network a.logo-inactive {								\
-	display: none !important;							\
-}														"+
+		/* lower listings; */									"\
+		.channel-listing .listings,								\
+		.channel-listing .listings .listing,					\
+		.channel-listing .listings .listing.active,				\
+		.channel-listing .listings .listing .asset-details,		\
+		.channel-listing .listings .listing span.title {		\
+			height: auto;										\
+		}														\
+		.channel-listing .listings .listing .asset-details {	\
+			height: 24px;										\
+		}														\
+		.network span.channel-number {							\
+			top: 10px;											\
+		}														\
+		.network a.logo-active img {							\
+			max-height: 29px;									\
+		}														\
+		.network .labels {										\
+			left: -10px;										\
+		}														"+
 
-/* always show channel number; */						"\
-.network span.channel-number {							\
-	display: block !important;							\
-}														"+
+		/* always show channel logo; */							"\
+		.network a.logo-active {								\
+			display: block !important;							\
+		}														\
+		.network a.logo-inactive {								\
+			display: none !important;							\
+		}														"+
 
-/* hide bottom bar; */									"\
-.MyOrionBar  {											\
-	display: none;										\
-}														"+
+		/* always show channel number; */						"\
+		.network span.channel-number {							\
+			display: block !important;							\
+		}														"+
+
+		/* hide bottom bar; */									"\
+		.MyOrionBar  {											\
+			display: none;										\
+		}														"+
 	"");
 
 	function addStyle(css){
@@ -195,9 +211,9 @@
 
 	function ForEachListing(name, done){
 		PageLoad(function(){
-			var listings = document.querySelectorAll(".listing:not(.done-"+name+")");  // get all listings that don't have been processed yet;
+			var listings = document.querySelectorAll(".listing:not(.done-" + name + ")");  // get all listings that don't have been processed yet;
 			Array.forEach(listings, (listing) => {
-				listing.classList.add("done-"+name);  // mark element as done;
+				listing.classList.add("done-" + name);  // mark element as done;
 				done(listing);
 			});
 		});
