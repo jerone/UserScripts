@@ -24,6 +24,10 @@ An userscript that enhances the pdf.js window in Firefox.
 
 ### Notes
 
+Documentations:
+
+- https://github.com/mozilla/pdf.js
+
 Test cases:
 
 - http://mozilla.github.io/pdf.js/web/viewer.html?file=compressed.tracemonkey-pldi-09.pdf
