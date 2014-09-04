@@ -9,7 +9,7 @@
 // @homepageURL https://github.com/jerone/UserScripts/tree/master/Github_Pull_Request_From
 // @downloadURL https://github.com/jerone/UserScripts/raw/master/Github_Pull_Request_From/Github_Pull_Request_From.user.js
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_Pull_Request_From/Github_Pull_Request_From.user.js
-// @version     11
+// @version     12
 // @grant       none
 // @include     https://github.com/*/*
 // ==/UserScript==
@@ -28,6 +28,7 @@
 	function init() {
 		var repo = document.querySelector(".js-current-repository").textContent;
 		Array.prototype.forEach.call(document.querySelectorAll("span.commit-ref.current-branch"), function(treeSpan) {
+			if (treeSpan.querySelector(".unknown-repo")) { return; }
 			var tree = treeSpan.textContent.trim().split(":");
 			var treeLink = document.createElement("a");
 			treeLink.setAttribute("href", String.format("https://github.com/{0}/{1}/tree/{2}",

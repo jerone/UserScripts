@@ -21,6 +21,8 @@ Make pull request original branch linkable.
 
 ### Version History
 
+* **12**
+    * Don't link "unknown repository" (fixes https://github.com/jerone/UserScripts/issues/22);
 * **11**
     * Fixed issues after recent layout updates;
     * Added native & TamperMonkey for Google Chrome compatibility;
