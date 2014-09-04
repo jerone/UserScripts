@@ -31,7 +31,7 @@ Make pull request original branch linkable.
 
 Test cases:
 
-- https://github.com/jerone/UserScripts/pull/12 (4 records);
+* https://github.com/jerone/UserScripts/pull/12 (2 valid, 2 missing);
 
 ### Contributions
 
