@@ -19,6 +19,8 @@ Adds button to show diff file for commit. Hold Shift key to open the patch file.
 
 ### Version History
 
+* **1.6**
+    * Fixed align issue with new split diffs (fixes https://github.com/jerone/UserScripts/issues/24);
 * **1.5**
     * Fixed issues after recent layout updates (fixes https://github.com/jerone/UserScripts/issues/8);
 * **1.4**
