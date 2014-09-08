@@ -6,11 +6,13 @@
 
 Adds button to hide whitespaces from commit.
 
+This works on commits, pull requests and compare pages.
+
 ### Screenshot
 
-#### Before
+##### Before
 ![Github Commit Whitespace screenshot before](https://github.com/jerone/UserScripts/raw/master/Github_Commit_Whitespace/screenshot_before.jpg)
-#### After
+##### After
 ![Github Commit Whitespace screenshot after](https://github.com/jerone/UserScripts/raw/master/Github_Commit_Whitespace/screenshot_after.jpg)
 
 ### Compatible
@@ -22,6 +24,8 @@ Adds button to hide whitespaces from commit.
 
 ### Version History
 
+* **1.4.1**
+    * Tooltips now on top;
 * **1.4**
     * Fixed align & url issues with new split diffs (fixes https://github.com/jerone/UserScripts/issues/25);
 * **1.3**
@@ -36,17 +40,13 @@ Adds button to hide whitespaces from commit.
 * **1.0**
     * Initial version;
 
-### TODO
-
-* Remember filter choice;
-
 ### Notes
 
 Use cases:
 
-* https://github.com/OpenUserJs/OpenUserJS.org/commit/64530e854874433c76a584b90b14196522ef54a8
-* https://github.com/diegocr/GitHubExtIns/pull/10/files
-* https://github.com/OpenUserJs/OpenUserJS.org/compare/master%40%7B1day%7D...master
+* https://github.com/OpenUserJs/OpenUserJS.org/commit/aac291b83a5d5fa4fb4382080473ef3a4dd908c2 (commit)
+* https://github.com/OpenUserJs/OpenUserJS.org/pull/327/files (pr)
+* https://github.com/OpenUserJs/OpenUserJS.org/compare/master%40%7B1day%7D...master (compare)
 
 ### External links
 

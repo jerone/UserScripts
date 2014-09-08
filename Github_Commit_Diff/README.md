@@ -6,6 +6,8 @@
 
 Adds button to show diff file for commit. Hold Shift key to open the patch file.
 
+This works on commits, pull requests and compare pages.
+
 ### Screenshot
 
 ![Github Commit Diff screenshot](https://github.com/jerone/UserScripts/raw/master/Github_Commit_Diff/screenshot.jpg)
@@ -19,6 +21,8 @@ Adds button to show diff file for commit. Hold Shift key to open the patch file.
 
 ### Version History
 
+* **1.6.1**
+    * Tooltips now on top;
 * **1.6**
     * Fixed align issue with new split diffs (fixes https://github.com/jerone/UserScripts/issues/24);
 * **1.5**
@@ -39,9 +43,9 @@ Adds button to show diff file for commit. Hold Shift key to open the patch file.
 
 Use cases:
 
-* https://github.com/OpenUserJs/OpenUserJS.org/commit/64530e854874433c76a584b90b14196522ef54a8
-* https://github.com/diegocr/GitHubExtIns/pull/10/files
-* https://github.com/OpenUserJs/OpenUserJS.org/compare/master%40%7B1day%7D...master
+* https://github.com/OpenUserJs/OpenUserJS.org/commit/aac291b83a5d5fa4fb4382080473ef3a4dd908c2 (commit)
+* https://github.com/OpenUserJs/OpenUserJS.org/pull/327/files (pr)
+* https://github.com/OpenUserJs/OpenUserJS.org/compare/master%40%7B1day%7D...master (compare)
 
 ### External links
 

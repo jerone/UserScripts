@@ -10,7 +10,7 @@
 // @downloadURL https://github.com/jerone/UserScripts/raw/master/Github_Commit_Whitespace/Github_Commit_Whitespace.user.js
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_Commit_Whitespace/Github_Commit_Whitespace.user.js
 // @include     https://github.com/*
-// @version     1.4
+// @version     1.4.1
 // @grant       none
 // ==/UserScript==
 /* global unsafeWindow */
@@ -25,7 +25,7 @@
 		var r = e.querySelector(".GithubCommitWhitespaceButton");
 		if (r) { r.parentElement.removeChild(r); }
 
-		var on = /w=/.test(location.search);
+		var on = /w=/.test(location.search);  // any occurense results in enabling;
 
 		var b = e.querySelector(".toc-diff-stats");
 
@@ -34,12 +34,11 @@
 		s.style.color = "#333";  // set color because of css selector `p.explain .octicon`;
 
 		var a = document.createElement("a");
-		a.classList.add("minibutton", "tooltipped", "tooltipped-s");
+		a.classList.add("minibutton", "tooltipped", "tooltipped-n");
 		if (on) { a.classList.add("selected"); }
 		a.setAttribute("href", url(on));
-		a.setAttribute("title", on ? "Show commit whitespace" : "Hide commit whitespaces");
 		a.setAttribute("rel", "nofollow");
-		a.setAttribute("aria-label", a.getAttribute("title"));
+		a.setAttribute("aria-label", on ? "Show commit whitespace" : "Hide commit whitespaces");
 		a.appendChild(s);
 
 		var g = document.createElement("div");

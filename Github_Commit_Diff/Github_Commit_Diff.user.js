@@ -10,7 +10,7 @@
 // @downloadURL https://github.com/jerone/UserScripts/raw/master/Github_Commit_Diff/Github_Commit_Diff.user.js
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_Commit_Diff/Github_Commit_Diff.user.js
 // @include     https://github.com/*
-// @version     1.6
+// @version     1.6.1
 // @grant       none
 // ==/UserScript==
 /* global unsafeWindow */
@@ -39,11 +39,10 @@
 		s.style.color = "#333";  // set color because of css selector `p.explain .octicon`;
 
 		var a = document.createElement("a");
-		a.classList.add("minibutton", "tooltipped", "tooltipped-s");
+		a.classList.add("minibutton", "tooltipped", "tooltipped-n");
 		a.setAttribute("href", getPatchOrDiffHref("diff"));
-		a.setAttribute("title", "Show commit diff.\r\nHold Shift to open commit patch.");
 		a.setAttribute("rel", "nofollow");
-		a.setAttribute("aria-label", a.getAttribute("title"));
+		a.setAttribute("aria-label", "Show commit diff.\r\nHold Shift to open commit patch.");
 		a.appendChild(s);
 		a.appendChild(document.createTextNode(" Diff"));
 
