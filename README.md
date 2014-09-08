@@ -29,6 +29,7 @@ This repo contains a few of my userscripts that I've build (in no particulair or
 * [Greasy Fork](https://greasyfork.org/users/15)
 * [OpenUserJs](https://openuserjs.org/users/jerone)
 * [MonkeyGuts](https://monkeyguts.com/author.php?un=jerone)
+* [myUserJS](http://myuserjs.org/user/jerone)
 
 ### Contributing
 
