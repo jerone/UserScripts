@@ -1,6 +1,8 @@
 [UserScripts](https://github.com/jerone/UserScripts)
 ===========
 
+[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/jerone/UserScripts?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+
 ### Description
 
 This repo contains a few of my userscripts that I've build (in no particulair order):
@@ -10,6 +12,7 @@ This repo contains a few of my userscripts that I've build (in no particulair or
     * [Github News Feed Filter](https://github.com/jerone/UserScripts/tree/master/Github_News_Feed_Filter) - Add filters for Github homepage news feed items.
     * [Github Commit Diff](https://github.com/jerone/UserScripts/tree/master/Github_Commit_Diff) - Adds button to show diff (or patch) file for commit.
     * [Github Commit Whitespace](https://github.com/jerone/UserScripts/tree/master/Github_Commit_Whitespace) - Adds button to hide whitespaces from commit.
+    * [Github Image Viewer](https://github.com/jerone/UserScripts/tree/master/Github_Image_Viewer) - Preview images from within the listing.
     * [Github Pull Request From](https://github.com/jerone/UserScripts/tree/master/Github_Pull_Request_From) - Make pull request original branch linkable.
     * [Github Gist Share](https://github.com/jerone/UserScripts/tree/master/Github_Gist_Share) - Share your GitHub Gist to Twitter, Dabblet & as userscript.
 * Twitter
