@@ -74,7 +74,6 @@
 
 				console.log(page.canvas, img, arguments);
 
-
 				//if (!page.canvas) { page.draw(); }
 				var img2 = document.createElement("img");
 				//img2.style.width = "16px";
