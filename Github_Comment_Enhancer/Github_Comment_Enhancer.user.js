@@ -674,7 +674,7 @@
 		Array.prototype.forEach.call(document.querySelectorAll(".comment"), function(comment) {
 			var oldReply = comment.querySelector(".GithubCommentEnhancerReply");
 			if (oldReply) { oldReply.parentNode.removeChild(oldReply); }
-				
+
 			var header = comment.querySelector(".timeline-comment-header"),
 				actions = comment.querySelector(".timeline-comment-actions"),
 				newComment = document.querySelector(".timeline-new-comment .comment-form-textarea");
@@ -688,7 +688,8 @@
 
 			var reply = document.createElement("a");
 			reply.setAttribute("href", "#");
-			reply.classList.add("GithubCommentEnhancerReply", "octicon", "octicon-mail-reply");
+			reply.setAttribute("aria-label", "Reply to this comment");
+			reply.classList.add("GithubCommentEnhancerReply", "timeline-comment-action", "tooltipped", "tooltipped-ne");
 			reply.addEventListener("click", function(e) {
 				e.preventDefault();
 
@@ -705,7 +706,7 @@
 				}).join("\n");
 
 				var text = newComment.value.length > 0 ? "\n" : "";
-				text += String.format('@{0} commented on [{1}]({2} "{3} - Enhanced by Github Comment Enhancer"):\n{4}\n\n',
+				text += String.format('@{0} commented on [{1}]({2} "{3} - Replied by Github Comment Enhancer"):\n{4}\n\n',
 					comment.querySelector(".author").textContent,
 					timestamp.firstElementChild.getAttribute("title"),
 					timestamp.href,
@@ -717,12 +718,11 @@
 				newComment.focus();
 			});
 
-			var replyWrapper = document.createElement("span");
-			replyWrapper.setAttribute("aria-label", "Reply to this comment");
-			replyWrapper.classList.add("tooltipped", "tooltipped-ne");
-			replyWrapper.appendChild(reply);
+			var replyIcon = document.createElement("span");
+			replyIcon.classList.add("octicon", "octicon-mail-reply");
+			reply.appendChild(replyIcon);
 
-			actions.appendChild(replyWrapper);
+			actions.appendChild(reply);
 		});
 	}
 
