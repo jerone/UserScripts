@@ -21,9 +21,13 @@ Add features to enhance comments & wiki on [Github](https://github.com) and comm
 
 ### Version History
 
+* **2.0.3**
+    * Fixed reply button style issue after recent layout update;
+    * Fix ordered list with multi-line (fixes https://github.com/jerone/UserScripts/issues/20);
+    * Small style fix with bold button in Chrome;
 * **2.0.2**
     * Fix multiple reply buttons when navigating back;
-    * Added native & TamperMonkey for Google Chrome compatibility;
+    * Added native & TamperMonkey for Google Chrome compatibility (fixes https://github.com/jerone/UserScripts/issues/11);
 * **2.0.1**
     * Small bug fix with reply after another layout update from Github;
 * **2.0**
@@ -66,23 +70,23 @@ Add features to enhance comments & wiki on [Github](https://github.com) and comm
 
 ### TODO
 
-- ~~Allow editing [markdown files](https://github.com/jerone/UserScripts/edit/master/README.md)~~ -> to hard right now, requires knowledge of hooking into [ACE](https://github.com/ajaxorg/ace);
-- Add more snippets (predefined and executable);
+* ~~Allow editing [markdown files](https://github.com/jerone/UserScripts/edit/master/README.md)~~ -> to hard right now, requires knowledge of hooking into [ACE](https://github.com/ajaxorg/ace);
+* Add more snippets (predefined and executable);
 
 ### Notes
 
 Test cases:
 
-- https://github.com/jerone/UserScripts/issues/new (new issue)
-- https://github.com/jerone/UserScripts/issues/1 (new comment & edit comment)
-- https://github.com/jerone/UserScripts/commit/master (comments below & inline comments)
-- https://github.com/jerone/UserScripts/wiki/_new (new wiki)
-- https://github.com/jerone/OpenUserJS.org/compare/master...app_route (new PR)
-- https://gist.github.com/jerone/9526258 (new comment & edit comment)
+* https://github.com/jerone/UserScripts/issues/new (new issue)
+* https://github.com/jerone/UserScripts/issues/1 (new comment & edit comment)
+* https://github.com/jerone/UserScripts/commit/master (comments below & inline comments)
+* https://github.com/jerone/UserScripts/wiki/_new (new wiki)
+* https://github.com/jerone/OpenUserJS.org/compare/master...app_route (new PR)
+* https://gist.github.com/jerone/9526258 (new comment & edit comment)
 
 ### Contributors
 
-- [tophf](https://github.com/tophf)
+* [tophf](https://github.com/tophf)
 
 ### External links
 
