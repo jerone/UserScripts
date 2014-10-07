@@ -37,9 +37,9 @@
 			},
 			YouTube: {
 				submit: function(title, subtitle, channel, time){
-					return "http://www.youtube.com/results?search_query=" + encodeURIComponent((title + (subtitle ? " - " + subtitle : "")).trim());
+					return "https://youtube.com/results?search_query=" + encodeURIComponent((title + (subtitle ? " - " + subtitle : "")).trim());
 				},
-				icon: "http://www.youtube.com/favicon.ico"
+				icon: "https://youtube.com/favicon.ico"
 			},
 			Twitter: {
 				submit: function(title, subtitle, channel, time){
@@ -63,9 +63,9 @@
 			},
 			IPTorrents: {
 				submit: function(title, subtitle, channel, time){
-					return "http://iptorrents.com/torrents?q=" + encodeURIComponent(title.trim());
+					return "https://iptorrents.com/torrents?q=" + encodeURIComponent(title.trim());
 				},
-				icon: "http://iptorrents.com/favicon.ico"
+				icon: "https://iptorrents.com/favicon.ico"
 			}
 		};
 	var _orion_modules_EPG_ListingsView_prototype_showDetails = unsafeWindow.orion.modules.EPG.ListingsView.prototype.showDetails;  // https://www.horizon.tv/etc/designs/orion/upc/js/orion/modules/EPG/ListingsView.js?v=34
