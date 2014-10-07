@@ -32,6 +32,10 @@ This script doesn't work on browser that don't implement [ES6 arrow functions](h
 
 ### Version History
 
+* **21** (v1.1.70)
+    * HTTPS icons;
+    * Move time arrow higher (result of new version 1.1.70);
+    * Smaller font size in listing;
 * **20** (v1.1.67)
     * Removed previous "Kijk Live TV" logic;
     * Smaller listings to fit more channels;
@@ -44,7 +48,7 @@ This script doesn't work on browser that don't implement [ES6 arrow functions](h
 
 ### Notes
 
-Build for version 1.1.67
+Build for version 1.1.70
 
 ### External links
 

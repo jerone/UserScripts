@@ -9,7 +9,7 @@
 // @homepageURL https://github.com/jerone/UserScripts/tree/master/Horizon_TV_Fixer
 // @downloadURL https://github.com/jerone/UserScripts/raw/master/Horizon_TV_Fixer/155147.user.js
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Horizon_TV_Fixer/155147.user.js
-// @version     20
+// @version     21
 // @grant       none
 // @include     *horizon.tv*
 // ==/UserScript==
