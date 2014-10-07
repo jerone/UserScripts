@@ -150,6 +150,9 @@
 		}														\
 		#channel-guide-head {									\
 			display: none;										\
+		}														\
+		.channel-guide .gids-panel .current-time:before {		\
+			top: -42px;											\
 		}														"+
 
 		/* lower listings; */									"\
