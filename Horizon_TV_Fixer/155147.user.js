@@ -173,6 +173,11 @@
 			left: -10px;										\
 		}														"+
 
+		/* smaller font size in listing; */						"\
+		.channel-listing .listings .listing span {				\
+			font-size: 12px;									\
+		}														"+
+
 		/* always show channel logo; */							"\
 		.network a.logo-active {								\
 			display: block !important;							\
