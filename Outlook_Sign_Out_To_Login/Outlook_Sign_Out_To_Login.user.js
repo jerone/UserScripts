@@ -15,5 +15,5 @@
 // ==/UserScript==
 
 (function() {
-	document.getElementById("c_signout").href = "https://login.live.com/logout.srf?id=64855";
+	document.getElementById("c_signout") && (document.getElementById("c_signout").href = "https://login.live.com/logout.srf?id=64855");
 })();
