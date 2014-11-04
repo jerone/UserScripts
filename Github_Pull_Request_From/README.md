@@ -48,5 +48,5 @@ Test cases:
 
 ## External links
 
-* [Greasy Fork](https://greasyfork.org/scripts/64)
+* [Greasy Fork](https://greasyfork.org/scripts/64-github-pull-request-from-link)
 * [OpenUserJS](https://openuserjs.org/scripts/jerone/Github_Pull_Request_From_Link)

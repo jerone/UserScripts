@@ -108,6 +108,6 @@ Currently integrated filters:
 
 ## External links
 
-* [Greasy Fork](https://greasyfork.org/scripts/171)
+* [Greasy Fork](https://greasyfork.org/scripts/493-github-comment-enhancer)
 * [OpenUserJS](https://openuserjs.org/scripts/jerone/Github_News_Feed_Filter)
 

@@ -63,4 +63,5 @@ Build for version 1.1.72
 
 ## External links
 
-* [Greasy Fork](https://greasyfork.org/scripts/65)
+* [Greasy Fork](https://greasyfork.org/scripts/65-horizon-tv-fixer)
+* [OpenUserJS](https://openuserjs.org/scripts/jerone/Horizon_TV_Fixer)

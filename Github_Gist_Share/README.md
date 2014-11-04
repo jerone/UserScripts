@@ -45,11 +45,7 @@ Share your [GitHub Gist](https://gist.github.com) to:
     * Initial version;
 
 
-## Notes
-
- -
-
-
 ## External links
 
-* [Greasy Fork](https://greasyfork.org/scripts/54)
+* [Greasy Fork](https://greasyfork.org/scripts/54-github-gist-share)
+* [OpenUserJS](https://openuserjs.org/scripts/jerone/Github_Gist_Share)

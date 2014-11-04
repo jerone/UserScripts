@@ -1,6 +1,7 @@
 // ==UserScript==
 // @id             PDF_Tools@https://github.com/jerone/UserScripts
 // @name           PDF Tools
+// @description    An userscript that enhances the pdf.js window in Firefox.
 // @version        1.0
 // @namespace      https://github.com/jerone/UserScripts
 // @author         jerone

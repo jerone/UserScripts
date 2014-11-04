@@ -34,6 +34,8 @@ Hide replies on Twitter profiles
 
 If you installed this script before, you probably want to delete it before installing the new version.
 
+
 ## External links
 
-* [Greasy Fork](https://greasyfork.org/scripts/214)
+* [Greasy Fork](https://greasyfork.org/scripts/214-twitter-profile-replies-hider)
+* [OpenUserJS](https://openuserjs.org/scripts/jerone/Twitter_profile_replies_hider)

@@ -24,5 +24,5 @@ Some CSS april fools
 
 ## External links
 
-* [Greasy Fork](https://greasyfork.org/scripts/April_Fools_CSS)
+* [Greasy Fork](https://greasyfork.org/scripts/47-april-fools-css)
 * [OpenUserJS](https://openuserjs.org/scripts/jerone/April_Fools_CSS)

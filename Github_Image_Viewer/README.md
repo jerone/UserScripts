@@ -41,3 +41,9 @@ Supported file extensions are:
 Use cases:
 
 * https://github.com/jerone/UserScripts/tree/master/_resources
+
+
+## External links
+
+* [Greasy Fork](https://greasyfork.org/scripts/6262-github-image-viewer)
+* [OpenUserJS](https://openuserjs.org/scripts/jerone/Github_Image_Viewer)

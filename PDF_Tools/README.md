@@ -40,4 +40,5 @@ Test cases:
 
 ## External links
 
+* [Greasy Fork](https://greasyfork.org/scripts/6263-pdf-tools)
 * [OpenUserJS](https://openuserjs.org/scripts/jerone/PDF_Tools)

@@ -20,3 +20,9 @@ Redirect back to login page when signing out from Outlook.
 
 * **1.0**
     * Initial version;
+
+
+## External links
+
+* [Greasy Fork](https://greasyfork.org/scripts/466-outlook-sign-out-to-login)
+* [OpenUserJS](https://openuserjs.org/scripts/jerone/Outlook_Sign_Out_To_Login)

@@ -37,4 +37,5 @@ If you installed this script before, you probably want to delete it before insta
 
 ## External links
 
-* [Greasy Fork](https://greasyfork.org/scripts/215)
+* [Greasy Fork](https://greasyfork.org/scripts/215-twitter-profile-retweets-hider)
+* [OpenUserJS](https://openuserjs.org/scripts/jerone/Twitter_profile_retweets_hider)

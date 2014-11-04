@@ -1,1 +1,0 @@
-# This script has been replaced in favour of [Github Gist Share](https://github.com/jerone/UserScripts/tree/master/Github_Gist_Share)!
