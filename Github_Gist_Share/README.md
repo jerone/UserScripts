@@ -27,6 +27,10 @@ Share your [GitHub Gist](https://gist.github.com) to:
 
 ## Version History
 
+* **4.4**
+    * Fixed code after layout changes;
+    * Removed old code for Github Gist Dabblet;
+    * Fixed some JSHint errors;
 * **4.3**
     * Converted userscript icon to data uri as USO isn't available anymore;
     * Fixed counting files;

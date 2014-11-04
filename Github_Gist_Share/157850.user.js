@@ -10,7 +10,7 @@
 // @downloadURL https://github.com/jerone/UserScripts/raw/master/Github_Gist_Share/157850.user.js
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_Gist_Share/157850.user.js
 // @include     *://gist.github.com/*
-// @version     4.3
+// @version     4.4
 // @grant       none
 // ==/UserScript==
 /* global unsafeWindow */
@@ -26,7 +26,7 @@
 
 	var socials = {
 		Twitter: {
-			show: function(url, user, description, files, stars, forks, revisions) { return true; },
+			show: function(/*url, user, description, files, stars, forks, revisions*/) { return true; },
 			submit: function(url, user, description, files, stars, forks, revisions) {
 				var stats = [];
 				if (files > 1) {
@@ -74,11 +74,8 @@
 			 *  - https://gist.github.com/3810309/f2815cc6796ea985f74b8f5f3c717e8de3b12d37
 			 *
 			 */
-			show: function(url, user, description, files, stars, forks, revisions) {
-				// already defined in another UserScript: http://userscripts.org/users/31497/scripts
-				return !document.getElementById("Github_Gist_Dabblet");
-			},
-			submit: function(url, user, description, files, stars, forks, revisions) {
+			show: function(/*url, user, description, files, stars, forks, revisions*/) { return true; },
+			submit: function(url, user/*, description, files, stars, forks, revisions*/) {
 				var linkLong;
 				if ((linkLong = document.querySelector(".site-container.js-site-container")) && linkLong.dataset.url) {
 					var linkLongParts = linkLong.dataset.url.split("/");
@@ -91,17 +88,17 @@
 					}
 					url = "/" + linkLongParts.join("/");
 				} else {
-					url = url.replace(new RegExp("https?:\/\/gist\.github\.com/" + user, "gi"), "");
+					url = url.replace(new RegExp("https?:\/\/gist.github.com/" + user, "gi"), "");
 				}
 				return "http://dabblet.com/gist" + url;
 			},
 			icon: "http://dabblet.com/favicon.ico"
 		},
 		UserScript: {
-			show: function(url, user, description, files, stars, forks, revisions) {
+			show: function(/*url, user, description, files, stars, forks, revisions*/) {
 				return !!document.querySelector(".file[id^='file-'] .raw-url[href$='.user.js']");
 			},
-			submit: function(url, user, description, files, stars, forks, revisions) {
+			submit: function(/*url, user, description, files, stars, forks, revisions*/) {
 				return (document.querySelector(".file[id^='file-'] .raw-url[href$='.user.js']") || { href: "" }).href.trim();
 			},
 			icon: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAKwSURBVHjabJNJTBNRGID/mc5MQYVWVNCGTbEtNZGDBj1ogolEMR5UJA2LBmMoIokxERIj8ehJjx6MYIQoJgq4JIa6gEARkKJFTa2iFFtKWwp2oeDCzNQ+31DQCc5L/nmT/P/3749ACAFBECBxiEPFFds0Ws399DRVhtX2udc97ig0PmgOLBkIbOwjAR8uMRRdvXF7pqv/NfrqnEAOlxsdLas6j3Wk2AEpCRcbKvLydrdu1WUr0lXrITEhAZKUSkhQKvKwXiY2ppbDRzCcv29P/ZZsDaSqUkCJYVJGwKMnHTDlmWgTZ/CvjkW4sKTScP1WC+oZsKAxpwv5gyEUnAkj2xc70p88Y8Y2a8VBxT0gispOGa413UVDb23IMe6OwaEw+jTqQKMOF3pptqBSw7k74hLEPaDUOu0VmpFDV58ZCJIAkiDB5fUBz0eApmjQqbOgrqa69HhVbZO4jKUfmiBJBctysHJFPPiDYbA7J4DjeJDLaWAYGVAyErIy0uDs6RPH9OXVtULWYgfEmN3emJK8BlYrEsHl8cEvloX4ODnEyRlgKGZhV1iOhcz0VNixM7dOCCp2EBkeMF3u6DaNqDasg1U4CzlFxxSRKMyz8xjmsPAQwNmRsc2jxGPkR0esHp7n9RBFrYbyUi1DUzh1GujFG0UBQrNz8P7DR3j+9NklqTEK3VVkbNLkVNZc9AwNW5Hb60PT/gCamg6gEbsT3XvYjvIP6i9gu2ShhOWb+BvLD13O9o3azWrVdy4K3wKhv5HfWW1Q39BY19nechPbzQrVwX9bhU+iIqnyQMF+mPvJQr/FCsHwDJgG30ADhl8Y2wQ4jIUVkpdaZRnPcd6AfxomJ32AIhEwdvaC8XG7JLwwvmXPmVFn52Tu2lvQjN9Crn3M6bWY+6otr3oGpWCB/SPAAJaJRguGUxB0AAAAAElFTkSuQmCC"
@@ -111,34 +108,37 @@
 	function addMenuItem() {
 		var link, url, menu, li, user, description, files, stars, forks, revisions;
 
-		if ((link = document.querySelector("[name='link-field']")) && (menu = document.querySelector('ul.menu.gisttabs'))) {  // check if we're on an actual gists;
-			url = link.value;
+		if ((link = document.querySelector(".js-current-repository")) && (menu = document.querySelector('.sunken-menu-group'))) {  // check if we're on an actual gists;
+			url = link.href;
 			user = document.querySelector(".author.vcard").textContent.trim();
-			description = (document.querySelector(".gist-description") || document.querySelector(".js-current-repository") || { textContent: "" }).textContent.trim();
+			description = (document.querySelector(".gist-description") || link || { textContent: "" }).textContent.trim();
 			files = document.querySelectorAll(".file[id^='file-']").length;
-			stars = (menu.querySelector("a[href$='/stars'] .counter") || { textContent: "" }).textContent.trim();
-			forks = (menu.querySelector("a[href$='/forks'] .counter") || { textContent: "" }).textContent.trim();
-			revisions = (menu.querySelector("a[href$='/revisions'] .counter") || { textContent: "" }).textContent.trim();
+			stars = parseInt((menu.querySelector("a[href$='/stars'] .counter") || { textContent: "0" }).textContent.trim(), 10);
+			forks = parseInt((menu.querySelector("a[href$='/forks'] .counter") || { textContent: "0" }).textContent.trim(), 10);
+			revisions = parseInt((menu.querySelector("a[href$='/revisions'] .counter") || { textContent: "0" }).textContent.trim(), 10);
 
 			menu.appendChild(li = document.createElement("li"));
 			li.id = "Github_Gist_Share";
 
 			for (var key in socials) {
-				var social = socials[key],
-					socialA = document.createElement("a"),
-					socialImg = document.createElement("img");
+				if (socials.hasOwnProperty(key)) {
+					var social = socials[key],
+						socialA = document.createElement("a"),
+						socialImg = document.createElement("img");
 
-				if (social.show(url, user, description, files, stars, forks, revisions) !== true) { continue; }
+					if (social.show(url, user, description, files, stars, forks, revisions) !== true) { continue; }
 
-				li.appendChild(socialA);
-				socialA.appendChild(socialImg);
-				socialA.id = String.format("{0}_{1}", li.id, key.replace(/\s+/g, "_"));
-				socialA.href = social.submit && social.submit(url, user, description, files, stars, forks, revisions);
-				socialA.title = String.format("[{0}] {1}", key, socialA.href);
-				socialA.style.display = "inline-block";
-				socialA.target = "_blank";
-				socialImg.src = social.icon;
-				socialImg.alt = key;
+					li.appendChild(socialA);
+					socialA.appendChild(socialImg);
+					socialA.id = String.format("{0}_{1}", li.id, key.replace(/\s+/g, "_"));
+					socialA.classList.add("sunken-menu-item");
+					socialA.href = social.submit && social.submit(url, user, description, files, stars, forks, revisions);
+					socialA.title = String.format("[{0}] {1}", key, socialA.href);
+					socialA.style.display = "inline-block";
+					socialA.target = "_blank";
+					socialImg.src = social.icon;
+					socialImg.alt = key;
+				}
 			}
 		}
 	}
