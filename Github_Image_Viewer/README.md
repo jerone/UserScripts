@@ -9,13 +9,13 @@ Preview images from within the listing.
 
 Supported file extensions are:
 
-* `.png`
 * `.jpg`
 * `.jpeg`
-* `.tif`
-* `.tiff`
+* `.png`
 * `.gif`
 * `.ico`
+* `.tif`
+* `.tiff`
 
 
 ## Screenshot
@@ -32,6 +32,8 @@ Supported file extensions are:
 
 ## Version History
 
+* **0.1.1**
+    * Small z-index fix;
 * **0.1.0**
     * Initial version;
 

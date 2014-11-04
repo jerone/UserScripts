@@ -10,7 +10,7 @@
 // @homepageURL https://github.com/jerone/UserScripts/tree/master/Github_Image_Viewer
 // @downloadURL https://github.com/jerone/UserScripts/raw/master/Github_Image_Viewer/Github_Image_Viewer.user.js
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_Image_Viewer/Github_Image_Viewer.user.js
-// @version     0.1.0
+// @version     0.1.1
 // @grant       none
 // @run-at      document-end
 // @include     https://github.com/*
@@ -44,13 +44,14 @@
 
 		_imageUrl: null,
 		_loaderSrc: "https://assets-cdn.github.com/images/spinners/octocat-spinner-32.gif",
-		_imageRegex: /(.png|.jpg|.jpeg|.tif|.tiff|.gif|.ico)$/,
+		_imageRegex: /(.jpe?g|.png|.gif|.ico|.tiff?)$/,
 
 		Initialize: function() {
 			var floater = GithubImageViewer._floater = document.createElement("div");
 			floater.style.position = "absolute";
 			floater.style.top = "0";
 			floater.style.left = "0";
+			floater.style.zIndex = "999";
 			document.body.appendChild(floater);
 
 			var floaterMouseAlign = document.createElement("div");
