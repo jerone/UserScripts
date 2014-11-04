@@ -25,6 +25,7 @@ This repo contains a few of my userscripts that I've build (in no particulair or
 * [Marktplaats Exchanger](https://github.com/jerone/UserScripts/tree/master/Marktplaats_Exchanger) - Exchange Marktplaats.nl.
 * [Dakar Extender](https://github.com/jerone/UserScripts/tree/master/Dakar_Extender) - Highlight riders by certain country in standings lists.
 * [April Fools CSS](https://github.com/jerone/UserScripts/tree/master/April_Fools_CSS) - Some CSS april fools.
+* [PDF Tools](https://github.com/jerone/UserScripts/tree/master/PDF_Tools) - An userscript that enhances the pdf.js window in Firefox.
 
 
 ## External profiles
