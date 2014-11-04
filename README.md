@@ -1,9 +1,9 @@
-[UserScripts](https://github.com/jerone/UserScripts)
-===========
+# [UserScripts](https://github.com/jerone/UserScripts)
 
 [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/jerone/UserScripts?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
-### Description
+
+## Description
 
 This repo contains a few of my userscripts that I've build (in no particulair order):
 
@@ -26,18 +26,19 @@ This repo contains a few of my userscripts that I've build (in no particulair or
 * [Dakar Extender](https://github.com/jerone/UserScripts/tree/master/Dakar_Extender) - Highlight riders by certain country in standings lists.
 * [April Fools CSS](https://github.com/jerone/UserScripts/tree/master/April_Fools_CSS) - Some CSS april fools.
 
-### External profiles
+
+## External profiles
 
 * ~~[Userscripts.org](http://userscripts.org:8080/users/jerone)~~
 * [Greasy Fork](https://greasyfork.org/users/15)
 * [OpenUserJs](https://openuserjs.org/users/jerone)
-* [MonkeyGuts](https://monkeyguts.com/author.php?un=jerone)
-* [myUserJS](http://myuserjs.org/user/jerone)
 
-### Contributing
+
+## Contributing
 
 Please review the [guidelines for contributing](https://github.com/jerone/UserScripts/blob/master/CONTRIBUTING.md) to this repository.
 
-### License
+
+## License
 
 All userscripts in [this repository](https://github.com/jerone/UserScripts) are [licensed under GNU GPLv3](https://github.com/jerone/UserScripts/blob/master/LICENSE.txt) unless explicitly otherwise stated.

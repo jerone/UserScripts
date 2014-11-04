@@ -2,11 +2,11 @@
 // @name           April Fools CSS
 // @description    Some CSS april fools
 // @author         jerone
-// @namespace      https://github.com/jerone/AprilFoolsCSS
+// @namespace      https://github.com/jerone/UserScripts/tree/master/April_Fools_CSS
 // @copyright      2014+, jerone (http://jeroenvanwarmerdam.nl)
 // @license        GNU GPLv3
 // @include        *
-// @version        1.1
+// @version        1.0
 // ==/UserScript==
 
 if(window.top===window){
@@ -21,7 +21,7 @@ if(window.top===window){
 				    -ms-transform: rotate(180deg);		\
 				     -o-transform: rotate(180deg);		\
 				        transform: rotate(180deg);		\
-			}", 
+			}",
 			"body {										\
 				-webkit-transform: rotate(1deg);		\
 				   -moz-transform: rotate(1deg);		\

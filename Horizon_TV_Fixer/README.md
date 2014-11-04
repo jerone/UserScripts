@@ -2,7 +2,8 @@
 
 [![Install](https://raw.github.com/jerone/UserScripts/master/_resources/Install-button.jpg)](https://github.com/jerone/UserScripts/raw/master/Horizon_TV_Fixer/155147.user.js)
 
-### Description
+
+## Description
 
 Improves the [Horizon TV Gids](https://www.horizon.tv/nl_nl/tv-gids.html) by extending the functionality and the layout of the site.
 
@@ -17,11 +18,13 @@ Improves the [Horizon TV Gids](https://www.horizon.tv/nl_nl/tv-gids.html) by ext
 * Smaller listings to fit more channels;
 * Remove redundand space;
 
-### Screenshot
+
+## Screenshot
 
 ![Horizon TV Fixer screenshot](https://raw.github.com/jerone/UserScripts/master/Horizon_TV_Fixer/screenshot.jpg)
 
-### Compatible
+
+## Compatible
 
 * [![](https://raw.github.com/jerone/UserScripts/master/_resources/Greasemonkey.png) Greasemonkey](https://addons.mozilla.org/firefox/addon/greasemonkey/) on [![](https://raw.github.com/jerone/UserScripts/master/_resources/Firefox.png) Mozilla Firefox Desktop](http://www.mozilla.org/en-US/firefox/fx/#desktop).
 
@@ -29,7 +32,8 @@ Improves the [Horizon TV Gids](https://www.horizon.tv/nl_nl/tv-gids.html) by ext
 
 This script doesn't work on browsers that don't implement [ES6 arrow functions](http://wiki.ecmascript.org/doku.php?id=harmony:arrow_function_syntax) syntax.
 
-### Version History
+
+## Version History
 
 * **22** (v1.1.72)
     * Fixed smaller font size;
@@ -48,14 +52,15 @@ This script doesn't work on browsers that don't implement [ES6 arrow functions](
 * **17** (v1.1.37)
     * Compatibily fixes for v1.1.37;
 
-### Notes
+
+## Notes
 
 Build for version 1.1.72
 ```
     console.log("Version: " + unsafeWindow.BBVSettingsObject.version.major + "." + unsafeWindow.BBVSettingsObject.version.minor + "." + unsafeWindow.BBVSettingsObject.version.micro);
 ```
 
-### External links
+
+## External links
 
 * [Greasy Fork](https://greasyfork.org/scripts/65)
-* [Userscripts.org](http://userscripts.org/scripts/show/155147) (not maintained anymore).

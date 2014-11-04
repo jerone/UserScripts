@@ -1,1 +1,0 @@
-[Test script for GM pull request 1861](http://userscripts.org/scripts/show/292712)
