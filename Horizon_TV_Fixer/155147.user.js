@@ -9,7 +9,7 @@
 // @homepageURL https://github.com/jerone/UserScripts/tree/master/Horizon_TV_Fixer
 // @downloadURL https://github.com/jerone/UserScripts/raw/master/Horizon_TV_Fixer/155147.user.js
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Horizon_TV_Fixer/155147.user.js
-// @version     21
+// @version     22
 // @grant       none
 // @include     *horizon.tv*
 // ==/UserScript==
@@ -116,88 +116,91 @@
 
 	/* Style fixes; */
 	addStyle(
-		/* removed white header; */								"\
-		.servicenav.service {									\
-			display: none;										\
-		}														"+
+		/* removed white header; */									"\
+		.servicenav.service {										\
+			display: none;											\
+		}															"+
 
-		/* cropped header; */									"\
-		.header-options {										\
-			margin-top: 5px !important;							\
-		}														\
-		.utility-wrapper,										\
-		.utility-bar {											\
-			height: 35px !important;							\
-		}														\
-		.branding {												\
-			display: none;										\
-		}														\
-		#modules {												\
-			padding-top: 0;										\
-		}														\
-		.channel-guide.module {									\
-			padding-top: 10px;									\
-		}														\
-		.channel-guide.module div.pinned {						\
-			top : 35px;											\
-			padding: 10px 0 0 0;								\
-		}														\
-		.navigationbar.pinned {									\
-			display: none;										\
-		}														\
-		.utilitybar.pinned {									\
-			background: none;									\
-		}														\
-		#channel-guide-head {									\
-			display: none;										\
-		}														\
-		.channel-guide .gids-panel .current-time:before {		\
-			top: -42px;											\
-		}														"+
+		/* cropped header; */										"\
+		.header-options {											\
+			margin-top: 5px !important;								\
+		}															\
+		.utility-wrapper,											\
+		.utility-bar {												\
+			height: 35px !important;								\
+		}															\
+		.branding {													\
+			display: none;											\
+		}															\
+		#modules {													\
+			padding-top: 0;											\
+		}															\
+		.channel-guide.module {										\
+			padding-top: 10px;										\
+		}															\
+		.channel-guide.module div.pinned {							\
+			top : 35px;												\
+			padding: 10px 0 0 0;									\
+		}															\
+		.navigationbar.pinned {										\
+			display: none;											\
+		}															\
+		.utilitybar.pinned {										\
+			background: none;										\
+		}															\
+		#channel-guide-head {										\
+			display: none;											\
+		}															\
+		.channel-guide .gids-panel .current-time:before {			\
+			top: -42px;												\
+		}															"+
 
-		/* lower listings; */									"\
-		.channel-listing .listings,								\
-		.channel-listing .listings .listing,					\
-		.channel-listing .listings .listing.active,				\
-		.channel-listing .listings .listing .asset-details,		\
-		.channel-listing .listings .listing span.title {		\
-			height: auto;										\
-		}														\
-		.channel-listing .listings .listing .asset-details {	\
-			height: 24px;										\
-		}														\
-		.network span.channel-number {							\
-			top: 10px;											\
-		}														\
-		.network a.logo-active img {							\
-			max-height: 29px;									\
-		}														\
-		.network .labels {										\
-			left: -10px;										\
-		}														"+
+		/* lower listings; */										"\
+		.channel-listing .listings,									\
+		.channel-listing .listings .listing,						\
+		.channel-listing .listings .listing.active,					\
+		.channel-listing .listings .listing .asset-details,			\
+		.channel-listing .listings .listing span.title {			\
+			height: auto;											\
+		}															\
+		.channel-listing .listings .listing .asset-details {		\
+			height: 24px;											\
+		}															\
+		.channel-listing .listings .listing .asset-details.short {	\
+			padding: 10px 0 0;										\
+		}															\
+		.network span.channel-number {								\
+			top: 10px;												\
+		}															\
+		.network a.logo-active img {								\
+			max-height: 29px;										\
+		}															\
+		.network .labels {											\
+			left: -10px;											\
+		}															"+
 
-		/* smaller font size in listing; */						"\
-		.channel-listing .listings .listing span {				\
-			font-size: 12px;									\
-		}														"+
+		/* smaller font size in listing; */							"\
+		.channel-listing .listings .listing .title {				\
+			font-size: 12px;										\
+		}															"+
 
-		/* always show channel logo; */							"\
-		.network a.logo-active {								\
-			display: block !important;							\
-		}														\
-		.network a.logo-inactive {								\
-			display: none !important;							\
-		}														"+
+		/* always show channel logo; */								"\
+		.network a.logo-active {									\
+			display: block !important;								\
+		}															\
+		.network a.logo-inactive {									\
+			display: none !important;								\
+		}															"+
 
-		/* always show channel number; */						"\
-		.network span.channel-number {							\
-			display: block !important;							\
-		}														"+
+		/* always show channel number; */							"\
+		.network span.channel-number {								\
+			display: block !important;								\
+		}															"+
 
-		/* hide bottom bar; */									"\
-		.MyOrionBar  {											\
-			display: none;										\
-		}														"+
+		/* hide bottom bar; */										"\
+		.MyOrionBar  {												\
+			display: none;											\
+		}															"+
 	"");
 
 	function addStyle(css){
