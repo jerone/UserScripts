@@ -18,7 +18,7 @@ This repo contains a few of my userscripts that I've build (in no particulair or
 * Twitter
     * [Twitter profile replies hider](https://github.com/jerone/UserScripts/tree/master/Twitter_profile_replies_hider) - Hide replies on Twitter profiles.
     * [Twitter profile retweets hider](https://github.com/jerone/UserScripts/tree/master/Twitter_profile_retweets_hider) - Hide retweets on Twitter profiles.
-* [Multiple Windows Live ID's 2](https://github.com/jerone/UserScripts/tree/master/Multiple_Windows_Live_IDs_2) - Easy login with multiple Microsoft accounts.
+* [Multiple Windows Live ID's](https://github.com/jerone/UserScripts/tree/master/Multiple_Windows_Live_IDs) - Easy login with multiple Microsoft accounts.
 * [Outlook Sign Out To Login](https://github.com/jerone/UserScripts/tree/master/Outlook_Sign_Out_To_Login) - Redirect back to login page when signing out from Outlook.
 * [Horizon TV Fixer](https://github.com/jerone/UserScripts/tree/master/Horizon_TV_Fixer) - Improves the Horizon TV Gids by extending the functionality and the layout of the site.
 * [GeenStijl & Powned & Dumpert Comment Enhancer](https://github.com/jerone/UserScripts/tree/master/GeenStijl_Powned_Dumpert_Comment_Enhancer) - Add features to enhance comments on the sites GeenStijl & Powned & Dumpert & more.
