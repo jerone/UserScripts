@@ -27,3 +27,9 @@ Easy login with multiple Microsoft accounts.
 
 * **0.1.0**
     * Initial version;
+
+
+## External links
+
+* [Greasy Fork](https://greasyfork.org/en/scripts/6277-multiple-windows-live-ids)
+* [OpenUserJS](https://openuserjs.org/scripts/jerone/Multiple_Windows_Live_IDs)
