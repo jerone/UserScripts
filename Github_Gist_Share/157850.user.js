@@ -9,6 +9,8 @@
 // @homepageURL https://github.com/jerone/UserScripts/tree/master/Github_Gist_Share
 // @downloadURL https://github.com/jerone/UserScripts/raw/master/Github_Gist_Share/157850.user.js
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_Gist_Share/157850.user.js
+// @supportURL  https://github.com/jerone/UserScripts/issues
+// @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
 // @include     *://gist.github.com/*
 // @version     4.4
 // @grant       none

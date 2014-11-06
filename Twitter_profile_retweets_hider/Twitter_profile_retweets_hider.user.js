@@ -9,6 +9,8 @@
 // @homepageURL https://github.com/jerone/UserScripts/tree/master/Hide_retweets_on_Twitter_user_account
 // @downloadURL https://github.com/jerone/UserScripts/raw/master/Hide_retweets_on_Twitter_user_account/173703.user.js
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Hide_retweets_on_Twitter_user_account/173703.user.js
+// @supportURL  https://github.com/jerone/UserScripts/issues
+// @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
 // @include     *://twitter.com/*
 // @exclude     *://twitter.com/
 // @exclude     *://twitter.com

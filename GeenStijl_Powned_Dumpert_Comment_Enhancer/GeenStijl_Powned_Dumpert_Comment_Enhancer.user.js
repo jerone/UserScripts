@@ -9,6 +9,8 @@
 // @homepageURL https://github.com/jerone/UserScripts/tree/master/GeenStijl_Powned_Dumpert_Comment_Enhancer
 // @downloadURL https://github.com/jerone/UserScripts/raw/master/GeenStijl_Powned_Dumpert_Comment_Enhancer/GeenStijl_Powned_Dumpert_Comment_Enhancer.user.js
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/GeenStijl_Powned_Dumpert_Comment_Enhancer/GeenStijl_Powned_Dumpert_Comment_Enhancer.user.js
+// @supportURL  https://github.com/jerone/UserScripts/issues
+// @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
 // @include     http*://*geenstijl.nl/mt/archieven/*
 // @include     http*://*geenstijl.tv/*
 // @include     http*://*powned.tv/nieuws/*

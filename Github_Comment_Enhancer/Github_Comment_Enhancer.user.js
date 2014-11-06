@@ -10,6 +10,8 @@
 // @homepageURL https://github.com/jerone/UserScripts/tree/master/Github_Comment_Enhancer
 // @downloadURL https://github.com/jerone/UserScripts/raw/master/Github_Comment_Enhancer/Github_Comment_Enhancer.user.js
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_Comment_Enhancer/Github_Comment_Enhancer.user.js
+// @supportURL  https://github.com/jerone/UserScripts/issues
+// @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
 // @version     2.0.3
 // @grant       none
 // @run-at      document-end

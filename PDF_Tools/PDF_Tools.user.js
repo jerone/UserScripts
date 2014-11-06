@@ -5,7 +5,8 @@
 // @version        1.0
 // @namespace      https://github.com/jerone/UserScripts
 // @author         jerone
-// @description
+// @supportURL     https://github.com/jerone/UserScripts/issues
+// @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
 // @include        *.pdf
 // @include        *.pdf?*
 // @include        *.pdf#*
