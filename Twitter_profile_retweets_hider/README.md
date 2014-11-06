@@ -1,6 +1,9 @@
 # [Twitter profile retweets hider](https://github.com/jerone/UserScripts/tree/master/Twitter_profile_retweets_hider)
 
-[![Install](https://raw.github.com/jerone/UserScripts/master/_resources/Install-button.jpg)](https://github.com/jerone/UserScripts/raw/master/Twitter_profile_retweets_hider/Twitter_profile_retweets_hider.user.js)
+[![Install](https://raw.github.com/jerone/UserScripts/master/_resources/Install-button.png)](https://github.com/jerone/UserScripts/raw/master/Twitter_profile_retweets_hider/Twitter_profile_retweets_hider.user.js)
+[![Source](https://raw.github.com/jerone/UserScripts/master/_resources/Source-button.png)](https://github.com/jerone/UserScripts/blob/master/Twitter_profile_retweets_hider/Twitter_profile_retweets_hider.user.js)
+[![Donate](https://raw.github.com/jerone/UserScripts/master/_resources/Donate-button.png)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW)
+[![Support](https://raw.github.com/jerone/UserScripts/master/_resources/Support-button.png)](https://github.com/jerone/UserScripts/issues)
 
 
 ## Description
