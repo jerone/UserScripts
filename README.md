@@ -14,6 +14,7 @@ This repo contains a few of my userscripts that I've build (in no particulair or
     * [Github Commit Whitespace](https://github.com/jerone/UserScripts/tree/master/Github_Commit_Whitespace) - Adds button to hide whitespaces from commit.
     * [Github Image Viewer](https://github.com/jerone/UserScripts/tree/master/Github_Image_Viewer) - Preview images from within the listing.
     * [Github Pull Request From](https://github.com/jerone/UserScripts/tree/master/Github_Pull_Request_From) - Make pull request original branch linkable.
+    * [Github Pages Linker](https://github.com/jerone/UserScripts/tree/master/Github_Pages_Linker) - Add a link to Github Pages (gh-pages) when available.
     * [Github Gist Share](https://github.com/jerone/UserScripts/tree/master/Github_Gist_Share) - Share your GitHub Gist to Twitter, Dabblet & as userscript.
 * Twitter
     * [Twitter profile replies hider](https://github.com/jerone/UserScripts/tree/master/Twitter_profile_replies_hider) - Hide replies on Twitter profiles.
