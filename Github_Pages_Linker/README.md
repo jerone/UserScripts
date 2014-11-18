@@ -39,5 +39,5 @@ Test cases:
 
 ## External links
 
-* [Greasy Fork](https://greasyfork.org/scripts/XXXXX)
-* [OpenUserJS](https://openuserjs.org/scripts/jerone/XXXXX)
+* [Greasy Fork](https://greasyfork.org/scripts/6519-github-pages-linker)
+* [OpenUserJS](https://openuserjs.org/scripts/jerone/Github_Pages_Linker)
