@@ -32,7 +32,7 @@ An userscript that enhances the pdf.js window in Firefox.
 
 ## Notes
 
-Documentations:
+Documentation:
 
 * https://github.com/mozilla/pdf.js
 
