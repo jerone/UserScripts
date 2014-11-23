@@ -8,7 +8,7 @@
 
 ## Description
 
-Proof Of Concept.
+Proof Of Concept (POC).
 An userscript that enhances the pdf.js window in Firefox.
 
 
