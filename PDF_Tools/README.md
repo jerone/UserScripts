@@ -36,7 +36,7 @@ Documentation:
 
 * https://github.com/mozilla/pdf.js
 
-Test cases:
+Test case:
 
 * http://mozilla.github.io/pdf.js/web/viewer.html?file=compressed.tracemonkey-pldi-09.pdf
 
