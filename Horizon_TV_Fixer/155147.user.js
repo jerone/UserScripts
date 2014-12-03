@@ -11,7 +11,7 @@
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Horizon_TV_Fixer/155147.user.js
 // @supportURL  https://github.com/jerone/UserScripts/issues
 // @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
-// @version     22
+// @version     23
 // @grant       none
 // @include     *horizon.tv*
 // ==/UserScript==
@@ -35,7 +35,7 @@
 				submit: function(title, subtitle, channel, time){
 					return "http://www.imdb.com/find?q=" + encodeURIComponent((title + (subtitle ? " - " + subtitle : "")).trim());
 				},
-				icon: "http://www.imdb.com/favicon.ico"
+				icon: "https://secure.imdb.com/images/SFff39adb4d259f3c3fd166853a6714a32/legacy/favicon.ico"
 			},
 			YouTube: {
 				submit: function(title, subtitle, channel, time){
@@ -55,7 +55,7 @@
 				submit: function(title, subtitle, channel, time){
 					return "http://www.uitzendinggemist.nl/zoek?q=" + encodeURIComponent((title + (subtitle ? " - " + subtitle : "")).trim());
 				},
-				icon: "http://www.uitzendinggemist.nl/favicon.gif"
+				icon: "https://mijn.npo.nl/favicon.ico"
 			},
 			KijkWijzer: {
 				submit: function(title, subtitle, channel, time){
@@ -74,7 +74,7 @@
 	unsafeWindow.orion.modules.EPG.ListingsView.prototype.showDetails = function(imi){
 		_orion_modules_EPG_ListingsView_prototype_showDetails.apply(this, arguments);  // execute original code;
 
-		var $listing = unsafeWindow.$('.listing[data-imi="' + imi + '"]'),
+		var $listing = unsafeWindow.$('.listing[data-listing-id="' + imi + '"]'),
 			$channel = $listing.closest('.channel-listing'),
 			station = $channel.get(0),
 			wrap = station.nextSibling;
@@ -125,11 +125,7 @@
 
 		/* cropped header; */										"\
 		.header-options {											\
-			margin-top: 5px !important;								\
-		}															\
-		.utility-wrapper,											\
-		.utility-bar {												\
-			height: 35px !important;								\
+			margin-top: 0px !important;								\
 		}															\
 		.branding {													\
 			display: none;											\
@@ -141,17 +137,14 @@
 			padding-top: 10px;										\
 		}															\
 		.channel-guide.module div.pinned {							\
-			top : 35px;												\
+			top : 126px;											\
 			padding: 10px 0 0 0;									\
-		}															\
-		.navigationbar.pinned {										\
-			display: none;											\
-		}															\
-		.utilitybar.pinned {										\
-			background: none;										\
 		}															\
 		#channel-guide-head {										\
 			display: none;											\
+		}															\
+		.channel-guide .pinned .current-time {						\
+			top: 70px;												\
 		}															\
 		.channel-guide .gids-panel .current-time:before {			\
 			top: -42px;												\

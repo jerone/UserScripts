@@ -38,6 +38,8 @@ This script doesn't work on browsers that don't implement [ES6 arrow functions](
 
 ## Version History
 
+* **23** (v1.1.74)
+    * Compatibily fixes for v1.1.74;
 * **22** (v1.1.72)
     * Fixed smaller font size;
     * Fixed smaller listings for .short listing;
@@ -58,7 +60,7 @@ This script doesn't work on browsers that don't implement [ES6 arrow functions](
 
 ## Notes
 
-Build for version 1.1.72
+Build for version 1.1.74
 ```
     console.log("Version: " + unsafeWindow.BBVSettingsObject.version.major + "." + unsafeWindow.BBVSettingsObject.version.minor + "." + unsafeWindow.BBVSettingsObject.version.micro);
 ```
