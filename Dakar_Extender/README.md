@@ -1,1 +1,1 @@
-[Dakar Extender](http://userscripts.org/scripts/show/208433)
+### This userscript has been deprecated in favour of the more useful [TrackingDakar](http://www.trackingdakar.nl/) site.
