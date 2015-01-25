@@ -17,9 +17,9 @@ Improves the [Horizon TV Gids](https://www.horizon.tv/nl_nl/tv-gids.html) by ext
 * Add link to KijkWijzer (Dutch);
 * Add link to Uitzending Gemist (Dutch);
 * Add link to IPTorrents;
-* Add missing tooltips;
 * Smaller listings to fit more channels;
 * Remove redundand space;
+* Reload page every 30 minutes;
 
 
 ## Screenshot
@@ -38,6 +38,9 @@ This script doesn't work on browsers that don't implement [ES6 arrow functions](
 
 ## Version History
 
+* **24** (v1.1.76)
+    * Compatibily fixes for v1.1.76;
+    * Added 30 minutes reload back;
 * **23** (v1.1.74)
     * Compatibily fixes for v1.1.74;
 * **22** (v1.1.72)
@@ -60,7 +63,7 @@ This script doesn't work on browsers that don't implement [ES6 arrow functions](
 
 ## Notes
 
-Build for version 1.1.74
+Build for version 1.1.76
 ```
     console.log("Version: " + unsafeWindow.BBVSettingsObject.version.major + "." + unsafeWindow.BBVSettingsObject.version.minor + "." + unsafeWindow.BBVSettingsObject.version.micro);
 ```

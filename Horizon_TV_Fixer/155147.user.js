@@ -11,7 +11,7 @@
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Horizon_TV_Fixer/155147.user.js
 // @supportURL  https://github.com/jerone/UserScripts/issues
 // @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
-// @version     23
+// @version     24
 // @grant       none
 // @include     *horizon.tv*
 // ==/UserScript==
@@ -85,19 +85,14 @@
 			subtitle = (details.querySelector("h4") || { textContent: "" }).textContent,
 			channel = details.querySelector(".channel-details").textContent.split(", ");
 		var messageDiv = document.createElement("div");
-		messageDiv.classList.add("message");
-		messageDiv.appendChild(document.createElement("span"));
-		messageDiv.style.bottom = "10px";
-		messageDiv.style.top = messageDiv.style.width = "auto";
-		var messageP = document.createElement("p");
-		messageDiv.appendChild(messageP);
+		messageDiv.style.marginTop = "12px";
 		details.appendChild(messageDiv);
 		for(var key in socials){
 			var social = socials[key],
 				socialA = document.createElement("a"),
 				socialImg = document.createElement("img"),
 				submit = social.submit(title, subtitle, channel[0], channel[1]);
-			messageP.appendChild(socialA);
+			messageDiv.appendChild(socialA);
 			socialA.appendChild(socialImg);
 			socialA.href = submit;
 			socialA.target = "_blank";
@@ -108,6 +103,12 @@
 			socialImg.title = "[" + key + "] " + submit;
 		}
 	};
+
+
+	/* Reload; */
+	window.setTimeout(() => {
+		window.location.href = window.location.href;
+	}, 30 * 60 * 1000);
 
 
 	/* Tooltips; */
@@ -164,32 +165,13 @@
 		.channel-listing .listings .listing .asset-details.short {	\
 			padding: 10px 0 0;										\
 		}															\
-		.network span.channel-number {								\
-			top: 10px;												\
-		}															\
 		.network a.logo-active img {								\
 			max-height: 29px;										\
-		}															\
-		.network .labels {											\
-			left: -10px;											\
 		}															"+
 
 		/* smaller font size in listing; */							"\
 		.channel-listing .listings .listing .title {				\
 			font-size: 12px;										\
-		}															"+
-
-		/* always show channel logo; */								"\
-		.network a.logo-active {									\
-			display: block !important;								\
-		}															\
-		.network a.logo-inactive {									\
-			display: none !important;								\
-		}															"+
-
-		/* always show channel number; */							"\
-		.network span.channel-number {								\
-			display: block !important;								\
 		}															"+
 
 		/* hide bottom bar; */										"\
