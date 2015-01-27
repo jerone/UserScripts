@@ -11,7 +11,7 @@
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Horizon_TV_Fixer/155147.user.js
 // @supportURL  https://github.com/jerone/UserScripts/issues
 // @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
-// @version     24
+// @version     25
 // @grant       none
 // @include     *horizon.tv*
 // ==/UserScript==
@@ -165,8 +165,12 @@
 		.channel-listing .listings .listing .asset-details.short {	\
 			padding: 10px 0 0;										\
 		}															\
-		.network a.logo-active img {								\
+		.network .logo-active {										\
+			height: auto;											\
+		}															\
+		.network .logo-active-image {								\
 			max-height: 29px;										\
+			transform: inherit;										\
 		}															"+
 
 		/* smaller font size in listing; */							"\

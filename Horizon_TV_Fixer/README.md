@@ -38,6 +38,8 @@ This script doesn't work on browsers that don't implement [ES6 arrow functions](
 
 ## Version History
 
+* **25** (v1.1.78)
+    * Compatibily fixes for v1.1.78;
 * **24** (v1.1.76)
     * Compatibily fixes for v1.1.76;
     * Added 30 minutes reload back;
@@ -63,7 +65,7 @@ This script doesn't work on browsers that don't implement [ES6 arrow functions](
 
 ## Notes
 
-Build for version 1.1.76
+Build for version 1.1.78
 ```
     console.log("Version: " + unsafeWindow.BBVSettingsObject.version.major + "." + unsafeWindow.BBVSettingsObject.version.minor + "." + unsafeWindow.BBVSettingsObject.version.micro);
 ```
