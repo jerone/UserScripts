@@ -164,6 +164,11 @@
 				}
 			},
 
+			"function-snippets-tab": {
+				exec: function(txt, selText, commentForm, next) {
+					next("\t");
+				}
+			},
 			"function-snippets-useragent": {
 				exec: function(txt, selText, commentForm, next) {
 					next("`" + navigator.userAgent + "`");
@@ -280,6 +285,9 @@
 				'					</div>' +
 				'					<div class="select-menu-list" style="overflow:visible;">' +
 				'						<div data-filterable-for="context-snippets-filter-field">' +
+				'							<a href="#" id="function-snippets-tab" class="function-button select-menu-item js-navigation-item tooltipped tooltipped-w" aria-label="Add tab character" style="table-layout:initial;">' +
+				'								<span class="select-menu-item-text js-select-button-text">Add tab character</span>' +
+				'							</a>' +
 				'							<a href="#" id="function-snippets-useragent" class="function-button select-menu-item js-navigation-item tooltipped tooltipped-w" aria-label="Add UserAgent" style="table-layout:initial;">' +
 				'								<span class="select-menu-item-text js-select-button-text">Add UserAgent</span>' +
 				'							</a>' +
