@@ -549,7 +549,7 @@
 		}, {
 			patterns: 'code',
 			replacement: function(str, attrs, innerHTML) {
-				return innerHTML ? '`' + he.decode(innerHTML) + '`' : '';
+				return innerHTML ? '`' + innerHTML + '`' : '';
 			}
 		}, {
 			patterns: 'img',
@@ -601,7 +601,7 @@
 		// Pre code blocks
 
 		string = string.replace(/<pre\b[^>]*>`([\s\S]*?)`<\/pre>/gi, function(str, innerHTML) {
-			var text = he.decode(innerHTML);
+			var text = innerHTML;
 			text = text.replace(/^\t+/g, '  '); // convert tabs to spaces (you know it makes sense)
 			text = text.replace(/\n/g, '\n    ');
 			return '\n\n    ' + text + '\n';
