@@ -150,10 +150,10 @@
 			},
 			"function-table": {
 				append: "\n" +
-						"| Head | Head | Head |\n" +
-						"| :--- | :--: | ---: |\n" +
-						"| Cell | Cell | Cell |\n" +
-						"| Cell | Cell | Cell |\n",
+					"| Head | Head | Head |\n" +
+					"| :--- | :--: | ---: |\n" +
+					"| Cell | Cell | Cell |\n" +
+					"| Cell | Cell | Cell |\n",
 				forceNewline: true
 			},
 
@@ -184,134 +184,134 @@
 
 	var editorHTML = (function editorHTML() {
 		return '<div id="gollum-editor-function-buttons" style="float: left;">' +
-				'	<div class="button-group">' +
-				'		<a href="#" id="function-bold" class="minibutton function-button tooltipped tooltipped-ne" aria-label="Bold" style="height:26px;">' +
-				'			<b style="font-weight: bolder;">B</b>' +
-				'		</a>' +
-				'		<a href="#" id="function-italic" class="minibutton function-button tooltipped tooltipped-ne" aria-label="Italic">' +
-				'			<em>i</em>' +
-				'		</a>' +
-				'		<a href="#" id="function-strikethrough" class="minibutton function-button tooltipped tooltipped-ne" aria-label="Strikethrough">' +
-				'			<s>S</s>' +
-				'		</a>' +
-				'	</div>' +
+			'	<div class="button-group">' +
+			'		<a href="#" id="function-bold" class="minibutton function-button tooltipped tooltipped-ne" aria-label="Bold" style="height:26px;">' +
+			'			<b style="font-weight: bolder;">B</b>' +
+			'		</a>' +
+			'		<a href="#" id="function-italic" class="minibutton function-button tooltipped tooltipped-ne" aria-label="Italic">' +
+			'			<em>i</em>' +
+			'		</a>' +
+			'		<a href="#" id="function-strikethrough" class="minibutton function-button tooltipped tooltipped-ne" aria-label="Strikethrough">' +
+			'			<s>S</s>' +
+			'		</a>' +
+			'	</div>' +
 
-				'	<div class="button-group">' +
-				'		<div class="select-menu js-menu-container js-select-menu">' +
-				'			<span class="minibutton select-menu-button icon-only js-menu-target" aria-label="Headers" style="padding:0 7px; width:auto; border-bottom-right-radius:3px; border-top-right-radius:3px;">' +
-				'		<span class="js-select-button">h#</span>' +
-				'			</span>' +
-				'			<div class="select-menu-modal-holder js-menu-content js-navigation-container js-active-navigation-container" style="top: 26px;">' +
-				'				<div class="select-menu-modal" style="width:auto; overflow:visible;">' +
-				'					<div class="select-menu-header">' +
-				'						<span class="select-menu-title">Choose header</span>' +
-				'						<span class="octicon octicon-remove-close js-menu-close"></span>' +
-				'					</div>' +
-				'					<div class="button-group">' +
-				'						<a href="#" id="function-h1" class="minibutton function-button js-navigation-item js-menu-close tooltipped tooltipped-s" aria-label="Header 1">' +
-				'							<b class="select-menu-item-text js-select-button-text">h1</b>' +
-				'						</a>' +
-				'						<a href="#" id="function-h2" class="minibutton function-button js-navigation-item js-menu-close tooltipped tooltipped-s" aria-label="Header 2">' +
-				'							<b class="select-menu-item-text js-select-button-text">h2</b>' +
-				'						</a>' +
-				'						<a href="#" id="function-h3" class="minibutton function-button js-navigation-item js-menu-close tooltipped tooltipped-s" aria-label="Header 3">' +
-				'							<b class="select-menu-item-text js-select-button-text">h3</b>' +
-				'						</a>' +
-				'						<a href="#" id="function-h4" class="minibutton function-button js-navigation-item js-menu-close tooltipped tooltipped-s" aria-label="Header 4">' +
-				'							<b class="select-menu-item-text js-select-button-text">h4</b>' +
-				'						</a>' +
-				'						<a href="#" id="function-h5" class="minibutton function-button js-navigation-item js-menu-close tooltipped tooltipped-s" aria-label="Header 5">' +
-				'							<b class="select-menu-item-text js-select-button-text">h5</b>' +
-				'						</a>' +
-				'						<a href="#" id="function-h6" class="minibutton function-button js-navigation-item js-menu-close tooltipped tooltipped-s" aria-label="Header 6">' +
-				'							<b class="select-menu-item-text js-select-button-text">h6</b>' +
-				'						</a>' +
-				'					</div>' +
-				'				</div>' +
-				'			</div>' +
-				'		</div>' +
-				'	</div>' +
+			'	<div class="button-group">' +
+			'		<div class="select-menu js-menu-container js-select-menu">' +
+			'			<span class="minibutton select-menu-button icon-only js-menu-target" aria-label="Headers" style="padding:0 7px; width:auto; border-bottom-right-radius:3px; border-top-right-radius:3px;">' +
+			'		<span class="js-select-button">h#</span>' +
+			'			</span>' +
+			'			<div class="select-menu-modal-holder js-menu-content js-navigation-container js-active-navigation-container" style="top: 26px;">' +
+			'				<div class="select-menu-modal" style="width:auto; overflow:visible;">' +
+			'					<div class="select-menu-header">' +
+			'						<span class="select-menu-title">Choose header</span>' +
+			'						<span class="octicon octicon-remove-close js-menu-close"></span>' +
+			'					</div>' +
+			'					<div class="button-group">' +
+			'						<a href="#" id="function-h1" class="minibutton function-button js-navigation-item js-menu-close tooltipped tooltipped-s" aria-label="Header 1">' +
+			'							<b class="select-menu-item-text js-select-button-text">h1</b>' +
+			'						</a>' +
+			'						<a href="#" id="function-h2" class="minibutton function-button js-navigation-item js-menu-close tooltipped tooltipped-s" aria-label="Header 2">' +
+			'							<b class="select-menu-item-text js-select-button-text">h2</b>' +
+			'						</a>' +
+			'						<a href="#" id="function-h3" class="minibutton function-button js-navigation-item js-menu-close tooltipped tooltipped-s" aria-label="Header 3">' +
+			'							<b class="select-menu-item-text js-select-button-text">h3</b>' +
+			'						</a>' +
+			'						<a href="#" id="function-h4" class="minibutton function-button js-navigation-item js-menu-close tooltipped tooltipped-s" aria-label="Header 4">' +
+			'							<b class="select-menu-item-text js-select-button-text">h4</b>' +
+			'						</a>' +
+			'						<a href="#" id="function-h5" class="minibutton function-button js-navigation-item js-menu-close tooltipped tooltipped-s" aria-label="Header 5">' +
+			'							<b class="select-menu-item-text js-select-button-text">h5</b>' +
+			'						</a>' +
+			'						<a href="#" id="function-h6" class="minibutton function-button js-navigation-item js-menu-close tooltipped tooltipped-s" aria-label="Header 6">' +
+			'							<b class="select-menu-item-text js-select-button-text">h6</b>' +
+			'						</a>' +
+			'					</div>' +
+			'				</div>' +
+			'			</div>' +
+			'		</div>' +
+			'	</div>' +
 
-				'	<div class="button-group">' +
-				'		<a href="#" id="function-link" class="minibutton function-button tooltipped tooltipped-ne" aria-label="Link">' +
-				'			<span class="octicon octicon-link"></span>' +
-				'		</a>' +
-				'		<a href="#" id="function-image" class="minibutton function-button tooltipped tooltipped-ne" aria-label="Image">' +
-				'			<span class="octicon octicon-file-media"></span>' +
-				'		</a>' +
-				'	</div>' +
-				'	<div class="button-group">' +
-				'		<a href="#" id="function-ul" class="minibutton function-button tooltipped tooltipped-ne" aria-label="Unordered List">' +
-				'			<span class="octicon octicon-list-unordered"></span>' +
-				'		</a>' +
-				'		<a href="#" id="function-ol" class="minibutton function-button tooltipped tooltipped-ne" aria-label="Ordered List">' +
-				'			<span class="octicon octicon-list-ordered"></span>' +
-				'		</a>' +
-				'		<a href="#" id="function-checklist" class="minibutton function-button tooltipped tooltipped-ne" aria-label="Task List">' +
-				'			<span class="octicon octicon-checklist"></span>' +
-				'		</a>' +
-				'	</div>' +
+			'	<div class="button-group">' +
+			'		<a href="#" id="function-link" class="minibutton function-button tooltipped tooltipped-ne" aria-label="Link">' +
+			'			<span class="octicon octicon-link"></span>' +
+			'		</a>' +
+			'		<a href="#" id="function-image" class="minibutton function-button tooltipped tooltipped-ne" aria-label="Image">' +
+			'			<span class="octicon octicon-file-media"></span>' +
+			'		</a>' +
+			'	</div>' +
+			'	<div class="button-group">' +
+			'		<a href="#" id="function-ul" class="minibutton function-button tooltipped tooltipped-ne" aria-label="Unordered List">' +
+			'			<span class="octicon octicon-list-unordered"></span>' +
+			'		</a>' +
+			'		<a href="#" id="function-ol" class="minibutton function-button tooltipped tooltipped-ne" aria-label="Ordered List">' +
+			'			<span class="octicon octicon-list-ordered"></span>' +
+			'		</a>' +
+			'		<a href="#" id="function-checklist" class="minibutton function-button tooltipped tooltipped-ne" aria-label="Task List">' +
+			'			<span class="octicon octicon-checklist"></span>' +
+			'		</a>' +
+			'	</div>' +
 
-				'	<div class="button-group">' +
-				'		<a href="#" id="function-code" class="minibutton function-button tooltipped tooltipped-ne" aria-label="Code">' +
-				'			<span class="octicon octicon-code"></span>' +
-				'		</a>' +
-				'		<a href="#" id="function-blockquote" class="minibutton function-button tooltipped tooltipped-ne" aria-label="Blockquote">' +
-				'			<span class="octicon octicon-quote"></span>' +
-				'		</a>' +
-				'		<a href="#" id="function-hr" class="minibutton function-button tooltipped tooltipped-ne" aria-label="Horizontal Rule">' +
-				'			<span class="octicon octicon-horizontal-rule"></span>' +
-				'		</a>' +
-				'		<a href="#" id="function-table" class="minibutton function-button tooltipped tooltipped-ne" aria-label="Table">' +
-				'			<span class="octicon octicon-three-bars"></span>' +
-				'		</a>' +
-				'	</div>' +
+			'	<div class="button-group">' +
+			'		<a href="#" id="function-code" class="minibutton function-button tooltipped tooltipped-ne" aria-label="Code">' +
+			'			<span class="octicon octicon-code"></span>' +
+			'		</a>' +
+			'		<a href="#" id="function-blockquote" class="minibutton function-button tooltipped tooltipped-ne" aria-label="Blockquote">' +
+			'			<span class="octicon octicon-quote"></span>' +
+			'		</a>' +
+			'		<a href="#" id="function-hr" class="minibutton function-button tooltipped tooltipped-ne" aria-label="Horizontal Rule">' +
+			'			<span class="octicon octicon-horizontal-rule"></span>' +
+			'		</a>' +
+			'		<a href="#" id="function-table" class="minibutton function-button tooltipped tooltipped-ne" aria-label="Table">' +
+			'			<span class="octicon octicon-three-bars"></span>' +
+			'		</a>' +
+			'	</div>' +
 
-				'	<div class="button-group">' +
-				'		<div class="select-menu js-menu-container js-select-menu">' +
-				'			<span class="minibutton select-menu-button js-menu-target" aria-label="Snippets" style="padding:0 7px; width:auto; border-bottom-right-radius:3px; border-top-right-radius:3px;">' +
-				'				<span class="octicon octicon-pin"></span>' +
-				'			</span>' +
-				'			<div class="select-menu-modal-holder js-menu-content js-navigation-container js-active-navigation-container">' +
-				'				<div class="select-menu-modal" style="overflow:visible;">' +
-				'					<div class="select-menu-header">' +
-				'						<span class="select-menu-title">Snippets</span>' +
-				'						<span class="octicon octicon-remove-close js-menu-close"></span>' +
-				'					</div>' +
-				'					<div class="select-menu-filters">' +
-				'						<div class="select-menu-text-filter">' +
-				'							<input type="text" placeholder="Filter snippets..." class="js-filterable-field js-navigation-enable" id="context-snippets-filter-field">' +
-				'						</div>' +
-				'					</div>' +
-				'					<div class="select-menu-list" style="overflow:visible;">' +
-				'						<div data-filterable-for="context-snippets-filter-field">' +
-				'							<a href="#" id="function-snippets-tab" class="function-button select-menu-item js-navigation-item tooltipped tooltipped-w" aria-label="Add tab character" style="table-layout:initial;">' +
-				'								<span class="select-menu-item-text js-select-button-text">Add tab character</span>' +
-				'							</a>' +
-				'							<a href="#" id="function-snippets-useragent" class="function-button select-menu-item js-navigation-item tooltipped tooltipped-w" aria-label="Add UserAgent" style="table-layout:initial;">' +
-				'								<span class="select-menu-item-text js-select-button-text">Add UserAgent</span>' +
-				'							</a>' +
-				'							<a href="#" id="function-snippets-contributing" class="function-button select-menu-item js-navigation-item tooltipped tooltipped-w" aria-label="Add contributing message" style="table-layout:initial;">' +
-				'								<span class="select-menu-item-text">' +
-				'									<span class="js-select-button-text">Contributing</span>' +
-				'									<span class="description">Add contributing message</span>' +
-				'								</span>' +
-				'							</a>' +
-				'						</div>' +
-				'						<div class="select-menu-no-results">Nothing to show</div>' +
-				'					</div>' +
-				'				</div>' +
-				'			</div>' +
-				'		</div>' +
-				'	</div>' +
+			'	<div class="button-group">' +
+			'		<div class="select-menu js-menu-container js-select-menu">' +
+			'			<span class="minibutton select-menu-button js-menu-target" aria-label="Snippets" style="padding:0 7px; width:auto; border-bottom-right-radius:3px; border-top-right-radius:3px;">' +
+			'				<span class="octicon octicon-pin"></span>' +
+			'			</span>' +
+			'			<div class="select-menu-modal-holder js-menu-content js-navigation-container js-active-navigation-container">' +
+			'				<div class="select-menu-modal" style="overflow:visible;">' +
+			'					<div class="select-menu-header">' +
+			'						<span class="select-menu-title">Snippets</span>' +
+			'						<span class="octicon octicon-remove-close js-menu-close"></span>' +
+			'					</div>' +
+			'					<div class="select-menu-filters">' +
+			'						<div class="select-menu-text-filter">' +
+			'							<input type="text" placeholder="Filter snippets..." class="js-filterable-field js-navigation-enable" id="context-snippets-filter-field">' +
+			'						</div>' +
+			'					</div>' +
+			'					<div class="select-menu-list" style="overflow:visible;">' +
+			'						<div data-filterable-for="context-snippets-filter-field">' +
+			'							<a href="#" id="function-snippets-tab" class="function-button select-menu-item js-navigation-item tooltipped tooltipped-w" aria-label="Add tab character" style="table-layout:initial;">' +
+			'								<span class="select-menu-item-text js-select-button-text">Add tab character</span>' +
+			'							</a>' +
+			'							<a href="#" id="function-snippets-useragent" class="function-button select-menu-item js-navigation-item tooltipped tooltipped-w" aria-label="Add UserAgent" style="table-layout:initial;">' +
+			'								<span class="select-menu-item-text js-select-button-text">Add UserAgent</span>' +
+			'							</a>' +
+			'							<a href="#" id="function-snippets-contributing" class="function-button select-menu-item js-navigation-item tooltipped tooltipped-w" aria-label="Add contributing message" style="table-layout:initial;">' +
+			'								<span class="select-menu-item-text">' +
+			'									<span class="js-select-button-text">Contributing</span>' +
+			'									<span class="description">Add contributing message</span>' +
+			'								</span>' +
+			'							</a>' +
+			'						</div>' +
+			'						<div class="select-menu-no-results">Nothing to show</div>' +
+			'					</div>' +
+			'				</div>' +
+			'			</div>' +
+			'		</div>' +
+			'	</div>' +
 
-				'</div>' +
+			'</div>' +
 
-				'<div class="button-group" style="float:right;">' +
-				'	<a href="#" id="function-clear" class="minibutton function-button tooltipped tooltipped-nw" aria-label="Clear">' +
-				'		<span class="octicon octicon-circle-slash"></span>' +
-				'	</a>' +
-				'</div>';
+			'<div class="button-group" style="float:right;">' +
+			'	<a href="#" id="function-clear" class="minibutton function-button tooltipped tooltipped-nw" aria-label="Clear">' +
+			'		<span class="octicon octicon-circle-slash"></span>' +
+			'	</a>' +
+			'</div>';
 	})();
 
 	// Source: https://github.com/gollum/gollum/blob/9c714e768748db4560bc017cacef4afa0c751a63/lib/gollum/public/gollum/javascript/editor/gollum.editor.js#L516
@@ -404,6 +404,7 @@
 	function isWiki() {
 		return /\/wiki\//.test(location.href);
 	}
+
 	function isGist() {
 		return location.host === "gist.github.com";
 	}
@@ -411,6 +412,7 @@
 	function overrideGollumMarkdown() {
 		unsafeWindow.$.GollumEditor.defineLanguage("markdown", MarkDown);
 	}
+
 	function unbindGollumFunctions() {
 		window.setTimeout(function() {
 			unsafeWindow.$(".function-button:not(#function-help)").unbind("click");
@@ -450,7 +452,7 @@
 					gollumEditor = document.getElementById("gollum-editor-function-bar");
 					var temp = document.createElement("div");
 					temp.innerHTML = editorHTML;
-					temp.firstElementChild.appendChild(document.getElementById("function-help"));  // restore the help button;
+					temp.firstElementChild.appendChild(document.getElementById("function-help")); // restore the help button;
 					gollumEditor.replaceChild(temp.querySelector("#gollum-editor-function-buttons"), document.getElementById("gollum-editor-function-buttons"));
 					Array.prototype.forEach.call(temp.children, function(elm) {
 						elm.style.position = "absolute";
@@ -496,7 +498,7 @@
 					button.style.width = "30px";
 					button.firstElementChild.style.marginRight = "0px";
 				}
-				button.commentForm = commentForm;  // remove event listener doesn't accept `bind`;
+				button.commentForm = commentForm; // remove event listener doesn't accept `bind`;
 				button.addEventListener("click", functionButtonClick);
 			});
 		});
@@ -505,78 +507,75 @@
 	// Source: https://github.com/domchristie/to-markdown
 	var toMarkdown = function(string) {
 
-		var ELEMENTS = [
-			{
-				patterns: 'p',
-				replacement: function(str, attrs, innerHTML) {
-					return innerHTML ? '\n\n' + innerHTML + '\n' : '';
-				}
-			},
-			{
-				patterns: 'br',
-				type: 'void',
-				replacement: '\n'
-			},
-			{
-				patterns: 'h([1-6])',
-				replacement: function(str, hLevel, attrs, innerHTML) {
-					var hPrefix = '';
-					for (var i = 0; i < hLevel; i++) {
-						hPrefix += '#';
-					}
-					return '\n\n' + hPrefix + ' ' + innerHTML + '\n';
-				}
-			},
-			{
-				patterns: 'hr',
-				type: 'void',
-				replacement: '\n\n* * *\n'
-			},
-			{
-				patterns: 'a',
-				replacement: function(str, attrs, innerHTML) {
-					var href = attrs.match(attrRegExp('href')),
-						title = attrs.match(attrRegExp('title'));
-					return href ? '[' + innerHTML + ']' + '(' + href[1] + (title && title[1] ? ' "' + title[1] + '"' : '') + ')' : str;
-				}
-			},
-			{
-				patterns: ['b', 'strong'],
-				replacement: function(str, attrs, innerHTML) {
-					return innerHTML ? '**' + innerHTML + '**' : '';
-				}
-			},
-			{
-				patterns: ['i', 'em'],
-				replacement: function(str, attrs, innerHTML) {
-					return innerHTML ? '_' + innerHTML + '_' : '';
-				}
-			},
-			{
-				patterns: 'code',
-				replacement: function(str, attrs, innerHTML) {
-					//return innerHTML ? '`' + he.decode(innerHTML) + '`' : '';
-					return innerHTML ? '`' + innerHTML + '`' : '';
-				}
-			},
-			{
-				patterns: 'img',
-				type: 'void',
-				replacement: function(str, attrs/*, innerHTML*/) {
-					var src = attrs.match(attrRegExp('src')),
-						alt = attrs.match(attrRegExp('alt')),
-						title = attrs.match(attrRegExp('title'));
-					return '![' + (alt && alt[1] ? alt[1] : '') + ']' + '(' + src[1] + (title && title[1] ? ' "' + title[1] + '"' : '') + ')';
-				}
+		var ELEMENTS = [{
+			patterns: 'p',
+			replacement: function(str, attrs, innerHTML) {
+				return innerHTML ? '\n\n' + innerHTML + '\n' : '';
 			}
-		];
+		}, {
+			patterns: 'br',
+			type: 'void',
+			replacement: '  \n'
+		}, {
+			patterns: 'h([1-6])',
+			replacement: function(str, hLevel, attrs, innerHTML) {
+				var hPrefix = '';
+				for (var i = 0; i < hLevel; i++) {
+					hPrefix += '#';
+				}
+				return '\n\n' + hPrefix + ' ' + innerHTML + '\n';
+			}
+		}, {
+			patterns: 'hr',
+			type: 'void',
+			replacement: '\n\n* * *\n'
+		}, {
+			patterns: 'a',
+			replacement: function(str, attrs, innerHTML) {
+				var href = attrs.match(attrRegExp('href')),
+					title = attrs.match(attrRegExp('title'));
+				return href ? '[' + innerHTML + ']' + '(' + href[1] + (title && title[1] ? ' "' + title[1] + '"' : '') + ')' : str;
+			}
+		}, {
+			patterns: ['b', 'strong'],
+			replacement: function(str, attrs, innerHTML) {
+				return innerHTML ? '**' + innerHTML + '**' : '';
+			}
+		}, {
+			patterns: ['i', 'em'],
+			replacement: function(str, attrs, innerHTML) {
+				return innerHTML ? '_' + innerHTML + '_' : '';
+			}
+		}, {
+			patterns: 'code',
+			replacement: function(str, attrs, innerHTML) {
+				return innerHTML ? '`' + he.decode(innerHTML) + '`' : '';
+			}
+		}, {
+			patterns: 'img',
+			type: 'void',
+			replacement: function(str, attrs, innerHTML) {
+				var src = attrs.match(attrRegExp('src')),
+					alt = attrs.match(attrRegExp('alt')),
+					title = attrs.match(attrRegExp('title'));
+				return src ? '![' + (alt && alt[1] ? alt[1] : '') + ']' + '(' + src[1] + (title && title[1] ? ' "' + title[1] + '"' : '') + ')' : '';
+			}
+		}];
 
 		for (var i = 0, len = ELEMENTS.length; i < len; i++) {
 			if (typeof ELEMENTS[i].patterns === 'string') {
-				string = replaceEls(string, { tag: ELEMENTS[i].patterns, replacement: ELEMENTS[i].replacement, type: ELEMENTS[i].type });
+				string = replaceEls(string, {
+					tag: ELEMENTS[i].patterns,
+					replacement: ELEMENTS[i].replacement,
+					type: ELEMENTS[i].type
+				});
 			} else {
 				for (var j = 0, pLen = ELEMENTS[i].patterns.length; j < pLen; j++) {
-					string = replaceEls(string, { tag: ELEMENTS[i].patterns[j], replacement: ELEMENTS[i].replacement, type: ELEMENTS[i].type });
+					string = replaceEls(string, {
+						tag: ELEMENTS[i].patterns[j],
+						replacement: ELEMENTS[i].replacement,
+						type: ELEMENTS[i].type
+					});
 				}
 			}
 		}
@@ -601,12 +600,11 @@
 
 		// Pre code blocks
 
-		string = string.replace(/<pre\b[^>]*>`([\s\S]*)`<\/pre>/gi, function(str, innerHTML) {
-			//var text = he.decode(innerHTML);
-			var text = innerHTML;
-			text = text.replace(/^\t+/g, ' '); // convert tabs to spaces (you know it makes sense)
-			text = text.replace(/\n/g, '\n ');
-			return '\n\n ' + text + '\n';
+		string = string.replace(/<pre\b[^>]*>`([\s\S]*?)`<\/pre>/gi, function(str, innerHTML) {
+			var text = he.decode(innerHTML);
+			text = text.replace(/^\t+/g, '  '); // convert tabs to spaces (you know it makes sense)
+			text = text.replace(/\n/g, '\n    ');
+			return '\n\n    ' + text + '\n';
 		});
 
 		// Lists
@@ -618,11 +616,10 @@
 
 		// Converts lists that have no child lists (of same type) first, then works its way up
 		var noChildrenRegex = /<(ul|ol)\b[^>]*>(?:(?!<ul|<ol)[\s\S])*?<\/\1>/gi;
-		var replaceListsFn = function(str) {
-			return replaceLists(str);
-		};
 		while (string.match(noChildrenRegex)) {
-			string = string.replace(noChildrenRegex, replaceListsFn);
+			string = string.replace(noChildrenRegex, function(str) {
+				return replaceLists(str);
+			});
 		}
 
 		function replaceLists(html) {
@@ -631,32 +628,32 @@
 				var lis = innerHTML.split('</li>');
 				lis.splice(lis.length - 1, 1);
 
-				var lisReplace = function(str, innerHTML) {
-					innerHTML = innerHTML.replace(/^\s+/, '');
-					innerHTML = innerHTML.replace(/\n\n/g, '\n\n ');
-					// indent nested lists
-					innerHTML = innerHTML.replace(/\n([ ]*)+(\*|\d+\.) /g, '\n$1 $2 ');
-					return prefix + innerHTML;
-				};
-
 				for (i = 0, len = lis.length; i < len; i++) {
 					if (lis[i]) {
-						var prefix = (listType === 'ol') ? (i + 1) + ". " : "* ";
-						lis[i] = lis[i].replace(/\s*<li[^>]*>([\s\S]*)/i, lisReplace);
+						var prefix = (listType === 'ol') ? (i + 1) + ".  " : "*   ";
+						lis[i] = lis[i].replace(/\s*<li[^>]*>([\s\S]*)/i, function(str, innerHTML) {
+
+							innerHTML = innerHTML.replace(/^\s+/, '');
+							innerHTML = innerHTML.replace(/\n\n/g, '\n\n    ');
+							// indent nested lists
+							innerHTML = innerHTML.replace(/\n([ ]*)+(\*|\d+\.) /g, '\n$1    $2 ');
+							return prefix + innerHTML;
+						});
 					}
+					lis[i] = lis[i].replace(/(.) +$/m, '$1');
 				}
 				return lis.join('\n');
 			});
+
 			return '\n\n' + html.replace(/[ \t]+\n|\s+$/g, '');
 		}
 
 		// Blockquotes
 		var deepest = /<blockquote\b[^>]*>((?:(?!<blockquote)[\s\S])*?)<\/blockquote>/gi;
-		var replaceBlockquotesFn = function(str) {
-			return replaceBlockquotes(str);
-		};
 		while (string.match(deepest)) {
-			string = string.replace(deepest, replaceBlockquotesFn);
+			string = string.replace(deepest, function(str) {
+				return replaceBlockquotes(str);
+			});
 		}
 
 		function replaceBlockquotes(html) {
@@ -683,13 +680,17 @@
 	function addReplyButtons() {
 		Array.prototype.forEach.call(document.querySelectorAll(".comment"), function(comment) {
 			var oldReply = comment.querySelector(".GithubCommentEnhancerReply");
-			if (oldReply) { oldReply.parentNode.removeChild(oldReply); }
+			if (oldReply) {
+				oldReply.parentNode.removeChild(oldReply);
+			}
 
 			var header = comment.querySelector(".timeline-comment-header"),
 				actions = comment.querySelector(".timeline-comment-actions"),
 				newComment = document.querySelector(".timeline-new-comment .comment-form-textarea");
 
-			if (!header) { return; }
+			if (!header) {
+				return;
+			}
 			if (!actions) {
 				actions = document.createElement("div");
 				actions.classList.add("timeline-comment-actions");
@@ -744,7 +745,7 @@
 	init();
 
 	// on pjax;
-	unsafeWindow.$(document).on("pjax:end", init);  // `pjax:end` also runs on history back;
+	unsafeWindow.$(document).on("pjax:end", init); // `pjax:end` also runs on history back;
 
 	// for inline comments;
 	var files = document.querySelectorAll('.file-code');
@@ -756,7 +757,10 @@
 					addToolbar();
 				}
 			});
-		}).observe(file, { childList: true, subtree: true });
+		}).observe(file, {
+			childList: true,
+			subtree: true
+		});
 	});
 
 })(typeof unsafeWindow !== "undefined" ? unsafeWindow : window);
