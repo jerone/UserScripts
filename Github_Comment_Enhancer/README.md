@@ -28,6 +28,9 @@ Add features to enhance comments & wiki on [Github](https://github.com) and comm
 
 ## Version History
 
+* **2.1.0**
+    * Added tab character as a snippet (thnx to [r-a-y](https://github.com/r-a-y), fixes https://github.com/jerone/UserScripts/issues/41);
+    * Updated toMarkdown for replies;
 * **2.0.3**
     * Fixed reply button style issue after recent layout update;
     * Fix ordered list with multi-line (fixes https://github.com/jerone/UserScripts/issues/20);
@@ -97,6 +100,7 @@ Test cases:
 ## Contributors
 
 * [tophf](https://github.com/tophf)
+* [r-a-y](https://github.com/r-a-y)
 
 
 ## External links
