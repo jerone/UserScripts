@@ -28,6 +28,8 @@ Add features to enhance comments & wiki on [Github](https://github.com) and comm
 
 ## Version History
 
+* **vNext**
+    * Added support for GFM task lists in replies (fixes https://github.com/jerone/UserScripts/issues/35);
 * **2.1.0**
     * Added tab character as a snippet (thnx to [r-a-y](https://github.com/r-a-y), fixes https://github.com/jerone/UserScripts/issues/41);
     * Updated toMarkdown for replies;
