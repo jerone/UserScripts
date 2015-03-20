@@ -184,21 +184,21 @@
 
 	var editorHTML = (function editorHTML() {
 		return '<div id="gollum-editor-function-buttons" style="float: left;">' +
-			'	<div class="button-group">' +
-			'		<a href="#" id="function-bold" class="minibutton function-button tooltipped tooltipped-ne" aria-label="Bold" style="height:26px;">' +
+			'	<div class="button-group btn-group">' +
+			'		<a href="#" id="function-bold" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Bold" style="height:26px;">' +
 			'			<b style="font-weight: bolder;">B</b>' +
 			'		</a>' +
-			'		<a href="#" id="function-italic" class="minibutton function-button tooltipped tooltipped-ne" aria-label="Italic">' +
+			'		<a href="#" id="function-italic" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Italic">' +
 			'			<em>i</em>' +
 			'		</a>' +
-			'		<a href="#" id="function-strikethrough" class="minibutton function-button tooltipped tooltipped-ne" aria-label="Strikethrough">' +
+			'		<a href="#" id="function-strikethrough" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Strikethrough">' +
 			'			<s>S</s>' +
 			'		</a>' +
 			'	</div>' +
 
-			'	<div class="button-group">' +
+			'	<div class="button-group btn-group">' +
 			'		<div class="select-menu js-menu-container js-select-menu">' +
-			'			<span class="minibutton select-menu-button icon-only js-menu-target" aria-label="Headers" style="padding:0 7px; width:auto; border-bottom-right-radius:3px; border-top-right-radius:3px;">' +
+			'			<span class="btn btn-sm minibutton select-menu-button icon-only js-menu-target" aria-label="Headers" style="padding-left:7px; padding-right:7px; width:auto; border-bottom-right-radius:3px; border-top-right-radius:3px;">' +
 			'		<span class="js-select-button">h#</span>' +
 			'			</span>' +
 			'			<div class="select-menu-modal-holder js-menu-content js-navigation-container js-active-navigation-container" style="top: 26px;">' +
@@ -207,23 +207,23 @@
 			'						<span class="select-menu-title">Choose header</span>' +
 			'						<span class="octicon octicon-remove-close js-menu-close"></span>' +
 			'					</div>' +
-			'					<div class="button-group">' +
-			'						<a href="#" id="function-h1" class="minibutton function-button js-navigation-item js-menu-close tooltipped tooltipped-s" aria-label="Header 1">' +
+			'					<div class="button-group btn-group">' +
+			'						<a href="#" id="function-h1" class="btn btn-sm minibutton function-button js-navigation-item js-menu-close tooltipped tooltipped-s" aria-label="Header 1">' +
 			'							<b class="select-menu-item-text js-select-button-text">h1</b>' +
 			'						</a>' +
-			'						<a href="#" id="function-h2" class="minibutton function-button js-navigation-item js-menu-close tooltipped tooltipped-s" aria-label="Header 2">' +
+			'						<a href="#" id="function-h2" class="btn btn-sm minibutton function-button js-navigation-item js-menu-close tooltipped tooltipped-s" aria-label="Header 2">' +
 			'							<b class="select-menu-item-text js-select-button-text">h2</b>' +
 			'						</a>' +
-			'						<a href="#" id="function-h3" class="minibutton function-button js-navigation-item js-menu-close tooltipped tooltipped-s" aria-label="Header 3">' +
+			'						<a href="#" id="function-h3" class="btn btn-sm minibutton function-button js-navigation-item js-menu-close tooltipped tooltipped-s" aria-label="Header 3">' +
 			'							<b class="select-menu-item-text js-select-button-text">h3</b>' +
 			'						</a>' +
-			'						<a href="#" id="function-h4" class="minibutton function-button js-navigation-item js-menu-close tooltipped tooltipped-s" aria-label="Header 4">' +
+			'						<a href="#" id="function-h4" class="btn btn-sm minibutton function-button js-navigation-item js-menu-close tooltipped tooltipped-s" aria-label="Header 4">' +
 			'							<b class="select-menu-item-text js-select-button-text">h4</b>' +
 			'						</a>' +
-			'						<a href="#" id="function-h5" class="minibutton function-button js-navigation-item js-menu-close tooltipped tooltipped-s" aria-label="Header 5">' +
+			'						<a href="#" id="function-h5" class="btn btn-sm minibutton function-button js-navigation-item js-menu-close tooltipped tooltipped-s" aria-label="Header 5">' +
 			'							<b class="select-menu-item-text js-select-button-text">h5</b>' +
 			'						</a>' +
-			'						<a href="#" id="function-h6" class="minibutton function-button js-navigation-item js-menu-close tooltipped tooltipped-s" aria-label="Header 6">' +
+			'						<a href="#" id="function-h6" class="btn btn-sm minibutton function-button js-navigation-item js-menu-close tooltipped tooltipped-s" aria-label="Header 6">' +
 			'							<b class="select-menu-item-text js-select-button-text">h6</b>' +
 			'						</a>' +
 			'					</div>' +
@@ -232,44 +232,44 @@
 			'		</div>' +
 			'	</div>' +
 
-			'	<div class="button-group">' +
-			'		<a href="#" id="function-link" class="minibutton function-button tooltipped tooltipped-ne" aria-label="Link">' +
+			'	<div class="button-group btn-group">' +
+			'		<a href="#" id="function-link" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Link">' +
 			'			<span class="octicon octicon-link"></span>' +
 			'		</a>' +
-			'		<a href="#" id="function-image" class="minibutton function-button tooltipped tooltipped-ne" aria-label="Image">' +
+			'		<a href="#" id="function-image" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Image">' +
 			'			<span class="octicon octicon-file-media"></span>' +
 			'		</a>' +
 			'	</div>' +
-			'	<div class="button-group">' +
-			'		<a href="#" id="function-ul" class="minibutton function-button tooltipped tooltipped-ne" aria-label="Unordered List">' +
+			'	<div class="button-group btn-group">' +
+			'		<a href="#" id="function-ul" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Unordered List">' +
 			'			<span class="octicon octicon-list-unordered"></span>' +
 			'		</a>' +
-			'		<a href="#" id="function-ol" class="minibutton function-button tooltipped tooltipped-ne" aria-label="Ordered List">' +
+			'		<a href="#" id="function-ol" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Ordered List">' +
 			'			<span class="octicon octicon-list-ordered"></span>' +
 			'		</a>' +
-			'		<a href="#" id="function-checklist" class="minibutton function-button tooltipped tooltipped-ne" aria-label="Task List">' +
+			'		<a href="#" id="function-checklist" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Task List">' +
 			'			<span class="octicon octicon-checklist"></span>' +
 			'		</a>' +
 			'	</div>' +
 
-			'	<div class="button-group">' +
-			'		<a href="#" id="function-code" class="minibutton function-button tooltipped tooltipped-ne" aria-label="Code">' +
+			'	<div class="button-group btn-group">' +
+			'		<a href="#" id="function-code" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Code">' +
 			'			<span class="octicon octicon-code"></span>' +
 			'		</a>' +
-			'		<a href="#" id="function-blockquote" class="minibutton function-button tooltipped tooltipped-ne" aria-label="Blockquote">' +
+			'		<a href="#" id="function-blockquote" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Blockquote">' +
 			'			<span class="octicon octicon-quote"></span>' +
 			'		</a>' +
-			'		<a href="#" id="function-hr" class="minibutton function-button tooltipped tooltipped-ne" aria-label="Horizontal Rule">' +
+			'		<a href="#" id="function-hr" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Horizontal Rule">' +
 			'			<span class="octicon octicon-horizontal-rule"></span>' +
 			'		</a>' +
-			'		<a href="#" id="function-table" class="minibutton function-button tooltipped tooltipped-ne" aria-label="Table">' +
+			'		<a href="#" id="function-table" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Table">' +
 			'			<span class="octicon octicon-three-bars"></span>' +
 			'		</a>' +
 			'	</div>' +
 
-			'	<div class="button-group">' +
+			'	<div class="button-group btn-group">' +
 			'		<div class="select-menu js-menu-container js-select-menu">' +
-			'			<span class="minibutton select-menu-button js-menu-target" aria-label="Snippets" style="padding:0 7px; width:auto; border-bottom-right-radius:3px; border-top-right-radius:3px;">' +
+			'			<span class="btn btn-sm minibutton select-menu-button js-menu-target" aria-label="Snippets" style="padding-left:7px; padding-right:7px; width:auto; border-bottom-right-radius:3px; border-top-right-radius:3px;">' +
 			'				<span class="octicon octicon-pin"></span>' +
 			'			</span>' +
 			'			<div class="select-menu-modal-holder js-menu-content js-navigation-container js-active-navigation-container">' +
@@ -307,8 +307,8 @@
 
 			'</div>' +
 
-			'<div class="button-group" style="float:right;">' +
-			'	<a href="#" id="function-clear" class="minibutton function-button tooltipped tooltipped-nw" aria-label="Clear">' +
+			'<div style="float:right;">' +
+			'	<a href="#" id="function-clear" class="btn btn-sm minibutton function-button tooltipped tooltipped-nw" aria-label="Clear">' +
 			'		<span class="octicon octicon-circle-slash"></span>' +
 			'	</a>' +
 			'</div>';
@@ -471,12 +471,12 @@
 					commentForm.parentNode.insertBefore(gollumEditor, commentForm);
 				}
 
-				var tabnavExtras = commentForm.parentNode.parentNode.querySelector(".comment-form-head .tabnav-right");
+				var tabnavExtras = commentForm.parentNode.parentNode.querySelector(".comment-form-head .tabnav-right, .comment-form-head .right");
 				if (tabnavExtras) {
 					var sponsored = document.createElement("a");
-					sponsored.setAttribute("href", "https://github.com/jerone/UserScripts/tree/master/Github_Comment_Enhancer");
 					sponsored.setAttribute("target", "_blank");
-					sponsored.classList.add("tabnav-widget", "text", "tabnav-extras");
+					sponsored.setAttribute("href", "https://github.com/jerone/UserScripts/tree/master/Github_Comment_Enhancer");
+					sponsored.classList.add("tabnav-widget", "text", "tabnav-extras", "tabnav-extra");
 					var sponsoredIcon = document.createElement("span");
 					sponsoredIcon.classList.add("octicon", "octicon-question");
 					sponsored.appendChild(sponsoredIcon);
