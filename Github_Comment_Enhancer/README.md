@@ -29,6 +29,8 @@ Add features to enhance comments & wiki on [Github](https://github.com) and comm
 ## Version History
 
 * **vNext**
+*
+* **2.2.0**
     * Fixed issues after recent layout updates (fixes https://github.com/jerone/UserScripts/issues/43);
     * Added support for GFM task lists in replies (fixes https://github.com/jerone/UserScripts/issues/35);
 * **2.1.0**
