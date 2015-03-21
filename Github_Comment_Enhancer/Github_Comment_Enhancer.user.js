@@ -83,7 +83,7 @@
 			},
 
 			"function-link": {
-				exec: function(txt, selText, commentForm, next) {
+				exec: function(button, selText, commentForm, next) {
 					var selTxt = selText.trim(),
 						isUrl = selTxt && /(?:https?:\/\/)|(?:www\.)/.test(selTxt),
 						href = window.prompt("Link href:", isUrl ? selTxt : ""),
@@ -94,7 +94,7 @@
 				}
 			},
 			"function-image": {
-				exec: function(txt, selText, commentForm, next) {
+				exec: function(button, selText, commentForm, next) {
 					var selTxt = selText.trim(),
 						isUrl = selTxt && /(?:https?:\/\/)|(?:www\.)/.test(selTxt),
 						href = window.prompt("Image href:", isUrl ? selTxt : ""),
@@ -111,7 +111,7 @@
 				forceNewline: true
 			},
 			"function-ol": {
-				exec: function(txt, selText, commentForm, next) {
+				exec: function(button, selText, commentForm, next) {
 					var repText = "";
 					if (!selText) {
 						repText = "1. ";
@@ -134,7 +134,7 @@
 			},
 
 			"function-code": {
-				exec: function(txt, selText, commentForm, next) {
+				exec: function(button, selText, commentForm, next) {
 					var rt = selText.indexOf("\n") > -1 ? "$1\n```\n$2\n```$3" : "$1`$2`$3";
 					next(selText.replace(/^(\s*)([\s\S]*?)(\s*)$/g, rt));
 				}
@@ -158,24 +158,24 @@
 			},
 
 			"function-clear": {
-				exec: function(txt, selText, commentForm, next) {
+				exec: function(button, selText, commentForm, next) {
 					commentForm.value = "";
 					next("");
 				}
 			},
 
 			"function-snippets-tab": {
-				exec: function(txt, selText, commentForm, next) {
+				exec: function(button, selText, commentForm, next) {
 					next("\t");
 				}
 			},
 			"function-snippets-useragent": {
-				exec: function(txt, selText, commentForm, next) {
+				exec: function(button, selText, commentForm, next) {
 					next("`" + navigator.userAgent + "`");
 				}
 			},
 			"function-snippets-contributing": {
-				exec: function(txt, selText, commentForm, next) {
+				exec: function(button, selText, commentForm, next) {
 					next("Please, always consider reviewing the [guidelines for contributing](../blob/master/CONTRIBUTING.md) to this repository.");
 				}
 			}
@@ -315,7 +315,7 @@
 	})();
 
 	// Source: https://github.com/gollum/gollum/blob/9c714e768748db4560bc017cacef4afa0c751a63/lib/gollum/public/gollum/javascript/editor/gollum.editor.js#L516
-	function executeAction(definitionObject, commentForm) {
+	function executeAction(definitionObject, commentForm, button) {
 		var txt = commentForm.value,
 			selPos = {
 				start: commentForm.selectionStart,
@@ -328,7 +328,7 @@
 
 		// execute replacement function;
 		if (definitionObject.exec) {
-			definitionObject.exec(txt, selText, commentForm, function(repText) {
+			definitionObject.exec(button, selText, commentForm, function(repText) {
 				replaceFieldSelection(commentForm, repText);
 			});
 			return;
@@ -421,7 +421,7 @@
 
 	var functionButtonClick = function(e) {
 		e.preventDefault();
-		executeAction(MarkDown[this.id], this.commentForm);
+		executeAction(MarkDown[this.id], this.commentForm, this);
 		return false;
 	};
 
