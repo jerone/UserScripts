@@ -284,7 +284,7 @@
 			'						</div>' +
 			'					</div>' +
 			'					<div class="select-menu-list" style="overflow:visible;">' +
-			'						<div data-filterable-for="context-snippets-filter-field">' +
+			'						<div data-filterable-type="substring" data-filterable-for="context-snippets-filter-field">' +
 			'							<a href="#" id="function-snippets-tab" class="function-button select-menu-item js-navigation-item tooltipped tooltipped-w" aria-label="Add tab character" style="table-layout:initial;">' +
 			'								<span class="select-menu-item-text js-select-button-text">Add tab character</span>' +
 			'							</a>' +
