@@ -29,7 +29,8 @@ Add features to enhance comments & wiki on [Github](https://github.com) and comm
 ## Version History
 
 * **vNext**
-*
+    * Added emoji's (fixes https://github.com/jerone/UserScripts/issues/37);
+    * Searching snippets improved;
 * **2.2.0**
     * Fixed issues after recent layout updates (fixes https://github.com/jerone/UserScripts/issues/43);
     * Added support for GFM task lists in replies (fixes https://github.com/jerone/UserScripts/issues/35);
@@ -82,19 +83,6 @@ Add features to enhance comments & wiki on [Github](https://github.com) and comm
     * Added new line when needed;
 * **1.0**
     * Initial version;
-
-
-## TODO
-
-* ~~Allow editing [markdown files](https://github.com/jerone/UserScripts/edit/master/README.md)~~ -> to hard right now, requires knowledge of hooking into [ACE](https://github.com/ajaxorg/ace);
-* Add more snippets (predefined and executable);
-* Emoji (https://github.com/jerone/UserScripts/issues/37)
-  * https://github.com/github/gemoji/blob/master/db/index.html
-  * https://github.com/github/gemoji/blob/master/db/emoji.json
-  * http://johannhof.github.io/emoji-helper/
-  * https://johannhof.github.io/emoji-helper/bookmarklet/
-  * https://github.com/johannhof/emoji-helper
-  * https://addons.mozilla.org/en-US/firefox/addon/emoji-cheatsheet/?src=search
 
 
 ## Notes

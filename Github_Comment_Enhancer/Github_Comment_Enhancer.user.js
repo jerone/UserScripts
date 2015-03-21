@@ -178,6 +178,12 @@
 				exec: function(button, selText, commentForm, next) {
 					next("Please, always consider reviewing the [guidelines for contributing](../blob/master/CONTRIBUTING.md) to this repository.");
 				}
+			},
+
+			"function-emoji": {
+				exec: function(button, selText, commentForm, next) {
+					next(":" + button.dataset.value + ":");
+				}
 			}
 		};
 	})();
@@ -305,6 +311,30 @@
 			'		</div>' +
 			'	</div>' +
 
+			'	<div class="button-group btn-group">' +
+			'		<div class="select-menu js-menu-container js-select-menu">' +
+			'			<span class="btn btn-sm minibutton select-menu-button js-menu-target" aria-label="Emoji" style="padding-left:7px; padding-right:7px; width:auto; border-bottom-right-radius:3px; border-top-right-radius:3px;">' +
+			'				<span class="octicon octicon-octoface"></span>' +
+			'			</span>' +
+			'			<div class="select-menu-modal-holder js-menu-content js-navigation-container js-active-navigation-container">' +
+			'				<div class="select-menu-modal" style="overflow:visible;">' +
+			'					<div class="select-menu-header">' +
+			'						<span class="select-menu-title">Emoji</span>' +
+			'						<span class="octicon octicon-remove-close js-menu-close"></span>' +
+			'					</div>' +
+			'					<div class="select-menu-filters">' +
+			'						<div class="select-menu-text-filter">' +
+			'							<input type="text" placeholder="Filter emoji..." class="js-filterable-field js-navigation-enable" id="context-emoji-filter-field">' +
+			'						</div>' +
+			'					</div>' +
+			'					<div class="suggester select-menu-list" style="overflow:visible;">' +
+			'						<div class="select-menu-no-results">Nothing to show</div>' +
+			'					</div>' +
+			'				</div>' +
+			'			</div>' +
+			'		</div>' +
+			'	</div>' +
+
 			'</div>' +
 
 			'<div style="float:right;">' +
@@ -425,6 +455,35 @@
 		return false;
 	};
 
+	function addSuggestions(commentForm) {
+		var jssuggester = commentForm.parentNode.parentNode.querySelector(".js-suggester-container .js-suggester");
+		var url = jssuggester.getAttribute("data-url");
+		unsafeWindow.$.fetchText(url).then(function(suggestionsData) {
+			suggestionsData = suggestionsData.replace(/js-navigation-item/g, "function-button js-navigation-item select-menu-item");
+
+			var suggestions = document.createElement("div");
+			suggestions.innerHTML = suggestionsData;
+
+			var emojiSuggestions = suggestions.querySelector(".emoji-suggestions");
+			emojiSuggestions.style.display = "block";
+			emojiSuggestions.dataset.filterableType = "substring";
+			emojiSuggestions.dataset.filterableFor = "context-emoji-filter-field";
+			emojiSuggestions.dataset.filterableLimit = "10";
+
+			var suggester = commentForm.parentNode.querySelector(".suggester");
+			suggester.style.display = "block";
+			suggester.style.marginTop = "0";
+			suggester.appendChild(emojiSuggestions);
+			Array.prototype.forEach.call(suggester.querySelectorAll(".function-button"), function(button) {
+				button.addEventListener("click", function(e) {
+					e.preventDefault();
+					executeAction(MarkDown["function-emoji"], commentForm, this);
+					return false;
+				});
+			});
+		});
+	}
+
 	function addToolbar() {
 		if (isWiki()) {
 			// Override existing language with improved & missing functions and remove existing click events;
@@ -470,6 +529,8 @@
 					gollumEditor.classList.add("active");
 					commentForm.parentNode.insertBefore(gollumEditor, commentForm);
 				}
+
+				addSuggestions(commentForm);
 
 				var tabnavExtras = commentForm.parentNode.parentNode.querySelector(".comment-form-head .tabnav-right, .comment-form-head .right");
 				if (tabnavExtras) {
