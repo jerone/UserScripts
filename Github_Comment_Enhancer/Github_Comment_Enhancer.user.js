@@ -575,8 +575,16 @@
 		});
 	}
 
-	// Source: https://github.com/domchristie/to-markdown
-	// Code is altered with task list support: https://github.com/domchristie/to-markdown/pull/62
+	/*
+	 * to-markdown - an HTML to Markdown converter
+	 * Copyright 2011, Dom Christie
+	 * Licenced under the MIT licence
+	 * Source: https://github.com/domchristie/to-markdown
+	 *
+	 * Code is altered:
+	 * - Added task list support: https://github.com/domchristie/to-markdown/pull/62
+	 * - He dependecy is removed
+	 */
 	var toMarkdown = function(string) {
 
 		var ELEMENTS = [{

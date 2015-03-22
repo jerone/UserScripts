@@ -85,9 +85,7 @@ Add features to enhance comments & wiki on [Github](https://github.com) and comm
     * Initial version;
 
 
-## Notes
-
-Test cases:
+## Test cases
 
 * https://github.com/jerone/UserScripts/issues/new (new issue)
 * https://github.com/jerone/UserScripts/issues/1 (new comment & edit comment)
@@ -95,6 +93,11 @@ Test cases:
 * https://github.com/jerone/UserScripts/wiki/_new (new wiki)
 * https://github.com/jerone/OpenUserJS.org/compare/master...app_route (new PR)
 * https://gist.github.com/jerone/9526258 (new comment & edit comment)
+
+
+## Dependencies
+
+* Part of [domchristie](https://github.com/domchristie)'s library [**to-markdown**](https://github.com/domchristie/to-markdown) is used.
 
 
 ## Contributors
