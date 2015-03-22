@@ -817,8 +817,9 @@
 				}).join("\n");
 
 				var text = newComment.value.length > 0 ? "\n" : "";
-				text += String.format('@{0} commented on [{1}]({2} "{3} - Replied by Github Comment Enhancer"):\n{4}\n\n',
+				text += String.format('[**@{0}**]({1}/{0}) commented on [{2}]({3} "{4} - Replied by Github Comment Enhancer"):\n{5}\n\n',
 					comment.querySelector(".author").textContent,
+					location.origin,
 					timestamp.firstElementChild.getAttribute("title"),
 					timestamp.href,
 					timestamp.firstElementChild.getAttribute("datetime"),
