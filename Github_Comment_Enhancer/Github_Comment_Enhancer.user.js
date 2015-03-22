@@ -468,31 +468,44 @@
 		return false;
 	};
 
+	var suggestionsCache = {};
 	function addSuggestions(commentForm) {
 		var jssuggester = commentForm.parentNode.parentNode.querySelector(".suggester-container .suggester");
 		var url = jssuggester.getAttribute("data-url");
-		unsafeWindow.$.fetchText(url).then(function(suggestionsData) {
-			suggestionsData = suggestionsData.replace(/js-navigation-item/g, "function-button js-navigation-item select-menu-item");
 
-			var suggestions = document.createElement("div");
-			suggestions.innerHTML = suggestionsData;
+		if (suggestionsCache[url]) {
+			parseSuggestions(suggestionsCache[url]);
+		} else {
+			unsafeWindow.$.ajax({
+				url: url,
+				success: function(suggestionsData) {
+					suggestionsCache[url] = suggestionsData
+					parseSuggestions(commentForm, suggestionsData);
+				}
+			});
+		}
+	}
+	function parseSuggestions(commentForm, suggestionsData) {
+		suggestionsData = suggestionsData.replace(/js-navigation-item/g, "function-button js-navigation-item select-menu-item");
 
-			var emojiSuggestions = suggestions.querySelector(".emoji-suggestions");
-			emojiSuggestions.style.display = "block";
-			emojiSuggestions.dataset.filterableType = "substring";
-			emojiSuggestions.dataset.filterableFor = "context-emoji-filter-field";
-			emojiSuggestions.dataset.filterableLimit = "10";
+		var suggestions = document.createElement("div");
+		suggestions.innerHTML = suggestionsData;
 
-			var suggester = commentForm.parentNode.querySelector(".suggester");
-			suggester.style.display = "block";
-			suggester.style.marginTop = "0";
-			suggester.appendChild(emojiSuggestions);
-			Array.prototype.forEach.call(suggester.querySelectorAll(".function-button"), function(button) {
-				button.addEventListener("click", function(e) {
-					e.preventDefault();
-					executeAction(MarkDown["function-emoji"], commentForm, this);
-					return false;
-				});
+		var emojiSuggestions = suggestions.querySelector(".emoji-suggestions");
+		emojiSuggestions.style.display = "block";
+		emojiSuggestions.dataset.filterableType = "substring";
+		emojiSuggestions.dataset.filterableFor = "context-emoji-filter-field";
+		emojiSuggestions.dataset.filterableLimit = "10";
+
+		var suggester = commentForm.parentNode.querySelector(".suggester");
+		suggester.style.display = "block";
+		suggester.style.marginTop = "0";
+		suggester.appendChild(emojiSuggestions);
+		Array.prototype.forEach.call(suggester.querySelectorAll(".function-button"), function(button) {
+			button.addEventListener("click", function(e) {
+				e.preventDefault();
+				executeAction(MarkDown["function-emoji"], commentForm, this);
+				return false;
 			});
 		});
 	}
