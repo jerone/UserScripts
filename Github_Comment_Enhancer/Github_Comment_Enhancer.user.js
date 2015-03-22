@@ -35,8 +35,11 @@
 		});
 	};
 
-	// Choose the character that precedes the list in MarkDown;
+	// Choose the character that precedes the list;
 	var listCharacter = ["*", "-", "+"][0];
+
+	// Choose the characters that makes up a horizontal line;
+	var lineCharacter = ["***", "---", "___"][0];
 
 	// Source: https://github.com/gollum/gollum/blob/9c714e768748db4560bc017cacef4afa0c751a63/lib/gollum/public/gollum/javascript/editor/langs/markdown.js
 	var MarkDown = (function MarkDown() {
@@ -152,7 +155,7 @@
 				forceNewline: true
 			},
 			"function-hr": {
-				append: "\n***\n",
+				append: String.format("\n{0}\n", lineCharacter),
 				forceNewline: true
 			},
 			"function-table": {

@@ -31,7 +31,8 @@ Add features to enhance comments & wiki on [Github](https://github.com) and comm
 * **vNext**
     * Added emoji's (fixes https://github.com/jerone/UserScripts/issues/37);
     * Added underline button;
-    * Added option to choose the character that precedes the list in MarkDown;
+    * Added option to choose the character that precedes the list;
+    * Added option to choose the characters that makes up a horizontal line;
     * Searching snippets improved;
     * Improve table code;
     * Added missing tooltips;
