@@ -150,10 +150,10 @@
 			},
 			"function-table": {
 				append: "\n" +
-					"| Head | Head | Head |\n" +
-					"| :--- | :--: | ---: |\n" +
-					"| Cell | Cell | Cell |\n" +
-					"| Cell | Cell | Cell |\n",
+					"| Head | Head   | Head  |\n" +
+					"| :--- | :----: | ----: |\n" +
+					"| Cell | Cell   | Cell  |\n" +
+					"| Left | Center | Right |\n",
 				forceNewline: true
 			},
 
