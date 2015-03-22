@@ -35,6 +35,9 @@
 		});
 	};
 
+	// Choose the character that precedes the list in MarkDown;
+	var listCharacter = ["*", "-", "+"][0];
+
 	// Source: https://github.com/gollum/gollum/blob/9c714e768748db4560bc017cacef4afa0c751a63/lib/gollum/public/gollum/javascript/editor/langs/markdown.js
 	var MarkDown = (function MarkDown() {
 		return {
@@ -111,7 +114,7 @@
 
 			"function-ul": {
 				search: /(.+)([\n]?)/g,
-				replace: "* $1$2",
+				replace: String.format("{0} $1$2", listCharacter),
 				forceNewline: true
 			},
 			"function-ol": {
@@ -133,7 +136,7 @@
 			},
 			"function-checklist": {
 				search: /(.+)([\n]?)/g,
-				replace: "* [ ] $1$2",
+				replace: String.format("{0} [ ] $1$2", listCharacter),
 				forceNewline: true
 			},
 
