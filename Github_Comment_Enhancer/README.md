@@ -30,7 +30,12 @@ Add features to enhance comments & wiki on [Github](https://github.com) and comm
 
 * **vNext**
     * Added emoji's (fixes https://github.com/jerone/UserScripts/issues/37);
+    * Added underline button;
+    * Added option to choose the character that precedes the list in MarkDown;
     * Searching snippets improved;
+    * Improve table code;
+    * Added missing tooltips;
+    * Corrected dependency message;
 * **2.2.0**
     * Fixed issues after recent layout updates (fixes https://github.com/jerone/UserScripts/issues/43);
     * Added support for GFM task lists in replies (fixes https://github.com/jerone/UserScripts/issues/35);
