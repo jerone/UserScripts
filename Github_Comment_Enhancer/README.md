@@ -33,6 +33,7 @@ Add features to enhance comments & wiki on [Github](https://github.com) and comm
     * Added underline button;
     * Added option to choose the character that precedes the list;
     * Added option to choose the characters that makes up a horizontal line;
+    * Fixed running on GitHub Gists (fixes https://github.com/jerone/UserScripts/issues/43);
     * Searching snippets improved;
     * Improve table code;
     * Added missing tooltips;
@@ -97,7 +98,7 @@ Add features to enhance comments & wiki on [Github](https://github.com) and comm
 * https://github.com/jerone/UserScripts/issues/1 (new comment & edit comment)
 * https://github.com/jerone/UserScripts/commit/master (comments below & inline comments)
 * https://github.com/jerone/UserScripts/wiki/_new (new wiki)
-* https://github.com/jerone/OpenUserJS.org/compare/master...app_route (new PR)
+* https://github.com/jerone/bootstrap-material-design/pull/new/feature/sass (new PR)
 * https://gist.github.com/jerone/9526258 (new comment & edit comment)
 
 

@@ -469,7 +469,7 @@
 	};
 
 	function addSuggestions(commentForm) {
-		var jssuggester = commentForm.parentNode.parentNode.querySelector(".js-suggester-container .js-suggester");
+		var jssuggester = commentForm.parentNode.parentNode.querySelector(".suggester-container .suggester");
 		var url = jssuggester.getAttribute("data-url");
 		unsafeWindow.$.fetchText(url).then(function(suggestionsData) {
 			suggestionsData = suggestionsData.replace(/js-navigation-item/g, "function-button js-navigation-item select-menu-item");
