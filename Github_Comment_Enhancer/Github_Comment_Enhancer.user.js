@@ -469,6 +469,7 @@
 	};
 
 	var suggestionsCache = {};
+
 	function addSuggestions(commentForm) {
 		var jssuggester = commentForm.parentNode.parentNode.querySelector(".suggester-container .suggester");
 		var url = jssuggester.getAttribute("data-url");
@@ -485,6 +486,7 @@
 			});
 		}
 	}
+
 	function parseSuggestions(commentForm, suggestionsData) {
 		suggestionsData = suggestionsData.replace(/js-navigation-item/g, "function-button js-navigation-item select-menu-item");
 
@@ -845,8 +847,8 @@
 	// on pjax;
 	unsafeWindow.$(document).on("pjax:end", init); // `pjax:end` also runs on history back;
 
-	// for inline comments;
-	var files = document.querySelectorAll('.file-code');
+	// For inline comments on commits;
+	var files = document.querySelectorAll('.diff-table');
 	Array.prototype.forEach.call(files, function(file) {
 		file = file.firstElementChild;
 		new MutationObserver(function(mutations) {

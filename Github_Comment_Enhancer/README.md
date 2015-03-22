@@ -33,7 +33,7 @@ Add features to enhance comments & wiki on [Github](https://github.com) and comm
     * Added underline button;
     * Added option to choose the character that precedes the list;
     * Added option to choose the characters that makes up a horizontal line;
-    * Fixed running on GitHub Gists (fixes https://github.com/jerone/UserScripts/issues/43);
+    * Fixed running on GitHub Gists and inline comments on commits (fixes https://github.com/jerone/UserScripts/issues/43);
     * Searching snippets improved;
     * Improve table code;
     * Added missing tooltips;
