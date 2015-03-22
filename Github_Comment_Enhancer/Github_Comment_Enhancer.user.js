@@ -46,6 +46,10 @@
 				search: /^(\s*)([\s\S]*?)(\s*)$/g,
 				replace: "$1_$2_$3"
 			},
+			"function-underline": {
+				search: /^(\s*)([\s\S]*?)(\s*)$/g,
+				replace: "$1<ins>$2</ins>$3"
+			},
 			"function-strikethrough": {
 				search: /^(\s*)([\s\S]*?)(\s*)$/g,
 				replace: "$1~~$2~~$3"
@@ -196,6 +200,9 @@
 			'		</a>' +
 			'		<a href="#" id="function-italic" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Italic">' +
 			'			<em>i</em>' +
+			'		</a>' +
+			'		<a href="#" id="function-underline" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Underline">' +
+			'			<ins>U</ins>' +
 			'		</a>' +
 			'		<a href="#" id="function-strikethrough" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Strikethrough">' +
 			'			<s>S</s>' +
