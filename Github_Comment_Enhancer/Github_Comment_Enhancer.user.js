@@ -203,7 +203,7 @@
 			'	</div>' +
 
 			'	<div class="button-group btn-group">' +
-			'		<div class="select-menu js-menu-container js-select-menu">' +
+			'		<div class="select-menu js-menu-container js-select-menu tooltipped tooltipped-ne" aria-label="Headers">' +
 			'			<span class="btn btn-sm minibutton select-menu-button icon-only js-menu-target" aria-label="Headers" style="padding-left:7px; padding-right:7px; width:auto; border-bottom-right-radius:3px; border-top-right-radius:3px;">' +
 			'		<span class="js-select-button">h#</span>' +
 			'			</span>' +
@@ -274,7 +274,7 @@
 			'	</div>' +
 
 			'	<div class="button-group btn-group">' +
-			'		<div class="select-menu js-menu-container js-select-menu">' +
+			'		<div class="select-menu js-menu-container js-select-menu tooltipped tooltipped-ne" aria-label="Snippets">' +
 			'			<span class="btn btn-sm minibutton select-menu-button js-menu-target" aria-label="Snippets" style="padding-left:7px; padding-right:7px; width:auto; border-bottom-right-radius:3px; border-top-right-radius:3px;">' +
 			'				<span class="octicon octicon-pin"></span>' +
 			'			</span>' +
@@ -312,7 +312,7 @@
 			'	</div>' +
 
 			'	<div class="button-group btn-group">' +
-			'		<div class="select-menu js-menu-container js-select-menu">' +
+			'		<div class="select-menu js-menu-container js-select-menu tooltipped tooltipped-ne" aria-label="Emoji">' +
 			'			<span class="btn btn-sm minibutton select-menu-button js-menu-target" aria-label="Emoji" style="padding-left:7px; padding-right:7px; width:auto; border-bottom-right-radius:3px; border-top-right-radius:3px;">' +
 			'				<span class="octicon octicon-octoface"></span>' +
 			'			</span>' +
