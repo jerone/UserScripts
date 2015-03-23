@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name        Github package.json & bower.json Dependencies Linker
+// @name        Github JSON Dependencies Linker
 // @namespace   https://github.com/jerone/UserScripts
 // @version     0.1.0
 // @include     https://github.com/*/package.json
