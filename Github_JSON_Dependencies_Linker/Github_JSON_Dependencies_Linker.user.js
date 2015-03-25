@@ -1,25 +1,25 @@
 // ==UserScript==
+// @id          Github_JSON_Dependencies_Linker@https://github.com/jerone/UserScripts
 // @name        Github JSON Dependencies Linker
 // @namespace   https://github.com/jerone/UserScripts
+// @description Linkify all dependencies found in an JSON file.
+// @author      jerone
+// @copyright   2015+, jerone (http://jeroenvanwarmerdam.nl)
+// @license     GNU GPLv3
+// @homepage    https://github.com/jerone/UserScripts/tree/master/Github_JSON_Dependencies_Linker
+// @homepageURL https://github.com/jerone/UserScripts/tree/master/Github_JSON_Dependencies_Linker
+// @downloadURL https://github.com/jerone/UserScripts/raw/master/Github_JSON_Dependencies_Linker/Github_JSON_Dependencies_Linker.user.js
+// @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_JSON_Dependencies_Linker/Github_JSON_Dependencies_Linker.user.js
+// @supportURL  https://github.com/jerone/UserScripts/issues
+// @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
 // @version     0.1.0
+// @grant       GM_xmlhttpRequest
+// @run-at      document-end
 // @include     https://github.com/*/package.json
 // @include     https://github.com/*/bower.json
 // @include     https://github.com/*/project.json
-// @grant       GM_xmlhttpRequest
-// @run-at      document-end
 // ==/UserScript==
-
-/* test cases:
- * https://github.com/jerone/PackageSize/blob/master/package.json <!-- multiple package.json dependencies;
- * https://github.com/npm/npm/blob/master/test/disabled/bundlerecurs/package.json
- * https://github.com/npm/npm/blob/master/test/tap/dev-dep-duplicate/package.json <-- duplicate packages;
- * https://github.com/npm/npm/blob/master/test/packages/npm-test-optional-deps/package.json <-- optionalDependencies & different semver;
- * https://github.com/npm/npm/blob/master/test/packages/npm-test-bundled-git/package.json <-- git semver & bundledDependencies;
- * https://github.com/npm/npm/blob/master/test/packages/npm-test-shrinkwrap/npm-shrinkwrap.json <-- npm-shrinkwrap.json;
- * https://github.com/npm/npm/blob/master/test/packages/npm-test-url-dep/package.json <-- url semver;
- * https://github.com/npm/npm/blob/master/test/tap/install-from-local/package-with-scoped-paths/package.json <-- scoped paths;
- * https://github.com/aspnet/MusicStore/blob/master/src/MusicStore.Spa/project.json <-- ASP.NET project.json with COMMENTS;
- */
+/* global GM_xmlhttpRequest */
 
 (function() {
 
@@ -33,8 +33,14 @@
 			try {
 				return JSON.parse(blobElm.textContent);
 			} catch (ex) {
-				// https://github.com/sindresorhus/strip-json-comments
 				function stripJsonComments(str) {
+						/*!
+							strip-json-comments
+							Strip comments from JSON. Lets you use comments in your JSON files!
+							https://github.com/sindresorhus/strip-json-comments
+							by Sindre Sorhus
+							MIT License
+						*/
 						var currentChar;
 						var nextChar;
 						var insideString = false;
@@ -138,8 +144,9 @@
 
 	// Linkify module;
 	function linkify(module, url) {
-		var moduleFilterText = '"' + module + '"';
 
+		// Try to find the module; could be mulitple locations;
+		var moduleFilterText = '"' + module + '"';
 		var moduleElms = Array.prototype.filter.call(blobLineElms, function(blobLineElm) {
 			return blobLineElm.textContent.trim() === moduleFilterText;
 		});
@@ -147,7 +154,7 @@
 		// Modules could exist in multiple dependency lists;
 		Array.prototype.forEach.call(moduleElms, function(moduleElm) {
 
-			// Module names are textNodes;
+			// Module names are textNodes on Github;
 			var moduleElmText = Array.prototype.find.call(moduleElm.childNodes, function(moduleElmChild) {
 				return moduleElmChild.nodeType === 3;
 			});
@@ -156,11 +163,12 @@
 			moduleElmLink.setAttribute('href', url);
 			moduleElmLink.appendChild(document.createTextNode(module));
 
-			// Replace textNode, so we remain surrounding highlighting (like the quotes);
+			// Replace textNode, so we keep surrounding elements (like the highlighted quotes);
 			moduleElm.replaceChild(moduleElmLink, moduleElmText);
 		});
 	}
 
+	// Init;
 	modules.forEach(function(module) {
 		getUrl(module);
 	});
