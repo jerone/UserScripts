@@ -4,23 +4,28 @@
 // @version     0.1.0
 // @include     https://github.com/*/package.json
 // @include     https://github.com/*/bower.json
+// @include     https://github.com/*/project.json
 // @grant       GM_xmlhttpRequest
 // @run-at      document-end
 // ==/UserScript==
 
 /* test cases:
- * https://github.com/jerone/PackageSize/blob/master/package.json
- * https://github.com/npm/npm/blob/448efd0eaa6f97af0889bf47efc543a1ea2f8d7e/test/tap/update-save/package.json
- * https://github.com/npm/npm/blob/448efd0eaa6f97af0889bf47efc543a1ea2f8d7e/test/disabled/bundlerecurs/package.json
- * https://github.com/npm/npm/blob/448efd0eaa6f97af0889bf47efc543a1ea2f8d7e/test/tap/outdated-new-versions/package.json
- * https://github.com/npm/npm/blob/448efd0eaa6f97af0889bf47efc543a1ea2f8d7e/test/tap/dev-dep-duplicate/package.json
- * https://github.com/OmniSharp/omnisharp-roslyn/blob/master/tests/OmniSharp.Stdio.Tests/project.json
+ * https://github.com/jerone/PackageSize/blob/master/package.json <!-- multiple package.json dependencies;
+ * https://github.com/npm/npm/blob/master/test/disabled/bundlerecurs/package.json
+ * https://github.com/npm/npm/blob/master/test/tap/dev-dep-duplicate/package.json <-- duplicate packages;
+ * https://github.com/npm/npm/blob/master/test/packages/npm-test-optional-deps/package.json <-- optionalDependencies & different semver;
+ * https://github.com/npm/npm/blob/master/test/packages/npm-test-bundled-git/package.json <-- git semver & bundledDependencies;
+ * https://github.com/npm/npm/blob/master/test/packages/npm-test-shrinkwrap/npm-shrinkwrap.json <-- npm-shrinkwrap.json;
+ * https://github.com/npm/npm/blob/master/test/packages/npm-test-url-dep/package.json <-- url semver;
+ * https://github.com/npm/npm/blob/master/test/tap/install-from-local/package-with-scoped-paths/package.json <-- scoped paths;
+ * https://github.com/aspnet/MusicStore/blob/master/src/MusicStore.Spa/project.json <-- ASP.NET project.json with COMMENTS;
  */
 
 (function() {
 
 	var isNPM = location.pathname.endsWith('/package.json'),
 		isBower = location.pathname.endsWith('/bower.json'),
+		isNuGet = location.pathname.endsWith('/project.json'),
 		blobElm = document.querySelector('.blob-wrapper'),
 		blobLineElms = blobElm.querySelectorAll('.blob-code > span'),
 		pkg = JSON.parse(blobElm.textContent),
@@ -44,6 +49,7 @@
 		});
 	});
 
+	// Get url depending on json type;
 	var getUrl = (function() {
 		if (isNPM) {
 			return function(module) {
@@ -64,9 +70,16 @@
 							var repo = parsedUrl[2];
 							var url = 'https://github.com/' + user + '/' + repo;
 							linkify(module, url);
+						} else {
+							linkify(module, data.url);
 						}
 					}
 				});
+			};
+		} else if (isNuGet) {
+			return function(module) {
+				var url = 'https://www.nuget.org/packages/' + module;
+				linkify(module, url);
 			};
 		}
 	})();
@@ -96,7 +109,7 @@
 		});
 	}
 
-	modules.forEach(function(module){
+	modules.forEach(function(module) {
 		getUrl(module);
 	});
 
