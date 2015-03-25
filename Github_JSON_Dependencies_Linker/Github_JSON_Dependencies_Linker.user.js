@@ -148,7 +148,12 @@
 		// Try to find the module; could be mulitple locations;
 		var moduleFilterText = '"' + module + '"';
 		var moduleElms = Array.prototype.filter.call(blobLineElms, function(blobLineElm) {
-			return blobLineElm.textContent.trim() === moduleFilterText;
+			if (blobLineElm.textContent.trim() === moduleFilterText) {
+				// Module name preceding a colon is never a key;
+				var prev = blobLineElm.previousSibling;
+				return !(prev && prev.textContent.trim() === ':');
+			}
+			return false;
 		});
 
 		// Modules could exist in multiple dependency lists;
