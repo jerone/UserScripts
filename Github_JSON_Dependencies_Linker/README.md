@@ -11,7 +11,7 @@
 Linkify all dependencies found in an JSON file.
 
 The following JSON schemes are supported:
-* [NPM](Github_JSON_Dependencies_Linker) - `package.json`
+* [NPM](Github_JSON_Dependencies_Linker) - `package.json` & `npm-shrinkwrap.json`
 * [Bower](http://bower.io/) - `bower.json`
 * [NuGet](https://www.nuget.org/) - `project.json`
 
@@ -38,6 +38,10 @@ In the JSON file it will search for the following dependency keys:
 
 ## Version History
 
+* **vNext**
+    * Module name preceding a colon is never a key;
+    * Added support for npm-shrinkwrap.json;
+    * Fetching module names is now recursive;
 * **0.1.0**
     * Initial version;
 

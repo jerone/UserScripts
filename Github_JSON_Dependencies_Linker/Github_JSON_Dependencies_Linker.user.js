@@ -16,6 +16,7 @@
 // @grant       GM_xmlhttpRequest
 // @run-at      document-end
 // @include     https://github.com/*/package.json
+// @include     https://github.com/*/npm-shrinkwrap.json
 // @include     https://github.com/*/bower.json
 // @include     https://github.com/*/project.json
 // ==/UserScript==
@@ -23,7 +24,7 @@
 
 (function() {
 
-	var isNPM = location.pathname.endsWith('/package.json'),
+	var isNPM = location.pathname.endsWith('/package.json') || location.pathname.endsWith('/npm-shrinkwrap.json'),
 		isBower = location.pathname.endsWith('/bower.json'),
 		isNuGet = location.pathname.endsWith('/project.json'),
 		blobElm = document.querySelector('.blob-wrapper'),
@@ -98,14 +99,17 @@
 		modules = [];
 
 	// Get an unique list of all modules;
-	dependencyKeys.forEach(function(dependencyKey) {
-		var dependencies = pkg[dependencyKey] || {};
-		Object.keys(dependencies).forEach(function(module) {
-			if (modules.indexOf(module) === -1) {
-				modules.push(module);
-			}
+	function fetchModules(root) {
+		dependencyKeys.forEach(function(dependencyKey) {
+			var dependencies = root[dependencyKey] || {};
+			Object.keys(dependencies).forEach(function(module) {
+				if (modules.indexOf(module) === -1) {
+					modules.push(module);
+				}
+				fetchModules(dependencies[module]);
+			});
 		});
-	});
+	}
 
 	// Get url depending on json type;
 	var getUrl = (function() {
@@ -174,6 +178,7 @@
 	}
 
 	// Init;
+	fetchModules(pkg);
 	modules.forEach(function(module) {
 		getUrl(module);
 	});
