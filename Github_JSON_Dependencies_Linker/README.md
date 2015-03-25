@@ -58,3 +58,9 @@ In the JSON file it will search for the following dependency keys:
 ## Dependencies
 
 * Part of [sindresorhus](https://github.com/sindresorhus) module [**strip-json-comments**](https://github.com/sindresorhus/strip-json-comments) is used.
+
+
+## External links
+
+* [Greasy Fork](https://greasyfork.org/en/scripts/8770-github-json-dependencies-linker)
+* [OpenUserJS](https://openuserjs.org/scripts/jerone/Github_JSON_Dependencies_Linker)
