@@ -13,6 +13,7 @@ Share your [GitHub Gist](https://gist.github.com) to:
 * [Twitter](http://twitter.com)
 * [Dabblet](http://dabblet.com)
 * UserScript (when name ends with `.user.js`)
+* [bl.ocks.org](http://bl.ocks.org)
 
 
 ## Screenshot
@@ -30,6 +31,8 @@ Share your [GitHub Gist](https://gist.github.com) to:
 
 ## Version History
 
+* **vNext**
+    * Added bl.ocks.org support;
 * **4.4**
     * Fixed code after layout changes;
     * Removed old code for Github Gist Dabblet;
