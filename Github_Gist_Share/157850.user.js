@@ -12,7 +12,7 @@
 // @supportURL  https://github.com/jerone/UserScripts/issues
 // @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
 // @include     *://gist.github.com/*
-// @version     4.4
+// @version     4.5
 // @grant       none
 // ==/UserScript==
 /* global unsafeWindow */

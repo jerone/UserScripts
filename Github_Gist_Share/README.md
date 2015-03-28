@@ -31,7 +31,7 @@ Share your [GitHub Gist](https://gist.github.com) to:
 
 ## Version History
 
-* **vNext**
+* **4.5**
     * Added bl.ocks.org support;
 * **4.4**
     * Fixed code after layout changes;
