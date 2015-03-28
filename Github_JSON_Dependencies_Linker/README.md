@@ -38,7 +38,7 @@ In the JSON file it will search for the following dependency keys:
 
 ## Version History
 
-* **vNext**
+* **0.2.0**
     * Module name preceding a colon is never a key;
     * Added support for npm-shrinkwrap.json;
     * Fetching module names is now recursive;
