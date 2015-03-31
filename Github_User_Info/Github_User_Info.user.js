@@ -12,6 +12,7 @@
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_User_Info/Github_User_Info.user.js
 // @supportURL  https://github.com/jerone/UserScripts/issues
 // @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
+// @require     http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js
 // @version     0.1.0
 // @grant       GM_xmlhttpRequest
 // @grant       GM_setValue
@@ -21,6 +22,8 @@
 // ==/UserScript==
 
 (function() {
+/*
+	function init(){
 
 	var userMenu = document.createElement('div');
 	userMenu.style =
@@ -408,5 +411,35 @@ userMenu.style.width = '320px';
 		return !!property;
 	}
 }
+*/
+
+
+window.setTimeout(function(){
+
+
+	console.log(window.jQuery, unsafeWindow.jQuery);
+	console.log( $);
+console.log(unsafeWindow.$(document));
+console.log(unsafeWindow);
+console.log(unsafeWindow.document.body);
+/*
+unsafeWindow.$(unsafeWindow.document).on("pjax:end", function(){
+	alert('Github User Info', '1');
+	console.log('Github User Info', '1');
+});
+unsafeWindow.$(unsafeWindow.document.body).on("pjax:end", function(){
+	alert('Github User Info', '1b');
+	console.log('Github User Info', '1b');
+});
+unsafeWindow.$(document).on("pjax:end", function(){
+	alert('Github User Info', '2');
+	console.log('Github User Info', '2');
+});*/
+unsafeWindow.$('body').on("pjax:end", function(){
+	alert('Github User Info', '3');
+	console.log('Github User Info', '3');
+});
+
+}, 2000);
 
 })();
