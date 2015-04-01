@@ -24,6 +24,7 @@
 
 	var userMenu = document.createElement('div');
 	userMenu.style =
+		'display: none;' +
 		'border-radius: 3px;' +
 		'border: 1px solid #DDDDDD;' +
 		'background-color: #F5F5F5;' +
@@ -32,11 +33,11 @@
 		'box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);' +
 		'width: 320px;' +
 		'font-size: 11px;';
-	userMenu.style.display = 'none';
 	userMenu.classList.add('GithubUserInfo');
 	userMenu.addEventListener('mouseleave', function() {
 		userMenu.style.display = 'none';
 	});
+	document.body.appendChild(userMenu);
 
 
 	var userAvatar = document.createElement('a');
@@ -159,14 +160,14 @@
 	userJoined.appendChild(userJoinedText);
 
 
-	var userInfo2 = document.createElement('div');
-	userInfo2.style =
+	var userCounts = document.createElement('div');
+	userCounts.style =
 		'text-align: center;' +
 		'border-top: 1px solid #EEE;' +
 		'padding-top: 5px;' +
 		'margin-top: 10px;' +
 		'clear: left;';
-	userMenu.appendChild(userInfo2);
+	userMenu.appendChild(userCounts);
 
 	var userFollowers = document.createElement('a');
 	userFollowers.style =
@@ -176,6 +177,7 @@
 		'font-size: 11px;' +
 		'text-decoration: none;';
 	userFollowers.setAttribute('target', '_blank');
+	userCounts.appendChild(userFollowers);
 	var userFollowersCount = document.createElement('strong');
 	userFollowersCount.style =
 		'display:block;' +
@@ -185,7 +187,6 @@
 	userFollowersText.appendChild(document.createTextNode('Followers'));
 	userFollowersText.style = 'color: #999;';
 	userFollowers.appendChild(userFollowersText);
-	userInfo2.appendChild(userFollowers);
 
 	var userFollowing = document.createElement('a');
 	userFollowing.style =
@@ -194,6 +195,7 @@
 		'width: 25%;' +
 		'text-decoration: none;';
 	userFollowing.setAttribute('target', '_blank');
+	userCounts.appendChild(userFollowing);
 	var userFollowingCount = document.createElement('strong');
 	userFollowingCount.style =
 		'display:block;' +
@@ -203,7 +205,6 @@
 	userFollowingText.appendChild(document.createTextNode('Following'));
 	userFollowingText.style = 'color: #999;';
 	userFollowing.appendChild(userFollowingText);
-	userInfo2.appendChild(userFollowing);
 
 	var userRepos = document.createElement('a');
 	userRepos.style =
@@ -212,6 +213,7 @@
 		'width: 25%;' +
 		'text-decoration: none;';
 	userRepos.setAttribute('target', '_blank');
+	userCounts.appendChild(userRepos);
 	var userReposCount = document.createElement('strong');
 	userReposCount.style =
 		'display:block;' +
@@ -221,7 +223,6 @@
 	userReposText.appendChild(document.createTextNode('Repos'));
 	userReposText.style = 'color: #999;';
 	userRepos.appendChild(userReposText);
-	userInfo2.appendChild(userRepos);
 
 	var userGists = document.createElement('a');
 	userGists.style =
@@ -230,6 +231,7 @@
 		'width: 25%;' +
 		'text-decoration: none;';
 	userGists.setAttribute('target', '_blank');
+	userCounts.appendChild(userGists);
 	var userGistsCount = document.createElement('strong');
 	userGistsCount.style =
 		'display:block;' +
@@ -239,10 +241,8 @@
 	userGistsText.appendChild(document.createTextNode('Gists'));
 	userGistsText.style = 'color: #999;';
 	userGists.appendChild(userGistsText);
-	userInfo2.appendChild(userGists);
 
 
-	document.body.appendChild(userMenu);
 
 	var avatars = document.querySelectorAll('.avatar[alt^="@"], .timeline-comment-avatar[alt^="@"]');
 	Array.prototype.forEach.call(avatars, function(avatar) {
