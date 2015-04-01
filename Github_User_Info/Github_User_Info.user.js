@@ -31,7 +31,7 @@
 		'background-color: #F5F5F5;' +
 		'padding: 10px;' +
 		'position: absolute;' +
-		'box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);' +
+		'box-shadow: 0 0 10px rgba(0, 0, 1, 0.1);' +
 		'width: 320px;' +
 		'font-size: 11px;';
 	userMenu.classList.add('GithubUserInfo');
