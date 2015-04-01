@@ -16,6 +16,7 @@
 // @grant       GM_xmlhttpRequest
 // @grant       GM_setValue
 // @grant       GM_getValue
+// @grant       unsafeWindow
 // @run-at      document-end
 // @include     https://github.com/*
 // ==/UserScript==
@@ -244,14 +245,6 @@
 	userGists.appendChild(userGistsText);
 
 
-
-	var avatars = document.querySelectorAll('.avatar[alt^="@"], .timeline-comment-avatar[alt^="@"]');
-	Array.prototype.forEach.call(avatars, function(avatar) {
-		avatar.addEventListener('mouseenter', function() {
-			getData(this);
-		});
-	});
-
 	var UPDATE_INTERVAL_DAYS = 7;
 
 	function getData(elm) {
@@ -397,6 +390,46 @@
 	function hasValue(property, elm) {
 		elm.style.display = property ? 'block' : 'none';
 		return !!property;
+	}
+
+	function init() {
+		var avatars = document.querySelectorAll('.avatar[alt^="@"], .timeline-comment-avatar[alt^="@"]');
+		Array.prototype.forEach.call(avatars, function(avatar) {
+			avatar.addEventListener('mouseenter', function() {
+				getData(this);
+			});
+		});
+	}
+
+	// Page load;
+	console.log('GithubUserInfo', 'page load');
+	init();
+
+	try {
+		// On pjax;
+		unsafeWindow.$(document).on("pjax:end", function() {
+			console.log('GithubUserInfo', 'pjax');
+			init();
+		});
+	} catch (ex) {
+		// Fallback when pjax isn't allowed;
+		var pjaxContainer = document.getElementById('js-repo-pjax-container');
+		new MutationObserver(function(mutations) {
+			mutations.forEach(function(mutation) {
+				if (mutation.addedNodes.length > 0 &&
+					!Array.prototype.some.call(mutation.addedNodes, function(elm) {
+						// Ignore changes from Github Pages Linker
+						// https://github.com/jerone/UserScripts/tree/master/Github_Pages_Linker
+						return elm.classList && elm.classList.contains('GithubPagesLinker');
+					})) {
+					console.log('GithubUserInfo', 'MutationObserver');
+					console.log(mutation);
+					init();
+				}
+			});
+		}).observe(pjaxContainer, {
+			childList: true
+		});
 	}
 
 })();
