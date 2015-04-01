@@ -26,14 +26,15 @@
 	var userMenu = document.createElement('div');
 	userMenu.style =
 		'display: none;' +
+		'background-color: #F5F5F5;' +
 		'border-radius: 3px;' +
 		'border: 1px solid #DDDDDD;' +
-		'background-color: #F5F5F5;' +
+		'box-shadow: 0 0 10px rgba(0, 0, 1, 0.1);' +
+		'font-size: 11px;' +
 		'padding: 10px;' +
 		'position: absolute;' +
-		'box-shadow: 0 0 10px rgba(0, 0, 1, 0.1);' +
 		'width: 320px;' +
-		'font-size: 11px;';
+		'z-index: 99;';
 	userMenu.classList.add('GithubUserInfo');
 	userMenu.addEventListener('mouseleave', function() {
 		userMenu.style.display = 'none';
