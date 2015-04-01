@@ -337,7 +337,7 @@
 		userAvatarImg.setAttribute('src', data.avatar);
 
 		userName.setAttribute('title', data.username);
-		userName.textContent = data.name;
+		userName.textContent = data.name || data.username;
 
 		if (hasValue(data.company, userCompany)) {
 			userCompanyText.textContent = data.company;
