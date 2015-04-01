@@ -33,6 +33,7 @@
 		'width: 320px;' +
 		'font-size: 11px;';
 	userMenu.style.display = 'none';
+	userMenu.classList.add('GithubUserInfo');
 	userMenu.addEventListener('mouseleave', function() {
 		userMenu.style.display = 'none';
 	});
