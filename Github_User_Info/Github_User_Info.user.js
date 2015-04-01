@@ -176,18 +176,18 @@
 		'display: none;' +
 		'float: left;' +
 		'width: 25%;' +
-		'font-size: 11px;' +
 		'text-decoration: none;';
+	userFollowers.classList.add('vcard-stat');
 	userFollowers.setAttribute('target', '_blank');
 	userCounts.appendChild(userFollowers);
 	var userFollowersCount = document.createElement('strong');
 	userFollowersCount.style =
-		'display:block;' +
+		'display: block;' +
 		'font-size: 28px;';
 	userFollowers.appendChild(userFollowersCount);
 	var userFollowersText = document.createElement('span');
 	userFollowersText.appendChild(document.createTextNode('Followers'));
-	userFollowersText.style = 'color: #999;';
+	userFollowersText.classList.add('text-muted');
 	userFollowers.appendChild(userFollowersText);
 
 	var userFollowing = document.createElement('a');
@@ -196,16 +196,17 @@
 		'float: left;' +
 		'width: 25%;' +
 		'text-decoration: none;';
+	userFollowing.classList.add('vcard-stat');
 	userFollowing.setAttribute('target', '_blank');
 	userCounts.appendChild(userFollowing);
 	var userFollowingCount = document.createElement('strong');
 	userFollowingCount.style =
-		'display:block;' +
+		'display: block;' +
 		'font-size: 28px;';
 	userFollowing.appendChild(userFollowingCount);
 	var userFollowingText = document.createElement('span');
 	userFollowingText.appendChild(document.createTextNode('Following'));
-	userFollowingText.style = 'color: #999;';
+	userFollowingText.classList.add('text-muted');
 	userFollowing.appendChild(userFollowingText);
 
 	var userRepos = document.createElement('a');
@@ -214,16 +215,17 @@
 		'float: left;' +
 		'width: 25%;' +
 		'text-decoration: none;';
+	userRepos.classList.add('vcard-stat');
 	userRepos.setAttribute('target', '_blank');
 	userCounts.appendChild(userRepos);
 	var userReposCount = document.createElement('strong');
 	userReposCount.style =
-		'display:block;' +
+		'display: block;' +
 		'font-size: 28px;';
 	userRepos.appendChild(userReposCount);
 	var userReposText = document.createElement('span');
 	userReposText.appendChild(document.createTextNode('Repos'));
-	userReposText.style = 'color: #999;';
+	userReposText.classList.add('text-muted');
 	userRepos.appendChild(userReposText);
 
 	var userGists = document.createElement('a');
@@ -232,16 +234,17 @@
 		'float: left;' +
 		'width: 25%;' +
 		'text-decoration: none;';
+	userGists.classList.add('vcard-stat');
 	userGists.setAttribute('target', '_blank');
 	userCounts.appendChild(userGists);
 	var userGistsCount = document.createElement('strong');
 	userGistsCount.style =
-		'display:block;' +
+		'display: block;' +
 		'font-size: 28px;';
 	userGists.appendChild(userGistsCount);
 	var userGistsText = document.createElement('span');
 	userGistsText.appendChild(document.createTextNode('Gists'));
-	userGistsText.style = 'color: #999;';
+	userGistsText.classList.add('text-muted');
 	userGists.appendChild(userGistsText);
 
 
