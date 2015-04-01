@@ -359,22 +359,28 @@
 			userJoinedText.setAttribute('datetime', data.created_at);
 		}
 
+		var userCountsHasValue = false;
 		if (hasValue(data.followers, userFollowers)) {
+			userCountsHasValue = true;
 			userFollowers.setAttribute('href', 'https://github.com/' + data.username + '/followers');
 			userFollowersCount.textContent = data.followers;
 		}
 		if (hasValue(data.following, userFollowing)) {
+			userCountsHasValue = true;
 			userFollowing.setAttribute('href', 'https://github.com/' + data.username + '/following');
 			userFollowingCount.textContent = data.following;
 		}
 		if (hasValue(data.repos, userRepos)) {
+			userCountsHasValue = true;
 			userRepos.setAttribute('href', 'https://github.com/' + data.username + '?tab=repositories');
 			userReposCount.textContent = data.repos;
 		}
 		if (hasValue(data.gists, userGists)) {
+			userCountsHasValue = true;
 			userGists.setAttribute('href', 'https://gist.github.com/' + data.username);
 			userGistsCount.textContent = data.gists;
 		}
+		userCounts.style.display = userCountsHasValue ? 'block' : 'none';
 
 		//if (data.type === 'Organization' || data.type === 'User') {}
 
