@@ -271,14 +271,14 @@
 			var date = new Date(users[userName].checked_at),
 				now = new Date();
 			if (date > now.setDate(now.getDate() - UPDATE_INTERVAL_DAYS)) {
-				console.log('CACHED');
+				console.log('GithubUserInfo:getData', 'CACHED');
 				fillData(users[userName].data, position, avatarSize);
 			} else {
-				console.log('AJAX - OUTDATED');
+				console.log('GithubUserInfo:getData', 'AJAX - OUTDATED');
 				fetchData(userName, position, avatarSize);
 			}
 		} else {
-			console.log('AJAX - NON-EXISTING');
+			console.log('GithubUserInfo:getData', 'AJAX - NON-EXISTING');
 			fetchData(userName, position, avatarSize);
 		}
 	}
@@ -290,7 +290,7 @@
 			onload: function(response) {
 				var dataRaw = JSON.parse(response.responseText);
 				if (dataRaw.message && dataRaw.message.startsWith('API rate limit exceeded')) {
-					console.log('API RATE LIMIT EXCEEDED');
+					console.log('GithubUserInfo:fetchData', 'API RATE LIMIT EXCEEDED');
 					return;
 				}
 				var dataNormalized = normalizeData(dataRaw);
