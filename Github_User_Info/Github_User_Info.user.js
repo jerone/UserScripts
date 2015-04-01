@@ -405,30 +405,10 @@
 	console.log('GithubUserInfo', 'page load');
 	init();
 
-	try {
-		// On pjax;
-		unsafeWindow.$(document).on("pjax:end", function() {
-			console.log('GithubUserInfo', 'pjax');
-			init();
-		});
-	} catch (ex) {
-		// Fallback when pjax isn't allowed;
-		var pjaxContainer = document.getElementById('js-repo-pjax-container');
-		new MutationObserver(function(mutations) {
-			mutations.forEach(function(mutation) {
-				if (mutation.addedNodes.length > 0 &&
-					!Array.prototype.some.call(mutation.addedNodes, function(elm) {
-						// Ignore changes from Github Pages Linker
-						// https://github.com/jerone/UserScripts/tree/master/Github_Pages_Linker
-						return elm.classList && elm.classList.contains('GithubPagesLinker');
-					})) {
-					console.log('GithubUserInfo', 'MutationObserver');
-					init();
-				}
-			});
-		}).observe(pjaxContainer, {
-			childList: true
-		});
-	}
+	// On pjax;
+	unsafeWindow.$(document).on("pjax:end", exportFunction(function() {
+		console.log('GithubUserInfo', 'pjax');
+		init();
+	}, unsafeWindow));
 
 })();
