@@ -39,6 +39,7 @@
 		var url = String.format("https://{0}.github.io/{1}", tree[1], tree[2]);
 
 		var div = document.createElement("div");
+		div.classList.add('GithubPagesLinker');
 		div.style.margin = "-10px 0px 10px";
 		meta.parentNode.insertBefore(div, meta.nextSibling);
 
