@@ -393,7 +393,7 @@
 	}
 
 	function init() {
-		var avatars = document.querySelectorAll('.avatar[alt^="@"], .timeline-comment-avatar[alt^="@"]');
+		var avatars = document.querySelectorAll('.avatar[alt^="@"], .gravatar[alt^="@"], .timeline-comment-avatar[alt^="@"]');
 		Array.prototype.forEach.call(avatars, function(avatar) {
 			avatar.addEventListener('mouseenter', function() {
 				getData(this);
