@@ -30,12 +30,16 @@
 
 	function addLink() {
 		var meta = document.querySelector(".repository-meta");
-		if (!meta) { return; }
+		if (!meta) {
+			return;
+		}
 
 		var branch = document.querySelector(".js-navigation-open[data-name='gh-pages']");
-		if (!branch) { return; }
+		if (!branch) {
+			return;
+		}
 
-		var tree = branch.getAttribute("href").split("/");  // `/{user}/{repo}/tree/gh-pages`;
+		var tree = branch.getAttribute("href").split("/"); // `/{user}/{repo}/tree/gh-pages`;
 		var url = String.format("https://{0}.github.io/{1}", tree[1], tree[2]);
 
 		var div = document.createElement("div");
@@ -68,10 +72,14 @@
 		div.appendChild(aa);
 	}
 
-	// init;
+	// Page load;
+	console.log('GithubPagesLinker', 'page load');
 	addLink();
 
-	// on pjax;
-	unsafeWindow.$(document).on("pjax:end", addLink);  // `pjax:end` also runs on history back;
+	// On pjax;
+	unsafeWindow.$(document).on("pjax:end", function() {
+		console.log('GithubPagesLinker', 'pjax');
+		addLink();
+	});
 
 })();
