@@ -423,7 +423,6 @@
 						return elm.classList && elm.classList.contains('GithubPagesLinker');
 					})) {
 					console.log('GithubUserInfo', 'MutationObserver');
-					console.log(mutation);
 					init();
 				}
 			});
