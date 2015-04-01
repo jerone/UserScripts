@@ -48,9 +48,10 @@
 		'margin-bottom: 10px;';
 	userMenu.appendChild(userAvatar);
 	var userAvatarImg = document.createElement('img');
-	userAvatarImg.style = 'border-radius: 3px;';
-	userAvatarImg.width = '96';
-	userAvatarImg.height = '96';
+	userAvatarImg.style =
+		'border-radius: 3px;' +
+		'transition-property: height, width;' +
+		'transition-duration: 0.5s;';
 	userAvatar.appendChild(userAvatarImg);
 
 
@@ -332,8 +333,12 @@
 
 	function fillData(data, position, avatarSize) {
 		userAvatar.setAttribute('href', 'https://github.com/' + data.username);
-		//userAvatarImg.height = avatarSize.height;
-		//userAvatarImg.width = avatarSize.width;
+		userAvatarImg.style.height = avatarSize.height + 'px';
+		userAvatarImg.style.width = avatarSize.width + 'px';
+		window.setTimeout(function() {
+			userAvatarImg.style.height = '96px';
+			userAvatarImg.style.width = '96px';
+		}, 13);
 		userAvatarImg.setAttribute('src', '');
 		userAvatarImg.setAttribute('src', data.avatar);
 
