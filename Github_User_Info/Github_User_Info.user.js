@@ -24,22 +24,18 @@
 
 	var userMenu = document.createElement('div');
 	userMenu.style =
-		'display: none;' +
 		'border-radius: 3px;' +
 		'border: 1px solid #DDDDDD;' +
 		'background-color: #F5F5F5;' +
 		'padding: 10px;' +
 		'position: absolute;' +
 		'box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);' +
-		'font-size: 11px;'+
-		'transition-property: width;'+
-		'transition-duration: 0.5s;';
-
+		'width: 320px;' +
+		'font-size: 11px;';
+	userMenu.style.display = 'none';
 	userMenu.addEventListener('mouseleave', function() {
 		userMenu.style.display = 'none';
-		userMenu.style.width = '1px';
 	});
-	document.body.appendChild(userMenu);
 
 
 	var userAvatar = document.createElement('a');
@@ -50,13 +46,9 @@
 		'margin-bottom: 10px;';
 	userMenu.appendChild(userAvatar);
 	var userAvatarImg = document.createElement('img');
-	userAvatarImg.style =
-		'border-radius: 3px;' +
-		//'transition: width 1s ease 1s, height 1s ease 1s;';
-		'transition-property: height, width;'+
-		'transition-duration: 0.5s;';
-	//	userAvatarImg.width = '96';
-	//	userAvatarImg.height = '96';
+	userAvatarImg.style = 'border-radius: 3px;';
+	userAvatarImg.width = '96';
+	userAvatarImg.height = '96';
 	userAvatar.appendChild(userAvatarImg);
 
 
@@ -166,14 +158,14 @@
 	userJoined.appendChild(userJoinedText);
 
 
-	var userCounts = document.createElement('div');
-	userCounts.style =
+	var userInfo2 = document.createElement('div');
+	userInfo2.style =
 		'text-align: center;' +
 		'border-top: 1px solid #EEE;' +
 		'padding-top: 5px;' +
 		'margin-top: 10px;' +
 		'clear: left;';
-	userMenu.appendChild(userCounts);
+	userMenu.appendChild(userInfo2);
 
 	var userFollowers = document.createElement('a');
 	userFollowers.style =
@@ -183,7 +175,6 @@
 		'font-size: 11px;' +
 		'text-decoration: none;';
 	userFollowers.setAttribute('target', '_blank');
-	userCounts.appendChild(userFollowers);
 	var userFollowersCount = document.createElement('strong');
 	userFollowersCount.style =
 		'display:block;' +
@@ -193,6 +184,7 @@
 	userFollowersText.appendChild(document.createTextNode('Followers'));
 	userFollowersText.style = 'color: #999;';
 	userFollowers.appendChild(userFollowersText);
+	userInfo2.appendChild(userFollowers);
 
 	var userFollowing = document.createElement('a');
 	userFollowing.style =
@@ -201,7 +193,6 @@
 		'width: 25%;' +
 		'text-decoration: none;';
 	userFollowing.setAttribute('target', '_blank');
-	userCounts.appendChild(userFollowing);
 	var userFollowingCount = document.createElement('strong');
 	userFollowingCount.style =
 		'display:block;' +
@@ -211,6 +202,7 @@
 	userFollowingText.appendChild(document.createTextNode('Following'));
 	userFollowingText.style = 'color: #999;';
 	userFollowing.appendChild(userFollowingText);
+	userInfo2.appendChild(userFollowing);
 
 	var userRepos = document.createElement('a');
 	userRepos.style =
@@ -219,7 +211,6 @@
 		'width: 25%;' +
 		'text-decoration: none;';
 	userRepos.setAttribute('target', '_blank');
-	userCounts.appendChild(userRepos);
 	var userReposCount = document.createElement('strong');
 	userReposCount.style =
 		'display:block;' +
@@ -229,6 +220,7 @@
 	userReposText.appendChild(document.createTextNode('Repos'));
 	userReposText.style = 'color: #999;';
 	userRepos.appendChild(userReposText);
+	userInfo2.appendChild(userRepos);
 
 	var userGists = document.createElement('a');
 	userGists.style =
@@ -237,7 +229,6 @@
 		'width: 25%;' +
 		'text-decoration: none;';
 	userGists.setAttribute('target', '_blank');
-	userCounts.appendChild(userGists);
 	var userGistsCount = document.createElement('strong');
 	userGistsCount.style =
 		'display:block;' +
@@ -247,8 +238,10 @@
 	userGistsText.appendChild(document.createTextNode('Gists'));
 	userGistsText.style = 'color: #999;';
 	userGists.appendChild(userGistsText);
+	userInfo2.appendChild(userGists);
 
 
+	document.body.appendChild(userMenu);
 
 	var avatars = document.querySelectorAll('.avatar[alt^="@"], .timeline-comment-avatar[alt^="@"]');
 	Array.prototype.forEach.call(avatars, function(avatar) {
@@ -338,17 +331,13 @@
 
 	function fillData(data, position, avatarSize) {
 		userAvatar.setAttribute('href', 'https://github.com/' + data.username);
-		userAvatarImg.style.height = avatarSize.height + 'px';
-		userAvatarImg.style.width = avatarSize.width + 'px';
-		window.setTimeout(function() {
-			userAvatarImg.style.height = '96px';
-			userAvatarImg.style.width = '96px';
-		}, 13);
+		//userAvatarImg.height = avatarSize.height;
+		//userAvatarImg.width = avatarSize.width;
 		userAvatarImg.setAttribute('src', '');
 		userAvatarImg.setAttribute('src', data.avatar);
 
 		userName.setAttribute('title', data.username);
-		userName.textContent = data.name || data.username;
+		userName.textContent = data.name;
 
 		if (hasValue(data.company, userCompany)) {
 			userCompanyText.textContent = data.company;
@@ -369,44 +358,33 @@
 			userJoinedText.setAttribute('datetime', data.created_at);
 		}
 
-		var userCountsHasValue = false;
 		if (hasValue(data.followers, userFollowers)) {
-			userCountsHasValue = true;
 			userFollowers.setAttribute('href', 'https://github.com/' + data.username + '/followers');
 			userFollowersCount.textContent = data.followers;
 		}
 		if (hasValue(data.following, userFollowing)) {
-			userCountsHasValue = true;
 			userFollowing.setAttribute('href', 'https://github.com/' + data.username + '/following');
 			userFollowingCount.textContent = data.following;
 		}
 		if (hasValue(data.repos, userRepos)) {
-			userCountsHasValue = true;
 			userRepos.setAttribute('href', 'https://github.com/' + data.username + '?tab=repositories');
 			userReposCount.textContent = data.repos;
 		}
 		if (hasValue(data.gists, userGists)) {
-			userCountsHasValue = true;
 			userGists.setAttribute('href', 'https://gist.github.com/' + data.username);
 			userGistsCount.textContent = data.gists;
 		}
-		userCounts.style.display = userCountsHasValue ? 'block' : 'none';
 
 		//if (data.type === 'Organization' || data.type === 'User') {}
 
 		userMenu.style.top = Math.max(position.top - 10 - 1, 2) + 'px';
 		userMenu.style.left = Math.max(position.left - 10 - 1, 2) + 'px';
 		userMenu.style.display = 'block';
-		userMenu.style.width = '1px';
-		window.setTimeout(function() {
-userMenu.style.width = '320px';
-},13);
 	}
 
 	function hasValue(property, elm) {
 		elm.style.display = property ? 'block' : 'none';
 		return !!property;
 	}
-}
 
 })();
