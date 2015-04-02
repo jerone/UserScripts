@@ -23,6 +23,8 @@
 
 (function() {
 
+	var _timer;
+
 	var userMenu = document.createElement('div');
 	userMenu.style =
 		'display: none;' +
@@ -37,6 +39,8 @@
 		'z-index: 99;';
 	userMenu.classList.add('GithubUserInfo');
 	userMenu.addEventListener('mouseleave', function() {
+		console.log('GithubUserInfo:userMenu', 'mouseleave');
+		window.clearTimeout(_timer);
 		userMenu.style.display = 'none';
 	});
 	document.body.appendChild(userMenu);
@@ -335,7 +339,7 @@
 		window.setTimeout(function() {
 			userAvatarImg.style.height = '96px';
 			userAvatarImg.style.width = '96px';
-		}, 13);
+		}, 50);
 		userAvatarImg.setAttribute('src', '');
 		userAvatarImg.setAttribute('src', data.avatar);
 
@@ -396,11 +400,20 @@
 		return !!property;
 	}
 
+
 	function init() {
 		var avatars = document.querySelectorAll('.avatar[alt^="@"], .gravatar[alt^="@"], .timeline-comment-avatar[alt^="@"]');
 		Array.prototype.forEach.call(avatars, function(avatar) {
 			avatar.addEventListener('mouseenter', function() {
-				getData(this);
+				console.log('GithubUserInfo:avatar', 'mouseenter');
+				_timer = window.setTimeout(function() {
+					console.log('GithubUserInfo:avatar', 'timeout');
+					getData(this);
+				}.bind(this), 500);
+			});
+			avatar.addEventListener('mouseleave', function() {
+				console.log('GithubUserInfo:avatar', 'mouseleave');
+				window.clearTimeout(_timer);
 			});
 		});
 	}
