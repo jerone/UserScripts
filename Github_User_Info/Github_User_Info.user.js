@@ -333,6 +333,10 @@
 	}
 
 	function fillData(data, position, avatarSize) {
+		userMenu.style.top = Math.max(position.top - 10 - 1, 2) + 'px';
+		userMenu.style.left = Math.max(position.left - 10 - 1, 2) + 'px';
+		userMenu.style.display = 'block';
+
 		userAvatar.setAttribute('href', 'https://github.com/' + data.username);
 		userAvatarImg.style.height = avatarSize.height + 'px';
 		userAvatarImg.style.width = avatarSize.width + 'px';
@@ -389,10 +393,6 @@
 		userCounts.style.display = userCountsHasValue ? 'block' : 'none';
 
 		//if (data.type === 'Organization' || data.type === 'User') {}
-
-		userMenu.style.top = Math.max(position.top - 10 - 1, 2) + 'px';
-		userMenu.style.left = Math.max(position.left - 10 - 1, 2) + 'px';
-		userMenu.style.display = 'block';
 	}
 
 	function hasValue(property, elm) {
