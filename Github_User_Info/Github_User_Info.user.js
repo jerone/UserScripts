@@ -359,7 +359,7 @@
 			'username': data.login,
 			'avatar': data.avatar_url,
 			'type': data.type,
-			'name': data.name,
+			'name': data.name || data.login,
 			'company': data.company,
 			'blog': data.blog,
 			'location': data.location,
@@ -401,7 +401,7 @@
 		userAvatarImg.setAttribute('src', data.avatar);
 
 		userName.setAttribute('title', data.username);
-		userName.textContent = data.name || data.username;
+		userName.textContent = data.name;
 
 		if (hasValue(data.company, userCompany)) {
 			userCompanyText.textContent = data.company;
