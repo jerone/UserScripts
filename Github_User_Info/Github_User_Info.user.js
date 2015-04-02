@@ -102,6 +102,21 @@
 	userCompany.appendChild(userCompanyIcon);
 	var userCompanyText = document.createElement('span');
 	userCompany.appendChild(userCompanyText);
+	var userCompanyAdmin = document.createElement('span');
+	userCompanyAdmin.style =
+		'display: none;' +
+		'margin-left: 5px;' +
+		'position: relative;' +
+		'top: -1px;' +
+		'padding: 2px 5px;' +
+		'font-size: 10px;' +
+		'font-weight: bold;' +
+		'color: #FFF;' +
+		'text-transform: uppercase;' +
+		'background-color: #4183C4;' +
+		'border-radius: 3px;';
+	userCompanyAdmin.appendChild(document.createTextNode('Staff'));
+	userCompany.appendChild(userCompanyAdmin);
 
 	var userLocation = document.createElement('div');
 	userLocation.style =
@@ -366,7 +381,7 @@
 			'avatar': data.avatar_url,
 			'type': data.type,
 			'name': data.name || data.login,
-			'company': data.company,
+			'company': data.site_admin ? 'GitHub' : data.company,
 			'blog': data.blog,
 			'location': data.location,
 			'mail': data.email,
@@ -375,7 +390,8 @@
 			'followers': data.followers,
 			'following': data.following,
 			'created_at': data.created_at,
-			'orgs': 0 // This will be filled via another AJAX call;
+			'orgs': 0, // This will be filled via another AJAX call;
+			'admin': !!data.site_admin
 		};
 	}
 
@@ -411,6 +427,7 @@
 
 		if (hasValue(data.company, userCompany)) {
 			userCompanyText.textContent = data.company;
+			userCompanyAdmin.style.display = data.admin ? 'inline' : 'none';
 		}
 		if (hasValue(data.location, userLocation)) {
 			userLocationText.textContent = data.location;
