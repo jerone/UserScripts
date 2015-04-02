@@ -326,6 +326,9 @@
 
 	function parseUserData(response, position, avatarSize) {
 		var dataParsed = parseRawData(response.responseText);
+		if (!dataParsed) {
+			return;
+		}
 		var dataNormalized = normalizeData(dataParsed);
 		console.log('GithubUserInfo:parseUserData', dataNormalized.username);
 
@@ -338,6 +341,9 @@
 
 	function parseOrgsData(response, position, avatarSize, dataNormalized) {
 		var dataParsed = parseRawData(response.responseText);
+		if (!dataParsed) {
+			return;
+		}
 		dataNormalized.orgs = dataParsed.length;
 		console.log('GithubUserInfo:parseOrgsData', dataNormalized.username, dataNormalized.orgs);
 
