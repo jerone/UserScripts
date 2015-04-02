@@ -342,7 +342,7 @@
 		console.log('GithubUserInfo:parseOrgsData', dataNormalized.username, dataNormalized.orgs);
 
 		fillData(dataNormalized, position, avatarSize);
-		setData(dataNormalized, username);
+		setData(dataNormalized, dataNormalized.username);
 	}
 
 	function parseRawData(data) {
