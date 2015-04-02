@@ -132,7 +132,8 @@
 		'text-align: center;' +
 		'color: #CCC;';
 	userLocation.appendChild(userLocationIcon);
-	var userLocationText = document.createElement('span');
+	var userLocationText = document.createElement('a');
+	userLocationText.setAttribute('target', '_blank');
 	userLocation.appendChild(userLocationText);
 
 	var userMail = document.createElement('div');
@@ -430,6 +431,7 @@
 			userCompanyAdmin.style.display = data.admin ? 'inline' : 'none';
 		}
 		if (hasValue(data.location, userLocation)) {
+			userLocationText.setAttribute('href', 'https://maps.google.com/maps?q=' + encodeURIComponent(data.location));
 			userLocationText.textContent = data.location;
 		}
 		if (hasValue(data.mail, userMail)) {
