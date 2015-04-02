@@ -46,7 +46,7 @@
 		'font-size: 11px;' +
 		'padding: 10px;' +
 		'position: absolute;' +
-		'width: 320px;' +
+		'width: 335px;' +
 		'z-index: 99;';
 	userMenu.classList.add('GithubUserInfo');
 	userMenu.addEventListener('mouseleave', function() {
