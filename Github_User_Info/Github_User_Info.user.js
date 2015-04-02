@@ -23,6 +23,17 @@
 
 (function() {
 
+	function proxy(fn) {
+		return function() {
+			var that = this;
+			return function(e) {
+				var args = that.slice(0); // clone;
+				args.unshift(e); // prepend event;
+				fn.apply(this, args);
+			};
+		}.call([].slice.call(arguments, 1));
+	}
+
 	var _timer;
 
 	var userMenu = document.createElement('div');
@@ -180,7 +191,7 @@
 	userFollowers.style =
 		'display: none;' +
 		'float: left;' +
-		'width: 25%;' +
+		'width: 20%;' +
 		'text-decoration: none;';
 	userFollowers.classList.add('vcard-stat');
 	userFollowers.setAttribute('target', '_blank');
@@ -199,7 +210,7 @@
 	userFollowing.style =
 		'display: none;' +
 		'float: left;' +
-		'width: 25%;' +
+		'width: 20%;' +
 		'text-decoration: none;';
 	userFollowing.classList.add('vcard-stat');
 	userFollowing.setAttribute('target', '_blank');
@@ -218,7 +229,7 @@
 	userRepos.style =
 		'display: none;' +
 		'float: left;' +
-		'width: 25%;' +
+		'width: 20%;' +
 		'text-decoration: none;';
 	userRepos.classList.add('vcard-stat');
 	userRepos.setAttribute('target', '_blank');
@@ -233,11 +244,30 @@
 	userReposText.classList.add('text-muted');
 	userRepos.appendChild(userReposText);
 
+	var userOrgs = document.createElement('a');
+	userOrgs.style =
+		'display: none;' +
+		'float: left;' +
+		'width: 20%;' +
+		'text-decoration: none;';
+	userOrgs.classList.add('vcard-stat');
+	userOrgs.setAttribute('target', '_blank');
+	userCounts.appendChild(userOrgs);
+	var userOrgsCount = document.createElement('strong');
+	userOrgsCount.style =
+		'display: block;' +
+		'font-size: 28px;';
+	userOrgs.appendChild(userOrgsCount);
+	var userOrgsText = document.createElement('span');
+	userOrgsText.appendChild(document.createTextNode('Orgs'));
+	userOrgsText.classList.add('text-muted');
+	userOrgs.appendChild(userOrgsText);
+
 	var userGists = document.createElement('a');
 	userGists.style =
 		'display: none;' +
 		'float: left;' +
-		'width: 25%;' +
+		'width: 20%;' +
 		'text-decoration: none;';
 	userGists.classList.add('vcard-stat');
 	userGists.setAttribute('target', '_blank');
@@ -256,7 +286,7 @@
 	var UPDATE_INTERVAL_DAYS = 7;
 
 	function getData(elm) {
-		var userName = elm.getAttribute('alt').replace('@', '');
+		var username = elm.getAttribute('alt').replace('@', '');
 		var rect = elm.getBoundingClientRect();
 		var position = {
 			top: rect.top + window.scrollY,
@@ -269,37 +299,59 @@
 
 		var usersString = GM_getValue('users', '{}');
 		var users = JSON.parse(usersString);
-		if (users[userName]) {
-			var date = new Date(users[userName].checked_at),
+		if (users[username]) {
+			var date = new Date(users[username].checked_at),
 				now = new Date();
 			if (date > now.setDate(now.getDate() - UPDATE_INTERVAL_DAYS)) {
 				console.log('GithubUserInfo:getData', 'CACHED');
-				fillData(users[userName].data, position, avatarSize);
+				fillData(users[username].data, position, avatarSize);
 			} else {
 				console.log('GithubUserInfo:getData', 'AJAX - OUTDATED');
-				fetchData(userName, position, avatarSize);
+				fetchData(username, position, avatarSize);
 			}
 		} else {
 			console.log('GithubUserInfo:getData', 'AJAX - NON-EXISTING');
-			fetchData(userName, position, avatarSize);
+			fetchData(username, position, avatarSize);
 		}
 	}
 
-	function fetchData(userName, position, avatarSize) {
+	function fetchData(username, position, avatarSize) {
+		console.log('GithubUserInfo:fetchData', username);
 		GM_xmlhttpRequest({
 			method: 'GET',
-			url: 'https://api.github.com/users/' + userName,
-			onload: function(response) {
-				var dataRaw = JSON.parse(response.responseText);
-				if (dataRaw.message && dataRaw.message.startsWith('API rate limit exceeded')) {
-					console.log('GithubUserInfo:fetchData', 'API RATE LIMIT EXCEEDED');
-					return;
-				}
-				var dataNormalized = normalizeData(dataRaw);
-				fillData(dataNormalized, position, avatarSize);
-				setData(dataNormalized, userName);
-			}
+			url: 'https://api.github.com/users/' + username,
+			onload: proxy(parseUserData, position, avatarSize)
 		});
+	}
+
+	function parseUserData(response, position, avatarSize) {
+		var dataParsed = parseRawData(response.responseText);
+		var dataNormalized = normalizeData(dataParsed);
+		console.log('GithubUserInfo:parseUserData', dataNormalized.username);
+
+		GM_xmlhttpRequest({
+			method: 'GET',
+			url: 'https://api.github.com/users/' + dataNormalized.username + '/orgs',
+			onload: proxy(parseOrgsData, position, avatarSize, dataNormalized)
+		});
+	}
+
+	function parseOrgsData(response, position, avatarSize, dataNormalized) {
+		var dataParsed = parseRawData(response.responseText);
+		dataNormalized.orgs = dataParsed.length;
+		console.log('GithubUserInfo:parseOrgsData', dataNormalized.username, dataNormalized.orgs);
+
+		fillData(dataNormalized, position, avatarSize);
+		setData(dataNormalized, username);
+	}
+
+	function parseRawData(data) {
+		data = JSON.parse(data);
+		if (data.message && data.message.startsWith('API rate limit exceeded')) {
+			console.log('GithubUserInfo:parseRawData', 'API RATE LIMIT EXCEEDED');
+			return;
+		}
+		return data;
 	}
 
 	function normalizeData(data) {
@@ -316,15 +368,16 @@
 			'gists': data.public_gists,
 			'followers': data.followers,
 			'following': data.following,
-			'created_at': data.created_at
+			'created_at': data.created_at,
+			'orgs': 0 // This will be filled via another AJAX call;
 		};
 	}
 
-	function setData(data, userName) {
+	function setData(data, username) {
 		var usersString = GM_getValue('users', '{}');
 		var users = JSON.parse(usersString);
-		if (!users[userName]) {
-			users[userName] = {
+		if (!users[username]) {
+			users[username] = {
 				checked_at: (new Date()).toJSON(),
 				data: data
 			};
@@ -384,6 +437,11 @@
 			userCountsHasValue = true;
 			userRepos.setAttribute('href', 'https://github.com/' + data.username + '?tab=repositories');
 			userReposCount.textContent = data.repos;
+		}
+		if (hasValue(data.orgs, userOrgs)) {
+			userCountsHasValue = true;
+			userOrgs.setAttribute('href', 'https://github.com/' + data.username);
+			userOrgsCount.textContent = data.orgs;
 		}
 		if (hasValue(data.gists, userGists)) {
 			userCountsHasValue = true;
