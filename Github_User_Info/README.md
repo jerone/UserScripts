@@ -25,13 +25,17 @@ Show inline user information on avatar hover.
 
 ## Version History
 
+* **vNext**
+
 * **0.1.0**
     * Initial version;
 
 
 ## Resources
 
-* https://github.com/jerone
-* https://developer.github.com/v3/
-* https://api.github.com/users/jerone
-* https://api.github.com/rate_limit
+* https://github.com/jerone (User)
+* https://api.github.com/users/jerone (API user)
+* https://github.com/github (Organisation with admin users)
+* https://github.com/benbalter (User with all counts and 4 digit numbers, stretching popup)
+* https://api.github.com/rate_limit (Read your API limit)
+* https://developer.github.com/v3/ (API Documentation)
