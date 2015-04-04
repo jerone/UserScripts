@@ -16,26 +16,45 @@
 // @grant       GM_xmlhttpRequest
 // @grant       GM_setValue
 // @grant       GM_getValue
+// @grant       unsafeWindow
 // @run-at      document-end
 // @include     https://github.com/*
 // ==/UserScript==
 
 (function() {
 
+	function proxy(fn) {
+		return function() {
+			var that = this;
+			return function(e) {
+				var args = that.slice(0); // clone;
+				args.unshift(e); // prepend event;
+				fn.apply(this, args);
+			};
+		}.call([].slice.call(arguments, 1));
+	}
+
+	var _timer;
+
 	var userMenu = document.createElement('div');
 	userMenu.style =
+		'display: none;' +
+		'background-color: #F5F5F5;' +
 		'border-radius: 3px;' +
 		'border: 1px solid #DDDDDD;' +
-		'background-color: #F5F5F5;' +
+		'box-shadow: 0 0 10px rgba(0, 0, 1, 0.1);' +
+		'font-size: 11px;' +
 		'padding: 10px;' +
 		'position: absolute;' +
-		'box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);' +
-		'width: 320px;' +
-		'font-size: 11px;';
-	userMenu.style.display = 'none';
+		'width: 335px;' +
+		'z-index: 99;';
+	userMenu.classList.add('GithubUserInfo');
 	userMenu.addEventListener('mouseleave', function() {
+		console.log('GithubUserInfo:userMenu', 'mouseleave');
+		window.clearTimeout(_timer);
 		userMenu.style.display = 'none';
 	});
+	document.body.appendChild(userMenu);
 
 
 	var userAvatar = document.createElement('a');
@@ -46,9 +65,10 @@
 		'margin-bottom: 10px;';
 	userMenu.appendChild(userAvatar);
 	var userAvatarImg = document.createElement('img');
-	userAvatarImg.style = 'border-radius: 3px;';
-	userAvatarImg.width = '96';
-	userAvatarImg.height = '96';
+	userAvatarImg.style =
+		'border-radius: 3px;' +
+		'transition-property: height, width;' +
+		'transition-duration: 0.5s;';
 	userAvatar.appendChild(userAvatarImg);
 
 
@@ -82,6 +102,21 @@
 	userCompany.appendChild(userCompanyIcon);
 	var userCompanyText = document.createElement('span');
 	userCompany.appendChild(userCompanyText);
+	var userCompanyAdmin = document.createElement('span');
+	userCompanyAdmin.style =
+		'display: none;' +
+		'margin-left: 5px;' +
+		'position: relative;' +
+		'top: -1px;' +
+		'padding: 2px 5px;' +
+		'font-size: 10px;' +
+		'font-weight: bold;' +
+		'color: #FFF;' +
+		'text-transform: uppercase;' +
+		'background-color: #4183C4;' +
+		'border-radius: 3px;';
+	userCompanyAdmin.appendChild(document.createTextNode('Staff'));
+	userCompany.appendChild(userCompanyAdmin);
 
 	var userLocation = document.createElement('div');
 	userLocation.style =
@@ -97,7 +132,8 @@
 		'text-align: center;' +
 		'color: #CCC;';
 	userLocation.appendChild(userLocationIcon);
-	var userLocationText = document.createElement('span');
+	var userLocationText = document.createElement('a');
+	userLocationText.setAttribute('target', '_blank');
 	userLocation.appendChild(userLocationText);
 
 	var userMail = document.createElement('div');
@@ -158,102 +194,115 @@
 	userJoined.appendChild(userJoinedText);
 
 
-	var userInfo2 = document.createElement('div');
-	userInfo2.style =
+	var userCounts = document.createElement('div');
+	userCounts.style =
 		'text-align: center;' +
 		'border-top: 1px solid #EEE;' +
 		'padding-top: 5px;' +
 		'margin-top: 10px;' +
 		'clear: left;';
-	userMenu.appendChild(userInfo2);
+	userMenu.appendChild(userCounts);
 
 	var userFollowers = document.createElement('a');
 	userFollowers.style =
 		'display: none;' +
 		'float: left;' +
-		'width: 25%;' +
-		'font-size: 11px;' +
+		'width: 20%;' +
 		'text-decoration: none;';
+	userFollowers.classList.add('vcard-stat');
 	userFollowers.setAttribute('target', '_blank');
+	userCounts.appendChild(userFollowers);
 	var userFollowersCount = document.createElement('strong');
 	userFollowersCount.style =
-		'display:block;' +
+		'display: block;' +
 		'font-size: 28px;';
 	userFollowers.appendChild(userFollowersCount);
 	var userFollowersText = document.createElement('span');
 	userFollowersText.appendChild(document.createTextNode('Followers'));
-	userFollowersText.style = 'color: #999;';
+	userFollowersText.classList.add('text-muted');
 	userFollowers.appendChild(userFollowersText);
-	userInfo2.appendChild(userFollowers);
 
 	var userFollowing = document.createElement('a');
 	userFollowing.style =
 		'display: none;' +
 		'float: left;' +
-		'width: 25%;' +
+		'width: 20%;' +
 		'text-decoration: none;';
+	userFollowing.classList.add('vcard-stat');
 	userFollowing.setAttribute('target', '_blank');
+	userCounts.appendChild(userFollowing);
 	var userFollowingCount = document.createElement('strong');
 	userFollowingCount.style =
-		'display:block;' +
+		'display: block;' +
 		'font-size: 28px;';
 	userFollowing.appendChild(userFollowingCount);
 	var userFollowingText = document.createElement('span');
 	userFollowingText.appendChild(document.createTextNode('Following'));
-	userFollowingText.style = 'color: #999;';
+	userFollowingText.classList.add('text-muted');
 	userFollowing.appendChild(userFollowingText);
-	userInfo2.appendChild(userFollowing);
 
 	var userRepos = document.createElement('a');
 	userRepos.style =
 		'display: none;' +
 		'float: left;' +
-		'width: 25%;' +
+		'width: 20%;' +
 		'text-decoration: none;';
+	userRepos.classList.add('vcard-stat');
 	userRepos.setAttribute('target', '_blank');
+	userCounts.appendChild(userRepos);
 	var userReposCount = document.createElement('strong');
 	userReposCount.style =
-		'display:block;' +
+		'display: block;' +
 		'font-size: 28px;';
 	userRepos.appendChild(userReposCount);
 	var userReposText = document.createElement('span');
 	userReposText.appendChild(document.createTextNode('Repos'));
-	userReposText.style = 'color: #999;';
+	userReposText.classList.add('text-muted');
 	userRepos.appendChild(userReposText);
-	userInfo2.appendChild(userRepos);
+
+	var userOrgs = document.createElement('a');
+	userOrgs.style =
+		'display: none;' +
+		'float: left;' +
+		'width: 20%;' +
+		'text-decoration: none;';
+	userOrgs.classList.add('vcard-stat');
+	userOrgs.setAttribute('target', '_blank');
+	userCounts.appendChild(userOrgs);
+	var userOrgsCount = document.createElement('strong');
+	userOrgsCount.style =
+		'display: block;' +
+		'font-size: 28px;';
+	userOrgs.appendChild(userOrgsCount);
+	var userOrgsText = document.createElement('span');
+	userOrgsText.appendChild(document.createTextNode('Orgs'));
+	userOrgsText.classList.add('text-muted');
+	userOrgs.appendChild(userOrgsText);
 
 	var userGists = document.createElement('a');
 	userGists.style =
 		'display: none;' +
 		'float: left;' +
-		'width: 25%;' +
+		'width: 20%;' +
 		'text-decoration: none;';
+	userGists.classList.add('vcard-stat');
 	userGists.setAttribute('target', '_blank');
+	userCounts.appendChild(userGists);
 	var userGistsCount = document.createElement('strong');
 	userGistsCount.style =
-		'display:block;' +
+		'display: block;' +
 		'font-size: 28px;';
 	userGists.appendChild(userGistsCount);
 	var userGistsText = document.createElement('span');
 	userGistsText.appendChild(document.createTextNode('Gists'));
-	userGistsText.style = 'color: #999;';
+	userGistsText.classList.add('text-muted');
 	userGists.appendChild(userGistsText);
-	userInfo2.appendChild(userGists);
 
-
-	document.body.appendChild(userMenu);
-
-	var avatars = document.querySelectorAll('.avatar[alt^="@"], .timeline-comment-avatar[alt^="@"]');
-	Array.prototype.forEach.call(avatars, function(avatar) {
-		avatar.addEventListener('mouseenter', function() {
-			getData(this);
-		});
-	});
 
 	var UPDATE_INTERVAL_DAYS = 7;
 
 	function getData(elm) {
-		var userName = elm.getAttribute('alt').replace('@', '');
+		var username = elm.getAttribute('alt').replace('@', '');
 		var rect = elm.getBoundingClientRect();
 		var position = {
 			top: rect.top + window.scrollY,
@@ -266,37 +315,65 @@
 
 		var usersString = GM_getValue('users', '{}');
 		var users = JSON.parse(usersString);
-		if (users[userName]) {
-			var date = new Date(users[userName].checked_at),
+		if (users[username]) {
+			var date = new Date(users[username].checked_at),
 				now = new Date();
 			if (date > now.setDate(now.getDate() - UPDATE_INTERVAL_DAYS)) {
-				console.log('CACHED');
-				fillData(users[userName].data, position, avatarSize);
+				console.log('GithubUserInfo:getData', 'CACHED');
+				fillData(users[username].data, position, avatarSize);
 			} else {
-				console.log('AJAX - OUTDATED');
-				fetchData(userName, position, avatarSize);
+				console.log('GithubUserInfo:getData', 'AJAX - OUTDATED');
+				fetchData(username, position, avatarSize);
 			}
 		} else {
-			console.log('AJAX - NON-EXISTING');
-			fetchData(userName, position, avatarSize);
+			console.log('GithubUserInfo:getData', 'AJAX - NON-EXISTING');
+			fetchData(username, position, avatarSize);
 		}
 	}
 
-	function fetchData(userName, position, avatarSize) {
+	function fetchData(username, position, avatarSize) {
+		console.log('GithubUserInfo:fetchData', username);
 		GM_xmlhttpRequest({
 			method: 'GET',
-			url: 'https://api.github.com/users/' + userName,
-			onload: function(response) {
-				var dataRaw = JSON.parse(response.responseText);
-				if (dataRaw.message && dataRaw.message.startsWith('API rate limit exceeded')) {
-					console.log('API RATE LIMIT EXCEEDED');
-					return;
-				}
-				var dataNormalized = normalizeData(dataRaw);
-				fillData(dataNormalized, position, avatarSize);
-				setData(dataNormalized, userName);
-			}
+			url: 'https://api.github.com/users/' + username,
+			onload: proxy(parseUserData, position, avatarSize)
 		});
+	}
+
+	function parseUserData(response, position, avatarSize) {
+		var dataParsed = parseRawData(response.responseText);
+		if (!dataParsed) {
+			return;
+		}
+		var dataNormalized = normalizeData(dataParsed);
+		console.log('GithubUserInfo:parseUserData', dataNormalized.username);
+
+		GM_xmlhttpRequest({
+			method: 'GET',
+			url: 'https://api.github.com/users/' + dataNormalized.username + '/orgs',
+			onload: proxy(parseOrgsData, position, avatarSize, dataNormalized)
+		});
+	}
+
+	function parseOrgsData(response, position, avatarSize, dataNormalized) {
+		var dataParsed = parseRawData(response.responseText);
+		if (!dataParsed) {
+			return;
+		}
+		dataNormalized.orgs = dataParsed.length;
+		console.log('GithubUserInfo:parseOrgsData', dataNormalized.username, dataNormalized.orgs);
+
+		fillData(dataNormalized, position, avatarSize);
+		setData(dataNormalized, dataNormalized.username);
+	}
+
+	function parseRawData(data) {
+		data = JSON.parse(data);
+		if (data.message && data.message.startsWith('API rate limit exceeded')) {
+			console.log('GithubUserInfo:parseRawData', 'API RATE LIMIT EXCEEDED');
+			return;
+		}
+		return data;
 	}
 
 	function normalizeData(data) {
@@ -304,8 +381,8 @@
 			'username': data.login,
 			'avatar': data.avatar_url,
 			'type': data.type,
-			'name': data.name,
-			'company': data.company,
+			'name': data.name || data.login,
+			'company': data.site_admin ? 'GitHub' : data.company,
 			'blog': data.blog,
 			'location': data.location,
 			'mail': data.email,
@@ -313,15 +390,17 @@
 			'gists': data.public_gists,
 			'followers': data.followers,
 			'following': data.following,
-			'created_at': data.created_at
+			'created_at': data.created_at,
+			'orgs': 0, // This will be filled via another AJAX call;
+			'admin': !!data.site_admin
 		};
 	}
 
-	function setData(data, userName) {
+	function setData(data, username) {
 		var usersString = GM_getValue('users', '{}');
 		var users = JSON.parse(usersString);
-		if (!users[userName]) {
-			users[userName] = {
+		if (!users[username]) {
+			users[username] = {
 				checked_at: (new Date()).toJSON(),
 				data: data
 			};
@@ -330,9 +409,17 @@
 	}
 
 	function fillData(data, position, avatarSize) {
+		userMenu.style.top = Math.max(position.top - 10 - 1, 2) + 'px';
+		userMenu.style.left = Math.max(position.left - 10 - 1, 2) + 'px';
+		userMenu.style.display = 'block';
+
 		userAvatar.setAttribute('href', 'https://github.com/' + data.username);
-		//userAvatarImg.height = avatarSize.height;
-		//userAvatarImg.width = avatarSize.width;
+		userAvatarImg.style.height = avatarSize.height + 'px';
+		userAvatarImg.style.width = avatarSize.width + 'px';
+		window.setTimeout(function() {
+			userAvatarImg.style.height = '96px';
+			userAvatarImg.style.width = '96px';
+		}, 50);
 		userAvatarImg.setAttribute('src', '');
 		userAvatarImg.setAttribute('src', data.avatar);
 
@@ -341,8 +428,10 @@
 
 		if (hasValue(data.company, userCompany)) {
 			userCompanyText.textContent = data.company;
+			userCompanyAdmin.style.display = data.admin ? 'inline' : 'none';
 		}
 		if (hasValue(data.location, userLocation)) {
+			userLocationText.setAttribute('href', 'https://maps.google.com/maps?q=' + encodeURIComponent(data.location));
 			userLocationText.textContent = data.location;
 		}
 		if (hasValue(data.mail, userMail)) {
@@ -358,33 +447,68 @@
 			userJoinedText.setAttribute('datetime', data.created_at);
 		}
 
+		var userCountsHasValue = false;
 		if (hasValue(data.followers, userFollowers)) {
+			userCountsHasValue = true;
 			userFollowers.setAttribute('href', 'https://github.com/' + data.username + '/followers');
 			userFollowersCount.textContent = data.followers;
 		}
 		if (hasValue(data.following, userFollowing)) {
+			userCountsHasValue = true;
 			userFollowing.setAttribute('href', 'https://github.com/' + data.username + '/following');
 			userFollowingCount.textContent = data.following;
 		}
 		if (hasValue(data.repos, userRepos)) {
+			userCountsHasValue = true;
 			userRepos.setAttribute('href', 'https://github.com/' + data.username + '?tab=repositories');
 			userReposCount.textContent = data.repos;
 		}
+		if (hasValue(data.orgs, userOrgs)) {
+			userCountsHasValue = true;
+			userOrgs.setAttribute('href', 'https://github.com/' + data.username);
+			userOrgsCount.textContent = data.orgs;
+		}
 		if (hasValue(data.gists, userGists)) {
+			userCountsHasValue = true;
 			userGists.setAttribute('href', 'https://gist.github.com/' + data.username);
 			userGistsCount.textContent = data.gists;
 		}
+		userCounts.style.display = userCountsHasValue ? 'block' : 'none';
 
 		//if (data.type === 'Organization' || data.type === 'User') {}
-
-		userMenu.style.top = Math.max(position.top - 10 - 1, 2) + 'px';
-		userMenu.style.left = Math.max(position.left - 10 - 1, 2) + 'px';
-		userMenu.style.display = 'block';
 	}
 
 	function hasValue(property, elm) {
 		elm.style.display = property ? 'block' : 'none';
 		return !!property;
 	}
+
+
+	function init() {
+		var avatars = document.querySelectorAll('.avatar[alt^="@"], .gravatar[alt^="@"], .timeline-comment-avatar[alt^="@"]');
+		Array.prototype.forEach.call(avatars, function(avatar) {
+			avatar.addEventListener('mouseenter', function() {
+				console.log('GithubUserInfo:avatar', 'mouseenter');
+				_timer = window.setTimeout(function() {
+					console.log('GithubUserInfo:avatar', 'timeout');
+					getData(this);
+				}.bind(this), 500);
+			});
+			avatar.addEventListener('mouseleave', function() {
+				console.log('GithubUserInfo:avatar', 'mouseleave');
+				window.clearTimeout(_timer);
+			});
+		});
+	}
+
+	// Page load;
+	console.log('GithubUserInfo', 'page load');
+	init();
+
+	// On pjax;
+	unsafeWindow.$(document).on("pjax:end", exportFunction(function() {
+		console.log('GithubUserInfo', 'pjax');
+		init();
+	}, unsafeWindow));
 
 })();

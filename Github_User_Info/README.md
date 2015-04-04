@@ -8,7 +8,7 @@
 
 ## Description
 
-Show inline user information on avatar hover.
+Show user information on avatar hover.
 
 
 ## Screenshot
@@ -25,13 +25,39 @@ Show inline user information on avatar hover.
 
 ## Version History
 
+* **0.2.0**
+    * Make location linkable to Google Maps;
+    * Added admin/staff recognition;
+    * User with all counts and 4 digit numbers, stretching popup;
+    * Don't error on API limit exceeded;
+    * Fixed not saving data;
+    * Always fill name;
+    * Added organization count;
+    * Fixed z-index;
+    * Added missing hover effect on counts;
+    * Better shadow;
+    * Also run on homepage news feed;
+    * Really fixing pjax events now; https://gist.github.com/jerone/e38e8637887559870d84
+    * Animate avatar;
+    * Hide user counts when no counts are available;
+    * Added some logging;
+    * Added class to identify element;
+    * Added username fallback when no name;
 * **0.1.0**
     * Initial version;
 
 
 ## Resources
 
-* https://github.com/jerone
-* https://developer.github.com/v3/
-* https://api.github.com/users/jerone
-* https://api.github.com/rate_limit
+* https://github.com/jerone (User)
+* https://api.github.com/users/jerone (API user)
+* https://github.com/github (Organisation with admin users)
+* https://github.com/benbalter (User with all counts and 4 digit numbers, stretching popup)
+* https://api.github.com/rate_limit (Read your API limit)
+* https://developer.github.com/v3/ (API Documentation)
+
+
+## External links
+
+* [Greasy Fork](https://greasyfork.org/en/scripts/8989-github-user-info)
+* [OpenUserJS](https://openuserjs.org/scripts/jerone/Github_User_Info)
