@@ -480,7 +480,7 @@
 			unsafeWindow.$.ajax({
 				url: url,
 				success: function(suggestionsData) {
-					suggestionsCache[url] = suggestionsData
+					suggestionsCache[url] = suggestionsData;
 					parseSuggestions(commentForm, suggestionsData);
 				}
 			});
