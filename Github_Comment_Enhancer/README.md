@@ -28,7 +28,7 @@ Add features to enhance comments & wiki on [Github](https://github.com) and comm
 
 ## Version History
 
-* **vNext**
+* **2.3.0**
     * Added emoji's (fixes https://github.com/jerone/UserScripts/issues/37);
     * Added underline button;
     * Added option to choose the character that precedes the list;
