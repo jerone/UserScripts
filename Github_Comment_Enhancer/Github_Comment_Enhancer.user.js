@@ -777,6 +777,21 @@
 		return cleanUp(string);
 	};
 
+	function getCommentTextarea(replyBtn) {
+		var newComment = replyBtn;
+		while (newComment && !newComment.classList.contains('js-quote-selection-container')) {
+			newComment = newComment.parentNode;
+		}
+		if (newComment) {
+			var lastElementChild = newComment.lastElementChild;
+			lastElementChild.classList.add('open');
+			newComment = lastElementChild.querySelector(".comment-form-textarea");
+		} else {
+			newComment = document.querySelector(".timeline-new-comment .comment-form-textarea");
+		}
+		return newComment;
+	}
+
 	function addReplyButtons() {
 		Array.prototype.forEach.call(document.querySelectorAll(".comment"), function(comment) {
 			var oldReply = comment.querySelector(".GithubCommentEnhancerReply");
@@ -785,8 +800,7 @@
 			}
 
 			var header = comment.querySelector(".timeline-comment-header"),
-				actions = comment.querySelector(".timeline-comment-actions"),
-				newComment = document.querySelector(".timeline-new-comment .comment-form-textarea");
+				actions = comment.querySelector(".timeline-comment-actions");
 
 			if (!header) {
 				return;
@@ -803,6 +817,8 @@
 			reply.classList.add("GithubCommentEnhancerReply", "timeline-comment-action", "tooltipped", "tooltipped-ne");
 			reply.addEventListener("click", function(e) {
 				e.preventDefault();
+
+				var newComment = getCommentTextarea(this);
 
 				var timestamp = comment.querySelector(".timestamp");
 

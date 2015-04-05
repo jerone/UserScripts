@@ -35,6 +35,7 @@ Add features to enhance comments & wiki on [Github](https://github.com) and comm
     * Added option to choose the characters that makes up a horizontal line;
     * Fixed running on GitHub Gists and inline comments on commits (fixes https://github.com/jerone/UserScripts/issues/43);
     * Fixed linking @users on GitHub Gists (fixes https://github.com/jerone/UserScripts/issues/13);
+    * Reply in correct inline commit comment textarea (fixes https://github.com/jerone/UserScripts/issues/14);
     * Searching snippets improved;
     * Improve table code;
     * Added missing tooltips;
