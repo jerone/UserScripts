@@ -40,11 +40,11 @@ Make pull request original branch linkable.
     * Initial version;
 
 
-## Notes
-
-Test cases:
+## Test cases
 
 * https://github.com/jerone/UserScripts/pull/12 (2 valid, 2 missing);
+* https://github.com/jerone/UserScripts/pull/29 (1 mine, 1 extern);
+* https://github.com/jerone/UserScripts/pull/47 (2 without username);
 
 
 ## Contributions
