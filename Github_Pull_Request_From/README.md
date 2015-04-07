@@ -29,7 +29,7 @@ Make pull request original branch linkable.
 
 ## Version History
 
-* **vNext**
+* **13**
     * Add missing tree author (fixes https://github.com/jerone/UserScripts/issues/51);
 * **12**
     * Don't link "unknown repository" (fixes https://github.com/jerone/UserScripts/issues/22);
