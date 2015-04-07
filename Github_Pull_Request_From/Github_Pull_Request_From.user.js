@@ -30,13 +30,15 @@
 	function init() {
 		var repo = document.querySelector(".js-current-repository").textContent;
 		Array.prototype.forEach.call(document.querySelectorAll("span.commit-ref.current-branch"), function(treeSpan) {
-			if (treeSpan.querySelector(".unknown-repo")) { return; }
+			if (treeSpan.querySelector(".unknown-repo")) {
+				return;
+			}
 			var tree = treeSpan.textContent.trim().split(":");
 			var treeLink = document.createElement("a");
 			treeLink.setAttribute("href", String.format("https://github.com/{0}/{1}/tree/{2}",
-											tree.shift(),		// user;
-											repo,				// repository;
-											tree.join(":")));	// branch;
+				tree.shift(), // user;
+				repo, // repository;
+				tree.join(":"))); // branch;
 			treeLink.innerHTML = treeSpan.innerHTML;
 			treeSpan.innerHTML = "";
 			treeSpan.appendChild(treeLink);
@@ -45,6 +47,6 @@
 	init();
 
 	// on pjax;
-	unsafeWindow.$(document).on("pjax:end", init);  // `pjax:end` also runs on history back;
+	unsafeWindow.$(document).on("pjax:end", init); // `pjax:end` also runs on history back;
 
 })(typeof unsafeWindow !== "undefined" ? unsafeWindow : window);
