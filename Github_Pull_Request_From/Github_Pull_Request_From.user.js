@@ -11,7 +11,7 @@
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_Pull_Request_From/Github_Pull_Request_From.user.js
 // @supportURL  https://github.com/jerone/UserScripts/issues
 // @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
-// @version     12
+// @version     13
 // @grant       none
 // @include     https://github.com/*/*
 // ==/UserScript==
@@ -26,25 +26,33 @@
 		});
 	};
 
-	// init;
 	function init() {
-		var repo = document.querySelector(".js-current-repository").textContent;
-		Array.prototype.forEach.call(document.querySelectorAll("span.commit-ref.current-branch"), function(treeSpan) {
-			if (treeSpan.querySelector(".unknown-repo")) { return; }
-			var tree = treeSpan.textContent.trim().split(":");
+		var repo = document.querySelector(".js-current-repository").textContent,
+			author = document.querySelector('.entry-title .author').textContent;
+		Array.prototype.filter.call(document.querySelectorAll("span.commit-ref.current-branch"), function(treeSpan) {
+			return !treeSpan.querySelector(".unknown-repo");
+		}).forEach(function(treeSpan) {
+			var treeUser = treeSpan.querySelector('.user');
+			var treeParts = treeSpan.querySelectorAll('.css-truncate-target');
 			var treeLink = document.createElement("a");
 			treeLink.setAttribute("href", String.format("https://github.com/{0}/{1}/tree/{2}",
-											tree.shift(),		// user;
-											repo,				// repository;
-											tree.join(":")));	// branch;
+				treeUser ? treeUser.textContent : author, // user;
+				repo, // repository;
+				treeParts[treeParts.length - 1].textContent)); // branch;
 			treeLink.innerHTML = treeSpan.innerHTML;
 			treeSpan.innerHTML = "";
 			treeSpan.appendChild(treeLink);
 		});
 	}
+
+	// Page load;
+	console.log('GithubPullRequestFromLink', 'page load');
 	init();
 
-	// on pjax;
-	unsafeWindow.$(document).on("pjax:end", init);  // `pjax:end` also runs on history back;
+	// On pjax;
+	unsafeWindow.$(document).on("pjax:end", function() {
+		console.log('GithubPullRequestFromLink', 'pjax');
+		init();
+	});
 
 })(typeof unsafeWindow !== "undefined" ? unsafeWindow : window);
