@@ -26,7 +26,6 @@
 		});
 	};
 
-	// init;
 	function init() {
 		var repo = document.querySelector(".js-current-repository").textContent,
 			author = document.querySelector('.entry-title .author').textContent;
@@ -45,9 +44,15 @@
 			treeSpan.appendChild(treeLink);
 		});
 	}
+
+	// Page load;
+	console.log('GithubPullRequestFromLink', 'page load');
 	init();
 
-	// on pjax;
-	unsafeWindow.$(document).on("pjax:end", init); // `pjax:end` also runs on history back;
+	// On pjax;
+	unsafeWindow.$(document).on("pjax:end", function() {
+		console.log('GithubPullRequestFromLink', 'pjax');
+		init();
+	});
 
 })(typeof unsafeWindow !== "undefined" ? unsafeWindow : window);
