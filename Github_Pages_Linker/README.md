@@ -26,6 +26,8 @@ Add a link to Github Pages (gh-pages) when available.
 
 ## Version History
 
+* **1.1**
+    * Added class to identify element;
 * **1.0**
     * Initial version;
 
