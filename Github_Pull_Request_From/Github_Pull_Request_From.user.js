@@ -29,10 +29,9 @@
 	// init;
 	function init() {
 		var repo = document.querySelector(".js-current-repository").textContent;
-		Array.prototype.forEach.call(document.querySelectorAll("span.commit-ref.current-branch"), function(treeSpan) {
-			if (treeSpan.querySelector(".unknown-repo")) {
-				return;
-			}
+		Array.prototype.filter.call(document.querySelectorAll("span.commit-ref.current-branch"), function(treeSpan) {
+			return !treeSpan.querySelector(".unknown-repo");
+		}).forEach(function(treeSpan) {
 			var tree = treeSpan.textContent.trim().split(":");
 			var treeLink = document.createElement("a");
 			treeLink.setAttribute("href", String.format("https://github.com/{0}/{1}/tree/{2}",
