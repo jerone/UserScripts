@@ -210,6 +210,7 @@
 		'text-decoration: none;';
 	userFollowers.classList.add('vcard-stat');
 	userFollowers.setAttribute('target', '_blank');
+	userFollowers.setAttribute('title', 'Followers');
 	userCounts.appendChild(userFollowers);
 	var userFollowersCount = document.createElement('strong');
 	userFollowersCount.style =
@@ -229,6 +230,7 @@
 		'text-decoration: none;';
 	userFollowing.classList.add('vcard-stat');
 	userFollowing.setAttribute('target', '_blank');
+	userFollowing.setAttribute('title', 'Following');
 	userCounts.appendChild(userFollowing);
 	var userFollowingCount = document.createElement('strong');
 	userFollowingCount.style =
@@ -248,6 +250,7 @@
 		'text-decoration: none;';
 	userRepos.classList.add('vcard-stat');
 	userRepos.setAttribute('target', '_blank');
+	userRepos.setAttribute('title', 'Public repositories');
 	userCounts.appendChild(userRepos);
 	var userReposCount = document.createElement('strong');
 	userReposCount.style =
@@ -267,6 +270,7 @@
 		'text-decoration: none;';
 	userOrgs.classList.add('vcard-stat');
 	userOrgs.setAttribute('target', '_blank');
+	userOrgs.setAttribute('title', 'Public organisations');
 	userCounts.appendChild(userOrgs);
 	var userOrgsCount = document.createElement('strong');
 	userOrgsCount.style =
@@ -306,6 +310,7 @@
 		'text-decoration: none;';
 	userGists.classList.add('vcard-stat');
 	userGists.setAttribute('target', '_blank');
+	userGists.setAttribute('title', 'Public gists');
 	userCounts.appendChild(userGists);
 	var userGistsCount = document.createElement('strong');
 	userGistsCount.style =
