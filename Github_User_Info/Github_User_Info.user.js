@@ -59,8 +59,8 @@
 
 	var userAvatar = document.createElement('a');
 	userAvatar.style =
-		'width: 96px;' +
-		'height: 96px;' +
+		'width: 100px;' +
+		'height: 100px;' +
 		'float: left;' +
 		'margin-bottom: 10px;';
 	userMenu.appendChild(userAvatar);
@@ -75,7 +75,7 @@
 	var userInfo = document.createElement('div');
 	userInfo.style =
 		'width: 100%;' +
-		'padding-left: 96px;';
+		'padding-left: 102px;';
 	userMenu.appendChild(userInfo);
 
 	var userName = document.createElement('strong');
@@ -417,8 +417,8 @@
 		userAvatarImg.style.height = avatarSize.height + 'px';
 		userAvatarImg.style.width = avatarSize.width + 'px';
 		window.setTimeout(function() {
-			userAvatarImg.style.height = '96px';
-			userAvatarImg.style.width = '96px';
+			userAvatarImg.style.height = '100px';
+			userAvatarImg.style.width = '100px';
 		}, 50);
 		userAvatarImg.setAttribute('src', '');
 		userAvatarImg.setAttribute('src', data.avatar);
