@@ -529,8 +529,8 @@
 			userFollowing.setAttribute('href', 'https://github.com/' + data.username + '/following');
 			userFollowingCount.textContent = data.following;
 		}
-		if (hasValue(data.repos, userRepos)) {
-			userCountsHasValue = true;
+		if (hasValue(true, userRepos)) { // Always show repos count, as long another count is shown too;
+			userCountsHasValue = userCountsHasValue ? true : !!data.repos;
 			userRepos.setAttribute('href', 'https://github.com/' + data.username + '?tab=repositories');
 			userReposCount.textContent = data.repos;
 		}
