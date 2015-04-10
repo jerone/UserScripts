@@ -186,9 +186,8 @@
 		'color: #CCC;';
 	userJoined.appendChild(userJoinedIcon);
 	userJoined.appendChild(document.createTextNode('Joined on '));
-	var userJoinedText = unsafeWindow.document.createElement('time');
+	var userJoinedText = unsafeWindow.document.createElement('time', 'local-time'); // https://github.com/github/time-elements
 	userJoinedText.setAttribute('day', 'numeric');
-	userJoinedText.setAttribute('is', 'local-time');
 	userJoinedText.setAttribute('month', 'short');
 	userJoinedText.setAttribute('year', 'numeric');
 	userJoined.appendChild(userJoinedText);
@@ -443,7 +442,6 @@
 			userLinkText.textContent = data.blog;
 		}
 		if (hasValue(data.created_at, userJoined)) {
-			userJoinedText.textContent = data.created_at;
 			userJoinedText.setAttribute('datetime', data.created_at);
 		}
 
