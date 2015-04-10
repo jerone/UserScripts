@@ -278,6 +278,26 @@
 	userOrgsText.classList.add('text-muted');
 	userOrgs.appendChild(userOrgsText);
 
+	var userMembers = document.createElement('a');
+	userMembers.style =
+		'display: none;' +
+		'float: left;' +
+		'width: 20%;' +
+		'text-decoration: none;';
+	userMembers.classList.add('vcard-stat');
+	userMembers.setAttribute('target', '_blank');
+	userMembers.setAttribute('title', 'Public members');
+	userCounts.appendChild(userMembers);
+	var userMembersCount = document.createElement('strong');
+	userMembersCount.style =
+		'display: block;' +
+		'font-size: 28px;';
+	userMembers.appendChild(userMembersCount);
+	var userMembersText = document.createElement('span');
+	userMembersText.appendChild(document.createTextNode('Members'));
+	userMembersText.classList.add('text-muted');
+	userMembers.appendChild(userMembersText);
+
 	var userGists = document.createElement('a');
 	userGists.style =
 		'display: none;' +
@@ -318,14 +338,15 @@
 			var date = new Date(users[username].checked_at),
 				now = new Date();
 			if (date > now.setDate(now.getDate() - UPDATE_INTERVAL_DAYS)) {
-				console.log('GithubUserInfo:getData', 'CACHED');
-				fillData(users[username].data, position, avatarSize);
+				var data = users[username].data;
+				console.log('GithubUserInfo:getData', 'CACHED', data);
+				fillData(defaultData(data), position, avatarSize);
 			} else {
-				console.log('GithubUserInfo:getData', 'AJAX - OUTDATED');
+				console.log('GithubUserInfo:getData', 'AJAX - OUTDATED', username);
 				fetchData(username, position, avatarSize);
 			}
 		} else {
-			console.log('GithubUserInfo:getData', 'AJAX - NON-EXISTING');
+			console.log('GithubUserInfo:getData', 'AJAX - NON-EXISTING', username);
 			fetchData(username, position, avatarSize);
 		}
 	}
@@ -344,26 +365,53 @@
 		if (!dataParsed) {
 			return;
 		}
-		var dataNormalized = normalizeData(dataParsed);
-		console.log('GithubUserInfo:parseUserData', dataNormalized.username);
+		var data = defaultData(normalizeData(dataParsed));
+		console.log('GithubUserInfo:parseUserData', data.username);
 
 		GM_xmlhttpRequest({
 			method: 'GET',
-			url: 'https://api.github.com/users/' + dataNormalized.username + '/orgs',
-			onload: proxy(parseOrgsData, position, avatarSize, dataNormalized)
+			url: 'https://api.github.com/users/' + data.username + '/orgs',
+			onload: proxy(parseOrgsData, position, avatarSize, data)
 		});
 	}
 
-	function parseOrgsData(response, position, avatarSize, dataNormalized) {
+	function parseOrgsData(response, position, avatarSize, data) {
 		var dataParsed = parseRawData(response.responseText);
 		if (!dataParsed) {
 			return;
 		}
-		dataNormalized.orgs = dataParsed.length;
-		console.log('GithubUserInfo:parseOrgsData', dataNormalized.username, dataNormalized.orgs);
+		data.orgs = dataParsed.length;
+		console.log('GithubUserInfo:parseOrgsData', data.username, data.orgs);
 
-		fillData(dataNormalized, position, avatarSize);
-		setData(dataNormalized, dataNormalized.username);
+		switch (data.type) {
+			case 'Organization':
+				{
+					GM_xmlhttpRequest({
+						method: 'GET',
+						url: 'https://api.github.com/orgs/' + data.username + '/members',
+						onload: proxy(parseMembersData, position, avatarSize, data)
+					});
+					break;
+				}
+			default:
+				{
+					fillData(data, position, avatarSize);
+					setData(data, data.username);
+					break;
+				}
+		}
+	}
+
+	function parseMembersData(response, position, avatarSize, data) {
+		var dataParsed = parseRawData(response.responseText);
+		if (!dataParsed) {
+			return;
+		}
+		data.members = dataParsed.length;
+		console.log('GithubUserInfo:parseMembersData', data.username, data.members);
+
+		fillData(data, position, avatarSize);
+		setData(data, data.username);
 	}
 
 	function parseRawData(data) {
@@ -380,8 +428,8 @@
 			'username': data.login,
 			'avatar': data.avatar_url,
 			'type': data.type,
-			'name': data.name || data.login,
-			'company': data.site_admin ? 'GitHub' : data.company,
+			'name': data.name,
+			'company': data.company,
 			'blog': data.blog,
 			'location': data.location,
 			'mail': data.email,
@@ -390,24 +438,44 @@
 			'followers': data.followers,
 			'following': data.following,
 			'created_at': data.created_at,
-			'orgs': 0, // This will be filled via another AJAX call;
 			'admin': !!data.site_admin
 		};
 	}
 
+	function defaultData(data) {
+		return {
+			'username': data.username,
+			'avatar': data.avatar,
+			'type': data.type,
+			'name': data.name || data.username,
+			'company': data.admin ? 'GitHub' : data.company || '',
+			'blog': data.blog || '',
+			'location': data.location || '',
+			'mail': data.mail || '',
+			'repos': data.repos || 0,
+			'gists': data.gists || 0,
+			'followers': data.followers || 0,
+			'following': data.following || 0,
+			'created_at': data.created_at,
+			'admin': data.admin || false,
+			'orgs': data.orgs || 0,
+			'members': data.members || 0
+		};
+	}
+
 	function setData(data, username) {
+		console.log('GithubUserInfo:setData', username, data);
 		var usersString = GM_getValue('users', '{}');
 		var users = JSON.parse(usersString);
-		if (!users[username]) {
 			users[username] = {
 				checked_at: (new Date()).toJSON(),
 				data: data
 			};
-		}
 		GM_setValue('users', JSON.stringify(users));
 	}
 
 	function fillData(data, position, avatarSize) {
+		console.log('GithubUserInfo:fillData', data, position, avatarSize);
 		userMenu.style.top = Math.max(position.top - 10 - 1, 2) + 'px';
 		userMenu.style.left = Math.max(position.left - 10 - 1, 2) + 'px';
 		userMenu.style.display = 'block';
@@ -465,6 +533,11 @@
 			userCountsHasValue = true;
 			userOrgs.setAttribute('href', 'https://github.com/' + data.username);
 			userOrgsCount.textContent = data.orgs;
+		}
+		if (hasValue(data.members, userMembers)) {
+			userCountsHasValue = true;
+			userMembers.setAttribute('href', 'https://github.com/orgs/' + data.username + '/people');
+			userMembersCount.textContent = data.members;
 		}
 		if (hasValue(data.gists, userGists)) {
 			userCountsHasValue = true;

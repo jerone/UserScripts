@@ -25,6 +25,9 @@ Show user information on avatar hover.
 
 ## Version History
 
+* **vNext**
+    * Fixed local time on second hover (fixes https://github.com/jerone/UserScripts/issues/53);
+    * Added members count for orgs (closes https://github.com/jerone/UserScripts/issues/54);
 * **0.2.0**
     * Make location linkable to Google Maps;
     * Added admin/staff recognition;
