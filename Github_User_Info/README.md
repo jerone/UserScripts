@@ -25,7 +25,7 @@ Show user information on avatar hover.
 
 ## Version History
 
-* **vNext**
+* **0.2.1**
     * Fixed local time on second hover (fixes https://github.com/jerone/UserScripts/issues/53);
     * Added members count for orgs (closes https://github.com/jerone/UserScripts/issues/54);
 * **0.2.0**
