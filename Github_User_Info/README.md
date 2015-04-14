@@ -25,6 +25,8 @@ Show user information on avatar hover.
 
 ## Version History
 
+* **0.3.0**
+    * Add support for GitHub Gist (fixes https://github.com/jerone/UserScripts/issues/55);
 * **0.2.1**
     * Fixed local time on second hover (fixes https://github.com/jerone/UserScripts/issues/53);
     * Added members count for orgs (closes https://github.com/jerone/UserScripts/issues/54);
