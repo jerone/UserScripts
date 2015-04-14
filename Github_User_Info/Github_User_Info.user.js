@@ -12,21 +12,22 @@
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_User_Info/Github_User_Info.user.js
 // @supportURL  https://github.com/jerone/UserScripts/issues
 // @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
-// @version     0.2.1
+// @version     0.3.0
 // @grant       GM_xmlhttpRequest
 // @grant       GM_setValue
 // @grant       GM_getValue
 // @grant       unsafeWindow
 // @run-at      document-end
 // @include     https://github.com/*
+// @include     https://gist.github.com/*
 // ==/UserScript==
 
 (function() {
 
 	function proxy(fn) {
-		return function() {
+		return function proxyScope() {
 			var that = this;
-			return function(e) {
+			return function proxyEvent(e) {
 				var args = that.slice(0); // clone;
 				args.unshift(e); // prepend event;
 				fn.apply(this, args);
@@ -49,7 +50,7 @@
 		'width: 335px;' +
 		'z-index: 99;';
 	userMenu.classList.add('GithubUserInfo');
-	userMenu.addEventListener('mouseleave', function() {
+	userMenu.addEventListener('mouseleave', function mouseleave() {
 		console.log('GithubUserInfo:userMenu', 'mouseleave');
 		window.clearTimeout(_timer);
 		userMenu.style.display = 'none';
@@ -326,7 +327,15 @@
 	var UPDATE_INTERVAL_DAYS = 7;
 
 	function getData(elm) {
-		var username = elm.getAttribute('alt').replace('@', '');
+		var username;
+		if (elm.getAttribute('alt')) {
+			username = elm.getAttribute('alt').replace('@', '');
+		} else if (elm.parentNode.parentNode.querySelector('.author')) {
+			username = elm.parentNode.parentNode.querySelector('.author').textContent.trim();
+		} else {
+			return;
+		}
+
 		var rect = elm.getBoundingClientRect();
 		var position = {
 			top: rect.top + window.scrollY,
@@ -488,7 +497,7 @@
 		userAvatar.setAttribute('href', 'https://github.com/' + data.username);
 		userAvatarImg.style.height = avatarSize.height + 'px';
 		userAvatarImg.style.width = avatarSize.width + 'px';
-		window.setTimeout(function() {
+		window.setTimeout(function avatarAnimationTimeout() {
 			userAvatarImg.style.height = '100px';
 			userAvatarImg.style.width = '100px';
 		}, 50);
@@ -561,16 +570,21 @@
 
 
 	function init() {
-		var avatars = document.querySelectorAll('.avatar[alt^="@"], .gravatar[alt^="@"], .timeline-comment-avatar[alt^="@"]');
-		Array.prototype.forEach.call(avatars, function(avatar) {
-			avatar.addEventListener('mouseenter', function() {
+		var avatars = document.querySelectorAll([
+			'.avatar[alt^="@"]', // Logged-in user & commits author & issuse participant & users organization & organization member;
+			'.timeline-comment-avatar[alt^="@"]', // GitHub comments author;
+			'.gist-author img', // Gist author;
+			'.gist .js-discussion .timeline-comment-avatar' // Gist comments author;
+		].join(','));
+		Array.prototype.forEach.call(avatars, function avatarsForEach(avatar) {
+			avatar.addEventListener('mouseenter', function mouseenter() {
 				console.log('GithubUserInfo:avatar', 'mouseenter');
-				_timer = window.setTimeout(function() {
+				_timer = window.setTimeout(function mouseenterTimer() {
 					console.log('GithubUserInfo:avatar', 'timeout');
 					getData(this);
 				}.bind(this), 500);
 			});
-			avatar.addEventListener('mouseleave', function() {
+			avatar.addEventListener('mouseleave', function mouseleave() {
 				console.log('GithubUserInfo:avatar', 'mouseleave');
 				window.clearTimeout(_timer);
 			});
@@ -582,7 +596,7 @@
 	init();
 
 	// On pjax;
-	unsafeWindow.$(document).on("pjax:end", exportFunction(function() {
+	unsafeWindow.$(document).on("pjax:end", exportFunction(function pjaxEnd() {
 		console.log('GithubUserInfo', 'pjax');
 		init();
 	}, unsafeWindow));
