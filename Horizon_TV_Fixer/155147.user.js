@@ -159,6 +159,23 @@
 			top: -42px;												\
 		}															" +
 
+		/* Move genre to navigation row; */
+		"\
+		.navigationbar {											\
+			position: relative;										\
+		}															\
+		.subnav-wrapper {											\
+			position: absolute;										\
+			left: 50%;												\
+			top: 0px;												\
+			margin-left: 350px;										\
+			text-align: right;										\
+			z-index: 8998;											\
+		}															\
+		.subnav {													\
+			width: auto;											\
+		}															" +
+
 		/* lower listings; */
 		"\
 		.channel-listing .listings,									\

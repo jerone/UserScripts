@@ -40,6 +40,7 @@ This script doesn't work on browsers that don't implement [ES6 arrow functions](
 
 * **vNext**
     * Show new Horizon Go logo;
+    * Move genre to navigation row;
 * **25** (v1.1.78)
     * Compatibily fixes for v1.1.78;
 * **24** (v1.1.76)
