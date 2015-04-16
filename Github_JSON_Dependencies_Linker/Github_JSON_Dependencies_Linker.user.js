@@ -12,7 +12,7 @@
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_JSON_Dependencies_Linker/Github_JSON_Dependencies_Linker.user.js
 // @supportURL  https://github.com/jerone/UserScripts/issues
 // @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
-// @version     0.2.0
+// @version     0.3.0
 // @grant       GM_xmlhttpRequest
 // @run-at      document-end
 // @include     https://github.com/*/package.json
@@ -24,69 +24,29 @@
 
 (function() {
 
-	var isNPM = location.pathname.endsWith('/package.json') || location.pathname.endsWith('/npm-shrinkwrap.json'),
-		isBower = location.pathname.endsWith('/bower.json'),
-		isNuGet = location.pathname.endsWith('/project.json'),
-		blobElm = document.querySelector('.blob-wrapper'),
+	var blobElm = document.querySelector('.blob-wrapper'),
 		blobLineElms = blobElm.querySelectorAll('.blob-code > span'),
 		pkg = (function() {
-			// JSON parser could fail on JSON with comments;
 			try {
+				// JSON parser could fail on JSON with comments;
 				return JSON.parse(blobElm.textContent);
 			} catch (ex) {
-				function stripJsonComments(str) {
-						/*!
-							strip-json-comments
-							Strip comments from JSON. Lets you use comments in your JSON files!
-							https://github.com/sindresorhus/strip-json-comments
-							by Sindre Sorhus
-							MIT License
-						*/
-						var currentChar;
-						var nextChar;
-						var insideString = false;
-						var insideComment = false;
-						var ret = '';
-						for (var i = 0; i < str.length; i++) {
-							currentChar = str[i];
-							nextChar = str[i + 1];
-							if (!insideComment && str[i - 1] !== '\\' && currentChar === '"') {
-								insideString = !insideString;
-							}
-							if (insideString) {
-								ret += currentChar;
-								continue;
-							}
-							if (!insideComment && currentChar + nextChar === '//') {
-								insideComment = 'single';
-								i++;
-							} else if (insideComment === 'single' && currentChar + nextChar === '\r\n') {
-								insideComment = false;
-								i++;
-								ret += currentChar;
-								ret += nextChar;
-								continue;
-							} else if (insideComment === 'single' && currentChar === '\n') {
-								insideComment = false;
-							} else if (!insideComment && currentChar + nextChar === '/*') {
-								insideComment = 'multi';
-								i++;
-								continue;
-							} else if (insideComment === 'multi' && currentChar + nextChar === '*/') {
-								insideComment = false;
-								i++;
-								continue;
-							}
-							if (insideComment) {
-								continue;
-							}
-							ret += currentChar;
-						}
-						return ret;
-					}
-					// Strip out comments from the JSON and try again;
+				// Strip out comments from the JSON and try again;
 				return JSON.parse(stripJsonComments(blobElm.textContent));
 			}
+		})(),
+		isNPM = location.pathname.endsWith('/package.json') || location.pathname.endsWith('/npm-shrinkwrap.json'),
+		isBower = location.pathname.endsWith('/bower.json'),
+		isNuGet = location.pathname.endsWith('/project.json'),
+		isAtom = (function() {
+			if (location.pathname.endsWith('/package.json')) {
+				if (pkg.atomShellVersion) {
+					return true;
+				} else if (pkg.engines && pkg.engines.atom) {
+					return true;
+				}
+			}
+			return false;
 		})(),
 		dependencyKeys = [
 			'dependencies',
@@ -94,61 +54,33 @@
 			'peerDependencies',
 			'bundleDependencies',
 			'bundledDependencies',
+			'packageDependencies',
 			'optionalDependencies'
 		],
-		modules = [];
+		modules = (function() {
+			var _modules = {};
+			dependencyKeys.forEach(function(dependencyKey) {
+				_modules[dependencyKey] = [];
+			});
+			return _modules;
+		})();
 
 	// Get an unique list of all modules;
 	function fetchModules(root) {
 		dependencyKeys.forEach(function(dependencyKey) {
 			var dependencies = root[dependencyKey] || {};
 			Object.keys(dependencies).forEach(function(module) {
-				if (modules.indexOf(module) === -1) {
-					modules.push(module);
+				if (modules[dependencyKey].indexOf(module) === -1) {
+					modules[dependencyKey].push(module);
 				}
 				fetchModules(dependencies[module]);
 			});
 		});
 	}
-
-	// Get url depending on json type;
-	var getUrl = (function() {
-		if (isNPM) {
-			return function(module) {
-				var url = 'https://www.npmjs.org/package/' + module;
-				linkify(module, url);
-			};
-		} else if (isBower) {
-			return function(module) {
-				GM_xmlhttpRequest({
-					method: 'GET',
-					url: 'http://bower.herokuapp.com/packages/' + module,
-					onload: function(response) {
-						var data = JSON.parse(response.responseText);
-						var re = /github\.com\/([\w\-\.]+)\/([\w\-\.]+)/i;
-						var parsedUrl = re.exec(data.url.replace(/\.git$/, ''));
-						if (parsedUrl) {
-							var user = parsedUrl[1];
-							var repo = parsedUrl[2];
-							var url = 'https://github.com/' + user + '/' + repo;
-							linkify(module, url);
-						} else {
-							linkify(module, data.url);
-						}
-					}
-				});
-			};
-		} else if (isNuGet) {
-			return function(module) {
-				var url = 'https://www.nuget.org/packages/' + module;
-				linkify(module, url);
-			};
-		}
-	})();
+	fetchModules(pkg);
 
 	// Linkify module;
 	function linkify(module, url) {
-
 		// Try to find the module; could be mulitple locations;
 		var moduleFilterText = '"' + module + '"';
 		var moduleElms = Array.prototype.filter.call(blobLineElms, function(blobLineElm) {
@@ -177,10 +109,89 @@
 		});
 	}
 
+	/*!
+		strip-json-comments
+		Strip comments from JSON. Lets you use comments in your JSON files!
+		https://github.com/sindresorhus/strip-json-comments
+		by Sindre Sorhus
+		MIT License
+	*/
+	function stripJsonComments(str) {
+		var currentChar;
+		var nextChar;
+		var insideString = false;
+		var insideComment = false;
+		var ret = '';
+		for (var i = 0; i < str.length; i++) {
+			currentChar = str[i];
+			nextChar = str[i + 1];
+			if (!insideComment && str[i - 1] !== '\\' && currentChar === '"') {
+				insideString = !insideString;
+			}
+			if (insideString) {
+				ret += currentChar;
+				continue;
+			}
+			if (!insideComment && currentChar + nextChar === '//') {
+				insideComment = 'single';
+				i++;
+			} else if (insideComment === 'single' && currentChar + nextChar === '\r\n') {
+				insideComment = false;
+				i++;
+				ret += currentChar;
+				ret += nextChar;
+				continue;
+			} else if (insideComment === 'single' && currentChar === '\n') {
+				insideComment = false;
+			} else if (!insideComment && currentChar + nextChar === '/*') {
+				insideComment = 'multi';
+				i++;
+				continue;
+			} else if (insideComment === 'multi' && currentChar + nextChar === '*/') {
+				insideComment = false;
+				i++;
+				continue;
+			}
+			if (insideComment) {
+				continue;
+			}
+			ret += currentChar;
+		}
+		return ret;
+	}
+
 	// Init;
-	fetchModules(pkg);
-	modules.forEach(function(module) {
-		getUrl(module);
+	Object.keys(modules).forEach(function(dependencyKey) {
+		modules[dependencyKey].forEach(function(module) {
+			if (isAtom && dependencyKey === 'packageDependencies') { // Atom needs to be before NPM;
+				var url = 'https://atom.io/packages/' + module;
+				linkify(module, url);
+			} else if (isNPM) {
+				var url = 'https://www.npmjs.org/package/' + module;
+				linkify(module, url);
+			} else if (isBower) {
+				GM_xmlhttpRequest({
+					method: 'GET',
+					url: 'http://bower.herokuapp.com/packages/' + module,
+					onload: function(response) {
+						var data = JSON.parse(response.responseText);
+						var re = /github\.com\/([\w\-\.]+)\/([\w\-\.]+)/i;
+						var parsedUrl = re.exec(data.url.replace(/\.git$/, ''));
+						if (parsedUrl) {
+							var user = parsedUrl[1];
+							var repo = parsedUrl[2];
+							var url = 'https://github.com/' + user + '/' + repo;
+							linkify(module, url);
+						} else {
+							linkify(module, data.url);
+						}
+					}
+				});
+			} else if (isNuGet) {
+				var url = 'https://www.nuget.org/packages/' + module;
+				linkify(module, url);
+			}
+		});
 	});
 
 })();

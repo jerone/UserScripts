@@ -11,9 +11,10 @@
 Linkify all dependencies found in an JSON file.
 
 The following JSON schemes are supported:
-* [NPM](Github_JSON_Dependencies_Linker) - `package.json` & `npm-shrinkwrap.json`
-* [Bower](http://bower.io/) - `bower.json`
-* [NuGet](https://www.nuget.org/) - `project.json`
+* [NPM](https://www.npmjs.com) - `package.json` & `npm-shrinkwrap.json`
+* [Bower](http://bower.io) - `bower.json`
+* [NuGet](https://www.nuget.org) - `project.json`
+* [Atom](https://atom.io) - `package.json`
 
 In the JSON file it will search for the following dependency keys:
 * `dependencies`
@@ -21,6 +22,7 @@ In the JSON file it will search for the following dependency keys:
 * `peerDependencies`
 * `bundleDependencies`
 * `bundledDependencies`
+* `packageDependencies`
 * `optionalDependencies`
 
 
@@ -38,6 +40,8 @@ In the JSON file it will search for the following dependency keys:
 
 ## Version History
 
+* **0.3.0**
+    * Added support for Atom for `packageDependencies`;
 * **0.2.0**
     * Module name preceding a colon is never a key;
     * Added support for npm-shrinkwrap.json;
@@ -50,13 +54,13 @@ In the JSON file it will search for the following dependency keys:
 
 * https://github.com/jerone/PackageSize/blob/master/package.json (multiple package.json dependencies);
 * https://github.com/npm/npm/blob/master/test/disabled/bundlerecurs/package.json
-* https://github.com/npm/npm/blob/master/test/tap/dev-dep-duplicate/package.json (duplicate packages);
 * https://github.com/npm/npm/blob/master/test/packages/npm-test-optional-deps/package.json (optionalDependencies & different semver);
 * https://github.com/npm/npm/blob/master/test/packages/npm-test-bundled-git/package.json (git semver & bundledDependencies);
 * https://github.com/npm/npm/blob/master/test/packages/npm-test-shrinkwrap/npm-shrinkwrap.json (npm-shrinkwrap.json);
 * https://github.com/npm/npm/blob/master/test/packages/npm-test-url-dep/package.json (url semver);
-* https://github.com/npm/npm/blob/master/test/tap/install-from-local/package-with-scoped-paths/package.json (scoped paths);
 * https://github.com/aspnet/MusicStore/blob/master/src/MusicStore.Spa/project.json (ASP.NET project.json with COMMENTS);
+* https://github.com/atom/atom/blob/master/package.json (Atom package.json packageDependencies atomShellVersion);
+* https://github.com/suda/toolbar-main/blob/master/package.json (Atom package.json packageDependencies engines.atom);
 
 
 ## Dependencies
