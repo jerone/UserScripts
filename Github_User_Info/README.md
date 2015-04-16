@@ -25,6 +25,8 @@ Show user information on avatar hover.
 
 ## Version History
 
+* **0.3.1**
+    * Add support for authored committed users;
 * **0.3.0**
     * Add support for GitHub Gist (fixes https://github.com/jerone/UserScripts/issues/55);
 * **0.2.1**
