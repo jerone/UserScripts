@@ -12,7 +12,7 @@
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_User_Info/Github_User_Info.user.js
 // @supportURL  https://github.com/jerone/UserScripts/issues
 // @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
-// @version     0.3.0
+// @version     0.3.1
 // @grant       GM_xmlhttpRequest
 // @grant       GM_setValue
 // @grant       GM_getValue
@@ -481,10 +481,10 @@
 		console.log('GithubUserInfo:setData', username, data);
 		var usersString = GM_getValue('users', '{}');
 		var users = JSON.parse(usersString);
-			users[username] = {
-				checked_at: (new Date()).toJSON(),
-				data: data
-			};
+		users[username] = {
+			checked_at: (new Date()).toJSON(),
+			data: data
+		};
 		GM_setValue('users', JSON.stringify(users));
 	}
 
@@ -572,6 +572,7 @@
 	function init() {
 		var avatars = document.querySelectorAll([
 			'.avatar[alt^="@"]', // Logged-in user & commits author & issuse participant & users organization & organization member;
+			'.avatar-child[alt^="@"]', // Authored committed users;
 			'.timeline-comment-avatar[alt^="@"]', // GitHub comments author;
 			'.gist-author img', // Gist author;
 			'.gist .js-discussion .timeline-comment-avatar' // Gist comments author;
