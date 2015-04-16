@@ -152,9 +152,6 @@
 		#channel-guide-head {										\
 			display: none;											\
 		}															\
-		.channel-guide .pinned .current-time {						\
-			top: 70px;												\
-		}															\
 		.channel-guide .gids-panel .current-time:before {			\
 			top: -42px;												\
 		}															" +
@@ -209,6 +206,12 @@
 		"\
 		.MyOrionBar  {												\
 			display: none;											\
+		}															" +
+
+		/* Current time indicator doesn't need an cursor; */
+		"\
+		.channel-guide .gids-panel .current-time {					\
+			cursor: initial;										\
 		}															" +
 		"");
 
