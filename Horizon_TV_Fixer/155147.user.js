@@ -136,7 +136,8 @@
 			margin-top: 0px !important;								\
 		}															\
 		.branding {													\
-			display: none;											\
+			position: absolute;										\
+			top: -15px;												\
 		}															\
 		#modules {													\
 			padding-top: 0;											\

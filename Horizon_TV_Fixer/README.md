@@ -38,6 +38,8 @@ This script doesn't work on browsers that don't implement [ES6 arrow functions](
 
 ## Version History
 
+* **vNext**
+    * Show new Horizon Go logo;
 * **25** (v1.1.78)
     * Compatibily fixes for v1.1.78;
 * **24** (v1.1.76)
@@ -65,7 +67,7 @@ This script doesn't work on browsers that don't implement [ES6 arrow functions](
 
 ## Notes
 
-Build for version 1.1.78
+Build for version 1.1.83
 ```
     console.log("Version: " + unsafeWindow.BBVSettingsObject.version.major + "." + unsafeWindow.BBVSettingsObject.version.minor + "." + unsafeWindow.BBVSettingsObject.version.micro);
 ```
