@@ -16,9 +16,12 @@
 // @include     *horizon.tv*
 // ==/UserScript==
 
-(function HorizonTVFixer(){
+(function HorizonTVFixer() {
 
-	if(!unsafeWindow.BBVSettingsObject){ return; }  // ignore iframes;
+	// ignore iframes;
+	if (!unsafeWindow.BBVSettingsObject) {
+		return;
+	}
 
 	console.log("Version: " + unsafeWindow.BBVSettingsObject.version.major + "." + unsafeWindow.BBVSettingsObject.version.minor + "." + unsafeWindow.BBVSettingsObject.version.micro);
 
@@ -26,68 +29,70 @@
 	var url = location.href,
 		socials = {
 			Google: {
-				submit: function(title, subtitle, channel, time){
+				submit: function(title, subtitle, channel, time) {
 					return "https://www.google.nl/search?q=" + encodeURIComponent(title + (subtitle ? ", " + subtitle : ""));
 				},
 				icon: "https://www.google.nl/favicon.ico"
 			},
 			IMDb: {
-				submit: function(title, subtitle, channel, time){
+				submit: function(title, subtitle, channel, time) {
 					return "http://www.imdb.com/find?q=" + encodeURIComponent((title + (subtitle ? " - " + subtitle : "")).trim());
 				},
 				icon: "https://secure.imdb.com/images/SFff39adb4d259f3c3fd166853a6714a32/legacy/favicon.ico"
 			},
 			YouTube: {
-				submit: function(title, subtitle, channel, time){
+				submit: function(title, subtitle, channel, time) {
 					return "https://youtube.com/results?search_query=" + encodeURIComponent((title + (subtitle ? " - " + subtitle : "")).trim());
 				},
 				icon: "https://youtube.com/favicon.ico"
 			},
 			Twitter: {
-				submit: function(title, subtitle, channel, time){
+				submit: function(title, subtitle, channel, time) {
 					return "https://twitter.com/intent/tweet?original_referer=" + encodeURIComponent(url) +
-								"&source=tweetbutton&url=" + encodeURIComponent(url) +
-								"&text=" + encodeURIComponent(title + (subtitle ? " - " + subtitle : "") + " op " + channel + " om " + time + " -");
+						"&source=tweetbutton&url=" + encodeURIComponent(url) +
+						"&text=" + encodeURIComponent(title + (subtitle ? " - " + subtitle : "") + " op " + channel + " om " + time + " -");
 				},
 				icon: "https://twitter.com/favicon.ico"
 			},
 			"Uitzending Gemist": {
-				submit: function(title, subtitle, channel, time){
+				submit: function(title, subtitle, channel, time) {
 					return "http://www.uitzendinggemist.nl/zoek?q=" + encodeURIComponent((title + (subtitle ? " - " + subtitle : "")).trim());
 				},
 				icon: "https://mijn.npo.nl/favicon.ico"
 			},
 			KijkWijzer: {
-				submit: function(title, subtitle, channel, time){
+				submit: function(title, subtitle, channel, time) {
 					return "http://www.kijkwijzer.nl/index.php?id=3__i&searchfor=" + encodeURIComponent((title + (subtitle ? " - " + subtitle : "")).trim());
 				},
 				icon: "http://www.kijkwijzer.nl/favicon.ico"
 			},
 			IPTorrents: {
-				submit: function(title, subtitle, channel, time){
+				submit: function(title, subtitle, channel, time) {
 					return "https://iptorrents.com/torrents?q=" + encodeURIComponent(title.trim());
 				},
 				icon: "https://iptorrents.com/favicon.ico"
 			}
 		};
-	var _orion_modules_EPG_ListingsView_prototype_showDetails = unsafeWindow.orion.modules.EPG.ListingsView.prototype.showDetails;  // https://www.horizon.tv/etc/designs/orion/upc/js/orion/modules/EPG/ListingsView.js?v=34
-	unsafeWindow.orion.modules.EPG.ListingsView.prototype.showDetails = function(imi){
-		_orion_modules_EPG_ListingsView_prototype_showDetails.apply(this, arguments);  // execute original code;
+	var _orion_modules_EPG_ListingsView_prototype_showDetails = unsafeWindow.orion.modules.EPG.ListingsView.prototype.showDetails; // https://www.horizon.tv/etc/designs/orion/upc/js/orion/modules/EPG/ListingsView.js?v=34
+	unsafeWindow.orion.modules.EPG.ListingsView.prototype.showDetails = function(imi) {
+		_orion_modules_EPG_ListingsView_prototype_showDetails.apply(this, arguments); // execute original code;
 
 		var $listing = unsafeWindow.$('.listing[data-listing-id="' + imi + '"]'),
 			$channel = $listing.closest('.channel-listing'),
 			station = $channel.get(0),
 			wrap = station.nextSibling;
-		if(wrap.classList.contains("done-social")) return;  // ignore clicking multiple times on the same program;
+		if (wrap.classList.contains("done-social")) return; // ignore clicking multiple times on the same program;
 		wrap.classList.add("done-social");
 		var details = wrap.querySelector(".details"),
 			title = details.querySelector("h3").textContent,
-			subtitle = (details.querySelector("h4") || { textContent: "" }).textContent,
+			subtitle = (details.querySelector("h4") || {
+				textContent: ""
+			}).textContent,
 			channel = details.querySelector(".channel-details").textContent.split(", ");
 		var messageDiv = document.createElement("div");
 		messageDiv.style.marginTop = "12px";
 		details.appendChild(messageDiv);
-		for(var key in socials){
+		for (var key in socials) {
 			var social = socials[key],
 				socialA = document.createElement("a"),
 				socialImg = document.createElement("img"),
@@ -119,12 +124,14 @@
 
 	/* Style fixes; */
 	addStyle(
-		/* removed white header; */									"\
+		/* removed white header; */
+		"\
 		.servicenav.service {										\
 			display: none;											\
-		}															"+
+		}															" +
 
-		/* cropped header; */										"\
+		/* cropped header; */
+		"\
 		.header-options {											\
 			margin-top: 0px !important;								\
 		}															\
@@ -149,9 +156,10 @@
 		}															\
 		.channel-guide .gids-panel .current-time:before {			\
 			top: -42px;												\
-		}															"+
+		}															" +
 
-		/* lower listings; */										"\
+		/* lower listings; */
+		"\
 		.channel-listing .listings,									\
 		.channel-listing .listings .listing,						\
 		.channel-listing .listings .listing.active,					\
@@ -171,20 +179,22 @@
 		.network .logo-active-image {								\
 			max-height: 29px;										\
 			transform: inherit;										\
-		}															"+
+		}															" +
 
-		/* smaller font size in listing; */							"\
+		/* smaller font size in listing; */
+		"\
 		.channel-listing .listings .listing .title {				\
 			font-size: 12px;										\
-		}															"+
+		}															" +
 
-		/* hide bottom bar; */										"\
+		/* hide bottom bar; */
+		"\
 		.MyOrionBar  {												\
 			display: none;											\
-		}															"+
-	"");
+		}															" +
+		"");
 
-	function addStyle(css){
+	function addStyle(css) {
 		var heads = document.getElementsByTagName("head");
 		if (heads.length > 0) {
 			var node = document.createElement("style");
@@ -194,18 +204,18 @@
 		}
 	}
 
-	function PageLoad(done){
-		if(unsafeWindow.$){
+	function PageLoad(done) {
+		if (unsafeWindow.$) {
 			//unsafeWindow.$(function(){console.log("events: ", unsafeWindow.$(".channel-guide").data("events") );});
-			unsafeWindow.$(".channel-guide").on("loaded", done);  // only on-page jQuery can catch this event;
+			unsafeWindow.$(".channel-guide").on("loaded", done); // only on-page jQuery can catch this event;
 		}
 	}
 
-	function ForEachListing(name, done){
-		PageLoad(function(){
-			var listings = document.querySelectorAll(".listing:not(.done-" + name + ")");  // get all listings that don't have been processed yet;
+	function ForEachListing(name, done) {
+		PageLoad(function() {
+			var listings = document.querySelectorAll(".listing:not(.done-" + name + ")"); // get all listings that don't have been processed yet;
 			Array.forEach(listings, (listing) => {
-				listing.classList.add("done-" + name);  // mark element as done;
+				listing.classList.add("done-" + name); // mark element as done;
 				done(listing);
 			});
 		});
