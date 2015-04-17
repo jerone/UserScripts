@@ -38,7 +38,7 @@ This script doesn't work on browsers that don't implement [ES6 arrow functions](
 
 ## Version History
 
-* **26**
+* **26** (v1.1.83)
     * Show new Horizon Go logo;
     * Move genre to navigation row;
     * Current time indicator doesn't need an cursor;
