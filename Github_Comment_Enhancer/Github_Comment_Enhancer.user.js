@@ -112,7 +112,7 @@
 						next(String.format("[{0}]({1}){2}", text || href, href, (/\s+$/.test(selText) ? " " : "")));
 					}
 				},
-				shortcut: "ctrl+shift+w"
+				shortcut: "ctrl+l"
 			},
 			"function-image": {
 				exec: function(button, selText, commentForm, next) {
@@ -124,7 +124,7 @@
 						next(String.format("![{0}]({1}){2}", text || href, href, (/\s+$/.test(selText) ? " " : "")));
 					}
 				},
-				shortcut: "ctrl+shift+i"
+				shortcut: "ctrl+g"
 			},
 
 			"function-ul": {
@@ -163,7 +163,7 @@
 					var rt = selText.indexOf("\n") > -1 ? "$1\n```\n$2\n```$3" : "$1`$2`$3";
 					next(selText.replace(/^(\s*)([\s\S]*?)(\s*)$/g, rt));
 				},
-				shortcut: "ctrl+c"
+				shortcut: "ctrl+k"
 			},
 			"function-blockquote": {
 				search: /(.+)([\n]?)/g,
@@ -171,10 +171,10 @@
 				forceNewline: true,
 				shortcut: "ctrl+q"
 			},
-			"function-hr": {
+			"function-rule": {
 				append: String.format("\n{0}\n", lineCharacter),
 				forceNewline: true,
-				shortcut: "ctrl+l"
+				shortcut: "ctrl+r"
 			},
 			"function-table": {
 				append: "\n" +
@@ -272,10 +272,10 @@
 			'	</div>' +
 
 			'	<div class="button-group btn-group">' +
-			'		<a href="#" id="function-link" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Link (ctrl+shift+w)">' +
+			'		<a href="#" id="function-link" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Link (ctrl+l)">' +
 			'			<span class="octicon octicon-link"></span>' +
 			'		</a>' +
-			'		<a href="#" id="function-image" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Image (ctrl+shift+i)">' +
+			'		<a href="#" id="function-image" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Image (ctrl+g)">' +
 			'			<span class="octicon octicon-file-media"></span>' +
 			'		</a>' +
 			'	</div>' +
@@ -292,13 +292,13 @@
 			'	</div>' +
 
 			'	<div class="button-group btn-group">' +
-			'		<a href="#" id="function-code" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Code (ctrl+c)">' +
+			'		<a href="#" id="function-code" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Code (ctrl+k)">' +
 			'			<span class="octicon octicon-code"></span>' +
 			'		</a>' +
 			'		<a href="#" id="function-blockquote" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Blockquote (ctrl+q)">' +
 			'			<span class="octicon octicon-quote"></span>' +
 			'		</a>' +
-			'		<a href="#" id="function-hr" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Horizontal Rule (ctrl+l)">' +
+			'		<a href="#" id="function-rule" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Horizontal Rule (ctrl+r)">' +
 			'			<span class="octicon octicon-horizontal-rule"></span>' +
 			'		</a>' +
 			'		<a href="#" id="function-table" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Table (ctrl+t)">' +
