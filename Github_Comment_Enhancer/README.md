@@ -24,14 +24,14 @@ Every comment field also got a toolbar, consisting of the following buttons:
     * Header 4 (<kbd>ctrl+4</kbd>)
     * Header 5 (<kbd>ctrl+5</kbd>)
     * Header 6 (<kbd>ctrl+6</kbd>)
-* Link (<kbd>ctrl+shift+w</kbd>)
-* Image (<kbd>ctrl+shift+i</kbd>)
+* Link (<kbd>ctrl+l</kbd>)
+* Image (<kbd>ctrl+g</kbd>)
 * Unordered List (<kbd>ctrl+shift+u</kbd>)
 * Ordered List (<kbd>ctrl+shift+o</kbd>)
 * Task List (<kbd>ctrl+shift+t</kbd>)
-* Code (<kbd>ctrl+c</kbd>)
+* Code (<kbd>ctrl+k</kbd>)
 * Quote (<kbd>ctrl+q</kbd>)
-* Line (<kbd>ctrl+l</kbd>)
+* Horizontal Rule (<kbd>ctrl+r</kbd>)
 * Table (<kbd>ctrl+t</kbd>)
 * Snippets
     * Tab character
