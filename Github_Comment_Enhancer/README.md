@@ -26,19 +26,19 @@ Every comment field also got a toolbar, consisting of the following buttons:
     * Header 6 (<kbd>ctrl+6</kbd>)
 * Link (<kbd>ctrl+l</kbd>)
 * Image (<kbd>ctrl+g</kbd>)
-* Unordered List (<kbd>ctrl+shift+u</kbd>)
-* Ordered List (<kbd>ctrl+shift+o</kbd>)
-* Task List (<kbd>ctrl+shift+t</kbd>)
+* Unordered List (<kbd>alt+ctrl+u</kbd>)
+* Ordered List (<kbd>alt+ctrl+o</kbd>)
+* Task List (<kbd>alt+ctrl+t</kbd>)
 * Code (<kbd>ctrl+k</kbd>)
 * Quote (<kbd>ctrl+q</kbd>)
 * Horizontal Rule (<kbd>ctrl+r</kbd>)
-* Table (<kbd>ctrl+t</kbd>)
+* Table (<kbd>alt+shift+t</kbd>)
 * Snippets
     * Tab character
     * UserAgent
     * Contributing message
 * Emoji
-* Clear comment field (<kbd>ctrl+shift+x</kbd>)
+* Clear comment field (<kbd>alt+ctrl+x</kbd>)
 
 
 ## Screenshot
