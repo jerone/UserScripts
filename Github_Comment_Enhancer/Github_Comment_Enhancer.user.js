@@ -131,7 +131,7 @@
 				search: /(.+)([\n]?)/g,
 				replace: String.format("{0} $1$2", listCharacter),
 				forceNewline: true,
-				shortcut: "ctrl+shift+u"
+				shortcut: "alt+ctrl+u"
 			},
 			"function-ol": {
 				exec: function(button, selText, commentForm, next) {
@@ -149,13 +149,13 @@
 					}
 					next(repText);
 				},
-				shortcut: "ctrl+shift+o"
+				shortcut: "alt+ctrl+o"
 			},
 			"function-checklist": {
 				search: /(.+)([\n]?)/g,
 				replace: String.format("{0} [ ] $1$2", listCharacter),
 				forceNewline: true,
-				shortcut: "ctrl+shift+t"
+				shortcut: "alt+ctrl+t"
 			},
 
 			"function-code": {
@@ -183,7 +183,7 @@
 					"| Cell | Cell   | Cell  |\n" +
 					"| Left | Center | Right |\n",
 				forceNewline: true,
-				shortcut: "ctrl+t"
+				shortcut: "alt+shift+t"
 			},
 
 			"function-clear": {
@@ -191,7 +191,7 @@
 					commentForm.value = "";
 					next("");
 				},
-				shortcut: "ctrl+shift+x"
+				shortcut: "alt+ctrl+x"
 			},
 
 			"function-snippets-tab": {
@@ -280,13 +280,13 @@
 			'		</a>' +
 			'	</div>' +
 			'	<div class="button-group btn-group">' +
-			'		<a href="#" id="function-ul" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Unordered List (ctrl+shift+u)">' +
+			'		<a href="#" id="function-ul" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Unordered List (alt+ctrl+u)">' +
 			'			<span class="octicon octicon-list-unordered"></span>' +
 			'		</a>' +
-			'		<a href="#" id="function-ol" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Ordered List (ctrl+shift+o)">' +
+			'		<a href="#" id="function-ol" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Ordered List (alt+ctrl+o)">' +
 			'			<span class="octicon octicon-list-ordered"></span>' +
 			'		</a>' +
-			'		<a href="#" id="function-checklist" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Task List (ctrl+shift+t)">' +
+			'		<a href="#" id="function-checklist" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Task List (alt+ctrl+t)">' +
 			'			<span class="octicon octicon-checklist"></span>' +
 			'		</a>' +
 			'	</div>' +
@@ -301,7 +301,7 @@
 			'		<a href="#" id="function-rule" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Horizontal Rule (ctrl+r)">' +
 			'			<span class="octicon octicon-horizontal-rule"></span>' +
 			'		</a>' +
-			'		<a href="#" id="function-table" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Table (ctrl+t)">' +
+			'		<a href="#" id="function-table" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Table (alt+shift+t)">' +
 			'			<span class="octicon octicon-three-bars"></span>' +
 			'		</a>' +
 			'	</div>' +
@@ -371,7 +371,7 @@
 			'</div>' +
 
 			'<div style="float:right;">' +
-			'	<a href="#" id="function-clear" class="btn btn-sm minibutton function-button tooltipped tooltipped-nw" aria-label="Clear (ctrl+shift+x)">' +
+			'	<a href="#" id="function-clear" class="btn btn-sm minibutton function-button tooltipped tooltipped-nw" aria-label="Clear (alt+ctrl+x)">' +
 			'		<span class="octicon octicon-circle-slash"></span>' +
 			'	</a>' +
 			'</div>';
@@ -534,6 +534,9 @@
 
 	function commentFormKeyEvent(commentForm, e) {
 		var keys = [];
+		if (e.altKey) {
+			keys.push('alt');
+		}
 		if (e.ctrlKey) {
 			keys.push('ctrl');
 		}
@@ -542,13 +545,18 @@
 		}
 		keys.push(String.fromCharCode(e.which).toLowerCase());
 		var keyCombination = keys.join('+');
-		var actionName = Object.keys(MarkDown).find(function(action) {
-			return MarkDown[action].shortcut && MarkDown[action].shortcut.toLowerCase() === keyCombination;
-		});
-		if (actionName) {
+
+		var action;
+		for (var actionName in MarkDown) {
+			if (MarkDown[actionName].shortcut && MarkDown[actionName].shortcut.toLowerCase() === keyCombination) {
+				action = MarkDown[actionName];
+				break;
+			}
+		}
+		if (action) {
 			e.preventDefault();
 			e.stopPropagation();
-			executeAction(MarkDown[actionName], commentForm, null);
+			executeAction(action, commentForm, null);
 			return false;
 		}
 	}
@@ -632,7 +640,7 @@
 				button.addEventListener("click", functionButtonClick);
 			});
 
-			commentForm.addEventListener('keypress', commentFormKeyEvent.bind(this, commentForm));
+			commentForm.addEventListener('keydown', commentFormKeyEvent.bind(this, commentForm));
 		});
 	}
 
