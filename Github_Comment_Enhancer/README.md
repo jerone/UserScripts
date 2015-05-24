@@ -10,6 +10,36 @@
 
 Add features to enhance comments & wiki on [Github](https://github.com) and comments on [Github Gist](https://gist.github.com).
 
+You can reply to issues, pull requests and inline comments by pressing the reply button on every comment.
+
+Every comment field also got a toolbar, consisting of the following buttons:
+* Bold (<kbd>ctrl+b</kbd>)
+* Italic (<kbd>ctrl+i</kbd>)
+* Underline (<kbd>ctrl+u</kbd>)
+* Strikethrough (<kbd>ctrl+s</kbd>)
+* Headers
+    * Header 1 (<kbd>ctrl+1</kbd>)
+    * Header 2 (<kbd>ctrl+2</kbd>)
+    * Header 3 (<kbd>ctrl+3</kbd>)
+    * Header 4 (<kbd>ctrl+4</kbd>)
+    * Header 5 (<kbd>ctrl+5</kbd>)
+    * Header 6 (<kbd>ctrl+6</kbd>)
+* Link (<kbd>ctrl+l</kbd>)
+* Image (<kbd>ctrl+g</kbd>)
+* Unordered List (<kbd>alt+ctrl+u</kbd>)
+* Ordered List (<kbd>alt+ctrl+o</kbd>)
+* Task List (<kbd>alt+ctrl+t</kbd>)
+* Code (<kbd>ctrl+k</kbd>)
+* Quote (<kbd>ctrl+q</kbd>)
+* Horizontal Rule (<kbd>ctrl+r</kbd>)
+* Table (<kbd>alt+shift+t</kbd>)
+* Snippets
+    * Tab character
+    * UserAgent
+    * Contributing message
+* Emoji
+* Clear comment field (<kbd>alt+ctrl+x</kbd>)
+
 
 ## Screenshot
 
@@ -29,6 +59,8 @@ Add features to enhance comments & wiki on [Github](https://github.com) and comm
 
 ## Version History
 
+* **2.4.0**
+    * Keyboard shortcuts (fixes https://github.com/jerone/UserScripts/issues/19);
 * **2.3.0**
     * Added emoji's (fixes https://github.com/jerone/UserScripts/issues/37);
     * Added underline button;
