@@ -12,7 +12,7 @@
 // @supportURL  https://github.com/jerone/UserScripts/issues
 // @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
 // @include     https://github.com/*
-// @version     1.4.1
+// @version     1.4.2
 // @grant       none
 // ==/UserScript==
 /* global unsafeWindow */
@@ -36,7 +36,7 @@
 		s.style.color = "#333";  // set color because of css selector `p.explain .octicon`;
 
 		var a = document.createElement("a");
-		a.classList.add("minibutton", "tooltipped", "tooltipped-n");
+		a.classList.add("btn", "btn-sm", "tooltipped", "tooltipped-n");
 		if (on) { a.classList.add("selected"); }
 		a.setAttribute("href", url(on));
 		a.setAttribute("rel", "nofollow");
@@ -44,7 +44,7 @@
 		a.appendChild(s);
 
 		var g = document.createElement("div");
-		g.classList.add("GithubCommitWhitespaceButton", "button-group", "right");
+		g.classList.add("GithubCommitWhitespaceButton", "right");
 		g.style.margin = "0 10px 0 0";  // give us some room;
 		g.appendChild(a);
 
