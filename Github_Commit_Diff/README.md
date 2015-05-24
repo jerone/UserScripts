@@ -29,6 +29,8 @@ This works on commits, pull requests and compare pages.
 
 ## Version History
 
+* **1.6.2**
+    * Fixed issues after recent layout updates;
 * **1.6.1**
     * Tooltips now on top;
 * **1.6**
