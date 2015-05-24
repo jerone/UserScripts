@@ -25,6 +25,9 @@ Show user information on avatar hover.
 
 ## Version History
 
+* **0.3.2**
+    * Add support for following & followers page;
+    * Add support for trending developer;
 * **0.3.1**
     * Add support for authored committed users;
 * **0.3.0**

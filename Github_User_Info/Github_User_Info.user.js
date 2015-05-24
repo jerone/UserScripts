@@ -12,7 +12,7 @@
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_User_Info/Github_User_Info.user.js
 // @supportURL  https://github.com/jerone/UserScripts/issues
 // @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
-// @version     0.3.1
+// @version     0.3.2
 // @grant       GM_xmlhttpRequest
 // @grant       GM_setValue
 // @grant       GM_getValue
@@ -573,7 +573,9 @@
 		var avatars = document.querySelectorAll([
 			'.avatar[alt^="@"]', // Logged-in user & commits author & issuse participant & users organization & organization member;
 			'.avatar-child[alt^="@"]', // Authored committed users;
+			'.gravatar[alt^="@"]', // Following & followers page;
 			'.timeline-comment-avatar[alt^="@"]', // GitHub comments author;
+			'.leaderboard-gravatar[alt^="@"]', // Trending developer: https://github.com/trending/developers;
 			'.gist-author img', // Gist author;
 			'.gist .js-discussion .timeline-comment-avatar' // Gist comments author;
 		].join(','));
