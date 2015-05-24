@@ -12,7 +12,7 @@
 // @supportURL  https://github.com/jerone/UserScripts/issues
 // @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
 // @include     https://github.com/*
-// @version     1.6.1
+// @version     1.6.2
 // @grant       none
 // ==/UserScript==
 /* global unsafeWindow */
@@ -41,7 +41,7 @@
 		s.style.color = "#333";  // set color because of css selector `p.explain .octicon`;
 
 		var a = document.createElement("a");
-		a.classList.add("minibutton", "tooltipped", "tooltipped-n");
+		a.classList.add("btn", "btn-sm", "tooltipped", "tooltipped-n");
 		a.setAttribute("href", getPatchOrDiffHref("diff"));
 		a.setAttribute("rel", "nofollow");
 		a.setAttribute("aria-label", "Show commit diff.\r\nHold Shift to open commit patch.");
@@ -49,7 +49,7 @@
 		a.appendChild(document.createTextNode(" Diff"));
 
 		var g = document.createElement("div");
-		g.classList.add("GithubCommitDiffButton", "button-group", "right");
+		g.classList.add("GithubCommitDiffButton", "right");
 		g.style.margin = "0 10px 0 0";  // give us some room;
 		g.appendChild(a);
 
