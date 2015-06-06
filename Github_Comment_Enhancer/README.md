@@ -59,6 +59,8 @@ Every comment field also got a toolbar, consisting of the following buttons:
 
 ## Version History
 
+* **2.4.1**
+    * Fixed a small bug with cached suggestions for emoji when returning to an issue/PR;
 * **2.4.0**
     * Keyboard shortcuts (fixes https://github.com/jerone/UserScripts/issues/19);
 * **2.3.0**
