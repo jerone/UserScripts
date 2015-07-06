@@ -29,9 +29,10 @@
 	};
 
 	function addLink() {
-		if(document.getElementById('GithubPagesLinker')) {
+		if(document.getElementById("GithubPagesLinker")) {
 			return;
 		}
+
 		var meta = document.querySelector(".repository-meta");
 		if (!meta) {
 			return;
@@ -46,7 +47,7 @@
 		var url = String.format("https://{0}.github.io/{1}", tree[1], tree[2]);
 
 		var div = document.createElement("div");
-		div.id='GithubPagesLinker';
+		div.id = "GithubPagesLinker";
 		div.style.margin = "-10px 0px 10px";
 		meta.parentNode.insertBefore(div, meta.nextSibling);
 
