@@ -26,6 +26,8 @@ Add a link to Github Pages (gh-pages) when available.
 
 ## Version History
 
+* **1.2**
+    * Don't add the link if it already exists (closes https://github.com/jerone/UserScripts/pull/63);
 * **1.1**
     * Added class to identify element;
 * **1.0**
@@ -37,6 +39,11 @@ Add a link to Github Pages (gh-pages) when available.
 Test cases:
 
 * https://github.com/jerone/Throbber.js with https://jerone.github.io/Throbber.js
+
+
+## Contributors
+
+* [Efreak](https://github.com/Efreak)
 
 
 ## External links
