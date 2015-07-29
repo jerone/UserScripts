@@ -11,7 +11,7 @@
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Horizon_TV_Fixer/155147.user.js
 // @supportURL  https://github.com/jerone/UserScripts/issues
 // @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
-// @version     26
+// @version     27
 // @grant       none
 // @include     *horizon.tv*
 // ==/UserScript==
@@ -39,6 +39,12 @@
 					return "http://www.imdb.com/find?q=" + encodeURIComponent((title + (subtitle ? " - " + subtitle : "")).trim());
 				},
 				icon: "https://secure.imdb.com/images/SFff39adb4d259f3c3fd166853a6714a32/legacy/favicon.ico"
+			},
+			"Trakt.tv": {
+				submit: function(title, subtitle, channel, time) {
+					return "http://trakt.tv/search?query=" + encodeURIComponent((title + (subtitle ? " - " + subtitle : "")).trim());
+				},
+				icon: "https://walter.trakt.us/public/favicon.ico"
 			},
 			YouTube: {
 				submit: function(title, subtitle, channel, time) {
