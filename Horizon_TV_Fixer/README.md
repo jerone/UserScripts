@@ -12,6 +12,7 @@ Improves the [Horizon TV Gids](https://www.horizon.tv/nl_nl/tv-gids.html) by ext
 
 * Add social share to Twitter;
 * Add link to IMDb;
+* Add link to Trakt.tv;
 * Add link to Google;
 * Add link to YouTube;
 * Add link to KijkWijzer (Dutch);
@@ -38,6 +39,8 @@ This script doesn't work on browsers that don't implement [ES6 arrow functions](
 
 ## Version History
 
+* **27** (v1.1.91)
+    * Add link to Trakt.tv;
 * **26** (v1.1.83)
     * Show new Horizon Go logo;
     * Move genre to navigation row;
@@ -69,9 +72,9 @@ This script doesn't work on browsers that don't implement [ES6 arrow functions](
 
 ## Notes
 
-Build for version 1.1.83
+Build for version 1.1.91
 ```
-    console.log("Version: " + unsafeWindow.BBVSettingsObject.version.major + "." + unsafeWindow.BBVSettingsObject.version.minor + "." + unsafeWindow.BBVSettingsObject.version.micro);
+    console.log("Version: " + BBVSettingsObject.version.major + "." + BBVSettingsObject.version.minor + "." + BBVSettingsObject.version.micro);
 ```
 
 
