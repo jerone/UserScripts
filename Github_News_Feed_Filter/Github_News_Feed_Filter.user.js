@@ -22,7 +22,7 @@
 (function() {
 
 	var FILTERS = [
-		{ id: "*", text: "All News Feed", icon: "octicon-radio-tower", classNames: ["*"] },
+		{ id: "*", text: "All news feed", icon: "octicon-radio-tower", classNames: ["*"] },
 		{
 			id: "issues", text: "Issues", icon: "octicon-issue-opened", classNames: ["issues_opened", "issues_closed", "issues_reopened", "issues_comment"], subFilters: [
 				{ id: "issues opened", text: "Opened", icon: "octicon-issue-opened", classNames: ["issues_opened"] },
@@ -95,13 +95,33 @@
 		}.call([].slice.call(arguments, 1));
 	}
 
+	function addStyle(css) {
+		var node = document.createElement("style");
+		node.type = "text/css";
+		node.appendChild(document.createTextNode(css));
+		document.head.appendChild(node);
+	}
+
+	addStyle("\
+	.GitHubNewsFeedFilter .count { margin-right: 15px; }\
+	\
+	.GitHubNewsFeedFilter .filter-list .filter-list .mini-repo-list-item { padding-left: 40px; border-top: 1px dashed #E5E5E5; }\
+	.GitHubNewsFeedFilter .filter-list .filter-list .filter-list .mini-repo-list-item { padding-left: 50px; }\
+	\
+	.GitHubNewsFeedFilter .filter-list-item > ul  { display: none; }\
+	.GitHubNewsFeedFilter .filter-list-item.open > ul  { display: block; }\
+	\
+	.GitHubNewsFeedFilter .private  { font-weight: bold; }\
+	\
+	.GitHubNewsFeedFilter .stars .octicon  { position: absolute; right: -4px; }\
+	.GitHubNewsFeedFilter .filter-list-item.open > a > .stars > .octicon:before { content: '\\f05b'; }\
+	")
+
 	function addFilterMenu(filters, parent, container, sidebar, main) {
 		var ul = document.createElement("ul");
 		ul.classList.add("filter-list");
-		if (!main) {
-			ul.classList.add("small");
-			ul.style.marginLeft = "10px";
-			ul.style.display = "none";
+		if (main) {
+			ul.classList.add("boxed-group-inner", "mini-repo-list");
 		}
 		parent.appendChild(ul);
 
@@ -116,22 +136,28 @@
 
 	function addFilterMenuItem(filter, parent, container, sidebar) {
 		var a = document.createElement("a");
-		a.classList.add("filter-item");
+		a.classList.add("mini-repo-list-item", "css-truncate");
 		a.setAttribute("href", "/");
 		a.setAttribute("title", filter.classNames.join(" & "));
 		a.dataset[datasetId] = filter.id;
 
-		var s = document.createElement("span");
-		s.classList.add("octicon", filter.icon);
-		s.style.marginRight = "10px";
-		s.style.cssFloat = "left";
-		s.style.minWidth = "16px";
-		a.appendChild(s);
+		var i = document.createElement("span");
+		i.classList.add("repo-icon", "octicon", filter.icon);
+		a.appendChild(i);
 
+		var s = document.createElement("span");
+		s.classList.add("stars");
 		var c = document.createElement("span");
 		c.classList.add("count");
 		c.appendChild(document.createTextNode("0"));
-		a.appendChild(c);
+		s.appendChild(c);
+		if (filter.subFilters) {
+			s.appendChild(document.createTextNode(" "));
+			var o = document.createElement("span");
+			o.classList.add("octicon", "octicon-triangle-left");
+			s.appendChild(o);
+		}
+		a.appendChild(s);
 
 		a.appendChild(document.createTextNode(filter.text));
 
@@ -156,13 +182,14 @@
 				container.insertBefore(none, container.firstChild);
 			}
 
-			Array.forEach(sidebar.querySelectorAll(".filter-list.small"), function(ul) { ul.style.display = "none"; });
-			showParentMenu(a.parentNode);
-			var subMenu = a.parentNode.querySelector("ul");
-			if (subMenu) { subMenu.style.display = "block"; }
+			// Open/close sub list;
+			Array.forEach(sidebar.querySelectorAll(".GitHubNewsFeedFilter .open"), function(item) { item.classList.remove("open"); });
+			showParentMenu(this);
+			this.parentNode.classList.add("open");
 
-			Array.forEach(sidebar.querySelectorAll(".selected"), function(m) { m.classList.remove("selected"); });
-			this.classList.add("selected");
+			// Give it a colored background;
+			Array.forEach(sidebar.querySelectorAll(".GitHubNewsFeedFilter .private"), function(m) { m.classList.remove("private"); });
+			this.parentNode.classList.add("private");
 
 			if (this.dataset[datasetId] !== "*") {
 				var urlSearch = "filter=" + encodeURIComponent(this.dataset[datasetId]);
@@ -175,6 +202,7 @@
 		}, filter.classNames));
 
 		var li = document.createElement("li");
+		li.classList.add("filter-list-item");
 		li.appendChild(a);
 		li.filterClassNames = filter.classNames;
 
@@ -183,10 +211,11 @@
 		return li;
 	}
 
+	// traverse back up the tree to open sub lists;
 	function showParentMenu(menuItem) {
 		var parentMenuItem = menuItem.parentNode;
-		if (parentMenuItem.classList.contains("filter-list")) {
-			parentMenuItem.style.display = "block";
+		if (parentMenuItem.classList.contains("filter-list-item")) {
+			parentMenuItem.classList.add("open");
 			showParentMenu(parentMenuItem.parentNode);
 		}
 	}
@@ -206,13 +235,16 @@
 				alert.classList.remove("delete");
 				alert.classList.add("tag_remove");
 			} else if (alert.getElementsByClassName("octicon-git-pull-request").length > 0) {
-				alert.classList.remove("issues_opened", "issues_closed");
-				if (alert.querySelector(".title span").textContent.toUpperCase() === "OPENED") {  // English localisation;
+				if (alert.classList.contains("issues_opened")) {
+					alert.classList.remove("issues_opened");
 					alert.classList.add("pull_request_opened");
-				} else if (alert.querySelector(".title span").textContent.toUpperCase() === "MERGED") {  // English localisation;
-					alert.classList.add("pull_request_merged");
-				} else if (alert.querySelector(".title span").textContent.toUpperCase() === "CLOSED") {  // English localisation;
-					alert.classList.add("pull_request_closed");
+				} else if (alert.classList.contains("issues_closed")) {
+					alert.classList.remove("issues_closed");
+					if (!!~alert.querySelector('.title').textContent.indexOf('merged pull request')) {
+						alert.classList.add("pull_request_merged");
+					} else {
+						alert.classList.add("pull_request_closed");
+					}
 				}
 			} else if (alert.classList.contains("issues_comment") && alert.querySelectorAll(".title a")[1].getAttribute("href").split("/")[5] === "pull") {
 				alert.classList.remove("issues_comment");
@@ -240,7 +272,7 @@
 		var filter = /filter=[^&]*/g.test(location.search)
 						? decodeURIComponent(/filter=([^&]*)/g.exec(location.search)[1])
 						: "*";
-		wrapper.querySelector('.filter-item[data-github-news-feed-filter-id="' + filter + '"]').dispatchEvent(new Event("click"));
+		wrapper.querySelector('.GitHubNewsFeedFilter [data-github-news-feed-filter-id="' + filter + '"]').dispatchEvent(new Event("click"));
 	}
 
 	function addFilters() {
@@ -254,7 +286,12 @@
 		sidebar.insertBefore(rule, sidebar.firstChild);
 
 		var wrapper = document.createElement("div");
+		wrapper.classList.add("GitHubNewsFeedFilter", "boxed-group", "flush");
 		sidebar.insertBefore(wrapper, sidebar.firstChild);
+
+		var header = document.createElement("h3");
+		header.appendChild(document.createTextNode("News feed filter"));
+		wrapper.appendChild(header);
 
 		addFilterMenu(FILTERS, wrapper, container, sidebar, true);
 
