@@ -115,6 +115,8 @@
 	\
 	.GitHubNewsFeedFilter .stars .octicon  { position: absolute; right: -4px; }\
 	.GitHubNewsFeedFilter .filter-list-item.open > a > .stars > .octicon:before { content: '\\f05b'; }\
+	\
+	.no-alerts { font-style: italic; }\
 	")
 
 	function addFilterMenu(filters, parent, container, sidebar, main) {
@@ -141,10 +143,12 @@
 		a.setAttribute("title", filter.classNames.join(" & "));
 		a.dataset[datasetId] = filter.id;
 
+		// Filter icon;
 		var i = document.createElement("span");
 		i.classList.add("repo-icon", "octicon", filter.icon);
 		a.appendChild(i);
 
+		// Filter count & sub list arrow;
 		var s = document.createElement("span");
 		s.classList.add("stars");
 		var c = document.createElement("span");
@@ -159,11 +163,13 @@
 		}
 		a.appendChild(s);
 
+		// Filter text;
 		a.appendChild(document.createTextNode(filter.text));
 
 		a.addEventListener("click", proxy(function(e, classNames) {
 			e.preventDefault();
 
+			// Show/hide message about no alerts;
 			var any = false,
 				all = classNames[0] === "*",
 				some = function(alert) { return classNames.some(function(cl) { return alert.classList.contains(cl); }); };
@@ -175,11 +181,9 @@
 				none.parentNode.removeChild(none);
 			} else if (!any && !none) {
 				none = document.createElement("div");
-				none.classList.add("no-alerts");
-				none.style.padding = "0 0 1em 45px";
-				none.style.fontStyle = "italic";
-				none.appendChild(document.createTextNode("No feed items for this filter. Press the button below to load more items..."));
-				container.insertBefore(none, container.firstChild);
+				none.classList.add("no-alerts", "protip");
+				none.appendChild(document.createTextNode("No feed items for this filter. Please select another filter."));
+				container.insertBefore(none, container.firstElementChild.nextElementSibling);
 			}
 
 			// Open/close sub list;
@@ -191,6 +195,7 @@
 			Array.forEach(sidebar.querySelectorAll(".GitHubNewsFeedFilter .private"), function(m) { m.classList.remove("private"); });
 			this.parentNode.classList.add("private");
 
+			// Push filter to url;
 			if (this.dataset[datasetId] !== "*") {
 				var urlSearch = "filter=" + encodeURIComponent(this.dataset[datasetId]);
 				history.pushState(null, null, location.search && /filter=[^&]*/g.test(location.search)
@@ -211,7 +216,7 @@
 		return li;
 	}
 
-	// traverse back up the tree to open sub lists;
+	// Traverse back up the tree to open sub lists;
 	function showParentMenu(menuItem) {
 		var parentMenuItem = menuItem.parentNode;
 		if (parentMenuItem.classList.contains("filter-list-item")) {
@@ -221,6 +226,7 @@
 	}
 
 	function pageUpdate(container, sidebar, wrapper) {
+		// Fix filter identification;
 		Array.forEach(container.querySelectorAll(".alert"), function(alert) {
 			if (alert.getElementsByClassName("octicon-git-branch").length > 0 && !alert.classList.contains("fork")) {
 				alert.classList.remove("create");
@@ -255,6 +261,7 @@
 			}
 		});
 
+		// Update filter counts;
 		Array.forEach(wrapper.querySelectorAll("li"), function(li) {
 			var c = li.querySelector(".count");
 			if (li.filterClassNames[0] === "*") {
@@ -269,6 +276,7 @@
 			}
 		});
 
+		// Apply filter from url;
 		var filter = /filter=[^&]*/g.test(location.search)
 						? decodeURIComponent(/filter=([^&]*)/g.exec(location.search)[1])
 						: "*";
@@ -297,7 +305,7 @@
 
 		pageUpdate(container, sidebar, wrapper);
 
-		// update on clicking "More"-button;
+		// Update on clicking "More"-button;
 		new MutationObserver(function() {
 			pageUpdate(container, sidebar, wrapper);
 		}).observe(container, { childList: true });
