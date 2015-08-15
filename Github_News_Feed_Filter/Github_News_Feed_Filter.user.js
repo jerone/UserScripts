@@ -50,20 +50,20 @@
 				{ id: "repo created", text: "Created", icon: "octicon-repo-create", classNames: ["create"] },
 				{ id: "repo public", text: "Public", icon: "octicon-repo-push", classNames: ["public"] },
 				{ id: "repo forked", text: "Forked", icon: "octicon-repo-forked", classNames: ["fork"] },
+				{ id: "repo deleted", text: "Deleted", icon: "octicon-repo-delete", classNames: ["delete"] },
+				{ id: "repo released", text: "Release", icon: "octicon-repo-pull", classNames: ["release"] },
 				{
-					id: "repo branched", text: "Branched", icon: "octicon-git-branch", classNames: ["branch_create", "branch_delete"], subFilters: [
+					id: "repo branched", text: "Branch", icon: "octicon-git-branch", classNames: ["branch_create", "branch_delete"], subFilters: [
 						{ id: "repo branch created", text: "Created", icon: "octicon-git-branch-create", classNames: ["branch_create"] },
 						{ id: "repo branch deleted", text: "Deleted", icon: "octicon-git-branch-delete", classNames: ["branch_delete"] }
 					]
 				},
 				{
-					id: "repo tagged", text: "Tagged", icon: "octicon-tag", classNames: ["tag_add", "tag_remove"], subFilters: [
+					id: "repo tagged", text: "Tag", icon: "octicon-tag", classNames: ["tag_add", "tag_remove"], subFilters: [
 						{ id: "repo tag added", text: "Added", icon: "octicon-tag-add", classNames: ["tag_add"] },
 						{ id: "repo tag removed", text: "Removed", icon: "octicon-tag-remove", classNames: ["tag_remove"] }
 					]
-				},
-				{ id: "repo released", text: "Released", icon: "octicon-repo-pull", classNames: ["release"] },
-				{ id: "repo deleted", text: "Deleted", icon: "octicon-repo-delete", classNames: ["delete"] }
+				}
 			]
 		},
 		{
@@ -222,13 +222,13 @@
 
 	function pageUpdate(container, sidebar, wrapper) {
 		Array.forEach(container.querySelectorAll(".alert"), function(alert) {
-			if (alert.getElementsByClassName("octicon-git-branch-create").length > 0) {
+			if (alert.getElementsByClassName("octicon-git-branch").length > 0 && !alert.classList.contains("fork")) {
 				alert.classList.remove("create");
 				alert.classList.add("branch_create");
 			} else if (alert.getElementsByClassName("octicon-git-branch-delete").length > 0) {
 				alert.classList.remove("delete");
 				alert.classList.add("branch_delete");
-			} else if (alert.getElementsByClassName("octicon-tag-add").length > 0) {
+			} else if (alert.getElementsByClassName("octicon-tag").length > 0) {
 				alert.classList.remove("create");
 				alert.classList.add("tag_add");
 			} else if (alert.getElementsByClassName("octicon-tag-remove").length > 0) {
@@ -246,7 +246,7 @@
 						alert.classList.add("pull_request_closed");
 					}
 				}
-			} else if (alert.classList.contains("issues_comment") && alert.querySelectorAll(".title a")[1].getAttribute("href").split("/")[5] === "pull") {
+			} else if (alert.classList.contains("issues_comment") && alert.querySelectorAll(".title a")[1].href.split("/")[5] === "pull") {
 				alert.classList.remove("issues_comment");
 				alert.classList.add("pull_request_comment");
 			} else if (alert.classList.contains("gist")) {
