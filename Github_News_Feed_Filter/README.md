@@ -50,7 +50,7 @@ Currently integrated filters:
 
 ## Screenshot
 
-![Github News Feed Filter screenshot](https://github.com/jerone/UserScripts/raw/master/Github_News_Feed_Filter/screenshot.jpg)
+![Github News Feed Filter screenshot](https://github.com/jerone/UserScripts/raw/master/Github_News_Feed_Filter/screenshot.png)
 
 
 ## Compatible
@@ -111,5 +111,5 @@ Currently integrated filters:
 
 ## External links
 
-* [Greasy Fork](https://greasyfork.org/scripts/493-github-comment-enhancer)
+* [Greasy Fork](https://greasyfork.org/scripts/171-github-news-feed-filter)
 * [OpenUserJS](https://openuserjs.org/scripts/jerone/Github_News_Feed_Filter)
