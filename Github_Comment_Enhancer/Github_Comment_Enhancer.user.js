@@ -15,13 +15,7 @@
 // @version     2.4.1
 // @grant       none
 // @run-at      document-end
-// @include     https://github.com/*/*/issues
-// @include     https://github.com/*/*/issues/*
-// @include     https://github.com/*/*/pulls
-// @include     https://github.com/*/*/pull/*
-// @include     https://github.com/*/*/commit/*
-// @include     https://github.com/*/*/compare/*
-// @include     https://github.com/*/*/wiki/*
+// @include     https://github.com/*
 // @include     https://gist.github.com/*
 // ==/UserScript==
 /* global unsafeWindow */
