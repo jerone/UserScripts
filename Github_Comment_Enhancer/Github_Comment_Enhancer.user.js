@@ -366,7 +366,7 @@
 
 			'<div style="float:right;">' +
 			'	<a href="#" id="function-clear" class="btn btn-sm minibutton function-button tooltipped tooltipped-nw" aria-label="Clear (alt+ctrl+x)">' +
-			'		<span class="octicon octicon-circle-slash"></span>' +
+			'		<span class="octicon octicon-trashcan"></span>' +
 			'	</a>' +
 			'</div>';
 	})();
