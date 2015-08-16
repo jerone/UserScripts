@@ -62,6 +62,7 @@ Every comment field also got a toolbar, consisting of the following buttons:
 * **2.5.0**
     * Fixed not running everywhere (fixes https://github.com/jerone/UserScripts/issues/66);
     * Better clear button icon;
+    * Fixed comment form header on inline comments;
 * **2.4.1**
     * Fixed a small bug with cached suggestions for emoji when returning to an issue/PR;
 * **2.4.0**
