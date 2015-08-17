@@ -11,7 +11,7 @@
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Horizon_TV_Fixer/155147.user.js
 // @supportURL  https://github.com/jerone/UserScripts/issues
 // @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
-// @version     27
+// @version     28
 // @grant       none
 // @include     *horizon.tv*
 // ==/UserScript==
@@ -218,6 +218,31 @@
 		"\
 		.channel-guide .gids-panel .current-time {					\
 			cursor: initial;										\
+		}															" +
+
+		/* Replay notification; */
+		"\
+		.channel-listing .listings .listing .notifications {		\
+			margin-top: 0;											\
+			position: absolute;										\
+			right: 0;												\
+			top: 0;													\
+			opacity: 0.4;											\
+		}															\
+		.channel-listing .listings .listing:hover .notifications {	\
+			opacity: 1;												\
+		}															" +
+
+		/* Channel number; */
+		"\
+		.network .labels .channelNumber {							\
+			color: #ccc;											\
+		}															" +
+
+		/* Live indicator; */
+		"\
+		.channel-listing.live .network .labels .live-indicator {	\
+			opacity: 0.4;											\
 		}															" +
 		"");
 

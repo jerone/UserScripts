@@ -39,6 +39,8 @@ This script doesn't work on browsers that don't implement [ES6 arrow functions](
 
 ## Version History
 
+* **28** (v1.1.92)
+    * Compatibily fixes for v1.1.92;
 * **27** (v1.1.91)
     * Add link to Trakt.tv;
 * **26** (v1.1.83)
@@ -72,7 +74,7 @@ This script doesn't work on browsers that don't implement [ES6 arrow functions](
 
 ## Notes
 
-Build for version 1.1.91
+Get build version:
 ```
     console.log("Version: " + BBVSettingsObject.version.major + "." + BBVSettingsObject.version.minor + "." + BBVSettingsObject.version.micro);
 ```
