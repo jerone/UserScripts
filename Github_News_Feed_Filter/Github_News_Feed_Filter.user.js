@@ -234,7 +234,7 @@
 			} else if (alert.getElementsByClassName("octicon-git-branch-delete").length > 0) {
 				alert.classList.remove("delete");
 				alert.classList.add("branch_delete");
-			} else if (alert.getElementsByClassName("octicon-tag").length > 0) {
+			} else if (alert.getElementsByClassName("octicon-tag").length > 0 && !alert.classList.contains("release")) {
 				alert.classList.remove("create");
 				alert.classList.add("tag_add");
 			} else if (alert.getElementsByClassName("octicon-tag-remove").length > 0) {
