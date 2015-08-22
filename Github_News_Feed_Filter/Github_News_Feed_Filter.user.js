@@ -72,7 +72,12 @@
 				{ id: "user added", text: "Member added", icon: "octicon-person-add", classNames: ["member_add", "team_add"] }
 			]
 		},
-		{ id: "wiki", text: "Wiki", icon: "octicon-book", classNames: ["gollum"] },
+		{
+			id: "wiki", text: "Wiki", icon: "octicon-book", classNames: ["wiki_created", "wiki_edited"], subFilters: [
+				{ id: "wiki created", text: "Created", icon: "octicon-plus", classNames: ["wiki_created"] },
+				{ id: "wiki edited", text: "Edited", icon: "octicon-book", classNames: ["wiki_edited"] }
+			]
+		},
 		{
 			id: "gist", text: "Gist", icon: "octicon-gist", classNames: ["gist_created", "gist_updated"], subFilters: [
 				{ id: "gist created", text: "Created", icon: "octicon-gist-new", classNames: ["gist_created"] },
@@ -255,6 +260,13 @@
 			} else if (alert.classList.contains("issues_comment") && alert.querySelectorAll(".title a")[1].href.split("/")[5] === "pull") {
 				alert.classList.remove("issues_comment");
 				alert.classList.add("pull_request_comment");
+			} else if (alert.classList.contains("gollum")) {
+				alert.classList.remove("gollum");
+				if (!!~alert.querySelector('.title').textContent.indexOf(" created the ")) {
+					alert.classList.add("wiki_created");
+				} else if (!!~alert.querySelector('.title').textContent.indexOf(" edited the ")) {
+					alert.classList.add("wiki_edited");
+				}
 			} else if (alert.classList.contains("gist")) {
 				alert.classList.remove("gist");
 				alert.classList.add("gist_" + alert.querySelector(".title span").textContent);
