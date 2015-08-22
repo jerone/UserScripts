@@ -32,17 +32,19 @@ Currently integrated filters:
     * Public
     * Forked
     * Deleted
+    * Release
     * Branch
         * Created
         * Deleted
     * Tag
         * Added
         * Removed
-    * Release
 * User
     * Starred
     * Member added
 * Wiki
+    * Created
+    * Edited
 * Gist
     * Created
     * Updated
@@ -61,7 +63,9 @@ Currently integrated filters:
 
 
 ## Version History
-
+* **6.1**
+    * :bug: Fixed counting repo releases as tag actions;
+    * :sparkles: Split wiki filter in created and edited;
 * **6.0**
     * Fixed issues after Github site update (https://github.com/jerone/UserScripts/issues/68);
 * **5.3**
