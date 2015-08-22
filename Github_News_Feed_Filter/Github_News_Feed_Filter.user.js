@@ -22,7 +22,7 @@
 (function() {
 
 	var FILTERS = [
-		{ id: "*", text: "All news feed", icon: "octicon-radio-tower", classNames: ["*"] },
+		{ id: "*-types", text: "All news feed", icon: "octicon-radio-tower", classNames: ["*-types"] },
 		{
 			id: "issues", text: "Issues", icon: "octicon-issue-opened", classNames: ["issues_opened", "issues_closed", "issues_reopened", "issues_comment"], subFilters: [
 				{ id: "issues opened", text: "Opened", icon: "octicon-issue-opened", classNames: ["issues_opened"] },
@@ -122,13 +122,14 @@
 	.GitHubNewsFeedFilter .filter-list-item.open > a > .stars > .octicon:before { content: '\\f05b'; }\
 	\
 	.no-alerts { font-style: italic; }\
-	")
+	");
 
+	// Add filter menu list;
 	function addFilterMenu(filters, parent, container, sidebar, main) {
 		var ul = document.createElement("ul");
 		ul.classList.add("filter-list");
 		if (main) {
-			ul.classList.add("boxed-group-inner", "mini-repo-list");
+			ul.classList.add("mini-repo-list");
 		}
 		parent.appendChild(ul);
 
@@ -141,12 +142,22 @@
 		});
 	}
 
+	// Add filte menu item;
 	function addFilterMenuItem(filter, parent, container, sidebar) {
+		// Filter item;
+		var li = document.createElement("li");
+		li.classList.add("filter-list-item");
+		li.filterClassNames = filter.classNames;
+		parent.appendChild(li);
+
+		// Filter link;
 		var a = document.createElement("a");
 		a.classList.add("mini-repo-list-item", "css-truncate");
 		a.setAttribute("href", "/");
 		a.setAttribute("title", filter.classNames.join(" & "));
 		a.dataset[datasetId] = filter.id;
+		a.addEventListener("click", proxy(onFilterItemClick, filter.classNames, container, sidebar));
+		li.appendChild(a);
 
 		// Filter icon;
 		var i = document.createElement("span");
@@ -171,12 +182,16 @@
 		// Filter text;
 		a.appendChild(document.createTextNode(filter.text));
 
-		a.addEventListener("click", proxy(function(e, classNames) {
+		return li;
+	}
+	
+	// Filter item click event;
+	function onFilterItemClick(e, classNames, container, sidebar) {
 			e.preventDefault();
 
 			// Show/hide message about no alerts;
 			var any = false,
-				all = classNames[0] === "*",
+			all = classNames[0] === "*-types",
 				some = function(alert) { return classNames.some(function(cl) { return alert.classList.contains(cl); }); };
 			Array.forEach(container.querySelectorAll(".alert"), function(alert) {
 				alert.style.display = (all || some(alert)) && (any = true) ? "block" : "none";
@@ -201,7 +216,7 @@
 			this.parentNode.classList.add("private");
 
 			// Push filter to url;
-			if (this.dataset[datasetId] !== "*") {
+		if (this.dataset[datasetId] !== "*-types") {
 				var urlSearch = "filter=" + encodeURIComponent(this.dataset[datasetId]);
 				history.pushState(null, null, location.search && /filter=[^&]*/g.test(location.search)
 												? location.href.replace(/filter=[^&]*/g, urlSearch)
@@ -209,16 +224,6 @@
 			} else {
 				history.pushState(null, null, location.href.replace(/(filter=[^&]*&|\?filter=[^&]*$|&filter=[^&]*)/g, ""));  // http://regexr.com/398lv
 			}
-		}, filter.classNames));
-
-		var li = document.createElement("li");
-		li.classList.add("filter-list-item");
-		li.appendChild(a);
-		li.filterClassNames = filter.classNames;
-
-		parent.appendChild(li);
-
-		return li;
 	}
 
 	// Traverse back up the tree to open sub lists;
@@ -230,8 +235,8 @@
 		}
 	}
 
-	function pageUpdate(container, sidebar, wrapper) {
 		// Fix filter identification;
+	function fixAlerts(container) {
 		Array.forEach(container.querySelectorAll(".alert"), function(alert) {
 			if (alert.getElementsByClassName("octicon-git-branch").length > 0 && !alert.classList.contains("fork")) {
 				alert.classList.remove("create");
@@ -272,11 +277,13 @@
 				alert.classList.add("gist_" + alert.querySelector(".title span").textContent);
 			}
 		});
+	}
 
 		// Update filter counts;
-		Array.forEach(wrapper.querySelectorAll("li"), function(li) {
+	function updateFilterCounts(inner, container) {
+		Array.forEach(inner.querySelectorAll("li.filter-list-item"), function(li) {
 			var c = li.querySelector(".count");
-			if (li.filterClassNames[0] === "*") {
+			if (li.filterClassNames[0] === "*-types") {
 				c.textContent = container.querySelectorAll(".alert").length;
 			} else {
 				c.textContent = "0";
@@ -287,43 +294,62 @@
 				});
 			}
 		});
-
-		// Apply filter from url;
-		var filter = /filter=[^&]*/g.test(location.search)
-						? decodeURIComponent(/filter=([^&]*)/g.exec(location.search)[1])
-						: "*";
-		wrapper.querySelector('.GitHubNewsFeedFilter [data-github-news-feed-filter-id="' + filter + '"]').dispatchEvent(new Event("click"));
 	}
 
-	function addFilters() {
+		// Apply filter from url;
+	function updateFilterFromUrl(inner) {
+		var filter = /filter=[^&]*/g.test(location.search)
+						? decodeURIComponent(/filter=([^&]*)/g.exec(location.search)[1])
+						: "*-types";
+		inner.querySelector('.GitHubNewsFeedFilter [data-github-news-feed-filter-id="' + filter + '"]').dispatchEvent(new Event("click"));
+	}
+
+	// Init;
+	(function init() {
 		var container = document.querySelector(".news");
 		if (!container) { return; }
 
 		var sidebar = document.querySelector(".dashboard-sidebar") || document.querySelector(".column.one-fourth.vcard");
 
-		var rule = document.createElement("div");
-		rule.classList.add("rule");
-		sidebar.insertBefore(rule, sidebar.firstChild);
+		//var rule = document.createElement("div");
+		//rule.classList.add("rule");
+		//sidebar.insertBefore(rule, sidebar.firstChild);
 
 		var wrapper = document.createElement("div");
-		wrapper.classList.add("GitHubNewsFeedFilter", "boxed-group", "flush");
+		wrapper.classList.add("GitHubNewsFeedFilter", "boxed-group", "flush", "user-repos");
 		sidebar.insertBefore(wrapper, sidebar.firstChild);
 
 		var header = document.createElement("h3");
 		header.appendChild(document.createTextNode("News feed filter"));
 		wrapper.appendChild(header);
 
-		addFilterMenu(FILTERS, wrapper, container, sidebar, true);
+		var inner = document.createElement("div");
+		inner.classList.add("boxed-group-inner");
+		wrapper.appendChild(inner);
 
-		pageUpdate(container, sidebar, wrapper);
+		// Create filter menu;
+		addFilterMenu(FILTERS, inner, container, sidebar, true);
+
+		// Fix filter identification;
+		fixAlerts(container);
+
+		// Update filter counts;
+		updateFilterCounts(inner, container);
+
+		// Apply filter from url;
+		updateFilterFromUrl(inner);
 
 		// Update on clicking "More"-button;
 		new MutationObserver(function() {
-			pageUpdate(container, sidebar, wrapper);
-		}).observe(container, { childList: true });
-	}
+			// Fix filter identification;
+			fixAlerts(container);
 
-	// init;
-	addFilters();
+			// Update filter counts;
+			updateFilterCounts(inner, container);
+
+			// Apply filter from url;
+			updateFilterFromUrl(inner);
+		}).observe(container, { childList: true });
+	})();
 
 })();
