@@ -165,7 +165,7 @@
 		a.setAttribute("href", "/");
 		a.setAttribute("title", filter.classNames.join(" & "));
 		a.dataset[datasetId] = filter.id;
-		a.addEventListener("click", proxy(onFilterItemClick, filter.classNames, newsContainer, filterContainer));
+		a.addEventListener("click", proxy(onFilterItemClick, newsContainer, filterContainer));
 		li.appendChild(a);
 
 		// Filter icon;
@@ -210,25 +210,8 @@
 	}
 	
 	// Filter item click event;
-	function onFilterItemClick(e, classNames, newsContainer, filterContainer) {
+	function onFilterItemClick(e, newsContainer, filterContainer) {
 			e.preventDefault();
-
-			// Show/hide message about no alerts;
-			var any = false,
-			all = !!~classNames[0].indexOf("*"),
-				some = function(alert) { return classNames.some(function(cl) { return alert.classList.contains(cl); }); };
-		Array.forEach(newsContainer.querySelectorAll(".alert"), function(alert) {
-				alert.style.display = (all || some(alert)) && (any = true) ? "block" : "none";
-			});
-		var none = newsContainer.querySelector(".no-alerts");
-			if (any && none) {
-				none.parentNode.removeChild(none);
-			} else if (!any && !none) {
-				none = document.createElement("div");
-				none.classList.add("no-alerts", "protip");
-				none.appendChild(document.createTextNode("No feed items for this filter. Please select another filter."));
-			newsContainer.insertBefore(none, newsContainer.firstElementChild.nextElementSibling);
-			}
 
 			// Open/close sub list;
 		Array.forEach(filterContainer.querySelectorAll(".open"), function(item) { item.classList.remove("open"); });
@@ -239,14 +222,55 @@
 		Array.forEach(filterContainer.querySelectorAll(".private"), function(m) { m.classList.remove("private"); });
 			this.parentNode.classList.add("private");
 
-			// Push filter to url;
-		if (!~this.dataset[datasetId].indexOf("*")) {
-				var urlSearch = "filter=" + encodeURIComponent(this.dataset[datasetId]);
-				history.pushState(null, null, location.search && /filter=[^&]*/g.test(location.search)
-												? location.href.replace(/filter=[^&]*/g, urlSearch)
-												: location.href + (location.search ? "&" : "?") + urlSearch);
+		// Toggle alert visibility;
+		toggleAlertsVisibility(newsContainer);
+	}
+	
+	// Toggle alert visibility;
+	function toggleAlertsVisibility(newsContainer) {
+//		// Push filter to url;
+//		if (!~this.dataset[datasetId].indexOf("*")) {
+//			var urlSearch = "filter=" + encodeURIComponent(this.dataset[datasetId]);
+//			history.pushState(null, null, location.search && /filter=[^&]*/g.test(location.search)
+//											? location.href.replace(/filter=[^&]*/g, urlSearch)
+//											: location.href + (location.search ? "&" : "?") + urlSearch);
+//		} else {
+//			history.pushState(null, null, location.href.replace(/(filter=[^&]*&|\?filter=[^&]*$|&filter=[^&]*)/g, ""));  // http://regexr.com/398lv
+//		}
+
+		// Get selected filters;
+		var anyVisibleAlert = false;
+		var classNames = [];
+		var selected = document.querySelectorAll(".GitHubNewsFeedFilter .private");
+		if (selected.length > 0) {
+			Array.prototype.forEach.call(selected, function(item){
+				classNames.push(item.filterClassNames);
+			});
+		}
+
+		// Show/hide alerts;
+		if (classNames.length === 0 || classNames.every(function(cl) { return cl.every(function(c) { return !!~c.indexOf("*"); }) })) {
+			anyVisibleAlert = true;
+			Array.forEach(newsContainer.querySelectorAll(".alert"), function(alert) {
+				alert.style.display = "block";
+			});
 			} else {
-				history.pushState(null, null, location.href.replace(/(filter=[^&]*&|\?filter=[^&]*$|&filter=[^&]*)/g, ""));  // http://regexr.com/398lv
+			Array.forEach(newsContainer.querySelectorAll(".alert"), function(alert) {
+				var show = classNames.every(function(cl) { return cl.some(function(c) { return !!~c.indexOf("*") || alert.classList.contains(c); }); });
+				anyVisibleAlert = show || anyVisibleAlert;
+				alert.style.display = show ? "block" : "none";
+			});
+		}
+
+		// Show/hide message about no alerts;
+		var none = newsContainer.querySelector(".no-alerts");
+		if (anyVisibleAlert && none) {
+			none.parentNode.removeChild(none);
+		} else if (!anyVisibleAlert && !none) {
+			none = document.createElement("div");
+			none.classList.add("no-alerts", "protip");
+			none.appendChild(document.createTextNode("No feed items for this filter. Please select another filter."));
+			newsContainer.insertBefore(none, newsContainer.firstElementChild.nextElementSibling);
 			}
 	}
 
@@ -324,7 +348,7 @@
 	function updateFilterCounts(type, filterContainer, newsContainer) {
 		Array.forEach(filterContainer.querySelectorAll("li.filter-list-item.-filter-" + type), function(li) {
 			var c = li.querySelector(".count");
-			if (li.filterClassNames[0] === "*-" + type) {
+			if (!!~li.filterClassNames[0].indexOf("*")) {
 				c.textContent = newsContainer.querySelectorAll(".alert").length;
 			} else {
 				c.textContent = "0";
