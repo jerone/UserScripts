@@ -112,6 +112,12 @@
 	addStyle("\
 	.GitHubNewsFeedFilter .count { margin-right: 15px; }\
 	\
+		/* Needed for user?tab=activity; */\
+		.GitHubNewsFeedFilter .repo-filterer li { float: none; }\
+		.GitHubNewsFeedFilter .filter-repos { padding-bottom: 0px; }\
+		\
+		.GitHubNewsFeedFilter .mini-repo-list-item { padding-right: 40px; }\
+		\
 	.GitHubNewsFeedFilter .filter-list .filter-list .mini-repo-list-item { padding-left: 40px; border-top: 1px dashed #E5E5E5; }\
 	.GitHubNewsFeedFilter .filter-list .filter-list .filter-list .mini-repo-list-item { padding-left: 50px; }\
 	\
@@ -170,7 +176,7 @@
 		// Filter text;
 		var text = filter.text.split("/");
 		var t = document.createElement("span");
-		t.classList.add("repo-and-owner");
+		t.classList.add("repo-and-owner", "css-truncate-target");
 		a.appendChild(t);
 		var to = document.createElement("span");
 		to.classList.add("owner");
@@ -341,7 +347,6 @@
 
 	function addFilterTab(type, text, inner, filterer, onCreate, onSelect) {
 		var filterTab = document.createElement("li");
-		filterTab.style.cssFloat = "none";
 		filterer.appendChild(filterTab);
 		var filterTabInner = document.createElement("a");
 		filterTabInner.setAttribute("href", "#");
@@ -394,8 +399,7 @@
 		wrapper.appendChild(inner);
 
 		var bar = document.createElement("div");
-		bar.classList.add("filter-bar");
-		bar.style.padding = "10px 10px 0 10px";
+		bar.classList.add("filter-repos", "filter-bar");
 		inner.appendChild(bar);
 
 		var filterer = document.createElement("ul");
