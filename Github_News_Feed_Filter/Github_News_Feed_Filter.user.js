@@ -167,6 +167,24 @@
 		i.classList.add("repo-icon", "octicon", filter.icon);
 		a.appendChild(i);
 
+		// Filter text;
+		var text = filter.text.split("/");
+		var t = document.createElement("span");
+		t.classList.add("repo-and-owner");
+		a.appendChild(t);
+		var to = document.createElement("span");
+		to.classList.add("owner");
+		to.appendChild(document.createTextNode(text[0]));
+		t.appendChild(to);
+		if (text.length > 1) {
+			text.shift();
+			t.appendChild(document.createTextNode("/"));
+			var tr = document.createElement("span");
+			tr.classList.add("repo");
+			tr.appendChild(document.createTextNode(text.join("/")));
+			t.appendChild(tr);
+		}
+
 		// Filter count & sub list arrow;
 		var s = document.createElement("span");
 		s.classList.add("stars");
@@ -181,9 +199,6 @@
 			s.appendChild(o);
 		}
 		a.appendChild(s);
-
-		// Filter text;
-		a.appendChild(document.createTextNode(filter.text));
 
 		return li;
 	}
