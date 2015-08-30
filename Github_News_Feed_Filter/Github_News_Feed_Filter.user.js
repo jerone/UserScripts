@@ -110,27 +110,27 @@
 	}
 
 	addStyle("\
-	.GitHubNewsFeedFilter .count { margin-right: 15px; }\
-	\
+		.GitHubNewsFeedFilter .count { margin-right: 15px; }\
+		\
 		/* Needed for user?tab=activity; */\
 		.GitHubNewsFeedFilter .repo-filterer li { float: none; }\
 		.GitHubNewsFeedFilter .filter-repos { padding-bottom: 0px; }\
 		\
 		.GitHubNewsFeedFilter .mini-repo-list-item { padding-right: 40px; }\
 		\
-	.GitHubNewsFeedFilter .filter-list .filter-list .mini-repo-list-item { padding-left: 40px; border-top: 1px dashed #E5E5E5; }\
-	.GitHubNewsFeedFilter .filter-list .filter-list .filter-list .mini-repo-list-item { padding-left: 50px; }\
-	\
+		.GitHubNewsFeedFilter .filter-list .filter-list .mini-repo-list-item { padding-left: 40px; border-top: 1px dashed #E5E5E5; }\
+		.GitHubNewsFeedFilter .filter-list .filter-list .filter-list .mini-repo-list-item { padding-left: 50px; }\
+		\
 		.GitHubNewsFeedFilter .filter-list { display: none; }\
 		.GitHubNewsFeedFilter .open > .filter-list { display: block; }\
 		.GitHubNewsFeedFilter .filter-list.open { display: block; }\
-	\
-	.GitHubNewsFeedFilter .private  { font-weight: bold; }\
-	\
-	.GitHubNewsFeedFilter .stars .octicon  { position: absolute; right: -4px; }\
-	.GitHubNewsFeedFilter .filter-list-item.open > a > .stars > .octicon:before { content: '\\f05b'; }\
-	\
-	.no-alerts { font-style: italic; }\
+		\
+		.GitHubNewsFeedFilter .private { font-weight: bold; }\
+		\
+		.GitHubNewsFeedFilter .stars .octicon { position: absolute; right: -4px; }\
+		.GitHubNewsFeedFilter .filter-list-item.open > a > .stars > .octicon:before { content: '\\f05b'; }\
+		\
+		.no-alerts { font-style: italic; }\
 	");
 
 	// Add filter menu list;
@@ -211,17 +211,17 @@
 	
 	// Filter item click event;
 	function onFilterItemClick(e, newsContainer, filterContainer) {
-			e.preventDefault();
-
-			// Open/close sub list;
+		e.preventDefault();
+		
+		// Open/close sub list;
 		Array.forEach(filterContainer.querySelectorAll(".open"), function(item) { item.classList.remove("open"); });
-			showParentMenu(this);
-			this.parentNode.classList.add("open");
+		showParentMenu(this);
+		this.parentNode.classList.add("open");
 
-			// Give it a colored background;
+		// Give it a colored background;
 		Array.forEach(filterContainer.querySelectorAll(".private"), function(m) { m.classList.remove("private"); });
-			this.parentNode.classList.add("private");
-
+		this.parentNode.classList.add("private");
+		
 		// Toggle alert visibility;
 		toggleAlertsVisibility(newsContainer);
 	}
@@ -254,7 +254,7 @@
 			Array.forEach(newsContainer.querySelectorAll(".alert"), function(alert) {
 				alert.style.display = "block";
 			});
-			} else {
+		} else {
 			Array.forEach(newsContainer.querySelectorAll(".alert"), function(alert) {
 				var show = classNames.every(function(cl) { return cl.some(function(c) { return !!~c.indexOf("*") || alert.classList.contains(c); }); });
 				anyVisibleAlert = show || anyVisibleAlert;
@@ -271,7 +271,7 @@
 			none.classList.add("no-alerts", "protip");
 			none.appendChild(document.createTextNode("No feed items for this filter. Please select another filter."));
 			newsContainer.insertBefore(none, newsContainer.firstElementChild.nextElementSibling);
-			}
+		}
 	}
 
 	// Traverse back up the tree to open sub lists;
@@ -282,7 +282,7 @@
 			showParentMenu(parentMenuItem.parentNode);
 		}
 	}
-
+	
 	// Fix filter action identification;
 	function fixActionAlerts(newsContainer) {
 		Array.forEach(newsContainer.querySelectorAll(".alert"), function(alert) {
@@ -344,7 +344,7 @@
 		});
 	}
 
-		// Update filter counts;
+	// Update filter counts;
 	function updateFilterCounts(type, filterContainer, newsContainer) {
 		Array.forEach(filterContainer.querySelectorAll("li.filter-list-item.-filter-" + type), function(li) {
 			var c = li.querySelector(".count");
@@ -361,7 +361,7 @@
 		});
 	}
 
-		// Apply filter from url;
+	// Apply filter from url;
 	function updateFilterFromUrl(type, filterContainer) {
 		var filter = /filter=[^&]*/g.test(location.search)
 						? decodeURIComponent(/filter=([^&]*)/g.exec(location.search)[1])
@@ -417,11 +417,11 @@
 		var header = document.createElement("h3");
 		header.appendChild(document.createTextNode("News feed filter"));
 		wrapper.appendChild(header);
-
+		
 		var inner = document.createElement("div");
 		inner.classList.add("boxed-group-inner");
 		wrapper.appendChild(inner);
-
+		
 		var bar = document.createElement("div");
 		bar.classList.add("filter-repos", "filter-bar");
 		inner.appendChild(bar);
@@ -445,10 +445,10 @@
 		addFilterTab("repo", "Repositories", inner, filterer, function onCreateRepos(type, filterContainer) {
 			// Fix filter identification and create repos list;
 			fixRepoAlerts(newsContainer);
-		// Create filter menu;
+			// Create filter menu;
 			addFilterMenu(type, REPOS, filterContainer, newsContainer, filterContainer, true);
 		}, function onSelectRepos(type, filterContainer) {
-		// Fix filter identification;
+			// Fix filter identification;
 			fixRepoAlerts(newsContainer);
 			// Update filter counts;
 			updateFilterCounts(type, filterContainer, newsContainer);
