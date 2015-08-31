@@ -12,7 +12,7 @@
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Multiple_Windows_Live_IDs/Multiple_Windows_Live_IDs.user.js
 // @supportURL  https://github.com/jerone/UserScripts/issues
 // @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
-// @version     0.1.1
+// @version     0.1.2
 // @grant       GM_getValue
 // @grant       GM_setValue
 // @run-at      document-end
@@ -34,7 +34,7 @@
 				{ name: "Account 3", mail: "test3@live.com", pass: "P@ssw0rd", photo: "http://my.pictu.re/img.png" },
 				{ name: "Account 4", mail: "test4@live.com", pass: "P@ssw0rd", color: "#EB008B" }
 			];
-		if (profileString === undefined) {
+		if (profileString == null) {
 			GM_setValue("MWLID.profiles", JSON.stringify(profiles));
 		} else {
 			profiles = JSON.parse(profileString);
