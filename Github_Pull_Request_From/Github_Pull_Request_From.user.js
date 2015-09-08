@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Github Pull Request From Link
 // @namespace   https://github.com/jerone/UserScripts/
-// @description Make pull request original branch linkable
+// @description Make pull request branches linkable
 // @author      jerone
 // @copyright   2014+, jerone (http://jeroenvanwarmerdam.nl)
 // @license     GNU GPLv3
@@ -11,7 +11,7 @@
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_Pull_Request_From/Github_Pull_Request_From.user.js
 // @supportURL  https://github.com/jerone/UserScripts/issues
 // @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
-// @version     13
+// @version     14
 // @grant       none
 // @include     https://github.com/*/*
 // ==/UserScript==
@@ -27,9 +27,9 @@
 	};
 
 	function init() {
-		var repo = document.querySelector(".js-current-repository").textContent,
+		var repo = document.querySelector(".entry-title a[data-pjax]").textContent,
 			author = document.querySelector('.entry-title .author').textContent;
-		Array.prototype.filter.call(document.querySelectorAll("span.commit-ref.current-branch"), function(treeSpan) {
+		Array.prototype.filter.call(document.querySelectorAll("span.commit-ref"), function(treeSpan) {
 			return !treeSpan.querySelector(".unknown-repo");
 		}).forEach(function(treeSpan) {
 			var treeUser = treeSpan.querySelector('.user');
