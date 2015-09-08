@@ -8,7 +8,7 @@
 
 ## Description
 
-Make pull request original branch linkable.
+Make pull request branches linkable.
 
 
 ## Screenshot

@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Github Pull Request From Link
 // @namespace   https://github.com/jerone/UserScripts/
-// @description Make pull request original branch linkable
+// @description Make pull request branches linkable
 // @author      jerone
 // @copyright   2014+, jerone (http://jeroenvanwarmerdam.nl)
 // @license     GNU GPLv3
