@@ -29,6 +29,8 @@ Make pull request original branch linkable.
 
 ## Version History
 
+* **14**
+    * Fixed issues after recent layout updates;
 * **13**
     * Add missing tree author (fixes https://github.com/jerone/UserScripts/issues/51);
 * **12**
@@ -42,9 +44,9 @@ Make pull request original branch linkable.
 
 ## Test cases
 
-* https://github.com/jerone/UserScripts/pull/12 (2 valid, 2 missing);
+* https://github.com/jerone/UserScripts/pull/12 (2 valid, 1 missing);
 * https://github.com/jerone/UserScripts/pull/29 (1 mine, 1 extern);
-* https://github.com/jerone/UserScripts/pull/47 (2 without username);
+* https://github.com/jerone/UserScripts/pull/47 (3 without username);
 
 
 ## Contributions
