@@ -12,7 +12,7 @@
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_Pages_Linker/Github_Pages_Linker.user.js
 // @supportURL  https://github.com/jerone/UserScripts/issues
 // @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
-// @version     1.2
+// @version     1.2.1
 // @grant       none
 // @run-at      document-end
 // @include     https://github.com/*
@@ -44,7 +44,7 @@
 		}
 
 		var tree = branch.getAttribute("href").split("/"); // `/{user}/{repo}/tree/gh-pages`;
-		var url = String.format("https://{0}.github.io/{1}", tree[1], tree[2]);
+		var url = String.format("https://{0}.github.io/{1}/", tree[1], tree[2]);
 
 		var div = document.createElement("div");
 		div.id = "GithubPagesLinker";

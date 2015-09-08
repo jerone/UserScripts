@@ -26,6 +26,8 @@ Add a link to Github Pages (gh-pages) when available.
 
 ## Version History
 
+* **1.2.1**
+    * Fix 301 Moved Permanently redirects. Fixes #72;
 * **1.2**
     * Don't add the link if it already exists (closes https://github.com/jerone/UserScripts/pull/63);
 * **1.1**
