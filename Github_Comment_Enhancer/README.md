@@ -59,6 +59,8 @@ Every comment field also got a toolbar, consisting of the following buttons:
 
 ## Version History
 
+* **2.5.1**
+    * Fixed showing list of all emoji (fixes https://github.com/jerone/UserScripts/issues/75);
 * **2.5.0**
     * Fixed not running everywhere (fixes https://github.com/jerone/UserScripts/issues/66);
     * Better clear button icon;

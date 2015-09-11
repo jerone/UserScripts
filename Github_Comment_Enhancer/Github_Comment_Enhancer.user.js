@@ -12,7 +12,7 @@
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_Comment_Enhancer/Github_Comment_Enhancer.user.js
 // @supportURL  https://github.com/jerone/UserScripts/issues
 // @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
-// @version     2.5.0
+// @version     2.5.1
 // @grant       none
 // @run-at      document-end
 // @include     https://github.com/*
@@ -513,7 +513,7 @@
 		emojiSuggestions.dataset.filterableFor = "context-emoji-filter-field";
 		emojiSuggestions.dataset.filterableLimit = "10";
 
-		var suggester = commentForm.parentNode.querySelector(".suggester");
+		var suggester = commentForm.parentNode.parentNode.querySelector(".suggester");
 		suggester.style.display = "block";
 		suggester.style.marginTop = "0";
 		suggester.appendChild(emojiSuggestions);
