@@ -29,6 +29,8 @@ Make pull request branches linkable.
 
 ## Version History
 
+* **15**
+    * Fixed invalid chars in url;
 * **14**
     * Fixed issues after recent layout updates;
 * **13**
@@ -47,6 +49,7 @@ Make pull request branches linkable.
 * https://github.com/jerone/UserScripts/pull/12 (2 valid, 1 missing);
 * https://github.com/jerone/UserScripts/pull/29 (1 mine, 1 extern);
 * https://github.com/jerone/UserScripts/pull/47 (3 without username);
+* https://github.com/atom/timecop/pull/12 (1 with invalid url chars);
 
 
 ## Contributions
