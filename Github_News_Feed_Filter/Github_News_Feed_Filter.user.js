@@ -165,7 +165,7 @@
 		a.setAttribute("href", "/");
 		a.setAttribute("title", filter.classNames.join(" & "));
 		a.dataset[datasetId] = filter.id;
-		a.addEventListener("click", proxy(onFilterItemClick, newsContainer, filterContainer));
+		a.addEventListener("click", proxy(onFilterItemClick, type, newsContainer, filterContainer));
 		li.appendChild(a);
 
 		// Filter icon;
@@ -210,8 +210,11 @@
 	}
 	
 	// Filter item click event;
-	function onFilterItemClick(e, newsContainer, filterContainer) {
+	function onFilterItemClick(e, type, newsContainer, filterContainer) {
 		e.preventDefault();
+		
+		// Store current filter;
+		setCurrentFilter(type, this.dataset[datasetId]);
 		
 		// Open/close sub list;
 		Array.forEach(filterContainer.querySelectorAll(".open"), function(item) { item.classList.remove("open"); });
@@ -228,16 +231,6 @@
 	
 	// Toggle alert visibility;
 	function toggleAlertsVisibility(newsContainer) {
-//		// Push filter to url;
-//		if (!~this.dataset[datasetId].indexOf("*")) {
-//			var urlSearch = "filter=" + encodeURIComponent(this.dataset[datasetId]);
-//			history.pushState(null, null, location.search && /filter=[^&]*/g.test(location.search)
-//											? location.href.replace(/filter=[^&]*/g, urlSearch)
-//											: location.href + (location.search ? "&" : "?") + urlSearch);
-//		} else {
-//			history.pushState(null, null, location.href.replace(/(filter=[^&]*&|\?filter=[^&]*$|&filter=[^&]*)/g, ""));  // http://regexr.com/398lv
-//		}
-
 		// Get selected filters;
 		var anyVisibleAlert = false;
 		var classNames = [];
@@ -361,11 +354,16 @@
 		});
 	}
 
-	// Apply filter from url;
-	function updateFilterFromUrl(type, filterContainer) {
-		var filter = /filter=[^&]*/g.test(location.search)
-						? decodeURIComponent(/filter=([^&]*)/g.exec(location.search)[1])
-						: "*-" + type;
+	var CURRENT = { };
+
+	// Set current filter;
+	function setCurrentFilter(type, filter) {
+		CURRENT[type] = filter;
+	}
+
+	// Get current filter;
+	function getCurrentFilter(type, filterContainer) {
+		var filter = CURRENT[type] || "*-" + type;
 		filterContainer.querySelector('[data-github-news-feed-filter-id="' + filter + '"]').dispatchEvent(new Event("click"));
 	}
 
@@ -439,8 +437,8 @@
 			fixActionAlerts(newsContainer);
 			// Update filter counts;
 			updateFilterCounts(type, filterContainer, newsContainer);
-			// Apply filter from url;
-			updateFilterFromUrl(type, filterContainer);
+			// Restore current filter;
+			getCurrentFilter(type, filterContainer);
 		});
 		addFilterTab("repo", "Repositories", inner, filterer, function onCreateRepos(type, filterContainer) {
 			// Fix filter identification and create repos list;
@@ -452,8 +450,8 @@
 			fixRepoAlerts(newsContainer);
 			// Update filter counts;
 			updateFilterCounts(type, filterContainer, newsContainer);
-			// Apply filter from url;
-			updateFilterFromUrl(type, filterContainer);
+			// Restore current filter;
+			getCurrentFilter(type, filterContainer);
 		});
 		//addFilterTab("user", "Users", inner, filterer);
 
@@ -469,8 +467,8 @@
 			// Update filter counts;
 			updateFilterCounts(inner, newsContainer);
 
-			// Apply filter from url;
-			updateFilterFromUrl(inner);
+			// Restore current filter;
+			getCurrentFilter(inner);
 		}).observe(newsContainer, { childList: true });*/
 	})();
 
