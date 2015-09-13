@@ -340,17 +340,35 @@
 	// Update filter counts;
 	function updateFilterCounts(type, filterContainer, newsContainer) {
 		Array.forEach(filterContainer.querySelectorAll("li.filter-list-item.-filter-" + type), function(li) {
-			var c = li.querySelector(".count");
+			// Count alerts based on other filters;
+			var countFiltered = 0;
+			var classNames = [li.filterClassNames];
+			var selected = document.querySelectorAll(".GitHubNewsFeedFilter .private:not(.-filter-" + type + ")");
+			if (selected.length > 0) {
+				Array.prototype.forEach.call(selected, function(item){
+					classNames.push(item.filterClassNames);
+				});
+			}
+			Array.forEach(newsContainer.querySelectorAll(".alert"), function(alert) {
+				var show = classNames.every(function(cl) { return cl.some(function(c) { return !!~c.indexOf("*") || alert.classList.contains(c); }); });
+				if (show) {
+					countFiltered++
+				}
+			});
+			
+			// Count alerts based on current filter;
+			var countAll = 0;
 			if (!!~li.filterClassNames[0].indexOf("*")) {
-				c.textContent = newsContainer.querySelectorAll(".alert").length;
+				countAll = newsContainer.querySelectorAll(".alert").length;
 			} else {
-				c.textContent = "0";
 				Array.forEach(newsContainer.querySelectorAll(".alert"), function(alert) {
 					if (li.filterClassNames.some(function(cl) { return alert.classList.contains(cl); })) {
-						c.textContent = parseInt(c.textContent, 10) + 1;
+						countAll++;
 					}
 				});
 			}
+			
+			li.querySelector(".count").textContent = countAll + " (" + countFiltered + ")";
 		});
 	}
 
