@@ -476,18 +476,10 @@
 		// Open first filter tab;
 		filterer.querySelector("a").dispatchEvent(new Event("click"));
 
-
-		/*// Update on clicking "More"-button;
+		// Update on clicking "More"-button;
 		new MutationObserver(function() {
-			// Fix filter identification;
-			fixActionAlerts(newsContainer);
-
-			// Update filter counts;
-			updateFilterCounts(inner, newsContainer);
-
-			// Restore current filter;
-			getCurrentFilter(inner);
-		}).observe(newsContainer, { childList: true });*/
+			filterer.querySelector("a").dispatchEvent(new Event("click"));
+		}).observe(newsContainer, { childList: true });
 	})();
 
 })();
