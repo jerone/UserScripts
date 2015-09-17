@@ -215,7 +215,6 @@
 	
 	// Filter item click event;
 	function onFilterItemClick(e, type, newsContainer, filterContainer) {
-		//console.log("onFilterItemClick", type, filterContainer);
 		e.preventDefault();
 		
 		// Store current filter;
@@ -389,7 +388,6 @@
 	// Get current filter;
 	function getCurrentFilter(type, filterContainer) {
 		var filter = CURRENT[type] || "*-" + type;
-		//console.log(type, filterContainer, '[' + datasetIdLong + '="' + filter + '"]');
 		filterContainer.querySelector('[' + datasetIdLong + '="' + filter + '"]').dispatchEvent(new Event("click"));
 	}
 
@@ -405,7 +403,6 @@
 		var filterContainer = document.createElement(filterListElement);
 		inner.appendChild(filterContainer);
 
-		//console.log("addFilterTab", type, text);
 		filterTabInner.addEventListener("click", proxy(filterTabInnerClick, type, inner, filterContainer, onSelect));
 		
 		onCreate && onCreate(type, filterContainer);
@@ -413,7 +410,6 @@
 
 	// Filter tab click event;
 	function filterTabInnerClick(e, type, inner, filterContainer, onSelect) {
-		//console.log("filterTabInnerClick", type, inner, filterContainer);
 			e.preventDefault();
 			
 			var selected = inner.querySelector(".filter-selected");
@@ -466,7 +462,6 @@
 			// Create filter menu;
 			addFilterMenu(type, ACTIONS, filterContainer, newsContainer, filterContainer, true);
 		}, function onSelectActions(type, filterContainer) {
-			//console.log("action", type, filterContainer);
 			// Fix alert identification;
 			fixActionAlerts(newsContainer);
 			// Update filter counts;
@@ -480,7 +475,6 @@
 			// Create filter menu;
 			addFilterMenu(type, REPOS, filterContainer, newsContainer, filterContainer, true);
 		}, function onSelectRepos(type, filterContainer) {
-			//console.log("repo", type, filterContainer);
 			// Fix alert identification and create repos list;
 			fixRepoAlerts(newsContainer);
 			// Empty list, so it can be filled again;
