@@ -166,7 +166,7 @@
 		// Filter link;
 		var a = document.createElement("a");
 		a.classList.add("mini-repo-list-item", "css-truncate");
-		a.setAttribute("href", "/");
+		a.setAttribute("href", filter.link || "/");
 		a.setAttribute("title", filter.classNames.join(" & "));
 		a.dataset[datasetId] = filter.id;
 		a.addEventListener("click", proxy(onFilterItemClick, type, newsContainer, filterContainer));
@@ -337,7 +337,7 @@
 		});
 		
 		repos.forEach(function(repo) {
-			REPOS.push({ id: repo, text: repo, icon: "octicon-repo", classNames: [repo] });
+			REPOS.push({ id: repo, text: repo, link: repo, icon: "octicon-repo", classNames: [repo] });
 		});
 	}
 
