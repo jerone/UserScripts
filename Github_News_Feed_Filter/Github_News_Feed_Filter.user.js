@@ -467,7 +467,7 @@
 			addFilterMenu(type, ACTIONS, filterContainer, newsContainer, filterContainer, true);
 		}, function onSelectActions(type, filterContainer) {
 			//console.log("action", type, filterContainer);
-			// Fix filter identification;
+			// Fix alert identification;
 			fixActionAlerts(newsContainer);
 			// Update filter counts;
 			updateFilterCounts(filterContainer, newsContainer);
@@ -481,8 +481,14 @@
 			addFilterMenu(type, REPOS, filterContainer, newsContainer, filterContainer, true);
 		}, function onSelectRepos(type, filterContainer) {
 			//console.log("repo", type, filterContainer);
-			// Fix filter identification;
+			// Fix alert identification and create repos list;
 			fixRepoAlerts(newsContainer);
+			// Empty list, so it can be filled again;
+			while (filterContainer.hasChildNodes()) {
+				filterContainer.removeChild(filterContainer.lastChild);
+			}
+			// Create filter menu;
+			addFilterMenu(type, REPOS, filterContainer, newsContainer, filterContainer, true);
 			// Update filter counts;
 			updateFilterCounts(filterContainer, newsContainer);
 			// Restore current filter;
@@ -495,7 +501,8 @@
 
 		// Update on clicking "More"-button;
 		new MutationObserver(function() {
-			//filterer.querySelector("a").dispatchEvent(new Event("click"));
+			// Re-click the current selected filter on open filter tab;
+			filterer.querySelector("a.filter-selected").dispatchEvent(new Event("click"));
 		}).observe(newsContainer, { childList: true });
 	})();
 
