@@ -117,8 +117,8 @@
 		github-news-feed-filter .count { margin-right: 15px; }\
 		\
 		/* Needed for user?tab=activity; */\
-		github-news-feed-filter .repo-filterer li { float: none; }\
-		github-news-feed-filter .filter-repos { padding-bottom: 0px; }\
+		.profilecols github-news-feed-filter .filter-bar { padding: 10px 10px 0px 10px; }\
+		.profilecols github-news-feed-filter .filter-bar .repo-filterer li { float: none; }\
 		\
 		github-news-feed-filter .filter-list .mini-repo-list-item { padding-right: 64px; }\
 		\
@@ -212,14 +212,14 @@
 
 		return li;
 	}
-	
+
 	// Filter item click event;
 	function onFilterItemClick(e, type, newsContainer, filterContainer) {
 		e.preventDefault();
-		
+
 		// Store current filter;
 		setCurrentFilter(type, this.dataset[datasetId]);
-		
+
 		// Open/close sub list;
 		Array.forEach(filterContainer.querySelectorAll(".open"), function(item) { item.classList.remove("open"); });
 		showParentMenu(this);
@@ -228,11 +228,11 @@
 		// Give it a colored background;
 		Array.forEach(filterContainer.querySelectorAll(".private"), function(m) { m.classList.remove("private"); });
 		this.parentNode.classList.add("private");
-		
+
 		// Toggle alert visibility;
 		toggleAlertsVisibility(newsContainer);
 	}
-	
+
 	// Toggle alert visibility;
 	function toggleAlertsVisibility(newsContainer) {
 		// Get selected filters;
@@ -279,7 +279,7 @@
 			showParentMenu(parentMenuItem.parentNode);
 		}
 	}
-	
+
 	// Fix filter action identification;
 	function fixActionAlerts(newsContainer) {
 		Array.forEach(newsContainer.querySelectorAll(".alert"), function(alert) {
@@ -326,16 +326,16 @@
 	// Fix filter repo identification;
 	function fixRepoAlerts(newsContainer) {
 		REPOS = [{ id: "*-repo", text: "All repositories", icon: "octicon-repo", classNames: ["*-repo"] }];
-		
+
 		var repos = new Set();
-		
+
 		Array.forEach(newsContainer.querySelectorAll(".alert"), function(alert) {
 			var links = alert.querySelectorAll(".title a");
 			var repo = links[links.length - 1].textContent.split("#")[0];
 			alert.classList.add(repo);
 			repos.add(repo);
 		});
-		
+
 		repos.forEach(function(repo) {
 			REPOS.push({ id: repo, text: repo, link: repo, icon: "octicon-repo", classNames: [repo] });
 		});
@@ -351,7 +351,7 @@
 			if (selected.length > 0) {
 				Array.prototype.forEach.call(selected, function(item){
 					if (item.parentNode.parentNode !== filterContainer) {  // exclude list item from current filter container;
-					classNames.push(item.filterClassNames);
+						classNames.push(item.filterClassNames);
 					}
 				});
 			}
@@ -361,7 +361,7 @@
 					countFiltered++
 				}
 			});
-			
+
 			// Count alerts based on current filter;
 			var countAll = 0;
 			if (!!~li.filterClassNames[0].indexOf("*")) {
@@ -373,7 +373,7 @@
 					}
 				});
 			}
-			
+
 			li.querySelector(".count").textContent = countAll + " (" + countFiltered + ")";
 		});
 	}
@@ -404,24 +404,24 @@
 		inner.appendChild(filterContainer);
 
 		filterTabInner.addEventListener("click", proxy(filterTabInnerClick, type, inner, filterContainer, onSelect));
-		
+
 		onCreate && onCreate(type, filterContainer);
 	}
 
 	// Filter tab click event;
 	function filterTabInnerClick(e, type, inner, filterContainer, onSelect) {
-			e.preventDefault();
-			
-			var selected = inner.querySelector(".filter-selected");
-			selected && selected.classList.remove("filter-selected");
-			this.classList.add("filter-selected");
-			
+		e.preventDefault();
+
+		var selected = inner.querySelector(".filter-selected");
+		selected && selected.classList.remove("filter-selected");
+		this.classList.add("filter-selected");
+
 		Array.forEach(inner.querySelectorAll(filterListElement), function(menu) {
-				menu && menu.classList.remove("open");
-			});
+			menu && menu.classList.remove("open");
+		});
 		filterContainer.classList.add("open");
-			
-			onSelect && onSelect(type, filterContainer);
+
+		onSelect && onSelect(type, filterContainer);
 	}
 
 	// Init;
@@ -444,11 +444,11 @@
 		var header = document.createElement("h3");
 		header.appendChild(document.createTextNode("News feed filter"));
 		wrapper.appendChild(header);
-		
+
 		var inner = document.createElement("div");
 		inner.classList.add("boxed-group-inner");
 		wrapper.appendChild(inner);
-		
+
 		var bar = document.createElement("div");
 		bar.classList.add("filter-repos", "filter-bar");
 		inner.appendChild(bar);
