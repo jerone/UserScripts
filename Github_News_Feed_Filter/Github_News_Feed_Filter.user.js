@@ -120,7 +120,7 @@
 		github-news-feed-filter .repo-filterer li { float: none; }\
 		github-news-feed-filter .filter-repos { padding-bottom: 0px; }\
 		\
-		github-news-feed-filter .mini-repo-list-item { padding-right: 40px; }\
+		github-news-feed-filter .filter-list .mini-repo-list-item { padding-right: 64px; }\
 		\
 		github-news-feed-filter .filter-list .filter-list .mini-repo-list-item { padding-left: 40px; border-top: 1px dashed #E5E5E5; }\
 		github-news-feed-filter .filter-list .filter-list .filter-list .mini-repo-list-item { padding-left: 50px; }\
