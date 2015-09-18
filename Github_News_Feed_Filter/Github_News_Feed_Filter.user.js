@@ -463,9 +463,23 @@
 		wrapper.classList.add("boxed-group", "flush", "user-repos");
 		sidebar.insertBefore(wrapper, sidebar.firstChild);
 
-		var header = document.createElement("h3");
-		header.appendChild(document.createTextNode("News feed filter"));
-		wrapper.appendChild(header);
+		var headerAction = document.createElement("div");
+		headerAction.classList.add("boxed-group-action");
+		wrapper.appendChild(headerAction);
+
+		var headerLink = document.createElement("a");
+		headerLink.setAttribute("href", "https://github.com/jerone/UserScripts");
+		headerLink.classList.add("btn", "btn-sm");
+		headerAction.appendChild(headerLink);
+
+		var headerLinkIcon = document.createElement("span");
+		headerLinkIcon.classList.add("octicon", "octicon-home");
+		headerLinkIcon.setAttribute("title", "Open Github News Feed Filter homepage");
+		headerLink.appendChild(headerLinkIcon);
+
+		var headerText = document.createElement("h3");
+		headerText.appendChild(document.createTextNode("News feed filter"));
+		wrapper.appendChild(headerText);
 
 		var inner = document.createElement("div");
 		inner.classList.add("boxed-group-inner");
