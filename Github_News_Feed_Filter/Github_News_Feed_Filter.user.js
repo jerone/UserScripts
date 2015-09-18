@@ -327,17 +327,39 @@
 	function fixRepoAlerts(newsContainer) {
 		REPOS = [{ id: "*-repo", text: "All repositories", icon: "octicon-repo", classNames: ["*-repo"] }];
 
-		var repos = new Set();
-
-		Array.forEach(newsContainer.querySelectorAll(".alert"), function(alert) {
+		// Get unique list of repos;
+		var userRepos = new Set();
+		Array.prototype.forEach.call(newsContainer.querySelectorAll(".alert"), function(alert) {
 			var links = alert.querySelectorAll(".title a");
-			var repo = links[links.length - 1].textContent.split("#")[0];  // Remove issue number from text;
-			alert.classList.add(repo);
-			repos.add(repo);
+			var userRepo = links[links.length - 1].textContent.split("#")[0];  // Remove issue number from text;
+			userRepos.add(userRepo);
+			var repo = userRepo.split("/")[1];
+			alert.classList.add(repo, userRepo);
 		});
 
-		repos.forEach(function(repo) {
-			REPOS.push({ id: repo, text: repo, link: repo, icon: "octicon-repo", classNames: [repo] });
+		// Get list of user repos (forks) per repo names;
+		var repos = {};
+		userRepos.forEach(function(userRepo) {
+			var repo = userRepo.split("/")[1];
+			if (!repos[repo]) {
+				repos[repo] = [];
+			}
+			repos[repo].push(userRepo);
+		});
+
+		// Populate global property;
+		Object.keys(repos).forEach(function(repo) {
+			if (repos[repo].length === 1) {
+				var userRepo = repos[repo][0];
+				REPOS.push({ id: userRepo, text: userRepo, link: userRepo, icon: "octicon-repo", classNames: [userRepo] });
+			} else {
+				var repoForks = { id: repo, text: repo, icon: "octicon-repo-clone", classNames: [repo], subFilters: [] };
+				repos[repo].forEach(function(userRepo) {
+					repoForks.classNames.push(userRepo);
+					repoForks.subFilters.push({ id: userRepo, text: userRepo, link: userRepo, icon: "octicon-repo", classNames: [userRepo] });
+				});
+				REPOS.push(repoForks);
+			}
 		});
 	}
 
