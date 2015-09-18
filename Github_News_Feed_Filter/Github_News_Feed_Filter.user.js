@@ -331,7 +331,7 @@
 
 		Array.forEach(newsContainer.querySelectorAll(".alert"), function(alert) {
 			var links = alert.querySelectorAll(".title a");
-			var repo = links[links.length - 1].textContent.split("#")[0];
+			var repo = links[links.length - 1].textContent.split("#")[0];  // Remove issue number from text;
 			alert.classList.add(repo);
 			repos.add(repo);
 		});
