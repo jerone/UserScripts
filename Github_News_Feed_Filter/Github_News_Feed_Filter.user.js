@@ -240,7 +240,7 @@
 		var classNames = [];
 		var selected = document.querySelectorAll(filterElement + " .private");
 		if (selected.length > 0) {
-			Array.prototype.forEach.call(selected, function(item){
+			Array.prototype.forEach.call(selected, function(item) {
 				classNames.push(item.filterClassNames);
 			});
 		}
@@ -371,7 +371,7 @@
 			var classNames = [li.filterClassNames];
 			var selected = document.querySelectorAll(filterElement + " li.filter-list-item.private");
 			if (selected.length > 0) {
-				Array.prototype.forEach.call(selected, function(item){
+				Array.prototype.forEach.call(selected, function(item) {
 					if (item.parentNode.parentNode !== filterContainer) {  // exclude list item from current filter container;
 						classNames.push(item.filterClassNames);
 					}
@@ -455,10 +455,6 @@
 
 		var sidebar = document.querySelector(".dashboard-sidebar") || document.querySelector(".column.one-fourth.vcard");
 
-		//var rule = document.createElement("div");
-		//rule.classList.add("rule");
-		//sidebar.insertBefore(rule, sidebar.firstChild);
-
 		var wrapper = document.createElement(filterElement);
 		wrapper.classList.add("boxed-group", "flush", "user-repos");
 		sidebar.insertBefore(wrapper, sidebar.firstChild);
@@ -524,7 +520,6 @@
 			// Restore current filter;
 			getCurrentFilter(type, filterContainer);
 		});
-		//addFilterTab("user", "Users", inner, filterer);
 
 		// Open first filter tab;
 		filterer.querySelector("a").dispatchEvent(new Event("click"));
