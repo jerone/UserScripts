@@ -14,7 +14,7 @@
 // @include     https://github.com/orgs/*/dashboard
 // @include     https://github.com/orgs/*/dashboard?*
 // @include     https://github.com/*tab=activity*
-// @version     6.1
+// @version     6.2
 // @grant       none
 // ==/UserScript==
 /* global Event */
