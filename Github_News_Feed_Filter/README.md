@@ -14,40 +14,43 @@ This script also works for organizations and on user profiles [public activity](
 
 Currently integrated filters:
 
-* Issues
-    * Opened
-    * Closed
-    * Reopened
-    * Comments
-* Commits
-    * Pushed
-    * Comments
-* Pull Requests
-    * Opened
-    * Closed
-    * Merged
-    * Comments
-* Repo
-    * Created
-    * Public
-    * Forked
-    * Deleted
-    * Release
-    * Branch
+* Actions
+    * Issues
+        * Opened
+        * Closed
+        * Reopened
+        * Comments
+    * Commits
+        * Pushed
+        * Comments
+    * Pull Requests
+        * Opened
+        * Closed
+        * Merged
+        * Comments
+    * Repo
         * Created
+        * Public
+        * Forked
         * Deleted
-    * Tag
-        * Added
-        * Removed
-* User
-    * Starred
-    * Member added
-* Wiki
-    * Created
-    * Edited
-* Gist
-    * Created
-    * Updated
+        * Release
+        * Branch
+            * Created
+            * Deleted
+        * Tag
+            * Added
+            * Removed
+    * User
+        * Starred
+        * Member added
+    * Wiki
+        * Created
+        * Edited
+    * Gist
+        * Created
+        * Updated
+* Repositories
+    * _Variable on the repos currently in your news list_
 
 
 ## Screenshot
@@ -63,6 +66,8 @@ Currently integrated filters:
 
 
 ## Version History
+* **6.2**
+    * :sparkles: Filter by repo. Fixes [#70](https://github.com/jerone/UserScripts/issues/70);
 * **6.1**
     * :bug: Fixed counting repo releases as tag actions;
     * :sparkles: Split wiki filter in created and edited;
@@ -108,9 +113,9 @@ Currently integrated filters:
 
 ## TODO
 
-- ~~Remember filter choice (use href);~~
-- ~~Can probably run on users public activity stream too (https://github.com/jerone?tab=activity);~~ Only works on direct access.
-- Filter on project;
+- ~~Run on users public activity stream (https://github.com/jerone?tab=activity);~~ _Only works on direct access._
+- ~~Filter by repo~~;
+- Filter by user;
 
 
 ## External links

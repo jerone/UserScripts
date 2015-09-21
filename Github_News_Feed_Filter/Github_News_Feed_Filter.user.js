@@ -14,15 +14,15 @@
 // @include     https://github.com/orgs/*/dashboard
 // @include     https://github.com/orgs/*/dashboard?*
 // @include     https://github.com/*tab=activity*
-// @version     6.1
+// @version     6.2
 // @grant       none
 // ==/UserScript==
 /* global Event */
 
 (function() {
 
-	var FILTERS = [
-		{ id: "*", text: "All news feed", icon: "octicon-radio-tower", classNames: ["*"] },
+	var ACTIONS = [
+		{ id: "*-action", text: "All news feed", icon: "octicon-radio-tower", classNames: ["*-action"] },
 		{
 			id: "issues", text: "Issues", icon: "octicon-issue-opened", classNames: ["issues_opened", "issues_closed", "issues_reopened", "issues_comment"], subFilters: [
 				{ id: "issues opened", text: "Opened", icon: "octicon-issue-opened", classNames: ["issues_opened"] },
@@ -87,7 +87,12 @@
 		// Possible other classes: follow
 	];
 
-	var datasetId = "githubNewsFeedFilterId";
+	var REPOS = [ ];
+
+	const datasetId = "githubNewsFeedFilter";
+	const datasetIdLong = "data-github-news-feed-filter";
+	const filterElement = "github-news-feed-filter";
+	const filterListElement = "github-news-feed-filter-list";
 
 	function proxy(fn) {
 		return function() {
@@ -108,50 +113,87 @@
 	}
 
 	addStyle("\
-	.GitHubNewsFeedFilter .count { margin-right: 15px; }\
-	\
-	.GitHubNewsFeedFilter .filter-list .filter-list .mini-repo-list-item { padding-left: 40px; border-top: 1px dashed #E5E5E5; }\
-	.GitHubNewsFeedFilter .filter-list .filter-list .filter-list .mini-repo-list-item { padding-left: 50px; }\
-	\
-	.GitHubNewsFeedFilter .filter-list-item > ul  { display: none; }\
-	.GitHubNewsFeedFilter .filter-list-item.open > ul  { display: block; }\
-	\
-	.GitHubNewsFeedFilter .private  { font-weight: bold; }\
-	\
-	.GitHubNewsFeedFilter .stars .octicon  { position: absolute; right: -4px; }\
-	.GitHubNewsFeedFilter .filter-list-item.open > a > .stars > .octicon:before { content: '\\f05b'; }\
-	\
-	.no-alerts { font-style: italic; }\
-	")
+		github-news-feed-filter { display: block; }\
+		github-news-feed-filter .count { margin-right: 15px; }\
+		\
+		/* Needed for user?tab=activity; */\
+		.profilecols github-news-feed-filter .filter-bar { padding: 10px 10px 0px 10px; }\
+		.profilecols github-news-feed-filter .filter-bar .repo-filterer li { float: none; }\
+		\
+		github-news-feed-filter .filter-list .mini-repo-list-item { padding-right: 64px; }\
+		\
+		github-news-feed-filter .filter-list .filter-list .mini-repo-list-item { padding-left: 40px; border-top: 1px dashed #E5E5E5; }\
+		github-news-feed-filter .filter-list .filter-list .filter-list .mini-repo-list-item { padding-left: 50px; }\
+		\
+		github-news-feed-filter .filter-list { display: none; }\
+		github-news-feed-filter .open > .filter-list { display: block; }\
+		github-news-feed-filter .filter-list.open { display: block; }\
+		\
+		github-news-feed-filter .private { font-weight: bold; }\
+		\
+		github-news-feed-filter .stars .octicon { position: absolute; right: -4px; }\
+		github-news-feed-filter .filter-list-item.open > a > .stars > .octicon:before { content: '\\f05b'; }\
+		\
+		.no-alerts { font-style: italic; }\
+	");
 
-	function addFilterMenu(filters, parent, container, sidebar, main) {
+	// Add filter menu list;
+	function addFilterMenu(type, filters, parent, newsContainer, filterContainer, main) {
 		var ul = document.createElement("ul");
 		ul.classList.add("filter-list");
 		if (main) {
-			ul.classList.add("boxed-group-inner", "mini-repo-list");
+			ul.classList.add("mini-repo-list");
 		}
 		parent.appendChild(ul);
 
 		filters.forEach(function(subFilter) {
-			var li = addFilterMenuItem(subFilter, ul, container, sidebar);
+			var li = addFilterMenuItem(type, subFilter, ul, newsContainer, filterContainer);
 
 			if (subFilter.subFilters) {
-				addFilterMenu(subFilter.subFilters, li, container, sidebar, false);
+				addFilterMenu(type, subFilter.subFilters, li, newsContainer, filterContainer, false);
 			}
 		});
 	}
 
-	function addFilterMenuItem(filter, parent, container, sidebar) {
+	// Add filte menu item;
+	function addFilterMenuItem(type, filter, parent, newsContainer, filterContainer) {
+		// Filter item;
+		var li = document.createElement("li");
+		li.classList.add("filter-list-item");
+		li.filterClassNames = filter.classNames;
+		parent.appendChild(li);
+
+		// Filter link;
 		var a = document.createElement("a");
 		a.classList.add("mini-repo-list-item", "css-truncate");
-		a.setAttribute("href", "/");
+		a.setAttribute("href", filter.link || "/");
 		a.setAttribute("title", filter.classNames.join(" & "));
 		a.dataset[datasetId] = filter.id;
+		a.addEventListener("click", proxy(onFilterItemClick, type, newsContainer, filterContainer));
+		li.appendChild(a);
 
 		// Filter icon;
 		var i = document.createElement("span");
 		i.classList.add("repo-icon", "octicon", filter.icon);
 		a.appendChild(i);
+
+		// Filter text;
+		var text = filter.text.split("/");
+		var t = document.createElement("span");
+		t.classList.add("repo-and-owner", "css-truncate-target");
+		a.appendChild(t);
+		var to = document.createElement("span");
+		to.classList.add("owner");
+		to.appendChild(document.createTextNode(text[0]));
+		t.appendChild(to);
+		if (text.length > 1) {
+			text.shift();
+			t.appendChild(document.createTextNode("/"));
+			var tr = document.createElement("span");
+			tr.classList.add("repo");
+			tr.appendChild(document.createTextNode(text.join("/")));
+			t.appendChild(tr);
+		}
 
 		// Filter count & sub list arrow;
 		var s = document.createElement("span");
@@ -168,57 +210,65 @@
 		}
 		a.appendChild(s);
 
-		// Filter text;
-		a.appendChild(document.createTextNode(filter.text));
-
-		a.addEventListener("click", proxy(function(e, classNames) {
-			e.preventDefault();
-
-			// Show/hide message about no alerts;
-			var any = false,
-				all = classNames[0] === "*",
-				some = function(alert) { return classNames.some(function(cl) { return alert.classList.contains(cl); }); };
-			Array.forEach(container.querySelectorAll(".alert"), function(alert) {
-				alert.style.display = (all || some(alert)) && (any = true) ? "block" : "none";
-			});
-			var none = container.querySelector(".no-alerts");
-			if (any && none) {
-				none.parentNode.removeChild(none);
-			} else if (!any && !none) {
-				none = document.createElement("div");
-				none.classList.add("no-alerts", "protip");
-				none.appendChild(document.createTextNode("No feed items for this filter. Please select another filter."));
-				container.insertBefore(none, container.firstElementChild.nextElementSibling);
-			}
-
-			// Open/close sub list;
-			Array.forEach(sidebar.querySelectorAll(".GitHubNewsFeedFilter .open"), function(item) { item.classList.remove("open"); });
-			showParentMenu(this);
-			this.parentNode.classList.add("open");
-
-			// Give it a colored background;
-			Array.forEach(sidebar.querySelectorAll(".GitHubNewsFeedFilter .private"), function(m) { m.classList.remove("private"); });
-			this.parentNode.classList.add("private");
-
-			// Push filter to url;
-			if (this.dataset[datasetId] !== "*") {
-				var urlSearch = "filter=" + encodeURIComponent(this.dataset[datasetId]);
-				history.pushState(null, null, location.search && /filter=[^&]*/g.test(location.search)
-												? location.href.replace(/filter=[^&]*/g, urlSearch)
-												: location.href + (location.search ? "&" : "?") + urlSearch);
-			} else {
-				history.pushState(null, null, location.href.replace(/(filter=[^&]*&|\?filter=[^&]*$|&filter=[^&]*)/g, ""));  // http://regexr.com/398lv
-			}
-		}, filter.classNames));
-
-		var li = document.createElement("li");
-		li.classList.add("filter-list-item");
-		li.appendChild(a);
-		li.filterClassNames = filter.classNames;
-
-		parent.appendChild(li);
-
 		return li;
+	}
+
+	// Filter item click event;
+	function onFilterItemClick(e, type, newsContainer, filterContainer) {
+		e.preventDefault();
+
+		// Store current filter;
+		setCurrentFilter(type, this.dataset[datasetId]);
+
+		// Open/close sub list;
+		Array.forEach(filterContainer.querySelectorAll(".open"), function(item) { item.classList.remove("open"); });
+		showParentMenu(this);
+		this.parentNode.classList.add("open");
+
+		// Give it a colored background;
+		Array.forEach(filterContainer.querySelectorAll(".private"), function(m) { m.classList.remove("private"); });
+		this.parentNode.classList.add("private");
+
+		// Toggle alert visibility;
+		toggleAlertsVisibility(newsContainer);
+	}
+
+	// Toggle alert visibility;
+	function toggleAlertsVisibility(newsContainer) {
+		// Get selected filters;
+		var anyVisibleAlert = false;
+		var classNames = [];
+		var selected = document.querySelectorAll(filterElement + " .private");
+		if (selected.length > 0) {
+			Array.prototype.forEach.call(selected, function(item) {
+				classNames.push(item.filterClassNames);
+			});
+		}
+
+		// Show/hide alerts;
+		if (classNames.length === 0 || classNames.every(function(cl) { return cl.every(function(c) { return !!~c.indexOf("*"); }) })) {
+			anyVisibleAlert = true;
+			Array.forEach(newsContainer.querySelectorAll(".alert"), function(alert) {
+				alert.style.display = "block";
+			});
+		} else {
+			Array.forEach(newsContainer.querySelectorAll(".alert"), function(alert) {
+				var show = classNames.every(function(cl) { return cl.some(function(c) { return !!~c.indexOf("*") || alert.classList.contains(c); }); });
+				anyVisibleAlert = show || anyVisibleAlert;
+				alert.style.display = show ? "block" : "none";
+			});
+		}
+
+		// Show/hide message about no alerts;
+		var none = newsContainer.querySelector(".no-alerts");
+		if (anyVisibleAlert && none) {
+			none.parentNode.removeChild(none);
+		} else if (!anyVisibleAlert && !none) {
+			none = document.createElement("div");
+			none.classList.add("no-alerts", "protip");
+			none.appendChild(document.createTextNode("No feed items for this filter. Please select another filter."));
+			newsContainer.insertBefore(none, newsContainer.firstElementChild.nextElementSibling);
+		}
 	}
 
 	// Traverse back up the tree to open sub lists;
@@ -230,9 +280,9 @@
 		}
 	}
 
-	function pageUpdate(container, sidebar, wrapper) {
-		// Fix filter identification;
-		Array.forEach(container.querySelectorAll(".alert"), function(alert) {
+	// Fix filter action identification;
+	function fixActionAlerts(newsContainer) {
+		Array.forEach(newsContainer.querySelectorAll(".alert"), function(alert) {
 			if (alert.getElementsByClassName("octicon-git-branch").length > 0 && !alert.classList.contains("fork")) {
 				alert.classList.remove("create");
 				alert.classList.add("branch_create");
@@ -272,58 +322,213 @@
 				alert.classList.add("gist_" + alert.querySelector(".title span").textContent);
 			}
 		});
+	}
+	// Fix filter repo identification;
+	function fixRepoAlerts(newsContainer) {
+		REPOS = [{ id: "*-repo", text: "All repositories", icon: "octicon-repo", classNames: ["*-repo"] }];
 
-		// Update filter counts;
-		Array.forEach(wrapper.querySelectorAll("li"), function(li) {
-			var c = li.querySelector(".count");
-			if (li.filterClassNames[0] === "*") {
-				c.textContent = container.querySelectorAll(".alert").length;
+		// Get unique list of repos;
+		var userRepos = new Set();
+		Array.prototype.forEach.call(newsContainer.querySelectorAll(".alert"), function(alert) {
+			var links = alert.querySelectorAll(".title a");
+			var userRepo = links[links.length - 1].textContent.split("#")[0];  // Remove issue number from text;
+			userRepos.add(userRepo);
+			var repo = userRepo.split("/")[1];
+			alert.classList.add(repo, userRepo);
+		});
+
+		// Get list of user repos (forks) per repo names;
+		var repos = {};
+		userRepos.forEach(function(userRepo) {
+			var repo = userRepo.split("/")[1];
+			if (!repos[repo]) {
+				repos[repo] = [];
+			}
+			repos[repo].push(userRepo);
+		});
+
+		// Populate global property;
+		Object.keys(repos).forEach(function(repo) {
+			if (repos[repo].length === 1) {
+				var userRepo = repos[repo][0];
+				REPOS.push({ id: userRepo, text: userRepo, link: userRepo, icon: "octicon-repo", classNames: [userRepo] });
 			} else {
-				c.textContent = "0";
-				Array.forEach(container.querySelectorAll(".alert"), function(alert) {
-					if (li.filterClassNames.some(function(cl) { return alert.classList.contains(cl); })) {
-						c.textContent = parseInt(c.textContent, 10) + 1;
+				var repoForks = { id: repo, text: repo, icon: "octicon-repo-clone", classNames: [repo], subFilters: [] };
+				repos[repo].forEach(function(userRepo) {
+					repoForks.classNames.push(userRepo);
+					repoForks.subFilters.push({ id: userRepo, text: userRepo, link: userRepo, icon: "octicon-repo", classNames: [userRepo] });
+				});
+				REPOS.push(repoForks);
+			}
+		});
+	}
+
+	// Update filter counts;
+	function updateFilterCounts(filterContainer, newsContainer) {
+		Array.forEach(filterContainer.querySelectorAll("li.filter-list-item"), function(li) {
+			// Count alerts based on other filters;
+			var countFiltered = 0;
+			var classNames = [li.filterClassNames];
+			var selected = document.querySelectorAll(filterElement + " li.filter-list-item.private");
+			if (selected.length > 0) {
+				Array.prototype.forEach.call(selected, function(item) {
+					if (item.parentNode.parentNode !== filterContainer) {  // exclude list item from current filter container;
+						classNames.push(item.filterClassNames);
 					}
 				});
 			}
-		});
+			Array.forEach(newsContainer.querySelectorAll(".alert"), function(alert) {
+				var show = classNames.every(function(cl) { return cl.some(function(c) { return !!~c.indexOf("*") || alert.classList.contains(c); }); });
+				if (show) {
+					countFiltered++
+				}
+			});
 
-		// Apply filter from url;
-		var filter = /filter=[^&]*/g.test(location.search)
-						? decodeURIComponent(/filter=([^&]*)/g.exec(location.search)[1])
-						: "*";
-		wrapper.querySelector('.GitHubNewsFeedFilter [data-github-news-feed-filter-id="' + filter + '"]').dispatchEvent(new Event("click"));
+			// Count alerts based on current filter;
+			var countAll = 0;
+			if (!!~li.filterClassNames[0].indexOf("*")) {
+				countAll = newsContainer.querySelectorAll(".alert").length;
+			} else {
+				Array.forEach(newsContainer.querySelectorAll(".alert"), function(alert) {
+					if (li.filterClassNames.some(function(cl) { return alert.classList.contains(cl); })) {
+						countAll++;
+					}
+				});
+			}
+
+			li.querySelector(".count").textContent = countAll + " (" + countFiltered + ")";
+		});
 	}
 
-	function addFilters() {
-		var container = document.querySelector(".news");
-		if (!container) { return; }
+	var CURRENT = { };
+
+	// Set current filter;
+	function setCurrentFilter(type, filter) {
+		CURRENT[type] = filter;
+	}
+
+	// Get current filter;
+	function getCurrentFilter(type, filterContainer) {
+		var filter = CURRENT[type] || "*-" + type;
+		filterContainer.querySelector('[' + datasetIdLong + '="' + filter + '"]').dispatchEvent(new Event("click"));
+	}
+
+	function addFilterTab(type, text, inner, filterer, onCreate, onSelect) {
+		var filterTab = document.createElement("li");
+		filterer.appendChild(filterTab);
+		var filterTabInner = document.createElement("a");
+		filterTabInner.setAttribute("href", "#");
+		filterTabInner.classList.add("repo-filter", "js-repo-filter-tab");
+		filterTabInner.appendChild(document.createTextNode(text));
+		filterTab.appendChild(filterTabInner);
+
+		var filterContainer = document.createElement(filterListElement);
+		inner.appendChild(filterContainer);
+
+		filterTabInner.addEventListener("click", proxy(filterTabInnerClick, type, inner, filterContainer, onSelect));
+
+		onCreate && onCreate(type, filterContainer);
+	}
+
+	// Filter tab click event;
+	function filterTabInnerClick(e, type, inner, filterContainer, onSelect) {
+		e.preventDefault();
+
+		var selected = inner.querySelector(".filter-selected");
+		selected && selected.classList.remove("filter-selected");
+		this.classList.add("filter-selected");
+
+		Array.forEach(inner.querySelectorAll(filterListElement), function(menu) {
+			menu && menu.classList.remove("open");
+		});
+		filterContainer.classList.add("open");
+
+		onSelect && onSelect(type, filterContainer);
+	}
+
+	// Init;
+	(function init() {
+		console.log('GitHubNewsFeedFilter', 'page load');
+
+		var newsContainer = document.querySelector(".news");
+		if (!newsContainer) { return; }
 
 		var sidebar = document.querySelector(".dashboard-sidebar") || document.querySelector(".column.one-fourth.vcard");
 
-		var rule = document.createElement("div");
-		rule.classList.add("rule");
-		sidebar.insertBefore(rule, sidebar.firstChild);
-
-		var wrapper = document.createElement("div");
-		wrapper.classList.add("GitHubNewsFeedFilter", "boxed-group", "flush");
+		var wrapper = document.createElement(filterElement);
+		wrapper.classList.add("boxed-group", "flush", "user-repos");
 		sidebar.insertBefore(wrapper, sidebar.firstChild);
 
-		var header = document.createElement("h3");
-		header.appendChild(document.createTextNode("News feed filter"));
-		wrapper.appendChild(header);
+		var headerAction = document.createElement("div");
+		headerAction.classList.add("boxed-group-action");
+		wrapper.appendChild(headerAction);
 
-		addFilterMenu(FILTERS, wrapper, container, sidebar, true);
+		var headerLink = document.createElement("a");
+		headerLink.setAttribute("href", "https://github.com/jerone/UserScripts");
+		headerLink.classList.add("btn", "btn-sm");
+		headerAction.appendChild(headerLink);
 
-		pageUpdate(container, sidebar, wrapper);
+		var headerLinkIcon = document.createElement("span");
+		headerLinkIcon.classList.add("octicon", "octicon-home");
+		headerLinkIcon.setAttribute("title", "Open Github News Feed Filter homepage");
+		headerLink.appendChild(headerLinkIcon);
+
+		var headerText = document.createElement("h3");
+		headerText.appendChild(document.createTextNode("News feed filter"));
+		wrapper.appendChild(headerText);
+
+		var inner = document.createElement("div");
+		inner.classList.add("boxed-group-inner");
+		wrapper.appendChild(inner);
+
+		var bar = document.createElement("div");
+		bar.classList.add("filter-repos", "filter-bar");
+		inner.appendChild(bar);
+
+		var filterer = document.createElement("ul");
+		filterer.classList.add("repo-filterer");
+		bar.appendChild(filterer);
+
+		// Create filter tabs;
+		addFilterTab("action", "Actions", inner, filterer, function onCreateActions(type, filterContainer) {
+			// Create filter menu;
+			addFilterMenu(type, ACTIONS, filterContainer, newsContainer, filterContainer, true);
+		}, function onSelectActions(type, filterContainer) {
+			// Fix alert identification;
+			fixActionAlerts(newsContainer);
+			// Update filter counts;
+			updateFilterCounts(filterContainer, newsContainer);
+			// Restore current filter;
+			getCurrentFilter(type, filterContainer);
+		});
+		addFilterTab("repo", "Repositories", inner, filterer, function onCreateRepos(type, filterContainer) {
+			// Fix filter identification and create repos list;
+			fixRepoAlerts(newsContainer);
+			// Create filter menu;
+			addFilterMenu(type, REPOS, filterContainer, newsContainer, filterContainer, true);
+		}, function onSelectRepos(type, filterContainer) {
+			// Fix alert identification and create repos list;
+			fixRepoAlerts(newsContainer);
+			// Empty list, so it can be filled again;
+			while (filterContainer.hasChildNodes()) {
+				filterContainer.removeChild(filterContainer.lastChild);
+			}
+			// Create filter menu;
+			addFilterMenu(type, REPOS, filterContainer, newsContainer, filterContainer, true);
+			// Update filter counts;
+			updateFilterCounts(filterContainer, newsContainer);
+			// Restore current filter;
+			getCurrentFilter(type, filterContainer);
+		});
+
+		// Open first filter tab;
+		filterer.querySelector("a").dispatchEvent(new Event("click"));
 
 		// Update on clicking "More"-button;
 		new MutationObserver(function() {
-			pageUpdate(container, sidebar, wrapper);
-		}).observe(container, { childList: true });
-	}
-
-	// init;
-	addFilters();
+			// Re-click the current selected filter on open filter tab;
+			filterer.querySelector("a.filter-selected").dispatchEvent(new Event("click"));
+		}).observe(newsContainer, { childList: true });
+	})();
 
 })();
