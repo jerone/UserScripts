@@ -25,6 +25,8 @@ Show user information on avatar hover.
 
 ## Version History
 
+* **0.3.3**
+    * Smoother avatar loading on non-cached user info;
 * **0.3.2**
     * Add support for following & followers page;
     * Add support for trending developer;

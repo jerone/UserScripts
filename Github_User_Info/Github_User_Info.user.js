@@ -12,7 +12,7 @@
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_User_Info/Github_User_Info.user.js
 // @supportURL  https://github.com/jerone/UserScripts/issues
 // @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
-// @version     0.3.2
+// @version     0.3.3
 // @grant       GM_xmlhttpRequest
 // @grant       GM_setValue
 // @grant       GM_getValue
@@ -350,13 +350,14 @@
 		var users = JSON.parse(usersString);
 		if (users[username]) {
 			var date = new Date(users[username].checked_at),
-				now = new Date();
-			if (date > now.setDate(now.getDate() - UPDATE_INTERVAL_DAYS)) {
+				now = new Date(),
+				upDate = new Date(now.setDate(now.getDate() - UPDATE_INTERVAL_DAYS));
+			if (date > upDate) {
 				var data = users[username].data;
 				console.log('GithubUserInfo:getData', 'CACHED', data);
 				fillData(defaultData(data), position, avatarSize);
 			} else {
-				console.log('GithubUserInfo:getData', 'AJAX - OUTDATED', username);
+				console.log('GithubUserInfo:getData', 'AJAX - OUTDATED', username, date, upDate);
 				fetchData(username, position, avatarSize);
 			}
 		} else {
@@ -490,17 +491,19 @@
 
 	function fillData(data, position, avatarSize) {
 		console.log('GithubUserInfo:fillData', data, position, avatarSize);
-		userMenu.style.top = Math.max(position.top - 10 - 1, 2) + 'px';
-		userMenu.style.left = Math.max(position.left - 10 - 1, 2) + 'px';
-		userMenu.style.display = 'block';
 
 		userAvatar.setAttribute('href', 'https://github.com/' + data.username);
 		userAvatarImg.style.height = avatarSize.height + 'px';
 		userAvatarImg.style.width = avatarSize.width + 'px';
-		window.setTimeout(function avatarAnimationTimeout() {
-			userAvatarImg.style.height = '100px';
-			userAvatarImg.style.width = '100px';
-		}, 50);
+		userAvatarImg.addEventListener('load', function() {
+			userMenu.style.top = Math.max(position.top - 10 - 1, 2) + 'px';
+			userMenu.style.left = Math.max(position.left - 10 - 1, 2) + 'px';
+			userMenu.style.display = 'block';
+			window.setTimeout(function avatarAnimationTimeout() {
+				userAvatarImg.style.height = '100px';
+				userAvatarImg.style.width = '100px';
+			}, 50);
+		});
 		userAvatarImg.setAttribute('src', '');
 		userAvatarImg.setAttribute('src', data.avatar);
 
