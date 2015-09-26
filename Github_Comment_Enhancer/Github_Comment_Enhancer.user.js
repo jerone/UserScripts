@@ -234,7 +234,7 @@
 			'			<span class="btn btn-sm minibutton select-menu-button icon-only js-menu-target" aria-label="Headers" style="padding-left:7px; padding-right:7px; width:auto; border-bottom-right-radius:3px; border-top-right-radius:3px;">' +
 			'		<span class="js-select-button">h#</span>' +
 			'			</span>' +
-			'			<div class="select-menu-modal-holder js-menu-content js-navigation-container js-active-navigation-container" style="top: 26px;">' +
+			'			<div class="select-menu-modal-holder js-menu-content js-navigation-container js-active-navigation-container" style="top:26px; z-index:22;">' +
 			'				<div class="select-menu-modal" style="width:auto; overflow:visible;">' +
 			'					<div class="select-menu-header">' +
 			'						<span class="select-menu-title">Choose header</span>' +
@@ -305,7 +305,7 @@
 			'			<span class="btn btn-sm minibutton select-menu-button js-menu-target" aria-label="Snippets" style="padding-left:7px; padding-right:7px; width:auto; border-bottom-right-radius:3px; border-top-right-radius:3px;">' +
 			'				<span class="octicon octicon-pin"></span>' +
 			'			</span>' +
-			'			<div class="select-menu-modal-holder js-menu-content js-navigation-container js-active-navigation-container">' +
+			'			<div class="select-menu-modal-holder js-menu-content js-navigation-container js-active-navigation-container" style="top:26px; z-index:22;">' +
 			'				<div class="select-menu-modal" style="overflow:visible;">' +
 			'					<div class="select-menu-header">' +
 			'						<span class="select-menu-title">Snippets</span>' +
@@ -343,7 +343,7 @@
 			'			<span class="btn btn-sm minibutton select-menu-button js-menu-target" aria-label="Emoji" style="padding-left:7px; padding-right:7px; width:auto; border-bottom-right-radius:3px; border-top-right-radius:3px;">' +
 			'				<span class="octicon octicon-octoface"></span>' +
 			'			</span>' +
-			'			<div class="select-menu-modal-holder js-menu-content js-navigation-container js-active-navigation-container">' +
+			'			<div class="select-menu-modal-holder js-menu-content js-navigation-container js-active-navigation-container" style="top:26px; z-index:22;">' +
 			'				<div class="select-menu-modal" style="overflow:visible;">' +
 			'					<div class="select-menu-header">' +
 			'						<span class="select-menu-title">Emoji</span>' +
