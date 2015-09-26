@@ -215,7 +215,7 @@
 	var editorHTML = (function editorHTML() {
 		return '<div id="gollum-editor-function-buttons" style="float: left;">' +
 			'	<div class="button-group btn-group">' +
-			'		<a href="#" id="function-bold" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Bold (ctrl+b)" style="height:26px;">' +
+			'		<a href="#" id="function-bold" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Bold (ctrl+b)">' +
 			'			<b style="font-weight: bolder;">B</b>' +
 			'		</a>' +
 			'		<a href="#" id="function-italic" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Italic (ctrl+i)">' +
@@ -240,7 +240,7 @@
 			'						<span class="select-menu-title">Choose header</span>' +
 			'						<span class="octicon octicon-remove-close js-menu-close"></span>' +
 			'					</div>' +
-			'					<div class="button-group btn-group">' +
+			'					<div class="button-group btn-group" style="min-width:175px;">' +
 			'						<a href="#" id="function-h1" class="btn btn-sm minibutton function-button js-navigation-item js-menu-close tooltipped tooltipped-s" aria-label="Header 1 (ctrl+1)">' +
 			'							<b class="select-menu-item-text js-select-button-text">h1</b>' +
 			'						</a>' +
@@ -620,19 +620,7 @@
 				}
 			}
 
-			if (isGist()) {
-				Array.prototype.forEach.call(gollumEditor.parentNode.querySelectorAll(".select-menu-button"), function(button) {
-					button.style.paddingRight = "25px";
-				});
-			}
-
 			Array.prototype.forEach.call(gollumEditor.parentNode.querySelectorAll(".function-button"), function(button) {
-				if (isGist() && button.classList.contains("minibutton")) {
-					button.style.padding = "0px";
-					button.style.textAlign = "center";
-					button.style.width = "30px";
-					button.firstElementChild.style.marginRight = "0px";
-				}
 				button.commentForm = commentForm; // remove event listener doesn't accept `bind`;
 				button.addEventListener("click", functionButtonClick);
 			});
