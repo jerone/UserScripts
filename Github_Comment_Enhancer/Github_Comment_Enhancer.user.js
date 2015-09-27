@@ -159,6 +159,13 @@
 				},
 				shortcut: "ctrl+k"
 			},
+			"function-code-syntax": {
+				exec: function(button, selText, commentForm, next) {
+					var rt = "$1\n```" + button.dataset.value + "\n$2\n```$3";
+					next(selText.replace(/^(\s*)([\s\S]*?)(\s*)$/g, rt));
+				}
+			},
+
 			"function-blockquote": {
 				search: /(.+)([\n]?)/g,
 				replace: "> $1$2",
@@ -286,9 +293,31 @@
 			'	</div>' +
 
 			'	<div class="button-group btn-group">' +
-			'		<a href="#" id="function-code" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Code (ctrl+k)">' +
-			'			<span class="octicon octicon-code"></span>' +
-			'		</a>' +
+			'		<div class="select-menu js-menu-container js-select-menu  tooltipped tooltipped-ne" aria-label="Code (ctrl+k)">' +
+			'			<a href="#" id="function-code" class="btn btn-sm minibutton  function-button">' +
+			'				<span class="octicon octicon-code"></span>' +
+			'			</a>' +
+			'			<div class="select-menu-modal-holder js-menu-content js-navigation-container js-active-navigation-container" style="top:26px; z-index:22;">' +
+			'				<div class="select-menu-modal" style="overflow:visible;">' +
+			'					<div class="select-menu-header">' +
+			'						<span class="select-menu-title">Code syntax</span>' +
+			'						<span class="octicon octicon-remove-close js-menu-close"></span>' +
+			'					</div>' +
+			'					<div class="select-menu-filters">' +
+			'						<div class="select-menu-text-filter">' +
+			'							<input type="text" placeholder="Filter code syntax..." class="js-filterable-field js-navigation-enable" id="context-code-syntax-filter-field">' +
+			'						</div>' +
+			'					</div>' +
+			'					<div class="code-syntaxes select-menu-list" style="overflow:visible;">' +
+			'						<div class="select-menu-no-results">Nothing to show</div>' +
+			'					</div>' +
+			'				</div>' +
+			'			</div>' +
+			'			<span class="btn btn-sm minibutton  select-menu-button js-menu-target" style="width:20px; margin-left:-1px;"></span>' +
+			'		</div>' +
+			'	</div>' +
+
+			'	<div class="button-group btn-group">' +
 			'		<a href="#" id="function-blockquote" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Blockquote (ctrl+q)">' +
 			'			<span class="octicon octicon-quote"></span>' +
 			'		</a>' +
@@ -482,6 +511,84 @@
 		return false;
 	};
 
+	var codeSyntaxTop = ["JavaScript", "Java", "Ruby", "PHP", "Python", "CSS", "C++", "C#", "C", "HTML"];  // https://github.com/blog/2047-language-trends-on-github
+	var codeSyntaxList = ["ABAP","abl","aconf","ActionScript","actionscript 3","actionscript3","Ada","ada2005","ada95",
+		"advpl","Agda","ags","AGS Script","ahk","Alloy","AMPL","Ant Build System","ANTLR","apache","ApacheConf","Apex",
+		"API Blueprint","APL","AppleScript","Arc","Arduino","as3","AsciiDoc","ASP","AspectJ","aspx","aspx-vb","Assembly",
+		"ATS","ats2","au3","Augeas","AutoHotkey","AutoIt","AutoIt3","AutoItScript","Awk","b3d","bash","bash session","bat",
+		"batch","Batchfile","Befunge","Bison","BitBake","blitz3d","BlitzBasic","BlitzMax","blitzplus","Bluespec","bmax",
+		"Boo","bplus","Brainfuck","Brightscript","Bro","bsdmake","byond","C","C#","C++","c++-objdumb","C-ObjDump","c2hs",
+		"C2hs Haskell","Cap'n Proto","Carto","CartoCSS","Ceylon","cfc","cfm","cfml","Chapel","Charity","chpl","ChucK",
+		"Cirru","Clarion","Clean","clipper","CLIPS","Clojure","CMake","COBOL","coffee","coffee-script","CoffeeScript",
+		"ColdFusion","ColdFusion CFC","coldfusion html","Common Lisp","Component Pascal","console","Cool","Coq","cpp",
+		"Cpp-ObjDump","Creole","Crystal","csharp","CSS","Cucumber","Cuda","Cycript","Cython","D","D-ObjDump","Darcs Patch",
+		"Dart","dcl","delphi","desktop","Diff","DIGITAL Command Language","DM","DNS Zone","Dockerfile","Dogescript",
+		"dosbatch","dosini","dpatch","DTrace","dtrace-script","Dylan","E","Eagle","eC","Ecere Projects","ECL","ECLiPSe",
+		"edn","Eiffel","elisp","Elixir","Elm","emacs","Emacs Lisp","EmberScript","erb","Erlang","F#","Factor","Fancy",
+		"Fantom","Filterscript","fish","flex","FLUX","Formatted","Forth","FORTRAN","foxpro","Frege","fsharp","fundamental",
+		"G-code","Game Maker Language","GAMS","GAP","GAS","GDScript","Genshi","Gentoo Ebuild","Gentoo Eclass",
+		"Gettext Catalog","gf","gherkin","GLSL","Glyph","Gnuplot","Go","Golo","Gosu","Grace","Gradle",
+		"Grammatical Framework","Graph Modeling Language","Graphviz (DOT)","Groff","Groovy","Groovy Server Pages","gsp",
+		"Hack","Haml","Handlebars","Harbour","Haskell","Haxe","hbs","HCL","HTML","HTML+Django","html+django/jinja",
+		"HTML+ERB","html+jinja","HTML+PHP","html+ruby","htmlbars","htmldjango","HTTP","Hy","hylang","HyPhy","i7","IDL",
+		"Idris","igor","IGOR Pro","igorpro","inc","Inform 7","inform7","INI","Inno Setup","Io","Ioke","irc","IRC log",
+		"irc logs","Isabelle","Isabelle ROOT","J","Jade","Jasmin","Java","java server page","Java Server Pages",
+		"JavaScript","JFlex","jruby","js","JSON","JSON5","JSONiq","JSONLD","jsp","JSX","Julia","KiCad","Kit","Kotlin",
+		"KRL","LabVIEW","Lasso","lassoscript","latex","Latte","Lean","Less","Lex","LFE","lhaskell","lhs","LilyPond",
+		"Limbo","Linker Script","Linux Kernel Module","Liquid","lisp","litcoffee","Literate Agda","Literate CoffeeScript",
+		"Literate Haskell","live-script","LiveScript","LLVM","Logos","Logtalk","LOLCODE","LookML","LoomScript","ls","LSL",
+		"Lua","M","macruby","make","Makefile","Mako","Markdown","Mask","Mathematica","Matlab","Maven POM","Max","max/msp",
+		"maxmsp","MediaWiki","Mercury","mf","MiniD","Mirah","mma","Modelica","Modula-2","Module Management System",
+		"Monkey","Moocode","MoonScript","MTML","MUF","mumps","mupad","Myghty","nasm","NCL","Nemerle","nesC","NetLinx",
+		"NetLinx+ERB","NetLogo","NewLisp","Nginx","nginx configuration file","Nimrod","Ninja","Nit","Nix","nixos","NL",
+		"node","nroff","NSIS","Nu","NumPy","nush","nvim","obj-c","obj-c++","obj-j","objc","objc++","ObjDump","Objective-C",
+		"Objective-C++","Objective-J","objectivec","objectivec++","objectivej","objectpascal","objj","OCaml","Omgrofl",
+		"ooc","Opa","Opal","OpenCL","openedge","OpenEdge ABL","OpenSCAD","Org","osascript","Ox","Oxygene","Oz","Pan",
+		"Papyrus","Parrot","Parrot Assembly","Parrot Internal Representation","Pascal","pasm","PAWN","Perl","Perl6","PHP",
+		"PicoLisp","PigLatin","Pike","pir","PLpgSQL","PLSQL","Pod","PogoScript","posh","postscr","PostScript","pot",
+		"PowerShell","Processing","progress","Prolog","Propeller Spin","protobuf","Protocol Buffer","Protocol Buffers",
+		"Public Key","Puppet","Pure Data","PureBasic","PureScript","pyrex","Python","Python traceback","QMake","QML","R",
+		"Racket","Ragel in Ruby Host","ragel-rb","ragel-ruby","rake","RAML","raw","Raw token data","rb","rbx","RDoc",
+		"REALbasic","Rebol","Red","red/system","Redcode","RenderScript","reStructuredText","RHTML","RMarkdown",
+		"RobotFramework","Rouge","Rscript","rss","rst","Ruby","Rust","rusthon","Sage","salt","SaltStack","saltstate",
+		"SAS","Sass","Scala","Scaml","Scheme","Scilab","SCSS","Self","sh","Shell","ShellSession","Shen","Slash","Slim",
+		"Smali","Smalltalk","Smarty","sml","SMT","sourcemod","SourcePawn","SPARQL","splus","SQF","SQL","SQLPL","squeak",
+		"Squirrel","Standard ML","Stata","STON","Stylus","SuperCollider","SVG","Swift","SystemVerilog","Tcl","Tcsh","Tea",
+		"TeX","Text","Textile","Thrift","TOML","ts","Turing","Turtle","Twig","TXL","TypeScript","udiff",
+		"Unified Parallel C","Unity3D Asset","UnrealScript","Vala","vb.net","vbnet","VCL","Verilog","VHDL","vim","VimL",
+		"Visual Basic","Volt","Vue","Web Ontology Language","WebIDL","winbatch","wisp","wsdl","X10","xBase","XC","xhtml",
+		"XML","xml+genshi","xml+kid","Xojo","XPages","XProc","XQuery","XS","xsd","xsl","XSLT","xten","Xtend","Yacc","YAML",
+		"yml","Zephir","Zimpl","zsh"];  // https://github.com/jerone/UserScripts/issues/18
+	var codeSyntaxes = [].concat(codeSyntaxTop, codeSyntaxList).filter(function (a, b, c) { return c.indexOf(a) === b; });
+
+	function addCodeSyntax(commentForm) {
+		var syntaxSuggestions = document.createElement("div");
+		syntaxSuggestions.dataset.filterableType = "substring";
+		syntaxSuggestions.dataset.filterableFor = "context-code-syntax-filter-field";
+		syntaxSuggestions.dataset.filterableLimit = codeSyntaxTop.length;  // Show top code syntaxes on open;
+
+		codeSyntaxes.forEach(function(syntax){
+			var syntaxSuggestion = document.createElement("a");
+			syntaxSuggestion.setAttribute("href", "#");
+			syntaxSuggestion.classList.add("function-button", "select-menu-item", "js-navigation-item");
+			syntaxSuggestion.dataset.value = syntax;
+			syntaxSuggestions.appendChild(syntaxSuggestion);
+			syntaxSuggestion.addEventListener("click", function(e) {
+				e.preventDefault();
+				executeAction(MarkDown["function-code-syntax"], commentForm, this);
+				return false;
+			});
+
+			var syntaxSuggestionText = document.createElement("span");
+			syntaxSuggestionText.classList.add("select-menu-item-text", "js-select-button-text");
+			syntaxSuggestionText.appendChild(document.createTextNode(syntax));
+			syntaxSuggestion.appendChild(syntaxSuggestionText);
+		});
+
+		var suggester = commentForm.parentNode.parentNode.querySelector(".code-syntaxes");
+		suggester.appendChild(syntaxSuggestions);
+	}
+
 	var suggestionsCache = {};
 
 	function addSuggestions(commentForm) {
@@ -602,6 +709,8 @@
 				}
 
 				addSuggestions(commentForm);
+
+				addCodeSyntax(commentForm);
 
 				var tabnavExtras = commentForm.parentNode.parentNode.querySelector(".comment-form-head .tabnav-right, .comment-form-head .right");
 				if (tabnavExtras) {
