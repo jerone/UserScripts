@@ -18,7 +18,7 @@ When reporting an issue include the script name in the title and follow the temp
 
 
 ## Bug fixes
-If you find any sort of error, spelling mistak, etc. in this project, feel free to fix it and submit a [pull request](https://github.com/jerone/UserScripts/pulls) with your commit. Little fixes like this are welcomed and are usually accepted pretty quickly.
+If you find any sort of error, spelling mistake, etc. in this project, feel free to fix it and submit a [pull request](https://github.com/jerone/UserScripts/pulls) with your commit. Little fixes like this are welcomed and are usually accepted pretty quickly.
 
 
 ## Feature requests
