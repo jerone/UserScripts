@@ -11,7 +11,7 @@
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Horizon_TV_Fixer/155147.user.js
 // @supportURL  https://github.com/jerone/UserScripts/issues
 // @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
-// @version     28
+// @version     29
 // @grant       none
 // @include     *horizon.tv*
 // ==/UserScript==
@@ -79,41 +79,41 @@
 				icon: "https://iptorrents.com/favicon.ico"
 			}
 		};
-	var _orion_modules_EPG_ListingsView_prototype_showDetails = unsafeWindow.orion.modules.EPG.ListingsView.prototype.showDetails; // https://www.horizon.tv/etc/designs/orion/upc/js/orion/modules/EPG/ListingsView.js?v=34
-	unsafeWindow.orion.modules.EPG.ListingsView.prototype.showDetails = function(imi) {
-		_orion_modules_EPG_ListingsView_prototype_showDetails.apply(this, arguments); // execute original code;
+	new MutationObserver(function(mutations) {
+		mutations.forEach(function(mutation) {
+			if (mutation.addedNodes.length > 0 && mutation.addedNodes[0].classList.contains("popover") && mutation.addedNodes[0].querySelector(".live-channel-popover")) {
+				var popup = mutation.addedNodes[0].querySelector(".live-channel-popover");
+				if (popup.classList.contains("socials-done")) return;
+				popup.classList.add("socials-done");
 
-		var $listing = unsafeWindow.$('.listing[data-listing-id="' + imi + '"]'),
-			$channel = $listing.closest('.channel-listing'),
-			station = $channel.get(0),
-			wrap = station.nextSibling;
-		if (wrap.classList.contains("done-social")) return; // ignore clicking multiple times on the same program;
-		wrap.classList.add("done-social");
-		var details = wrap.querySelector(".details"),
-			title = details.querySelector("h3").textContent,
-			subtitle = (details.querySelector("h4") || {
-				textContent: ""
-			}).textContent,
-			channel = details.querySelector(".channel-details").textContent.split(", ");
-		var messageDiv = document.createElement("div");
-		messageDiv.style.marginTop = "12px";
-		details.appendChild(messageDiv);
-		for (var key in socials) {
-			var social = socials[key],
-				socialA = document.createElement("a"),
-				socialImg = document.createElement("img"),
-				submit = social.submit(title, subtitle, channel[0], channel[1]);
-			messageDiv.appendChild(socialA);
-			socialA.appendChild(socialImg);
-			socialA.href = submit;
-			socialA.target = "_blank";
-			socialA.style.display = "inline-block";
-			socialA.style.margin = "2px 2px 0 2px";
-			socialImg.src = social.icon;
-			socialImg.style.height = socialImg.style.width = "16px";
-			socialImg.title = "[" + key + "] " + submit;
-		}
-	};
+				var title = popup.querySelector("h3").textContent.trim();
+				var subtitle = "";
+				var channel = popup.querySelector(".time-details").textContent.split(",")[0].trim();
+				var time = popup.querySelector(".time-details").textContent.split(",")[1].trim();
+
+				var socialsDiv = document.createElement("div");
+				socialsDiv.style.marginTop = "12px";
+				popup.appendChild(socialsDiv);
+				for (var key in socials) {
+					var social = socials[key],
+						socialA = document.createElement("a"),
+						socialImg = document.createElement("img"),
+						submit = social.submit(title, subtitle, channel, time);
+					socialsDiv.appendChild(socialA);
+					socialA.appendChild(socialImg);
+					socialA.href = submit;
+					socialA.target = "_blank";
+					socialA.style.display = "inline-block";
+					socialA.style.margin = "2px 2px 0 2px";
+					socialImg.src = social.icon;
+					socialImg.style.height = socialImg.style.width = "16px";
+					socialImg.title = "[" + key + "] " + submit;
+				}
+			}
+		});
+	}).observe(document.body, {
+		childList: true
+	});
 
 
 	/* Reload; */
@@ -122,157 +122,92 @@
 	}, 30 * 60 * 1000);
 
 
-	/* Tooltips; */
-	ForEachListing("tooltip", (listing) => {
-		listing.title = listing.querySelector(".title").textContent;
-	});
+	/* Load channels; */
+	/*window.setTimeout(() => {
+		window.scrollTo(0, 600);  // Scroll halve way first;
+		window.setTimeout(function(){ window.scrollTo(0, 1200); }, 1000);  // Scroll to channel x;
+		window.setTimeout(function(){ window.scrollTo(0, 1800); }, 2000);  // Scroll to channel x;
+		window.setTimeout(function(){ window.scrollTo(0, 0); }, 3000);  // Back home;
+	}, 1000);*/
 
 
 	/* Style fixes; */
 	addStyle(
-		/* removed white header; */
+		/* Crope header; */
 		"\
-		.servicenav.service {										\
-			display: none;											\
-		}															" +
+		.servicenav {										\
+			display: none !important;						\
+		}													\
+		.utility-wrapper {									\
+			padding-top: 0 !important;						\
+		}													\
+		a.logo {											\
+			height: 40px !important;						\
+		}													\
+		.nav-item {											\
+			padding: 0 !important;							\
+		}													\
+		.main-header.pinned {								\
+			top: 0 !important;								\
+		}													\
+		" +
 
-		/* cropped header; */
+		/* Crope filters; */
 		"\
-		.header-options {											\
-			margin-top: 0px !important;								\
-		}															\
-		.branding {													\
-			position: absolute;										\
-			top: -15px;												\
-		}															\
-		#modules {													\
-			padding-top: 0;											\
-		}															\
-		.channel-guide.module {										\
-			padding-top: 10px;										\
-		}															\
-		.channel-guide.module div.pinned {							\
-			top : 126px;											\
-			padding: 10px 0 0 0;									\
-		}															\
-		#channel-guide-head {										\
-			display: none;											\
-		}															\
-		.channel-guide .gids-panel .current-time:before {			\
-			top: -42px;												\
-		}															" +
+		#filters-placeholder {								\
+			padding-bottom: 3px !important;					\
+			padding-top: 3px !important;					\
+			height: auto !important;						\
+			min-height: auto !important;					\
+		}													\
+		.epg_header {										\
+			height: 80px !important;						\
+		}													\
+		.channel-guide-wrap {								\
+			margin-top: 80px !important;					\
+		}													\
+		" +
 
-		/* Move genre to navigation row; */
-		"\
-		.navigationbar {											\
-			position: relative;										\
-		}															\
-		.subnav-wrapper {											\
-			position: absolute;										\
-			left: 50%;												\
-			top: 0px;												\
-			margin-left: 350px;										\
-			text-align: right;										\
-			z-index: 8998;											\
-		}															\
-		.subnav {													\
-			width: auto;											\
-		}															" +
-
-		/* lower listings; */
-		"\
-		.channel-listing .listings,									\
-		.channel-listing .listings .listing,						\
-		.channel-listing .listings .listing.active,					\
-		.channel-listing .listings .listing .asset-details,			\
-		.channel-listing .listings .listing span.title {			\
-			height: auto;											\
-		}															\
-		.channel-listing .listings .listing .asset-details {		\
-			height: 24px;											\
-		}															\
-		.channel-listing .listings .listing .asset-details.short {	\
-			padding: 10px 0 0;										\
-		}															\
-		.network .logo-active {										\
-			height: auto;											\
-		}															\
-		.network .logo-active-image {								\
-			max-height: 29px;										\
-			transform: inherit;										\
-		}															" +
-
-		/* smaller font size in listing; */
-		"\
-		.channel-listing .listings .listing .title {				\
-			font-size: 12px;										\
-		}															" +
-
-		/* hide bottom bar; */
-		"\
-		.MyOrionBar  {												\
-			display: none;											\
-		}															" +
-
-		/* Current time indicator doesn't need an cursor; */
-		"\
-		.channel-guide .gids-panel .current-time {					\
-			cursor: initial;										\
-		}															" +
+		/* Crope channels; */
+		/*"\
+		.channel_line {										\
+			height: 40px !important;						\
+		}													\
+		.channel {											\
+			height: 40px !important;						\
+		}													\
+		.listing_link {										\
+			padding: 12px 6px !important;					\
+			position: relative;								\
+		}													\
+		" +*/
 
 		/* Replay notification; */
 		"\
-		.channel-listing .listings .listing .notifications {		\
-			margin-top: 0;											\
-			position: absolute;										\
-			right: 0;												\
-			top: 0;													\
-			opacity: 0.4;											\
-		}															\
-		.channel-listing .listings .listing:hover .notifications {	\
-			opacity: 1;												\
-		}															" +
+		.listing div.notifications {						\
+			margin-top: 0;									\
+			position: absolute;								\
+			right: 0;										\
+			top: 0;											\
+			opacity: 0.2;									\
+		}													\
+		.listing:hover div.notifications {					\
+			opacity: 1;										\
+		}													\
+		" +
 
 		/* Channel number; */
 		"\
-		.network .labels .channelNumber {							\
-			color: #ccc;											\
-		}															" +
-
-		/* Live indicator; */
-		"\
-		.channel-listing.live .network .labels .live-indicator {	\
-			opacity: 0.4;											\
-		}															" +
-		"");
+		.channelNumber {									\
+			color: #ccc !important;							\
+		}													\
+		");
 
 	function addStyle(css) {
-		var heads = document.getElementsByTagName("head");
-		if (heads.length > 0) {
-			var node = document.createElement("style");
-			node.type = "text/css";
-			node.appendChild(document.createTextNode(css));
-			heads[0].appendChild(node);
-		}
+		var node = document.createElement("style");
+		node.type = "text/css";
+		node.appendChild(document.createTextNode(css));
+		document.head.appendChild(node);
 	}
-
-	function PageLoad(done) {
-		if (unsafeWindow.$) {
-			//unsafeWindow.$(function(){console.log("events: ", unsafeWindow.$(".channel-guide").data("events") );});
-			unsafeWindow.$(".channel-guide").on("loaded", done); // only on-page jQuery can catch this event;
-		}
-	}
-
-	function ForEachListing(name, done) {
-		PageLoad(function() {
-			var listings = document.querySelectorAll(".listing:not(.done-" + name + ")"); // get all listings that don't have been processed yet;
-			Array.forEach(listings, (listing) => {
-				listing.classList.add("done-" + name); // mark element as done;
-				done(listing);
-			});
-		});
-	}
-
-	//unsafeWindow.orion.services.LinearDataService.getActiveListing(unsafeWindow.$(this).data('imi')).done(function(){console.log("test");});
 
 })();

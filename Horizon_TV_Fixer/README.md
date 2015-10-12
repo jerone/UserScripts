@@ -18,8 +18,7 @@ Improves the [Horizon TV Gids](https://www.horizon.tv/nl_nl/tv-gids.html) by ext
 * Add link to KijkWijzer (Dutch);
 * Add link to Uitzending Gemist (Dutch);
 * Add link to IPTorrents;
-* Smaller listings to fit more channels;
-* Remove redundand space;
+* Remove redundant space;
 * Reload page every 30 minutes;
 
 
@@ -39,8 +38,10 @@ This script doesn't work on browsers that don't implement [ES6 arrow functions](
 
 ## Version History
 
+* **29** (v1.1.96)
+    * Compatibility fixes for v1.1.96;
 * **28** (v1.1.92)
-    * Compatibily fixes for v1.1.92;
+    * Compatibility fixes for v1.1.92;
 * **27** (v1.1.91)
     * Add link to Trakt.tv;
 * **26** (v1.1.83)
@@ -48,12 +49,12 @@ This script doesn't work on browsers that don't implement [ES6 arrow functions](
     * Move genre to navigation row;
     * Current time indicator doesn't need an cursor;
 * **25** (v1.1.78)
-    * Compatibily fixes for v1.1.78;
+    * Compatibility fixes for v1.1.78;
 * **24** (v1.1.76)
-    * Compatibily fixes for v1.1.76;
+    * Compatibility fixes for v1.1.76;
     * Added 30 minutes reload back;
 * **23** (v1.1.74)
-    * Compatibily fixes for v1.1.74;
+    * Compatibility fixes for v1.1.74;
 * **22** (v1.1.72)
     * Fixed smaller font size;
     * Fixed smaller listings for .short listing;
@@ -67,9 +68,9 @@ This script doesn't work on browsers that don't implement [ES6 arrow functions](
 * **19** (v1.1.57)
     * Removed `GM_addStyle` as it gives errors in GreaseMonkey (not Scriptish);
 * **18** (v1.1.47)
-    * Compatibily fixes for v1.1.47;
+    * Compatibility fixes for v1.1.47;
 * **17** (v1.1.37)
-    * Compatibily fixes for v1.1.37;
+    * Compatibility fixes for v1.1.37;
 
 
 ## Notes
