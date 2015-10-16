@@ -30,6 +30,7 @@ Every comment field also got a toolbar, consisting of the following buttons:
 * Ordered List (<kbd>alt+ctrl+o</kbd>)
 * Task List (<kbd>alt+ctrl+t</kbd>)
 * Code (<kbd>ctrl+k</kbd>)
+    * Syntax highlighting
 * Quote (<kbd>ctrl+q</kbd>)
 * Horizontal Rule (<kbd>ctrl+r</kbd>)
 * Table (<kbd>alt+shift+t</kbd>)
@@ -59,6 +60,10 @@ Every comment field also got a toolbar, consisting of the following buttons:
 
 ## Version History
 
+* **2.6**
+    * Fixes wrong button styles in gists (fixes https://github.com/jerone/UserScripts/issues/78);
+    * Fixed modals showing below other elements;
+    * Added extra button with complete list of all code syntax (closes https://github.com/jerone/UserScripts/issues/18);
 * **2.5.1**
     * Fixed showing list of all emoji (fixes https://github.com/jerone/UserScripts/issues/75);
 * **2.5.0**
