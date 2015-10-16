@@ -313,7 +313,7 @@
 			'					</div>' +
 			'				</div>' +
 			'			</div>' +
-			'			<span class="btn btn-sm minibutton  select-menu-button js-menu-target" style="width:20px; margin-left:-1px;"></span>' +
+			'			<a href="#" class="btn btn-sm minibutton  select-menu-button js-menu-target" style="width:20px; margin-left:-1px;"></a>' +
 			'		</div>' +
 			'	</div>' +
 
