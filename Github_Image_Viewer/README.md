@@ -37,6 +37,8 @@ Supported file extensions are:
 
 ## Version History
 
+* **0.3.0**
+    * Removed tooltips;
 * **0.2.0**
     * Fixed hiding preview on some conditions (fixes #31);
 * **0.1.1**

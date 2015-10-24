@@ -12,7 +12,7 @@
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_Image_Viewer/Github_Image_Viewer.user.js
 // @supportURL  https://github.com/jerone/UserScripts/issues
 // @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
-// @version     0.2.0
+// @version     0.3.0
 // @grant       none
 // @run-at      document-end
 // @include     https://github.com/*
@@ -103,6 +103,11 @@
 				if (target.classList && target.classList.contains("js-directory-link")
 					&& GithubImageViewer._imageRegex.test(target.href)) {
 
+					if (target.getAttribute("title")) {
+						target.dataset.title = target.getAttribute("title");
+						target.removeAttribute("title");
+					}
+
 					if (GithubImageViewer._visible) {
 						GithubImageViewer.Show(e.pageX, e.pageY);
 					} else {
@@ -116,7 +121,7 @@
 								GithubImageViewer._imageUrl = href;
 								GithubImageViewer.SetImage(GithubImageViewer._imageUrl);
 
-								GithubImageViewer.SetTitle(target.getAttribute("title"));
+								GithubImageViewer.SetTitle(target.dataset.title);
 							}
 						}));
 					}
