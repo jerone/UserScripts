@@ -12,7 +12,7 @@
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_Image_Viewer/Github_Image_Viewer.user.js
 // @supportURL  https://github.com/jerone/UserScripts/issues
 // @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
-// @version     0.1.1
+// @version     0.2.0
 // @grant       none
 // @run-at      document-end
 // @include     https://github.com/*
@@ -121,14 +121,18 @@
 						}));
 					}
 				} else {
-					GithubImageViewer.ClearTimers();
-
-					GithubImageViewer.Hide();
-
-					GithubImageViewer._imageUrl = GithubImageViewer._loaderSrc;
-					GithubImageViewer.SetImage(GithubImageViewer._imageUrl);
-
-					GithubImageViewer.SetTitle("Loading...");
+					GithubImageViewer.Dispose();
+				}
+			});
+			document.body.addEventListener("click", function() {
+				GithubImageViewer.Dispose();
+			});
+			document.body.addEventListener("contextmenu", function() {
+				GithubImageViewer.Dispose();
+			});
+			document.body.addEventListener("keydown", function(e) {
+				if (e.keyCode === 27) {
+					GithubImageViewer.Dispose();
 				}
 			});
 		},
@@ -143,6 +147,17 @@
 			GithubImageViewer._visible = false;
 			GithubImageViewer._floater.style.left = "-1000px";
 			GithubImageViewer._floater.style.top = "-1000px";
+		},
+
+		Dispose: function() {
+			GithubImageViewer.ClearTimers();
+
+			GithubImageViewer.Hide();
+
+			GithubImageViewer._imageUrl = GithubImageViewer._loaderSrc;
+			GithubImageViewer.SetImage(GithubImageViewer._imageUrl);
+
+			GithubImageViewer.SetTitle("Loading...");
 		},
 
 		_timers: [],
