@@ -46,7 +46,7 @@
 
 		_imageUrl: null,
 		_loaderSrc: "https://assets-cdn.github.com/images/spinners/octocat-spinner-32.gif",
-		_imageRegex: /(.jpe?g|.png|.gif|.ico|.tiff?)$/,
+		_imageRegex: /.+(\.jpe?g|\.png|\.gif|\.ico|\.tiff?)$/i,
 
 		Initialize: function() {
 			var floater = GithubImageViewer._floater = document.createElement("div");
