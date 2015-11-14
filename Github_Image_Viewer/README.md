@@ -16,6 +16,7 @@ Supported file extensions are:
 * `.jpeg`
 * `.png`
 * `.gif`
+* `.bmp`
 * `.ico`
 * `.tif`
 * `.tiff`
@@ -37,10 +38,14 @@ Supported file extensions are:
 
 ## Version History
 
+* **0.4.0**
+    * Added Bitmap `.bmp` support (closes https://github.com/jerone/UserScripts/issues/82);
+    * Detect upper-case extensions (fixes https://github.com/jerone/UserScripts/issues/82);
+    * Images should now have a name, temping to exclude folder named as image extensions (fixes https://github.com/jerone/UserScripts/issues/82);
 * **0.3.0**
     * Removed tooltips;
 * **0.2.0**
-    * Fixed hiding preview on some conditions (fixes #31);
+    * Fixed hiding preview on some conditions (fixes https://github.com/jerone/UserScripts/issues/31);
 * **0.1.1**
     * Small z-index fix;
 * **0.1.0**
