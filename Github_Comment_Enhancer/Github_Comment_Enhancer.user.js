@@ -213,7 +213,7 @@
 
 			"emoji": {
 				exec: function(button, selText, commentForm, next) {
-					next(":" + button.dataset.value + ":");
+					next(button.dataset.value);
 				}
 			}
 		};
