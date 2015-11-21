@@ -39,7 +39,7 @@ Every comment field also got a toolbar, consisting of the following buttons:
     * UserAgent
     * Contributing message
 * Emoji
-* Clear comment field (<kbd>alt+ctrl+x</kbd>)
+* Clear comment field content (<kbd>alt+ctrl+x</kbd>)
 
 
 ## Screenshot
@@ -60,7 +60,11 @@ Every comment field also got a toolbar, consisting of the following buttons:
 
 ## Version History
 
-* **2.6**
+* **2.7.0**
+    * Fixed Github's name completion (fixes https://github.com/jerone/UserScripts/issues/81);
+    * Restored using enter key on dropdown menus.
+    * Fixed emoji text.
+* **2.6.0**
     * Fixes wrong button styles in gists (fixes https://github.com/jerone/UserScripts/issues/78);
     * Fixed modals showing below other elements;
     * Added extra button with complete list of all code syntax (closes https://github.com/jerone/UserScripts/issues/18);
