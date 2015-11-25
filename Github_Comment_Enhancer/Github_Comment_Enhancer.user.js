@@ -6,8 +6,8 @@
 // @author      jerone
 // @copyright   2014+, jerone (http://jeroenvanwarmerdam.nl)
 // @license     GNU GPLv3
-// @homepage    https://github.com/jerone/UserScripts/tree/master/Github_Comment_Enhancer
-// @homepageURL https://github.com/jerone/UserScripts/tree/master/Github_Comment_Enhancer
+// @homepage    https://github.com/jerone/UserScripts/tree/master/Github_Comment_Enhancer#readme
+// @homepageURL https://github.com/jerone/UserScripts/tree/master/Github_Comment_Enhancer#readme
 // @downloadURL https://github.com/jerone/UserScripts/raw/master/Github_Comment_Enhancer/Github_Comment_Enhancer.user.js
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_Comment_Enhancer/Github_Comment_Enhancer.user.js
 // @supportURL  https://github.com/jerone/UserScripts/issues
