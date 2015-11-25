@@ -518,7 +518,7 @@
 	}
 
 	var buttonEvent = function(e) {
-		if (!this.classList.contains("function-dummy")) {
+		if (!this.classList.contains("disabled") && !this.classList.contains("function-dummy")) {
 			e.preventDefault();
 			executeAction(MarkDown[this.id], this.commentForm, this);
 			return false;
