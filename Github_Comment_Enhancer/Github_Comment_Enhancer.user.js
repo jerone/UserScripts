@@ -100,11 +100,29 @@
 				exec: function(button, selText, commentForm, next) {
 					var selTxt = selText.trim(),
 						isUrl = selTxt && /(?:https?:\/\/)|(?:www\.)/.test(selTxt),
-						href = window.prompt("Link href:", isUrl ? selTxt : ""),
-						text = window.prompt("Link text:", isUrl ? "" : selTxt);
-					if (href) {
-						next(String.format("[{0}]({1}){2}", text || href, href, (/\s+$/.test(selText) ? " " : "")));
-					}
+						text = isUrl ? "" : selTxt,
+						href = isUrl ? selTxt : "";
+					unsafeWindow.$.GollumDialog.init({
+						title: "Insert Link",
+						fields: [{
+							id: "text",
+							name: "Link Text",
+							type: "text",
+							value: text
+						}, {
+							id: "href",
+							name: "URL",
+							type: "text",
+							value: href
+						}],
+						OK: function(t) {
+							if (t.href) {
+								next(String.format("[{0}]({1}){2}",
+									t.text || t.href,
+									t.href, (/\s+$/.test(selText) ? " " : "")));
+							}
+						}
+					});
 				},
 				shortcut: "ctrl+l"
 			},
@@ -112,11 +130,29 @@
 				exec: function(button, selText, commentForm, next) {
 					var selTxt = selText.trim(),
 						isUrl = selTxt && /(?:https?:\/\/)|(?:www\.)/.test(selTxt),
-						href = window.prompt("Image href:", isUrl ? selTxt : ""),
-						text = window.prompt("Image text:", isUrl ? "" : selTxt);
-					if (href) {
-						next(String.format("![{0}]({1}){2}", text || href, href, (/\s+$/.test(selText) ? " " : "")));
-					}
+						url = isUrl ? selTxt : "",
+						alt = isUrl ? "" : selTxt;
+					unsafeWindow.$.GollumDialog.init({
+						title: "Insert Image",
+						fields: [{
+							id: "url",
+							name: "Image URL",
+							type: "text",
+							value: url
+						}, {
+							id: "alt",
+							name: "Alt Text",
+							type: "text",
+							value: alt
+						}],
+						OK: function(t) {
+							if (t.url) {
+								next(String.format("![{0}]({1}){2}",
+									t.alt || t.url,
+									t.url, (/\s+$/.test(selText) ? " " : "")));
+							}
+						}
+					});
 				},
 				shortcut: "ctrl+g"
 			},
@@ -806,6 +842,139 @@
 		});
 	}
 
+	function overrideGollumDialog() {
+		if (unsafeWindow.$.GollumDialog === undefined) {
+			(function(e) {
+				var t = {
+					markupCreated: !1,
+					markup: "",
+					attachEvents: function(o) {
+						e("#gollum-dialog-action-ok").click(function(e) {
+								t.eventOK(e, o)
+							}),
+							e("#gollum-dialog-action-cancel").click(t.eventCancel),
+							e('#gollum-dialog-dialog input[type="text"]').keydown(function(e) {
+								13 == e.keyCode && t.eventOK(e, o)
+							})
+					},
+					detachEvents: function() {
+						e("#gollum-dialog-action-ok").unbind("click"),
+							e("#gollum-dialog-action-cancel").unbind("click")
+					},
+					createFieldMarkup: function(e) {
+						for (var o = "<fieldset>", n = 0; n < e.length; n++)
+							if ("object" == typeof e[n]) {
+								switch (o += '<div class="field">',
+									e[n].type) {
+									case "text":
+										o += t.createFieldText(e[n])
+								}
+								o += "</div>"
+							}
+						return o += "</fieldset>"
+					},
+					createFieldText: function(e) {
+						var t = "";
+						return e.name && (t += "<label",
+								e.id && (t += ' for="' + e.name + '"'),
+								t += ">" + e.name + "</label>"),
+							t += '<input type="text"',
+							e.id && (t += ' name="' + e.id + '"',
+								"code" == e.type && (t += ' class="code"'),
+								e.value && (t += ' value="' + e.value + '"'),
+								t += ' id="gollum-dialog-dialog-generated-field-' + e.id + '">'),
+							t
+					},
+					createMarkup: function(o, n) {
+						return t.markupCreated = !0,
+							e.facebox ? '<div id="gollum-dialog-dialog"><div id="gollum-dialog-dialog-title"><h4>' + o + '</h4></div><div id="gollum-dialog-dialog-body">' + n + '</div><div id="gollum-dialog-dialog-buttons"><a href="#" title="Cancel" id="gollum-dialog-action-cancel" class="gollum-minibutton">Cancel</a><a href="#" title="OK" id="gollum-dialog-action-ok" class="gollum-minibutton">OK</a></div></div>' : '<div id="gollum-dialog-dialog"><div id="gollum-dialog-dialog-inner"><div id="gollum-dialog-dialog-bg"><div id="gollum-dialog-dialog-title"><h4>' + o + '</h4></div><div id="gollum-dialog-dialog-body">' + n + '</div><div id="gollum-dialog-dialog-buttons"><a href="#" title="Cancel" id="gollum-dialog-action-cancel" class="minibutton">Cancel</a><a href="#" title="OK" id="gollum-dialog-action-ok" class="minibutton">OK</a></div></div></div></div>'
+					},
+					eventCancel: function(e) {
+						e.preventDefault(),
+							t.hide()
+					},
+					eventOK: function(o, n) {
+						o.preventDefault();
+						var a = [];
+						e("#gollum-dialog-dialog-body input").each(function() {
+								a[e(this).attr("name")] = e(this).val()
+							}),
+							n && "function" == typeof n && n(a),
+							t.hide()
+					},
+					hide: function() {
+						e.facebox ? (t.markupCreated = !1,
+							e(document).trigger("close.facebox"),
+							t.detachEvents()) : e.browser.msie ? (e("#gollum-dialog-dialog").hide().removeClass("active"),
+							e("select").css("visibility", "visible")) : e("#gollum-dialog-dialog").animate({
+							opacity: 0
+						}, {
+							duration: 200,
+							complete: function() {
+								e("#gollum-dialog-dialog").removeClass("active")
+							}
+						})
+					},
+					init: function(o) {
+						var n = "",
+							a = "";
+						o && "object" == typeof o && (o.body && "string" == typeof o.body && (a = "<p>" + o.body + "</p>"),
+							o.fields && "object" == typeof o.fields && (a += t.createFieldMarkup(o.fields)),
+							o.title && "string" == typeof o.title && (n = o.title),
+							t.markupCreated && (e.facebox ? e(document).trigger("close.facebox") : e("#gollum-dialog-dialog").remove()),
+							t.markup = t.createMarkup(n, a),
+							e.facebox ? e(document).bind("reveal.facebox", function() {
+								o.OK && "function" == typeof o.OK && (t.attachEvents(o.OK),
+									e(e('#facebox input[type="text"]').get(0)).focus())
+							}) : (e("body").append(t.markup),
+								o.OK && "function" == typeof o.OK && t.attachEvents(o.OK)),
+							t.show())
+					},
+					show: function() {
+						t.markupCreated && (e.facebox ? e.facebox(t.markup) : e.browser.msie ? (e("#gollum-dialog.dialog").addClass("active"),
+							t.position(),
+							e("select").css("visibility", "hidden")) : (e("#gollum-dialog.dialog").css("display", "none"),
+							e("#gollum-dialog-dialog").animate({
+								opacity: 0
+							}, {
+								duration: 0,
+								complete: function() {
+									e("#gollum-dialog-dialog").css("display", "block"),
+										t.position(),
+										e("#gollum-dialog-dialog").animate({
+											opacity: 1
+										}, {
+											duration: 500
+										})
+								}
+							})))
+					},
+					position: function() {
+						var t = e("#gollum-dialog-dialog-inner").height();
+						e("#gollum-dialog-dialog-inner").css("height", t + "px").css("margin-top", -1 * parseInt(t / 2))
+					}
+				};
+				e.facebox && e(document).bind("reveal.facebox", function() {
+						e("#facebox img.close_image").remove()
+					}),
+					e.GollumDialog = t
+			})(unsafeWindow.$)
+		} else {
+			unsafeWindow.$.GollumEditor.Dialog.createFieldText = unsafeWindow.$.GollumDialog.createFieldText = function(e) {
+				var t = "";
+				return e.name && (t += "<label",
+						e.id && (t += ' for="' + e.name + '"'),
+						t += ">" + e.name + "</label>"),
+					t += '<input type="text"',
+					e.value && (t += ' value="' + e.value + '"'),
+					e.id && (t += ' name="' + e.id + '"',
+						"code" == e.type && (t += ' class="code"'),
+						t += ' id="gollum-dialog-dialog-generated-field-' + e.id + '">'),
+					t
+			};
+		}
+	}
+
 	/*
 	 * to-markdown - an HTML to Markdown converter
 	 * Copyright 2011, Dom Christie
@@ -1072,6 +1241,7 @@
 		addToolbar();
 		addReplyButtons();
 	}
+	overrideGollumDialog();
 	init();
 
 	// on pjax;
