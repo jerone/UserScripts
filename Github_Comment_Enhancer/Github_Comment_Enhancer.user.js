@@ -6,13 +6,13 @@
 // @author      jerone
 // @copyright   2014+, jerone (http://jeroenvanwarmerdam.nl)
 // @license     GNU GPLv3
-// @homepage    https://github.com/jerone/UserScripts/tree/master/Github_Comment_Enhancer
-// @homepageURL https://github.com/jerone/UserScripts/tree/master/Github_Comment_Enhancer
+// @homepage    https://github.com/jerone/UserScripts/tree/master/Github_Comment_Enhancer#readme
+// @homepageURL https://github.com/jerone/UserScripts/tree/master/Github_Comment_Enhancer#readme
 // @downloadURL https://github.com/jerone/UserScripts/raw/master/Github_Comment_Enhancer/Github_Comment_Enhancer.user.js
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_Comment_Enhancer/Github_Comment_Enhancer.user.js
 // @supportURL  https://github.com/jerone/UserScripts/issues
 // @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
-// @version     2.7.0
+// @version     2.8.0
 // @grant       none
 // @run-at      document-end
 // @include     https://github.com/*
@@ -38,7 +38,7 @@
 	// Source: https://github.com/gollum/gollum/blob/9c714e768748db4560bc017cacef4afa0c751a63/lib/gollum/public/gollum/javascript/editor/langs/markdown.js
 	var MarkDown = (function MarkDown() {
 		return {
-			"bold": {
+			"function-bold": {
 				search: /^(\s*)([\s\S]*?)(\s*)$/g,
 				replace: "$1**$2**$3",
 				shortcut: "ctrl+b"
@@ -48,86 +48,122 @@
 				replace: "$1_$2_$3",
 				shortcut: "ctrl+i"
 			},
-			"underline": {
+			"function-underline": {
 				search: /^(\s*)([\s\S]*?)(\s*)$/g,
 				replace: "$1<ins>$2</ins>$3",
 				shortcut: "ctrl+u"
 			},
-			"strikethrough": {
+			"function-strikethrough": {
 				search: /^(\s*)([\s\S]*?)(\s*)$/g,
 				replace: "$1~~$2~~$3",
 				shortcut: "ctrl+s"
 			},
 
-			"h1": {
+			"function-h1": {
 				search: /(.+)([\n]?)/g,
 				replace: "# $1$2",
 				forceNewline: true,
 				shortcut: "ctrl+1"
 			},
-			"h2": {
+			"function-h2": {
 				search: /(.+)([\n]?)/g,
 				replace: "## $1$2",
 				forceNewline: true,
 				shortcut: "ctrl+2"
 			},
-			"h3": {
+			"function-h3": {
 				search: /(.+)([\n]?)/g,
 				replace: "### $1$2",
 				forceNewline: true,
 				shortcut: "ctrl+3"
 			},
-			"h4": {
+			"function-h4": {
 				search: /(.+)([\n]?)/g,
 				replace: "#### $1$2",
 				forceNewline: true,
 				shortcut: "ctrl+4"
 			},
-			"h5": {
+			"function-h5": {
 				search: /(.+)([\n]?)/g,
 				replace: "##### $1$2",
 				forceNewline: true,
 				shortcut: "ctrl+5"
 			},
-			"h6": {
+			"function-h6": {
 				search: /(.+)([\n]?)/g,
 				replace: "###### $1$2",
 				forceNewline: true,
 				shortcut: "ctrl+6"
 			},
 
-			"link": {
+			"function-link": {
 				exec: function(button, selText, commentForm, next) {
 					var selTxt = selText.trim(),
 						isUrl = selTxt && /(?:https?:\/\/)|(?:www\.)/.test(selTxt),
-						href = window.prompt("Link href:", isUrl ? selTxt : ""),
-						text = window.prompt("Link text:", isUrl ? "" : selTxt);
-					if (href) {
-						next(String.format("[{0}]({1}){2}", text || href, href, (/\s+$/.test(selText) ? " " : "")));
-					}
+						text = isUrl ? "" : selTxt,
+						href = isUrl ? selTxt : "";
+					unsafeWindow.$.GollumDialog.init({
+						title: "Insert Link",
+						fields: [{
+							id: "text",
+							name: "Link Text",
+							type: "text",
+							value: text
+						}, {
+							id: "href",
+							name: "URL",
+							type: "text",
+							value: href
+						}],
+						OK: function(t) {
+							if (t.href) {
+								next(String.format("[{0}]({1}){2}",
+									t.text || t.href,
+									t.href, (/\s+$/.test(selText) ? " " : "")));
+							}
+						}
+					});
 				},
 				shortcut: "ctrl+l"
 			},
-			"image": {
+			"function-image": {
 				exec: function(button, selText, commentForm, next) {
 					var selTxt = selText.trim(),
 						isUrl = selTxt && /(?:https?:\/\/)|(?:www\.)/.test(selTxt),
-						href = window.prompt("Image href:", isUrl ? selTxt : ""),
-						text = window.prompt("Image text:", isUrl ? "" : selTxt);
-					if (href) {
-						next(String.format("![{0}]({1}){2}", text || href, href, (/\s+$/.test(selText) ? " " : "")));
-					}
+						url = isUrl ? selTxt : "",
+						alt = isUrl ? "" : selTxt;
+					unsafeWindow.$.GollumDialog.init({
+						title: "Insert Image",
+						fields: [{
+							id: "url",
+							name: "Image URL",
+							type: "text",
+							value: url
+						}, {
+							id: "alt",
+							name: "Alt Text",
+							type: "text",
+							value: alt
+						}],
+						OK: function(t) {
+							if (t.url) {
+								next(String.format("![{0}]({1}){2}",
+									t.alt || t.url,
+									t.url, (/\s+$/.test(selText) ? " " : "")));
+							}
+						}
+					});
 				},
 				shortcut: "ctrl+g"
 			},
 
-			"ul": {
+			"function-ul": {
 				search: /(.+)([\n]?)/g,
 				replace: String.format("{0} $1$2", listCharacter),
 				forceNewline: true,
 				shortcut: "alt+ctrl+u"
 			},
-			"ol": {
+			"function-ol": {
 				exec: function(button, selText, commentForm, next) {
 					var repText = "";
 					if (!selText) {
@@ -145,39 +181,39 @@
 				},
 				shortcut: "alt+ctrl+o"
 			},
-			"checklist": {
+			"function-checklist": {
 				search: /(.+)([\n]?)/g,
 				replace: String.format("{0} [ ] $1$2", listCharacter),
 				forceNewline: true,
 				shortcut: "alt+ctrl+t"
 			},
 
-			"code": {
+			"function-code": {
 				exec: function(button, selText, commentForm, next) {
 					var rt = selText.indexOf("\n") > -1 ? "$1\n```\n$2\n```$3" : "$1`$2`$3";
 					next(selText.replace(/^(\s*)([\s\S]*?)(\s*)$/g, rt));
 				},
 				shortcut: "ctrl+k"
 			},
-			"code-syntax": {
+			"function-code-syntax": {
 				exec: function(button, selText, commentForm, next) {
 					var rt = "$1\n```" + button.dataset.value + "\n$2\n```$3";
 					next(selText.replace(/^(\s*)([\s\S]*?)(\s*)$/g, rt));
 				}
 			},
 
-			"blockquote": {
+			"function-blockquote": {
 				search: /(.+)([\n]?)/g,
 				replace: "> $1$2",
 				forceNewline: true,
 				shortcut: "ctrl+q"
 			},
-			"rule": {
+			"function-rule": {
 				append: String.format("\n{0}\n", lineCharacter),
 				forceNewline: true,
 				shortcut: "ctrl+r"
 			},
-			"table": {
+			"function-table": {
 				append: "\n" +
 					"| Head | Head   | Head  |\n" +
 					"| :--- | :----: | ----: |\n" +
@@ -187,7 +223,7 @@
 				shortcut: "alt+shift+t"
 			},
 
-			"clear": {
+			"function-clear": {
 				exec: function(button, selText, commentForm, next) {
 					commentForm.value = "";
 					next("");
@@ -195,23 +231,23 @@
 				shortcut: "alt+ctrl+x"
 			},
 
-			"snippets-tab": {
+			"function-snippets-tab": {
 				exec: function(button, selText, commentForm, next) {
 					next("\t");
 				}
 			},
-			"snippets-useragent": {
+			"function-snippets-useragent": {
 				exec: function(button, selText, commentForm, next) {
 					next("`" + navigator.userAgent + "`");
 				}
 			},
-			"snippets-contributing": {
+			"function-snippets-contributing": {
 				exec: function(button, selText, commentForm, next) {
 					next("Please, always consider reviewing the [guidelines for contributing](../blob/master/CONTRIBUTING.md) to this repository.");
 				}
 			},
 
-			"emoji": {
+			"function-emoji": {
 				exec: function(button, selText, commentForm, next) {
 					next(button.dataset.value);
 				}
@@ -219,186 +255,198 @@
 		};
 	})();
 
-	var editorHTML = (function editorHTML() {
-		return '<div id="gollum-editor-function-buttons" style="float: left;">' +
-			'	<div class="button-group btn-group">' +
-			'		<a href="#" data-function="bold" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Bold (ctrl+b)">' +
-			'			<b style="font-weight: bolder;">B</b>' +
-			'		</a>' +
-			'		<a href="#" data-function="italic" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Italic (ctrl+i)">' +
-			'			<em>i</em>' +
-			'		</a>' +
-			'		<a href="#" data-function="underline" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Underline (ctrl+u)">' +
-			'			<ins>U</ins>' +
-			'		</a>' +
-			'		<a href="#" data-function="strikethrough" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Strikethrough (ctrl+s)">' +
-			'			<s>S</s>' +
-			'		</a>' +
-			'	</div>' +
+	var toolBarLeftHTML =
+		'<div id="gollum-editor-function-buttons" style="float: left;">' +
 
-			'	<div class="button-group btn-group">' +
-			'		<div class="select-menu js-menu-container js-select-menu tooltipped tooltipped-ne" aria-label="Headers">' +
-			'			<span class="btn btn-sm minibutton select-menu-button icon-only js-menu-target" aria-label="Headers" style="padding-left:7px; padding-right:7px; width:auto; border-bottom-right-radius:3px; border-top-right-radius:3px;">' +
-			'		<span class="js-select-button">h#</span>' +
-			'			</span>' +
-			'			<div class="select-menu-modal-holder js-menu-content js-navigation-container" style="top:26px; z-index:22;">' +
-			'				<div class="select-menu-modal" style="width:auto; overflow:visible;">' +
-			'					<div class="select-menu-header">' +
-			'						<span class="select-menu-title">Choose header</span>' +
-			'						<span class="octicon octicon-remove-close js-menu-close"></span>' +
-			'					</div>' +
-			'					<div class="button-group btn-group" style="min-width:175px;">' +
-			'						<a href="#" data-function="h1" class="btn btn-sm minibutton function-button js-navigation-item js-menu-close tooltipped tooltipped-s" aria-label="Header 1 (ctrl+1)">' +
-			'							<b class="select-menu-item-text js-select-button-text">h1</b>' +
-			'						</a>' +
-			'						<a href="#" data-function="h2" class="btn btn-sm minibutton function-button js-navigation-item js-menu-close tooltipped tooltipped-s" aria-label="Header 2 (ctrl+2)">' +
-			'							<b class="select-menu-item-text js-select-button-text">h2</b>' +
-			'						</a>' +
-			'						<a href="#" data-function="h3" class="btn btn-sm minibutton function-button js-navigation-item js-menu-close tooltipped tooltipped-s" aria-label="Header 3 (ctrl+3)">' +
-			'							<b class="select-menu-item-text js-select-button-text">h3</b>' +
-			'						</a>' +
-			'						<a href="#" data-function="h4" class="btn btn-sm minibutton function-button js-navigation-item js-menu-close tooltipped tooltipped-s" aria-label="Header 4 (ctrl+4)">' +
-			'							<b class="select-menu-item-text js-select-button-text">h4</b>' +
-			'						</a>' +
-			'						<a href="#" data-function="h5" class="btn btn-sm minibutton function-button js-navigation-item js-menu-close tooltipped tooltipped-s" aria-label="Header 5 (ctrl+5)">' +
-			'							<b class="select-menu-item-text js-select-button-text">h5</b>' +
-			'						</a>' +
-			'						<a href="#" data-function="h6" class="btn btn-sm minibutton function-button js-navigation-item js-menu-close tooltipped tooltipped-s" aria-label="Header 6 (ctrl+6)">' +
-			'							<b class="select-menu-item-text js-select-button-text">h6</b>' +
-			'						</a>' +
-			'					</div>' +
-			'				</div>' +
-			'			</div>' +
-			'		</div>' +
-			'	</div>' +
+		/* Bold, italic, underline & Strikethrough; */
+		'	<div class="button-group btn-group">' +
+		'		<a href="#" id="function-bold" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Bold (ctrl+b)">' +
+		'			<b style="font-weight: bolder;">B</b>' +
+		'		</a>' +
+		'		<a href="#" id="function-italic" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Italic (ctrl+i)">' +
+		'			<em>i</em>' +
+		'		</a>' +
+		'		<a href="#" id="function-underline" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Underline (ctrl+u)">' +
+		'			<ins>U</ins>' +
+		'		</a>' +
+		'		<a href="#" id="function-strikethrough" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Strikethrough (ctrl+s)">' +
+		'			<s>S</s>' +
+		'		</a>' +
+		'	</div>' +
 
-			'	<div class="button-group btn-group">' +
-			'		<a href="#" data-function="link" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Link (ctrl+l)">' +
-			'			<span class="octicon octicon-link"></span>' +
-			'		</a>' +
-			'		<a href="#" data-function="image" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Image (ctrl+g)">' +
-			'			<span class="octicon octicon-file-media"></span>' +
-			'		</a>' +
-			'	</div>' +
-			'	<div class="button-group btn-group">' +
-			'		<a href="#" data-function="ul" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Unordered List (alt+ctrl+u)">' +
-			'			<span class="octicon octicon-list-unordered"></span>' +
-			'		</a>' +
-			'		<a href="#" data-function="ol" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Ordered List (alt+ctrl+o)">' +
-			'			<span class="octicon octicon-list-ordered"></span>' +
-			'		</a>' +
-			'		<a href="#" data-function="checklist" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Task List (alt+ctrl+t)">' +
-			'			<span class="octicon octicon-checklist"></span>' +
-			'		</a>' +
-			'	</div>' +
+		/* Headers (1 - 6); */
+		'	<div class="button-group btn-group">' +
+		'		<div class="select-menu js-menu-container js-select-menu tooltipped tooltipped-ne" aria-label="Headers">' +
+		'			<a id="function-h1" class="btn btn-sm minibutton select-menu-button icon-only js-menu-target  function-button function-dummy" aria-label="Headers" style="padding-left:7px; padding-right:7px; width:auto; border-bottom-right-radius:3px; border-top-right-radius:3px;">' +
+		'				<span class="js-select-button">h#</span>' +
+		'			</a>' +
+		'			<div class="select-menu-modal-holder js-menu-content js-navigation-container" style="top:26px; z-index:22;">' +
+		'				<div class="select-menu-modal" style="width:auto; overflow:visible;">' +
+		'					<div class="select-menu-header">' +
+		'						<span class="select-menu-title">Choose header</span>' +
+		'						<span class="octicon octicon-remove-close js-menu-close"></span>' +
+		'					</div>' +
+		'					<div class="button-group btn-group" style="min-width:175px;">' +
+		'						<a href="#" id="function-h1" class="btn btn-sm minibutton function-button js-navigation-item js-menu-close tooltipped tooltipped-s" aria-label="Header 1 (ctrl+1)">' +
+		'							<b class="select-menu-item-text js-select-button-text">h1</b>' +
+		'						</a>' +
+		'						<a href="#" id="function-h2" class="btn btn-sm minibutton function-button js-navigation-item js-menu-close tooltipped tooltipped-s" aria-label="Header 2 (ctrl+2)">' +
+		'							<b class="select-menu-item-text js-select-button-text">h2</b>' +
+		'						</a>' +
+		'						<a href="#" id="function-h3" class="btn btn-sm minibutton function-button js-navigation-item js-menu-close tooltipped tooltipped-s" aria-label="Header 3 (ctrl+3)">' +
+		'							<b class="select-menu-item-text js-select-button-text">h3</b>' +
+		'						</a>' +
+		'						<a href="#" id="function-h4" class="btn btn-sm minibutton function-button js-navigation-item js-menu-close tooltipped tooltipped-s" aria-label="Header 4 (ctrl+4)">' +
+		'							<b class="select-menu-item-text js-select-button-text">h4</b>' +
+		'						</a>' +
+		'						<a href="#" id="function-h5" class="btn btn-sm minibutton function-button js-navigation-item js-menu-close tooltipped tooltipped-s" aria-label="Header 5 (ctrl+5)">' +
+		'							<b class="select-menu-item-text js-select-button-text">h5</b>' +
+		'						</a>' +
+		'						<a href="#" id="function-h6" class="btn btn-sm minibutton function-button js-navigation-item js-menu-close tooltipped tooltipped-s" aria-label="Header 6 (ctrl+6)">' +
+		'							<b class="select-menu-item-text js-select-button-text">h6</b>' +
+		'						</a>' +
+		'					</div>' +
+		'				</div>' +
+		'			</div>' +
+		'		</div>' +
+		'	</div>' +
 
-			'	<div class="button-group btn-group">' +
-			'		<div class="select-menu js-menu-container js-select-menu  tooltipped tooltipped-ne" aria-label="Code (ctrl+k)">' +
-			'			<a href="#" data-function="code" class="btn btn-sm minibutton  function-button">' +
-			'				<span class="octicon octicon-code"></span>' +
-			'			</a>' +
-			'			<div class="select-menu-modal-holder js-menu-content js-navigation-container" style="top:26px; z-index:22;">' +
-			'				<div class="select-menu-modal" style="overflow:visible;">' +
-			'					<div class="select-menu-header">' +
-			'						<span class="select-menu-title">Code syntax</span>' +
-			'						<span class="octicon octicon-remove-close js-menu-close"></span>' +
-			'					</div>' +
-			'					<div class="select-menu-filters">' +
-			'						<div class="select-menu-text-filter">' +
-			'							<input type="text" placeholder="Filter code syntax..." class="js-filterable-field js-navigation-enable" id="context-code-syntax-filter-field">' +
-			'						</div>' +
-			'					</div>' +
-			'					<div class="code-syntaxes select-menu-list" style="overflow:visible;">' +
-			'						<div class="select-menu-no-results">Nothing to show</div>' +
-			'					</div>' +
-			'				</div>' +
-			'			</div>' +
-			'			<a href="#" class="btn btn-sm minibutton  select-menu-button js-menu-target" style="width:20px; margin-left:-1px;"></a>' +
-			'		</div>' +
-			'	</div>' +
+		/* Link & image; */
+		'	<div class="button-group btn-group">' +
+		'		<a href="#" id="function-link" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Link (ctrl+l)">' +
+		'			<span class="octicon octicon-link"></span>' +
+		'		</a>' +
+		'		<a href="#" id="function-image" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Image (ctrl+g)">' +
+		'			<span class="octicon octicon-file-media"></span>' +
+		'		</a>' +
+		'	</div>' +
 
-			'	<div class="button-group btn-group">' +
-			'		<a href="#" data-function="blockquote" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Blockquote (ctrl+q)">' +
-			'			<span class="octicon octicon-quote"></span>' +
-			'		</a>' +
-			'		<a href="#" data-function="rule" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Horizontal Rule (ctrl+r)">' +
-			'			<span class="octicon octicon-horizontal-rule"></span>' +
-			'		</a>' +
-			'		<a href="#" data-function="table" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Table (alt+shift+t)">' +
-			'			<span class="octicon octicon-three-bars"></span>' +
-			'		</a>' +
-			'	</div>' +
+		/* Lists (unordered, ordered & task); */
+		'	<div class="button-group btn-group">' +
+		'		<a href="#" id="function-ul" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Unordered List (alt+ctrl+u)">' +
+		'			<span class="octicon octicon-list-unordered"></span>' +
+		'		</a>' +
+		'		<a href="#" id="function-ol" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Ordered List (alt+ctrl+o)">' +
+		'			<span class="octicon octicon-list-ordered"></span>' +
+		'		</a>' +
+		'		<a href="#" id="function-checklist" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Task List (alt+ctrl+t)">' +
+		'			<span class="octicon octicon-checklist"></span>' +
+		'		</a>' +
+		'	</div>' +
 
-			'	<div class="button-group btn-group">' +
-			'		<div class="select-menu js-menu-container js-select-menu tooltipped tooltipped-ne" aria-label="Snippets">' +
-			'			<span class="btn btn-sm minibutton select-menu-button js-menu-target" aria-label="Snippets" style="padding-left:7px; padding-right:7px; width:auto; border-bottom-right-radius:3px; border-top-right-radius:3px;">' +
-			'				<span class="octicon octicon-pin"></span>' +
-			'			</span>' +
-			'			<div class="select-menu-modal-holder js-menu-content js-navigation-container" style="top:26px; z-index:22;">' +
-			'				<div class="select-menu-modal" style="overflow:visible;">' +
-			'					<div class="select-menu-header">' +
-			'						<span class="select-menu-title">Snippets</span>' +
-			'						<span class="octicon octicon-remove-close js-menu-close"></span>' +
-			'					</div>' +
-			'					<div class="select-menu-filters">' +
-			'						<div class="select-menu-text-filter">' +
-			'							<input type="text" placeholder="Filter snippets..." class="js-filterable-field js-navigation-enable" id="context-snippets-filter-field">' +
-			'						</div>' +
-			'					</div>' +
-			'					<div class="select-menu-list" style="overflow:visible;">' +
-			'						<div data-filterable-type="substring" data-filterable-for="context-snippets-filter-field">' +
-			'							<a href="#" data-function="snippets-tab" class="function-button select-menu-item js-navigation-item tooltipped tooltipped-w" aria-label="Add tab character" style="table-layout:initial;">' +
-			'								<span class="select-menu-item-text js-select-button-text">Add tab character</span>' +
-			'							</a>' +
-			'							<a href="#" data-function="snippets-useragent" class="function-button select-menu-item js-navigation-item tooltipped tooltipped-w" aria-label="Add UserAgent" style="table-layout:initial;">' +
-			'								<span class="select-menu-item-text js-select-button-text">Add UserAgent</span>' +
-			'							</a>' +
-			'							<a href="#" data-function="snippets-contributing" class="function-button select-menu-item js-navigation-item tooltipped tooltipped-w" aria-label="Add contributing message" style="table-layout:initial;">' +
-			'								<span class="select-menu-item-text">' +
-			'									<span class="js-select-button-text">Contributing</span>' +
-			'									<span class="description">Add contributing message</span>' +
-			'								</span>' +
-			'							</a>' +
-			'						</div>' +
-			'						<div class="select-menu-no-results">Nothing to show</div>' +
-			'					</div>' +
-			'				</div>' +
-			'			</div>' +
-			'		</div>' +
-			'	</div>' +
+		/* Code (syntax); */
+		'	<div class="button-group btn-group">' +
+		'		<div class="select-menu js-menu-container js-select-menu  tooltipped tooltipped-ne" aria-label="Code (ctrl+k)">' +
+		'			<a href="#" id="function-code" class="btn btn-sm minibutton  function-button">' +
+		'				<span class="octicon octicon-code"></span>' +
+		'			</a>' +
+		'			<div class="select-menu-modal-holder js-menu-content js-navigation-container" style="top:26px; z-index:22;">' +
+		'				<div class="select-menu-modal" style="overflow:visible;">' +
+		'					<div class="select-menu-header">' +
+		'						<span class="select-menu-title">Code syntax</span>' +
+		'						<span class="octicon octicon-remove-close js-menu-close"></span>' +
+		'					</div>' +
+		'					<div class="select-menu-filters">' +
+		'						<div class="select-menu-text-filter">' +
+		'							<input type="text" placeholder="Filter code syntax..." class="js-filterable-field js-navigation-enable" id="context-code-syntax-filter-field">' +
+		'						</div>' +
+		'					</div>' +
+		'					<div class="code-syntaxes select-menu-list" style="overflow:visible;">' +
+		'						<div class="select-menu-no-results">Nothing to show</div>' +
+		'					</div>' +
+		'				</div>' +
+		'			</div>' +
+		'			<a href="#" id="function-code" class="btn btn-sm minibutton  select-menu-button js-menu-target  function-button function-dummy" style="width:20px; margin-left:-1px;"></a>' +
+		'		</div>' +
+		'	</div>' +
 
-			'	<div class="button-group btn-group">' +
-			'		<div class="select-menu js-menu-container js-select-menu tooltipped tooltipped-ne" aria-label="Emoji">' +
-			'			<span class="btn btn-sm minibutton select-menu-button js-menu-target" aria-label="Emoji" style="padding-left:7px; padding-right:7px; width:auto; border-bottom-right-radius:3px; border-top-right-radius:3px;">' +
-			'				<span class="octicon octicon-octoface"></span>' +
-			'			</span>' +
-			'			<div class="select-menu-modal-holder js-menu-content js-navigation-container" style="top:26px; z-index:22;">' +
-			'				<div class="select-menu-modal" style="overflow:visible;">' +
-			'					<div class="select-menu-header">' +
-			'						<span class="select-menu-title">Emoji</span>' +
-			'						<span class="octicon octicon-remove-close js-menu-close"></span>' +
-			'					</div>' +
-			'					<div class="select-menu-filters">' +
-			'						<div class="select-menu-text-filter">' +
-			'							<input type="text" placeholder="Filter emoji..." class="js-filterable-field js-navigation-enable" id="context-emoji-filter-field">' +
-			'						</div>' +
-			'					</div>' +
-			'					<div class="suggester select-menu-list" style="overflow:visible;">' +
-			'						<div class="select-menu-no-results">Nothing to show</div>' +
-			'					</div>' +
-			'				</div>' +
-			'			</div>' +
-			'		</div>' +
-			'	</div>' +
+		/* Blockquote, horizontal rule & table; */
+		'	<div class="button-group btn-group">' +
+		'		<a href="#" id="function-blockquote" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Blockquote (ctrl+q)">' +
+		'			<span class="octicon octicon-quote"></span>' +
+		'		</a>' +
+		'		<a href="#" id="function-rule" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Horizontal Rule (ctrl+r)">' +
+		'			<span class="octicon octicon-horizontal-rule"></span>' +
+		'		</a>' +
+		'		<a href="#" id="function-table" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Table (alt+shift+t)">' +
+		'			<span class="octicon octicon-three-bars"></span>' +
+		'		</a>' +
+		'	</div>' +
 
-			'</div>' +
+		/* Snippets; */
+		'	<div class="button-group btn-group">' +
+		'		<div class="select-menu js-menu-container js-select-menu tooltipped tooltipped-ne" aria-label="Snippets">' +
+		'			<a href="#" class="btn btn-sm minibutton select-menu-button js-menu-target" aria-label="Snippets" style="padding-left:7px; padding-right:7px; width:auto; border-bottom-right-radius:3px; border-top-right-radius:3px;">' +
+		'				<span class="octicon octicon-pin"></span>' +
+		'			</a>' +
+		'			<div class="select-menu-modal-holder js-menu-content js-navigation-container" style="top:26px; z-index:22;">' +
+		'				<div class="select-menu-modal" style="overflow:visible;">' +
+		'					<div class="select-menu-header">' +
+		'						<span class="select-menu-title">Snippets</span>' +
+		'						<span class="octicon octicon-remove-close js-menu-close"></span>' +
+		'					</div>' +
+		'					<div class="select-menu-filters">' +
+		'						<div class="select-menu-text-filter">' +
+		'							<input type="text" placeholder="Filter snippets..." class="js-filterable-field js-navigation-enable" id="context-snippets-filter-field">' +
+		'						</div>' +
+		'					</div>' +
+		'					<div class="select-menu-list" style="overflow:visible;">' +
+		'						<div data-filterable-type="substring" data-filterable-for="context-snippets-filter-field">' +
+		'							<a href="#" id="function-snippets-tab" class="function-button select-menu-item js-navigation-item tooltipped tooltipped-w" aria-label="Add tab character" style="table-layout:initial;">' +
+		'								<span class="select-menu-item-text js-select-button-text">Add tab character</span>' +
+		'							</a>' +
+		'							<a href="#" id="function-snippets-useragent" class="function-button select-menu-item js-navigation-item tooltipped tooltipped-w" aria-label="Add UserAgent" style="table-layout:initial;">' +
+		'								<span class="select-menu-item-text js-select-button-text">Add UserAgent</span>' +
+		'							</a>' +
+		'							<a href="#" id="function-snippets-contributing" class="function-button select-menu-item js-navigation-item tooltipped tooltipped-w" aria-label="Add contributing message" style="table-layout:initial;">' +
+		'								<span class="select-menu-item-text">' +
+		'									<span class="js-select-button-text">Contributing</span>' +
+		'									<span class="description">Add contributing message</span>' +
+		'								</span>' +
+		'							</a>' +
+		'						</div>' +
+		'						<div class="select-menu-no-results">Nothing to show</div>' +
+		'					</div>' +
+		'				</div>' +
+		'			</div>' +
+		'		</div>' +
+		'	</div>' +
 
-			'<div style="float:right;">' +
-			'	<a href="#" data-function="clear" class="btn btn-sm minibutton function-button tooltipped tooltipped-nw" aria-label="Clear (alt+ctrl+x)">' +
-			'		<span class="octicon octicon-trashcan"></span>' +
-			'	</a>' +
-			'</div>';
-	})();
+		/* Emoji; */
+		'	<div class="button-group btn-group">' +
+		'		<div class="select-menu js-menu-container js-select-menu tooltipped tooltipped-ne" aria-label="Emoji">' +
+		'			<a href="#" class="btn btn-sm minibutton select-menu-button js-menu-target" aria-label="Emoji" style="padding-left:7px; padding-right:7px; width:auto; border-bottom-right-radius:3px; border-top-right-radius:3px;">' +
+		'				<span class="octicon octicon-octoface"></span>' +
+		'			</a>' +
+		'			<div class="select-menu-modal-holder js-menu-content js-navigation-container" style="top:26px; z-index:22;">' +
+		'				<div class="select-menu-modal" style="overflow:visible;">' +
+		'					<div class="select-menu-header">' +
+		'						<span class="select-menu-title">Emoji</span>' +
+		'						<span class="octicon octicon-remove-close js-menu-close"></span>' +
+		'					</div>' +
+		'					<div class="select-menu-filters">' +
+		'						<div class="select-menu-text-filter">' +
+		'							<input type="text" placeholder="Filter emoji..." class="js-filterable-field js-navigation-enable" id="context-emoji-filter-field">' +
+		'						</div>' +
+		'					</div>' +
+		'					<div class="suggester select-menu-list" style="overflow:visible;">' +
+		'						<div class="select-menu-no-results">Nothing to show</div>' +
+		'					</div>' +
+		'				</div>' +
+		'			</div>' +
+		'		</div>' +
+		'	</div>' +
+
+		'</div>';
+	var toolBarRightHTML =
+		/* Clear; */
+		'<div style="float:right;">' +
+		'	<div class="button-group btn-group">' +
+		'		<span id="function-clear" class="btn btn-sm minibutton function-button tooltipped tooltipped-nw" aria-label="Clear (alt+ctrl+x)">' +
+		'			<span class="octicon octicon-trashcan"></span>' +
+		'		</span>' +
+		'	</div>' +
+		'</div>';
 
 	// Source: https://github.com/gollum/gollum/blob/9c714e768748db4560bc017cacef4afa0c751a63/lib/gollum/public/gollum/javascript/editor/gollum.editor.js#L516
 	function executeAction(definitionObject, commentForm, button) {
@@ -506,9 +554,11 @@
 	}
 
 	var buttonEvent = function(e) {
-		e.preventDefault();
-		executeAction(MarkDown[this.dataset.function], this.commentForm, this);
-		return false;
+		if (!this.classList.contains("disabled") && !this.classList.contains("function-dummy")) {
+			e.preventDefault();
+			executeAction(MarkDown[this.id], this.commentForm, this);
+			return false;
+		}
 	};
 
 	var codeSyntaxTop = ["JavaScript", "Java", "Ruby", "PHP", "Python", "CSS", "C++", "C#", "C", "HTML"]; // https://github.com/blog/2047-language-trends-on-github
@@ -613,7 +663,7 @@
 			syntaxSuggestion.setAttribute("href", "#");
 			syntaxSuggestion.classList.add("function-button", "select-menu-item", "js-navigation-item");
 			syntaxSuggestion.dataset.value = syntax;
-			syntaxSuggestion.dataset.function = "code-syntax";
+			syntaxSuggestion.id = "function-code-syntax";
 			syntaxSuggestions.appendChild(syntaxSuggestion);
 
 			var syntaxSuggestionText = document.createElement("span");
@@ -666,7 +716,7 @@
 		var buttons = suggester.querySelectorAll(".function-button");
 		Array.prototype.forEach.call(buttons, function(button) {
 			button.commentForm = commentForm;
-			button.dataset.function = "emoji";
+			button.id = "function-emoji";
 			button.addEventListener("click", buttonEvent, false);
 			unsafeWindow.$(button).on("navigation:keydown", function(e) {
 				if (e.hotkey === "enter") {
@@ -731,20 +781,25 @@
 
 				if (isWiki()) {
 					gollumEditor = document.getElementById("gollum-editor-function-bar");
-					var temp = document.createElement("div");
-					temp.innerHTML = editorHTML;
-					temp.firstElementChild.appendChild(document.getElementById("function-help")); // restore the help button;
-					gollumEditor.replaceChild(temp.querySelector("#gollum-editor-function-buttons"), document.getElementById("gollum-editor-function-buttons"));
-					Array.prototype.forEach.call(temp.children, function(elm) {
-						elm.style.position = "absolute";
-						elm.style.right = "30px";
-						elm.style.top = "0";
-						commentForm.parentNode.insertBefore(elm, commentForm);
-					});
-					temp = null;
+
+					var helpButton = document.createElement("div");
+					helpButton.classList.add("button-group", "btn-group");
+					helpButton.appendChild(document.getElementById("function-help"));
+
+					var tempLeft = document.createElement("div");
+					tempLeft.innerHTML = toolBarLeftHTML;
+					gollumEditor.replaceChild(tempLeft.querySelector("#gollum-editor-function-buttons"), document.getElementById("gollum-editor-function-buttons"));
+
+					var tempRight = document.createElement("div");
+					tempRight.innerHTML = toolBarRightHTML;
+					tempRight.firstElementChild.appendChild(document.createTextNode(" ")); // extra space;
+					tempRight.firstElementChild.appendChild(helpButton); // restore the help button;
+					gollumEditor.appendChild(tempRight);
+
+					tempLeft = tempRight = null;
 				} else {
 					gollumEditor = document.createElement("div");
-					gollumEditor.innerHTML = editorHTML;
+					gollumEditor.innerHTML = toolBarLeftHTML + toolBarRightHTML;
 					gollumEditor.id = "gollum-editor-function-bar";
 					gollumEditor.style.height = "26px";
 					gollumEditor.style.margin = "10px 0";
@@ -785,6 +840,139 @@
 
 			commentForm.addEventListener('keydown', commentFormKeyEvent.bind(this, commentForm));
 		});
+	}
+
+	function overrideGollumDialog() {
+		if (unsafeWindow.$.GollumDialog === undefined) {
+			(function(e) {
+				var t = {
+					markupCreated: !1,
+					markup: "",
+					attachEvents: function(o) {
+						e("#gollum-dialog-action-ok").click(function(e) {
+								t.eventOK(e, o)
+							}),
+							e("#gollum-dialog-action-cancel").click(t.eventCancel),
+							e('#gollum-dialog-dialog input[type="text"]').keydown(function(e) {
+								13 == e.keyCode && t.eventOK(e, o)
+							})
+					},
+					detachEvents: function() {
+						e("#gollum-dialog-action-ok").unbind("click"),
+							e("#gollum-dialog-action-cancel").unbind("click")
+					},
+					createFieldMarkup: function(e) {
+						for (var o = "<fieldset>", n = 0; n < e.length; n++)
+							if ("object" == typeof e[n]) {
+								switch (o += '<div class="field">',
+									e[n].type) {
+									case "text":
+										o += t.createFieldText(e[n])
+								}
+								o += "</div>"
+							}
+						return o += "</fieldset>"
+					},
+					createFieldText: function(e) {
+						var t = "";
+						return e.name && (t += "<label",
+								e.id && (t += ' for="' + e.name + '"'),
+								t += ">" + e.name + "</label>"),
+							t += '<input type="text"',
+							e.id && (t += ' name="' + e.id + '"',
+								"code" == e.type && (t += ' class="code"'),
+								e.value && (t += ' value="' + e.value + '"'),
+								t += ' id="gollum-dialog-dialog-generated-field-' + e.id + '">'),
+							t
+					},
+					createMarkup: function(o, n) {
+						return t.markupCreated = !0,
+							e.facebox ? '<div id="gollum-dialog-dialog"><div id="gollum-dialog-dialog-title"><h4>' + o + '</h4></div><div id="gollum-dialog-dialog-body">' + n + '</div><div id="gollum-dialog-dialog-buttons"><a href="#" title="Cancel" id="gollum-dialog-action-cancel" class="gollum-minibutton">Cancel</a><a href="#" title="OK" id="gollum-dialog-action-ok" class="gollum-minibutton">OK</a></div></div>' : '<div id="gollum-dialog-dialog"><div id="gollum-dialog-dialog-inner"><div id="gollum-dialog-dialog-bg"><div id="gollum-dialog-dialog-title"><h4>' + o + '</h4></div><div id="gollum-dialog-dialog-body">' + n + '</div><div id="gollum-dialog-dialog-buttons"><a href="#" title="Cancel" id="gollum-dialog-action-cancel" class="minibutton">Cancel</a><a href="#" title="OK" id="gollum-dialog-action-ok" class="minibutton">OK</a></div></div></div></div>'
+					},
+					eventCancel: function(e) {
+						e.preventDefault(),
+							t.hide()
+					},
+					eventOK: function(o, n) {
+						o.preventDefault();
+						var a = [];
+						e("#gollum-dialog-dialog-body input").each(function() {
+								a[e(this).attr("name")] = e(this).val()
+							}),
+							n && "function" == typeof n && n(a),
+							t.hide()
+					},
+					hide: function() {
+						e.facebox ? (t.markupCreated = !1,
+							e(document).trigger("close.facebox"),
+							t.detachEvents()) : e.browser.msie ? (e("#gollum-dialog-dialog").hide().removeClass("active"),
+							e("select").css("visibility", "visible")) : e("#gollum-dialog-dialog").animate({
+							opacity: 0
+						}, {
+							duration: 200,
+							complete: function() {
+								e("#gollum-dialog-dialog").removeClass("active")
+							}
+						})
+					},
+					init: function(o) {
+						var n = "",
+							a = "";
+						o && "object" == typeof o && (o.body && "string" == typeof o.body && (a = "<p>" + o.body + "</p>"),
+							o.fields && "object" == typeof o.fields && (a += t.createFieldMarkup(o.fields)),
+							o.title && "string" == typeof o.title && (n = o.title),
+							t.markupCreated && (e.facebox ? e(document).trigger("close.facebox") : e("#gollum-dialog-dialog").remove()),
+							t.markup = t.createMarkup(n, a),
+							e.facebox ? e(document).bind("reveal.facebox", function() {
+								o.OK && "function" == typeof o.OK && (t.attachEvents(o.OK),
+									e(e('#facebox input[type="text"]').get(0)).focus())
+							}) : (e("body").append(t.markup),
+								o.OK && "function" == typeof o.OK && t.attachEvents(o.OK)),
+							t.show())
+					},
+					show: function() {
+						t.markupCreated && (e.facebox ? e.facebox(t.markup) : e.browser.msie ? (e("#gollum-dialog.dialog").addClass("active"),
+							t.position(),
+							e("select").css("visibility", "hidden")) : (e("#gollum-dialog.dialog").css("display", "none"),
+							e("#gollum-dialog-dialog").animate({
+								opacity: 0
+							}, {
+								duration: 0,
+								complete: function() {
+									e("#gollum-dialog-dialog").css("display", "block"),
+										t.position(),
+										e("#gollum-dialog-dialog").animate({
+											opacity: 1
+										}, {
+											duration: 500
+										})
+								}
+							})))
+					},
+					position: function() {
+						var t = e("#gollum-dialog-dialog-inner").height();
+						e("#gollum-dialog-dialog-inner").css("height", t + "px").css("margin-top", -1 * parseInt(t / 2))
+					}
+				};
+				e.facebox && e(document).bind("reveal.facebox", function() {
+						e("#facebox img.close_image").remove()
+					}),
+					e.GollumDialog = t
+			})(unsafeWindow.$)
+		} else {
+			unsafeWindow.$.GollumEditor.Dialog.createFieldText = unsafeWindow.$.GollumDialog.createFieldText = function(e) {
+				var t = "";
+				return e.name && (t += "<label",
+						e.id && (t += ' for="' + e.name + '"'),
+						t += ">" + e.name + "</label>"),
+					t += '<input type="text"',
+					e.value && (t += ' value="' + e.value + '"'),
+					e.id && (t += ' name="' + e.id + '"',
+						"code" == e.type && (t += ' class="code"'),
+						t += ' id="gollum-dialog-dialog-generated-field-' + e.id + '">'),
+					t
+			};
+		}
 	}
 
 	/*
@@ -1053,6 +1241,7 @@
 		addToolbar();
 		addReplyButtons();
 	}
+	overrideGollumDialog();
 	init();
 
 	// on pjax;
