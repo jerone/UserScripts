@@ -39,7 +39,7 @@ Every comment field also got a toolbar, consisting of the following buttons:
     * UserAgent
     * Contributing message
 * Emoji
-* Clear comment field content (<kbd>alt+ctrl+x</kbd>)
+* Clear content (<kbd>alt+ctrl+x</kbd>)
 
 
 ## Screenshot
@@ -60,6 +60,15 @@ Every comment field also got a toolbar, consisting of the following buttons:
 
 ## Version History
 
+* **2.8.0**
+    * Reverted commit 9bf8974 to fix the toolbar on the wiki.
+    * Included fix for enabling and disabling buttons per language on wiki.
+    * Also fixes non-working italic button (fixes #83).
+    * Added clear button back to wiki.
+    * Moved help button to the right.
+    * Only execute action when button is not disabled.
+    * :sparkles: Added dialog when inserting link or image.
+    * Homepage is now link to userscript readme.
 * **2.7.0**
     * Fixed Github's name completion (fixes https://github.com/jerone/UserScripts/issues/81);
     * Restored using enter key on dropdown menus.
