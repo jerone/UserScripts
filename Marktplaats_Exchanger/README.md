@@ -31,5 +31,5 @@ Adds an extra checkbox on the "Mijn Favorieten" page to select all sold ads for 
 
 ## External links
 
-* [Greasy Fork](https://greasyfork.org/scripts/Marktplaats_Exchanger)
+* [Greasy Fork](https://greasyfork.org/scripts/44-marktplaats-exchanger)
 * [OpenUserJS](https://openuserjs.org/scripts/jerone/Marktplaats_Exchanger)
