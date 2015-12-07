@@ -12,13 +12,14 @@
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_JSON_Dependencies_Linker/Github_JSON_Dependencies_Linker.user.js
 // @supportURL  https://github.com/jerone/UserScripts/issues
 // @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
-// @version     0.3.0
+// @version     0.4.0
 // @grant       GM_xmlhttpRequest
 // @run-at      document-end
 // @include     https://github.com/*/package.json
 // @include     https://github.com/*/npm-shrinkwrap.json
 // @include     https://github.com/*/bower.json
 // @include     https://github.com/*/project.json
+// @include     https://github.com/*/composer.json
 // ==/UserScript==
 /* global GM_xmlhttpRequest */
 
@@ -48,6 +49,7 @@
 			}
 			return false;
 		})(),
+		isPackagist = location.pathname.endsWith('/composer.json'),
 		dependencyKeys = [
 			'dependencies',
 			'devDependencies',
@@ -55,7 +57,8 @@
 			'bundleDependencies',
 			'bundledDependencies',
 			'packageDependencies',
-			'optionalDependencies'
+			'optionalDependencies',
+			'require'
 		],
 		modules = (function() {
 			var _modules = {};
@@ -189,6 +192,9 @@
 				});
 			} else if (isNuGet) {
 				var url = 'https://www.nuget.org/packages/' + module;
+				linkify(module, url);
+			} else if (isPackagist && module !== "php") {
+				var url = 'https://packagist.org/packages/' + module;
 				linkify(module, url);
 			}
 		});
