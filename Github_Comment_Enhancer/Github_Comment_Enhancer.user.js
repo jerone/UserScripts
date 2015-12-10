@@ -12,7 +12,7 @@
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_Comment_Enhancer/Github_Comment_Enhancer.user.js
 // @supportURL  https://github.com/jerone/UserScripts/issues
 // @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
-// @version     2.8.0
+// @version     2.8.1
 // @grant       none
 // @run-at      document-end
 // @include     https://github.com/*
@@ -561,6 +561,11 @@
 		}
 	};
 
+	// The suggester container needs extra margin to move the menu below the text because of the added toolbar.
+	function fixSuggesterMenu(commentForm){
+		commentForm.parentNode.querySelector(".suggester-container").style.marginTop = "36px";
+	}
+
 	var codeSyntaxTop = ["JavaScript", "Java", "Ruby", "PHP", "Python", "CSS", "C++", "C#", "C", "HTML"]; // https://github.com/blog/2047-language-trends-on-github
 	var codeSyntaxList = ["ABAP", "abl", "aconf", "ActionScript", "actionscript 3",
 		"actionscript3", "Ada", "ada2005", "ada95", "advpl", "Agda", "ags",
@@ -824,6 +829,8 @@
 					gollumEditor.classList.add("active");
 					commentForm.parentNode.insertBefore(gollumEditor, commentForm);
 				}
+
+				fixSuggesterMenu(commentForm);
 
 				addSuggestions(commentForm);
 
