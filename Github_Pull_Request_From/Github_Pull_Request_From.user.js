@@ -11,7 +11,7 @@
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_Pull_Request_From/Github_Pull_Request_From.user.js
 // @supportURL  https://github.com/jerone/UserScripts/issues
 // @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
-// @version     15
+// @version     16
 // @grant       none
 // @include     https://github.com/*/*
 // ==/UserScript==
@@ -35,6 +35,9 @@
 			var treeUser = treeSpan.querySelector('.user');
 			var treeParts = treeSpan.querySelectorAll('.css-truncate-target');
 			var treeLink = document.createElement("a");
+			Array.prototype.forEach.call(treeParts, function(part) {
+				part.style.display = "inline";
+			});
 			treeLink.setAttribute("href", String.format("https://github.com/{0}/{1}/tree/{2}",
 				treeUser ? treeUser.textContent : author, // user;
 				repo, // repository;

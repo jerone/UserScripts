@@ -29,6 +29,8 @@ Make pull request branches linkable.
 
 ## Version History
 
+* **16**
+    * Show underline (fixes https://github.com/jerone/UserScripts/issues/93);
 * **15**
     * Fixed invalid chars in url;
 * **14**
