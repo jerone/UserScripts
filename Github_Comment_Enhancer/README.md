@@ -60,6 +60,8 @@ Every comment field also got a toolbar, consisting of the following buttons:
 
 ## Version History
 
+* **2.8.1**
+    * Emoji menu overlaps text (fixes https://github.com/jerone/UserScripts/issues/92);
 * **2.8.0**
     * Reverted commit 9bf8974 to fix the toolbar on the wiki.
     * Included fix for enabling and disabling buttons per language on wiki.

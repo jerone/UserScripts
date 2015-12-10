@@ -12,7 +12,7 @@
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_Comment_Enhancer/Github_Comment_Enhancer.user.js
 // @supportURL  https://github.com/jerone/UserScripts/issues
 // @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
-// @version     2.8.0
+// @version     2.8.1
 // @grant       none
 // @run-at      document-end
 // @include     https://github.com/*
@@ -540,7 +540,7 @@
 	}
 
 	function isGist() {
-		return location.host === "gist.github.com";
+		return "gist.github.com" === location.host;
 	}
 
 	function overrideGollumMarkdown() {
@@ -560,6 +560,11 @@
 			return false;
 		}
 	};
+
+	// The suggester container needs extra margin to move the menu below the text because of the added toolbar.
+	function fixSuggesterMenu(commentForm){
+		commentForm.parentNode.querySelector(".suggester-container").style.marginTop = "36px";
+	}
 
 	var codeSyntaxTop = ["JavaScript", "Java", "Ruby", "PHP", "Python", "CSS", "C++", "C#", "C", "HTML"]; // https://github.com/blog/2047-language-trends-on-github
 	var codeSyntaxList = ["ABAP", "abl", "aconf", "ActionScript", "actionscript 3",
@@ -726,6 +731,24 @@
 		});
 	}
 
+	function addSponsorLink(commentForm){
+		var tabnavExtras = commentForm.parentNode.parentNode.querySelector(".comment-form-head .tabnav-right, .comment-form-head .right");
+		if (tabnavExtras) {
+			var elem = commentForm;
+			while ((elem = elem.parentNode) && elem.nodeType !== 9 && !elem.classList.contains("timeline-inline-comments")) {}
+			var sponsoredText = elem !== document ? " Github Comment Enhancer" : " Enhanced by Github Comment Enhancer";
+			var sponsored = document.createElement("a");
+			sponsored.setAttribute("target", "_blank");
+			sponsored.setAttribute("href", "https://github.com/jerone/UserScripts/tree/master/Github_Comment_Enhancer#readme");
+			sponsored.classList.add("tabnav-widget", "text", "tabnav-extras", "tabnav-extra");
+			var sponsoredIcon = document.createElement("span");
+			sponsoredIcon.classList.add("octicon", "octicon-question");
+			sponsored.appendChild(sponsoredIcon);
+			sponsored.appendChild(document.createTextNode(sponsoredText));
+			tabnavExtras.insertBefore(sponsored, tabnavExtras.firstElementChild);
+		}
+	}
+
 	function commentFormKeyEvent(commentForm, e) {
 		var keys = [];
 		if (e.altKey) {
@@ -807,25 +830,13 @@
 					commentForm.parentNode.insertBefore(gollumEditor, commentForm);
 				}
 
+				fixSuggesterMenu(commentForm);
+
 				addSuggestions(commentForm);
 
 				addCodeSyntax(commentForm);
 
-				var tabnavExtras = commentForm.parentNode.parentNode.querySelector(".comment-form-head .tabnav-right, .comment-form-head .right");
-				if (tabnavExtras) {
-					var elem = commentForm;
-					while ((elem = elem.parentNode) && elem.nodeType !== 9 && !elem.classList.contains("timeline-inline-comments")) {}
-					var sponsoredText = elem !== document ? " Github Comment Enhancer" : " Enhanced by Github Comment Enhancer";
-					var sponsored = document.createElement("a");
-					sponsored.setAttribute("target", "_blank");
-					sponsored.setAttribute("href", "https://github.com/jerone/UserScripts/tree/master/Github_Comment_Enhancer");
-					sponsored.classList.add("tabnav-widget", "text", "tabnav-extras", "tabnav-extra");
-					var sponsoredIcon = document.createElement("span");
-					sponsoredIcon.classList.add("octicon", "octicon-question");
-					sponsored.appendChild(sponsoredIcon);
-					sponsored.appendChild(document.createTextNode(sponsoredText));
-					tabnavExtras.insertBefore(sponsored, tabnavExtras.firstElementChild);
-				}
+				addSponsorLink(commentForm);
 			}
 
 			Array.prototype.forEach.call(gollumEditor.parentNode.querySelectorAll(".function-button"), function(button) {
