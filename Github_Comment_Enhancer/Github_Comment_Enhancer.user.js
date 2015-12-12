@@ -12,7 +12,7 @@
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_Comment_Enhancer/Github_Comment_Enhancer.user.js
 // @supportURL  https://github.com/jerone/UserScripts/issues
 // @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
-// @version     2.8.1
+// @version     2.8.2
 // @grant       none
 // @run-at      document-end
 // @include     https://github.com/*
@@ -413,7 +413,7 @@
 		'	</div>' +
 
 		/* Emoji; */
-		'	<div class="button-group btn-group">' +
+		'	<div class="button-group btn-group  suggester-function">' +
 		'		<div class="select-menu js-menu-container js-select-menu tooltipped tooltipped-ne" aria-label="Emoji">' +
 		'			<a href="#" class="btn btn-sm minibutton select-menu-button js-menu-target" aria-label="Emoji" style="padding-left:7px; padding-right:7px; width:auto; border-bottom-right-radius:3px; border-top-right-radius:3px;">' +
 		'				<span class="octicon octicon-octoface"></span>' +
@@ -562,8 +562,8 @@
 	};
 
 	// The suggester container needs extra margin to move the menu below the text because of the added toolbar.
-	function fixSuggesterMenu(commentForm){
-		commentForm.parentNode.querySelector(".suggester-container").style.marginTop = "36px";
+	function fixSuggesterMenu(commentForm) {
+		commentForm.parentNode.parentNode.querySelector(".suggester-container").style.marginTop = "36px";
 	}
 
 	var codeSyntaxTop = ["JavaScript", "Java", "Ruby", "PHP", "Python", "CSS", "C++", "C#", "C", "HTML"]; // https://github.com/blog/2047-language-trends-on-github
@@ -731,7 +731,7 @@
 		});
 	}
 
-	function addSponsorLink(commentForm){
+	function addSponsorLink(commentForm) {
 		var tabnavExtras = commentForm.parentNode.parentNode.querySelector(".comment-form-head .tabnav-right, .comment-form-head .right");
 		if (tabnavExtras) {
 			var elem = commentForm;
@@ -830,9 +830,16 @@
 					commentForm.parentNode.insertBefore(gollumEditor, commentForm);
 				}
 
-				fixSuggesterMenu(commentForm);
+				// Execute next block only when suggester is available;
+				if (commentForm.parentNode.parentNode.querySelector(".suggester-container")) {
+					fixSuggesterMenu(commentForm);
 
-				addSuggestions(commentForm);
+					addSuggestions(commentForm);
+				} else {
+					Array.prototype.forEach.call(gollumEditor.parentNode.querySelectorAll(".suggester-function"), function(button) {
+						button.style.display = "none";
+					});
+				}
 
 				addCodeSyntax(commentForm);
 

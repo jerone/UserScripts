@@ -8,7 +8,7 @@
 
 ## Description
 
-Add features to enhance comments & wiki on [Github](https://github.com) and comments on [Github Gist](https://gist.github.com).
+Add features to enhance comments & wiki & contact page on [Github](https://github.com) and comments on [Github Gist](https://gist.github.com).
 
 You can reply to issues, pull requests and inline comments by pressing the reply button on every comment.
 
@@ -60,6 +60,8 @@ Every comment field also got a toolbar, consisting of the following buttons:
 
 ## Version History
 
+* **2.8.2**
+    * Fix working on contact page (fixes https://github.com/jerone/UserScripts/issues/91);
 * **2.8.1**
     * Emoji menu overlaps text (fixes https://github.com/jerone/UserScripts/issues/92);
 * **2.8.0**
@@ -163,6 +165,7 @@ Every comment field also got a toolbar, consisting of the following buttons:
 * https://github.com/jerone/UserScripts/wiki/_new (new wiki)
 * https://github.com/jerone/bootstrap-material-design/pull/new/feature/sass (new PR)
 * https://gist.github.com/jerone/9526258 (new comment & edit comment)
+* https://github.com/contact (new message without suggester)
 
 
 ## Dependencies
