@@ -12,7 +12,7 @@
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_Comment_Enhancer/Github_Comment_Enhancer.user.js
 // @supportURL  https://github.com/jerone/UserScripts/issues
 // @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
-// @version     2.8.2
+// @version     2.8.3
 // @grant       none
 // @run-at      document-end
 // @include     https://github.com/*
@@ -779,85 +779,89 @@
 	}
 
 	function addToolbar() {
-		if (isWiki()) {
-			// Override existing language with improved & missing functions and remove existing click events;
-			overrideGollumMarkdown();
-			unbindGollumFunctions();
+		var editors = document.querySelectorAll(".comment-form-textarea,.js-comment-field");
+		if (editors.length > 0) {
 
-			// Remove existing click events when changing languages;
-			document.getElementById("wiki_format").addEventListener("change", function() {
+			if (isWiki()) {
+				// Override existing language with improved & missing functions and remove existing click events;
+				overrideGollumMarkdown();
 				unbindGollumFunctions();
 
-				var buttons = document.querySelectorAll(".comment-form-textarea .function-button");
-				Array.prototype.forEach.call(buttons, function(button) {
-					button.removeEventListener("click", buttonEvent);
-				});
-			});
-		}
+				// Remove existing click events when changing languages;
+				document.getElementById("wiki_format").addEventListener("change", function() {
+					unbindGollumFunctions();
 
-		Array.prototype.forEach.call(document.querySelectorAll(".comment-form-textarea,.js-comment-field"), function(commentForm) {
-			var gollumEditor;
-			if (commentForm.classList.contains("GithubCommentEnhancer")) {
-				gollumEditor = commentForm.previousSibling;
-			} else {
-				commentForm.classList.add("GithubCommentEnhancer");
-
-				if (isWiki()) {
-					gollumEditor = document.getElementById("gollum-editor-function-bar");
-
-					var helpButton = document.createElement("div");
-					helpButton.classList.add("button-group", "btn-group");
-					helpButton.appendChild(document.getElementById("function-help"));
-
-					var tempLeft = document.createElement("div");
-					tempLeft.innerHTML = toolBarLeftHTML;
-					gollumEditor.replaceChild(tempLeft.querySelector("#gollum-editor-function-buttons"), document.getElementById("gollum-editor-function-buttons"));
-
-					var tempRight = document.createElement("div");
-					tempRight.innerHTML = toolBarRightHTML;
-					tempRight.firstElementChild.appendChild(document.createTextNode(" ")); // extra space;
-					tempRight.firstElementChild.appendChild(helpButton); // restore the help button;
-					gollumEditor.appendChild(tempRight);
-
-					tempLeft = tempRight = null;
-				} else {
-					gollumEditor = document.createElement("div");
-					gollumEditor.innerHTML = toolBarLeftHTML + toolBarRightHTML;
-					gollumEditor.id = "gollum-editor-function-bar";
-					gollumEditor.style.height = "26px";
-					gollumEditor.style.margin = "10px 0";
-					gollumEditor.classList.add("active");
-					commentForm.parentNode.insertBefore(gollumEditor, commentForm);
-				}
-
-				// Execute next block only when suggester is available;
-				if (commentForm.parentNode.parentNode.querySelector(".suggester-container")) {
-					fixSuggesterMenu(commentForm);
-
-					addSuggestions(commentForm);
-				} else {
-					Array.prototype.forEach.call(gollumEditor.parentNode.querySelectorAll(".suggester-function"), function(button) {
-						button.style.display = "none";
+					var buttons = document.querySelectorAll(".comment-form-textarea .function-button");
+					Array.prototype.forEach.call(buttons, function(button) {
+						button.removeEventListener("click", buttonEvent);
 					});
-				}
-
-				addCodeSyntax(commentForm);
-
-				addSponsorLink(commentForm);
+				});
 			}
 
-			Array.prototype.forEach.call(gollumEditor.parentNode.querySelectorAll(".function-button"), function(button) {
-				button.commentForm = commentForm; // remove event listener doesn't accept `bind`;
-				button.addEventListener("click", buttonEvent, false);
-				unsafeWindow.$(button).on("navigation:keydown", function(e) {
-					if (e.hotkey === "enter") {
-						buttonEvent.call(this, e);
-					}
-				});
-			});
+			Array.prototype.forEach.call(editors, function(commentForm) {
+				var gollumEditor;
+				if (commentForm.classList.contains("GithubCommentEnhancer")) {
+					gollumEditor = commentForm.previousSibling;
+				} else {
+					commentForm.classList.add("GithubCommentEnhancer");
 
-			commentForm.addEventListener('keydown', commentFormKeyEvent.bind(this, commentForm));
-		});
+					if (isWiki()) {
+						gollumEditor = document.getElementById("gollum-editor-function-bar");
+
+						var helpButton = document.createElement("div");
+						helpButton.classList.add("button-group", "btn-group");
+						helpButton.appendChild(document.getElementById("function-help"));
+
+						var tempLeft = document.createElement("div");
+						tempLeft.innerHTML = toolBarLeftHTML;
+						gollumEditor.replaceChild(tempLeft.querySelector("#gollum-editor-function-buttons"), document.getElementById("gollum-editor-function-buttons"));
+
+						var tempRight = document.createElement("div");
+						tempRight.innerHTML = toolBarRightHTML;
+						tempRight.firstElementChild.appendChild(document.createTextNode(" ")); // extra space;
+						tempRight.firstElementChild.appendChild(helpButton); // restore the help button;
+						gollumEditor.appendChild(tempRight);
+
+						tempLeft = tempRight = null;
+					} else {
+						gollumEditor = document.createElement("div");
+						gollumEditor.innerHTML = toolBarLeftHTML + toolBarRightHTML;
+						gollumEditor.id = "gollum-editor-function-bar";
+						gollumEditor.style.height = "26px";
+						gollumEditor.style.margin = "10px 0";
+						gollumEditor.classList.add("active");
+						commentForm.parentNode.insertBefore(gollumEditor, commentForm);
+					}
+
+					// Execute next block only when suggester is available;
+					if (commentForm.parentNode.parentNode.querySelector(".suggester-container")) {
+						fixSuggesterMenu(commentForm);
+
+						addSuggestions(commentForm);
+					} else {
+						Array.prototype.forEach.call(gollumEditor.parentNode.querySelectorAll(".suggester-function"), function(button) {
+							button.style.display = "none";
+						});
+					}
+
+					addCodeSyntax(commentForm);
+
+					addSponsorLink(commentForm);
+				}
+
+				Array.prototype.forEach.call(gollumEditor.parentNode.querySelectorAll(".function-button"), function(button) {
+					button.commentForm = commentForm; // remove event listener doesn't accept `bind`;
+					button.addEventListener("click", buttonEvent, false);
+					unsafeWindow.$(button).on("navigation:keydown", function(e) {
+						if (e.hotkey === "enter") {
+							buttonEvent.call(this, e);
+						}
+					});
+				});
+
+				commentForm.addEventListener('keydown', commentFormKeyEvent.bind(this, commentForm));
+			});
+		}
 	}
 
 	function overrideGollumDialog() {

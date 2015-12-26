@@ -60,6 +60,8 @@ Every comment field also got a toolbar, consisting of the following buttons:
 
 ## Version History
 
+* **2.8.3**
+    * Fixed erroring on non-editor pages (fixes https://github.com/jerone/UserScripts/issues/95);
 * **2.8.2**
     * Fix working on contact page (fixes https://github.com/jerone/UserScripts/issues/91);
 * **2.8.1**
