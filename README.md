@@ -38,6 +38,7 @@ This repo contains a few of my UserScripts that I've build since [2007](http://u
 
 ### Extra & proof-of-concepts
 
+* [Darts Data Enhancer](https://github.com/jerone/UserScripts/tree/master/Darts_Data_Enhancer#readme) - Enhances Darts Data.
 * [Dakar Extender](https://github.com/jerone/UserScripts/tree/master/Dakar_Extender#readme) - Highlight riders by certain country in standings lists.
 * [April Fools CSS](https://github.com/jerone/UserScripts/tree/master/April_Fools_CSS#readme) - Some CSS april fools.
 * [PDF Tools](https://github.com/jerone/UserScripts/tree/master/PDF_Tools#readme) - An userscript that enhances the pdf.js window in Firefox.
@@ -57,4 +58,4 @@ Please review the [guidelines for contributing](https://github.com/jerone/UserSc
 
 ## License
 
-All userscripts in [this repository](https://github.com/jerone/UserScripts) are [licensed under GNU GPLv3](https://github.com/jerone/UserScripts/blob/master/LICENSE.txt) unless explicitly otherwise stated.
+All UserScripts in [this repository](https://github.com/jerone/UserScripts) are [licensed under GNU GPLv3](https://github.com/jerone/UserScripts/blob/master/LICENSE.txt) unless explicitly otherwise stated.
