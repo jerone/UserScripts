@@ -89,10 +89,10 @@
 
 	var REPOS = [ ];
 
-	const datasetId = "githubNewsFeedFilter";
-	const datasetIdLong = "data-github-news-feed-filter";
-	const filterElement = "github-news-feed-filter";
-	const filterListElement = "github-news-feed-filter-list";
+	var datasetId = "githubNewsFeedFilter";
+	var datasetIdLong = "data-github-news-feed-filter";
+	var filterElement = "github-news-feed-filter";
+	var filterListElement = "github-news-feed-filter-list";
 
 	function proxy(fn) {
 		return function() {
@@ -246,7 +246,7 @@
 		}
 
 		// Show/hide alerts;
-		if (classNames.length === 0 || classNames.every(function(cl) { return cl.every(function(c) { return !!~c.indexOf("*"); }) })) {
+		if (classNames.length === 0 || classNames.every(function(cl) { return cl.every(function(c) { return !!~c.indexOf("*"); }); })) {
 			anyVisibleAlert = true;
 			Array.forEach(newsContainer.querySelectorAll(".alert"), function(alert) {
 				alert.style.display = "block";
@@ -380,7 +380,7 @@
 			Array.forEach(newsContainer.querySelectorAll(".alert"), function(alert) {
 				var show = classNames.every(function(cl) { return cl.some(function(c) { return !!~c.indexOf("*") || alert.classList.contains(c); }); });
 				if (show) {
-					countFiltered++
+					countFiltered++;
 				}
 			});
 
