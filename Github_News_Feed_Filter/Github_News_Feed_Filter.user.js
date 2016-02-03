@@ -14,12 +14,46 @@
 // @include     https://github.com/orgs/*/dashboard
 // @include     https://github.com/orgs/*/dashboard?*
 // @include     https://github.com/*tab=activity*
-// @version     6.2
+// @version     7.0.0
 // @grant       none
 // ==/UserScript==
-/* global Event */
+/* global Event, Set */
+/* jslint bitwise: true, multistr: true */
 
 (function() {
+
+	var ICONS = {};
+	ICONS["octicon-book"] = "M2 5h4v1H2v-1z m0 3h4v-1H2v1z m0 2h4v-1H2v1z m11-5H9v1h4v-1z m0 2H9v1h4v-1z m0 2H9v1h4v-1z m2-6v9c0 0.55-0.45 1-1 1H8.5l-1 1-1-1H1c-0.55 0-1-0.45-1-1V3c0-0.55 0.45-1 1-1h5.5l1 1 1-1h5.5c0.55 0 1 0.45 1 1z m-8 0.5l-0.5-0.5H1v9h6V3.5z m7-0.5H8.5l-0.5 0.5v8.5h6V3z";
+	ICONS["octicon-comment-discussion"] = "M15 2H6c-0.55 0-1 0.45-1 1v2H1c-0.55 0-1 0.45-1 1v6c0 0.55 0.45 1 1 1h1v3l3-3h4c0.55 0 1-0.45 1-1V10h1l3 3V10h1c0.55 0 1-0.45 1-1V3c0-0.55-0.45-1-1-1zM9 12H4.5l-1.5 1.5v-1.5H1V6h4v3c0 0.55 0.45 1 1 1h3v2z m6-3H13v1.5l-1.5-1.5H6V3h9v6z";
+	ICONS["octicon-gist"] = "M7.5 5l2.5 2.5-2.5 2.5-0.75-0.75 1.75-1.75-1.75-1.75 0.75-0.75z m-3 0L2 7.5l2.5 2.5 0.75-0.75-1.75-1.75 1.75-1.75-0.75-0.75zM0 13V2c0-0.55 0.45-1 1-1h10c0.55 0 1 0.45 1 1v11c0 0.55-0.45 1-1 1H1c-0.55 0-1-0.45-1-1z m1 0h10V2H1v11z";
+	ICONS["octicon-gist-new"] = ICONS["octicon-plus"] = "M12 9H7v5H5V9H0V7h5V2h2v5h5v2z";
+	ICONS["octicon-git-branch"] = "M10 5c0-1.11-0.89-2-2-2s-2 0.89-2 2c0 0.73 0.41 1.38 1 1.72v0.3c-0.02 0.52-0.23 0.98-0.63 1.38s-0.86 0.61-1.38 0.63c-0.83 0.02-1.48 0.16-2 0.45V4.72c0.59-0.34 1-0.98 1-1.72 0-1.11-0.89-2-2-2S0 1.89 0 3c0 0.73 0.41 1.38 1 1.72v6.56C0.41 11.63 0 12.27 0 13c0 1.11 0.89 2 2 2s2-0.89 2-2c0-0.53-0.2-1-0.53-1.36 0.09-0.06 0.48-0.41 0.59-0.47 0.25-0.11 0.56-0.17 0.94-0.17 1.05-0.05 1.95-0.45 2.75-1.25s1.2-1.98 1.25-3.02h-0.02c0.61-0.36 1.02-1 1.02-1.73zM2 1.8c0.66 0 1.2 0.55 1.2 1.2s-0.55 1.2-1.2 1.2-1.2-0.55-1.2-1.2 0.55-1.2 1.2-1.2z m0 12.41c-0.66 0-1.2-0.55-1.2-1.2s0.55-1.2 1.2-1.2 1.2 0.55 1.2 1.2-0.55 1.2-1.2 1.2z m6-8c-0.66 0-1.2-0.55-1.2-1.2s0.55-1.2 1.2-1.2 1.2 0.55 1.2 1.2-0.55 1.2-1.2 1.2z";
+	ICONS["octicon-git-branch-create"] = ICONS["octicon-git-branch"];
+	ICONS["octicon-git-branch-delete"] = ICONS["octicon-git-branch"];
+	ICONS["octicon-git-commit"] = "M10.86 7c-0.45-1.72-2-3-3.86-3s-3.41 1.28-3.86 3H0v2h3.14c0.45 1.72 2 3 3.86 3s3.41-1.28 3.86-3h3.14V7H10.86zM7 10.2c-1.22 0-2.2-0.98-2.2-2.2s0.98-2.2 2.2-2.2 2.2 0.98 2.2 2.2-0.98 2.2-2.2 2.2z";
+	ICONS["octicon-git-merge"] = "M10 7c-0.73 0-1.38 0.41-1.73 1.02v-0.02c-1.05-0.02-2.27-0.36-3.13-1.02-0.75-0.58-1.5-1.61-1.89-2.44 0.45-0.36 0.75-0.92 0.75-1.55 0-1.11-0.89-2-2-2S0 1.89 0 3c0 0.73 0.41 1.38 1 1.72v6.56C0.41 11.63 0 12.27 0 13c0 1.11 0.89 2 2 2s2-0.89 2-2c0-0.73-0.41-1.38-1-1.72V7.67c0.67 0.7 1.44 1.27 2.3 1.69s2.03 0.63 2.97 0.64v-0.02c0.36 0.61 1 1.02 1.73 1.02 1.11 0 2-0.89 2-2s-0.89-2-2-2zM3.2 13c0 0.66-0.55 1.2-1.2 1.2s-1.2-0.55-1.2-1.2 0.55-1.2 1.2-1.2 1.2 0.55 1.2 1.2z m-1.2-8.8c-0.66 0-1.2-0.55-1.2-1.2s0.55-1.2 1.2-1.2 1.2 0.55 1.2 1.2-0.55 1.2-1.2 1.2z m8 6c-0.66 0-1.2-0.55-1.2-1.2s0.55-1.2 1.2-1.2 1.2 0.55 1.2 1.2-0.55 1.2-1.2 1.2z";
+	ICONS["octicon-git-pull-request"] = "M11 11.28c0-1.73 0-6.28 0-6.28-0.03-0.78-0.34-1.47-0.94-2.06s-1.28-0.91-2.06-0.94c0 0-1.02 0-1 0V0L4 3l3 3V4h1c0.27 0.02 0.48 0.11 0.69 0.31s0.3 0.42 0.31 0.69v6.28c-0.59 0.34-1 0.98-1 1.72 0 1.11 0.89 2 2 2s2-0.89 2-2c0-0.73-0.41-1.38-1-1.72z m-1 2.92c-0.66 0-1.2-0.55-1.2-1.2s0.55-1.2 1.2-1.2 1.2 0.55 1.2 1.2-0.55 1.2-1.2 1.2zM4 3c0-1.11-0.89-2-2-2S0 1.89 0 3c0 0.73 0.41 1.38 1 1.72 0 1.55 0 5.56 0 6.56-0.59 0.34-1 0.98-1 1.72 0 1.11 0.89 2 2 2s2-0.89 2-2c0-0.73-0.41-1.38-1-1.72V4.72c0.59-0.34 1-0.98 1-1.72z m-0.8 10c0 0.66-0.55 1.2-1.2 1.2s-1.2-0.55-1.2-1.2 0.55-1.2 1.2-1.2 1.2 0.55 1.2 1.2z m-1.2-8.8c-0.66 0-1.2-0.55-1.2-1.2s0.55-1.2 1.2-1.2 1.2 0.55 1.2 1.2-0.55 1.2-1.2 1.2z";
+	ICONS["octicon-git-pull-request-abandoned"] = ICONS["octicon-git-pull-request"];
+	ICONS["octicon-home"] = "M16 9L13 6V2H11v2L8 1 0 9h2l1 5c0 0.55 0.45 1 1 1h8c0.55 0 1-0.45 1-1l1-5h2zM12 14H9V10H7v4H4l-1.19-6.31 5.19-5.19 5.19 5.19-1.19 6.31z";
+	ICONS["octicon-issue-closed"] = "M7 10h2v2H7V10z m2-6H7v5h2V4z m1.5 1.5l-1 1 2.5 2.5 4-4.5-1-1-3 3.5-1.5-1.5zM8 13.7c-3.14 0-5.7-2.56-5.7-5.7s2.56-5.7 5.7-5.7c1.83 0 3.45 0.88 4.5 2.2l0.92-0.92C12.14 2 10.19 1 8 1 4.14 1 1 4.14 1 8s3.14 7 7 7 7-3.14 7-7l-1.52 1.52c-0.66 2.41-2.86 4.19-5.48 4.19z";
+	ICONS["octicon-issue-opened"] = "M7 2.3c3.14 0 5.7 2.56 5.7 5.7S10.14 13.7 7 13.7 1.3 11.14 1.3 8s2.56-5.7 5.7-5.7m0-1.3C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7S10.86 1 7 1z m1 3H6v5h2V4z m0 6H6v2h2V10z";
+	ICONS["octicon-issue-reopened"] = "M8 9H6V4h2v5zM6 12h2V10H6v2z m6.33-2H10l1.5 1.5c-1.05 1.33-2.67 2.2-4.5 2.2-3.14 0-5.7-2.56-5.7-5.7 0-0.34 0.03-0.67 0.09-1H0.08c-0.05 0.33-0.08 0.66-0.08 1 0 3.86 3.14 7 7 7 2.19 0 4.13-1.02 5.41-2.59l1.59 1.59V10H12.33zM1.67 6h2.33l-1.5-1.5c1.05-1.33 2.67-2.2 4.5-2.2 3.14 0 5.7 2.56 5.7 5.7 0 0.34-0.03 0.67-0.09 1h1.31c0.05-0.33 0.08-0.66 0.08-1 0-3.86-3.14-7-7-7-2.19 0-4.13 1.02-5.41 2.59L0 2v4h1.67z";
+	ICONS["octicon-person"] = "M7 6H1c-0.55 0-1 0.45-1 1v5h2v3c0 0.55 0.45 1 1 1h2c0.55 0 1-0.45 1-1V12h2V7c0-0.55-0.45-1-1-1z m0 5h-1V9h-1v6H3V9h-1v2H1V7h6v4z m0-8C7 1.34 5.66 0 4 0S1 1.34 1 3s1.34 3 3 3 3-1.34 3-3zM4 5c-1.11 0-2-0.89-2-2S2.89 1 4 1s2 0.89 2 2-0.89 2-2 2z";
+	ICONS["octicon-person-add"] = ICONS["octicon-person"];
+	ICONS["octicon-plus"] = "M12 9H7v5H5V9H0V7h5V2h2v5h5v2z";
+	ICONS["octicon-radio-tower"] = "M4.79 6.11c0.25-0.25 0.25-0.67 0-0.92-0.32-0.33-0.48-0.76-0.48-1.19 0-0.43 0.16-0.86 0.48-1.19 0.25-0.26 0.25-0.67 0-0.92-0.12-0.13-0.29-0.19-0.45-0.19-0.16 0-0.33 0.06-0.45 0.19-0.57 0.58-0.85 1.35-0.85 2.11 0 0.76 0.29 1.53 0.85 2.11C4.14 6.36 4.55 6.36 4.79 6.11zM2.33 0.52c-0.13-0.13-0.29-0.19-0.46-0.19-0.16 0-0.33 0.06-0.46 0.19C0.48 1.48 0.01 2.74 0.01 3.99 0.01 5.25 0.48 6.51 1.41 7.47c0.25 0.26 0.66 0.26 0.91 0 0.25-0.26 0.25-0.68 0-0.94-0.68-0.7-1.02-1.62-1.02-2.54s0.34-1.84 1.02-2.54C2.58 1.2 2.58 0.78 2.33 0.52zM8.02 5.62c0.9 0 1.62-0.73 1.62-1.62 0-0.9-0.73-1.62-1.62-1.62-0.9 0-1.62 0.73-1.62 1.62C6.39 4.89 7.12 5.62 8.02 5.62zM14.59 0.53c-0.25-0.26-0.66-0.26-0.91 0-0.25 0.26-0.25 0.68 0 0.94 0.68 0.7 1.02 1.62 1.02 2.54 0 0.92-0.34 1.83-1.02 2.54-0.25 0.26-0.25 0.68 0 0.94 0.13 0.13 0.29 0.19 0.46 0.19 0.16 0 0.33-0.06 0.46-0.19 0.93-0.96 1.4-2.22 1.4-3.48C15.99 2.75 15.52 1.49 14.59 0.53zM8.02 6.92L8.02 6.92c-0.41 0-0.83-0.1-1.2-0.3L3.67 14.99h1.49l0.86-1h4l0.84 1h1.49L9.21 6.62C8.83 6.82 8.43 6.92 8.02 6.92zM8.01 7.4L9.02 11H7.02L8.01 7.4zM6.02 12.99l1-1h2l1 1H6.02zM11.21 1.89c-0.25 0.25-0.25 0.67 0 0.92 0.32 0.33 0.48 0.76 0.48 1.19 0 0.43-0.16 0.86-0.48 1.19-0.25 0.26-0.25 0.67 0 0.92 0.12 0.13 0.29 0.19 0.45 0.19 0.16 0 0.32-0.06 0.45-0.19 0.57-0.58 0.85-1.35 0.85-2.11 0-0.76-0.28-1.53-0.85-2.11C11.86 1.64 11.45 1.64 11.21 1.89z";
+	ICONS["octicon-repo"] = "M4 9h-1v-1h1v1z m0-3h-1v1h1v-1z m0-2h-1v1h1v-1z m0-2h-1v1h1v-1z m8-1v12c0 0.55-0.45 1-1 1H6v2l-1.5-1.5-1.5 1.5V14H1c-0.55 0-1-0.45-1-1V1C0 0.45 0.45 0 1 0h10c0.55 0 1 0.45 1 1z m-1 10H1v2h2v-1h3v1h5V11z m0-10H2v9h9V1z";
+	ICONS["octicon-repo-clone"] = "M15 0H9v7c0 0.55 0.45 1 1 1h1v1h1v-1h3c0.55 0 1-0.45 1-1V1c0-0.55-0.45-1-1-1zM11 7h-1v-1h1v1z m4 0H12v-1h3v1z m0-2H11V1h4v4z m-11 0h-1v-1h1v1z m0-2h-1v-1h1v1zM2 1h6V0H1C0.45 0 0 0.45 0 1v12c0 0.55 0.45 1 1 1h2v2l1.5-1.5 1.5 1.5V14h5c0.55 0 1-0.45 1-1V10H2V1z m9 10v2H6v-1H3v1H1V11h10zM3 8h1v1h-1v-1z m1-1h-1v-1h1v1z";
+	ICONS["octicon-repo-create"] = ICONS["octicon-plus"];
+	ICONS["octicon-repo-push"] = "M4 3h-1v-1h1v1z m-1 2h1v-1h-1v1z m4 0L4 9h2v7h2V9h2L7 5zM11 0H1C0.45 0 0 0.45 0 1v12c0 0.55 0.45 1 1 1h4v-1H1V11h4v-1H2V1h9.02l-0.02 9H9v1h2v2H9v1h2c0.55 0 1-0.45 1-1V1c0-0.55-0.45-1-1-1z";
+	ICONS["octicon-repo-forked"] = "M8 1c-1.11 0-2 0.89-2 2 0 0.73 0.41 1.38 1 1.72v1.28L5 8 3 6v-1.28c0.59-0.34 1-0.98 1-1.72 0-1.11-0.89-2-2-2S0 1.89 0 3c0 0.73 0.41 1.38 1 1.72v1.78l3 3v1.78c-0.59 0.34-1 0.98-1 1.72 0 1.11 0.89 2 2 2s2-0.89 2-2c0-0.73-0.41-1.38-1-1.72V9.5l3-3V4.72c0.59-0.34 1-0.98 1-1.72 0-1.11-0.89-2-2-2zM2 4.2c-0.66 0-1.2-0.55-1.2-1.2s0.55-1.2 1.2-1.2 1.2 0.55 1.2 1.2-0.55 1.2-1.2 1.2z m3 10c-0.66 0-1.2-0.55-1.2-1.2s0.55-1.2 1.2-1.2 1.2 0.55 1.2 1.2-0.55 1.2-1.2 1.2z m3-10c-0.66 0-1.2-0.55-1.2-1.2s0.55-1.2 1.2-1.2 1.2 0.55 1.2 1.2-0.55 1.2-1.2 1.2z";
+	ICONS["octicon-repo-delete"] = ICONS["octicon-repo"];
+	ICONS["octicon-repo-pull"] = "M13 8V6H7V4h6V2l3 3-3 3zM4 2h-1v1h1v-1z m7 5h1v6c0 0.55-0.45 1-1 1H6v2l-1.5-1.5-1.5 1.5V14H1c-0.55 0-1-0.45-1-1V1C0 0.45 0.45 0 1 0h10c0.55 0 1 0.45 1 1v2h-1V1H2v9h9V7z m0 4H1v2h2v-1h3v1h5V11zM4 6h-1v1h1v-1z m0-2h-1v1h1v-1z m-1 5h1v-1h-1v1z";
+	ICONS["octicon-star"] = "M14 6l-4.9-0.64L7 1 4.9 5.36 0 6l3.6 3.26L2.67 14l4.33-2.33 4.33 2.33L10.4 9.26 14 6z";
+	ICONS["octicon-tag"] = "M6.73 2.73c-0.47-0.47-1.11-0.73-1.77-0.73H2.5C1.13 2 0 3.13 0 4.5v2.47c0 0.66 0.27 1.3 0.73 1.77l6.06 6.06c0.39 0.39 1.02 0.39 1.41 0l4.59-4.59c0.39-0.39 0.39-1.02 0-1.41L6.73 2.73zM1.38 8.09c-0.31-0.3-0.47-0.7-0.47-1.13V4.5c0-0.88 0.72-1.59 1.59-1.59h2.47c0.42 0 0.83 0.16 1.13 0.47l6.14 6.13-4.73 4.73L1.38 8.09z m0.63-4.09h2v2H2V4z";
+	ICONS["octicon-tag-add"] = ICONS["octicon-tag"];
+	ICONS["octicon-tag-remove"] = ICONS["octicon-tag"];
+	ICONS["octicon-triangle-left"] = "M6 2L0 8l6 6V2z";
 
 	var ACTIONS = [
 		{ id: "*-action", text: "All news feed", icon: "octicon-radio-tower", classNames: ["*-action"] },
@@ -84,10 +118,9 @@
 				{ id: "gist updated", text: "Updated", icon: "octicon-gist", classNames: ["gist_updated"] }
 			]
 		}
-		// Possible other classes: follow
 	];
 
-	var REPOS = [ ];
+	var REPOS = [];
 
 	var datasetId = "githubNewsFeedFilter";
 	var datasetIdLong = "data-github-news-feed-filter";
@@ -98,8 +131,8 @@
 		return function() {
 			var that = this;
 			return function(e) {
-				var args = that.slice(0);  // clone;
-				args.unshift(e);  // prepend event;
+				var args = that.slice(0); // clone;
+				args.unshift(e); // prepend event;
 				fn.apply(this, args);
 			};
 		}.call([].slice.call(arguments, 1));
@@ -132,7 +165,7 @@
 		github-news-feed-filter .private { font-weight: bold; }\
 		\
 		github-news-feed-filter .stars .octicon { position: absolute; right: -4px; }\
-		github-news-feed-filter .filter-list-item.open > a > .stars > .octicon:before { content: '\\f05b'; }\
+		github-news-feed-filter .filter-list-item.open > a > .stars > .octicon { transform: rotate(-90deg); }\
 		\
 		.no-alerts { font-style: italic; }\
 	");
@@ -173,9 +206,14 @@
 		li.appendChild(a);
 
 		// Filter icon;
-		var i = document.createElement("span");
-		i.classList.add("repo-icon", "octicon", filter.icon);
-		a.appendChild(i);
+		var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+		svg.classList.add("repo-icon", "octicon", filter.icon);
+		svg.setAttribute("height", "16");
+		svg.setAttribute("width", "16");
+		a.appendChild(svg);
+		var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+		path.setAttribute("d", ICONS[filter.icon]);
+		svg.appendChild(path);
 
 		// Filter text;
 		var text = filter.text.split("/");
@@ -204,9 +242,14 @@
 		s.appendChild(c);
 		if (filter.subFilters) {
 			s.appendChild(document.createTextNode(" "));
-			var o = document.createElement("span");
-			o.classList.add("octicon", "octicon-triangle-left");
-			s.appendChild(o);
+			var osvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+			osvg.classList.add("octicon", "octicon-triangle-left");
+			osvg.setAttribute("height", "16");
+			osvg.setAttribute("width", "6");
+			s.appendChild(osvg);
+			var opath = document.createElementNS("http://www.w3.org/2000/svg", "path");
+			opath.setAttribute("d", ICONS["octicon-triangle-left"]);
+			osvg.appendChild(opath);
 		}
 		a.appendChild(s);
 
@@ -331,7 +374,7 @@
 		var userRepos = new Set();
 		Array.prototype.forEach.call(newsContainer.querySelectorAll(".alert"), function(alert) {
 			var links = alert.querySelectorAll(".title a");
-			var userRepo = links[links.length - 1].textContent.split("#")[0];  // Remove issue number from text;
+			var userRepo = links[links.length - 1].textContent.split("#")[0]; // Remove issue number from text;
 			userRepos.add(userRepo);
 			var repo = userRepo.split("/")[1];
 			alert.classList.add(repo, userRepo);
@@ -372,7 +415,7 @@
 			var selected = document.querySelectorAll(filterElement + " li.filter-list-item.private");
 			if (selected.length > 0) {
 				Array.prototype.forEach.call(selected, function(item) {
-					if (item.parentNode.parentNode !== filterContainer) {  // exclude list item from current filter container;
+					if (item.parentNode.parentNode !== filterContainer) { // exclude list item from current filter container;
 						classNames.push(item.filterClassNames);
 					}
 				});
@@ -400,7 +443,7 @@
 		});
 	}
 
-	var CURRENT = { };
+	var CURRENT = {};
 
 	// Set current filter;
 	function setCurrentFilter(type, filter) {
@@ -468,10 +511,15 @@
 		headerLink.classList.add("btn", "btn-sm");
 		headerAction.appendChild(headerLink);
 
-		var headerLinkIcon = document.createElement("span");
-		headerLinkIcon.classList.add("octicon", "octicon-home");
-		headerLinkIcon.setAttribute("title", "Open Github News Feed Filter homepage");
-		headerLink.appendChild(headerLinkIcon);
+		var headerLinkSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+		headerLinkSvg.classList.add("octicon", "octicon-home");
+		headerLinkSvg.setAttribute("height", "16");
+		headerLinkSvg.setAttribute("width", "16");
+		headerLinkSvg.setAttribute("title", "Open Github News Feed Filter homepage");
+		headerLink.appendChild(headerLinkSvg);
+		var headerLinkPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
+		headerLinkPath.setAttribute("d", ICONS["octicon-home"]);
+		headerLinkSvg.appendChild(headerLinkPath);
 
 		var headerText = document.createElement("h3");
 		headerText.appendChild(document.createTextNode("News feed filter"));

@@ -66,6 +66,8 @@ Currently integrated filters:
 
 
 ## Version History
+* **7.0.0**
+    * Restored icons after GitHub switching to SVG;
 * **6.2**
     * :sparkles: Filter by repo. Fixes [#70](https://github.com/jerone/UserScripts/issues/70);
 * **6.1**
