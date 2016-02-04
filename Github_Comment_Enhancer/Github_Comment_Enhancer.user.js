@@ -539,9 +539,9 @@
 		return /\/wiki\//.test(location.href);
 	}
 
-	function isGist() {
-		return "gist.github.com" === location.host;
-	}
+	//function isGist() {
+	//	return "gist.github.com" === location.host;
+	//}
 
 	function overrideGollumMarkdown() {
 		unsafeWindow.$.GollumEditor.defineLanguage("markdown", MarkDown);
@@ -1125,9 +1125,7 @@
 		// Converts lists that have no child lists (of same type) first, then works its way up
 		var noChildrenRegex = /<(ul|ol)\b[^>]*>(?:(?!<ul|<ol)[\s\S])*?<\/\1>/gi;
 		while (string.match(noChildrenRegex)) {
-			string = string.replace(noChildrenRegex, function(str) {
-				return replaceLists(str);
-			});
+			string = string.replace(noChildrenRegex, replaceLists);
 		}
 
 		function replaceLists(html) {
@@ -1161,9 +1159,7 @@
 		// Blockquotes
 		var deepest = /<blockquote\b[^>]*>((?:(?!<blockquote)[\s\S])*?)<\/blockquote>/gi;
 		while (string.match(deepest)) {
-			string = string.replace(deepest, function(str) {
-				return replaceBlockquotes(str);
-			});
+			string = string.replace(deepest, replaceBlockquotes);
 		}
 
 		function replaceBlockquotes(html) {
