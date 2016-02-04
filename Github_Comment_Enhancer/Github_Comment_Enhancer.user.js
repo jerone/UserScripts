@@ -278,13 +278,13 @@
 		'	<div class="button-group btn-group">' +
 		'		<div class="select-menu js-menu-container js-select-menu tooltipped tooltipped-ne" aria-label="Headers">' +
 		'			<a id="function-h1" class="btn btn-sm minibutton select-menu-button icon-only js-menu-target  function-button function-dummy" aria-label="Headers" style="padding-left:7px; padding-right:7px; width:auto; border-bottom-right-radius:3px; border-top-right-radius:3px;">' +
-		'				<span class="js-select-button">h#</span>' +
+		'				<svg class="octicon octicon-text-size" height="16" viewBox="0 0 18 16" width="19"><path d="M17.97 14h-2.25l-0.95-3.25H10.7l-0.95 3.25H7.5l-0.69-2.33H3.53l-0.7 2.33H0.66l3.3-9.59h2.5l2.17 6.34 2.89-8.75h2.52l3.94 12zM6.36 10.13s-1.02-3.61-1.17-4.11h-0.08l-1.13 4.11h2.38z m7.92-1.05l-1.52-5.42h-0.06l-1.5 5.42h3.08z"></path></svg>' +
 		'			</a>' +
 		'			<div class="select-menu-modal-holder js-menu-content js-navigation-container" style="top:26px; z-index:22;">' +
 		'				<div class="select-menu-modal" style="width:auto; overflow:visible;">' +
 		'					<div class="select-menu-header">' +
 		'						<span class="select-menu-title">Choose header</span>' +
-		'						<span class="octicon octicon-remove-close js-menu-close"></span>' +
+		'						<svg class="octicon octicon-remove-close js-menu-close" height="16" viewBox="0 0 12 16" width="12" xmlns="http://www.w3.org/2000/svg"><path d="M7.48 8l3.75 3.75-1.48 1.48-3.75-3.75-3.75 3.75-1.48-1.48 3.75-3.75L0.77 4.25l1.48-1.48 3.75 3.75 3.75-3.75 1.48 1.48-3.75 3.75z" /></svg>' +
 		'					</div>' +
 		'					<div class="button-group btn-group" style="min-width:175px;">' +
 		'						<a href="#" id="function-h1" class="btn btn-sm minibutton function-button js-navigation-item js-menu-close tooltipped tooltipped-s" aria-label="Header 1 (ctrl+1)">' +
@@ -314,23 +314,23 @@
 		/* Link & image; */
 		'	<div class="button-group btn-group">' +
 		'		<a href="#" id="function-link" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Link (ctrl+l)">' +
-		'			<span class="octicon octicon-link"></span>' +
+		'			<svg class="octicon octicon-link" height="16" viewBox="0 0 16 16" width="17" xmlns="http://www.w3.org/2000/svg"><path d="M4 9h1v1h-1c-1.5 0-3-1.69-3-3.5s1.55-3.5 3-3.5h4c1.45 0 3 1.69 3 3.5 0 1.41-0.91 2.72-2 3.25v-1.16c0.58-0.45 1-1.27 1-2.09 0-1.28-1.02-2.5-2-2.5H4c-0.98 0-2 1.22-2 2.5s1 2.5 2 2.5z m9-3h-1v1h1c1 0 2 1.22 2 2.5s-1.02 2.5-2 2.5H9c-0.98 0-2-1.22-2-2.5 0-0.83 0.42-1.64 1-2.09v-1.16c-1.09 0.53-2 1.84-2 3.25 0 1.81 1.55 3.5 3 3.5h4c1.45 0 3-1.69 3-3.5s-1.5-3.5-3-3.5z" /></svg>' +
 		'		</a>' +
 		'		<a href="#" id="function-image" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Image (ctrl+g)">' +
-		'			<span class="octicon octicon-file-media"></span>' +
+		'			<svg class="octicon octicon-file-media" height="16" viewBox="0 0 12 16" width="13" xmlns="http://www.w3.org/2000/svg"><path d="M6 5h2v2H6V5z m6-0.5v9.5c0 0.55-0.45 1-1 1H1c-0.55 0-1-0.45-1-1V2c0-0.55 0.45-1 1-1h7.5l3.5 3.5z m-1 0.5L8 2H1v11l3-5 2 4 2-2 3 3V5z" /></svg>' +
 		'		</a>' +
 		'	</div>' +
 
 		/* Lists (unordered, ordered & task); */
 		'	<div class="button-group btn-group">' +
 		'		<a href="#" id="function-ul" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Unordered List (alt+ctrl+u)">' +
-		'			<span class="octicon octicon-list-unordered"></span>' +
+		'			<svg class="octicon octicon-list-unordered" height="16" viewBox="0 0 12 16" width="13"><path d="M2 13c0 0.59 0 1-0.59 1H0.59c-0.59 0-0.59-0.41-0.59-1s0-1 0.59-1h0.81c0.59 0 0.59 0.41 0.59 1z m2.59-9h6.81c0.59 0 0.59-0.41 0.59-1s0-1-0.59-1H4.59c-0.59 0-0.59 0.41-0.59 1s0 1 0.59 1zM1.41 7H0.59c-0.59 0-0.59 0.41-0.59 1s0 1 0.59 1h0.81c0.59 0 0.59-0.41 0.59-1s0-1-0.59-1z m0-5H0.59c-0.59 0-0.59 0.41-0.59 1s0 1 0.59 1h0.81c0.59 0 0.59-0.41 0.59-1s0-1-0.59-1z m10 5H4.59c-0.59 0-0.59 0.41-0.59 1s0 1 0.59 1h6.81c0.59 0 0.59-0.41 0.59-1s0-1-0.59-1z m0 5H4.59c-0.59 0-0.59 0.41-0.59 1s0 1 0.59 1h6.81c0.59 0 0.59-0.41 0.59-1s0-1-0.59-1z"></path></svg>' +
 		'		</a>' +
 		'		<a href="#" id="function-ol" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Ordered List (alt+ctrl+o)">' +
-		'			<span class="octicon octicon-list-ordered"></span>' +
+		'			<svg class="octicon octicon-list-ordered" height="16" viewBox="0 0 12 16" width="13"><path d="M12 13c0 0.59 0 1-0.59 1H4.59c-0.59 0-0.59-0.41-0.59-1s0-1 0.59-1h6.81c0.59 0 0.59 0.41 0.59 1zM4.59 4h6.81c0.59 0 0.59-0.41 0.59-1s0-1-0.59-1H4.59c-0.59 0-0.59 0.41-0.59 1s0 1 0.59 1z m6.81 3H4.59c-0.59 0-0.59 0.41-0.59 1s0 1 0.59 1h6.81c0.59 0 0.59-0.41 0.59-1s0-1-0.59-1zM2 1H1.28C0.98 1.19 0.7 1.25 0.25 1.34v0.66h0.75v2.14H0.16v0.86h2.84v-0.86h-1V1z m0.25 8.13c-0.17 0-0.45 0.03-0.66 0.06 0.53-0.56 1.14-1.25 1.14-1.89-0.02-0.78-0.56-1.3-1.36-1.3-0.59 0-0.97 0.2-1.38 0.64l0.58 0.58c0.19-0.19 0.38-0.38 0.64-0.38 0.28 0 0.48 0.16 0.48 0.52 0 0.53-0.77 1.2-1.7 2.06v0.58h3l-0.09-0.88h-0.66z m-0.08 3.78v-0.03c0.44-0.19 0.64-0.47 0.64-0.86 0-0.7-0.56-1.11-1.44-1.11-0.48 0-0.89 0.19-1.28 0.52l0.55 0.64c0.25-0.2 0.44-0.31 0.69-0.31 0.27 0 0.42 0.13 0.42 0.36 0 0.27-0.2 0.44-0.86 0.44v0.75c0.83 0 0.98 0.17 0.98 0.47 0 0.25-0.23 0.38-0.58 0.38-0.28 0-0.56-0.14-0.81-0.38L0 14.44c0.3 0.36 0.77 0.56 1.41 0.56 0.83 0 1.53-0.41 1.53-1.16 0-0.5-0.31-0.81-0.77-0.94z"></path></svg>' +
 		'		</a>' +
 		'		<a href="#" id="function-checklist" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Task List (alt+ctrl+t)">' +
-		'			<span class="octicon octicon-checklist"></span>' +
+		'			<svg class="octicon octicon-tasklist" height="16" viewBox="0 0 16 16" width="17"><path d="M15.41 9H7.59c-0.59 0-0.59-0.41-0.59-1s0-1 0.59-1h7.81c0.59 0 0.59 0.41 0.59 1s0 1-0.59 1zM9.59 4c-0.59 0-0.59-0.41-0.59-1s0-1 0.59-1h5.81c0.59 0 0.59 0.41 0.59 1s0 1-0.59 1H9.59zM0 3.91l1.41-1.3 1.59 1.59L7.09 0l1.41 1.41-5.5 5.5L0 3.91z m7.59 8.09h7.81c0.59 0 0.59 0.41 0.59 1s0 1-0.59 1H7.59c-0.59 0-0.59-0.41-0.59-1s0-1 0.59-1z"></path></svg>' +
 		'		</a>' +
 		'	</div>' +
 
@@ -338,13 +338,13 @@
 		'	<div class="button-group btn-group">' +
 		'		<div class="select-menu js-menu-container js-select-menu  tooltipped tooltipped-ne" aria-label="Code (ctrl+k)">' +
 		'			<a href="#" id="function-code" class="btn btn-sm minibutton  function-button">' +
-		'				<span class="octicon octicon-code"></span>' +
+		'				<svg class="octicon octicon-code" height="16" viewBox="0 0 14 16" width="15"><path d="M9.5 3l-1.5 1.5 3.5 3.5L8 11.5l1.5 1.5 4.5-5L9.5 3zM4.5 3L0 8l4.5 5 1.5-1.5L2.5 8l3.5-3.5L4.5 3z"></path></svg>' +
 		'			</a>' +
 		'			<div class="select-menu-modal-holder js-menu-content js-navigation-container" style="top:26px; z-index:22;">' +
 		'				<div class="select-menu-modal" style="overflow:visible;">' +
 		'					<div class="select-menu-header">' +
 		'						<span class="select-menu-title">Code syntax</span>' +
-		'						<span class="octicon octicon-remove-close js-menu-close"></span>' +
+		'						<svg class="octicon octicon-remove-close js-menu-close" height="16" viewBox="0 0 12 16" width="12" xmlns="http://www.w3.org/2000/svg"><path d="M7.48 8l3.75 3.75-1.48 1.48-3.75-3.75-3.75 3.75-1.48-1.48 3.75-3.75L0.77 4.25l1.48-1.48 3.75 3.75 3.75-3.75 1.48 1.48-3.75 3.75z" /></svg>' +
 		'					</div>' +
 		'					<div class="select-menu-filters">' +
 		'						<div class="select-menu-text-filter">' +
@@ -363,13 +363,13 @@
 		/* Blockquote, horizontal rule & table; */
 		'	<div class="button-group btn-group">' +
 		'		<a href="#" id="function-blockquote" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Blockquote (ctrl+q)">' +
-		'			<span class="octicon octicon-quote"></span>' +
+		'			<svg class="octicon octicon-quote" height="16" viewBox="0 0 14 16" width="15"><path d="M6.16 3.17C3.73 4.73 2.55 6.34 2.55 9.03c0.16-0.05 0.3-0.05 0.44-0.05 1.27 0 2.5 0.86 2.5 2.41 0 1.61-1.03 2.61-2.5 2.61C1.09 14 0 12.48 0 9.75 0 5.95 1.75 3.22 5.02 1.33l1.14 1.84z m7 0C10.73 4.73 9.55 6.34 9.55 9.03c0.16-0.05 0.3-0.05 0.44-0.05 1.27 0 2.5 0.86 2.5 2.41 0 1.61-1.03 2.61-2.5 2.61-1.89 0-2.98-1.52-2.98-4.25 0-3.8 1.75-6.53 5.02-8.42l1.14 1.84z"></path></svg>' +
 		'		</a>' +
 		'		<a href="#" id="function-rule" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Horizontal Rule (ctrl+r)">' +
-		'			<span class="octicon octicon-horizontal-rule"></span>' +
+		'			<svg class="octicon octicon-horizontal-rule" height="16" viewBox="0 0 10 16" width="11" xmlns="http://www.w3.org/2000/svg"><path d="M1 7h2v2h1V3h-1v3H1V3H0v6h1V7z m9 2V7h-1v2h1z m0-3V4h-1v2h1z m-3 0V4h2v-1H6v6h1V7h2v-1H7zM0 13h10V11H0v2z" /></svg>' +
 		'		</a>' +
 		'		<a href="#" id="function-table" class="btn btn-sm minibutton function-button tooltipped tooltipped-ne" aria-label="Table (alt+shift+t)">' +
-		'			<span class="octicon octicon-three-bars"></span>' +
+		'			<svg class="octicon octicon-three-bars" height="16" viewBox="0 0 12 16" width="13" xmlns="http://www.w3.org/2000/svg"><path d="M11.41 9H0.59c-0.59 0-0.59-0.41-0.59-1s0-1 0.59-1h10.81c0.59 0 0.59 0.41 0.59 1s0 1-0.59 1z m0-4H0.59c-0.59 0-0.59-0.41-0.59-1s0-1 0.59-1h10.81c0.59 0 0.59 0.41 0.59 1s0 1-0.59 1zM0.59 11h10.81c0.59 0 0.59 0.41 0.59 1s0 1-0.59 1H0.59c-0.59 0-0.59-0.41-0.59-1s0-1 0.59-1z" /></svg>' +
 		'		</a>' +
 		'	</div>' +
 
@@ -377,13 +377,13 @@
 		'	<div class="button-group btn-group">' +
 		'		<div class="select-menu js-menu-container js-select-menu tooltipped tooltipped-ne" aria-label="Snippets">' +
 		'			<a href="#" class="btn btn-sm minibutton select-menu-button js-menu-target" aria-label="Snippets" style="padding-left:7px; padding-right:7px; width:auto; border-bottom-right-radius:3px; border-top-right-radius:3px;">' +
-		'				<span class="octicon octicon-pin"></span>' +
+		'				<svg class="octicon octicon-pin" height="16" viewBox="0 0 16 16" width="17" xmlns="http://www.w3.org/2000/svg"><path d="M10 1.2v0.8l0.5 1-4.5 3H2.2c-0.44 0-0.67 0.53-0.34 0.86l3.14 3.14L1 15l5-4 3.14 3.14c0.33 0.33 0.86 0.09 0.86-0.34V10l3-4.5 1 0.5h0.8c0.44 0 0.67-0.53 0.34-0.86L10.86 0.86c-0.33-0.33-0.86-0.09-0.86 0.34z" /></svg>' +
 		'			</a>' +
 		'			<div class="select-menu-modal-holder js-menu-content js-navigation-container" style="top:26px; z-index:22;">' +
 		'				<div class="select-menu-modal" style="overflow:visible;">' +
 		'					<div class="select-menu-header">' +
 		'						<span class="select-menu-title">Snippets</span>' +
-		'						<span class="octicon octicon-remove-close js-menu-close"></span>' +
+		'										<svg class="octicon octicon-remove-close js-menu-close" height="16" viewBox="0 0 12 16" width="12" xmlns="http://www.w3.org/2000/svg"><path d="M7.48 8l3.75 3.75-1.48 1.48-3.75-3.75-3.75 3.75-1.48-1.48 3.75-3.75L0.77 4.25l1.48-1.48 3.75 3.75 3.75-3.75 1.48 1.48-3.75 3.75z" /></svg>' +
 		'					</div>' +
 		'					<div class="select-menu-filters">' +
 		'						<div class="select-menu-text-filter">' +
@@ -416,13 +416,13 @@
 		'	<div class="button-group btn-group  suggester-function">' +
 		'		<div class="select-menu js-menu-container js-select-menu tooltipped tooltipped-ne" aria-label="Emoji">' +
 		'			<a href="#" class="btn btn-sm minibutton select-menu-button js-menu-target" aria-label="Emoji" style="padding-left:7px; padding-right:7px; width:auto; border-bottom-right-radius:3px; border-top-right-radius:3px;">' +
-		'				<span class="octicon octicon-octoface"></span>' +
+		'				<svg class="octicon octicon-smiley" height="16" viewBox="0 0 16 16" width="17" xmlns="http://www.w3.org/2000/svg"><path d="M8 0C3.58 0 0 3.58 0 8s3.58 8 8 8 8-3.58 8-8S12.42 0 8 0z m4.81 12.81c-0.63 0.63-1.36 1.11-2.17 1.45-0.83 0.36-1.72 0.53-2.64 0.53s-1.81-0.17-2.64-0.53c-0.81-0.34-1.55-0.83-2.17-1.45s-1.11-1.36-1.45-2.17c-0.36-0.83-0.53-1.72-0.53-2.64s0.17-1.81 0.53-2.64c0.34-0.81 0.83-1.55 1.45-2.17s1.36-1.11 2.17-1.45c0.83-0.36 1.72-0.53 2.64-0.53s1.81 0.17 2.64 0.53c0.81 0.34 1.55 0.83 2.17 1.45s1.11 1.36 1.45 2.17c0.36 0.83 0.53 1.72 0.53 2.64s-0.17 1.81-0.53 2.64c-0.34 0.81-0.83 1.55-1.45 2.17zM4 5.8v-0.59c0-0.66 0.53-1.19 1.2-1.19h0.59c0.66 0 1.19 0.53 1.19 1.19v0.59c0 0.67-0.53 1.2-1.19 1.2h-0.59c-0.67 0-1.2-0.53-1.2-1.2z m5 0v-0.59c0-0.66 0.53-1.19 1.2-1.19h0.59c0.66 0 1.19 0.53 1.19 1.19v0.59c0 0.67-0.53 1.2-1.19 1.2h-0.59c-0.67 0-1.2-0.53-1.2-1.2z m4 4.2c-0.72 1.88-2.91 3-5 3s-4.28-1.13-5-3c-0.14-0.39 0.23-1 0.66-1h8.59c0.41 0 0.89 0.61 0.75 1z" /></svg>' +
 		'			</a>' +
 		'			<div class="select-menu-modal-holder js-menu-content js-navigation-container" style="top:26px; z-index:22;">' +
 		'				<div class="select-menu-modal" style="overflow:visible;">' +
 		'					<div class="select-menu-header">' +
 		'						<span class="select-menu-title">Emoji</span>' +
-		'						<span class="octicon octicon-remove-close js-menu-close"></span>' +
+		'						<svg class="octicon octicon-remove-close js-menu-close" height="16" viewBox="0 0 12 16" width="12" xmlns="http://www.w3.org/2000/svg"><path d="M7.48 8l3.75 3.75-1.48 1.48-3.75-3.75-3.75 3.75-1.48-1.48 3.75-3.75L0.77 4.25l1.48-1.48 3.75 3.75 3.75-3.75 1.48 1.48-3.75 3.75z" /></svg>' +
 		'					</div>' +
 		'					<div class="select-menu-filters">' +
 		'						<div class="select-menu-text-filter">' +
@@ -443,7 +443,7 @@
 		'<div style="float:right;">' +
 		'	<div class="button-group btn-group">' +
 		'		<span id="function-clear" class="btn btn-sm minibutton function-button tooltipped tooltipped-nw" aria-label="Clear (alt+ctrl+x)">' +
-		'			<span class="octicon octicon-trashcan"></span>' +
+		'			<svg class="octicon octicon-trashcan" height="16" viewBox="0 0 12 16" width="13" xmlns="http://www.w3.org/2000/svg"><path d="M10 2H8c0-0.55-0.45-1-1-1H4c-0.55 0-1 0.45-1 1H1c-0.55 0-1 0.45-1 1v1c0 0.55 0.45 1 1 1v9c0 0.55 0.45 1 1 1h7c0.55 0 1-0.45 1-1V5c0.55 0 1-0.45 1-1v-1c0-0.55-0.45-1-1-1z m-1 12H2V5h1v8h1V5h1v8h1V5h1v8h1V5h1v9z m1-10H1v-1h9v1z" /></svg>' +
 		'		</span>' +
 		'	</div>' +
 		'</div>';
@@ -1250,9 +1250,14 @@
 				newComment.focus();
 			});
 
-			var replyIcon = document.createElement("span");
-			replyIcon.classList.add("octicon", "octicon-mail-reply");
-			reply.appendChild(replyIcon);
+			var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+			svg.classList.add("octicon", "octicon-mail-reply");
+			svg.setAttribute("height", "16");
+			svg.setAttribute("width", "16");
+			reply.appendChild(svg);
+			var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+			path.setAttribute("d", "M6 2.5l-6 4.5 6 4.5v-3c1.73 0 5.14 0.95 6 4.38 0-4.55-3.06-7.05-6-7.38v-3z");
+			svg.appendChild(path);
 
 			actions.appendChild(reply);
 		});
