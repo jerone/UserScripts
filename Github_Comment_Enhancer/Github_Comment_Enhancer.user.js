@@ -731,22 +731,28 @@
 		});
 	}
 
-	function addSponsorLink(commentForm) {
-		var tabnavExtras = commentForm.parentNode.parentNode.querySelector(".comment-form-head .tabnav-right, .comment-form-head .right");
-		if (tabnavExtras) {
-			var elem = commentForm;
-			while ((elem = elem.parentNode) && elem.nodeType !== 9 && !elem.classList.contains("timeline-inline-comments")) {}
-			var sponsoredText = elem !== document ? " Github Comment Enhancer" : " Enhanced by Github Comment Enhancer";
-			var sponsored = document.createElement("a");
-			sponsored.setAttribute("target", "_blank");
-			sponsored.setAttribute("href", "https://github.com/jerone/UserScripts/tree/master/Github_Comment_Enhancer#readme");
-			sponsored.classList.add("tabnav-widget", "text", "tabnav-extras", "tabnav-extra");
-			var sponsoredIcon = document.createElement("span");
-			sponsoredIcon.classList.add("octicon", "octicon-question");
-			sponsored.appendChild(sponsoredIcon);
-			sponsored.appendChild(document.createTextNode(sponsoredText));
-			tabnavExtras.insertBefore(sponsored, tabnavExtras.firstElementChild);
-		}
+	function addSponsorLink() {
+		var sponsoredText = " Enhanced by Github Comment Enhancer";
+		var sponsored = document.createElement("a");
+		sponsored.setAttribute("target", "_blank");
+		sponsored.setAttribute("href", "https://github.com/jerone/UserScripts/tree/master/Github_Comment_Enhancer#readme");
+		sponsored.classList.add("tabnav-extra");
+		sponsored.style.cssFloat = "right";
+		var sponsoredSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+		sponsoredSvg.classList.add("octicon", "octicon-question");
+		sponsoredSvg.setAttribute("height", "16");
+		sponsoredSvg.setAttribute("width", "16");
+		sponsored.appendChild(sponsoredSvg);
+		var sponsoredPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
+		sponsoredPath.setAttribute("d", "M6 10h2v2H6V10z m4-3.5c0 2.14-2 2.5-2 2.5H6c0-0.55 0.45-1 1-1h0.5c0.28 0 0.5-0.22 0.5-0.5v-1c0-0.28-0.22-0.5-0.5-0.5h-1c-0.28 0-0.5 0.22-0.5 0.5v0.5H4c0-1.5 1.5-3 3-3s3 1 3 2.5zM7 2.3c3.14 0 5.7 2.56 5.7 5.7S10.14 13.7 7 13.7 1.3 11.14 1.3 8s2.56-5.7 5.7-5.7m0-1.3C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7S10.86 1 7 1z");
+		sponsoredSvg.appendChild(sponsoredPath);
+		sponsored.appendChild(document.createTextNode(sponsoredText));
+		return sponsored;
+	}
+
+	function removeGitHubToolbar(commentForm) {console.log(commentForm);
+		var toolbar = commentForm.parentNode.parentNode.querySelector(".toolbar-commenting");
+		toolbar.parentNode.replaceChild(addSponsorLink(), toolbar);
 	}
 
 	function commentFormKeyEvent(commentForm, e) {
@@ -831,6 +837,8 @@
 						gollumEditor.style.margin = "10px 0";
 						gollumEditor.classList.add("active");
 						commentForm.parentNode.insertBefore(gollumEditor, commentForm);
+
+						removeGitHubToolbar(commentForm);
 					}
 
 					// Execute next block only when suggester is available;
@@ -845,8 +853,6 @@
 					}
 
 					addCodeSyntax(commentForm);
-
-					addSponsorLink(commentForm);
 				}
 
 				Array.prototype.forEach.call(gollumEditor.parentNode.querySelectorAll(".function-button"), function(button) {
