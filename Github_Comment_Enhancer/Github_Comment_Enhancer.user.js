@@ -750,9 +750,11 @@
 		return sponsored;
 	}
 
-	function removeGitHubToolbar(commentForm) {console.log(commentForm);
+	function removeGitHubToolbar(commentForm) {
 		var toolbar = commentForm.parentNode.parentNode.querySelector(".toolbar-commenting");
-		toolbar.parentNode.replaceChild(addSponsorLink(), toolbar);
+		if (toolbar) {
+			toolbar.parentNode.replaceChild(addSponsorLink(), toolbar);
+		}
 	}
 
 	function commentFormKeyEvent(commentForm, e) {
