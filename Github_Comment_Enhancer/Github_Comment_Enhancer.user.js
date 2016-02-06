@@ -277,7 +277,7 @@
 		/* Headers (1 - 6); */
 		'	<div class="button-group btn-group">' +
 		'		<div class="select-menu js-menu-container js-select-menu tooltipped tooltipped-ne" aria-label="Headers">' +
-		'			<a id="function-h1" class="btn btn-sm minibutton select-menu-button icon-only js-menu-target  function-button function-dummy" aria-label="Headers" style="padding-left:7px; padding-right:7px; width:auto; border-bottom-right-radius:3px; border-top-right-radius:3px;">' +
+		'			<a href="#" id="function-h1" class="btn btn-sm minibutton select-menu-button js-menu-target function-button function-dummy" aria-label="Headers" style="padding-left:7px; padding-right:7px; width:auto; border-bottom-right-radius:3px; border-top-right-radius:3px;">' +
 		'				<svg class="octicon octicon-text-size" height="16" viewBox="0 0 18 16" width="19"><path d="M17.97 14h-2.25l-0.95-3.25H10.7l-0.95 3.25H7.5l-0.69-2.33H3.53l-0.7 2.33H0.66l3.3-9.59h2.5l2.17 6.34 2.89-8.75h2.52l3.94 12zM6.36 10.13s-1.02-3.61-1.17-4.11h-0.08l-1.13 4.11h2.38z m7.92-1.05l-1.52-5.42h-0.06l-1.5 5.42h3.08z"></path></svg>' +
 		'			</a>' +
 		'			<div class="select-menu-modal-holder js-menu-content js-navigation-container" style="top:26px; z-index:22;">' +
@@ -287,22 +287,22 @@
 		'						<svg class="octicon octicon-remove-close js-menu-close" height="16" viewBox="0 0 12 16" width="12" xmlns="http://www.w3.org/2000/svg"><path d="M7.48 8l3.75 3.75-1.48 1.48-3.75-3.75-3.75 3.75-1.48-1.48 3.75-3.75L0.77 4.25l1.48-1.48 3.75 3.75 3.75-3.75 1.48 1.48-3.75 3.75z" /></svg>' +
 		'					</div>' +
 		'					<div class="button-group btn-group" style="min-width:175px;">' +
-		'						<a href="#" id="function-h1" class="btn btn-sm minibutton function-button js-navigation-item js-menu-close tooltipped tooltipped-s" aria-label="Header 1 (ctrl+1)">' +
+		'						<a href="#" id="function-h1" class="btn btn-sm minibutton function-button js-menu-close tooltipped tooltipped-s" aria-label="Header 1 (ctrl+1)">' +
 		'							h1' +
 		'						</a>' +
-		'						<a href="#" id="function-h2" class="btn btn-sm minibutton function-button js-navigation-item js-menu-close tooltipped tooltipped-s" aria-label="Header 2 (ctrl+2)">' +
+		'						<a href="#" id="function-h2" class="btn btn-sm minibutton function-button js-menu-close tooltipped tooltipped-s" aria-label="Header 2 (ctrl+2)">' +
 		'							h2' +
 		'						</a>' +
-		'						<a href="#" id="function-h3" class="btn btn-sm minibutton function-button js-navigation-item js-menu-close tooltipped tooltipped-s" aria-label="Header 3 (ctrl+3)">' +
+		'						<a href="#" id="function-h3" class="btn btn-sm minibutton function-button js-menu-close tooltipped tooltipped-s" aria-label="Header 3 (ctrl+3)">' +
 		'							h3' +
 		'						</a>' +
-		'						<a href="#" id="function-h4" class="btn btn-sm minibutton function-button js-navigation-item js-menu-close tooltipped tooltipped-s" aria-label="Header 4 (ctrl+4)">' +
+		'						<a href="#" id="function-h4" class="btn btn-sm minibutton function-button js-menu-close tooltipped tooltipped-s" aria-label="Header 4 (ctrl+4)">' +
 		'							h4' +
 		'						</a>' +
-		'						<a href="#" id="function-h5" class="btn btn-sm minibutton function-button js-navigation-item js-menu-close tooltipped tooltipped-s" aria-label="Header 5 (ctrl+5)">' +
+		'						<a href="#" id="function-h5" class="btn btn-sm minibutton function-button js-menu-close tooltipped tooltipped-s" aria-label="Header 5 (ctrl+5)">' +
 		'							h5' +
 		'						</a>' +
-		'						<a href="#" id="function-h6" class="btn btn-sm minibutton function-button js-navigation-item js-menu-close tooltipped tooltipped-s" aria-label="Header 6 (ctrl+6)">' +
+		'						<a href="#" id="function-h6" class="btn btn-sm minibutton function-button js-menu-close tooltipped tooltipped-s" aria-label="Header 6 (ctrl+6)">' +
 		'							h6' +
 		'						</a>' +
 		'					</div>' +
@@ -336,8 +336,8 @@
 
 		/* Code (syntax); */
 		'	<div class="button-group btn-group">' +
-		'		<div class="select-menu js-menu-container js-select-menu  tooltipped tooltipped-ne" aria-label="Code (ctrl+k)">' +
-		'			<a href="#" id="function-code" class="btn btn-sm minibutton  function-button">' +
+		'		<div class="select-menu js-menu-container js-select-menu tooltipped tooltipped-ne" aria-label="Code (ctrl+k)">' +
+		'			<a href="#" id="function-code" class="btn btn-sm minibutton function-button">' +
 		'				<svg class="octicon octicon-code" height="16" viewBox="0 0 14 16" width="15"><path d="M9.5 3l-1.5 1.5 3.5 3.5L8 11.5l1.5 1.5 4.5-5L9.5 3zM4.5 3L0 8l4.5 5 1.5-1.5L2.5 8l3.5-3.5L4.5 3z"></path></svg>' +
 		'			</a>' +
 		'			<div class="select-menu-modal-holder js-menu-content js-navigation-container" style="top:26px; z-index:22;">' +
@@ -356,7 +356,7 @@
 		'					</div>' +
 		'				</div>' +
 		'			</div>' +
-		'			<a href="#" id="function-code" class="btn btn-sm minibutton  select-menu-button js-menu-target  function-button function-dummy" style="width:20px; margin-left:-1px;"></a>' +
+		'			<a href="#" id="function-code" class="btn btn-sm minibutton select-menu-button js-menu-target function-button function-dummy" style="width:20px; margin-left:-1px;"></a>' +
 		'		</div>' +
 		'	</div>' +
 
@@ -413,7 +413,7 @@
 		'	</div>' +
 
 		/* Emoji; */
-		'	<div class="button-group btn-group  suggester-function">' +
+		'	<div class="button-group btn-group suggester-function">' +
 		'		<div class="select-menu js-menu-container js-select-menu tooltipped tooltipped-ne" aria-label="Emoji">' +
 		'			<a href="#" class="btn btn-sm minibutton select-menu-button js-menu-target" aria-label="Emoji" style="padding-left:7px; padding-right:7px; width:auto; border-bottom-right-radius:3px; border-top-right-radius:3px;">' +
 		'				<svg class="octicon octicon-smiley" height="16" viewBox="0 0 16 16" width="17" xmlns="http://www.w3.org/2000/svg"><path d="M8 0C3.58 0 0 3.58 0 8s3.58 8 8 8 8-3.58 8-8S12.42 0 8 0z m4.81 12.81c-0.63 0.63-1.36 1.11-2.17 1.45-0.83 0.36-1.72 0.53-2.64 0.53s-1.81-0.17-2.64-0.53c-0.81-0.34-1.55-0.83-2.17-1.45s-1.11-1.36-1.45-2.17c-0.36-0.83-0.53-1.72-0.53-2.64s0.17-1.81 0.53-2.64c0.34-0.81 0.83-1.55 1.45-2.17s1.36-1.11 2.17-1.45c0.83-0.36 1.72-0.53 2.64-0.53s1.81 0.17 2.64 0.53c0.81 0.34 1.55 0.83 2.17 1.45s1.11 1.36 1.45 2.17c0.36 0.83 0.53 1.72 0.53 2.64s-0.17 1.81-0.53 2.64c-0.34 0.81-0.83 1.55-1.45 2.17zM4 5.8v-0.59c0-0.66 0.53-1.19 1.2-1.19h0.59c0.66 0 1.19 0.53 1.19 1.19v0.59c0 0.67-0.53 1.2-1.19 1.2h-0.59c-0.67 0-1.2-0.53-1.2-1.2z m5 0v-0.59c0-0.66 0.53-1.19 1.2-1.19h0.59c0.66 0 1.19 0.53 1.19 1.19v0.59c0 0.67-0.53 1.2-1.19 1.2h-0.59c-0.67 0-1.2-0.53-1.2-1.2z m4 4.2c-0.72 1.88-2.91 3-5 3s-4.28-1.13-5-3c-0.14-0.39 0.23-1 0.66-1h8.59c0.41 0 0.89 0.61 0.75 1z" /></svg>' +
