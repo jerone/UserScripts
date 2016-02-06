@@ -383,7 +383,7 @@
 		'				<div class="select-menu-modal" style="overflow:visible;">' +
 		'					<div class="select-menu-header">' +
 		'						<span class="select-menu-title">Snippets</span>' +
-		'										<svg class="octicon octicon-remove-close js-menu-close" height="16" viewBox="0 0 12 16" width="12" xmlns="http://www.w3.org/2000/svg"><path d="M7.48 8l3.75 3.75-1.48 1.48-3.75-3.75-3.75 3.75-1.48-1.48 3.75-3.75L0.77 4.25l1.48-1.48 3.75 3.75 3.75-3.75 1.48 1.48-3.75 3.75z" /></svg>' +
+		'						<svg class="octicon octicon-remove-close js-menu-close" height="16" viewBox="0 0 12 16" width="12" xmlns="http://www.w3.org/2000/svg"><path d="M7.48 8l3.75 3.75-1.48 1.48-3.75-3.75-3.75 3.75-1.48-1.48 3.75-3.75L0.77 4.25l1.48-1.48 3.75 3.75 3.75-3.75 1.48 1.48-3.75 3.75z" /></svg>' +
 		'					</div>' +
 		'					<div class="select-menu-filters">' +
 		'						<div class="select-menu-text-filter">' +
