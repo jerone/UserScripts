@@ -1279,7 +1279,7 @@
 	// For inline comments on commits;
 	var files = document.querySelectorAll('.diff-table');
 	Array.prototype.forEach.call(files, function(file) {
-		file = file.firstElementChild;
+		file = file.querySelector(".diff-table > tbody");
 		new MutationObserver(function(mutations) {
 			mutations.forEach(function(mutation) {
 				if (mutation.target === file) {
