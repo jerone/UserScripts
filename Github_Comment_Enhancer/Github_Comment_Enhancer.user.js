@@ -288,22 +288,22 @@
 		'					</div>' +
 		'					<div class="button-group btn-group" style="min-width:175px;">' +
 		'						<a href="#" id="function-h1" class="btn btn-sm minibutton function-button js-navigation-item js-menu-close tooltipped tooltipped-s" aria-label="Header 1 (ctrl+1)">' +
-		'							<b class="select-menu-item-text js-select-button-text">h1</b>' +
+		'							h1' +
 		'						</a>' +
 		'						<a href="#" id="function-h2" class="btn btn-sm minibutton function-button js-navigation-item js-menu-close tooltipped tooltipped-s" aria-label="Header 2 (ctrl+2)">' +
-		'							<b class="select-menu-item-text js-select-button-text">h2</b>' +
+		'							h2' +
 		'						</a>' +
 		'						<a href="#" id="function-h3" class="btn btn-sm minibutton function-button js-navigation-item js-menu-close tooltipped tooltipped-s" aria-label="Header 3 (ctrl+3)">' +
-		'							<b class="select-menu-item-text js-select-button-text">h3</b>' +
+		'							h3' +
 		'						</a>' +
 		'						<a href="#" id="function-h4" class="btn btn-sm minibutton function-button js-navigation-item js-menu-close tooltipped tooltipped-s" aria-label="Header 4 (ctrl+4)">' +
-		'							<b class="select-menu-item-text js-select-button-text">h4</b>' +
+		'							h4' +
 		'						</a>' +
 		'						<a href="#" id="function-h5" class="btn btn-sm minibutton function-button js-navigation-item js-menu-close tooltipped tooltipped-s" aria-label="Header 5 (ctrl+5)">' +
-		'							<b class="select-menu-item-text js-select-button-text">h5</b>' +
+		'							h5' +
 		'						</a>' +
 		'						<a href="#" id="function-h6" class="btn btn-sm minibutton function-button js-navigation-item js-menu-close tooltipped tooltipped-s" aria-label="Header 6 (ctrl+6)">' +
-		'							<b class="select-menu-item-text js-select-button-text">h6</b>' +
+		'							h6' +
 		'						</a>' +
 		'					</div>' +
 		'				</div>' +
