@@ -86,6 +86,9 @@
 				if (popup.classList.contains("socials-done")) return;
 				popup.classList.add("socials-done");
 
+				var popoverTop = popup.closest(".popover.top");
+				if (popoverTop) popoverTop.style.marginTop = "-43px";
+
 				var title = popup.querySelector("h3").textContent.trim();
 				var subtitle = "";
 				var channel = popup.querySelector(".time-details").textContent.split(",")[0].trim();
