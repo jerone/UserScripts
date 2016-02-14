@@ -256,7 +256,7 @@
 	})();
 
 	var toolBarLeftHTML =
-		'<div id="gollum-editor-function-buttons" style="float: left;">' +
+		'<div class="gollum-editor-function-buttons" style="float: left;">' +
 
 		/* Bold, italic, underline & Strikethrough; */
 		'	<div class="button-group btn-group">' +
@@ -822,7 +822,7 @@
 
 						var tempLeft = document.createElement("div");
 						tempLeft.innerHTML = toolBarLeftHTML;
-						gollumEditor.replaceChild(tempLeft.querySelector("#gollum-editor-function-buttons"), document.getElementById("gollum-editor-function-buttons"));
+						gollumEditor.replaceChild(tempLeft, document.getElementById("gollum-editor-function-buttons"));
 
 						var tempRight = document.createElement("div");
 						tempRight.innerHTML = toolBarRightHTML;
