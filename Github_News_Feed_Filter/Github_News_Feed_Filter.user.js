@@ -14,7 +14,7 @@
 // @include     https://github.com/orgs/*/dashboard
 // @include     https://github.com/orgs/*/dashboard?*
 // @include     https://github.com/*tab=activity*
-// @version     7.0.0
+// @version     7.0.1
 // @grant       none
 // ==/UserScript==
 /* global Event, Set */
@@ -326,10 +326,10 @@
 	// Fix filter action identification;
 	function fixActionAlerts(newsContainer) {
 		Array.forEach(newsContainer.querySelectorAll(".alert"), function(alert) {
-			if (alert.getElementsByClassName("octicon-git-branch").length > 0 && !alert.classList.contains("fork")) {
+			if (!!~alert.querySelector('.title').textContent.indexOf('created branch')) {
 				alert.classList.remove("create");
 				alert.classList.add("branch_create");
-			} else if (alert.getElementsByClassName("octicon-git-branch-delete").length > 0) {
+			} else if (!!~alert.querySelector('.title').textContent.indexOf('deleted branch')) {
 				alert.classList.remove("delete");
 				alert.classList.add("branch_delete");
 			} else if (alert.getElementsByClassName("octicon-tag").length > 0 && !alert.classList.contains("release")) {

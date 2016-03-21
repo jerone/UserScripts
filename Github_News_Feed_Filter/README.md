@@ -64,6 +64,8 @@ Currently integrated filters:
 
 
 ## Version History
+* **7.0.1**
+    * :bug: Fixed falsely identification branch creation and deletion;
 * **7.0.0**
     * Restored icons after GitHub switching to SVG;
 * **6.2**
