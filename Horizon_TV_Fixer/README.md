@@ -36,6 +36,8 @@ This script doesn't work on browsers that don't implement [ES6 arrow functions](
 
 ## Version History
 
+* **30** (v1.1.107)
+    * Compatibility fixes for v1.1.107;
 * **29** (v1.1.96)
     * Compatibility fixes for v1.1.96;
 * **28** (v1.1.92)
