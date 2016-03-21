@@ -11,7 +11,7 @@
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Horizon_TV_Fixer/155147.user.js
 // @supportURL  https://github.com/jerone/UserScripts/issues
 // @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
-// @version     29
+// @version     30
 // @grant       none
 // @include     *horizon.tv*
 // ==/UserScript==
@@ -186,7 +186,7 @@
 		" +*/
 
 		/* Replay notification; */
-		"\
+		/*"\
 		.listing div.notifications {						\
 			margin-top: 0;									\
 			position: absolute;								\
@@ -197,7 +197,7 @@
 		.listing:hover div.notifications {					\
 			opacity: 1;										\
 		}													\
-		" +
+		" +*/
 
 		/* Channel number; */
 		"\
