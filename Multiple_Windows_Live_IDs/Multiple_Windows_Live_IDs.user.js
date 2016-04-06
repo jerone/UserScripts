@@ -12,7 +12,7 @@
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Multiple_Windows_Live_IDs/Multiple_Windows_Live_IDs.user.js
 // @supportURL  https://github.com/jerone/UserScripts/issues
 // @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
-// @version     0.1.2
+// @version     0.2.0
 // @grant       GM_getValue
 // @grant       GM_setValue
 // @run-at      document-end
@@ -98,41 +98,37 @@
 		var metroColors = ["#00AEDB", "#00B159", "#F37735", "#7C4199", "#FFC425", "#EC098C", "#D11141", "#000000"], metroColorsIndex = -1;
 
 		var css =
-			// hide ad;
-			"#brandModeTD { display:none; }" +
+            // layout;
+            "#maincontent, #accountTD { display: inline-block; }" +
 
 			// accounts;
-			"#accountTD { font-size: 12px; width: 475px; }" +
-			"#accountTD .profile { text-transform: uppercase; color: #FFFFFF; cursor: pointer; float: left; height: 138px; position: relative; margin: 5px; padding: 5px; line-height: 150px; text-align: center; width: 138px; }" +
+			"#accountTD { font-size: 12px; width: 500px; min-height: 400px; margin: 5px; }" +
+			"#accountTD .profile { text-transform: uppercase; color: #FFFFFF; cursor: pointer; float: left; height: 150px; position: relative; margin: 5px; padding: 5px; text-align: center; width: 150px; }" +
 			"#accountTD .profile:hover{ opacity: 0.85; }" +
 			"#accountTD .profile.dark { color: #000000; }" +
-			"#accountTD .profile > img { margin-bottom: 30px; max-height: 100px; max-width: 100px; vertical-align: middle; }" +
-			"#accountTD .profile > span { bottom: 0; left: 0; margin: 5px; overflow: hidden; position: absolute; text-overflow: ellipsis; white-space: nowrap; width: 138px; }" +
+			"#accountTD .profile > img { max-height: 100px; max-width: 100px; vertical-align: middle; }" +
+			"#accountTD .profile > span { bottom: 0; left: 0; margin: 5px; overflow: hidden; position: absolute; text-overflow: ellipsis; white-space: nowrap; width: 140px; }" +
 			"#accountTD .profile > div { display: none; position: absolute; right: 0; top: 0; }" +
 			"#accountTD .profile > div img { opacity: 0.3; margin: 4px 4px 0 0; }" +
 			"#accountTD .profile:hover > div { display: block; }" +
 			"#accountTD .profile:hover > div img:hover { opacity: 1; }" +
 
 			// add account button;
-			"#accountTD .addAccountBtn { opacity: 0.6; width: 88px; height: 88px; }" +
+			"#accountTD .addAccountBtn { opacity: 0.6; width: 100px; height: 100px; }" +
 			"#accountTD .addAccountBtn:hover { opacity: 1; }" +
-			"#accountTD .addAccountBtn > img { margin-bottom: 80px; max-height: 40px; max-width: 40px; }" +
-			"#accountTD .addAccountBtn > span { width: 88px; }" +
+			"#accountTD .addAccountBtn > img { max-height: 40px; max-width: 40px; }" +
+			"#accountTD .addAccountBtn > span { width: 90px; }" +
 			"#accountTD .addAccountBtn > div { float: right; }" +
 
 			// edit account;
-			"#editAccountTD { display: none; width: 420px; position: relative; }" +
+			"#editAccountTD { display: none; position: relative; }" +
 			"#editAccountTD .signInHeader img { position: relative; left: -34px; }" +
-			"#editAccountTD .phholder { position: absolute; top: 0px; left: 0px; z-index: 5; width: 100%; cursor: text; }" +
-			"#editAccountTD .row.textbox { position: relative; width: 100%; }" +
-			"#editAccountTD .errorDiv { display: none; }" +
+			"#editAccountTD .phholder { left: 0px; top: 0px; width: 100%; position: absolute; z-index: 5; cursor: text; }" +
+			"#editAccountTD .alert-error { display: none; }" +
 			"#editAccountCancel { background-color: #D11141; margin-left: 8px; }" +
 
 			// password mask;
-			".passMask { position: absolute; right: 8px; top: 8px; width: 16px; height: 16px; cursor: pointer; }" +
-
-			// fix for Microsoft login;
-			".placeholder { margin: 6px 9px; }";
+			".passMask { position: absolute; right: 8px; top: 8px; width: 16px; height: 16px; cursor: pointer; }";
 		var stylesheet = document.createElement("style");
 		stylesheet.type = "text/css";
 		if (stylesheet.styleSheet) {
@@ -144,10 +140,9 @@
 
 		var accountTD = document.createElement("div");
 		accountTD.id = "accountTD";
-		accountTD.classList.add("floatLeft");
 
-		var mainTD = document.getElementById("mainTD");
-		mainTD.insertBefore(accountTD, mainTD.firstChild);
+		var mainTD = document.getElementById("maincontent");
+		mainTD.parentNode.insertBefore(accountTD, mainTD);
 
 		function paint() {
 			profiles.forEach(function(profile, i) {
@@ -163,14 +158,10 @@
 				profileDiv.style.backgroundColor = profile.color;
 				profileDiv.addEventListener("click", proxy(function(_event, _profile) {
 					document.getElementById("i0116").value = _profile.mail;
+                    fireEvent(document.getElementById("i0116"), "change");
 
-					var idDiv_PWD_UsernameExample = document.getElementById("idDiv_PWD_UsernameExample");
-					if (idDiv_PWD_UsernameExample) { idDiv_PWD_UsernameExample.style.display = "none"; }
-
-					document.getElementById("i0118").value = _profile.pass;
-
-					var idDiv_PWD_PasswordExample = document.getElementById("idDiv_PWD_PasswordExample");
-					if (idDiv_PWD_PasswordExample) { idDiv_PWD_PasswordExample.style.display = "none"; }
+                    document.getElementById("i0118").value = _profile.pass;
+                    fireEvent(document.getElementById("i0118"), "change");
 
 					if (autoLogin) {
 						document.getElementById("idSIButton9").click();
@@ -239,7 +230,7 @@
 				profileManageEdit.addEventListener("click", proxy(function(_event, _profile, _i) {
 					_event.stopPropagation();
 
-					document.getElementById("signInTD").style.display = "none";
+					document.querySelector("#maincontent > section").style.display = "none";
 
 					document.getElementById("editAccountTD").style.display = "block";
 
@@ -275,7 +266,7 @@
 			addAccountBtnDiv.setAttribute("title", "Add account");
 			addAccountBtnDiv.style.backgroundColor = "#0072C6";
 			addAccountBtnDiv.addEventListener("click", function() {
-				document.getElementById("signInTD").style.display = "none";
+				document.querySelector("#maincontent > section").style.display = "none";
 
 				document.getElementById("editAccountTD").style.display = "block";
 
@@ -311,21 +302,26 @@
 			'<div id="i0272" class="signInHeader" style="height: 80px;">' +
 				'<h1><img src="' + image.header + '" alt="Multiple Windows Live IDs" /></h1>' +
 			'</div>' +
-			'<div style="width: 100px; height: ' + ((document.getElementById("signInTD").offsetHeight || 500) - 120) + 'px;" class="floatLeft"><input id="editAccountId" type="hidden" /></div>' +
-			'<div style="width: 320px;" class="floatLeft">' +
-				'<div class="section">' +
-					'<div id="editAccountHeader1" class="row label">Add account</div>' +
-					'<div id="editAccountHeader2" class="row label">Edit account</div>' +
-					'<div class="row textbox"><input id="editAccountName"  type="text"    ><div class="phholder"><div class="placeholder">Name</div></div></div>' +
-					'<div class="errorDiv" id="editAccountMailError">Please enter your email address in the format someone@example.com.</div>' +
-					'<div class="row textbox"><input id="editAccountMail"  type="email"   ><div class="phholder"><div class="placeholder">someone@example.com</div></div></div>' +
-					'<div class="errorDiv" id="editAccountPassError">Please enter the password for your Microsoft account.</div>' +
-					'<div class="row textbox"><input id="editAccountPass"  type="password"><div class="phholder"><div class="placeholder">Password</div></div></div>' +
-					'<div class="row textbox"><input id="editAccountPhoto" type="text"    ><div class="phholder"><div class="placeholder">http://my.pictu.re/img.png</div></div></div>' +
-					'<div class="row textbox"><input id="editAccountColor" type="text"    ><div class="phholder"><div class="placeholder">#AB12CD</div></div></div>' +
+            '<input id="editAccountId" type="hidden" />' +
+			'<div>' +
+				'<div>' +
+					'<div id="editAccountHeader1" class="row text-subheader">Add account</div>' +
+					'<div id="editAccountHeader2" class="row text-subheader">Edit account</div>' +
+					'<div class="form-group">'+
+                    '   <div class="placeholderContainer"><input id="editAccountName"  class="form-control" type="text"    /><div class="phholder"><div class="placeholder">Name</div></div></div></div>' +
+					'<div class="form-group">'+
+                    '   <div class="alert alert-error" id="editAccountMailError">Please enter your email address in the format someone@example.com.</div>' +
+                    '   <div class="placeholderContainer"><input id="editAccountMail"  class="form-control" type="email"   /><div class="phholder"><div class="placeholder">someone@example.com</div></div></div></div>' +
+                    '<div class="form-group">'+
+                    '   <div class="alert alert-error" id="editAccountPassError">Please enter the password for your Microsoft account.</div>' +
+                    '   <div class="placeholderContainer"><input id="editAccountPass"  class="form-control" type="password"/><div class="phholder"><div class="placeholder">Password</div></div></div></div>' +
+                    '<div class="form-group">'+
+                    '   <div class="placeholderContainer"><input id="editAccountPhoto" class="form-control" type="text"    /><div class="phholder"><div class="placeholder">http://my.pictu.re/img.png</div></div></div></div>' +
+                    '<div class="form-group">'+
+                    '   <div class="placeholderContainer"><input id="editAccountColor" class="form-control" type="text"    /><div class="phholder"><div class="placeholder">#AB12CD</div></div></div></div>' +
 				'</div>' +
-				'<div class="section"><input id="editAccountSubmit" value="Submit" class="default" type="submit"><input id="editAccountCancel" value="Cancel" class="default" type="submit"></div>' +
-				'<div class="signUpFloat">Multiple Windows Live IDs. <a class="TextSemiBold" href="https://github.com/jerone/UserScripts/tree/master/Multiple_Windows_Live_IDs" target="_blank">More info...</a></div>' +
+				'<div class="section"><input id="editAccountSubmit" value="Submit" class="default" type="submit"/><input id="editAccountCancel" value="Cancel" class="default" type="submit"/></div>' +
+				'<div class="section">Multiple Windows Live IDs. <a class="TextSemiBold" href="https://github.com/jerone/UserScripts/tree/master/Multiple_Windows_Live_IDs" target="_blank">More info...</a></div>' +
 			'</div>';
 		mainTD.appendChild(editAccountDiv);
 
@@ -350,7 +346,9 @@
 
 		if (addPassMask) { addPassMaskFn(editAccountPass); }
 
-		document.getElementById("editAccountSubmit").addEventListener("click", function() {
+		document.getElementById("editAccountSubmit").addEventListener("click", function(e) {
+            e.preventDefault();
+
 			editAccountMailError.style.display = !editAccountMail.value ? "block" : "none";
 			editAccountPassError.style.display = !editAccountPass.value ? "block" : "none";
 
@@ -369,15 +367,17 @@
 
 			repaint();
 
-			document.getElementById("signInTD").style.display = "block";
+			document.querySelector("#maincontent > section").style.display = "block";
 
 			document.getElementById("editAccountTD").style.display = "none";
 
 			setAccount();
 		});
 
-		document.getElementById("editAccountCancel").addEventListener("click", function() {
-			document.getElementById("signInTD").style.display = "block";
+		document.getElementById("editAccountCancel").addEventListener("click", function(e) {
+            e.preventDefault();
+
+			document.querySelector("#maincontent > section").style.display = "block";
 
 			document.getElementById("editAccountTD").style.display = "none";
 
@@ -390,7 +390,7 @@
 			editAccountHeader1.style.display = !id ? "block" : "none";
 			editAccountHeader2.style.display = id ? "block" : "none";
 
-			editAccountId.value = id || -1;
+			editAccountId.value = id != null ? id : -1;
 			editAccountName.value = profile.name || "";
 			editAccountMail.value = profile.mail || "";
 			editAccountPass.value = profile.pass || "";
