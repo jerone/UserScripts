@@ -28,6 +28,8 @@ This works on commits, pull requests and compare pages.
 
 ## Version History
 
+* **1.4.3**
+    * Fixed issues after recent layout updates;
 * **1.4.2**
     * Fixed issues after recent layout updates;
 * **1.4.1**
