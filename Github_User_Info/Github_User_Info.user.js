@@ -12,7 +12,8 @@
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_User_Info/Github_User_Info.user.js
 // @supportURL  https://github.com/jerone/UserScripts/issues
 // @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
-// @version     0.3.4
+// @icon        https://github.com/fluidicon.png
+// @version     0.3.5
 // @grant       GM_xmlhttpRequest
 // @grant       GM_setValue
 // @grant       GM_getValue
@@ -581,6 +582,7 @@
 			'.avatar-child[alt^="@"]', // Authored committed users;
 			'.gravatar[alt^="@"]', // Following & followers page;
 			'.timeline-comment-avatar[alt^="@"]', // GitHub comments author;
+			'.commits img[alt^="@"]', // Commits on user activity tab;
 			'.leaderboard-gravatar[alt^="@"]', // Trending developer: https://github.com/trending/developers;
 			'.gist-author img', // Gist author;
 			'.gist .js-discussion .timeline-comment-avatar' // Gist comments author;
@@ -605,9 +607,9 @@
 	init();
 
 	// On pjax;
-	unsafeWindow.$(document).on("pjax:end", exportFunction(function pjaxEnd() {
+	document.addEventListener('pjax:end', function pjaxEnd() {
 		console.log('GithubUserInfo', 'pjax');
 		init();
-	}, unsafeWindow));
+	});
 
 })();

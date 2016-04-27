@@ -23,6 +23,8 @@ Show user information on avatar hover.
 
 ## Version History
 
+* **0.3.5**
+    * Fixed issues after recent layout updates;
 * **0.3.4**
     * Fixed some styling;
 * **0.3.3**
