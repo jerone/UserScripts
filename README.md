@@ -10,6 +10,7 @@ This repo contains a few of my UserScripts that I've build since [2007](http://u
 ### Github
 
 * [Github Comment Enhancer](https://github.com/jerone/UserScripts/tree/master/Github_Comment_Enhancer#readme) - Add features to enhance comments on Github.
+* [Github Reply Comments](https://github.com/jerone/UserScripts/tree/master/Github_Reply_Comments#readme) - Easy reply to Github comments.
 * [Github JSON Dependencies Linker](https://github.com/jerone/UserScripts/tree/master/Github_JSON_Dependencies_Linker#readme) - Linkify all dependencies found in an JSON file.
 * [Github News Feed Filter](https://github.com/jerone/UserScripts/tree/master/Github_News_Feed_Filter#readme) - Add filters for Github homepage news feed items.
 * [Github Commit Diff](https://github.com/jerone/UserScripts/tree/master/Github_Commit_Diff#readme) - Adds button to show diff (or patch) file for commit.
