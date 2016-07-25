@@ -13,7 +13,7 @@
 // @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
 // @icon        https://github.com/fluidicon.png
 // @include     https://github.com/*
-// @version     1.4.3
+// @version     1.4.4
 // @grant       none
 // ==/UserScript==
 /* global unsafeWindow */
@@ -40,7 +40,7 @@
             }
             a.setAttribute("href", url(on));
             a.setAttribute("rel", "nofollow");
-            a.setAttribute("aria-label", on ? "Show commit whitespace" : "Hide commit whitespaces");
+            a.setAttribute("aria-label", on ? "Show commit whitespace" : "Hide commit whitespace");
             a.appendChild(document.createTextNode(" \u2423"));
 
             var g = document.createElement("div");
@@ -49,7 +49,7 @@
             g.appendChild(a);
 
             b.parentNode.insertBefore(g, b);
-        } else if (/\/pull\/\d*\/files/.test(location.href) && (e = document.querySelector("#files_bucket .pr-toolbar .diffbar > .right"))) {
+        } else if (/\/pull\/\d*\/files/.test(location.href) && (e = document.querySelector("#files_bucket .pr-toolbar .diffbar > .float-right"))) {
 
             var r = e.querySelector(".GithubCommitWhitespaceButton");
             if (r) {
@@ -62,7 +62,7 @@
             a.classList.add("btn-link", "muted-link");
             a.setAttribute("href", url(on));
             a.setAttribute("rel", "nofollow");
-            a.setAttribute("aria-label", on ? "Show commit whitespace" : "Hide commit whitespaces");
+            a.setAttribute("aria-label", on ? "Show commit whitespace" : "Hide commit whitespace");
             a.appendChild(document.createTextNode(on ? "Show whitespace" : "Hide whitespace"));
 
             var g = document.createElement("div");

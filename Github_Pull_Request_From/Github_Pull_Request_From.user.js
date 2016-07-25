@@ -11,13 +11,12 @@
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_Pull_Request_From/Github_Pull_Request_From.user.js
 // @supportURL  https://github.com/jerone/UserScripts/issues
 // @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
-// @version     16
+// @version     17
 // @grant       none
 // @include     https://github.com/*/*
 // ==/UserScript==
-/* global unsafeWindow */
 
-(function(unsafeWindow) {
+(function() {
 
 	String.format = function(string) {
 		var args = Array.prototype.slice.call(arguments, 1, arguments.length);
@@ -27,8 +26,8 @@
 	};
 
 	function init() {
-		var repo = document.querySelector(".entry-title a[data-pjax]").textContent,
-			author = document.querySelector('.entry-title .author').textContent;
+		var repo = document.querySelector('.repohead-details-container h1 [itemprop="name"]').textContent,
+			author = document.querySelector('.repohead-details-container h1 [itemprop="author"]').textContent;
 		Array.prototype.filter.call(document.querySelectorAll("span.commit-ref"), function(treeSpan) {
 			return !treeSpan.querySelector(".unknown-repo");
 		}).forEach(function(treeSpan) {
@@ -49,13 +48,9 @@
 	}
 
 	// Page load;
-	console.log('GithubPullRequestFromLink', 'page load');
 	init();
 
 	// On pjax;
-	unsafeWindow.$(document).on("pjax:end", function() {
-		console.log('GithubPullRequestFromLink', 'pjax');
-		init();
-	});
+	document.addEventListener('pjax:end', init);
 
-})(typeof unsafeWindow !== "undefined" ? unsafeWindow : window);
+})();
