@@ -19,21 +19,25 @@ Add a link to Github Pages (gh-pages) when available.
 
 ## Version History
 
+*   **1.2.2**
+
+    *   Fixed issues after layout updates
+
 *   **1.2.1**
 
-    *   Fix 301 Moved Permanently redirects. Fixes #72;
+    *   Fix 301 Moved Permanently redirects. Fixes [#72](https://github.com/jerone/UserScripts/issues/72)
 
 *   **1.2**
 
-    *   Don't add the link if it already exists (closes [#63](https://github.com/jerone/UserScripts/pull/63));
+    *   Don't add the link if it already exists (closes [#63](https://github.com/jerone/UserScripts/pull/63))
 
 *   **1.1**
 
-    *   Added class to identify element;
+    *   Added class to identify element
 
 *   **1.0**
 
-    *   Initial version;
+    *   Initial version
 
 ## Notes
 
