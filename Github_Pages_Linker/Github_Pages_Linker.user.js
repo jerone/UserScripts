@@ -12,12 +12,12 @@
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_Pages_Linker/Github_Pages_Linker.user.js
 // @supportURL  https://github.com/jerone/UserScripts/issues
 // @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
-// @version     1.2.1
+// @icon        https://github.com/fluidicon.png
+// @version     1.2.2
 // @grant       none
 // @run-at      document-end
 // @include     https://github.com/*
 // ==/UserScript==
-/* global unsafeWindow */
 
 (function() {
 
@@ -76,14 +76,10 @@
 		div.appendChild(aa);
 	}
 
-	// Page load;
-	console.log('GithubPagesLinker', 'page load');
+	// Init;
 	addLink();
 
 	// On pjax;
-	unsafeWindow.$(document).on("pjax:end", function() {
-		console.log('GithubPagesLinker', 'pjax');
-		addLink();
-	});
+    document.addEventListener('pjax:end', addLink);
 
 })();
