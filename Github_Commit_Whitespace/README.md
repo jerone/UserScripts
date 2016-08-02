@@ -72,9 +72,10 @@ This works on commits, pull requests and compare pages.
 
 Use cases:
 
-*   [https://github.com/OpenUserJs/OpenUserJS.org/commit/aac291b83a5d5fa4fb4382080473ef3a4dd908c2](https://github.com/OpenUserJs/OpenUserJS.org/commit/aac291b83a5d5fa4fb4382080473ef3a4dd908c2) (commit)
-*   [https://github.com/OpenUserJs/OpenUserJS.org/pull/327/files](https://github.com/OpenUserJs/OpenUserJS.org/pull/327/files) (pr)
-*   [https://github.com/OpenUserJs/OpenUserJS.org/compare/master%40%7B1day%7D...master](https://github.com/OpenUserJs/OpenUserJS.org/compare/master%40%7B1day%7D...master) (compare)
+*   <https://github.com/OpenUserJs/OpenUserJS.org/commit/aac291b83a5d5fa4fb4382080473ef3a4dd908c2> (commit)
+*   <https://github.com/OpenUserJs/OpenUserJS.org/commit/aac291b83a5d5fa4fb4382080473ef3a4dd908c2> (commit)
+*   <https://github.com/OpenUserJs/OpenUserJS.org/pull/327/files> (pr)
+*   <https://github.com/OpenUserJs/OpenUserJS.org/compare/master%40%7B1day%7D...master> (compare)
 
 ## External links
 
