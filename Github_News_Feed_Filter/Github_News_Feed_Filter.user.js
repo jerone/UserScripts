@@ -496,7 +496,7 @@
 		var newsContainer = document.querySelector(".news");
 		if (!newsContainer) { return; }
 
-		var sidebar = document.querySelector(".dashboard-sidebar") || document.querySelector(".column.one-fourth.vcard");
+		var sidebar = document.querySelector(".vcard-avatar"); 
 
 		var wrapper = document.createElement(filterElement);
 		wrapper.classList.add("boxed-group", "flush", "user-repos");
