@@ -9,12 +9,14 @@
 // @homepageURL https://github.com/jerone/UserScripts/tree/master/Github_News_Feed_Filter
 // @downloadURL https://github.com/jerone/UserScripts/raw/master/Github_News_Feed_Filter/Github_News_Feed_Filter.user.js
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_News_Feed_Filter/Github_News_Feed_Filter.user.js
+// @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
+// @icon        https://github.com/fluidicon.png
 // @include     https://github.com/
 // @include     https://github.com/?*
 // @include     https://github.com/orgs/*/dashboard
 // @include     https://github.com/orgs/*/dashboard?*
 // @include     https://github.com/*tab=activity*
-// @version     7.0.1
+// @version     7.1.0
 // @grant       none
 // ==/UserScript==
 /* global Event, Set */
@@ -491,12 +493,11 @@
 
 	// Init;
 	(function init() {
-		console.log('GitHubNewsFeedFilter', 'page load');
-
 		var newsContainer = document.querySelector(".news");
 		if (!newsContainer) { return; }
 
-		var sidebar = document.querySelector(".dashboard-sidebar") || document.querySelector(".column.one-fourth.vcard");
+		// GitHub homepage or profile activity tab;
+		var sidebar = document.querySelector(".dashboard-sidebar") || document.querySelector(".profilecols > .column:first-child");
 
 		var wrapper = document.createElement(filterElement);
 		wrapper.classList.add("boxed-group", "flush", "user-repos");
