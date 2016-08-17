@@ -13,7 +13,7 @@
 // @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
 // @icon        https://github.com/fluidicon.png
 // @include     https://github.com/*
-// @version     1.4.4
+// @version     1.5.0
 // @grant       none
 // ==/UserScript==
 /* global unsafeWindow */
@@ -49,7 +49,7 @@
             g.appendChild(a);
 
             b.parentNode.insertBefore(g, b);
-        } else if (/\/pull\/\d*\/files/.test(location.href) && (e = document.querySelector("#files_bucket .pr-toolbar .diffbar > .float-right"))) {
+        } else if (/\/pull\/\d*\/(files|commits)/.test(location.href) && (e = document.querySelector("#files_bucket .pr-toolbar .diffbar > .float-right"))) {
 
             var r = e.querySelector(".GithubCommitWhitespaceButton");
             if (r) {

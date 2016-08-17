@@ -27,6 +27,10 @@ This works on commits, pull requests and compare pages.
 
 ## Version History
 
+*   **1.5.0**
+
+    *   :sparkles: Added support for commits from PR's
+
 *   **1.4.4**
 
     *   :clapper: New version of GitHub Commit Whitespace
@@ -73,8 +77,12 @@ This works on commits, pull requests and compare pages.
 Use cases:
 
 *   <https://github.com/OpenUserJs/OpenUserJS.org/commit/aac291b83a5d5fa4fb4382080473ef3a4dd908c2> (commit)
-*   <https://github.com/OpenUserJs/OpenUserJS.org/commit/aac291b83a5d5fa4fb4382080473ef3a4dd908c2> (commit)
-*   <https://github.com/OpenUserJs/OpenUserJS.org/pull/327/files> (pr)
+
+*   <https://github.com/OpenUserJs/OpenUserJS.org/pull/327/files> (PR)
+
+*   <https://github.com/OpenUserJs/OpenUserJS.org/pull/327/commits/aac291b83a5d5fa4fb4382080473ef3a4dd908c2>
+    (PR commit)
+
 *   <https://github.com/OpenUserJs/OpenUserJS.org/compare/master%40%7B1day%7D...master> (compare)
 
 ## External links
