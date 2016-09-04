@@ -13,80 +13,79 @@
 // @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
 // @icon        https://github.com/fluidicon.png
 // @include     https://github.com/*
-// @version     1.5.0
+// @version     1.5.1
 // @grant       none
 // ==/UserScript==
-/* global unsafeWindow */
 
 (function() {
 
     function addButton() {
-        var e;
-        if ((/\/commit\//.test(location.href) || /\/compare\//.test(location.href)) && (e = document.getElementById("toc"))) {
+        var e
+        if ((/\/commit\//.test(location.href) || /\/compare\//.test(location.href)) && (e = document.getElementById('toc'))) {
 
-            var r = e.querySelector(".GithubCommitWhitespaceButton");
+            var r = e.querySelector('.GithubCommitWhitespaceButton')
             if (r) {
-                r.parentElement.removeChild(r);
+                r.parentElement.removeChild(r)
             }
 
-            var on = /w=/.test(location.search); // any occurense results in enabling;
+            var on = /w=/.test(location.search) // Any occurense results in enabling
 
-            var b = e.querySelector(".toc-diff-stats");
+            var b = e.querySelector('.toc-diff-stats')
 
-            var a = document.createElement("a");
-            a.classList.add("btn", "btn-sm", "tooltipped", "tooltipped-n");
+            var a = document.createElement('a')
+            a.classList.add('btn', 'btn-sm', 'tooltipped', 'tooltipped-n')
             if (on) {
-                a.classList.add("selected");
+                a.classList.add('selected')
             }
-            a.setAttribute("href", url(on));
-            a.setAttribute("rel", "nofollow");
-            a.setAttribute("aria-label", on ? "Show commit whitespace" : "Hide commit whitespace");
-            a.appendChild(document.createTextNode(" \u2423"));
+            a.setAttribute('href', url(on))
+            a.setAttribute('rel', 'nofollow')
+            a.setAttribute('aria-label', on ? 'Show commit whitespace' : 'Hide commit whitespace')
+            a.appendChild(document.createTextNode(' \u2423'))
 
-            var g = document.createElement("div");
-            g.classList.add("GithubCommitWhitespaceButton", "right");
-            g.style.margin = "0 10px 0 0"; // give us some room;
-            g.appendChild(a);
+            var g = document.createElement('div')
+            g.classList.add('GithubCommitWhitespaceButton', 'float-right')
+            g.style.margin = '0 10px 0 0' // Give us some room
+            g.appendChild(a)
 
-            b.parentNode.insertBefore(g, b);
-        } else if (/\/pull\/\d*\/(files|commits)/.test(location.href) && (e = document.querySelector("#files_bucket .pr-toolbar .diffbar > .float-right"))) {
+            b.parentNode.insertBefore(g, b)
+        } else if (/\/pull\/\d*\/(files|commits)/.test(location.href) && (e = document.querySelector('#files_bucket .pr-toolbar .diffbar > .float-right'))) {
 
-            var r = e.querySelector(".GithubCommitWhitespaceButton");
+            var r = e.querySelector('.GithubCommitWhitespaceButton')
             if (r) {
-                r.parentElement.removeChild(r);
+                r.parentElement.removeChild(r)
             }
 
-            var on = /w=/.test(location.search); // any occurense results in enabling;
+            var on = /w=/.test(location.search) // Any occurense results in enabling
 
-            var a = document.createElement("a");
-            a.classList.add("btn-link", "muted-link");
-            a.setAttribute("href", url(on));
-            a.setAttribute("rel", "nofollow");
-            a.setAttribute("aria-label", on ? "Show commit whitespace" : "Hide commit whitespace");
-            a.appendChild(document.createTextNode(on ? "Show whitespace" : "Hide whitespace"));
+            var a = document.createElement('a')
+            a.classList.add('btn-link', 'muted-link')
+            a.setAttribute('href', url(on))
+            a.setAttribute('rel', 'nofollow')
+            a.setAttribute('title', on ? 'Show commit whitespace' : 'Hide commit whitespace')
+            a.appendChild(document.createTextNode(on ? 'Show whitespace' : 'Hide whitespace'))
 
-            var g = document.createElement("div");
-            g.classList.add("GithubCommitWhitespaceButton", "diffbar-item");
-            g.appendChild(a);
+            var g = document.createElement('div')
+            g.classList.add('GithubCommitWhitespaceButton', 'diffbar-item')
+            g.appendChild(a)
 
-            e.insertBefore(g, e.firstChild);
+            e.insertBefore(g, e.firstChild)
         }
     }
 
     function url(on) {
-        var searches = location.search.replace(/^\?/, "").split("&").filter(function(item) {
-            return item && !/w=.*/.test(item);
-        });
+        var searches = location.search.replace(/^\?/, '').split('&').filter(function(item) {
+            return item && !/w=.*/.test(item)
+        })
         if (!on) {
-            searches.push("w=1");
+            searches.push('w=1')
         }
-        return location.href.replace(location.search, "") + (searches.length > 0 ? "?" + searches.join("&") : "");
+        return location.href.replace(location.search, '') + (searches.length > 0 ? '?' + searches.join('&') : '')
     }
 
-    // init;
-    addButton();
+    // Init
+    addButton()
 
-    // on pjax;
-    document.addEventListener('pjax:end', addButton);
+    // Pjax
+    document.addEventListener('pjax:end', addButton)
 
-})();
+})()

@@ -27,50 +27,54 @@ This works on commits, pull requests and compare pages.
 
 ## Version History
 
+*   **1.5.1**
+
+    *   Fixed issues after recent layout updates.
+
 *   **1.5.0**
 
-    *   :sparkles: Added support for commits from PR's
+    *   :sparkles: Added support for commits from PR's.
 
 *   **1.4.4**
 
-    *   :clapper: New version of GitHub Commit Whitespace
+    *   :clapper: New version of GitHub Commit Whitespace.
 
 *   **1.4.3**
 
-    *   Fixed issues after recent layout updates
+    *   Fixed issues after recent layout updates.
 
 *   **1.4.2**
 
-    *   Fixed issues after recent layout updates
+    *   Fixed issues after recent layout updates.
 
 *   **1.4.1**
 
-    *   Tooltips now on top
+    *   Tooltips now on top.
 
 *   **1.4**
 
-    *   Fixed align & url issues with new split diffs (fixes [#25](https://github.com/jerone/UserScripts/issues/25))
+    *   Fixed align & url issues with new split diffs (fixes [#25](https://github.com/jerone/UserScripts/issues/25)).
 
 *   **1.3**
 
-    *   Fixed issues after recent layout updates (fixes [#9](https://github.com/jerone/UserScripts/issues/9))
+    *   Fixed issues after recent layout updates (fixes [#9](https://github.com/jerone/UserScripts/issues/9)).
 
 *   **1.2.1**
 
-    *   Fixed adding to pull requests
+    *   Fixed adding to pull requests.
 
 *   **1.2**
 
-    *   Added to pull requests
+    *   Added to pull requests.
 
 *   **1.1**
 
-    *   Added to compare page
-    *   Added support for Scriptish
+    *   Added to compare page.
+    *   Added support for Scriptish.
 
 *   **1.0**
 
-    *   Initial version
+    *   Initial version.
 
 ## Notes
 
