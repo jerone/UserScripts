@@ -1,4 +1,4 @@
-# [Horizon TV Fixer](https://github.com/jerone/UserScripts/tree/master/Horizon_TV_Fixer)
+# [Horizon / Ziggo TV Fixer](https://github.com/jerone/UserScripts/tree/master/Horizon_TV_Fixer)
 
 [![Install](https://raw.github.com/jerone/UserScripts/master/_resources/Install-button.png)](https://github.com/jerone/UserScripts/raw/master/Horizon_TV_Fixer/155147.user.js)
 [![Source](https://raw.github.com/jerone/UserScripts/master/_resources/Source-button.png)](https://github.com/jerone/UserScripts/blob/master/Horizon_TV_Fixer/155147.user.js)
@@ -8,7 +8,7 @@
 
 ## Description
 
-Improves the [Horizon TV Gids](https://www.horizon.tv/nl_nl/tv-gids.html) by extending the functionality and the layout of the site.
+Improves the [Horizon / Ziggo TV Gids](https://www.horizon.tv/nl_nl/tv-gids.html) by extending the functionality and the layout of the site.
 
 * Add social share to Twitter;
 * Add link to IMDb;
@@ -24,7 +24,7 @@ Improves the [Horizon TV Gids](https://www.horizon.tv/nl_nl/tv-gids.html) by ext
 
 ## Screenshot
 
-![Horizon TV Fixer screenshot](https://raw.github.com/jerone/UserScripts/master/Horizon_TV_Fixer/screenshot.jpg)
+![Horizon / Ziggo TV Fixer screenshot](https://raw.github.com/jerone/UserScripts/master/Horizon_TV_Fixer/screenshot.jpg)
 
 
 ## Compatible
@@ -36,6 +36,8 @@ This script doesn't work on browsers that don't implement [ES6 arrow functions](
 
 ## Version History
 
+* **31** (v1.1.124)
+    * Add support for ziggogo.tv domain.
 * **30** (v1.1.107)
     * Compatibility fixes for v1.1.107;
 * **29** (v1.1.96)

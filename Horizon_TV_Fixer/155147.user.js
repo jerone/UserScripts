@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Horizon TV Fixer
 // @namespace   https://github.com/jerone/UserScripts
-// @description Improves the Horizon TV Gids by extending the functionality and the layout of the site.
+// @description Improves the Horizon / Ziggo TV Gids by extending the functionality and the layout of the site.
 // @author      jerone
 // @copyright   2014+, jerone (http://jeroenvanwarmerdam.nl)
 // @license     GNU GPLv3
@@ -11,9 +11,11 @@
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Horizon_TV_Fixer/155147.user.js
 // @supportURL  https://github.com/jerone/UserScripts/issues
 // @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
-// @version     30
+// @icon        https://www.ziggogo.tv/etc/designs/orion/theme/ziggo/favicon/favicon.ico
+// @version     31
 // @grant       none
 // @include     *horizon.tv*
+// @include     *ziggogo.tv*
 // ==/UserScript==
 
 (function HorizonTVFixer() {
