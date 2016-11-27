@@ -13,7 +13,7 @@
 // @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
 // @icon        https://github.com/fluidicon.png
 // @include     https://github.com/*
-// @version     1.6.4
+// @version     1.6.5
 // @grant       none
 // ==/UserScript==
 
@@ -77,10 +77,10 @@
             s.appendChild(p)
 
             var a = document.createElement('a')
-            a.classList.add('btn-link', 'muted-link')
+            a.classList.add('btn', 'btn-sm', 'btn-outline', 'tooltipped', 'tooltipped-s')
             a.setAttribute('href', getPatchOrDiffHref('diff'))
             a.setAttribute('rel', 'nofollow')
-            a.setAttribute('title', 'Show commit diff.\r\nHold Shift to open commit patch.')
+            a.setAttribute('aria-label', 'Show commit diff.\r\nHold Shift to open commit patch.')
             a.appendChild(s)
             a.appendChild(document.createTextNode(' Diff'))
 

@@ -27,6 +27,10 @@ This works on commits, pull requests and compare pages.
 
 ## Version History
 
+*   **1.5.2**
+
+    *   Fixed issues after recent layout updates.
+
 *   **1.5.1**
 
     *   Fixed issues after recent layout updates.

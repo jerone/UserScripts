@@ -21,6 +21,10 @@ This works on commits, pull requests and compare pages.
 
 ## Version History
 
+*   **1.6.5**
+
+    *   Fixed issues after recent layout updates.
+
 *   **1.6.4**
 
     *   Fixed issues after recent layout updates.

@@ -13,7 +13,7 @@
 // @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
 // @icon        https://github.com/fluidicon.png
 // @include     https://github.com/*
-// @version     1.5.1
+// @version     1.5.2
 // @grant       none
 // ==/UserScript==
 
@@ -40,7 +40,7 @@
             a.setAttribute('href', url(on))
             a.setAttribute('rel', 'nofollow')
             a.setAttribute('aria-label', on ? 'Show commit whitespace' : 'Hide commit whitespace')
-            a.appendChild(document.createTextNode(' \u2423'))
+            a.appendChild(document.createTextNode('\u2423'))
 
             var g = document.createElement('div')
             g.classList.add('GithubCommitWhitespaceButton', 'float-right')
@@ -55,14 +55,14 @@
                 r.parentElement.removeChild(r)
             }
 
-            var on = /w=/.test(location.search) // Any occurense results in enabling
+            var on = /w=/.test(location.search) // Any occurense result in enabling
 
             var a = document.createElement('a')
-            a.classList.add('btn-link', 'muted-link')
+            a.classList.add('btn', 'btn-sm', 'btn-outline', 'tooltipped', 'tooltipped-s')
             a.setAttribute('href', url(on))
             a.setAttribute('rel', 'nofollow')
-            a.setAttribute('title', on ? 'Show commit whitespace' : 'Hide commit whitespace')
-            a.appendChild(document.createTextNode(on ? 'Show whitespace' : 'Hide whitespace'))
+            a.setAttribute('aria-label', on ? 'Show commit whitespace' : 'Hide commit whitespace')
+            a.appendChild(document.createTextNode('\u2423'))
 
             var g = document.createElement('div')
             g.classList.add('GithubCommitWhitespaceButton', 'diffbar-item')
