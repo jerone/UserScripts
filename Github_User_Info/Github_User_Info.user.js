@@ -29,8 +29,8 @@
 		return function proxyScope() {
 			var that = this;
 			return function proxyEvent(e) {
-				var args = that.slice(0); // clone;
-				args.unshift(e); // prepend event;
+				var args = that.slice(0); // clone
+				args.unshift(e); // prepend event
 				fn.apply(this, args);
 			};
 		}.call([].slice.call(arguments, 1));
@@ -52,7 +52,7 @@
 		'z-index: 99;';
 	userMenu.classList.add('GithubUserInfo');
 	userMenu.addEventListener('mouseleave', function mouseleave() {
-		console.log('GithubUserInfo:userMenu', 'mouseleave');
+		// console.log('GithubUserInfo:userMenu', 'mouseleave');
 		window.clearTimeout(_timer);
 		userMenu.style.display = 'none';
 	});
@@ -354,20 +354,20 @@
 				upDate = new Date(now.setDate(now.getDate() - UPDATE_INTERVAL_DAYS));
 			if (date > upDate) {
 				var data = users[username].data;
-				console.log('GithubUserInfo:getData', 'CACHED', data);
+				// console.log('GithubUserInfo:getData', 'CACHED', data);
 				fillData(defaultData(data), position, avatarSize);
 			} else {
-				console.log('GithubUserInfo:getData', 'AJAX - OUTDATED', username, date, upDate);
+				// console.log('GithubUserInfo:getData', 'AJAX - OUTDATED', username, date, upDate);
 				fetchData(username, position, avatarSize);
 			}
 		} else {
-			console.log('GithubUserInfo:getData', 'AJAX - NON-EXISTING', username);
+			// console.log('GithubUserInfo:getData', 'AJAX - NON-EXISTING', username);
 			fetchData(username, position, avatarSize);
 		}
 	}
 
 	function fetchData(username, position, avatarSize) {
-		console.log('GithubUserInfo:fetchData', username);
+		// console.log('GithubUserInfo:fetchData', username);
 		GM_xmlhttpRequest({
 			method: 'GET',
 			url: 'https://api.github.com/users/' + username,
@@ -381,7 +381,7 @@
 			return;
 		}
 		var data = defaultData(normalizeData(dataParsed));
-		console.log('GithubUserInfo:parseUserData', data.username);
+		// console.log('GithubUserInfo:parseUserData', data.username);
 
 		GM_xmlhttpRequest({
 			method: 'GET',
@@ -396,7 +396,7 @@
 			return;
 		}
 		data.orgs = dataParsed.length;
-		console.log('GithubUserInfo:parseOrgsData', data.username, data.orgs);
+		// console.log('GithubUserInfo:parseOrgsData', data.username, data.orgs);
 
 		switch (data.type) {
 			case 'Organization':
@@ -423,7 +423,7 @@
 			return;
 		}
 		data.members = dataParsed.length;
-		console.log('GithubUserInfo:parseMembersData', data.username, data.members);
+		// console.log('GithubUserInfo:parseMembersData', data.username, data.members);
 
 		fillData(data, position, avatarSize);
 		setData(data, data.username);
@@ -432,7 +432,7 @@
 	function parseRawData(data) {
 		data = JSON.parse(data);
 		if (data.message && data.message.startsWith('API rate limit exceeded')) {
-			console.log('GithubUserInfo:parseRawData', 'API RATE LIMIT EXCEEDED');
+			console.warn('GithubUserInfo:parseRawData', 'API RATE LIMIT EXCEEDED');
 			return;
 		}
 		return data;
@@ -479,7 +479,7 @@
 	}
 
 	function setData(data, username) {
-		console.log('GithubUserInfo:setData', username, data);
+		// console.log('GithubUserInfo:setData', username, data);
 		var usersString = GM_getValue('users', '{}');
 		var users = JSON.parse(usersString);
 		users[username] = {
@@ -490,7 +490,7 @@
 	}
 
 	function fillData(data, position, avatarSize) {
-		console.log('GithubUserInfo:fillData', data, position, avatarSize);
+		// console.log('GithubUserInfo:fillData', data, position, avatarSize);
 
 		userAvatar.setAttribute('href', 'https://github.com/' + data.username);
 		userAvatarImg.style.height = avatarSize.height + 'px';
@@ -578,38 +578,34 @@
 
 	function init() {
 		var avatars = document.querySelectorAll([
-			'.avatar[alt^="@"]', // Logged-in user & commits author & issuse participant & users organization & organization member;
-			'.avatar-child[alt^="@"]', // Authored committed users;
-			'.gravatar[alt^="@"]', // Following & followers page;
-			'.timeline-comment-avatar[alt^="@"]', // GitHub comments author;
-			'.commits img[alt^="@"]', // Commits on user activity tab;
-			'.leaderboard-gravatar[alt^="@"]', // Trending developer: https://github.com/trending/developers;
-			'.gist-author img', // Gist author;
-			'.gist .js-discussion .timeline-comment-avatar' // Gist comments author;
+			'.avatar[alt^="@"]', // Logged-in user & commits author & issuse participant & users organization & organization member
+			'.avatar-child[alt^="@"]', // Authored committed users
+			'.gravatar[alt^="@"]', // Following & followers page
+			'.timeline-comment-avatar[alt^="@"]', // GitHub comments author
+			'.commits img[alt^="@"]', // Commits on user activity tab
+			'.leaderboard-gravatar[alt^="@"]', // Trending developer: https://github.com/trending/developers
+			'.gist-author img', // Gist author
+			'.gist .js-discussion .timeline-comment-avatar' // Gist comments author
 		].join(','));
 		Array.prototype.forEach.call(avatars, function avatarsForEach(avatar) {
 			avatar.addEventListener('mouseenter', function mouseenter() {
-				console.log('GithubUserInfo:avatar', 'mouseenter');
+				// console.log('GithubUserInfo:avatar', 'mouseenter');
 				_timer = window.setTimeout(function mouseenterTimer() {
-					console.log('GithubUserInfo:avatar', 'timeout');
+					// console.log('GithubUserInfo:avatar', 'timeout');
 					getData(this);
 				}.bind(this), 500);
 			});
 			avatar.addEventListener('mouseleave', function mouseleave() {
-				console.log('GithubUserInfo:avatar', 'mouseleave');
+				// console.log('GithubUserInfo:avatar', 'mouseleave');
 				window.clearTimeout(_timer);
 			});
 		});
 	}
 
-	// Page load;
-	console.log('GithubUserInfo', 'page load');
+	// Init
 	init();
 
-	// On pjax;
-	document.addEventListener('pjax:end', function pjaxEnd() {
-		console.log('GithubUserInfo', 'pjax');
-		init();
-	});
+	// Pjax
+	document.addEventListener('pjax:end', init);
 
 })();
