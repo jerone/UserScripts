@@ -544,7 +544,7 @@
 		if (hasValue(data.members, userMembers)) {
 			userCountsHasValue = true;
 			userMembers.setAttribute('href', 'https://github.com/orgs/' + data.username + '/people');
-			userMembersCount.textContent = data.members;
+			userMembersCount.textContent = data.members === 30 ? '30+' : data.members;
 		}
 		if (hasValue(data.gists, userGists)) {
 			userCountsHasValue = true;
