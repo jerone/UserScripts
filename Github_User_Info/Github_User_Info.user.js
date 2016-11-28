@@ -198,13 +198,10 @@
 
 	var userCounts = document.createElement('div');
 	userCounts.style =
-		'align-content: stretch;' +
 		'border-top: 1px solid #EEE;' +
 		'clear: left;' +
 		'display: flex;' +
-		'flex-wrap: wrap;' +
-		'margin-top: 10px;' +
-		'padding-top: 5px;' +
+		'justify-content: space-around;' +
 		'text-align: center;' +
 		'white-space: nowrap;';
 	userMenu.appendChild(userCounts);
@@ -212,7 +209,6 @@
 	var userFollowers = document.createElement('a');
 	userFollowers.style =
 		'display: none;' +
-		'flex: 0 1 auto;' +
 		'text-decoration: none;';
 	userFollowers.classList.add('vcard-stat');
 	userFollowers.setAttribute('target', '_blank');
@@ -231,7 +227,6 @@
 	var userFollowing = document.createElement('a');
 	userFollowing.style =
 		'display: none;' +
-		'flex: 0 1 auto;' +
 		'text-decoration: none;';
 	userFollowing.classList.add('vcard-stat');
 	userFollowing.setAttribute('target', '_blank');
@@ -250,7 +245,6 @@
 	var userRepos = document.createElement('a');
 	userRepos.style =
 		'display: none;' +
-		'flex: 0 1 auto;' +
 		'text-decoration: none;';
 	userRepos.classList.add('vcard-stat');
 	userRepos.setAttribute('target', '_blank');
@@ -269,7 +263,6 @@
 	var userOrgs = document.createElement('a');
 	userOrgs.style =
 		'display: none;' +
-		'flex: 0 1 auto;' +
 		'text-decoration: none;';
 	userOrgs.classList.add('vcard-stat');
 	userOrgs.setAttribute('target', '_blank');
@@ -288,7 +281,6 @@
 	var userMembers = document.createElement('a');
 	userMembers.style =
 		'display: none;' +
-		'flex: 0 1 auto;' +
 		'text-decoration: none;';
 	userMembers.classList.add('vcard-stat');
 	userMembers.setAttribute('target', '_blank');
@@ -307,7 +299,6 @@
 	var userGists = document.createElement('a');
 	userGists.style =
 		'display: none;' +
-		'flex: 0 1 auto;' +
 		'text-decoration: none;';
 	userGists.classList.add('vcard-stat');
 	userGists.setAttribute('target', '_blank');
@@ -530,42 +521,37 @@
 			userJoinedText.setAttribute('datetime', data.created_at);
 		}
 
-		var userCountsHasValue = 0;
+		var userCountsHasValue = false;
 		if (hasValue(data.followers, userFollowers)) {
-			userCountsHasValue++;
+			userCountsHasValue = true;
 			userFollowers.setAttribute('href', 'https://github.com/' + data.username + '/followers');
 			userFollowersCount.textContent = data.followers;
 		}
 		if (hasValue(data.following, userFollowing)) {
-			userCountsHasValue++;
+			userCountsHasValue = true;
 			userFollowing.setAttribute('href', 'https://github.com/' + data.username + '/following');
 			userFollowingCount.textContent = data.following;
 		}
-		if (hasValue(true, userRepos)) { // Always show repos count, as long another count is shown too;
-			userCountsHasValue = (userCountsHasValue > 0 ? true : !!data.repos) ? userCountsHasValue + 1 : userCountsHasValue;
+		if (hasValue(true, userRepos)) { // Always show repos count, as long another count is shown too
 			userRepos.setAttribute('href', 'https://github.com/' + data.username + '?tab=repositories');
 			userReposCount.textContent = data.repos;
 		}
 		if (hasValue(data.orgs, userOrgs)) {
-			userCountsHasValue++;
+			userCountsHasValue = true;
 			userOrgs.setAttribute('href', 'https://github.com/' + data.username);
 			userOrgsCount.textContent = data.orgs;
 		}
 		if (hasValue(data.members, userMembers)) {
-			userCountsHasValue++;
+			userCountsHasValue = true;
 			userMembers.setAttribute('href', 'https://github.com/orgs/' + data.username + '/people');
 			userMembersCount.textContent = data.members;
 		}
 		if (hasValue(data.gists, userGists)) {
-			userCountsHasValue++;
+			userCountsHasValue = true;
 			userGists.setAttribute('href', 'https://gist.github.com/' + data.username);
 			userGistsCount.textContent = data.gists;
 		}
-		userCounts.style.display = userCountsHasValue > 0 ? 'flex' : 'none';
-		var precent = Math.min(25, 100 / userCountsHasValue);
-		[userFollowers, userFollowing, userRepos, userOrgs, userMembers, userGists].forEach(function(count){
-			count.style.width = precent + "%";
-		});
+		userCounts.style.display = userCountsHasValue ? 'flex' : 'none';
 
 		//if (data.type === 'Organization' || data.type === 'User') {}
 	}
