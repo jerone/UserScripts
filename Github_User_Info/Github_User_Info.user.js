@@ -188,8 +188,8 @@
 		'text-align: center;' +
 		'color: #CCC;';
 	userJoined.appendChild(userJoinedIcon);
-	userJoined.appendChild(document.createTextNode('Joined on '));
-	var userJoinedText = unsafeWindow.document.createElement('time', 'local-time'); // https://github.com/github/time-elements
+	userJoined.appendChild(document.createTextNode('Joined '));
+	var userJoinedText = unsafeWindow.document.createElement('relative-time'); // https://github.com/github/time-elements
 	userJoinedText.setAttribute('day', 'numeric');
 	userJoinedText.setAttribute('month', 'short');
 	userJoinedText.setAttribute('year', 'numeric');
