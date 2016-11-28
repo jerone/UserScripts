@@ -8,7 +8,7 @@
 
 ## Description
 
-Show user information on avatar hover.
+Show user/organization information on avatar hover.
 
 
 ## Screenshot
@@ -18,60 +18,66 @@ Show user information on avatar hover.
 
 ## Compatible
 
-* [![](https://raw.github.com/jerone/UserScripts/master/_resources/Greasemonkey.png) Greasemonkey](https://addons.mozilla.org/firefox/addon/greasemonkey/) on [![](https://raw.github.com/jerone/UserScripts/master/_resources/Firefox.png) Mozilla Firefox](http://www.mozilla.org/en-US/firefox/fx/#desktop) desktop.
+*   ![](https://raw.github.com/jerone/UserScripts/master/_resources/Greasemonkey.png) [Greasemonkey](https://addons.mozilla.org/firefox/addon/greasemonkey/) on ![](https://raw.github.com/jerone/UserScripts/master/_resources/Firefox.png) [Mozilla Firefox](http://www.mozilla.org/en-US/firefox/fx/#desktop) desktop.
 
 
 ## Version History
 
-* **0.3.5**
-    * Fixed issues after recent layout updates;
-* **0.3.4**
-    * Fixed some styling;
-* **0.3.3**
-    * Smoother avatar loading on non-cached user info;
-* **0.3.2**
-    * Add support for following & followers page;
-    * Add support for trending developer;
-* **0.3.1**
-    * Add support for authored committed users;
-* **0.3.0**
-    * Add support for GitHub Gist (fixes https://github.com/jerone/UserScripts/issues/55);
-* **0.2.1**
-    * Fixed local time on second hover (fixes https://github.com/jerone/UserScripts/issues/53);
-    * Added members count for orgs (closes https://github.com/jerone/UserScripts/issues/54);
-* **0.2.0**
-    * Make location linkable to Google Maps;
-    * Added admin/staff recognition;
-    * User with all counts and 4 digit numbers, stretching popup;
-    * Don't error on API limit exceeded;
-    * Fixed not saving data;
-    * Always fill name;
-    * Added organization count;
-    * Fixed z-index;
-    * Added missing hover effect on counts;
-    * Better shadow;
-    * Also run on homepage news feed;
-    * Really fixing pjax events now; https://gist.github.com/jerone/e38e8637887559870d84
-    * Animate avatar;
-    * Hide user counts when no counts are available;
-    * Added some logging;
-    * Added class to identify element;
-    * Added username fallback when no name;
-* **0.1.0**
-    * Initial version;
+*   **0.4.0**
+    *   We're only fetching one page of all members
+    *   Use flexbox css for counts
+    *   Fix showing joined date
+    *   Remove console messages
+*   **0.3.5**
+    *   Fixed issues after recent layout updates
+*   **0.3.4**
+    *   Fixed some styling
+*   **0.3.3**
+    *   Smoother avatar loading on non-cached user info
+*   **0.3.2**
+    *   Add support for following & followers page
+    *   Add support for trending developer
+*   **0.3.1**
+    *   Add support for authored committed users
+*   **0.3.0**
+    *   Add support for GitHub Gist (fixes [#55](https://github.com/jerone/UserScripts/issues/55))
+*   **0.2.1**
+    *   Fixed local time on second hover (fixes [#53](https://github.com/jerone/UserScripts/issues/53))
+    *   Added members count for orgs (closes [#54](https://github.com/jerone/UserScripts/issues/54))
+*   **0.2.0**
+    *   Make location linkable to Google Maps
+    *   Added admin/staff recognition
+    *   User with all counts and 4 digit numbers, stretching popup
+    *   Don't error on API limit exceeded
+    *   Fixed not saving data
+    *   Always fill name
+    *   Added organization count
+    *   Fixed z-index
+    *   Added missing hover effect on counts
+    *   Better shadow
+    *   Also run on homepage news feed
+    *   Really fixing pjax events now; <https://gist.github.com/jerone/e38e8637887559870d84>
+    *   Animate avatar
+    *   Hide user counts when no counts are available
+    *   Added some logging
+    *   Added class to identify element
+    *   Added username fallback when no name
+*   **0.1.0**
+    *   Initial version
 
 
-## Resources
+## Notes
 
-* https://github.com/jerone (User)
-* https://api.github.com/users/jerone (API user)
-* https://github.com/github (Organisation with admin users)
-* https://github.com/benbalter (User with all counts and 4 digit numbers, stretching popup)
-* https://api.github.com/rate_limit (Read your API limit)
-* https://developer.github.com/v3/ (API Documentation)
+Use cases:
+
+*   <https://github.com/jerone> (User)
+*   <https://api.github.com/users/jerone> (API user)
+*   <https://github.com/github> (Organisation with admin users)
+*   <https://api.github.com/> (Read your API limit)
+*   <https://developer.github.com/v3/> (API Documentation)
 
 
 ## External links
 
-* [Greasy Fork](https://greasyfork.org/en/scripts/8989-github-user-info)
-* [OpenUserJS](https://openuserjs.org/scripts/jerone/Github_User_Info)
+*   [Greasy Fork](https://greasyfork.org/en/scripts/8989-github-user-info)
+*   [OpenUserJS](https://openuserjs.org/scripts/jerone/Github_User_Info)
