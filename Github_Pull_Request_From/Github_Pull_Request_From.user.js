@@ -37,7 +37,7 @@
 			Array.prototype.forEach.call(treeParts, function(part) {
 				part.style.display = "inline";
 			});
-			treeLink.setAttribute("href", String.format("https://github.com/{0}/{1}/tree/{2}",
+			treeLink.setAttribute("href", String.format("/{0}/{1}/tree/{2}",
 				treeUser ? treeUser.textContent : author, // user;
 				repo, // repository;
 				escape(treeParts[treeParts.length - 1].textContent))); // branch;
