@@ -18,43 +18,47 @@ Make pull request branches linkable.
 
 ## Compatible
 
-* [![](https://raw.github.com/jerone/UserScripts/master/_resources/Greasemonkey.png) Greasemonkey](https://addons.mozilla.org/firefox/addon/greasemonkey/) on [![](https://raw.github.com/jerone/UserScripts/master/_resources/Firefox.png) Mozilla Firefox](http://www.mozilla.org/en-US/firefox/fx/#desktop) desktop.
+*   ![](https://raw.github.com/jerone/UserScripts/master/_resources/Greasemonkey.png) [Greasemonkey](https://addons.mozilla.org/firefox/addon/greasemonkey/) on ![](https://raw.github.com/jerone/UserScripts/master/_resources/Firefox.png) Mozilla [Firefox](http://www.mozilla.org/en-US/firefox/fx/#desktop) desktop.
 
 
 ## Version History
 
-* **17**
-    * Fixed issues after recent layout updates (fixes https://github.com/jerone/UserScripts/issues/111);
-* **16**
-    * Show underline (fixes https://github.com/jerone/UserScripts/issues/93);
-* **15**
-    * Fixed invalid chars in url;
-* **14**
-    * Fixed issues after recent layout updates;
-* **13**
-    * Add missing tree author (fixes https://github.com/jerone/UserScripts/issues/51);
-* **12**
-    * Don't link "unknown repository" (fixes https://github.com/jerone/UserScripts/issues/22);
-* **11**
-    * Fixed issues after recent layout updates;
-    * Added native & TamperMonkey for Google Chrome compatibility;
-* **10**
-    * Initial version;
+*   **18**
+    *   Use a host-relative url so that github enterprise is supported. Fixes [#117](https://github.com/jerone/UserScripts/issues/117).
+*   **17**
+    *   Fixed issues after recent layout updates. Fixes [#111](https://github.com/jerone/UserScripts/issues/111).
+*   **16**
+    *   Show underline. Fixes [#93](https://github.com/jerone/UserScripts/issues/93).
+*   **15**
+    *   Fixed invalid chars in url.
+*   **14**
+    *   Fixed issues after recent layout updates.
+*   **13**
+    *   Add missing tree author. Fixes [#51](https://github.com/jerone/UserScripts/issues/51).
+*   **12**
+    *   Don't link "unknown repository". Fixes [#22](https://github.com/jerone/UserScripts/issues/22).
+*   **11**
+    *   Fixed issues after recent layout updates.
+    *   Added native & TamperMonkey for Google Chrome compatibility.
+*   **10**
+    *   Initial version.
 
 
-## Test cases
+## Notes
 
-* https://github.com/jerone/UserScripts/pull/12 (2 valid, 1 missing);
-* https://github.com/jerone/UserScripts/pull/29 (1 mine, 1 extern);
-* https://github.com/jerone/UserScripts/pull/47 (3 without username);
+Use cases:
+
+*   <https://github.com/jerone/UserScripts/pull/12> (2 valid, 1 missing).
+*   <https://github.com/jerone/UserScripts/pull/29> (1 mine, 1 extern).
+*   <https://github.com/jerone/UserScripts/pull/47> (3 without username).
 
 
 ## Contributions
 
-* Changes based on Firefox extension [GitHubExtIns](https://github.com/diegocr/GitHubExtIns) by [Diego Casorran](https://github.com/diegocr).
+*   Changes based on Firefox extension [GitHubExtIns](https://github.com/diegocr/GitHubExtIns) by [Diego Casorran](https://github.com/diegocr).
 
 
 ## External links
 
-* [Greasy Fork](https://greasyfork.org/scripts/64-github-pull-request-from-link)
-* [OpenUserJS](https://openuserjs.org/scripts/jerone/Github_Pull_Request_From_Link)
+*   [Greasy Fork](https://greasyfork.org/scripts/64-github-pull-request-from-link)
+*   [OpenUserJS](https://openuserjs.org/scripts/jerone/Github_Pull_Request_From_Link)

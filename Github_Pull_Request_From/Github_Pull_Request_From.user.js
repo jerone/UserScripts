@@ -11,7 +11,8 @@
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_Pull_Request_From/Github_Pull_Request_From.user.js
 // @supportURL  https://github.com/jerone/UserScripts/issues
 // @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
-// @version     17
+// @icon        https://github.com/fluidicon.png
+// @version     18
 // @grant       none
 // @include     https://github.com/*/*
 // ==/UserScript==
@@ -38,19 +39,19 @@
 				part.style.display = "inline";
 			});
 			treeLink.setAttribute("href", String.format("/{0}/{1}/tree/{2}",
-				treeUser ? treeUser.textContent : author, // user;
-				repo, // repository;
-				escape(treeParts[treeParts.length - 1].textContent))); // branch;
+				treeUser ? treeUser.textContent : author, // user
+				repo, // repository
+				escape(treeParts[treeParts.length - 1].textContent))); // branch
 			treeLink.innerHTML = treeSpan.innerHTML;
 			treeSpan.innerHTML = "";
 			treeSpan.appendChild(treeLink);
 		});
 	}
 
-	// Page load;
+	// Page load.
 	init();
 
-	// On pjax;
+	// On pjax.
 	document.addEventListener('pjax:end', init);
 
 })();
