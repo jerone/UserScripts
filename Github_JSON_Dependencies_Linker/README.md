@@ -15,6 +15,7 @@ The following JSON schemes are supported:
 * [Bower](http://bower.io) - `bower.json`
 * [NuGet](https://www.nuget.org) - `project.json`
 * [Atom](https://atom.io) - `package.json`
+* [Packagist](https://packagist.org) - `composer.json`
 
 In the JSON file it will search for the following dependency keys:
 * `dependencies`
@@ -24,6 +25,7 @@ In the JSON file it will search for the following dependency keys:
 * `bundledDependencies`
 * `packageDependencies`
 * `optionalDependencies`
+* `require`
 
 
 ## Screenshot
@@ -38,8 +40,10 @@ In the JSON file it will search for the following dependency keys:
 
 ## Version History
 
+* **0.4.0**
+    * Added support for Packagist with Composer (fixes [#89](https://github.com/jerone/UserScripts/issues/89));
 * **0.3.0**
-    * Added support for Atom for `packageDependencies`;
+    * Added support for Atom's `packageDependencies`;
 * **0.2.0**
     * Module name preceding a colon is never a key;
     * Added support for npm-shrinkwrap.json;
@@ -59,6 +63,7 @@ In the JSON file it will search for the following dependency keys:
 * https://github.com/aspnet/MusicStore/blob/master/src/MusicStore.Spa/project.json (ASP.NET project.json with COMMENTS);
 * https://github.com/atom/atom/blob/master/package.json (Atom package.json packageDependencies atomShellVersion);
 * https://github.com/suda/toolbar-main/blob/master/package.json (Atom package.json packageDependencies engines.atom);
+* https://github.com/composer/composer/blob/master/composer.json (Packagist with Composer);
 
 
 ## Dependencies
