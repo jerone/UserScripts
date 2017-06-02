@@ -1,6 +1,6 @@
 # [UserScripts](https://github.com/jerone/UserScripts)
 
-[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/jerone/UserScripts?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/jerone/UserScripts?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 ## Description
 
