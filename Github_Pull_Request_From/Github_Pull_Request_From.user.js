@@ -1,4 +1,4 @@
-// ==UserScript==
+﻿// ==UserScript==
 // @name        Github Pull Request From Link
 // @namespace   https://github.com/jerone/UserScripts/
 // @description Make pull request branches linkable
@@ -12,9 +12,11 @@
 // @supportURL  https://github.com/jerone/UserScripts/issues
 // @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
 // @icon        https://github.com/fluidicon.png
-// @version     18
+// @version     19
 // @grant       none
 // @include     https://github.com/*/*
+// @exclude     https://github.com/*/*.diff
+// @exclude     https://github.com/*/*.patch
 // ==/UserScript==
 
 (function() {

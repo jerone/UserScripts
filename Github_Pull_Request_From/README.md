@@ -1,4 +1,4 @@
-# [Github Pull Request From Link](https://github.com/jerone/UserScripts/tree/master/Github_Pull_Request_From)
+﻿# [Github Pull Request From Link](https://github.com/jerone/UserScripts/tree/master/Github_Pull_Request_From)
 
 [![Install](https://raw.github.com/jerone/UserScripts/master/_resources/Install-button.png)](https://github.com/jerone/UserScripts/raw/master/Github_Pull_Request_From/Github_Pull_Request_From.user.js)
 [![Source](https://raw.github.com/jerone/UserScripts/master/_resources/Source-button.png)](https://github.com/jerone/UserScripts/blob/master/Github_Pull_Request_From/Github_Pull_Request_From.user.js)
@@ -23,6 +23,8 @@ Make pull request branches linkable.
 
 ## Version History
 
+*   **19**
+    *   Don't run on .patch & .diff route.
 *   **18**
     *   Use a host-relative url so that github enterprise is supported. Fixes [#117](https://github.com/jerone/UserScripts/issues/117).
 *   **17**
