@@ -1,4 +1,4 @@
-// ==UserScript==
+﻿// ==UserScript==
 // @name        Github Commit Diff
 // @namespace   https://github.com/jerone/UserScripts
 // @description Adds button to show diff (or patch) file for commit
@@ -13,7 +13,9 @@
 // @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
 // @icon        https://github.com/fluidicon.png
 // @include     https://github.com/*
-// @version     1.6.5
+// @exclude     https://github.com/*/*.diff
+// @exclude     https://github.com/*/*.patch
+// @version     1.6.6
 // @grant       none
 // ==/UserScript==
 
@@ -101,7 +103,7 @@
         if (e.shiftKey) {
             var patch = getPatchOrDiffHref('patch')
             e.preventDefault()
-            a.setAttribute('href', patch)
+            this.setAttribute('href', patch)
             if (e.which === 1) { // left click
                 location.href = patch
                     // To prevent Firefox default behavior (opening a new window)
@@ -111,7 +113,7 @@
                 window.open(patch, 'GithubCommitDiff')
             }
         } else {
-            a.setAttribute('href', getPatchOrDiffHref('diff'))
+            this.setAttribute('href', getPatchOrDiffHref('diff'))
         }
     }
 
