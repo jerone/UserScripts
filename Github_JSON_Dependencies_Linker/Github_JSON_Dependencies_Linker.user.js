@@ -12,7 +12,7 @@
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_JSON_Dependencies_Linker/Github_JSON_Dependencies_Linker.user.js
 // @supportURL  https://github.com/jerone/UserScripts/issues
 // @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
-// @version     0.3.0
+// @version     0.3.1
 // @grant       GM_xmlhttpRequest
 // @run-at      document-end
 // @include     https://github.com/*/package.json
@@ -24,14 +24,14 @@
 
 (function() {
 
-	var blobElm = document.querySelector('.blob-wrapper'),
+	var blobElm = document.querySelector('.highlight'),
 		blobLineElms = blobElm.querySelectorAll('.blob-code > span'),
 		pkg = (function() {
 			try {
-				// JSON parser could fail on JSON with comments;
+				// JSON parser could fail on JSON with comments.
 				return JSON.parse(blobElm.textContent);
 			} catch (ex) {
-				// Strip out comments from the JSON and try again;
+				// Strip out comments from the JSON and try again.
 				return JSON.parse(stripJsonComments(blobElm.textContent));
 			}
 		})(),
@@ -65,7 +65,7 @@
 			return _modules;
 		})();
 
-	// Get an unique list of all modules;
+	// Get an unique list of all modules.
 	function fetchModules(root) {
 		dependencyKeys.forEach(function(dependencyKey) {
 			var dependencies = root[dependencyKey] || {};
@@ -79,23 +79,23 @@
 	}
 	fetchModules(pkg);
 
-	// Linkify module;
+	// Linkify module.
 	function linkify(module, url) {
-		// Try to find the module; could be mulitple locations;
+		// Try to find the module; could be multiple locations.
 		var moduleFilterText = '"' + module + '"';
 		var moduleElms = Array.prototype.filter.call(blobLineElms, function(blobLineElm) {
 			if (blobLineElm.textContent.trim() === moduleFilterText) {
-				// Module name preceding a colon is never a key;
+				// Module name preceding a colon is never a key.
 				var prev = blobLineElm.previousSibling;
 				return !(prev && prev.textContent.trim() === ':');
 			}
 			return false;
 		});
 
-		// Modules could exist in multiple dependency lists;
+		// Modules could exist in multiple dependency lists.
 		Array.prototype.forEach.call(moduleElms, function(moduleElm) {
 
-			// Module names are textNodes on Github;
+			// Module names are textNodes on Github.
 			var moduleElmText = Array.prototype.find.call(moduleElm.childNodes, function(moduleElmChild) {
 				return moduleElmChild.nodeType === 3;
 			});
@@ -104,7 +104,7 @@
 			moduleElmLink.setAttribute('href', url);
 			moduleElmLink.appendChild(document.createTextNode(module));
 
-			// Replace textNode, so we keep surrounding elements (like the highlighted quotes);
+			// Replace textNode, so we keep surrounding elements (like the highlighted quotes).
 			moduleElm.replaceChild(moduleElmLink, moduleElmText);
 		});
 	}
@@ -160,10 +160,10 @@
 		return ret;
 	}
 
-	// Init;
+	// Init.
 	Object.keys(modules).forEach(function(dependencyKey) {
 		modules[dependencyKey].forEach(function(module) {
-			if (isAtom && dependencyKey === 'packageDependencies') { // Atom needs to be before NPM;
+			if (isAtom && dependencyKey === 'packageDependencies') { // Atom needs to be before NPM.
 				var url = 'https://atom.io/packages/' + module;
 				linkify(module, url);
 			} else if (isNPM) {
