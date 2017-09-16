@@ -9,7 +9,7 @@
 
 Add filters for [Github homepage](https://github.com) news feed items.
 
-This script also works for organizations and on user profiles [public activity](https://github.com/jerone?tab=activity)
+This script also works for organizations.
 (page refresh is required).
 
 Currently integrated filters:
@@ -179,7 +179,6 @@ Currently integrated filters:
 
 ## TODO
 
-*   ~~Run on users public activity stream ([](https://github.com/jerone?tab=activity));~~ _Only works on direct access._
 *   ~~Filter by repo~~;
 *   Filter by user;
 

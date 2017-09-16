@@ -15,7 +15,6 @@
 // @include     https://github.com/?*
 // @include     https://github.com/orgs/*/dashboard
 // @include     https://github.com/orgs/*/dashboard?*
-// @include     https://github.com/*tab=activity*
 // @version     7.1.0
 // @grant       none
 // ==/UserScript==
@@ -150,10 +149,6 @@
 	addStyle(`
 		github-news-feed-filter { display: block; }
 		github-news-feed-filter .count { margin-right: 15px; }
-
-		/* Needed for user?tab=activity */
-		.profilecols github-news-feed-filter .filter-bar { padding: 10px 10px 0px 10px; }
-		.profilecols github-news-feed-filter .filter-bar .repo-filterer li { float: none; }
 
 		github-news-feed-filter .filter-list .mini-repo-list-item { padding-right: 64px; }
 
