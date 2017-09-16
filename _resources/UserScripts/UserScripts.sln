@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "UserScripts", "http://localhost:28135", "{84E071CC-91B5-4DF8-9CC5-FC6A59EC1DAD}"
 	ProjectSection(WebsiteProperties) = preProject
@@ -30,6 +30,27 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		WebEssentials-Settings.json = WebEssentials-Settings.json
 	EndProjectSection
 EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "gm_scripts", "..\..\..\..\Users\jeron\AppData\Roaming\Mozilla\Firefox\Profiles\x1fwlaep.default\gm_scripts\", "{FC4B0BF2-B3D5-4519-9764-ECA520C06AD3}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_53345"
+		Debug.AspNetCompiler.PhysicalPath = "..\..\..\..\Users\jeron\AppData\Roaming\Mozilla\Firefox\Profiles\x1fwlaep.default\gm_scripts\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_53345\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_53345"
+		Release.AspNetCompiler.PhysicalPath = "..\..\..\..\Users\jeron\AppData\Roaming\Mozilla\Firefox\Profiles\x1fwlaep.default\gm_scripts\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_53345\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "53345"
+		SlnRelativePath = "..\..\..\..\Users\jeron\AppData\Roaming\Mozilla\Firefox\Profiles\x1fwlaep.default\gm_scripts\"
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,8 +58,13 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{84E071CC-91B5-4DF8-9CC5-FC6A59EC1DAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{84E071CC-91B5-4DF8-9CC5-FC6A59EC1DAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC4B0BF2-B3D5-4519-9764-ECA520C06AD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC4B0BF2-B3D5-4519-9764-ECA520C06AD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DD273BE9-45B9-4AA2-BBF9-7E32467B97B9}
 	EndGlobalSection
 EndGlobal
