@@ -7,14 +7,13 @@
 
 ## Description
 
-Add filters for [Github homepage](https://github.com) news feed items.
+Add filters for [GitHub homepage](https://github.com) news feed items.
 
 This script also works for organizations.
-(page refresh is required).
 
 Currently integrated filters:
 
-*   Actions
+*   **Actions**
 
     *   Issues
 
@@ -72,9 +71,13 @@ Currently integrated filters:
         *   Created
         *   Updated
 
-*   Repositories
+*   **Repositories**
 
-    *   _Variable on the repos currently in your news list_
+    *   _Variable on the repos currently in your news list._
+
+*   **Users**
+
+    *   _Variable on the users currently in your news list._
 
 ## Screenshot
 
@@ -86,101 +89,100 @@ Currently integrated filters:
 
 ## Version History
 
+*   **7.2.0**
+
+    *   ✨ Filter by user.
+
 *   **7.1.0**
 
-    *   :bug: Fixed issues after layout updates. Closes [#114](https://github.com/jerone/UserScripts/pull/114)
+    *   🐛 Fixed issues after layout updates. Closes [#114](https://github.com/jerone/UserScripts/pull/114).
 
 *   **7.0.1**
 
-    *   :bug: Fixed falsely identification branch creation and deletion
+    *   🐛 Fixed falsely identification branch creation and deletion.
 
 *   **7.0.0**
 
-    *   Restored icons after GitHub switching to SVG
+    *   Restored icons after GitHub switching to SVG.
 
 *   **6.2**
 
-    *   :sparkles: Filter by repo. Fixes [#70](https://github.com/jerone/UserScripts/issues/70)
+    *   ✨ Filter by repo. Fixes [#70](https://github.com/jerone/UserScripts/issues/70).
 
 *   **6.1**
 
-    *   :bug: Fixed counting repo releases as tag actions
-    *   :sparkles: Split wiki filter in created and edited
+    *   🐛 Fixed counting repo releases as tag actions.
+    *   ✨ Split wiki filter in created and edited.
 
 *   **6.0**
 
-    *   Fixed issues after Github site update ([#68](https://github.com/jerone/UserScripts/issues/68))
+    *   Fixed issues after GitHub site update ([#68](https://github.com/jerone/UserScripts/issues/68)).
 
 *   **5.3**
 
-    *   Added filter history support
+    *   Added filter history support.
 
 *   **5.2**
 
-    *   Fixed issues after Github site update ([#6](https://github.com/jerone/UserScripts/issues/6))
+    *   Fixed issues after GitHub site update ([#6](https://github.com/jerone/UserScripts/issues/6)).
 
 *   **5.1**
 
-    *   Added support for user public activity
+    *   Added support for user public activity.
 
 *   **5.0**
 
-    *   More filters added
+    *   More filters added.
 
 *   **4.6**
 
-    *   Show message when filter has no feed items
+    *   Show message when filter has no feed items.
 
 *   **4.5**
 
-    *   Added branch deleting support
+    *   Added branch deleting support.
 
 *   **4.4**
 
-    *   Added support for organizations
-    *   Added commit comments
+    *   Added support for organizations.
+    *   Added commit comments.
 
 *   **4.3**
 
-    *   Reordered menu
-    *   Expanded Gist create & update
-    *   Changed Starred in User actions and added member add
+    *   Reordered menu.
+    *   Expanded Gist create & update.
+    *   Changed Starred in User actions and added member add.
 
 *   **4.2**
 
-    *   Added support for Scriptish
+    *   Added support for Scriptish.
 
 *   **4.1**
 
-    *   Added fork filter
-    *   Added sub-filters for issues (comments, opened, closed, reopened)
+    *   Added fork filter.
+    *   Added sub-filters for issues (comments, opened, closed, reopened).
 
 *   **4.0**
 
-    *   Better integrated menu style
+    *   Better integrated menu style.
 
 *   **3.1**
 
-    *   Moved PR comments to PR filter
+    *   Moved PR comments to PR filter.
 
 *   **3.0**
 
-    *   Added Stars, Repo and Wiki filter
-    *   Moved Comments to Issues filter
-    *   Made menu lower
+    *   Added Stars, Repo and Wiki filter.
+    *   Moved Comments to Issues filter.
+    *   Made menu lower.
 
 *   **2.0**
 
-    *   Added Pull Requests filter
+    *   Added Pull Requests filter.
 
 *   **1.0**
 
-    *   Initial version
-
-## TODO
-
-*   ~~Filter by repo~~;
-*   Filter by user;
+    *   Initial version.
 
 ## External links
 
