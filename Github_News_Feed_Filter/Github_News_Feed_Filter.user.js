@@ -19,8 +19,6 @@
 // @version     7.1.0
 // @grant       none
 // ==/UserScript==
-/* global Event, Set */
-/* jslint bitwise: true, multistr: true */
 
 (function() {
 
@@ -124,6 +122,8 @@
 
 	var REPOS = [];
 
+	var USERS = [];
+
 	var datasetId = "githubNewsFeedFilter";
 	var datasetIdLong = "data-github-news-feed-filter";
 	var filterElement = "github-news-feed-filter";
@@ -190,7 +190,7 @@
 		});
 	}
 
-	// Add filte menu item;
+	// Add filter menu item;
 	function addFilterMenuItem(type, filter, parent, newsContainer, filterContainer) {
 		// Filter item;
 		var li = document.createElement("li");
@@ -407,6 +407,32 @@
 			}
 		});
 	}
+	// Fix filter user identification;
+	function fixUserAlerts(newsContainer) {
+		USERS = [{ id: "*-user", text: "All users", icon: "octicon-person", classNames: ["*-user"] }];
+
+		var users = new Set();
+		Array.prototype.forEach.call(newsContainer.querySelectorAll(".alert"), function (alert) {
+			var links = alert.querySelectorAll(".title a");
+			var username = links[0].textContent;
+			alert.classList.add(username);
+			users.add(username);
+
+			// Add member too.
+			if (alert.classList.contains("member_add")) {
+				var member = links[1].textContent;
+				alert.classList.add(member);
+				users.add(member);
+			}
+		});
+
+		[...users].sort(function (a, b) {
+			return a.toLowerCase().localeCompare(b.toLowerCase());
+		}).forEach(function(username) {
+			var user = { id: username, text: username, icon: "octicon-person", classNames: [username] };
+			USERS.push(user);
+		});
+	}
 
 	// Update filter counts;
 	function updateFilterCounts(filterContainer, newsContainer) {
@@ -564,6 +590,25 @@
 			}
 			// Create filter menu;
 			addFilterMenu(type, REPOS, filterContainer, newsContainer, filterContainer, true);
+			// Update filter counts;
+			updateFilterCounts(filterContainer, newsContainer);
+			// Restore current filter;
+			getCurrentFilter(type, filterContainer);
+		});
+		addFilterTab("user", "Users", inner, filterer, function onCreateUsers(type, filterContainer) {
+			// Fix filter identification and create users list;
+			fixUserAlerts(newsContainer);
+			// Create filter menu;
+			addFilterMenu(type, USERS, filterContainer, newsContainer, filterContainer, true);
+		}, function onSelectUsers(type, filterContainer) {
+			// Fix filter identification and create users list;
+			fixUserAlerts(newsContainer);
+			// Empty list, so it can be filled again;
+			while (filterContainer.hasChildNodes()) {
+				filterContainer.removeChild(filterContainer.lastChild);
+			}
+			// Create filter menu;
+			addFilterMenu(type, USERS, filterContainer, newsContainer, filterContainer, true);
 			// Update filter counts;
 			updateFilterCounts(filterContainer, newsContainer);
 			// Restore current filter;
