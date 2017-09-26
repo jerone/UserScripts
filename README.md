@@ -1,6 +1,7 @@
 # [UserScripts](https://github.com/jerone/UserScripts)
 
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/jerone/UserScripts?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+[![Awesome Userscripts](https://img.shields.io/badge/-mentioned_in_awesome_userscripts-CCA6C4.svg?colorA=CCA6C4&colorB=261120&logoWidth=20&logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMTAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI%2BICAgIDxwYXRoIGZpbGw9IiMyNjExMjAiIGQ9Ik0xOS4xNCA0LjVMMTQuMjMgMGwtLjY5Ljc1IDQuMDkgMy43NUgxLjUxTDUuNi43NSA0LjkxIDAgMCA0LjV2Mi45N0MwIDguODEgMS4yOSA5LjkgMi44OCA5LjloMy4wM2MxLjU5IDAgMi44OC0xLjA5IDIuODgtMi40M1Y1LjUyaDEuNTd2MS45NWMwIDEuMzQgMS4yOSAyLjQzIDIuODggMi40M2gzLjAzYzEuNTkgMCAyLjg4LTEuMDkgMi44OC0yLjQzbC0uMDEtMi45N3oiLz48L3N2Zz4%3D)](https://github.com/brunocvcunha/awesome-userscripts#readme)
 
 ## Description
 
