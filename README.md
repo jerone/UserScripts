@@ -1,6 +1,7 @@
 # [UserScripts](https://github.com/jerone/UserScripts)
 
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/jerone/UserScripts?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+[![Awesome Userscripts](https://img.shields.io/badge/-mentioned_in_awesome_userscripts-CCA6C4.svg?colorA=CCA6C4&colorB=261120&logoWidth=20&logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMTAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI%2BICAgIDxwYXRoIGZpbGw9IiMyNjExMjAiIGQ9Ik0xOS4xNCA0LjVMMTQuMjMgMGwtLjY5Ljc1IDQuMDkgMy43NUgxLjUxTDUuNi43NSA0LjkxIDAgMCA0LjV2Mi45N0MwIDguODEgMS4yOSA5LjkgMi44OCA5LjloMy4wM2MxLjU5IDAgMi44OC0xLjA5IDIuODgtMi40M1Y1LjUyaDEuNTd2MS45NWMwIDEuMzQgMS4yOSAyLjQzIDIuODggMi40M2gzLjAzYzEuNTkgMCAyLjg4LTEuMDkgMi44OC0yLjQzbC0uMDEtMi45N3oiLz48L3N2Zz4%3D)](https://github.com/brunocvcunha/awesome-userscripts#readme)
 
 ## Description
 
@@ -13,6 +14,7 @@ This repo contains a few of my UserScripts that I've build since [2007](http://u
 -   [Github News Feed Filter](https://github.com/jerone/UserScripts/tree/master/Github_News_Feed_Filter#readme) - Add filters for Github homepage news feed items.
 -   [Github Commit Diff](https://github.com/jerone/UserScripts/tree/master/Github_Commit_Diff#readme) - Adds button to show diff (or patch) file for commit.
 -   [Github Commit Whitespace](https://github.com/jerone/UserScripts/tree/master/Github_Commit_Whitespace#readme) - Adds button to hide whitespaces from commit.
+-   [Github Commit Compare](https://github.com/jerone/UserScripts/tree/master/GitHub_Commit_Compare#readme) - Add controls to compare commits.
 -   [Github User Info](https://github.com/jerone/UserScripts/tree/master/Github_User_Info#readme) - Show user information on avatar hover.
 -   [Github Image Viewer](https://github.com/jerone/UserScripts/tree/master/Github_Image_Viewer#readme) - Preview images from within the listing.
 -   [Github Pull Request From Link](https://github.com/jerone/UserScripts/tree/master/Github_Pull_Request_From#readme) - Make pull request branches linkable.
@@ -57,4 +59,4 @@ Please review the [guidelines for contributing](https://github.com/jerone/UserSc
 
 ## License
 
-All UserScripts in [this repository](https://github.com/jerone/UserScripts) are [licensed under GNU GPLv3](https://github.com/jerone/UserScripts/blob/master/LICENSE.txt) unless explicitly otherwise stated.
+All UserScripts and other resources in [this repository](https://github.com/jerone/UserScripts) are [licensed under GNU GPLv3](https://github.com/jerone/UserScripts/blob/master/LICENSE.txt) unless explicitly otherwise stated.
