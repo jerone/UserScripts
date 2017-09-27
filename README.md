@@ -14,6 +14,7 @@ This repo contains a few of my UserScripts that I've build since [2007](http://u
 -   [Github News Feed Filter](https://github.com/jerone/UserScripts/tree/master/Github_News_Feed_Filter#readme) - Add filters for Github homepage news feed items.
 -   [Github Commit Diff](https://github.com/jerone/UserScripts/tree/master/Github_Commit_Diff#readme) - Adds button to show diff (or patch) file for commit.
 -   [Github Commit Whitespace](https://github.com/jerone/UserScripts/tree/master/Github_Commit_Whitespace#readme) - Adds button to hide whitespaces from commit.
+-   [Github Commit Compare](https://github.com/jerone/UserScripts/tree/master/GitHub_Commit_Compare#readme) - Add controls to compare commits.
 -   [Github User Info](https://github.com/jerone/UserScripts/tree/master/Github_User_Info#readme) - Show user information on avatar hover.
 -   [Github Image Viewer](https://github.com/jerone/UserScripts/tree/master/Github_Image_Viewer#readme) - Preview images from within the listing.
 -   [Github Pull Request From Link](https://github.com/jerone/UserScripts/tree/master/Github_Pull_Request_From#readme) - Make pull request branches linkable.
