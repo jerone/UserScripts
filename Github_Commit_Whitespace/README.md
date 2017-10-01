@@ -27,6 +27,10 @@ This works on commits, pull requests and compare pages.
 
 ## Version History
 
+*   **1.5.3**
+
+    *   Fix URL generation with hash.
+
 *   **1.5.2**
 
     *   Fixed issues after recent layout updates.
@@ -92,6 +96,8 @@ Use cases:
     (PR commit)
 
 *   <https://github.com/OpenUserJs/OpenUserJS.org/compare/master%40%7B1day%7D...master> (compare)
+
+*   <https://github.com/Mottie/GitHub-userscripts/commit/21558ec79778a5067493c7bdb868c0fdca73b1d2#diff-bdac6481735676e63350e0fc9cc40db4> (compare with hash)
 
 ## External links
 

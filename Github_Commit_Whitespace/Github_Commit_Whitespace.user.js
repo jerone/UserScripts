@@ -13,7 +13,7 @@
 // @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
 // @icon        https://github.com/fluidicon.png
 // @include     https://github.com/*
-// @version     1.5.2
+// @version     1.5.3
 // @grant       none
 // ==/UserScript==
 
@@ -79,7 +79,7 @@
         if (!on) {
             searches.push('w=1')
         }
-        return location.href.replace(location.search, '') + (searches.length > 0 ? '?' + searches.join('&') : '')
+        return location.href.replace(location.search, '').replace(location.hash, '') + (searches.length > 0 ? '?' + searches.join('&') : '') + location.hash;
     }
 
     // Init
