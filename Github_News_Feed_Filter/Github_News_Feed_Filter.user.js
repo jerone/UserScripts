@@ -288,11 +288,13 @@
 		// Show/hide alerts.
 		if (classNames.length === 0 || classNames.every(function(cl) { return cl.every(function(c) { return !!~c.indexOf('*'); }); })) {
 			anyVisibleAlert = true;
-			Array.forEach(newsContainer.querySelectorAll('.alert'), function(alert) {
-				alert.style.display = 'block';
+			Array.prototype.forEach.call(newsContainer.querySelectorAll('.body'), function(alert) {
+				alert.parentNode.style.display = 'block';
 			});
 		} else {
-			Array.forEach(newsContainer.querySelectorAll('.alert'), function(alert) {
+			Array.prototype.map.call(newsContainer.querySelectorAll('.body'), function(alert) {
+				return alert.parentNode;
+			}).forEach(function(alert) {
 				var show = classNames.every(function(cl) { return cl.some(function(c) { return !!~c.indexOf('*') || alert.classList.contains(c); }); });
 				anyVisibleAlert = show || anyVisibleAlert;
 				alert.style.display = show ? 'block' : 'none';
@@ -322,11 +324,13 @@
 
 	// Fix filter action identification.
 	function fixActionAlerts(newsContainer) {
-		Array.forEach(newsContainer.querySelectorAll('.alert'), function(alert) {
-			if (!!~alert.querySelector('.title').textContent.indexOf('created branch')) {
+		Array.prototype.map.call(newsContainer.querySelectorAll('.body'), function(alert) {
+			return alert.parentNode;
+		}).forEach(function(alert) {
+			if (!!~alert.textContent.indexOf('created branch')) {
 				alert.classList.remove('create');
 				alert.classList.add('branch_create');
-			} else if (!!~alert.querySelector('.title').textContent.indexOf('deleted branch')) {
+			} else if (!!~alert.textContent.indexOf('deleted branch')) {
 				alert.classList.remove('delete');
 				alert.classList.add('branch_delete');
 			} else if (alert.getElementsByClassName('octicon-tag').length > 0 && !alert.classList.contains('release')) {
@@ -341,20 +345,20 @@
 					alert.classList.add('pull_request_opened');
 				} else if (alert.classList.contains('issues_closed')) {
 					alert.classList.remove('issues_closed');
-					if (!!~alert.querySelector('.title').textContent.indexOf('merged pull request')) {
+					if (!!~alert.textContent.indexOf('merged pull request')) {
 						alert.classList.add('pull_request_merged');
 					} else {
 						alert.classList.add('pull_request_closed');
 					}
 				}
-			} else if (alert.classList.contains('issues_comment') && alert.querySelectorAll('.title a')[1].href.split('/')[5] === 'pull') {
+			} else if (alert.classList.contains('issues_comment') && alert.querySelectorAll('[data-ga-click*="target"]')[1].href.split('/')[5] === 'pull') {
 				alert.classList.remove('issues_comment');
 				alert.classList.add('pull_request_comment');
 			} else if (alert.classList.contains('gollum')) {
 				alert.classList.remove('gollum');
-				if (!!~alert.querySelector('.title').textContent.indexOf(' created the ')) {
+				if (!!~alert.textContent.indexOf(' created the ')) {
 					alert.classList.add('wiki_created');
-				} else if (!!~alert.querySelector('.title').textContent.indexOf(' edited the ')) {
+				} else if (!!~alert.textContent.indexOf(' edited a wiki page in ')) {
 					alert.classList.add('wiki_edited');
 				}
 			} else if (alert.classList.contains('gist')) {
@@ -369,9 +373,10 @@
 
 		// Get unique list of repos.
 		var userRepos = new Set();
-		Array.prototype.forEach.call(newsContainer.querySelectorAll('.alert'), function(alert) {
-			var links = alert.querySelectorAll('.title a');
-			var userRepo = links[links.length - 1].textContent.split('#')[0]; // Remove issue number from text.
+		Array.prototype.map.call(newsContainer.querySelectorAll('.body'), function(alert) {
+			return alert.parentNode;
+		}).forEach(function(alert) {
+			var userRepo = alert.querySelector('[data-ga-click*="target:repo"]').textContent;
 			userRepos.add(userRepo);
 			var repo = userRepo.split('/')[1];
 			alert.classList.add(repo, userRepo);
@@ -407,21 +412,22 @@
 		USERS = [{ id: '*-user', text: 'All users', icon: 'octicon-person', classNames: ['*-user'] }];
 
 		var users = new Set();
-		Array.prototype.forEach.call(newsContainer.querySelectorAll('.alert'), function (alert) {
-			var links = alert.querySelectorAll('.title a');
-			var username = links[0].textContent;
+		Array.prototype.map.call(newsContainer.querySelectorAll('.body'), function(alert) {
+			return alert.parentNode;
+		}).forEach(function(alert) {
+			var username = alert.querySelector('[data-ga-click*="target:actor"]').textContent;
 			alert.classList.add(username);
 			users.add(username);
 
-			// Add member too.
-			if (alert.classList.contains('member_add')) {
-				var member = links[1].textContent;
-				alert.classList.add(member);
-				users.add(member);
-			}
+			//// Add member too.
+			//if (alert.classList.contains('member_add')) {
+			//	var member = links[1].textContent;
+			//	alert.classList.add(member);
+			//	users.add(member);
+			//}
 		});
 
-		[...users].sort(function (a, b) {
+		[...users].sort(function(a, b) {
 			return a.toLowerCase().localeCompare(b.toLowerCase());
 		}).forEach(function(username) {
 			var user = { id: username, text: username, icon: 'octicon-person', classNames: [username] };
@@ -443,7 +449,9 @@
 					}
 				});
 			}
-			Array.forEach(newsContainer.querySelectorAll('.alert'), function(alert) {
+			Array.prototype.map.call(newsContainer.querySelectorAll('.body'), function(alert) {
+				return alert.parentNode;
+			}).forEach(function(alert) {
 				var show = classNames.every(function(cl) { return cl.some(function(c) { return !!~c.indexOf('*') || alert.classList.contains(c); }); });
 				if (show) {
 					countFiltered++;
@@ -453,9 +461,11 @@
 			// Count alerts based on current filter.
 			var countAll = 0;
 			if (!!~li.filterClassNames[0].indexOf('*')) {
-				countAll = newsContainer.querySelectorAll('.alert').length;
+				countAll = newsContainer.querySelectorAll('.body').length;
 			} else {
-				Array.forEach(newsContainer.querySelectorAll('.alert'), function(alert) {
+				Array.prototype.map.call(newsContainer.querySelectorAll('.body'), function(alert) {
+					return alert.parentNode;
+				}).forEach(function(alert) {
 					if (li.filterClassNames.some(function(cl) { return alert.classList.contains(cl); })) {
 						countAll++;
 					}
