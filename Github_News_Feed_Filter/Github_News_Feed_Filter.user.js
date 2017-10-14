@@ -30,7 +30,6 @@
 	ICONS['octicon-git-commit'] = 'M10.86 7c-0.45-1.72-2-3-3.86-3s-3.41 1.28-3.86 3H0v2h3.14c0.45 1.72 2 3 3.86 3s3.41-1.28 3.86-3h3.14V7H10.86zM7 10.2c-1.22 0-2.2-0.98-2.2-2.2s0.98-2.2 2.2-2.2 2.2 0.98 2.2 2.2-0.98 2.2-2.2 2.2z';
 	ICONS['octicon-home'] = 'M16 9L13 6V2H11v2L8 1 0 9h2l1 5c0 0.55 0.45 1 1 1h8c0.55 0 1-0.45 1-1l1-5h2zM12 14H9V10H7v4H4l-1.19-6.31 5.19-5.19 5.19 5.19-1.19 6.31z';
 	ICONS['octicon-person'] = 'M7 6H1c-0.55 0-1 0.45-1 1v5h2v3c0 0.55 0.45 1 1 1h2c0.55 0 1-0.45 1-1V12h2V7c0-0.55-0.45-1-1-1z m0 5h-1V9h-1v6H3V9h-1v2H1V7h6v4z m0-8C7 1.34 5.66 0 4 0S1 1.34 1 3s1.34 3 3 3 3-1.34 3-3zM4 5c-1.11 0-2-0.89-2-2S2.89 1 4 1s2 0.89 2 2-0.89 2-2 2z';
-	ICONS['octicon-person-add'] = ICONS['octicon-person'];
 	ICONS['octicon-plus'] = 'M12 9H7v5H5V9H0V7h5V2h2v5h5v2z';
 	ICONS['octicon-radio-tower'] = 'M4.79 6.11c0.25-0.25 0.25-0.67 0-0.92-0.32-0.33-0.48-0.76-0.48-1.19 0-0.43 0.16-0.86 0.48-1.19 0.25-0.26 0.25-0.67 0-0.92-0.12-0.13-0.29-0.19-0.45-0.19-0.16 0-0.33 0.06-0.45 0.19-0.57 0.58-0.85 1.35-0.85 2.11 0 0.76 0.29 1.53 0.85 2.11C4.14 6.36 4.55 6.36 4.79 6.11zM2.33 0.52c-0.13-0.13-0.29-0.19-0.46-0.19-0.16 0-0.33 0.06-0.46 0.19C0.48 1.48 0.01 2.74 0.01 3.99 0.01 5.25 0.48 6.51 1.41 7.47c0.25 0.26 0.66 0.26 0.91 0 0.25-0.26 0.25-0.68 0-0.94-0.68-0.7-1.02-1.62-1.02-2.54s0.34-1.84 1.02-2.54C2.58 1.2 2.58 0.78 2.33 0.52zM8.02 5.62c0.9 0 1.62-0.73 1.62-1.62 0-0.9-0.73-1.62-1.62-1.62-0.9 0-1.62 0.73-1.62 1.62C6.39 4.89 7.12 5.62 8.02 5.62zM14.59 0.53c-0.25-0.26-0.66-0.26-0.91 0-0.25 0.26-0.25 0.68 0 0.94 0.68 0.7 1.02 1.62 1.02 2.54 0 0.92-0.34 1.83-1.02 2.54-0.25 0.26-0.25 0.68 0 0.94 0.13 0.13 0.29 0.19 0.46 0.19 0.16 0 0.33-0.06 0.46-0.19 0.93-0.96 1.4-2.22 1.4-3.48C15.99 2.75 15.52 1.49 14.59 0.53zM8.02 6.92L8.02 6.92c-0.41 0-0.83-0.1-1.2-0.3L3.67 14.99h1.49l0.86-1h4l0.84 1h1.49L9.21 6.62C8.83 6.82 8.43 6.92 8.02 6.92zM8.01 7.4L9.02 11H7.02L8.01 7.4zM6.02 12.99l1-1h2l1 1H6.02zM11.21 1.89c-0.25 0.25-0.25 0.67 0 0.92 0.32 0.33 0.48 0.76 0.48 1.19 0 0.43-0.16 0.86-0.48 1.19-0.25 0.26-0.25 0.67 0 0.92 0.12 0.13 0.29 0.19 0.45 0.19 0.16 0 0.32-0.06 0.45-0.19 0.57-0.58 0.85-1.35 0.85-2.11 0-0.76-0.28-1.53-0.85-2.11C11.86 1.64 11.45 1.64 11.21 1.89z';
 	ICONS['octicon-repo'] = 'M4 9h-1v-1h1v1z m0-3h-1v1h1v-1z m0-2h-1v1h1v-1z m0-2h-1v1h1v-1z m8-1v12c0 0.55-0.45 1-1 1H6v2l-1.5-1.5-1.5 1.5V14H1c-0.55 0-1-0.45-1-1V1C0 0.45 0.45 0 1 0h10c0.55 0 1 0.45 1 1z m-1 10H1v2h2v-1h3v1h5V11z m0-10H2v9h9V1z';
@@ -75,12 +74,7 @@
 				}
 			]
 		},
-		{
-			id: 'user', text: 'User', icon: 'octicon-person', classNames: ['watch_started', 'member_add', 'team_add'], subFilters: [
-				{ id: 'user starred', text: 'Starred', icon: 'octicon-star', classNames: ['watch_started'] },
-				{ id: 'user added', text: 'Member added', icon: 'octicon-person-add', classNames: ['member_add', 'team_add'] }
-			]
-		},
+		{ id: 'starred', text: 'Starred', icon: 'octicon-star', classNames: ['watch_started'] },
 		{
 			id: 'wiki', text: 'Wiki', icon: 'octicon-book', classNames: ['wiki_created', 'wiki_edited'], subFilters: [
 				{ id: 'wiki created', text: 'Created', icon: 'octicon-plus', classNames: ['wiki_created'] },
@@ -370,13 +364,6 @@
 			var username = alert.querySelector('[data-ga-click*="target:actor"]').textContent;
 			alert.classList.add(username);
 			users.add(username);
-
-			//// Add member too.
-			//if (alert.classList.contains('member_add')) {
-			//	var member = links[1].textContent;
-			//	alert.classList.add(member);
-			//	users.add(member);
-			//}
 		});
 
 		[...users].sort(function(a, b) {
