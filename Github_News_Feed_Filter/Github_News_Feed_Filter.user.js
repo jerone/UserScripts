@@ -30,13 +30,7 @@
 	ICONS['octicon-git-branch-create'] = ICONS['octicon-git-branch'];
 	ICONS['octicon-git-branch-delete'] = ICONS['octicon-git-branch'];
 	ICONS['octicon-git-commit'] = 'M10.86 7c-0.45-1.72-2-3-3.86-3s-3.41 1.28-3.86 3H0v2h3.14c0.45 1.72 2 3 3.86 3s3.41-1.28 3.86-3h3.14V7H10.86zM7 10.2c-1.22 0-2.2-0.98-2.2-2.2s0.98-2.2 2.2-2.2 2.2 0.98 2.2 2.2-0.98 2.2-2.2 2.2z';
-	ICONS['octicon-git-merge'] = 'M10 7c-0.73 0-1.38 0.41-1.73 1.02v-0.02c-1.05-0.02-2.27-0.36-3.13-1.02-0.75-0.58-1.5-1.61-1.89-2.44 0.45-0.36 0.75-0.92 0.75-1.55 0-1.11-0.89-2-2-2S0 1.89 0 3c0 0.73 0.41 1.38 1 1.72v6.56C0.41 11.63 0 12.27 0 13c0 1.11 0.89 2 2 2s2-0.89 2-2c0-0.73-0.41-1.38-1-1.72V7.67c0.67 0.7 1.44 1.27 2.3 1.69s2.03 0.63 2.97 0.64v-0.02c0.36 0.61 1 1.02 1.73 1.02 1.11 0 2-0.89 2-2s-0.89-2-2-2zM3.2 13c0 0.66-0.55 1.2-1.2 1.2s-1.2-0.55-1.2-1.2 0.55-1.2 1.2-1.2 1.2 0.55 1.2 1.2z m-1.2-8.8c-0.66 0-1.2-0.55-1.2-1.2s0.55-1.2 1.2-1.2 1.2 0.55 1.2 1.2-0.55 1.2-1.2 1.2z m8 6c-0.66 0-1.2-0.55-1.2-1.2s0.55-1.2 1.2-1.2 1.2 0.55 1.2 1.2-0.55 1.2-1.2 1.2z';
-	ICONS['octicon-git-pull-request'] = 'M11 11.28c0-1.73 0-6.28 0-6.28-0.03-0.78-0.34-1.47-0.94-2.06s-1.28-0.91-2.06-0.94c0 0-1.02 0-1 0V0L4 3l3 3V4h1c0.27 0.02 0.48 0.11 0.69 0.31s0.3 0.42 0.31 0.69v6.28c-0.59 0.34-1 0.98-1 1.72 0 1.11 0.89 2 2 2s2-0.89 2-2c0-0.73-0.41-1.38-1-1.72z m-1 2.92c-0.66 0-1.2-0.55-1.2-1.2s0.55-1.2 1.2-1.2 1.2 0.55 1.2 1.2-0.55 1.2-1.2 1.2zM4 3c0-1.11-0.89-2-2-2S0 1.89 0 3c0 0.73 0.41 1.38 1 1.72 0 1.55 0 5.56 0 6.56-0.59 0.34-1 0.98-1 1.72 0 1.11 0.89 2 2 2s2-0.89 2-2c0-0.73-0.41-1.38-1-1.72V4.72c0.59-0.34 1-0.98 1-1.72z m-0.8 10c0 0.66-0.55 1.2-1.2 1.2s-1.2-0.55-1.2-1.2 0.55-1.2 1.2-1.2 1.2 0.55 1.2 1.2z m-1.2-8.8c-0.66 0-1.2-0.55-1.2-1.2s0.55-1.2 1.2-1.2 1.2 0.55 1.2 1.2-0.55 1.2-1.2 1.2z';
-	ICONS['octicon-git-pull-request-abandoned'] = ICONS['octicon-git-pull-request'];
 	ICONS['octicon-home'] = 'M16 9L13 6V2H11v2L8 1 0 9h2l1 5c0 0.55 0.45 1 1 1h8c0.55 0 1-0.45 1-1l1-5h2zM12 14H9V10H7v4H4l-1.19-6.31 5.19-5.19 5.19 5.19-1.19 6.31z';
-	ICONS['octicon-issue-closed'] = 'M7 10h2v2H7V10z m2-6H7v5h2V4z m1.5 1.5l-1 1 2.5 2.5 4-4.5-1-1-3 3.5-1.5-1.5zM8 13.7c-3.14 0-5.7-2.56-5.7-5.7s2.56-5.7 5.7-5.7c1.83 0 3.45 0.88 4.5 2.2l0.92-0.92C12.14 2 10.19 1 8 1 4.14 1 1 4.14 1 8s3.14 7 7 7 7-3.14 7-7l-1.52 1.52c-0.66 2.41-2.86 4.19-5.48 4.19z';
-	ICONS['octicon-issue-opened'] = 'M7 2.3c3.14 0 5.7 2.56 5.7 5.7S10.14 13.7 7 13.7 1.3 11.14 1.3 8s2.56-5.7 5.7-5.7m0-1.3C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7S10.86 1 7 1z m1 3H6v5h2V4z m0 6H6v2h2V10z';
-	ICONS['octicon-issue-reopened'] = 'M8 9H6V4h2v5zM6 12h2V10H6v2z m6.33-2H10l1.5 1.5c-1.05 1.33-2.67 2.2-4.5 2.2-3.14 0-5.7-2.56-5.7-5.7 0-0.34 0.03-0.67 0.09-1H0.08c-0.05 0.33-0.08 0.66-0.08 1 0 3.86 3.14 7 7 7 2.19 0 4.13-1.02 5.41-2.59l1.59 1.59V10H12.33zM1.67 6h2.33l-1.5-1.5c1.05-1.33 2.67-2.2 4.5-2.2 3.14 0 5.7 2.56 5.7 5.7 0 0.34-0.03 0.67-0.09 1h1.31c0.05-0.33 0.08-0.66 0.08-1 0-3.86-3.14-7-7-7-2.19 0-4.13 1.02-5.41 2.59L0 2v4h1.67z';
 	ICONS['octicon-person'] = 'M7 6H1c-0.55 0-1 0.45-1 1v5h2v3c0 0.55 0.45 1 1 1h2c0.55 0 1-0.45 1-1V12h2V7c0-0.55-0.45-1-1-1z m0 5h-1V9h-1v6H3V9h-1v2H1V7h6v4z m0-8C7 1.34 5.66 0 4 0S1 1.34 1 3s1.34 3 3 3 3-1.34 3-3zM4 5c-1.11 0-2-0.89-2-2S2.89 1 4 1s2 0.89 2 2-0.89 2-2 2z';
 	ICONS['octicon-person-add'] = ICONS['octicon-person'];
 	ICONS['octicon-plus'] = 'M12 9H7v5H5V9H0V7h5V2h2v5h5v2z';
@@ -57,25 +51,9 @@
 	var ACTIONS = [
 		{ id: '*-action', text: 'All news feed', icon: 'octicon-radio-tower', classNames: ['*-action'] },
 		{
-			id: 'issues', text: 'Issues', icon: 'octicon-issue-opened', classNames: ['issues_opened', 'issues_closed', 'issues_reopened', 'issues_comment'], subFilters: [
-				{ id: 'issues opened', text: 'Opened', icon: 'octicon-issue-opened', classNames: ['issues_opened'] },
-				{ id: 'issues closed', text: 'Closed', icon: 'octicon-issue-closed', classNames: ['issues_closed'] },
-				{ id: 'issues reopened', text: 'Reopened', icon: 'octicon-issue-reopened', classNames: ['issues_reopened'] },
-				{ id: 'issues comments', text: 'Comments', icon: 'octicon-comment-discussion', classNames: ['issues_comment'] }
-			]
-		},
-		{
 			id: 'commits', text: 'Commits', icon: 'octicon-git-commit', classNames: ['push', 'commit_comment'], subFilters: [
 				{ id: 'commits pushed', text: 'Pushed', icon: 'octicon-git-commit', classNames: ['push'] },
 				{ id: 'commits comments', text: 'Comments', icon: 'octicon-comment-discussion', classNames: ['commit_comment'] }
-			]
-		},
-		{
-			id: 'pr', text: 'Pull Requests', icon: 'octicon-git-pull-request', classNames: ['pull_request_opened', 'pull_request_closed', 'pull_request_merged', 'pull_request_comment'], subFilters: [
-				{ id: 'pr opened', text: 'Opened', icon: 'octicon-git-pull-request', classNames: ['pull_request_opened'] },
-				{ id: 'pr closed', text: 'Closed', icon: 'octicon-git-pull-request-abandoned', classNames: ['pull_request_closed'] },
-				{ id: 'pr merged', text: 'Merged', icon: 'octicon-git-merge', classNames: ['pull_request_merged'] },
-				{ id: 'pr comments', text: 'Comments', icon: 'octicon-comment-discussion', classNames: ['pull_request_comment'] }
 			]
 		},
 		{
@@ -339,21 +317,6 @@
 			} else if (alert.getElementsByClassName('octicon-tag-remove').length > 0) {
 				alert.classList.remove('delete');
 				alert.classList.add('tag_remove');
-			} else if (alert.getElementsByClassName('octicon-git-pull-request').length > 0) {
-				if (alert.classList.contains('issues_opened')) {
-					alert.classList.remove('issues_opened');
-					alert.classList.add('pull_request_opened');
-				} else if (alert.classList.contains('issues_closed')) {
-					alert.classList.remove('issues_closed');
-					if (!!~alert.textContent.indexOf('merged pull request')) {
-						alert.classList.add('pull_request_merged');
-					} else {
-						alert.classList.add('pull_request_closed');
-					}
-				}
-			} else if (alert.classList.contains('issues_comment') && alert.querySelectorAll('[data-ga-click*="target"]')[1].href.split('/')[5] === 'pull') {
-				alert.classList.remove('issues_comment');
-				alert.classList.add('pull_request_comment');
 			} else if (alert.classList.contains('gollum')) {
 				alert.classList.remove('gollum');
 				if (!!~alert.textContent.indexOf(' created the ')) {
