@@ -15,7 +15,7 @@
 // @include     https://github.com/?*
 // @include     https://github.com/orgs/*/dashboard
 // @include     https://github.com/orgs/*/dashboard?*
-// @version     7.2.0
+// @version     8.0.0
 // @grant       none
 // ==/UserScript==
 

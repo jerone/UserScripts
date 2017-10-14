@@ -15,23 +15,9 @@ Currently integrated filters:
 
 *   **Actions**
 
-    *   Issues
-
-        *   Opened
-        *   Closed
-        *   Reopened
-        *   Comments
-
     *   Commits
 
         *   Pushed
-        *   Comments
-
-    *   Pull Requests
-
-        *   Opened
-        *   Closed
-        *   Merged
         *   Comments
 
     *   Repo
@@ -56,20 +42,12 @@ Currently integrated filters:
             *   Added
             *   Removed
 
-    *   User
-
-        *   Starred
-        *   Member added
+    *   Starred
 
     *   Wiki
 
         *   Created
         *   Edited
-
-    *   Gist
-
-        *   Created
-        *   Updated
 
 *   **Repositories**
 
@@ -88,6 +66,12 @@ Currently integrated filters:
 *   ![](https://raw.github.com/jerone/UserScripts/master/_resources/Greasemonkey.png) [Greasemonkey](https://addons.mozilla.org/firefox/addon/greasemonkey/) on ![](https://raw.github.com/jerone/UserScripts/master/_resources/Firefox.png) [Mozilla Firefox](http://www.mozilla.org/en-US/firefox/fx/#desktop) desktop.
 
 ## Version History
+
+*   **8.0.0**
+
+    *   Fixed issues after GitHub site update ([#121](https://github.com/jerone/UserScripts/issues/121)).
+
+        GitHub completely redesigned the news feed and removed the issue, PR, member adding and gist related news items.
 
 *   **7.2.0**
 
