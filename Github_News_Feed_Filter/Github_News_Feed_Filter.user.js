@@ -24,8 +24,6 @@
 	var ICONS = {};
 	ICONS['octicon-book'] = 'M2 5h4v1H2v-1z m0 3h4v-1H2v1z m0 2h4v-1H2v1z m11-5H9v1h4v-1z m0 2H9v1h4v-1z m0 2H9v1h4v-1z m2-6v9c0 0.55-0.45 1-1 1H8.5l-1 1-1-1H1c-0.55 0-1-0.45-1-1V3c0-0.55 0.45-1 1-1h5.5l1 1 1-1h5.5c0.55 0 1 0.45 1 1z m-8 0.5l-0.5-0.5H1v9h6V3.5z m7-0.5H8.5l-0.5 0.5v8.5h6V3z';
 	ICONS['octicon-comment-discussion'] = 'M15 2H6c-0.55 0-1 0.45-1 1v2H1c-0.55 0-1 0.45-1 1v6c0 0.55 0.45 1 1 1h1v3l3-3h4c0.55 0 1-0.45 1-1V10h1l3 3V10h1c0.55 0 1-0.45 1-1V3c0-0.55-0.45-1-1-1zM9 12H4.5l-1.5 1.5v-1.5H1V6h4v3c0 0.55 0.45 1 1 1h3v2z m6-3H13v1.5l-1.5-1.5H6V3h9v6z';
-	ICONS['octicon-gist'] = 'M7.5 5l2.5 2.5-2.5 2.5-0.75-0.75 1.75-1.75-1.75-1.75 0.75-0.75z m-3 0L2 7.5l2.5 2.5 0.75-0.75-1.75-1.75 1.75-1.75-0.75-0.75zM0 13V2c0-0.55 0.45-1 1-1h10c0.55 0 1 0.45 1 1v11c0 0.55-0.45 1-1 1H1c-0.55 0-1-0.45-1-1z m1 0h10V2H1v11z';
-	ICONS['octicon-gist-new'] = ICONS['octicon-plus'] = 'M12 9H7v5H5V9H0V7h5V2h2v5h5v2z';
 	ICONS['octicon-git-branch'] = 'M10 5c0-1.11-0.89-2-2-2s-2 0.89-2 2c0 0.73 0.41 1.38 1 1.72v0.3c-0.02 0.52-0.23 0.98-0.63 1.38s-0.86 0.61-1.38 0.63c-0.83 0.02-1.48 0.16-2 0.45V4.72c0.59-0.34 1-0.98 1-1.72 0-1.11-0.89-2-2-2S0 1.89 0 3c0 0.73 0.41 1.38 1 1.72v6.56C0.41 11.63 0 12.27 0 13c0 1.11 0.89 2 2 2s2-0.89 2-2c0-0.53-0.2-1-0.53-1.36 0.09-0.06 0.48-0.41 0.59-0.47 0.25-0.11 0.56-0.17 0.94-0.17 1.05-0.05 1.95-0.45 2.75-1.25s1.2-1.98 1.25-3.02h-0.02c0.61-0.36 1.02-1 1.02-1.73zM2 1.8c0.66 0 1.2 0.55 1.2 1.2s-0.55 1.2-1.2 1.2-1.2-0.55-1.2-1.2 0.55-1.2 1.2-1.2z m0 12.41c-0.66 0-1.2-0.55-1.2-1.2s0.55-1.2 1.2-1.2 1.2 0.55 1.2 1.2-0.55 1.2-1.2 1.2z m6-8c-0.66 0-1.2-0.55-1.2-1.2s0.55-1.2 1.2-1.2 1.2 0.55 1.2 1.2-0.55 1.2-1.2 1.2z';
 	ICONS['octicon-git-branch-create'] = ICONS['octicon-git-branch'];
 	ICONS['octicon-git-branch-delete'] = ICONS['octicon-git-branch'];
@@ -87,12 +85,6 @@
 			id: 'wiki', text: 'Wiki', icon: 'octicon-book', classNames: ['wiki_created', 'wiki_edited'], subFilters: [
 				{ id: 'wiki created', text: 'Created', icon: 'octicon-plus', classNames: ['wiki_created'] },
 				{ id: 'wiki edited', text: 'Edited', icon: 'octicon-book', classNames: ['wiki_edited'] }
-			]
-		},
-		{
-			id: 'gist', text: 'Gist', icon: 'octicon-gist', classNames: ['gist_created', 'gist_updated'], subFilters: [
-				{ id: 'gist created', text: 'Created', icon: 'octicon-gist-new', classNames: ['gist_created'] },
-				{ id: 'gist updated', text: 'Updated', icon: 'octicon-gist', classNames: ['gist_updated'] }
 			]
 		}
 	];
@@ -324,9 +316,6 @@
 				} else if (!!~alert.textContent.indexOf(' edited a wiki page in ')) {
 					alert.classList.add('wiki_edited');
 				}
-			} else if (alert.classList.contains('gist')) {
-				alert.classList.remove('gist');
-				alert.classList.add('gist_' + alert.querySelector('.title span').textContent);
 			}
 		});
 	}
