@@ -274,7 +274,7 @@
 			none = document.createElement('div');
 			none.classList.add('no-alerts', 'protip');
 			none.appendChild(document.createTextNode('No feed items for this filter. Please select another filter.'));
-			newsContainer.insertBefore(none, newsContainer.firstElementChild.nextElementSibling);
+			newsContainer.insertBefore(none, newsContainer.querySelector('.tabnav').nextElementSibling);
 		}
 	}
 
