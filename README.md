@@ -21,6 +21,7 @@ This repo contains a few of my UserScripts that I've build since [2007](http://u
 -   [Github Pages Linker](https://github.com/jerone/UserScripts/tree/master/Github_Pages_Linker#readme) - Add a link to Github Pages (gh-pages) when available.
 -   [Github Gist Share](https://github.com/jerone/UserScripts/tree/master/Github_Gist_Share#readme) - Share your GitHub Gist to Twitter, Dabblet & as userscript.
 -   ~~[Github Comment Enhancer](https://github.com/jerone/UserScripts/tree/master/Github_Comment_Enhancer#readme) - Add features to enhance comments on Github.~~ <sup>(deprecated)</sup>
+- For more GitHub related UserScripts, check out [Mottie's UserScripts](https://github.com/Mottie/GitHub-userscripts#readme).
 
 ### Twitter
 
