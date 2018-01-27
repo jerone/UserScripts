@@ -4,7 +4,7 @@
 // @description Add controls to compare commits.
 // @author      jerone
 // @copyright   2017+, jerone (http://jeroenvanwarmerdam.nl)
-// @license     GNU GPLv3
+// @license     GPL-3.0
 // @homepage    https://github.com/jerone/UserScripts/tree/master/GitHub_Commit_Compare
 // @homepageURL https://github.com/jerone/UserScripts/tree/master/GitHub_Commit_Compare
 // @downloadURL https://github.com/jerone/UserScripts/raw/master/GitHub_Commit_Compare/GitHub_Commit_Compare.user.js

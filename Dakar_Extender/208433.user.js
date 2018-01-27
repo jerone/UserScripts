@@ -4,7 +4,7 @@
 // @namespace   http://userscripts.org/scripts/show/208433 
 // @version     2
 // @copyright   2014+, jerone (http://jeroenvanwarmerdam.nl)
-// @license     GNU GPLv3
+// @license     GPL-3.0
 // @grant       none
 // @require     http://code.jquery.com/jquery-2.0.3.min.js
 // @icon        https://lh6.googleusercontent.com/-pKPBVGEVXk0/UsXXxo0S9JI/AAAAAAAACp0/0N_pV4AqDMY/s512-no/Icon_Dakar2+%25281%2529.png

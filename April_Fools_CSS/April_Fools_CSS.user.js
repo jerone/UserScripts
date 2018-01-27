@@ -4,7 +4,7 @@
 // @author         jerone
 // @namespace      https://github.com/jerone/UserScripts/tree/master/April_Fools_CSS
 // @copyright      2014+, jerone (http://jeroenvanwarmerdam.nl)
-// @license        GNU GPLv3
+// @license        GPL-3.0
 // @supportURL     https://github.com/jerone/UserScripts/issues
 // @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
 // @include        *

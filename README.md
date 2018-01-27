@@ -60,4 +60,4 @@ Please review the [guidelines for contributing](https://github.com/jerone/UserSc
 
 ## License
 
-All UserScripts and other resources in [this repository](https://github.com/jerone/UserScripts) are [licensed under GNU GPLv3](https://github.com/jerone/UserScripts/blob/master/LICENSE.txt) unless explicitly otherwise stated.
+All UserScripts and other resources in [this repository](https://github.com/jerone/UserScripts) are [licensed under GPL-3.0](https://github.com/jerone/UserScripts/blob/master/LICENSE.txt) unless explicitly otherwise stated.

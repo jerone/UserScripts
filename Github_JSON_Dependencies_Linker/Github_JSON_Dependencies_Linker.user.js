@@ -5,7 +5,7 @@
 // @description Linkify all dependencies found in an JSON file.
 // @author      jerone
 // @copyright   2015+, jerone (http://jeroenvanwarmerdam.nl)
-// @license     GNU GPLv3
+// @license     GPL-3.0
 // @homepage    https://github.com/jerone/UserScripts/tree/master/Github_JSON_Dependencies_Linker
 // @homepageURL https://github.com/jerone/UserScripts/tree/master/Github_JSON_Dependencies_Linker
 // @downloadURL https://github.com/jerone/UserScripts/raw/master/Github_JSON_Dependencies_Linker/Github_JSON_Dependencies_Linker.user.js

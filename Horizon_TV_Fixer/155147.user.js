@@ -4,7 +4,7 @@
 // @description Improves the Horizon / Ziggo TV Gids by extending the functionality and the layout of the site.
 // @author      jerone
 // @copyright   2014+, jerone (http://jeroenvanwarmerdam.nl)
-// @license     GNU GPLv3
+// @license     GPL-3.0
 // @homepage    https://github.com/jerone/UserScripts/tree/master/Horizon_TV_Fixer
 // @homepageURL https://github.com/jerone/UserScripts/tree/master/Horizon_TV_Fixer
 // @downloadURL https://github.com/jerone/UserScripts/raw/master/Horizon_TV_Fixer/155147.user.js

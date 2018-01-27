@@ -5,7 +5,7 @@
 // @description Easy login with multiple Microsoft accounts.
 // @author      jerone
 // @copyright   2014+, jerone (http://jeroenvanwarmerdam.nl)
-// @license     GNU GPLv3
+// @license     GPL-3.0
 // @homepage    https://github.com/jerone/UserScripts/tree/master/Multiple_Windows_Live_IDs
 // @homepageURL https://github.com/jerone/UserScripts/tree/master/Multiple_Windows_Live_IDs
 // @downloadURL https://github.com/jerone/UserScripts/raw/master/Multiple_Windows_Live_IDs/Multiple_Windows_Live_IDs.user.js

@@ -4,7 +4,7 @@
 // @description Adds button to show diff (or patch) file for commit
 // @author      jerone
 // @copyright   2014+, jerone (http://jeroenvanwarmerdam.nl)
-// @license     GNU GPLv3
+// @license     GPL-3.0
 // @homepage    https://github.com/jerone/UserScripts/tree/master/Github_Commit_Diff
 // @homepageURL https://github.com/jerone/UserScripts/tree/master/Github_Commit_Diff
 // @downloadURL https://github.com/jerone/UserScripts/raw/master/Github_Commit_Diff/Github_Commit_Diff.user.js

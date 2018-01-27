@@ -5,7 +5,7 @@
 // @description Preview images from within the listing.
 // @author      jerone
 // @copyright   2014+, jerone (http://jeroenvanwarmerdam.nl)
-// @license     GNU GPLv3
+// @license     GPL-3.0
 // @homepage    https://github.com/jerone/UserScripts/tree/master/Github_Image_Viewer
 // @homepageURL https://github.com/jerone/UserScripts/tree/master/Github_Image_Viewer
 // @downloadURL https://github.com/jerone/UserScripts/raw/master/Github_Image_Viewer/Github_Image_Viewer.user.js

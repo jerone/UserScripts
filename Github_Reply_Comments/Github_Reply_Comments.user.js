@@ -4,7 +4,7 @@
 // @description Easy reply to Github comments
 // @author      jerone
 // @copyright   2016+, jerone (http://jeroenvanwarmerdam.nl)
-// @license     GNU GPLv3
+// @license     GPL-3.0
 // @homepage    https://github.com/jerone/UserScripts/tree/master/Github_Reply_Comments
 // @homepageURL https://github.com/jerone/UserScripts/tree/master/Github_Reply_Comments
 // @downloadURL https://github.com/jerone/UserScripts/raw/master/Github_Reply_Comments/Github_Reply_Comments.user.js
