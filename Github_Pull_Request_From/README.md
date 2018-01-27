@@ -1,4 +1,4 @@
-﻿# [Github Pull Request From Link](https://github.com/jerone/UserScripts/tree/master/Github_Pull_Request_From)
+# [Github Pull Request From Link](https://github.com/jerone/UserScripts/tree/master/Github_Pull_Request_From)
 
 [![Install](https://raw.github.com/jerone/UserScripts/master/_resources/Install-button.png)](https://github.com/jerone/UserScripts/raw/master/Github_Pull_Request_From/Github_Pull_Request_From.user.js)
 [![Source](https://raw.github.com/jerone/UserScripts/master/_resources/Source-button.png)](https://github.com/jerone/UserScripts/blob/master/Github_Pull_Request_From/Github_Pull_Request_From.user.js)
@@ -18,7 +18,7 @@ Make pull request branches linkable.
 
 ## Compatible
 
-*   ![](https://raw.github.com/jerone/UserScripts/master/_resources/Greasemonkey.png) [Greasemonkey](https://addons.mozilla.org/firefox/addon/greasemonkey/) on ![](https://raw.github.com/jerone/UserScripts/master/_resources/Firefox.png) Mozilla [Firefox](http://www.mozilla.org/en-US/firefox/fx/#desktop) desktop.
+*   ![](https://raw.github.com/jerone/UserScripts/master/_resources/Tampermonkey.png) [Tampermonkey](https://addons.mozilla.org/firefox/addon/tampermonkey/) on ![](https://raw.github.com/jerone/UserScripts/master/_resources/Firefox.png) Mozilla [Firefox](http://www.mozilla.org/en-US/firefox/fx/#desktop) desktop.
 
 
 ## Version History
