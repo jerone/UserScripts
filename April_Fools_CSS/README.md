@@ -8,7 +8,7 @@
 
 ## Description
 
-Some CSS april fools
+Some CSS April fools
 
 
 ## Compatible

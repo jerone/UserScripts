@@ -7,7 +7,7 @@
 
 ## Description
 
-Add a link to Github Pages (gh-pages) when available.
+Add a link to GitHub Pages (gh-pages) when available.
 
 ## Screenshot
 

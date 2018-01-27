@@ -72,7 +72,7 @@ Use cases:
 
 *   <https://github.com/jerone> (User)
 *   <https://api.github.com/users/jerone> (API user)
-*   <https://github.com/github> (Organisation with admin users)
+*   <https://github.com/github> (Organization with admin users)
 *   <https://api.github.com/> (Read your API limit)
 *   <https://developer.github.com/v3/> (API Documentation)
 
