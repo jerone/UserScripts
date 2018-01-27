@@ -11,7 +11,7 @@
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_Pull_Request_From/Github_Pull_Request_From.user.js
 // @supportURL  https://github.com/jerone/UserScripts/issues
 // @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
-// @icon        https://github.com/fluidicon.png
+// @icon        https://assets-cdn.github.com/pinned-octocat.svg
 // @version     19
 // @grant       none
 // @include     https://github.com/*/*

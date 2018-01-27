@@ -11,7 +11,7 @@
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/GitHub_Commit_Compare/GitHub_Commit_Compare.user.js
 // @supportURL  https://github.com/jerone/UserScripts/issues
 // @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
-// @icon        https://github.com/fluidicon.png
+// @icon        https://assets-cdn.github.com/pinned-octocat.svg
 // @include     https://github.com/*/*/commits
 // @include     https://github.com/*/*/commits/*
 // @exclude     https://github.com/*/*.diff

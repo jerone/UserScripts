@@ -12,7 +12,7 @@
 // @supportURL  https://github.com/jerone/UserScripts/issues
 // @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
 // @version     0.1.0
-// @icon        https://github.com/fluidicon.png
+// @icon        https://assets-cdn.github.com/pinned-octocat.svg
 // @grant       none
 // @include     https://github.com/*
 // @include     https://gist.github.com/*
