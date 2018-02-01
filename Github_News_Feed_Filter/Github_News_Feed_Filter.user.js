@@ -75,6 +75,7 @@
 				}
 			]
 		},
+		{ id: 'user', text: 'User', icon: 'octicon-person', classNames: ['follow'] },
 		{ id: 'starred', text: 'Starred', icon: 'octicon-star', classNames: ['watch_started'] },
 		{
 			id: 'wiki', text: 'Wiki', icon: 'octicon-book', classNames: ['wiki_created', 'wiki_edited'], subFilters: [
