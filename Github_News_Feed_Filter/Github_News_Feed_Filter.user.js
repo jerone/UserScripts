@@ -323,10 +323,13 @@
 		Array.prototype.map.call(newsContainer.querySelectorAll('.body'), function(alert) {
 			return alert.parentNode;
 		}).forEach(function(alert) {
-			var userRepo = alert.querySelector('[data-ga-click*="target:repo"]').textContent;
-			userRepos.add(userRepo);
-			var repo = userRepo.split('/')[1];
-			alert.classList.add(repo, userRepo);
+			var alertRepo = alert.querySelector('[data-ga-click*="target:repo"]');
+			if (alertRepo) { // Follow doesn't contain a repo link.
+				var userRepo = alertRepo.textContent;
+				userRepos.add(userRepo);
+				var repo = userRepo.split('/')[1];
+				alert.classList.add(repo, userRepo);
+			}
 		});
 
 		// Get list of user repos (forks) per repo names.
