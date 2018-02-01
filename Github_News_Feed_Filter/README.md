@@ -42,6 +42,8 @@ Currently integrated filters:
             *   Added
             *   Removed
 
+    *   Follow
+
     *   Starred
 
     *   Wiki
@@ -66,6 +68,11 @@ Currently integrated filters:
 *   ![](https://raw.github.com/jerone/UserScripts/master/_resources/Tampermonkey.png) [Tampermonkey](https://addons.mozilla.org/firefox/addon/tampermonkey/) on ![](https://raw.github.com/jerone/UserScripts/master/_resources/Firefox.png) [Mozilla Firefox](http://www.mozilla.org/en-US/firefox/fx/#desktop) desktop.
 
 ## Version History
+
+*   **8.1.0**
+
+    *   🐛 Ignore repo detection on follow alerts.
+    *   ✨ Filter by follow action.
 
 *   **8.0.0**
 
