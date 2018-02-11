@@ -44,5 +44,5 @@ reply button on an comment.
 
 ## External links
 
-*   ~~[Greasy Fork](https://greasyfork.org/scripts/xxx-github-reply-comments)~~
-*   ~~[OpenUserJS](https://openuserjs.org/scripts/jerone/Github_Reply_Comments)~~
+*   [Greasy Fork](https://greasyfork.org/en/scripts/38372-github-reply-comments)
+*   [OpenUserJS](https://openuserjs.org/scripts/jerone/Github_Reply_Comments)
