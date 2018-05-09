@@ -20,6 +20,10 @@ reply button on an comment.
 
 ## Version History
 
+*   version **0.1.1**
+
+    *   Fix reply button for reviews. Fixes #125
+
 *   version **0.1.0**
 
     *   Initial version
