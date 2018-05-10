@@ -69,6 +69,10 @@ Currently integrated filters:
 
 ## Version History
 
+*   **8.1.1**
+
+    *   🐛 Fix the 'Repositories' tab being empty ([#124](https://github.com/jerone/UserScripts/issues/124), fixed by [@darkred](https://github.com/darkred) in [#126](https://github.com/jerone/UserScripts/pull/126)).
+
 *   **8.1.0**
 
     *   🐛 Ignore repo detection on follow alerts.
@@ -174,6 +178,10 @@ Currently integrated filters:
 *   **1.0**
 
     *   Initial version.
+
+## Contributors
+
+*   [darkred](https://github.com/darkred)
 
 ## External links
 
