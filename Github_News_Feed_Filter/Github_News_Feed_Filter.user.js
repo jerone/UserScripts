@@ -3,6 +3,7 @@
 // @namespace   https://github.com/jerone/UserScripts
 // @description Add filters for GitHub homepage news feed items
 // @author      jerone
+// @contributor darkred
 // @copyright   2014+, jerone (http://jeroenvanwarmerdam.nl)
 // @license     GPL-3.0
 // @homepage    https://github.com/jerone/UserScripts/tree/master/Github_News_Feed_Filter
@@ -15,7 +16,7 @@
 // @include     https://github.com/?*
 // @include     https://github.com/orgs/*/dashboard
 // @include     https://github.com/orgs/*/dashboard?*
-// @version     8.1.0
+// @version     8.1.1
 // @grant       none
 // ==/UserScript==
 
@@ -324,7 +325,7 @@
 		Array.prototype.map.call(newsContainer.querySelectorAll('.body'), function(alert) {
 			return alert.parentNode;
 		}).forEach(function(alert) {
-			var alertRepo = alert.querySelector('[data-ga-click*="target:repo"]');
+			var alertRepo = alert.querySelector('.flex-items-baseline > div > [data-ga-click*="target:repo"]');
 			if (alertRepo) { // Follow doesn't contain a repo link.
 				var userRepo = alertRepo.textContent;
 				userRepos.add(userRepo);
@@ -366,7 +367,7 @@
 		Array.prototype.map.call(newsContainer.querySelectorAll('.body'), function(alert) {
 			return alert.parentNode;
 		}).forEach(function(alert) {
-			var username = alert.querySelector('[data-ga-click*="target:actor"]').textContent;
+			var username = alert.querySelector('.flex-items-baseline > div > [data-ga-click*="target:actor"]').textContent;
 			alert.classList.add(username);
 			users.add(username);
 		});
