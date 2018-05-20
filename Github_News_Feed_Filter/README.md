@@ -69,6 +69,10 @@ Currently integrated filters:
 
 ## Version History
 
+*   **8.2.0**
+
+    *   🐛 Fixed issues after GitHub site update ([#124](https://github.com/jerone/UserScripts/issues/124).
+
 *   **8.1.1**
 
     *   🐛 Fix the 'Repositories' tab being empty ([#124](https://github.com/jerone/UserScripts/issues/124), fixed by [@darkred](https://github.com/darkred) in [#126](https://github.com/jerone/UserScripts/pull/126)).

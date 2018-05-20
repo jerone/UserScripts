@@ -16,7 +16,7 @@
 // @include     https://github.com/?*
 // @include     https://github.com/orgs/*/dashboard
 // @include     https://github.com/orgs/*/dashboard?*
-// @version     8.1.1
+// @version     8.2.0
 // @grant       none
 // ==/UserScript==
 
@@ -228,12 +228,12 @@
 		setCurrentFilter(type, this.dataset[datasetId]);
 
 		// Open/close sub list.
-		Array.forEach(filterContainer.querySelectorAll('.open'), function(item) { item.classList.remove('open'); });
+		Array.forEach(filterContainer.querySelectorAll(':scope .open'), function(item) { item.classList.remove('open'); });
 		showParentMenu(this);
 		this.parentNode.classList.add('open');
 
 		// Give it a colored background.
-		Array.forEach(filterContainer.querySelectorAll('.private'), function(m) { m.classList.remove('private'); });
+		Array.forEach(filterContainer.querySelectorAll(':scope .private'), function(m) { m.classList.remove('private'); });
 		this.parentNode.classList.add('private');
 
 		// Toggle alert visibility.
@@ -245,7 +245,7 @@
 		// Get selected filters.
 		var anyVisibleAlert = false;
 		var classNames = [];
-		var selected = document.querySelectorAll(filterElement + ' .private');
+		var selected = document.querySelectorAll(":scope " + filterElement + ' .private');
 		if (selected.length > 0) {
 			Array.prototype.forEach.call(selected, function(item) {
 				classNames.push(item.filterClassNames);
@@ -255,11 +255,11 @@
 		// Show/hide alerts.
 		if (classNames.length === 0 || classNames.every(function(cl) { return cl.every(function(c) { return !!~c.indexOf('*'); }); })) {
 			anyVisibleAlert = true;
-			Array.prototype.forEach.call(newsContainer.querySelectorAll('.body'), function(alert) {
+			Array.prototype.forEach.call(newsContainer.querySelectorAll(':scope > div > .body'), function(alert) {
 				alert.parentNode.style.display = 'block';
 			});
 		} else {
-			Array.prototype.map.call(newsContainer.querySelectorAll('.body'), function(alert) {
+			Array.prototype.map.call(newsContainer.querySelectorAll(':scope > div > .body'), function(alert) {
 				return alert.parentNode;
 			}).forEach(function(alert) {
 				var show = classNames.every(function(cl) { return cl.some(function(c) { return !!~c.indexOf('*') || alert.classList.contains(c); }); });
@@ -269,14 +269,14 @@
 		}
 
 		// Show/hide message about no alerts.
-		var none = newsContainer.querySelector('.no-alerts');
+		var none = newsContainer.querySelector(':scope .no-alerts');
 		if (anyVisibleAlert && none) {
 			none.parentNode.removeChild(none);
 		} else if (!anyVisibleAlert && !none) {
 			none = document.createElement('div');
-			none.classList.add('no-alerts', 'protip');
+			none.classList.add('no-alerts');
 			none.appendChild(document.createTextNode('No feed items for this filter. Please select another filter.'));
-			newsContainer.insertBefore(none, newsContainer.querySelector('.tabnav').nextElementSibling);
+			newsContainer.insertBefore(none, newsContainer.firstElementChild.nextElementSibling);
 		}
 	}
 
@@ -291,7 +291,7 @@
 
 	// Fix filter action identification.
 	function fixActionAlerts(newsContainer) {
-		Array.prototype.map.call(newsContainer.querySelectorAll('.body'), function(alert) {
+		Array.prototype.map.call(newsContainer.querySelectorAll(':scope > div > .body'), function(alert) {
 			return alert.parentNode;
 		}).forEach(function(alert) {
 			if (!!~alert.textContent.indexOf('created branch')) {
@@ -322,10 +322,10 @@
 
 		// Get unique list of repos.
 		var userRepos = new Set();
-		Array.prototype.map.call(newsContainer.querySelectorAll('.body'), function(alert) {
+		Array.prototype.map.call(newsContainer.querySelectorAll(':scope > div > .body'), function(alert) {
 			return alert.parentNode;
 		}).forEach(function(alert) {
-			var alertRepo = alert.querySelector('.flex-items-baseline > div > [data-ga-click*="target:repo"]');
+			var alertRepo = alert.querySelector(':scope .flex-items-baseline > div > [data-ga-click*="target:repo"]');
 			if (alertRepo) { // Follow doesn't contain a repo link.
 				var userRepo = alertRepo.textContent;
 				userRepos.add(userRepo);
@@ -364,10 +364,10 @@
 		USERS = [{ id: '*-user', text: 'All users', icon: 'octicon-organization', classNames: ['*-user'] }];
 
 		var users = new Set();
-		Array.prototype.map.call(newsContainer.querySelectorAll('.body'), function(alert) {
+		Array.prototype.map.call(newsContainer.querySelectorAll(':scope > div > .body'), function(alert) {
 			return alert.parentNode;
 		}).forEach(function(alert) {
-			var username = alert.querySelector('.flex-items-baseline > div > [data-ga-click*="target:actor"]').textContent;
+			var username = alert.querySelector(':scope .flex-items-baseline > div > [data-ga-click*="target:actor"]').textContent;
 			alert.classList.add(username);
 			users.add(username);
 		});
@@ -382,11 +382,11 @@
 
 	// Update filter counts.
 	function updateFilterCounts(filterContainer, newsContainer) {
-		Array.forEach(filterContainer.querySelectorAll('li.filter-list-item'), function(li) {
+		Array.forEach(filterContainer.querySelectorAll(':scope li.filter-list-item'), function(li) {
 			// Count alerts based on other filters.
 			var countFiltered = 0;
 			var classNames = [li.filterClassNames];
-			var selected = document.querySelectorAll(filterElement + ' li.filter-list-item.private');
+			var selected = document.querySelectorAll(":scope " + filterElement + ' li.filter-list-item.private');
 			if (selected.length > 0) {
 				Array.prototype.forEach.call(selected, function(item) {
 					if (item.parentNode.parentNode !== filterContainer) { // Exclude list item from current filter container.
@@ -394,7 +394,7 @@
 					}
 				});
 			}
-			Array.prototype.map.call(newsContainer.querySelectorAll('.body'), function(alert) {
+			Array.prototype.map.call(newsContainer.querySelectorAll(':scope > div > .body'), function(alert) {
 				return alert.parentNode;
 			}).forEach(function(alert) {
 				var show = classNames.every(function(cl) { return cl.some(function(c) { return !!~c.indexOf('*') || alert.classList.contains(c); }); });
@@ -406,9 +406,9 @@
 			// Count alerts based on current filter.
 			var countAll = 0;
 			if (!!~li.filterClassNames[0].indexOf('*')) {
-				countAll = newsContainer.querySelectorAll('.body').length;
+				countAll = newsContainer.querySelectorAll(':scope > div > .body').length;
 			} else {
-				Array.prototype.map.call(newsContainer.querySelectorAll('.body'), function(alert) {
+				Array.prototype.map.call(newsContainer.querySelectorAll(':scope > div > .body'), function(alert) {
 					return alert.parentNode;
 				}).forEach(function(alert) {
 					if (li.filterClassNames.some(function(cl) { return alert.classList.contains(cl); })) {
@@ -417,7 +417,7 @@
 				});
 			}
 
-			li.querySelector('.count').textContent = countAll + ' (' + countFiltered + ')';
+			li.querySelector(':scope .count').textContent = countAll + ' (' + countFiltered + ')';
 		});
 	}
 
@@ -431,7 +431,7 @@
 	// Get current filter.
 	function getCurrentFilter(type, filterContainer) {
 		var filter = CURRENT[type] || '*-' + type;
-		filterContainer.querySelector('[' + datasetIdLong + '="' + filter + '"]').dispatchEvent(new Event('click'));
+		filterContainer.querySelector(':scope [' + datasetIdLong + '="' + filter + '"]').dispatchEvent(new Event('click'));
 	}
 
 	// Add filter tab.
@@ -456,7 +456,7 @@
 	function filterTabInnerClick(e, type, inner, filterContainer, onSelect) {
 		e.preventDefault();
 
-		var selected = inner.querySelector('.filter-selected');
+		var selected = inner.querySelector(':scope .filter-selected');
 		selected && selected.classList.remove('filter-selected');
 		this.classList.add('filter-selected');
 
