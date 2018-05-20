@@ -325,7 +325,7 @@
 		Array.prototype.map.call(newsContainer.querySelectorAll(':scope > div > .body'), function(alert) {
 			return alert.parentNode;
 		}).forEach(function(alert) {
-			var alertRepo = alert.querySelector(':scope .flex-items-baseline > div > [data-ga-click*="target:repo"]');
+			var alertRepo = alert.querySelector('[data-ga-click*="target:repo"]');
 			if (alertRepo) { // Follow doesn't contain a repo link.
 				var userRepo = alertRepo.textContent;
 				userRepos.add(userRepo);
