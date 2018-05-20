@@ -308,9 +308,9 @@
 				alert.classList.add('tag_remove');
 			} else if (alert.classList.contains('gollum')) {
 				alert.classList.remove('gollum');
-				if (!!~alert.textContent.indexOf(' created the ')) {
+				if (!!~alert.innerText.indexOf(' created a wiki page in ')) {
 					alert.classList.add('wiki_created');
-				} else if (!!~alert.textContent.indexOf(' edited a wiki page in ')) {
+				} else if (!!~alert.innerText.indexOf(' edited a wiki page in ')) {
 					alert.classList.add('wiki_edited');
 				}
 			}
