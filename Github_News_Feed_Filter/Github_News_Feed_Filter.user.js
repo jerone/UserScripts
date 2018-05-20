@@ -308,9 +308,9 @@
 				alert.classList.add('tag_remove');
 			} else if (alert.classList.contains('gollum')) {
 				alert.classList.remove('gollum');
-				if (!!~alert.textContent.indexOf(' created the ')) {
+				if (!!~alert.innerText.indexOf(' created a wiki page in ')) {
 					alert.classList.add('wiki_created');
-				} else if (!!~alert.textContent.indexOf(' edited a wiki page in ')) {
+				} else if (!!~alert.innerText.indexOf(' edited a wiki page in ')) {
 					alert.classList.add('wiki_edited');
 				}
 			}
@@ -325,7 +325,7 @@
 		Array.prototype.map.call(newsContainer.querySelectorAll(':scope > div > .body'), function(alert) {
 			return alert.parentNode;
 		}).forEach(function(alert) {
-			var alertRepo = alert.querySelector(':scope .flex-items-baseline > div > [data-ga-click*="target:repo"]');
+			var alertRepo = alert.querySelector(':scope [data-ga-click*="target:repo"]');
 			if (alertRepo) { // Follow doesn't contain a repo link.
 				var userRepo = alertRepo.textContent;
 				userRepos.add(userRepo);
