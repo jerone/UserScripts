@@ -3,6 +3,7 @@
 // @namespace   https://github.com/jerone/UserScripts
 // @description Add controls to compare commits.
 // @author      jerone
+// @contributor darkred
 // @copyright   2017+, jerone (http://jeroenvanwarmerdam.nl)
 // @license     GPL-3.0
 // @homepage    https://github.com/jerone/UserScripts/tree/master/GitHub_Commit_Compare
@@ -16,7 +17,7 @@
 // @include     https://github.com/*/*/commits/*
 // @exclude     https://github.com/*/*.diff
 // @exclude     https://github.com/*/*.patch
-// @version     0.0.1
+// @version     0.0.2
 // @grant       none
 // ==/UserScript==
 
@@ -143,9 +144,9 @@
     const repo = document.querySelector('meta[property="og:url"]').content;
 
     const compareA = document.querySelector('.GitHubCommitCompareButtonAB [name="GitHubCommitCompareButtonA"]:checked');
-    const hashA = compareA.parentNode.parentNode.parentNode.querySelector('[data-clipboard-text]').dataset.clipboardText;
+    const hashA = compareA.parentNode.parentNode.parentNode.querySelector('clipboard-copy').value;
     const compareB = document.querySelector('.GitHubCommitCompareButtonAB [name="GitHubCommitCompareButtonB"]:checked');
-    const hashB = compareB.parentNode.parentNode.parentNode.querySelector('[data-clipboard-text]').dataset.clipboardText;
+    const hashB = compareB.parentNode.parentNode.parentNode.querySelector('clipboard-copy').value;
 
     const a = document.getElementById('GitHubCommitCompareButton');
     a.setAttribute('href', `${repo}/compare/${hashA}...${hashB}`);
