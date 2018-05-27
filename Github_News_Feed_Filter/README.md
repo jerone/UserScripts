@@ -71,7 +71,7 @@ Currently integrated filters:
 
 *   **8.2.3**
 
-    *   🐛 Re-added of the "Issues" filter ( Issues|Labeled ) (which was removed per [#121 (comment)](https://github.com/jerone/UserScripts/issues/121#issuecomment-336629514 ) after another GitHub site update.
+    *   ✨ Re-added of the "Issues" filter ( Issues|Labeled ) (which was removed per [#121 (comment)](https://github.com/jerone/UserScripts/issues/121#issuecomment-336629514 ) after another GitHub site update.
 
 *   **8.2.2**
 
