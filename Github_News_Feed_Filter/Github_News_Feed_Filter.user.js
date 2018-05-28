@@ -138,6 +138,9 @@
 		github-news-feed-filter .filter-list-item.open > a > .stars > .octicon { transform: rotate(-90deg); }
 
 		.no-alerts { font-style: italic; }
+		
+		ul.repo-filterer > li { margin: 0px 25px 0px 0; display: inline; }
+
 	`);
 
 	// Add filter menu list.
