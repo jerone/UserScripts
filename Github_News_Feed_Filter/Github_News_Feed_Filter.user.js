@@ -140,6 +140,7 @@
 		.no-alerts { font-style: italic; }
 		
 		ul.repo-filterer > li { margin: 0px 25px 0px 0; display: inline; }
+		ul.repo-filterer > li > a.filter-selected { font-weight: bold; }
 
 	`);
 
