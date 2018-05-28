@@ -141,6 +141,7 @@
 		
 		ul.repo-filterer > li { display: inline; }
 		ul.repo-filterer > li > a { padding: 10px 10px; }
+		ul.repo-filterer > li > a:hover { text-decoration: none; }
 		ul.repo-filterer > li > a.filter-selected { font-weight: bold; border-bottom-color: #e36209 !important; border-bottom: 2px solid transparent; }
 
 	`);
