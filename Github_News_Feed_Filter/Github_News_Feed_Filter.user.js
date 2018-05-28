@@ -20,7 +20,7 @@
 // @grant       none
 // ==/UserScript==
 
-(function() {
+(function () {
 
 	var ICONS = {};
 	ICONS['octicon-book'] = 'M3 5h4v1H3V5zm0 3h4V7H3v1zm0 2h4V9H3v1zm11-5h-4v1h4V5zm0 2h-4v1h4V7zm0 2h-4v1h4V9zm2-6v9c0 .55-.45 1-1 1H9.5l-1 1-1-1H2c-.55 0-1-.45-1-1V3c0-.55.45-1 1-1h5.5l1 1 1-1H15c.55 0 1 .45 1 1zm-8 .5L7.5 3H2v9h6V3.5zm7-.5H9.5l-.5.5V12h6V3z';
@@ -102,9 +102,9 @@
 	var filterListElement = 'github-news-feed-filter-list';
 
 	function proxy(fn) {
-		return function() {
+		return function () {
 			var that = this;
-			return function(e) {
+			return function (e) {
 				var args = that.slice(0); // Clone.
 				args.unshift(e); // Prepend event.
 				fn.apply(this, args);
@@ -149,7 +149,7 @@
 		}
 		parent.appendChild(ul);
 
-		filters.forEach(function(subFilter) {
+		filters.forEach(function (subFilter) {
 			var li = addFilterMenuItem(type, subFilter, ul, newsContainer, filterContainer);
 
 			if (subFilter.subFilters) {
@@ -234,12 +234,12 @@
 		setCurrentFilter(type, this.dataset[datasetId]);
 
 		// Open/close sub list.
-		Array.forEach(filterContainer.querySelectorAll(':scope .open'), function(item) { item.classList.remove('open'); });
+		Array.forEach(filterContainer.querySelectorAll(':scope .open'), function (item) { item.classList.remove('open'); });
 		showParentMenu(this);
 		this.parentNode.classList.add('open');
 
 		// Give it a colored background.
-		Array.forEach(filterContainer.querySelectorAll(':scope .private'), function(m) { m.classList.remove('private'); });
+		Array.forEach(filterContainer.querySelectorAll(':scope .private'), function (m) { m.classList.remove('private'); });
 		this.parentNode.classList.add('private');
 
 		// Toggle alert visibility.
@@ -253,22 +253,22 @@
 		var classNames = [];
 		var selected = document.querySelectorAll(":scope " + filterElement + ' .private');
 		if (selected.length > 0) {
-			Array.prototype.forEach.call(selected, function(item) {
+			Array.prototype.forEach.call(selected, function (item) {
 				classNames.push(item.filterClassNames);
 			});
 		}
 
 		// Show/hide alerts.
-		if (classNames.length === 0 || classNames.every(function(cl) { return cl.every(function(c) { return !!~c.indexOf('*'); }); })) {
+		if (classNames.length === 0 || classNames.every(function (cl) { return cl.every(function (c) { return !!~c.indexOf('*'); }); })) {
 			anyVisibleAlert = true;
-			Array.prototype.forEach.call(newsContainer.querySelectorAll(':scope > div > .body'), function(alert) {
+			Array.prototype.forEach.call(newsContainer.querySelectorAll(':scope > div > .body'), function (alert) {
 				alert.parentNode.style.display = 'block';
 			});
 		} else {
-			Array.prototype.map.call(newsContainer.querySelectorAll(':scope > div > .body'), function(alert) {
+			Array.prototype.map.call(newsContainer.querySelectorAll(':scope > div > .body'), function (alert) {
 				return alert.parentNode;
-			}).forEach(function(alert) {
-				var show = classNames.every(function(cl) { return cl.some(function(c) { return !!~c.indexOf('*') || alert.classList.contains(c); }); });
+			}).forEach(function (alert) {
+				var show = classNames.every(function (cl) { return cl.some(function (c) { return !!~c.indexOf('*') || alert.classList.contains(c); }); });
 				anyVisibleAlert = show || anyVisibleAlert;
 				alert.style.display = show ? 'block' : 'none';
 				// DEBUG: uncomment following line and comment previous line to debug all alerts.
@@ -299,9 +299,9 @@
 
 	// Fix filter action identification.
 	function fixActionAlerts(newsContainer) {
-		Array.prototype.map.call(newsContainer.querySelectorAll(':scope > div > .body'), function(alert) {
+		Array.prototype.map.call(newsContainer.querySelectorAll(':scope > div > .body'), function (alert) {
 			return alert.parentNode;
-		}).forEach(function(alert) {
+		}).forEach(function (alert) {
 			if (!!~alert.textContent.indexOf('created branch')) {
 				alert.classList.remove('create');
 				alert.classList.add('branch_create');
@@ -332,9 +332,9 @@
 
 		// Get unique list of repos.
 		var userRepos = new Set();
-		Array.prototype.map.call(newsContainer.querySelectorAll(':scope > div > .body'), function(alert) {
+		Array.prototype.map.call(newsContainer.querySelectorAll(':scope > div > .body'), function (alert) {
 			return alert.parentNode;
-		}).forEach(function(alert) {
+		}).forEach(function (alert) {
 			var alertRepo = alert.querySelector(':scope [data-ga-click*="target:repo"]:not([data-ga-click*="target:repositories"])');
 			if (alertRepo) { // Follow doesn't contain a repo link.
 				var userRepo = alertRepo.textContent;
@@ -346,7 +346,7 @@
 
 		// Get list of user repos (forks) per repo names.
 		var repos = {};
-		userRepos.forEach(function(userRepo) {
+		userRepos.forEach(function (userRepo) {
 			var repo = userRepo.split('/')[1];
 			if (!repos[repo]) {
 				repos[repo] = [];
@@ -355,13 +355,13 @@
 		});
 
 		// Populate global property.
-		Object.keys(repos).forEach(function(repo) {
+		Object.keys(repos).forEach(function (repo) {
 			if (repos[repo].length === 1) {
 				var userRepo = repos[repo][0];
 				REPOS.push({ id: userRepo, text: userRepo, link: userRepo, icon: 'octicon-repo', classNames: [userRepo] });
 			} else {
 				var repoForks = { id: repo, text: repo, icon: 'octicon-repo-clone', classNames: [repo], subFilters: [] };
-				repos[repo].forEach(function(userRepo) {
+				repos[repo].forEach(function (userRepo) {
 					repoForks.classNames.push(userRepo);
 					repoForks.subFilters.push({ id: userRepo, text: userRepo, link: userRepo, icon: 'octicon-repo', classNames: [userRepo] });
 				});
@@ -374,23 +374,23 @@
 		USERS = [{ id: '*-user', text: 'All users', icon: 'octicon-organization', classNames: ['*-user'] }];
 
 		var users = new Set();
-		Array.prototype.map.call(newsContainer.querySelectorAll(':scope > div > .body'), function(alert) {
+		Array.prototype.map.call(newsContainer.querySelectorAll(':scope > div > .body'), function (alert) {
 			return alert.parentNode;
-		}).forEach(function(alert) {
+		}).forEach(function (alert) {
 			var usernameElms = alert.querySelectorAll(':scope [data-ga-click*="target:actor"]');
-			Array.prototype.find.call(usernameElms, function(usernameElm){
-                var username = usernameElm.textContent;
-                if (username) {
+			Array.prototype.find.call(usernameElms, function (usernameElm) {
+				var username = usernameElm.textContent;
+				if (username) {
 					alert.classList.add(username);
-                    users.add(username);
-                    return true;
-                }
-            });
+					users.add(username);
+					return true;
+				}
+			});
 		});
 
-		[...users].sort(function(a, b) {
+		[...users].sort(function (a, b) {
 			return a.toLowerCase().localeCompare(b.toLowerCase());
-		}).forEach(function(username) {
+		}).forEach(function (username) {
 			var user = { id: username, text: username, icon: 'octicon-person', classNames: [username] };
 			USERS.push(user);
 		});
@@ -398,22 +398,22 @@
 
 	// Update filter counts.
 	function updateFilterCounts(filterContainer, newsContainer) {
-		Array.forEach(filterContainer.querySelectorAll(':scope li.filter-list-item'), function(li) {
+		Array.forEach(filterContainer.querySelectorAll(':scope li.filter-list-item'), function (li) {
 			// Count alerts based on other filters.
 			var countFiltered = 0;
 			var classNames = [li.filterClassNames];
 			var selected = document.querySelectorAll(":scope " + filterElement + ' li.filter-list-item.private');
 			if (selected.length > 0) {
-				Array.prototype.forEach.call(selected, function(item) {
+				Array.prototype.forEach.call(selected, function (item) {
 					if (item.parentNode.parentNode !== filterContainer) { // Exclude list item from current filter container.
 						classNames.push(item.filterClassNames);
 					}
 				});
 			}
-			Array.prototype.map.call(newsContainer.querySelectorAll(':scope > div > .body'), function(alert) {
+			Array.prototype.map.call(newsContainer.querySelectorAll(':scope > div > .body'), function (alert) {
 				return alert.parentNode;
-			}).forEach(function(alert) {
-				var show = classNames.every(function(cl) { return cl.some(function(c) { return !!~c.indexOf('*') || alert.classList.contains(c); }); });
+			}).forEach(function (alert) {
+				var show = classNames.every(function (cl) { return cl.some(function (c) { return !!~c.indexOf('*') || alert.classList.contains(c); }); });
 				if (show) {
 					countFiltered++;
 				}
@@ -424,10 +424,10 @@
 			if (!!~li.filterClassNames[0].indexOf('*')) {
 				countAll = newsContainer.querySelectorAll(':scope > div > .body').length;
 			} else {
-				Array.prototype.map.call(newsContainer.querySelectorAll(':scope > div > .body'), function(alert) {
+				Array.prototype.map.call(newsContainer.querySelectorAll(':scope > div > .body'), function (alert) {
 					return alert.parentNode;
-				}).forEach(function(alert) {
-					if (li.filterClassNames.some(function(cl) { return alert.classList.contains(cl); })) {
+				}).forEach(function (alert) {
+					if (li.filterClassNames.some(function (cl) { return alert.classList.contains(cl); })) {
 						countAll++;
 					}
 				});
@@ -476,7 +476,7 @@
 		selected && selected.classList.remove('filter-selected');
 		this.classList.add('filter-selected');
 
-		Array.forEach(inner.querySelectorAll(filterListElement), function(menu) {
+		Array.forEach(inner.querySelectorAll(filterListElement), function (menu) {
 			menu && menu.classList.remove('open');
 		});
 		filterContainer.classList.add('open');
@@ -586,7 +586,7 @@
 		filterer.querySelector('a').dispatchEvent(new Event('click'));
 
 		// Update on clicking "More"-button.
-		new MutationObserver(function() {
+		new MutationObserver(function () {
 			// Re-click the current selected filter on open filter tab.
 			filterer.querySelector('a.filter-selected').dispatchEvent(new Event('click'));
 		}).observe(newsContainer, { childList: true });
