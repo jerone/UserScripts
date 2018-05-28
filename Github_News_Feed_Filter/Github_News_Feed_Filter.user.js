@@ -16,7 +16,7 @@
 // @include     https://github.com/?*
 // @include     https://github.com/orgs/*/dashboard
 // @include     https://github.com/orgs/*/dashboard?*
-// @version     8.2.3
+// @version     8.2.4
 // @grant       none
 // ==/UserScript==
 
@@ -138,6 +138,12 @@
 		github-news-feed-filter .filter-list-item.open > a > .stars > .octicon { transform: rotate(-90deg); }
 
 		.no-alerts { font-style: italic; }
+		
+		ul.repo-filterer > li { display: inline; }
+		ul.repo-filterer > li > a { padding: 10px 10px; }
+		ul.repo-filterer > li > a:hover { text-decoration: none; }
+		ul.repo-filterer > li > a.filter-selected { font-weight: bold; border-bottom-color: #e36209 !important; border-bottom: 2px solid transparent; }
+
 	`);
 
 	// Add filter menu list.
