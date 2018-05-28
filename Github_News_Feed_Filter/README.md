@@ -71,7 +71,7 @@ Currently integrated filters:
 
 *   **8.2.4**
 
-    *   ✨  Added CSS for tab titles. Fixes [#130](https://github.com/jerone/UserScripts/issues/130). (by [@darkred](https://github.com/darkred))
+    *   🐛 Added CSS for tab titles. Fixes [#130](https://github.com/jerone/UserScripts/issues/130). (by [@darkred](https://github.com/darkred))
 
 *   **8.2.3**
 
