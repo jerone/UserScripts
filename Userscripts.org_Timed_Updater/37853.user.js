@@ -7,6 +7,8 @@
 // @description     Update or create script at specific time.
 // @description     Userscripts.org Timed Updater v2.0.1 Alpha
 // @copyright       2008 - 2012 Jerone
+// @license         CC-BY-NC-SA-4.0; https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
+// @license         GPL-3.0-or-later; http://www.gnu.org/licenses/gpl-3.0.txt
 // @version         v2.0.1 Alpha
 // @browser         FF17
 // @include         *userscripts.org/scripts/new?form=true

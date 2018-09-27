@@ -4,7 +4,8 @@
 // @description Share your GitHub Gist to Twitter, Dabblet, Bl.ocks & as userscript.
 // @author      jerone
 // @copyright   2014+, jerone (http://jeroenvanwarmerdam.nl)
-// @license     GPL-3.0
+// @license     CC-BY-NC-SA-4.0; https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
+// @license     GPL-3.0-or-later; http://www.gnu.org/licenses/gpl-3.0.txt
 // @homepage    https://github.com/jerone/UserScripts/tree/master/Github_Gist_Share
 // @homepageURL https://github.com/jerone/UserScripts/tree/master/Github_Gist_Share
 // @downloadURL https://github.com/jerone/UserScripts/raw/master/Github_Gist_Share/157850.user.js
