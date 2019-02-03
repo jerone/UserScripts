@@ -31,7 +31,7 @@
 		});
 	};
 
-	var turndownService = new TurndownService();
+	var turndownService = new TurndownService({ headingStyle: 'atx', codeBlockStyle: 'fenced', hr: '***' });
 	turndownService.use(turndownPluginGfm.gfm);
 	turndownService.use(turndownPluginGithubCodeSnippet);
 
