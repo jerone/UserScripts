@@ -20,11 +20,17 @@ reply button on an comment.
 
 ## Version History
 
+*   version **1.0.1**
+
+    *   Use atx style headings, fenced code blocks, dense hr style.
+    *   Remove trailing new line & ['Toggle code wrap'](https://greasyfork.org/en/scripts/18789-github-toggle-code-wrap) button from code blocks.
+    *   Update [turndown-plugin-github-code-snippet](https://github.com/jerone/turndown-plugin-github-code-snippet).
+
 *   version **1.0.0**
 
     *   Replace to-markdown with [Turndown](https://github.com/domchristie/turndown).
     *   Some clean up.
-    *   Always fallback to Turndown.
+    *   Always fallback to Turndown when original comment code is not available.
     *   Convert code snippets back to links. Fixes [#144](https://github.com/jerone/UserScripts/issues/133).
 
 *   version **0.1.2**
