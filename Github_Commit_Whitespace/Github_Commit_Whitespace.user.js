@@ -12,7 +12,7 @@
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_Commit_Whitespace/Github_Commit_Whitespace.user.js
 // @supportURL  https://github.com/jerone/UserScripts/issues
 // @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
-// @icon        https://assets-cdn.github.com/pinned-octocat.svg
+// @icon        https://github.githubassets.com/pinned-octocat.svg
 // @include     https://github.com/*
 // @version     1.5.3
 // @grant       none
