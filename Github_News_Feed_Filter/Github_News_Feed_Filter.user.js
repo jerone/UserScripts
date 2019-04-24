@@ -12,7 +12,7 @@
 // @downloadURL https://github.com/jerone/UserScripts/raw/master/Github_News_Feed_Filter/Github_News_Feed_Filter.user.js
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_News_Feed_Filter/Github_News_Feed_Filter.user.js
 // @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
-// @icon        https://assets-cdn.github.com/pinned-octocat.svg
+// @icon        https://github.githubassets.com/pinned-octocat.svg
 // @include     https://github.com/
 // @include     https://github.com/?*
 // @include     https://github.com/orgs/*/dashboard
