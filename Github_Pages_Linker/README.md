@@ -19,6 +19,10 @@ Add a link to GitHub Pages (gh-pages) when available.
 
 ## Version History
 
+*   **1.2.3**
+
+    *   🐛 Fix broken icon url ([#146](https://github.com/jerone/UserScripts/pull/146)).
+
 *   **1.2.2**
 
     *   Fixed issues after layout updates

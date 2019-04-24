@@ -18,7 +18,7 @@
 // @include     https://github.com/*/*/commits/*
 // @exclude     https://github.com/*/*.diff
 // @exclude     https://github.com/*/*.patch
-// @version     0.0.2
+// @version     0.0.3
 // @grant       none
 // ==/UserScript==
 

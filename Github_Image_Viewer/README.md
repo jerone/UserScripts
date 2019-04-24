@@ -34,6 +34,8 @@ Supported file extensions are:
 
 ## Version History
 
+* **0.4.2**
+    * 🐛 Fix broken icon url ([#146](https://github.com/jerone/UserScripts/pull/146)).
 * **0.4.1**
     * Fixed issues after GitHub site update.
 * **0.4.0**

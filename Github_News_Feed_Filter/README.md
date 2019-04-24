@@ -69,6 +69,10 @@ Currently integrated filters:
 
 ## Version History
 
+*   **8.2.8**
+
+    *   🐛 Fix broken icon url ([#146](https://github.com/jerone/UserScripts/pull/146)).
+
 *   **8.2.7**
  
     *   🐛 Fix after another layout change. Refixes [#68](https://github.com/jerone/UserScripts/issues/68).
