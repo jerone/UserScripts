@@ -12,7 +12,7 @@
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_Reply_Comments/Github_Reply_Comments.user.js
 // @supportURL  https://github.com/jerone/UserScripts/issues
 // @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
-// @version     1.0.2
+// @version     1.0.3
 // @icon        https://github.githubassets.com/pinned-octocat.svg
 // @grant       none
 // @include     https://github.com/*
@@ -111,7 +111,7 @@
 			reply.addEventListener("click", function (e) {
 				e.preventDefault();
 
-				var timestamp = comment.querySelector(".timestamp");
+				var timestamp = comment.querySelector(".js-timestamp, .timestamp");
 
 				var commentText = getCommentMarkdown(comment);
 				commentText = commentText.trim().split("\n").map(function (line) {
