@@ -120,10 +120,13 @@
 
 				var newComment = getCommentTextarea(this);
 
+                var author = comment.querySelector(".author");
+                var authorLink = location.origin + (author.getAttribute("href") || "/" + author.textContent);
+
 				var text = newComment.value.length > 0 ? "\n" : "";
-				text += String.format('[**@{0}**]({1}/{0}) commented on [{2}]({3} "{4} - Replied by Github Reply Comments"):\n{5}\n\n',
-					comment.querySelector(".author").textContent,
-					location.origin,
+				text += String.format('[**@{0}**]({1}) commented on [{2}]({3} "{4} - Replied by Github Reply Comments"):\n{5}\n\n',
+					author.textContent,
+					authorLink,
 					timestamp.firstElementChild.getAttribute("title"),
 					timestamp.href,
 					timestamp.firstElementChild.getAttribute("datetime"),
