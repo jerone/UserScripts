@@ -3,7 +3,7 @@
 // @namespace   https://github.com/jerone/UserScripts
 // @description Easy reply to Github comments
 // @author      jerone
-// @copyright   2016+, jerone (http://jeroenvanwarmerdam.nl)
+// @copyright   2016+, jerone (https://github.com/jerone)
 // @license     CC-BY-NC-SA-4.0; https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
 // @license     GPL-3.0-or-later; http://www.gnu.org/licenses/gpl-3.0.txt
 // @homepage    https://github.com/jerone/UserScripts/tree/master/Github_Reply_Comments
