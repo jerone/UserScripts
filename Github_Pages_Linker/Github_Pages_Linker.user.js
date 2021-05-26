@@ -29,7 +29,7 @@
 		});
 	};
   
-  var DELAY = 2500;
+  var DELAY = 800;
 
   var triggerEventClick = new MouseEvent('click', {
      view: window,
@@ -37,10 +37,15 @@
      cancelable: true
   });
 
-	function addLink() {
-		if(document.getElementById("GithubPagesLinker")) {
-			return;
-		}
+  function addLink() {
+	if(document.getElementById("GithubPagesLinker")) {
+	  return;
+    }
+
+    var meta = document.querySelector('.file-navigation');
+    if (!meta) {
+      return;
+    }
     
     var closeDropdown = () => {
       document.querySelector('[data-toggle-for="branch-select-menu"]').dispatchEvent(triggerEventClick);
@@ -50,8 +55,6 @@
     dropdown.dispatchEvent(triggerEventClick); // open menu to load data
 
     setTimeout(() => {
-      var meta = document.querySelector('.file-navigation');
-
       var branch = document.querySelector('.SelectMenu-item[href$="/tree/gh-pages"]');
       if (!branch) {
         closeDropdown();
