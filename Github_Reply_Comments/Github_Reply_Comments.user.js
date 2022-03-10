@@ -61,20 +61,8 @@
 
 		// Convert comment HTML to markdown.
 		if (!commentText) {
-			// Clone it, so we can alter the HTML a bit, without modifing the page.
-			var commentBody = comment.querySelector(".comment-body").cloneNode(true);
-
-			// Remove 'Toggle code wrap' buttons from https://greasyfork.org/en/scripts/18789-github-toggle-code-wrap
-			Array.prototype.forEach.call(commentBody.querySelectorAll(".ghd-wrap-toggle"), function (ghd) {
-				ghd.remove();
-			});
-
-			// GitHub add an extra new line, which is converted by Turndown.
-			Array.prototype.forEach.call(commentBody.querySelectorAll("pre code"), function (pre) {
-				pre.innerHTML = pre.innerHTML.replace(/\n$/g, '');
-			});
-
-			commentText = turndownService.turndown(commentBody.innerHTML);
+			var commentBody = comment.querySelector(".comment-body").innerHTML;
+			commentText = turndownService.turndown(commentBody);
 		}
 
 		return commentText;
