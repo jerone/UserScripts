@@ -17,7 +17,7 @@
 // @include     https://github.com/?*
 // @include     https://github.com/orgs/*/dashboard
 // @include     https://github.com/orgs/*/dashboard?*
-// @version     8.2.7
+// @version     8.2.6
 // @grant       none
 // ==/UserScript==
 
@@ -53,7 +53,7 @@
 		{ id: '*-action', text: 'All news feed', icon: 'octicon-radio-tower', classNames: ['*-action'] },
 		{
 			id: 'issues', text: 'Issues', icon: 'octicon-issue-opened', classNames: ['issues_labeled'], subFilters: [
-				{ id: 'issues labeled', text: 'Labeled', icon: 'octicon-tag', classNames: ['issues_labeled'] }
+				{ id: 'issues labeled', text: 'Labeled', icon: 'octicon-tag', classNames: ['issues_labeled'] },
 			]
 		},
 		{
@@ -263,14 +263,16 @@
 		}
 
 		// Show/hide alerts.
-		if (classNames.length === 0 || classNames.every(function (cl) { return cl.every(function (c) { return ~c.indexOf('*'); }); })) {
+		if (classNames.length === 0 || classNames.every(function (cl) { return cl.every(function (c) { return !!~c.indexOf('*'); }); })) {
 			anyVisibleAlert = true;
-			getAllAlerts(newsContainer).forEach(function (alert) {
-				alert.style.display = 'block';
+			Array.prototype.forEach.call(newsContainer.querySelectorAll(':scope > div > div > .body'), function (alert) {
+				alert.parentNode.style.display = 'block';
 			});
 		} else {
-			getAllAlerts(newsContainer).forEach(function (alert) {
-				var show = classNames.every(function (cl) { return cl.some(function (c) { return ~c.indexOf('*') || alert.classList.contains(c); }); });
+			Array.prototype.map.call(newsContainer.querySelectorAll(':scope > div > div > .body'), function (alert) {
+				return alert.parentNode;
+			}).forEach(function (alert) {
+				var show = classNames.every(function (cl) { return cl.some(function (c) { return !!~c.indexOf('*') || alert.classList.contains(c); }); });
 				anyVisibleAlert = show || anyVisibleAlert;
 				alert.style.display = show ? 'block' : 'none';
 				// DEBUG: uncomment following line and comment previous line to debug all alerts.
@@ -286,8 +288,7 @@
 			none = document.createElement('div');
 			none.classList.add('no-alerts');
 			none.appendChild(document.createTextNode('No feed items for this filter. Please select another filter.'));
-			var firstAlert = getAllAlerts(newsContainer)[0];
-			firstAlert.parentNode.insertBefore(none, firstAlert);
+			newsContainer.insertBefore(none, newsContainer.firstElementChild.nextElementSibling);
 		}
 	}
 
@@ -302,11 +303,13 @@
 
 	// Fix filter action identification.
 	function fixActionAlerts(newsContainer) {
-		getAllAlerts(newsContainer).forEach(function (alert) {
-			if (~alert.textContent.indexOf('created branch')) {
+		Array.prototype.map.call(newsContainer.querySelectorAll(':scope > div > div > .body'), function (alert) {
+			return alert.parentNode;
+		}).forEach(function (alert) {
+			if (!!~alert.textContent.indexOf('created branch')) {
 				alert.classList.remove('create');
 				alert.classList.add('branch_create');
-			} else if (~alert.textContent.indexOf('deleted branch')) {
+			} else if (!!~alert.textContent.indexOf('deleted branch')) {
 				alert.classList.remove('delete');
 				alert.classList.add('branch_delete');
 			} else if (alert.getElementsByClassName('octicon-tag').length > 0 && !alert.classList.contains('release')) {
@@ -315,13 +318,13 @@
 			} else if (alert.getElementsByClassName('octicon-tag-remove').length > 0) {
 				alert.classList.remove('delete');
 				alert.classList.add('tag_remove');
-			} else if (~alert.textContent.indexOf('labeled an issue')) {
+			} else if (!!~alert.textContent.indexOf('labeled an issue')) {
 				alert.classList.add('issues_labeled');
 			} else if (alert.classList.contains('gollum')) {
 				alert.classList.remove('gollum');
-				if (~alert.innerText.indexOf(' created a wiki page in ')) {
+				if (!!~alert.innerText.indexOf(' created a wiki page in ')) {
 					alert.classList.add('wiki_created');
-				} else if (~alert.innerText.indexOf(' edited a wiki page in ')) {
+				} else if (!!~alert.innerText.indexOf(' edited a wiki page in ')) {
 					alert.classList.add('wiki_edited');
 				}
 			}
@@ -333,7 +336,9 @@
 
 		// Get unique list of repos.
 		var userRepos = new Set();
-		getAllAlerts(newsContainer).forEach(function (alert) {
+		Array.prototype.map.call(newsContainer.querySelectorAll(':scope > div > div > .body'), function (alert) {
+			return alert.parentNode;
+		}).forEach(function (alert) {
 			var alertRepo = alert.querySelector(':scope [data-ga-click*="target:repo"]:not([data-ga-click*="target:repositories"])');
 			if (alertRepo) { // Follow doesn't contain a repo link.
 				var userRepo = alertRepo.textContent;
@@ -373,7 +378,9 @@
 		USERS = [{ id: '*-user', text: 'All users', icon: 'octicon-organization', classNames: ['*-user'] }];
 
 		var users = new Set();
-		getAllAlerts(newsContainer).forEach(function (alert) {
+		Array.prototype.map.call(newsContainer.querySelectorAll(':scope > div > div > .body'), function (alert) {
+			return alert.parentNode;
+		}).forEach(function (alert) {
 			var usernameElms = alert.querySelectorAll(':scope [data-ga-click*="target:actor"]');
 			Array.prototype.find.call(usernameElms, function (usernameElm) {
 				var username = usernameElm.textContent;
@@ -382,7 +389,6 @@
 					users.add(username);
 					return true;
 				}
-				return false;
 			});
 		});
 
@@ -408,8 +414,10 @@
 					}
 				});
 			}
-			getAllAlerts(newsContainer).forEach(function (alert) {
-				var show = classNames.every(function (cl) { return cl.some(function (c) { return ~c.indexOf('*') || alert.classList.contains(c); }); });
+			Array.prototype.map.call(newsContainer.querySelectorAll(':scope > div > div > .body'), function (alert) {
+				return alert.parentNode;
+			}).forEach(function (alert) {
+				var show = classNames.every(function (cl) { return cl.some(function (c) { return !!~c.indexOf('*') || alert.classList.contains(c); }); });
 				if (show) {
 					countFiltered++;
 				}
@@ -417,10 +425,12 @@
 
 			// Count alerts based on current filter.
 			var countAll = 0;
-			if (~li.filterClassNames[0].indexOf('*')) {
-				countAll = getAllAlerts(newsContainer).length;
+			if (!!~li.filterClassNames[0].indexOf('*')) {
+				countAll = newsContainer.querySelectorAll(':scope > div > div > .body').length;
 			} else {
-				getAllAlerts(newsContainer).forEach(function (alert) {
+				Array.prototype.map.call(newsContainer.querySelectorAll(':scope > div > div > .body'), function (alert) {
+					return alert.parentNode;
+				}).forEach(function (alert) {
 					if (li.filterClassNames.some(function (cl) { return alert.classList.contains(cl); })) {
 						countAll++;
 					}
@@ -428,13 +438,6 @@
 			}
 
 			li.querySelector(':scope .count').textContent = countAll + ' (' + countFiltered + ')';
-		});
-	}
-
-	// Get all alerts.
-	function getAllAlerts(newsContainer) {
-		return Array.prototype.map.call(newsContainer.querySelectorAll(':scope div[data-repository-hovercards-enabled] > div > .body'), function (alert) {
-			return alert.parentNode;
 		});
 	}
 
@@ -588,7 +591,7 @@
 		new MutationObserver(function () {
 			// Re-click the current selected filter on open filter tab.
 			filterer.querySelector('a.selected').dispatchEvent(new Event('click'));
-		}).observe(newsContainer, { childList: true, subtree: true });
+		}).observe(newsContainer, { childList: true });
 	})();
 
 })();
