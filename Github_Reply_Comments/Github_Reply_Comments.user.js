@@ -19,7 +19,7 @@
 // @include     https://gist.github.com/*
 // @require     https://unpkg.com/turndown@5.0.3/dist/turndown.js
 // @require     https://unpkg.com/turndown-plugin-gfm@1.0.2/dist/turndown-plugin-gfm.js
-// @require     https://unpkg.com/turndown-plugin-github-code-snippet@1.0.2/turndown-plugin-github-code-snippet.js
+// @require     https://unpkg.com/turndown-plugin-github-code-snippet@1.0.0/turndown-plugin-github-code-snippet.js
 // ==/UserScript==
 
 (function () {
