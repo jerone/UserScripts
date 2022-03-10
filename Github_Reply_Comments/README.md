@@ -20,24 +20,17 @@ reply button on an comment.
 
 ## Version History
 
-*   version **1.0.0**
-
-    *   Replace to-markdown with [Turndown](https://github.com/domchristie/turndown).
-    *   Some clean up.
-    *   Always fallback to Turndown.
-    *   Convert code snippets back to links. Fixes [#144](https://github.com/jerone/UserScripts/issues/133).
-
 *   version **0.1.2**
 
-    *   Fix reply button for commits & reviews. Fixes [#133](https://github.com/jerone/UserScripts/issues/133).
+    *   Fix reply button for commits & reviews. Fixes [#133](https://github.com/jerone/UserScripts/issues/133)
 
 *   version **0.1.1**
 
-    *   Fix reply button for reviews. Fixes [#125](https://github.com/jerone/UserScripts/issues/125).
+    *   Fix reply button for reviews. Fixes [#125](https://github.com/jerone/UserScripts/issues/125)
 
 *   version **0.1.0**
 
-    *   Initial version.
+    *   Initial version
 
 ## Test cases
 
@@ -54,9 +47,8 @@ reply button on an comment.
 
 ## Dependencies
 
-*   [Turndown](https://github.com/domchristie/turndown) - Convert HTML into Markdown with JavaScript.
-*   [turndown-plugin-gfm](https://github.com/domchristie/turndown-plugin-gfm/blob/master/README.md) - A Turndown plugin which adds GitHub Flavored Markdown extensions.
-*   [turndown-plugin-github-code-snippet](https://github.com/jerone/turndown-plugin-github-code-snippet) - A Turndown plugin to convert GitHub code snippet in comments back into normal links.
+*   Part of [domchristie](https://github.com/domchristie)'s library
+[**to-markdown**](https://github.com/domchristie/to-markdown) is used.
 
 ## External links
 
