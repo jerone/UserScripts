@@ -16,7 +16,7 @@
 // @include     https://github.com/?*
 // @include     https://github.com/orgs/*/dashboard
 // @include     https://github.com/orgs/*/dashboard?*
-// @version     8.2.0
+// @version     8.2.1
 // @grant       none
 // ==/UserScript==
 
@@ -56,8 +56,8 @@
 			]
 		},
 		{
-			id: 'repo', text: 'Repo', icon: 'octicon-repo', classNames: ['create', 'public', 'fork', 'branch_create', 'branch_delete', 'tag_add', 'tag_remove', 'release', 'delete'], subFilters: [
-				{ id: 'repo created', text: 'Created', icon: 'octicon-repo-create', classNames: ['create'] },
+			id: 'repo', text: 'Repo', icon: 'octicon-repo', classNames: ['repo', 'create', 'public', 'fork', 'branch_create', 'branch_delete', 'tag_add', 'tag_remove', 'release', 'delete'], subFilters: [
+				{ id: 'repo created', text: 'Created', icon: 'octicon-repo-create', classNames: ['repo', 'create'] },
 				{ id: 'repo public', text: 'Public', icon: 'octicon-repo-push', classNames: ['public'] },
 				{ id: 'repo forked', text: 'Forked', icon: 'octicon-repo-forked', classNames: ['fork'] },
 				{ id: 'repo deleted', text: 'Deleted', icon: 'octicon-repo-delete', classNames: ['delete'] },
@@ -265,6 +265,8 @@
 				var show = classNames.every(function(cl) { return cl.some(function(c) { return !!~c.indexOf('*') || alert.classList.contains(c); }); });
 				anyVisibleAlert = show || anyVisibleAlert;
 				alert.style.display = show ? 'block' : 'none';
+				// DEBUG: uncomment following line and comment previous line to debug all alerts.
+				//if(show) alert.style.display = 'none';
 			});
 		}
 

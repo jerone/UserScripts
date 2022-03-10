@@ -69,9 +69,14 @@ Currently integrated filters:
 
 ## Version History
 
+*   **8.2.1**
+
+    *   🐛 Fix for 'Actions' tab|'Wiki' being empty after GitHub site update (fixed by [@darkred](https://github.com/darkred) in [#127](https://github.com/jerone/UserScripts/issues/127)).
+    *   🐛 Fix missing created repo actions.
+
 *   **8.2.0**
 
-    *   🐛 Fixed issues after GitHub site update ([#124](https://github.com/jerone/UserScripts/issues/124).
+    *   🐛 Fixed issues after GitHub site update ([#124](https://github.com/jerone/UserScripts/issues/124)).
 
 *   **8.1.1**
 
