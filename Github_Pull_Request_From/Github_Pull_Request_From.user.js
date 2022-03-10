@@ -13,9 +13,9 @@
 // @supportURL  https://github.com/jerone/UserScripts/issues
 // @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
 // @icon        https://assets-cdn.github.com/pinned-octocat.svg
-// @version     20.0
+// @version     19.1
 // @grant       none
-// @include     https://github.com/*/pull/*
+// @include     https://github.com/*/*
 // @exclude     https://github.com/*/*.diff
 // @exclude     https://github.com/*/*.patch
 // ==/UserScript==
@@ -25,26 +25,30 @@
 	String.format = function (string) {
 		var args = Array.prototype.slice.call(arguments, 1, arguments.length);
 		return string.replace(/{(\d+)}/g, function (match, number) {
-			return typeof args[number] !== 'undefined' ? args[number] : match;
+			return typeof args[number] !== "undefined" ? args[number] : match;
 		});
 	};
 
 	function init() {
-		Array.prototype.filter.call(document.querySelectorAll('.commit-ref[title], .base-ref[title], .head-ref[title]'), function (treeSpan) {
-			return !treeSpan.querySelector('.unknown-repo');
+		if (!document.querySelector('.repohead-details-container h1 [itemprop="name"]')) return;
+
+		var repo = document.querySelector('.repohead-details-container h1 [itemprop="name"]').textContent,
+			author = document.querySelector('.repohead-details-container h1 [itemprop="author"]').textContent;
+		Array.prototype.filter.call(document.querySelectorAll("span.commit-ref"), function (treeSpan) {
+			return !treeSpan.querySelector(".unknown-repo");
 		}).forEach(function (treeSpan) {
-			const [repo, branch] = treeSpan.title.split(':');
+			var treeUser = treeSpan.querySelector('.user');
 			var treeParts = treeSpan.querySelectorAll('.css-truncate-target');
-			var treeLink = document.createElement('a');
-
-			// Show underline on hover.
+			var treeLink = document.createElement("a");
 			Array.prototype.forEach.call(treeParts, function (part) {
-				part.style.display = 'inline';
+				part.style.display = "inline";
 			});
-
-			treeLink.setAttribute('href', String.format('/{0}/tree/{1}', repo, branch));
+			treeLink.setAttribute("href", String.format("/{0}/{1}/tree/{2}",
+				treeUser ? treeUser.textContent : author, // user
+				repo, // repository
+				escape(treeParts[treeParts.length - 1].textContent))); // branch
 			treeLink.innerHTML = treeSpan.innerHTML;
-			treeSpan.innerHTML = '';
+			treeSpan.innerHTML = "";
 			treeSpan.appendChild(treeLink);
 		});
 	}

@@ -23,9 +23,6 @@ Make pull request branches linkable.
 
 ## Version History
 
-*   **20.0**
-    *   Fix url on forks where another repo name is choosen. Fixes [145](https://github.com/jerone/UserScripts/issues/145).
-    *   Run on more elements.
 *   **19.1**
     *   Don't run on repo search page.
 *   **19**
@@ -58,7 +55,6 @@ Use cases:
 *   <https://github.com/jerone/UserScripts/pull/12> (2 valid, 1 missing).
 *   <https://github.com/jerone/UserScripts/pull/29> (1 mine, 1 extern).
 *   <https://github.com/jerone/UserScripts/pull/47> (3 without username).
-*   <https://github.com/stylus/stylus/pull/2416> (fork renamed).
 
 
 ## Contributions
