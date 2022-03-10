@@ -69,10 +69,6 @@ Currently integrated filters:
 
 ## Version History
 
-*   **8.2.4**
- 
-    *   🐛 Nav styling. Fixes [#130](https://github.com/jerone/UserScripts/issues/130) and closes [#132](https://github.com/jerone/UserScripts/issues/132) (thanks [@darkred](https://github.com/darkred)).
-
 *   **8.2.3**
 
     *   ✨ Re-added of the "Issues" filter ( Issues|Labeled ) which was removed per [#121 (comment)](https://github.com/jerone/UserScripts/issues/121#issuecomment-336629514) after another GitHub site update (by [@darkred](https://github.com/darkred)).
