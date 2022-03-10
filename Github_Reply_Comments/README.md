@@ -20,13 +20,9 @@ reply button on an comment.
 
 ## Version History
 
-*   version **0.1.2**
-
-    *   Fix reply button for commits & reviews. Fixes [#133](https://github.com/jerone/UserScripts/issues/133)
-
 *   version **0.1.1**
 
-    *   Fix reply button for reviews. Fixes [#125](https://github.com/jerone/UserScripts/issues/125)
+    *   Fix reply button for reviews. Fixes #125
 
 *   version **0.1.0**
 
