@@ -12,7 +12,7 @@
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_Reply_Comments/Github_Reply_Comments.user.js
 // @supportURL  https://github.com/jerone/UserScripts/issues
 // @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
-// @version     1.0.4
+// @version     1.0.3
 // @icon        https://github.githubassets.com/pinned-octocat.svg
 // @grant       none
 // @include     https://github.com/*
@@ -120,13 +120,10 @@
 
 				var newComment = getCommentTextarea(this);
 
-                var author = comment.querySelector(".author");
-                var authorLink = location.origin + (author.getAttribute("href") || "/" + author.textContent);
-
 				var text = newComment.value.length > 0 ? "\n" : "";
-				text += String.format('[**@{0}**]({1}) commented on [{2}]({3} "{4} - Replied by Github Reply Comments"):\n{5}\n\n',
-					author.textContent,
-					authorLink,
+				text += String.format('[**@{0}**]({1}/{0}) commented on [{2}]({3} "{4} - Replied by Github Reply Comments"):\n{5}\n\n',
+					comment.querySelector(".author").textContent,
+					location.origin,
 					timestamp.firstElementChild.getAttribute("title"),
 					timestamp.href,
 					timestamp.firstElementChild.getAttribute("datetime"),
