@@ -17,7 +17,7 @@
 // @include     https://github.com/?*
 // @include     https://github.com/orgs/*/dashboard
 // @include     https://github.com/orgs/*/dashboard?*
-// @version     8.2.5
+// @version     8.2.4
 // @grant       none
 // ==/UserScript==
 
@@ -492,11 +492,11 @@
 		if (!newsContainer) { return; }
 
 		// GitHub homepage or profile activity tab.
-		var sidebar = document.querySelector('.dashboard-sidebar:not(.is-placeholder)') || document.querySelector('.profilecols > .column:first-child');
+		var sidebar = document.querySelector('.dashboard-sidebar') || document.querySelector('.profilecols > .column:first-child');
 
 		var wrapper = document.createElement(filterElement);
 		wrapper.classList.add('boxed-group', 'flush', 'user-repos');
-		sidebar.insertBefore(wrapper, sidebar.querySelector(':scope > *:not(details)'));
+		sidebar.insertBefore(wrapper, sidebar.firstChild);
 
 		var headerAction = document.createElement('div');
 		headerAction.classList.add('boxed-group-action');
