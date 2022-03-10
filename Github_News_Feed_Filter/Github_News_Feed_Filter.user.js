@@ -16,7 +16,7 @@
 // @include     https://github.com/?*
 // @include     https://github.com/orgs/*/dashboard
 // @include     https://github.com/orgs/*/dashboard?*
-// @version     8.2.3
+// @version     8.2.4
 // @grant       none
 // ==/UserScript==
 
@@ -121,6 +121,9 @@
 
 	addStyle(`
 		github-news-feed-filter { display: block; }
+
+		github-news-feed-filter .filter-bar { padding: 0; }
+
 		github-news-feed-filter .count { margin-right: 15px; }
 
 		github-news-feed-filter .filter-list .mini-repo-list-item { padding-right: 64px; }
@@ -452,13 +455,11 @@
 
 	// Add filter tab.
 	function addFilterTab(type, text, inner, filterer, onCreate, onSelect) {
-		var filterTab = document.createElement('li');
-		filterer.appendChild(filterTab);
 		var filterTabInner = document.createElement('a');
 		filterTabInner.setAttribute('href', '#');
-		filterTabInner.classList.add('repo-filter', 'js-repo-filter-tab');
+		filterTabInner.classList.add('UnderlineNav-item');
 		filterTabInner.appendChild(document.createTextNode(text));
-		filterTab.appendChild(filterTabInner);
+		filterer.appendChild(filterTabInner);
 
 		var filterContainer = document.createElement(filterListElement);
 		inner.appendChild(filterContainer);
@@ -472,9 +473,9 @@
 	function filterTabInnerClick(e, type, inner, filterContainer, onSelect) {
 		e.preventDefault();
 
-		var selected = inner.querySelector(':scope .filter-selected');
-		selected && selected.classList.remove('filter-selected');
-		this.classList.add('filter-selected');
+		var selected = inner.querySelector(':scope .selected');
+		selected && selected.classList.remove('selected');
+		this.classList.add('selected');
 
 		Array.forEach(inner.querySelectorAll(filterListElement), function (menu) {
 			menu && menu.classList.remove('open');
@@ -524,11 +525,11 @@
 		wrapper.appendChild(inner);
 
 		var bar = document.createElement('div');
-		bar.classList.add('filter-repos', 'filter-bar');
+		bar.classList.add('filter-bar');
 		inner.appendChild(bar);
 
-		var filterer = document.createElement('ul');
-		filterer.classList.add('repo-filterer');
+		var filterer = document.createElement('nav');
+		filterer.classList.add('UnderlineNav-body');
 		bar.appendChild(filterer);
 
 		// Create filter tabs.
@@ -588,7 +589,7 @@
 		// Update on clicking "More"-button.
 		new MutationObserver(function () {
 			// Re-click the current selected filter on open filter tab.
-			filterer.querySelector('a.filter-selected').dispatchEvent(new Event('click'));
+			filterer.querySelector('a.selected').dispatchEvent(new Event('click'));
 		}).observe(newsContainer, { childList: true });
 	})();
 
