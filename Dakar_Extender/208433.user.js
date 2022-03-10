@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name        Dakar Extender
 // @description Highlight riders by certain country in standings lists.
-// @namespace   http://userscripts.org/scripts/show/208433 
+// @namespace   http://userscripts.org/scripts/show/208433
 // @version     2
-// @copyright   2014+, jerone (http://jeroenvanwarmerdam.nl)
+// @copyright   2014+, jerone (https://github.com/jerone)
 // @license     CC-BY-NC-SA-4.0; https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
 // @license     GPL-3.0-or-later; http://www.gnu.org/licenses/gpl-3.0.txt
 // @grant       none
@@ -15,11 +15,11 @@
 (function(){
 
     var countryCode = "NLD";
-    
+
     $(function(){
         $("tr:contains('\("+countryCode+"\)')").css("font-weight","bold");
     });
-    
+
 })();
 
 

@@ -4,7 +4,7 @@
 // @description Add filters for GitHub homepage news feed items
 // @author      jerone
 // @contributor darkred
-// @copyright   2014+, jerone (http://jeroenvanwarmerdam.nl)
+// @copyright   2014+, jerone (https://github.com/jerone)
 // @license     CC-BY-NC-SA-4.0; https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
 // @license     GPL-3.0-or-later; http://www.gnu.org/licenses/gpl-3.0.txt
 // @homepage    https://github.com/jerone/UserScripts/tree/master/Github_News_Feed_Filter
