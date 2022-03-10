@@ -19,10 +19,6 @@ Add controls to compare commits.
 
 ## Version History
 
-*   **0.0.3**
-
-    *   🐛 Fix broken icon url ([#146](https://github.com/jerone/UserScripts/pull/146)).
-
 *   **0.0.2**
 
     *   🐛 Fix after GitHub site update (fixed by [@darkred](https://github.com/darkred) in [#128](https://github.com/jerone/UserScripts/issues/128)).

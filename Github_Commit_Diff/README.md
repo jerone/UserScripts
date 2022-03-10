@@ -21,10 +21,6 @@ This works on commits, pull requests and compare pages.
 
 ## Version History
 
-*   **1.6.7**
-
-    *   🐛 Fix broken icon url ([#146](https://github.com/jerone/UserScripts/pull/146)).
-
 *   **1.6.6**
 
     *   Shift open `.patch` was broken (fixes [119](https://github.com/jerone/UserScripts/issues/119)).

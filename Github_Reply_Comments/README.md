@@ -20,10 +20,6 @@ reply button on an comment.
 
 ## Version History
 
-*   version **1.0.2**
-
-    *   🐛 Fix broken icon url ([#146](https://github.com/jerone/UserScripts/pull/146)).
-
 *   version **1.0.1**
 
     *   Use atx style headings, fenced code blocks, dense hr style.

@@ -14,7 +14,7 @@
 // @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
 // @icon        https://github.githubassets.com/pinned-octocat.svg
 // @include     https://github.com/*
-// @version     1.5.4
+// @version     1.5.3
 // @grant       none
 // ==/UserScript==
 

@@ -27,10 +27,6 @@ This works on commits, pull requests and compare pages.
 
 ## Version History
 
-*   **1.5.4**
-
-    *   🐛 Fix broken icon url ([#146](https://github.com/jerone/UserScripts/pull/146)).
-
 *   **1.5.3**
 
     *   Fix URL generation with hash.
