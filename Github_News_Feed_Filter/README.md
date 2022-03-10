@@ -69,14 +69,6 @@ Currently integrated filters:
 
 ## Version History
 
-*   **8.2.3**
-
-    *   ✨ Re-added of the "Issues" filter ( Issues|Labeled ) which was removed per [#121 (comment)](https://github.com/jerone/UserScripts/issues/121#issuecomment-336629514) after another GitHub site update (by [@darkred](https://github.com/darkred)).
-
-*   **8.2.2**
-
-    *   🐛 Fix after another layout change.
-
 *   **8.2.1**
 
     *   🐛 Fix for 'Actions' tab|'Wiki' being empty after GitHub site update (fixed by [@darkred](https://github.com/darkred) in [#127](https://github.com/jerone/UserScripts/issues/127)).

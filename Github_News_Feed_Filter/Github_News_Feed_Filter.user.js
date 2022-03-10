@@ -16,7 +16,7 @@
 // @include     https://github.com/?*
 // @include     https://github.com/orgs/*/dashboard
 // @include     https://github.com/orgs/*/dashboard?*
-// @version     8.2.3
+// @version     8.2.2
 // @grant       none
 // ==/UserScript==
 
@@ -30,7 +30,6 @@
 	ICONS['octicon-git-branch-delete'] = ICONS['octicon-git-branch'];
 	ICONS['octicon-git-commit'] = 'M10.86 7c-.45-1.72-2-3-3.86-3-1.86 0-3.41 1.28-3.86 3H0v2h3.14c.45 1.72 2 3 3.86 3 1.86 0 3.41-1.28 3.86-3H14V7h-3.14zM7 10.2c-1.22 0-2.2-.98-2.2-2.2 0-1.22.98-2.2 2.2-2.2 1.22 0 2.2.98 2.2 2.2 0 1.22-.98 2.2-2.2 2.2z';
 	ICONS['octicon-home'] = 'M16 9l-3-3V2h-2v2L8 1 0 9h2l1 5c0 .55.45 1 1 1h8c.55 0 1-.45 1-1l1-5h2zm-4 5H9v-4H7v4H4L2.81 7.69 8 2.5l5.19 5.19L12 14z';
-	ICONS['octicon-issue-opened'] = 'M7 2.3c3.14 0 5.7 2.56 5.7 5.7S10.14 13.7 7 13.7 1.3 11.14 1.3 8s2.56-5.7 5.7-5.7m0-1.3C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7S10.86 1 7 1z m1 3H6v5h2V4z m0 6H6v2h2V10z';
 	ICONS['octicon-person'] = 'M12 14.002a.998.998 0 0 1-.998.998H1.001A1 1 0 0 1 0 13.999V13c0-2.633 4-4 4-4s.229-.409 0-1c-.841-.62-.944-1.59-1-4 .173-2.413 1.867-3 3-3s2.827.586 3 3c-.056 2.41-.159 3.38-1 4-.229.59 0 1 0 1s4 1.367 4 4v1.002z';
 	ICONS['octicon-organization'] = 'M16 12.999c0 .439-.45 1-1 1H7.995c-.539 0-.994-.447-.995-.999H1c-.54 0-1-.561-1-1 0-2.634 3-4 3-4s.229-.409 0-1c-.841-.621-1.058-.59-1-3 .058-2.419 1.367-3 2.5-3s2.442.58 2.5 3c.058 2.41-.159 2.379-1 3-.229.59 0 1 0 1s1.549.711 2.42 2.088C9.196 9.369 10 8.999 10 8.999s.229-.409 0-1c-.841-.62-1.058-.59-1-3 .058-2.419 1.367-3 2.5-3s2.437.581 2.495 3c.059 2.41-.158 2.38-1 3-.229.59 0 1 0 1s3.005 1.366 3.005 4';
 	ICONS['octicon-plus'] = 'M12 9H7v5H5V9H0V7h5V2h2v5h5z';
@@ -50,11 +49,6 @@
 
 	var ACTIONS = [
 		{ id: '*-action', text: 'All news feed', icon: 'octicon-radio-tower', classNames: ['*-action'] },
-		{
-			id: 'issues', text: 'Issues', icon: 'octicon-issue-opened', classNames: ['issues_labeled'], subFilters: [
-				{ id: 'issues labeled', text: 'Labeled', icon: 'octicon-tag', classNames: ['issues_labeled'] },
-			]
-		},
 		{
 			id: 'commits', text: 'Commits', icon: 'octicon-git-commit', classNames: ['push', 'commit_comment'], subFilters: [
 				{ id: 'commits pushed', text: 'Pushed', icon: 'octicon-git-commit', classNames: ['push'] },
@@ -314,8 +308,6 @@
 			} else if (alert.getElementsByClassName('octicon-tag-remove').length > 0) {
 				alert.classList.remove('delete');
 				alert.classList.add('tag_remove');
-			} else if (!!~alert.textContent.indexOf('labeled an issue')) {
-				alert.classList.add('issues_labeled');
 			} else if (alert.classList.contains('gollum')) {
 				alert.classList.remove('gollum');
 				if (!!~alert.innerText.indexOf(' created a wiki page in ')) {
