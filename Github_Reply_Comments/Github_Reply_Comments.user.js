@@ -146,6 +146,20 @@
 					bubbles: true,
 					cancelable: false
 				}));
+
+				// This will render GitHub Writer - https://github.com/ckeditor/github-writer
+				// https://github.com/ckeditor/github-writer/blob/8dbc12cb01b7903d0d6c90202078214a8637de6d/src/app/plugins/quoteselection.js#L116-L127
+				const githubWriter = newComment.closest([
+					'form.js-new-comment-form[data-github-writer-id]',
+					'form.js-inline-comment-form[data-github-writer-id]'
+				].join());
+				if (githubWriter) {
+					window.postMessage({
+						type: 'GitHub-Writer-Quote-Selection',
+						id: Number(githubWriter.getAttribute('data-github-writer-id')),
+						text: text
+					}, '*');
+				}
 			});
 
 			var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
