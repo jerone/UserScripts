@@ -69,6 +69,14 @@ Currently integrated filters:
 
 ## Version History
 
+*   **8.2.7**
+ 
+    *   🐛 Fix after another layout change. Refixes [#68](https://github.com/jerone/UserScripts/issues/68).
+
+*   **8.2.6**
+ 
+    *   🐛 Fix after another layout change. Refixes [#68](https://github.com/jerone/UserScripts/issues/68) with [#140](https://github.com/jerone/UserScripts/pull/140) (thanks [@darkred](https://github.com/darkred)).
+
 *   **8.2.5**
  
     *   🐛 Fix showing filter. Fixes [#137](https://github.com/jerone/UserScripts/issues/137).
