@@ -8,7 +8,7 @@
 ## Description
 
 Adds a button to show the `.diff` file for every commit.
-Hold <kbd>Shift</kbd> key to open the `.patch` file instead of an `.diff` file.
+Hold Shift key to open the `.patch` file instead of an `.diff` file.
 This works on commits, pull requests and compare pages.
 
 ## Screenshot
