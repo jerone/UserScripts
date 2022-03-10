@@ -49,7 +49,7 @@
             g.appendChild(a)
 
             b.parentNode.insertBefore(g, b)
-        } else if (/\/pull\/\d*\/(files|commits)/.test(location.href) && (e = document.querySelector('#files_bucket .pr-toolbar .diffbar > .pr-review-tools'))) {
+        } else if (/\/pull\/\d*\/(files|commits)/.test(location.href) && (e = document.querySelector('#files_bucket .pr-toolbar .diffbar > .float-right'))) {
 
             var r = e.querySelector('.GithubCommitWhitespaceButton')
             if (r) {
