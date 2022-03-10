@@ -13,7 +13,7 @@
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_User_Info/Github_User_Info.user.js
 // @supportURL  https://github.com/jerone/UserScripts/issues
 // @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
-// @icon        https://assets-cdn.github.com/pinned-octocat.svg
+// @icon        https://github.githubassets.com/pinned-octocat.svg
 // @version     0.4.0
 // @grant       GM_xmlhttpRequest
 // @grant       GM_setValue
