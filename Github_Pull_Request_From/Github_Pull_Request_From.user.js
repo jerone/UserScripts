@@ -4,7 +4,8 @@
 // @description Make pull request branches linkable
 // @author      jerone
 // @copyright   2014+, jerone (http://jeroenvanwarmerdam.nl)
-// @license     GPL-3.0
+// @license     CC-BY-NC-SA-4.0; https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
+// @license     GPL-3.0-or-later; http://www.gnu.org/licenses/gpl-3.0.txt
 // @homepage    https://github.com/jerone/UserScripts/tree/master/Github_Pull_Request_From
 // @homepageURL https://github.com/jerone/UserScripts/tree/master/Github_Pull_Request_From
 // @downloadURL https://github.com/jerone/UserScripts/raw/master/Github_Pull_Request_From/Github_Pull_Request_From.user.js

@@ -7,6 +7,8 @@
 // @description     Add extra column with scripts versions in script management.
 // @description     Userscripts.org Versions Column v1.3.1 Alpha
 // @copyright       2008 - 2012 Jerone
+// @license         CC-BY-NC-SA-4.0; https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
+// @license         GPL-3.0-or-later; http://www.gnu.org/licenses/gpl-3.0.txt
 // @version         v1.3.1 Alpha
 // @browser         FF17
 // @include         *userscripts.org/home/scripts
@@ -90,7 +92,7 @@ var updateTime =	3*60*60*1000;	// [Integer] update time (we don't want to flood 
 							th.className = "la";
 							th.width = "1%";
 							column.parentNode.insertBefore(th, column);
-							
+
 							var a = doc.createElement("a");
 							a.href = "/home/scripts?sort=versions";
 							a.innerHTML = "Versions";
@@ -100,9 +102,9 @@ var updateTime =	3*60*60*1000;	// [Integer] update time (we don't want to flood 
 							td.className = "inv lp";
 							td.innerHTML = "...";
 							column.parentNode.insertBefore(td, column);
-							
+
 							tds.push(td);
-							
+
 							var nr = tr.id.match(/\d+/)[0],
 								now = new Date().getTime();
 							if(typeof(versions[nr])==="number" && now - parseInt(GM_getValue("UVC.lastCheck", 0), 10) < updateTime){
@@ -129,7 +131,7 @@ var updateTime =	3*60*60*1000;	// [Integer] update time (we don't want to flood 
 							}
 						}
 					});
-				
+
 					if(/scripts\?sort=versions/i.test(win.location.href)){
 						tds.sort(function(a, b){
 							return parseInt(a.innerHTML, 10) - parseInt(b.innerHTML, 10);

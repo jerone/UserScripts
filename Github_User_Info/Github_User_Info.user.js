@@ -5,7 +5,8 @@
 // @description Show inline user information on avatar hover.
 // @author      jerone
 // @copyright   2015+, jerone (http://jeroenvanwarmerdam.nl)
-// @license     GPL-3.0
+// @license     CC-BY-NC-SA-4.0; https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
+// @license     GPL-3.0-or-later; http://www.gnu.org/licenses/gpl-3.0.txt
 // @homepage    https://github.com/jerone/UserScripts/tree/master/Github_User_Info
 // @homepageURL https://github.com/jerone/UserScripts/tree/master/Github_User_Info
 // @downloadURL https://github.com/jerone/UserScripts/raw/master/Github_User_Info/Github_User_Info.user.js

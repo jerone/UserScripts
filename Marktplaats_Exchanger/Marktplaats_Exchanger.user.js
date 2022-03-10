@@ -5,7 +5,8 @@
 // @description Exchange Marktplaats.nl
 // @author      jerone
 // @copyright   2015+, jerone (http://jeroenvanwarmerdam.nl)
-// @license     GPL-3.0
+// @license     CC-BY-NC-SA-4.0; https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
+// @license     GPL-3.0-or-later; http://www.gnu.org/licenses/gpl-3.0.txt
 // @homepage    https://github.com/jerone/UserScripts/tree/master/Marktplaats_Exchanger#readme
 // @homepageURL https://github.com/jerone/UserScripts/tree/master/Marktplaats_Exchanger#readme
 // @downloadURL https://github.com/jerone/UserScripts/raw/master/Marktplaats_Exchanger/Marktplaats_Exchanger.user.js

@@ -7,6 +7,8 @@
 // @description     Add versions tab to scripts menu.
 // @description     Userscripts.org Versions Tab 3.4
 // @copyright       2008 - 2013 jerone
+// @license         CC-BY-NC-SA-4.0; https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
+// @license         GPL-3.0-or-later; http://www.gnu.org/licenses/gpl-3.0.txt
 // @version         3.4
 // @include         *userscripts.org/scripts/*
 // @include         *userscripts.org/topics/*
@@ -39,7 +41,7 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 	} else if(document.getElementById("script-nav")) {
 		sourceTab = document.querySelector("#script-nav > li > a[href*='/scripts/review/']").parentNode;
 	}
-	
+
 	if(sourceTab) {
 		var nr;
 		if(/\/topics\//.test(location.href) || /\/reviews\//.test(location.href)) {
@@ -48,9 +50,9 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 			nr = location.href.match(/https?:\/\/userscripts.org\/scripts\/.*\/(\d*)\b/)[1];
 		}
 		if(!nr) return;
-		
+
 		var versions = eval(GM_getValue("UVT.versions", {}));
-			
+
 		var li = document.createElement("li");
 		li.classList.add("menu");
 		sourceTab.parentNode.insertBefore(li, sourceTab.nextSibling);
@@ -59,11 +61,11 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 		a.setAttribute("href", "/scripts/versions/" + nr);
 		a.appendChild(document.createTextNode("Versions "));
 		li.appendChild(a);
-		
+
 		var span = document.createElement("span");
 		span.innerHTML = versions[nr] && versions[nr][0] || 1;
 		a.appendChild(span);
-		
+
 		if(location.href.match(/scripts\/versions\/\d*/)){
 			li.className = "current";
 			var i = document.querySelectorAll("#content > ul > li").length;
