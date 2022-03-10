@@ -28,6 +28,10 @@ Share your [GitHub Gist](https://gist.github.com) to:
 
 ## Version History
 
+*   **5.1**
+
+    *   🐛 Fix broken icon url ([#146](https://github.com/jerone/UserScripts/pull/146)).
+
 *   **5.0**
 
     *   Complete rewrite to make it work again.

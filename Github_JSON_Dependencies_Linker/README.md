@@ -38,6 +38,8 @@ In the JSON file it will search for the following dependency keys:
 
 ## Version History
 
+* **0.3.2**
+    * 🐛 Fix broken icon url ([#146](https://github.com/jerone/UserScripts/pull/146)).
 * **0.3.1**
     * Fixed recognizing JSON content.
 * **0.3.0**

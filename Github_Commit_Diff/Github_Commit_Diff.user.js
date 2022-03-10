@@ -16,7 +16,7 @@
 // @include     https://github.com/*
 // @exclude     https://github.com/*/*.diff
 // @exclude     https://github.com/*/*.patch
-// @version     1.6.6
+// @version     1.6.7
 // @grant       none
 // ==/UserScript==
 

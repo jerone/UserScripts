@@ -23,6 +23,8 @@ Make pull request branches linkable.
 
 ## Version History
 
+*   **20.1**
+    *   🐛 Fix broken icon url ([#146](https://github.com/jerone/UserScripts/pull/146)).
 *   **20.0**
     *   Fix url on forks where another repo name is choosen. Fixes [145](https://github.com/jerone/UserScripts/issues/145).
     *   Run on more elements.

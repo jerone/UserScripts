@@ -23,6 +23,8 @@ Show user/organization information on avatar hover.
 
 ## Version History
 
+*   **0.4.1**
+    *   🐛 Fix broken icon url ([#146](https://github.com/jerone/UserScripts/pull/146)).
 *   **0.4.0**
     *   We're only fetching one page of all members
     *   Use flexbox css for counts
