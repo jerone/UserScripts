@@ -16,7 +16,7 @@
 // @include     https://github.com/?*
 // @include     https://github.com/orgs/*/dashboard
 // @include     https://github.com/orgs/*/dashboard?*
-// @version     8.2.2
+// @version     8.2.1
 // @grant       none
 // ==/UserScript==
 
@@ -327,7 +327,7 @@
 		Array.prototype.map.call(newsContainer.querySelectorAll(':scope > div > .body'), function(alert) {
 			return alert.parentNode;
 		}).forEach(function(alert) {
-			var alertRepo = alert.querySelector(':scope [data-ga-click*="target:repo"]:not([data-ga-click*="target:repositories"])');
+			var alertRepo = alert.querySelector(':scope [data-ga-click*="target:repo"]');
 			if (alertRepo) { // Follow doesn't contain a repo link.
 				var userRepo = alertRepo.textContent;
 				userRepos.add(userRepo);
@@ -369,15 +369,9 @@
 		Array.prototype.map.call(newsContainer.querySelectorAll(':scope > div > .body'), function(alert) {
 			return alert.parentNode;
 		}).forEach(function(alert) {
-			var usernameElms = alert.querySelectorAll(':scope [data-ga-click*="target:actor"]');
-			Array.prototype.find.call(usernameElms, function(usernameElm){
-                var username = usernameElm.textContent;
-                if (username) {
-					alert.classList.add(username);
-                    users.add(username);
-                    return true;
-                }
-            });
+			var username = alert.querySelector(':scope .flex-items-baseline > div > [data-ga-click*="target:actor"]').textContent;
+			alert.classList.add(username);
+			users.add(username);
 		});
 
 		[...users].sort(function(a, b) {
