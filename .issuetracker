@@ -1,0 +1,7 @@
+# Integration with Issue Tracker
+#
+# (note that '\' need to be escaped).
+
+[issuetracker "GitHub"]
+  regex = "(?:^|\\b|\\s|\\n|\\()#(\\d+)(?:$|\\b|\\s|\\n|\\))"
+  url = "https://github.com/jerone/UserScripts/issues/$1"
