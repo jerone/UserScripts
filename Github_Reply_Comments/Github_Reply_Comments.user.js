@@ -11,7 +11,7 @@
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_Reply_Comments/Github_Reply_Comments.user.js
 // @supportURL  https://github.com/jerone/UserScripts/issues
 // @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
-// @version     0.1.1
+// @version     0.1.2
 // @icon        https://assets-cdn.github.com/pinned-octocat.svg
 // @grant       none
 // @include     https://github.com/*
@@ -213,16 +213,13 @@
 			newComment = newComment.parentNode;
 		}
 
-		var isReview = !newComment.classList.contains("discussion-timeline");
-
-		if (newComment) {
-			var lastElementChild = isReview ? newComment.querySelector(".js-inline-comment-form-container") : newComment.lastElementChild;
-			lastElementChild.classList.add('open');
-			newComment = lastElementChild.querySelector(".comment-form-textarea");
-		} else {
-			newComment = document.querySelector(".timeline-new-comment .comment-form-textarea");
+		var inlineComment = newComment.querySelector(".js-inline-comment-form-container")
+		if (inlineComment) {
+			inlineComment.classList.add('open');
 		}
-		return newComment;
+
+		var textareas = newComment.querySelectorAll(":scope > :not(.last-review-thread) .comment-form-textarea");
+		return textareas[textareas.length - 1];
 	}
 
 	function addReplyButtons() {
@@ -232,8 +229,12 @@
 				oldReply.parentNode.removeChild(oldReply);
 			}
 
-			var header = comment.querySelector(".timeline-comment-header"),
-				actions = comment.querySelector(".timeline-comment-actions");
+			var header = comment.querySelector(":scope > :not(.minimized-comment) .timeline-comment-header"),
+				actions = comment.querySelector(":scope > :not(.minimized-comment) .timeline-comment-actions");
+
+			if (!header) {
+				header = actions;
+			}
 
 			if (!actions) {
 				if (!header) {
