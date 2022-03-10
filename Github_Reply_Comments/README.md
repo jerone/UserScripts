@@ -20,10 +20,6 @@ reply button on an comment.
 
 ## Version History
 
-*   version **1.0.4**
-
-    *   🐛 Fix link to authors with spaces in their name. Fixes ([#150](https://github.com/jerone/UserScripts/issues/150)).
-
 *   version **1.0.3**
 
     *   🐛 Fix broken timestamp detection ([#149](https://github.com/jerone/UserScripts/issues/149)).
