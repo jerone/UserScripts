@@ -17,7 +17,7 @@
 // @include     https://github.com/?*
 // @include     https://github.com/orgs/*/dashboard
 // @include     https://github.com/orgs/*/dashboard?*
-// @version     8.2.6
+// @version     8.2.5
 // @grant       none
 // ==/UserScript==
 
@@ -265,11 +265,11 @@
 		// Show/hide alerts.
 		if (classNames.length === 0 || classNames.every(function (cl) { return cl.every(function (c) { return !!~c.indexOf('*'); }); })) {
 			anyVisibleAlert = true;
-			Array.prototype.forEach.call(newsContainer.querySelectorAll(':scope > div > div > .body'), function (alert) {
+			Array.prototype.forEach.call(newsContainer.querySelectorAll(':scope > div > .body'), function (alert) {
 				alert.parentNode.style.display = 'block';
 			});
 		} else {
-			Array.prototype.map.call(newsContainer.querySelectorAll(':scope > div > div > .body'), function (alert) {
+			Array.prototype.map.call(newsContainer.querySelectorAll(':scope > div > .body'), function (alert) {
 				return alert.parentNode;
 			}).forEach(function (alert) {
 				var show = classNames.every(function (cl) { return cl.some(function (c) { return !!~c.indexOf('*') || alert.classList.contains(c); }); });
@@ -303,7 +303,7 @@
 
 	// Fix filter action identification.
 	function fixActionAlerts(newsContainer) {
-		Array.prototype.map.call(newsContainer.querySelectorAll(':scope > div > div > .body'), function (alert) {
+		Array.prototype.map.call(newsContainer.querySelectorAll(':scope > div > .body'), function (alert) {
 			return alert.parentNode;
 		}).forEach(function (alert) {
 			if (!!~alert.textContent.indexOf('created branch')) {
@@ -336,7 +336,7 @@
 
 		// Get unique list of repos.
 		var userRepos = new Set();
-		Array.prototype.map.call(newsContainer.querySelectorAll(':scope > div > div > .body'), function (alert) {
+		Array.prototype.map.call(newsContainer.querySelectorAll(':scope > div > .body'), function (alert) {
 			return alert.parentNode;
 		}).forEach(function (alert) {
 			var alertRepo = alert.querySelector(':scope [data-ga-click*="target:repo"]:not([data-ga-click*="target:repositories"])');
@@ -378,7 +378,7 @@
 		USERS = [{ id: '*-user', text: 'All users', icon: 'octicon-organization', classNames: ['*-user'] }];
 
 		var users = new Set();
-		Array.prototype.map.call(newsContainer.querySelectorAll(':scope > div > div > .body'), function (alert) {
+		Array.prototype.map.call(newsContainer.querySelectorAll(':scope > div > .body'), function (alert) {
 			return alert.parentNode;
 		}).forEach(function (alert) {
 			var usernameElms = alert.querySelectorAll(':scope [data-ga-click*="target:actor"]');
@@ -414,7 +414,7 @@
 					}
 				});
 			}
-			Array.prototype.map.call(newsContainer.querySelectorAll(':scope > div > div > .body'), function (alert) {
+			Array.prototype.map.call(newsContainer.querySelectorAll(':scope > div > .body'), function (alert) {
 				return alert.parentNode;
 			}).forEach(function (alert) {
 				var show = classNames.every(function (cl) { return cl.some(function (c) { return !!~c.indexOf('*') || alert.classList.contains(c); }); });
@@ -426,9 +426,9 @@
 			// Count alerts based on current filter.
 			var countAll = 0;
 			if (!!~li.filterClassNames[0].indexOf('*')) {
-				countAll = newsContainer.querySelectorAll(':scope > div > div > .body').length;
+				countAll = newsContainer.querySelectorAll(':scope > div > .body').length;
 			} else {
-				Array.prototype.map.call(newsContainer.querySelectorAll(':scope > div > div > .body'), function (alert) {
+				Array.prototype.map.call(newsContainer.querySelectorAll(':scope > div > .body'), function (alert) {
 					return alert.parentNode;
 				}).forEach(function (alert) {
 					if (li.filterClassNames.some(function (cl) { return alert.classList.contains(cl); })) {
