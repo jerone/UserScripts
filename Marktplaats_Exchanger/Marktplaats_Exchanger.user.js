@@ -27,13 +27,14 @@
 
 	var button = document.createElement("div");
 	button.setAttribute("title", "Selecteer alle verkochte advertenties");
-	button.style.background = "transparent linear-gradient(to bottom, #FEFEFE 0%, #D9D9D9 100%) repeat scroll 0% 0%";
+	button.style.background = "#F7F7F6";
 	button.style.border = "1px solid #A1A1A1";
 	button.style.cssFloat = "left";
 	button.style.cursor = "default";
 	button.style.height = "30px";
 	button.style.marginRight = "5px";
 	button.style.padding = "0 8px";
+	button.style.fontFamily = "Roboto";
 	selectAll.parentNode.insertBefore(button, selectAll.nextSibling);
 
 	var selectInput = document.createElement("input");
