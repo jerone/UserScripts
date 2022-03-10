@@ -20,6 +20,17 @@ reply button on an comment.
 
 ## Version History
 
+<<<<<<< HEAD
+=======
+*   version **1.0.4**
+
+    *   🐛 Fix link to authors with spaces in their name. Fixes ([#150](https://github.com/jerone/UserScripts/issues/150)).
+
+*   version **1.0.3**
+
+    *   🐛 Fix broken timestamp detection ([#149](https://github.com/jerone/UserScripts/issues/149)).
+
+>>>>>>> parent of 2fec46d (🎬 New version of GitHub Reply Comments)
 *   version **1.0.2**
 
     *   🐛 Fix broken icon url ([#146](https://github.com/jerone/UserScripts/pull/146)).
