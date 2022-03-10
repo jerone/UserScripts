@@ -20,11 +20,6 @@ reply button on an comment.
 
 ## Version History
 
-*   version **1.0.5**
-
-    *   🐛 Enable the Comment button. Fixes ([#152](https://github.com/jerone/UserScripts/issues/152)).
-    *   Compatible (partially) with [GitHub Writer](https://github.com/ckeditor/github-writer#readme).
-
 *   version **1.0.4**
 
     *   🐛 Fix link to authors with spaces in their name. Fixes ([#150](https://github.com/jerone/UserScripts/issues/150)).
