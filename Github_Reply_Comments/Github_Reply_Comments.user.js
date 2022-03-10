@@ -31,11 +31,7 @@
 		});
 	};
 
-	var turndownService = new TurndownService({
-		headingStyle: 'atx',
-		codeBlockStyle: 'fenced',
-		hr: '***'
-	});
+	var turndownService = new TurndownService({ headingStyle: 'atx', codeBlockStyle: 'fenced', hr: '***' });
 	turndownService.use(turndownPluginGfm.gfm);
 	turndownService.use(turndownPluginGithubCodeSnippet);
 
@@ -50,7 +46,7 @@
 			inlineComment.classList.add("open");
 		}
 
-		var textareas = newComment.querySelectorAll(":scope > :not(.last-review-thread) .comment-form-textarea:not(.github-writer-ckeditor)");
+		var textareas = newComment.querySelectorAll(":scope > :not(.last-review-thread) .comment-form-textarea");
 		return textareas[textareas.length - 1];
 	}
 
@@ -124,8 +120,8 @@
 
 				var newComment = getCommentTextarea(this);
 
-				var author = comment.querySelector(".author");
-				var authorLink = location.origin + (author.getAttribute("href") || "/" + author.textContent);
+                var author = comment.querySelector(".author");
+                var authorLink = location.origin + (author.getAttribute("href") || "/" + author.textContent);
 
 				var text = newComment.value.length > 0 ? "\n" : "";
 				text += String.format('[**@{0}**]({1}) commented on [{2}]({3} "{4} - Replied by Github Reply Comments"):\n{5}\n\n',
@@ -138,14 +134,7 @@
 
 				newComment.value += text;
 				newComment.setSelectionRange(newComment.value.length, newComment.value.length);
-				//newComment.closest('.previewable-comment-form').querySelector('.js-write-tab').click();
 				newComment.focus();
-
-				// This will enable the "Comment" button, when there was no comment text yet.
-				newComment.dispatchEvent(new CustomEvent('change', {
-					bubbles: true,
-					cancelable: false
-				}));
 			});
 
 			var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
