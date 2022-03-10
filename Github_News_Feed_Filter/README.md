@@ -69,6 +69,10 @@ Currently integrated filters:
 
 ## Version History
 
+*   **8.2.5**
+ 
+    *   🐛 Fix showing filter. Fixes [#137](https://github.com/jerone/UserScripts/issues/137).
+
 *   **8.2.4**
  
     *   🐛 Nav styling. Fixes [#130](https://github.com/jerone/UserScripts/issues/130) and closes [#132](https://github.com/jerone/UserScripts/issues/132) (thanks [@darkred](https://github.com/darkred)).
