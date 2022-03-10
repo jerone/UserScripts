@@ -14,7 +14,7 @@
 // @supportURL  https://github.com/jerone/UserScripts/issues
 // @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
 // @version     0.3.1
-// @icon        https://github.githubassets.com/pinned-octocat.svg
+// @icon        https://assets-cdn.github.com/pinned-octocat.svg
 // @grant       GM_xmlhttpRequest
 // @run-at      document-end
 // @include     https://github.com/*/package.json
