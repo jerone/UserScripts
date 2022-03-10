@@ -7,8 +7,6 @@
 // @description     Add line numbering to source code.
 // @description     Userscripts.org Source Numbering v3
 // @copyright       2008 - 2013 Jerone
-// @license         CC-BY-NC-SA-4.0; https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
-// @license         GPL-3.0-or-later; http://www.gnu.org/licenses/gpl-3.0.txt
 // @version         v3
 // @include         *userscripts.org/scripts/review/*
 // ==/UserScript==

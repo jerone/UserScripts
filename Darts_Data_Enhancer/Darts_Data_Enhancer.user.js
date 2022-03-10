@@ -5,8 +5,7 @@
 // @description Enhances Darts Data
 // @author      jerone
 // @copyright   2015+, jerone (http://jeroenvanwarmerdam.nl)
-// @license     CC-BY-NC-SA-4.0; https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
-// @license     GPL-3.0-or-later; http://www.gnu.org/licenses/gpl-3.0.txt
+// @license     GPL-3.0
 // @homepage    https://github.com/jerone/UserScripts/tree/master/Darts_Data_Enhancer#readme
 // @homepageURL https://github.com/jerone/UserScripts/tree/master/Darts_Data_Enhancer#readme
 // @downloadURL https://github.com/jerone/UserScripts/raw/master/Darts_Data_Enhancer/Darts_Data_Enhancer.user.js

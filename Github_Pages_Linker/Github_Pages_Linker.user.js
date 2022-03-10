@@ -5,8 +5,7 @@
 // @description Add a link to Github Pages (gh-pages) when available.
 // @author      jerone
 // @copyright   2014+, jerone (http://jeroenvanwarmerdam.nl)
-// @license     CC-BY-NC-SA-4.0; https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
-// @license     GPL-3.0-or-later; http://www.gnu.org/licenses/gpl-3.0.txt
+// @license     GPL-3.0
 // @homepage    https://github.com/jerone/UserScripts/tree/master/Github_Pages_Linker
 // @homepageURL https://github.com/jerone/UserScripts/tree/master/Github_Pages_Linker
 // @downloadURL https://github.com/jerone/UserScripts/raw/master/Github_Pages_Linker/Github_Pages_Linker.user.js

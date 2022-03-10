@@ -4,8 +4,7 @@
 // @description Redirect back to login page when signing out from Outlook
 // @author      jerone
 // @copyright   2014+, jerone (http://jeroenvanwarmerdam.nl)
-// @license     CC-BY-NC-SA-4.0; https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
-// @license     GPL-3.0-or-later; http://www.gnu.org/licenses/gpl-3.0.txt
+// @license     GPL-3.0
 // @homepage    https://github.com/jerone/UserScripts/tree/master/Outlook_Sign_Out_To_Login
 // @homepageURL https://github.com/jerone/UserScripts/tree/master/Outlook_Sign_Out_To_Login
 // @downloadURL https://github.com/jerone/UserScripts/raw/master/Outlook_Sign_Out_To_Login/Outlook_Sign_Out_To_Login.user.js

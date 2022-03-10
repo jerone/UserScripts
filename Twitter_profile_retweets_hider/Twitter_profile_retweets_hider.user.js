@@ -4,8 +4,7 @@
 // @description Hide retweets on Twitter profiles
 // @author      jerone
 // @copyright   2014+, jerone (http://jeroenvanwarmerdam.nl)
-// @license     CC-BY-NC-SA-4.0; https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
-// @license     GPL-3.0-or-later; http://www.gnu.org/licenses/gpl-3.0.txt
+// @license     GPL-3.0
 // @homepage    https://github.com/jerone/UserScripts/tree/master/Hide_retweets_on_Twitter_user_account
 // @homepageURL https://github.com/jerone/UserScripts/tree/master/Hide_retweets_on_Twitter_user_account
 // @downloadURL https://github.com/jerone/UserScripts/raw/master/Hide_retweets_on_Twitter_user_account/173703.user.js
