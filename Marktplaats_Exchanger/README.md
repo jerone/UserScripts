@@ -23,11 +23,8 @@ Adds an extra checkbox on the "Mijn Favorieten" page to select all sold ads for 
 
 ## Version History
 
-* **1.0.1**
-    * Update to match Marktplaats.nl look ([#138](https://github.com/jerone/UserScripts/pull/138)).
-
 * **1.0.0**
-    * Initial version.
+    * Initial version;
 
 
 ## External links

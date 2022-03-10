@@ -13,7 +13,7 @@
 // @updateURL   https://github.com/jerone/UserScripts/raw/master/Marktplaats_Exchanger/Marktplaats_Exchanger.user.js
 // @supportURL  https://github.com/jerone/UserScripts/issues
 // @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
-// @version     1.0.1
+// @version     1.0.0
 // @grant       none
 // @run-at      document-end
 // @include     https://www.marktplaats.*
