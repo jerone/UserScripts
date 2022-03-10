@@ -23,8 +23,6 @@ Make pull request branches linkable.
 
 ## Version History
 
-*   **19.1**
-    *   Don't run on repo search page.
 *   **19**
     *   Don't run on .patch & .diff route.
 *   **18**
