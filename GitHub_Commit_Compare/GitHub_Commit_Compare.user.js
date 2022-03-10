@@ -4,7 +4,7 @@
 // @description Add controls to compare commits.
 // @author      jerone
 // @contributor darkred
-// @copyright   2017+, jerone (https://github.com/jerone)
+// @copyright   2017+, jerone (http://jeroenvanwarmerdam.nl)
 // @license     CC-BY-NC-SA-4.0; https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
 // @license     GPL-3.0-or-later; http://www.gnu.org/licenses/gpl-3.0.txt
 // @homepage    https://github.com/jerone/UserScripts/tree/master/GitHub_Commit_Compare
