@@ -20,10 +20,6 @@ reply button on an comment.
 
 ## Version History
 
-*   version **1.0.3**
-
-    *   🐛 Fix broken timestamp detection ([#149](https://github.com/jerone/UserScripts/issues/149)).
-
 *   version **1.0.2**
 
     *   🐛 Fix broken icon url ([#146](https://github.com/jerone/UserScripts/pull/146)).
