@@ -19,19 +19,6 @@ Add controls to compare commits.
 
 ## Version History
 
-*   **0.0.2**
-
-    *   🐛 Fix after GitHub site update (fixed by [@darkred](https://github.com/darkred) in [#128](https://github.com/jerone/UserScripts/issues/128)).
-
 *   **0.0.1**
 
     *   Initial version.
-
-## Contributors
-
-*   [darkred](https://github.com/darkred)
-
-## External links
-
-*   [Greasy Fork](https://greasyfork.org/en/scripts/33563-github-commit-compare)
-*   [OpenUserJS](https://openuserjs.org/scripts/jerone/GitHub_Commit_Compare)
