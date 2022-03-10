@@ -13,32 +13,34 @@
 // @supportURL  https://github.com/jerone/UserScripts/issues
 // @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
 // @icon        https://assets-cdn.github.com/pinned-octocat.svg
-// @version     19
+// @version     19.1
 // @grant       none
 // @include     https://github.com/*/*
 // @exclude     https://github.com/*/*.diff
 // @exclude     https://github.com/*/*.patch
 // ==/UserScript==
 
-(function() {
+(function () {
 
-	String.format = function(string) {
+	String.format = function (string) {
 		var args = Array.prototype.slice.call(arguments, 1, arguments.length);
-		return string.replace(/{(\d+)}/g, function(match, number) {
+		return string.replace(/{(\d+)}/g, function (match, number) {
 			return typeof args[number] !== "undefined" ? args[number] : match;
 		});
 	};
 
 	function init() {
+		if (!document.querySelector('.repohead-details-container h1 [itemprop="name"]')) return;
+
 		var repo = document.querySelector('.repohead-details-container h1 [itemprop="name"]').textContent,
 			author = document.querySelector('.repohead-details-container h1 [itemprop="author"]').textContent;
-		Array.prototype.filter.call(document.querySelectorAll("span.commit-ref"), function(treeSpan) {
+		Array.prototype.filter.call(document.querySelectorAll("span.commit-ref"), function (treeSpan) {
 			return !treeSpan.querySelector(".unknown-repo");
-		}).forEach(function(treeSpan) {
+		}).forEach(function (treeSpan) {
 			var treeUser = treeSpan.querySelector('.user');
 			var treeParts = treeSpan.querySelectorAll('.css-truncate-target');
 			var treeLink = document.createElement("a");
-			Array.prototype.forEach.call(treeParts, function(part) {
+			Array.prototype.forEach.call(treeParts, function (part) {
 				part.style.display = "inline";
 			});
 			treeLink.setAttribute("href", String.format("/{0}/{1}/tree/{2}",
