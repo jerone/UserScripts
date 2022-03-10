@@ -38,12 +38,12 @@ reply button on an comment.
 (issue comments)
 
 *   [https://github.com/jerone/UserScripts/commit/036935761fc47e8c448378f2730a6ae8548fa8df](https://github.com/jerone/UserScripts/commit/036935761fc47e8c448378f2730a6ae8548fa8df)
-(commit comments & inline comments)
+(commit comments)
 
 *   [https://github.com/jerone/UserScripts/pull/49](https://github.com/jerone/UserScripts/pull/49)
-(PR comments & PR review comments & [PR commit comments](https://github.com/jerone/UserScripts/pull/49/files))
+(PR comments & commit comments)
 
-*   [https://gist.github.com/jerone/9526258](https://gist.github.com/jerone/9526258) (comments)
+*   ~~[https://gist.github.com/jerone/9526258](https://gist.github.com/jerone/9526258)~~
 
 ## Dependencies
 
