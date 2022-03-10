@@ -1,4 +1,4 @@
-// ==UserScript==
+﻿// ==UserScript==
 // @name        Github Pull Request From Link
 // @namespace   https://github.com/jerone/UserScripts/
 // @description Make pull request branches linkable

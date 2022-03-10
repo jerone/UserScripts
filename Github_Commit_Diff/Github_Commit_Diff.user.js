@@ -1,4 +1,4 @@
-// ==UserScript==
+﻿// ==UserScript==
 // @name        Github Commit Diff
 // @namespace   https://github.com/jerone/UserScripts
 // @description Adds button to show diff (or patch) file for commit
