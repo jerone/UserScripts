@@ -69,6 +69,8 @@
 
 			var floaterTitle = GithubImageViewer._floaterTitle = document.createElement("div");
 			floaterTitle.style.backgroundColor = "#e6f1f6";
+      		floaterTitle.style.color = "black";
+			floaterTitle.style.textAlign = "center";
 			floaterTitle.style.borderBottom = "1px solid #d8e6ec";
 			floaterTitle.style.padding = "3px 5px";
 			floaterMouseAlign.appendChild(floaterTitle);
@@ -90,6 +92,7 @@
 
 			var floaterMeta = GithubImageViewer._floaterMeta = document.createElement("div");
 			floaterMeta.style.backgroundColor = "#f8f8f8";
+      		floaterMeta.style.color = "black";
 			floaterMeta.style.padding = "3px";
 			floaterMeta.style.textAlign = "center";
 			floaterMeta.style.whiteSpace = "nowrap";
