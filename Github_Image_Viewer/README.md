@@ -34,6 +34,10 @@ Supported file extensions are:
 
 ## Version History
 
+* **0.5.0**
+    * :bug: Fixed loader animation source [#164](https://github.com/jerone/UserScripts/pull/164)
+    * Text color in floater is now black
+    * Floater title is now center aligned
 * **0.4.2**
     * 🐛 Fix broken icon url ([#146](https://github.com/jerone/UserScripts/pull/146)).
 * **0.4.1**
