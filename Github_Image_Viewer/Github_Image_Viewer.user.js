@@ -47,7 +47,7 @@
 		_floaterMeta: null,
 
 		_imageUrl: null,
-		_loaderSrc: "https://assets-cdn.github.com/images/spinners/octocat-spinner-32.gif",
+		_loaderSrc: "https://github.githubassets.com/images/spinners/octocat-spinner-32.gif",
 		_imageRegex: /.+(\.jpe?g|\.png|\.gif|\.bmp|\.ico|\.tiff?)$/i,
 
 		Initialize: function() {
