@@ -1,21 +1,21 @@
-// ==UserScript==
-// @name        Userscripts.org Scripts Source Counter
-// @author      Jerone UserScript Productions
-// @namespace   http://userscripts.org/users/31497
-// @homepage    http://userscripts.org/scripts/show/37611
-// @homepageURL http://userscripts.org/scripts/show/37611
-// @description Count all characters, words and lines for scriptwriters. -- Userscripts.org Scripts Source Counter v3
-// @copyright   2008 - 2013 Jerone
-// @license     CC-BY-NC-SA-4.0; https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
-// @license     GPL-3.0-or-later; http://www.gnu.org/licenses/gpl-3.0.txt
-// @version     3
-// @browser     FF19
-// @grant       none
-// @include     *userscripts.org/scripts/new?form=true
-// @include     *userscripts.org/scripts/edit_src/*
-// ==/UserScript==
-
 /*//////////////////////////////////////////////////////////////////////////
+// ==UserScript==
+// @name            Userscripts.org Scripts Source Counter
+// @author          Jerone UserScript Productions
+// @namespace       http://userscripts.org/users/31497
+// @homepage        http://userscripts.org/scripts/show/37611
+// @description     Count all characters, words and lines for scriptwriters.
+// @description     Userscripts.org Scripts Source Counter v3
+// @copyright       2008 - 2013 Jerone
+// @license         CC-BY-NC-SA-4.0; https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
+// @license         GPL-3.0-or-later; http://www.gnu.org/licenses/gpl-3.0.txt
+// @version         3
+// @browser         FF19
+// @grant           none
+// @include         *userscripts.org/scripts/new?form=true
+// @include         *userscripts.org/scripts/edit_src/*
+// ==/UserScript==
+////////////////////////////////////////////////////////////////////////////
 THIS  SCRIPT  IS  PROVIDED BY THE AUTHOR `AS IS' AND ANY EXPRESS OR IMPLIED
 WARRANTIES,  INCLUDING, BUT  NOT  LIMITED  TO, THE  IMPLIED  WARRANTIES  OF
 MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO

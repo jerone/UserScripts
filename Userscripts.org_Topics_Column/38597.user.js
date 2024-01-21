@@ -1,19 +1,19 @@
-// ==UserScript==
-// @name        Userscripts.org Topics Column
-// @author      Jerone UserScript Productions
-// @namespace   http://userscripts.org/users/31497
-// @homepage    http://userscripts.org/scripts/show/38597
-// @homepageURL http://userscripts.org/scripts/show/38597
-// @description Add extra column with scripts topics in script management. -- Userscripts.org Topics Column v2.1.1 Alpha
-// @copyright   2008 - 2012 Jerone
-// @license     CC-BY-NC-SA-4.0; https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
-// @license     GPL-3.0-or-later; http://www.gnu.org/licenses/gpl-3.0.txt
-// @version     v2.1.1-alpha
-// @browser     FF17
-// @include     *userscripts.org/home/scripts
-// @include     *userscripts.org/home/scripts*
+////////////////////////////////////////////////////////////////////////////
+// ==UserScript===
+// @name            Userscripts.org Topics Column
+// @author          Jerone UserScript Productions
+// @namespace       http://userscripts.org/users/31497
+// @homepage        http://userscripts.org/scripts/show/38597
+// @description     Add extra column with scripts topics in script management.
+// @description     Userscripts.org Topics Column v2.1.1 Alpha
+// @copyright       2008 - 2012 Jerone
+// @license         CC-BY-NC-SA-4.0; https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
+// @license         GPL-3.0-or-later; http://www.gnu.org/licenses/gpl-3.0.txt
+// @version         v2.1.1 Alpha
+// @browser         FF17
+// @include         *userscripts.org/home/scripts
+// @include         *userscripts.org/home/scripts*
 // ==/UserScript==
-
 /*//////////////////////////////////////////////////////////////////////////
 // ToC:
 // - Copyrights

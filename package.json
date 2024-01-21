@@ -1,8 +1,9 @@
 {
-  "name": "userscripts",
+  "private": true,
+  "name": "jerone's userscripts",
   "version": "0.0.0",
   "scripts": {
-    "lint": "eslint **/*.js"
+    "lint": "eslint ."
   },
   "devDependencies": {
     "eslint": "^8.55.0",
