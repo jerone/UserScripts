@@ -1,0 +1,11 @@
+{
+  "name": "userscripts",
+  "version": "0.0.0",
+  "scripts": {
+    "lint": "eslint **/*.js"
+  },
+  "devDependencies": {
+    "eslint": "^8.55.0",
+    "eslint-plugin-userscripts": "^0.5.1"
+  }
+}

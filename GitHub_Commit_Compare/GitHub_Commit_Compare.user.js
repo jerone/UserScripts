@@ -1,25 +1,25 @@
 // ==UserScript==
-// @name        GitHub Commit Compare
-// @namespace   https://github.com/jerone/UserScripts
-// @description Add controls to compare commits.
-// @author      jerone
-// @contributor darkred
-// @copyright   2017+, jerone (https://github.com/jerone)
-// @license     CC-BY-NC-SA-4.0; https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
-// @license     GPL-3.0-or-later; http://www.gnu.org/licenses/gpl-3.0.txt
-// @homepage    https://github.com/jerone/UserScripts/tree/master/GitHub_Commit_Compare
-// @homepageURL https://github.com/jerone/UserScripts/tree/master/GitHub_Commit_Compare
-// @downloadURL https://github.com/jerone/UserScripts/raw/master/GitHub_Commit_Compare/GitHub_Commit_Compare.user.js
-// @updateURL   https://github.com/jerone/UserScripts/raw/master/GitHub_Commit_Compare/GitHub_Commit_Compare.user.js
-// @supportURL  https://github.com/jerone/UserScripts/issues
+// @name            GitHub Commit Compare
+// @namespace       https://github.com/jerone/UserScripts
+// @description     Add controls to compare commits.
+// @author          jerone
+// @contributor     darkred
+// @copyright       2017+, jerone (https://github.com/jerone)
+// @license         CC-BY-NC-SA-4.0; https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
+// @license         GPL-3.0-or-later; http://www.gnu.org/licenses/gpl-3.0.txt
+// @homepage        https://github.com/jerone/UserScripts/tree/master/GitHub_Commit_Compare
+// @homepageURL     https://github.com/jerone/UserScripts/tree/master/GitHub_Commit_Compare
+// @downloadURL     https://github.com/jerone/UserScripts/raw/master/GitHub_Commit_Compare/GitHub_Commit_Compare.user.js
+// @updateURL       https://github.com/jerone/UserScripts/raw/master/GitHub_Commit_Compare/GitHub_Commit_Compare.user.js
+// @supportURL      https://github.com/jerone/UserScripts/issues
 // @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
-// @icon        https://github.githubassets.com/pinned-octocat.svg
-// @include     https://github.com/*/*/commits
-// @include     https://github.com/*/*/commits/*
-// @exclude     https://github.com/*/*.diff
-// @exclude     https://github.com/*/*.patch
-// @version     0.0.3
-// @grant       none
+// @icon            https://github.githubassets.com/pinned-octocat.svg
+// @include         https://github.com/*/*/commits
+// @include         https://github.com/*/*/commits/*
+// @exclude         https://github.com/*/*.diff
+// @exclude         https://github.com/*/*.patch
+// @version         0.0.3
+// @grant           none
 // ==/UserScript==
 
 (function () {

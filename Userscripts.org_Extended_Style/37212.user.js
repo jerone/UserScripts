@@ -1,12 +1,13 @@
 // ==UserScript==
-// @name           Userscripts.org Extended Style
-// @namespace      http://userscripts.org/scripts/show/37212
-// @description    Userscripts.org Extended Style
-// @copyright      jerone & Jesse A.
-// @license        CC-BY-NC-SA-4.0; https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
-// @license        GPL-3.0-or-later; http://www.gnu.org/licenses/gpl-3.0.txt
-// @include        *userscripts.org*
-// @grant          GM_addStyle
+// @name        Userscripts.org Extended Style
+// @namespace   http://userscripts.org/scripts/show/37212
+// @version     0.0.1
+// @description Userscripts.org Extended Style
+// @copyright   jerone & Jesse A.
+// @license     CC-BY-NC-SA-4.0; https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
+// @license     GPL-3.0-or-later; http://www.gnu.org/licenses/gpl-3.0.txt
+// @include     *userscripts.org*
+// @grant       GM_addStyle
 // ==/UserScript==
 
 GM_addStyle("												\

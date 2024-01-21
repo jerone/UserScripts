@@ -1,21 +1,21 @@
 // ==UserScript==
-// @name        Github Commit Whitespace
-// @namespace   https://github.com/jerone/UserScripts
-// @description Adds button to hide whitespaces from commit
-// @author      jerone
-// @copyright   2014+, jerone (https://github.com/jerone)
-// @license     CC-BY-NC-SA-4.0; https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
-// @license     GPL-3.0-or-later; http://www.gnu.org/licenses/gpl-3.0.txt
-// @homepage    https://github.com/jerone/UserScripts/tree/master/Github_Commit_Whitespace
-// @homepageURL https://github.com/jerone/UserScripts/tree/master/Github_Commit_Whitespace
-// @downloadURL https://github.com/jerone/UserScripts/raw/master/Github_Commit_Whitespace/Github_Commit_Whitespace.user.js
-// @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_Commit_Whitespace/Github_Commit_Whitespace.user.js
-// @supportURL  https://github.com/jerone/UserScripts/issues
+// @name            Github Commit Whitespace
+// @namespace       https://github.com/jerone/UserScripts
+// @description     Adds button to hide whitespaces from commit
+// @author          jerone
+// @copyright       2014+, jerone (https://github.com/jerone)
+// @license         CC-BY-NC-SA-4.0; https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
+// @license         GPL-3.0-or-later; http://www.gnu.org/licenses/gpl-3.0.txt
+// @homepage        https://github.com/jerone/UserScripts/tree/master/Github_Commit_Whitespace
+// @homepageURL     https://github.com/jerone/UserScripts/tree/master/Github_Commit_Whitespace
+// @downloadURL     https://github.com/jerone/UserScripts/raw/master/Github_Commit_Whitespace/Github_Commit_Whitespace.user.js
+// @updateURL       https://github.com/jerone/UserScripts/raw/master/Github_Commit_Whitespace/Github_Commit_Whitespace.user.js
+// @supportURL      https://github.com/jerone/UserScripts/issues
 // @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
-// @icon        https://github.githubassets.com/pinned-octocat.svg
-// @include     https://github.com/*
-// @version     1.5.4
-// @grant       none
+// @icon            https://github.githubassets.com/pinned-octocat.svg
+// @include         https://github.com/*
+// @version         1.5.4
+// @grant           none
 // ==/UserScript==
 
 (function() {
