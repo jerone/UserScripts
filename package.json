@@ -1,6 +1,6 @@
 {
 	"private": true,
-	"name": "jerone's userscripts",
+	"name": "jerone-userscripts",
 	"version": "0.0.0",
 	"scripts": {
 		"lint": "eslint ."
