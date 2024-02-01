@@ -1,21 +1,21 @@
-/*//////////////////////////////////////////////////////////////////////////
 // ==UserScript==
-// @name            Userscripts.org Scripts Source Counter
-// @author          Jerone UserScript Productions
-// @namespace       http://userscripts.org/users/31497
-// @homepage        http://userscripts.org/scripts/show/37611
-// @description     Count all characters, words and lines for scriptwriters.
-// @description     Userscripts.org Scripts Source Counter v3
-// @copyright       2008 - 2013 Jerone
-// @license         CC-BY-NC-SA-4.0; https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
-// @license         GPL-3.0-or-later; http://www.gnu.org/licenses/gpl-3.0.txt
-// @version         3
-// @browser         FF19
-// @grant           none
-// @include         *userscripts.org/scripts/new?form=true
-// @include         *userscripts.org/scripts/edit_src/*
+// @name         Userscripts.org Scripts Source Counter
+// @author       Jerone UserScript Productions
+// @namespace    http://userscripts.org/users/31497
+// @homepage     http://userscripts.org/scripts/show/37611
+// @homepageURL  http://userscripts.org/scripts/show/37611
+// @description  Count all characters, words and lines for scriptwriters.
+// @copyright    2008 - 2013 Jerone
+// @license      CC-BY-NC-SA-4.0; https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
+// @license      GPL-3.0-or-later; http://www.gnu.org/licenses/gpl-3.0.txt
+// @version      3
+// @browser      FF19
+// @grant        none
+// @include      *userscripts.org/scripts/new?form=true
+// @include      *userscripts.org/scripts/edit_src/*
 // ==/UserScript==
-////////////////////////////////////////////////////////////////////////////
+
+/*///////////////////////////////////////////////////////////////////////////
 THIS  SCRIPT  IS  PROVIDED BY THE AUTHOR `AS IS' AND ANY EXPRESS OR IMPLIED
 WARRANTIES,  INCLUDING, BUT  NOT  LIMITED  TO, THE  IMPLIED  WARRANTIES  OF
 MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO
@@ -35,13 +35,13 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 	var obj, node, btn;
 	if((obj = document.getElementById("script_src"))){
 		obj.style["white-space"] = "pre-wrap";
-		
+
 		btn = document.createElement("input");
 		btn.type = "button";
 		btn.value = "Count!";
 		btn.style["margin-right"] = "10px";
 		btn.title = "Count all characters, words and lines and include the stats at the end of the UserScript!";
-		
+
 		node = obj.nextSibling;
 		while(node.nodeType==3 || !/\S/.test(node.nodeValue)){
 			node = node.nextSibling;
@@ -51,7 +51,7 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 		} else {
 			node.insertBefore(btn, node.firstChild);
 		}
-		
+
 		btn.addEventListener("click", function(){
 			if(new RegExp("User" + "Stats").test(obj.value)){  // new way;
 				obj.value = obj.value.replace(new RegExp("\\n*\\/\\/\\s+==User" + "Stats==[.\\w\\t\\s./():]*\\/\\/\\s+==\\/User" + "Stats=="), "");
@@ -61,7 +61,7 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 			obj.value += stats(obj.value + stats(obj.value));  // add stats;
 			obj.scrollTop = obj.scrollHeight;  // scroll to end;
 		});
-	}	
+	}
 
 	function stats(data){
 		return ["", "", "", "",

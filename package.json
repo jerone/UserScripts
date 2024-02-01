@@ -1,12 +1,12 @@
 {
-  "private": true,
-  "name": "jerone's userscripts",
-  "version": "0.0.0",
-  "scripts": {
-    "lint": "eslint ."
-  },
-  "devDependencies": {
-    "eslint": "^8.55.0",
-    "eslint-plugin-userscripts": "^0.5.1"
-  }
+	"private": true,
+	"name": "jerone's userscripts",
+	"version": "0.0.0",
+	"scripts": {
+		"lint": "eslint ."
+	},
+	"devDependencies": {
+		"eslint": "^8.56.0",
+		"eslint-plugin-userscripts": "^0.5.2"
+	}
 }

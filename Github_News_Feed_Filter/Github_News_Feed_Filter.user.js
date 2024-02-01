@@ -1,24 +1,24 @@
 // ==UserScript==
-// @name            Github News Feed Filter
-// @namespace       https://github.com/jerone/UserScripts
-// @description     Add filters for GitHub homepage news feed items
-// @author          jerone
-// @contributor     darkred
-// @copyright       2014+, jerone (https://github.com/jerone)
-// @license         CC-BY-NC-SA-4.0; https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
-// @license         GPL-3.0-or-later; http://www.gnu.org/licenses/gpl-3.0.txt
-// @homepage        https://github.com/jerone/UserScripts/tree/master/Github_News_Feed_Filter
-// @homepageURL     https://github.com/jerone/UserScripts/tree/master/Github_News_Feed_Filter
-// @downloadURL     https://github.com/jerone/UserScripts/raw/master/Github_News_Feed_Filter/Github_News_Feed_Filter.user.js
-// @updateURL       https://github.com/jerone/UserScripts/raw/master/Github_News_Feed_Filter/Github_News_Feed_Filter.user.js
-// @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
-// @icon            https://github.githubassets.com/pinned-octocat.svg
-// @include         https://github.com/
-// @include         https://github.com/?*
-// @include         https://github.com/orgs/*/dashboard
-// @include         https://github.com/orgs/*/dashboard?*
-// @version         8.2.8
-// @grant           none
+// @name             Github News Feed Filter
+// @namespace        https://github.com/jerone/UserScripts
+// @description      Add filters for GitHub homepage news feed items
+// @author           jerone
+// @contributor      darkred
+// @copyright        2014+, jerone (https://github.com/jerone)
+// @license          CC-BY-NC-SA-4.0; https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
+// @license          GPL-3.0-or-later; http://www.gnu.org/licenses/gpl-3.0.txt
+// @homepage         https://github.com/jerone/UserScripts/tree/master/Github_News_Feed_Filter
+// @homepageURL      https://github.com/jerone/UserScripts/tree/master/Github_News_Feed_Filter
+// @downloadURL      https://github.com/jerone/UserScripts/raw/master/Github_News_Feed_Filter/Github_News_Feed_Filter.user.js
+// @updateURL        https://github.com/jerone/UserScripts/raw/master/Github_News_Feed_Filter/Github_News_Feed_Filter.user.js
+// @contributionURL  https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
+// @icon             https://github.githubassets.com/pinned-octocat.svg
+// @include          https://github.com/
+// @include          https://github.com/?*
+// @include          https://github.com/orgs/*/dashboard
+// @include          https://github.com/orgs/*/dashboard?*
+// @version          8.2.8
+// @grant            none
 // ==/UserScript==
 
 (function () {

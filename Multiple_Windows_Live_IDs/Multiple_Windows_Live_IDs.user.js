@@ -1,23 +1,23 @@
 // ==UserScript==
-// @name            Multiple Windows Live IDs
-// @id              Multiple_Windows_Live_IDs@https://github.com/jerone/UserScripts
-// @namespace       https://github.com/jerone/UserScripts
-// @description     Easy login with multiple Microsoft accounts.
-// @author          jerone
-// @copyright       2014+, jerone (https://github.com/jerone)
-// @license         CC-BY-NC-SA-4.0; https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
-// @license         GPL-3.0-or-later; http://www.gnu.org/licenses/gpl-3.0.txt
-// @homepage        https://github.com/jerone/UserScripts/tree/master/Multiple_Windows_Live_IDs
-// @homepageURL     https://github.com/jerone/UserScripts/tree/master/Multiple_Windows_Live_IDs
-// @downloadURL     https://github.com/jerone/UserScripts/raw/master/Multiple_Windows_Live_IDs/Multiple_Windows_Live_IDs.user.js
-// @updateURL       https://github.com/jerone/UserScripts/raw/master/Multiple_Windows_Live_IDs/Multiple_Windows_Live_IDs.user.js
-// @supportURL      https://github.com/jerone/UserScripts/issues
-// @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
-// @version         0.2.0
-// @grant           GM_getValue
-// @grant           GM_setValue
-// @run-at          document-end
-// @include         http*://login.live.com*
+// @name             Multiple Windows Live IDs
+// @id               Multiple_Windows_Live_IDs@https://github.com/jerone/UserScripts
+// @namespace        https://github.com/jerone/UserScripts
+// @description      Easy login with multiple Microsoft accounts.
+// @author           jerone
+// @copyright        2014+, jerone (https://github.com/jerone)
+// @license          CC-BY-NC-SA-4.0; https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
+// @license          GPL-3.0-or-later; http://www.gnu.org/licenses/gpl-3.0.txt
+// @homepage         https://github.com/jerone/UserScripts/tree/master/Multiple_Windows_Live_IDs
+// @homepageURL      https://github.com/jerone/UserScripts/tree/master/Multiple_Windows_Live_IDs
+// @downloadURL      https://github.com/jerone/UserScripts/raw/master/Multiple_Windows_Live_IDs/Multiple_Windows_Live_IDs.user.js
+// @updateURL        https://github.com/jerone/UserScripts/raw/master/Multiple_Windows_Live_IDs/Multiple_Windows_Live_IDs.user.js
+// @supportURL       https://github.com/jerone/UserScripts/issues
+// @contributionURL  https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
+// @version          0.2.0
+// @grant            GM_getValue
+// @grant            GM_setValue
+// @run-at           document-end
+// @include          http*://login.live.com*
 // ==/UserScript==
 
 /* global GM_getValue,GM_setValue */

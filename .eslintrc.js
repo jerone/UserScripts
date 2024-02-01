@@ -17,11 +17,7 @@ module.exports = {
 		{
 			files: ["*.user.js"],
 			extends: ["plugin:userscripts/recommended"],
-			rules: {
-				"userscripts/align-attributes": ["error", 1],
-				"userscripts/no-invalid-headers": ["error", { allowed: ["id", "browser"] }],
-				"userscripts/compat-headers": "off",
-			},
+			rules: {},
 			settings: {
 				userscriptVersions: {
 					tampermonkey: ">=4",
@@ -36,4 +32,3 @@ module.exports = {
 	},
 	rules: {},
 };
-

@@ -1,21 +1,21 @@
 // ==UserScript==
-// @name            Github Gist Share
-// @namespace       https://github.com/jerone/UserScripts/
-// @description     Share your GitHub Gist to Twitter, Dabblet, Bl.ocks & as userscript.
-// @author          jerone
-// @copyright       2014+, jerone (https://github.com/jerone)
-// @license         CC-BY-NC-SA-4.0; https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
-// @license         GPL-3.0-or-later; http://www.gnu.org/licenses/gpl-3.0.txt
-// @homepage        https://github.com/jerone/UserScripts/tree/master/Github_Gist_Share
-// @homepageURL     https://github.com/jerone/UserScripts/tree/master/Github_Gist_Share
-// @downloadURL     https://github.com/jerone/UserScripts/raw/master/Github_Gist_Share/157850.user.js
-// @updateURL       https://github.com/jerone/UserScripts/raw/master/Github_Gist_Share/157850.user.js
-// @supportURL      https://github.com/jerone/UserScripts/issues
-// @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
-// @icon            https://github.githubassets.com/pinned-octocat.svg
-// @include         *://gist.github.com/*
-// @version         5.1
-// @grant           none
+// @name             Github Gist Share
+// @namespace        https://github.com/jerone/UserScripts/
+// @description      Share your GitHub Gist to Twitter, Dabblet, Bl.ocks & as userscript.
+// @author           jerone
+// @copyright        2014+, jerone (https://github.com/jerone)
+// @license          CC-BY-NC-SA-4.0; https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
+// @license          GPL-3.0-or-later; http://www.gnu.org/licenses/gpl-3.0.txt
+// @homepage         https://github.com/jerone/UserScripts/tree/master/Github_Gist_Share
+// @homepageURL      https://github.com/jerone/UserScripts/tree/master/Github_Gist_Share
+// @downloadURL      https://github.com/jerone/UserScripts/raw/master/Github_Gist_Share/157850.user.js
+// @updateURL        https://github.com/jerone/UserScripts/raw/master/Github_Gist_Share/157850.user.js
+// @supportURL       https://github.com/jerone/UserScripts/issues
+// @contributionURL  https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
+// @icon             https://github.githubassets.com/pinned-octocat.svg
+// @include          *://gist.github.com/*
+// @version          5.1
+// @grant            none
 // ==/UserScript==
 
 (function() {

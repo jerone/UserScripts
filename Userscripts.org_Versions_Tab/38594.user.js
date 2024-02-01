@@ -1,22 +1,22 @@
-////////////////////////////////////////////////////////////////////////////
-// ==UserScript===
-// @name            Userscripts.org Versions Tab
-// @author          jerone
-// @namespace       http://userscripts.org/users/31497
-// @homepage        http://userscripts.org/scripts/show/38594
-// @description     Add versions tab to scripts menu.
-// @description     Userscripts.org Versions Tab 3.4
-// @copyright       2008 - 2013 jerone
-// @license         CC-BY-NC-SA-4.0; https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
-// @license         GPL-3.0-or-later; http://www.gnu.org/licenses/gpl-3.0.txt
-// @version         3.4
-// @include         *userscripts.org/scripts/*
-// @include         *userscripts.org/topics/*
-// @include         *userscripts.org/reviews/*
-// @grant           GM_getValue
-// @grant           GM_setValue
-// @grant           GM_xmlhttpRequest
+// ==UserScript==
+// @name         Userscripts.org Versions Tab
+// @author       jerone
+// @namespace    http://userscripts.org/users/31497
+// @homepage     http://userscripts.org/scripts/show/38594
+// @homepageURL  http://userscripts.org/scripts/show/38594
+// @description  Add versions tab to scripts menu. -- Userscripts.org Versions Tab 3.4
+// @copyright    2008 - 2013 jerone
+// @license      CC-BY-NC-SA-4.0; https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
+// @license      GPL-3.0-or-later; http://www.gnu.org/licenses/gpl-3.0.txt
+// @version      3.4
+// @include      *userscripts.org/scripts/*
+// @include      *userscripts.org/topics/*
+// @include      *userscripts.org/reviews/*
+// @grant        GM_getValue
+// @grant        GM_setValue
+// @grant        GM_xmlhttpRequest
 // ==/UserScript==
+
 /*//////////////////////////////////////////////////////////////////////////
 THIS  SCRIPT  IS  PROVIDED BY THE AUTHOR `AS IS' AND ANY EXPRESS OR IMPLIED
 WARRANTIES,  INCLUDING, BUT  NOT  LIMITED  TO, THE  IMPLIED  WARRANTIES  OF

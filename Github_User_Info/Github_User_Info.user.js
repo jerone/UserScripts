@@ -1,27 +1,27 @@
 // ==UserScript==
-// @name            Github User Info
-// @id              Github_User_Info@https://github.com/jerone/UserScripts
-// @namespace       https://github.com/jerone/UserScripts
-// @description     Show inline user information on avatar hover.
-// @author          jerone
-// @copyright       2015+, jerone (https://github.com/jerone)
-// @license         CC-BY-NC-SA-4.0; https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
-// @license         GPL-3.0-or-later; http://www.gnu.org/licenses/gpl-3.0.txt
-// @homepage        https://github.com/jerone/UserScripts/tree/master/Github_User_Info
-// @homepageURL     https://github.com/jerone/UserScripts/tree/master/Github_User_Info
-// @downloadURL     https://github.com/jerone/UserScripts/raw/master/Github_User_Info/Github_User_Info.user.js
-// @updateURL       https://github.com/jerone/UserScripts/raw/master/Github_User_Info/Github_User_Info.user.js
-// @supportURL      https://github.com/jerone/UserScripts/issues
-// @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
-// @icon            https://github.githubassets.com/pinned-octocat.svg
-// @version         0.4.1
-// @grant           GM_xmlhttpRequest
-// @grant           GM_setValue
-// @grant           GM_getValue
-// @grant           unsafeWindow
-// @run-at          document-end
-// @include         https://github.com/*
-// @include         https://gist.github.com/*
+// @name             Github User Info
+// @id               Github_User_Info@https://github.com/jerone/UserScripts
+// @namespace        https://github.com/jerone/UserScripts
+// @description      Show inline user information on avatar hover.
+// @author           jerone
+// @copyright        2015+, jerone (https://github.com/jerone)
+// @license          CC-BY-NC-SA-4.0; https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
+// @license          GPL-3.0-or-later; http://www.gnu.org/licenses/gpl-3.0.txt
+// @homepage         https://github.com/jerone/UserScripts/tree/master/Github_User_Info
+// @homepageURL      https://github.com/jerone/UserScripts/tree/master/Github_User_Info
+// @downloadURL      https://github.com/jerone/UserScripts/raw/master/Github_User_Info/Github_User_Info.user.js
+// @updateURL        https://github.com/jerone/UserScripts/raw/master/Github_User_Info/Github_User_Info.user.js
+// @supportURL       https://github.com/jerone/UserScripts/issues
+// @contributionURL  https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
+// @icon             https://github.githubassets.com/pinned-octocat.svg
+// @version          0.4.1
+// @grant            GM_xmlhttpRequest
+// @grant            GM_setValue
+// @grant            GM_getValue
+// @grant            unsafeWindow
+// @run-at           document-end
+// @include          https://github.com/*
+// @include          https://gist.github.com/*
 // ==/UserScript==
 
 (function() {

@@ -1,19 +1,19 @@
-////////////////////////////////////////////////////////////////////////////
-// ==UserScript===
-// @name            Userscripts.org Topics Column
-// @author          Jerone UserScript Productions
-// @namespace       http://userscripts.org/users/31497
-// @homepage        http://userscripts.org/scripts/show/38597
-// @description     Add extra column with scripts topics in script management.
-// @description     Userscripts.org Topics Column v2.1.1 Alpha
-// @copyright       2008 - 2012 Jerone
-// @license         CC-BY-NC-SA-4.0; https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
-// @license         GPL-3.0-or-later; http://www.gnu.org/licenses/gpl-3.0.txt
-// @version         v2.1.1 Alpha
-// @browser         FF17
-// @include         *userscripts.org/home/scripts
-// @include         *userscripts.org/home/scripts*
+// ==UserScript==
+// @name         Userscripts.org Topics Column
+// @author       Jerone UserScript Productions
+// @namespace    http://userscripts.org/users/31497
+// @homepage     http://userscripts.org/scripts/show/38597
+// @homepageURL  http://userscripts.org/scripts/show/38597
+// @description  Add extra column with scripts topics in script management.
+// @copyright    2008 - 2012 Jerone
+// @license      CC-BY-NC-SA-4.0; https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
+// @license      GPL-3.0-or-later; http://www.gnu.org/licenses/gpl-3.0.txt
+// @version      v2.1.1-Alpha
+// @browser      FF17
+// @include      *userscripts.org/home/scripts
+// @include      *userscripts.org/home/scripts*
 // ==/UserScript==
+
 /*//////////////////////////////////////////////////////////////////////////
 // ToC:
 // - Copyrights
@@ -53,7 +53,7 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 	[/] fixed working on https://userscripts.org;
 ////////////////////////////////////////////////////////////////////////////
 // Todo:
-// - 
+// -
 ////////////////////////////////////////////////////////////////////////////
 // Note:
 // -
@@ -90,7 +90,7 @@ var updateTime =	3*60*60*1000;	// [Number] update time (we don't want to flood u
 							th.className = "la";
 							th.width = "1%";
 							column.parentNode.insertBefore(th, column);
-							
+
 							var a = doc.createElement("a");
 							a.href = "/home/scripts?sort=topics";
 							a.innerHTML = "Topics";
@@ -100,9 +100,9 @@ var updateTime =	3*60*60*1000;	// [Number] update time (we don't want to flood u
 							td.className = "inv lp";
 							td.innerHTML = "...";
 							column.parentNode.insertBefore(td, column);
-							
+
 							tds.push(td);
-							
+
 							var nr = tr.id.match(/\d+/)[0],
 								now = new Date().getTime();
 							if(typeof(topics[nr])==="number" && now - parseInt(GM_getValue("UTC.lastCheck", 0), 10) < updateTime){
@@ -128,7 +128,7 @@ var updateTime =	3*60*60*1000;	// [Number] update time (we don't want to flood u
 							}
 						}
 					});
-				
+
 					if(/scripts\?sort=topics/i.test(win.location.href)){
 						tds.sort(function(a, b){
 							return parseInt(a.innerHTML, 10) - parseInt(b.innerHTML, 10);

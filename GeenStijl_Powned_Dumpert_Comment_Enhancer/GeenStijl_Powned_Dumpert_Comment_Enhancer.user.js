@@ -1,25 +1,25 @@
 // ==UserScript==
-// @name            GeenStijl & Powned & Dumpert Comment Enhancer
-// @namespace       https://github.com/jerone/UserScripts
-// @description     Add features to enhance comments on GeenStijl & Powned & Dumpert & more.
-// @author          jerone
-// @copyright       2014+, jerone (https://github.com/jerone)
-// @license         CC-BY-NC-SA-4.0; https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
-// @license         GPL-3.0-or-later; http://www.gnu.org/licenses/gpl-3.0.txt
-// @homepage        https://github.com/jerone/UserScripts/tree/master/GeenStijl_Powned_Dumpert_Comment_Enhancer
-// @homepageURL     https://github.com/jerone/UserScripts/tree/master/GeenStijl_Powned_Dumpert_Comment_Enhancer
-// @downloadURL     https://github.com/jerone/UserScripts/raw/master/GeenStijl_Powned_Dumpert_Comment_Enhancer/GeenStijl_Powned_Dumpert_Comment_Enhancer.user.js
-// @updateURL       https://github.com/jerone/UserScripts/raw/master/GeenStijl_Powned_Dumpert_Comment_Enhancer/GeenStijl_Powned_Dumpert_Comment_Enhancer.user.js
-// @supportURL      https://github.com/jerone/UserScripts/issues
-// @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
-// @include         http*://*geenstijl.nl/mt/archieven/*
-// @include         http*://*geenstijl.tv/*
-// @include         http*://*powned.tv/nieuws/*
-// @include         http*://*dumpert.nl/mediabase/*
-// @include         http*://*daskapital.nl/*
-// @include         http*://*glamora.ma/*
-// @version         2.0
-// @grant           none
+// @name             GeenStijl & Powned & Dumpert Comment Enhancer
+// @namespace        https://github.com/jerone/UserScripts
+// @description      Add features to enhance comments on GeenStijl & Powned & Dumpert & more.
+// @author           jerone
+// @copyright        2014+, jerone (https://github.com/jerone)
+// @license          CC-BY-NC-SA-4.0; https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
+// @license          GPL-3.0-or-later; http://www.gnu.org/licenses/gpl-3.0.txt
+// @homepage         https://github.com/jerone/UserScripts/tree/master/GeenStijl_Powned_Dumpert_Comment_Enhancer
+// @homepageURL      https://github.com/jerone/UserScripts/tree/master/GeenStijl_Powned_Dumpert_Comment_Enhancer
+// @downloadURL      https://github.com/jerone/UserScripts/raw/master/GeenStijl_Powned_Dumpert_Comment_Enhancer/GeenStijl_Powned_Dumpert_Comment_Enhancer.user.js
+// @updateURL        https://github.com/jerone/UserScripts/raw/master/GeenStijl_Powned_Dumpert_Comment_Enhancer/GeenStijl_Powned_Dumpert_Comment_Enhancer.user.js
+// @supportURL       https://github.com/jerone/UserScripts/issues
+// @contributionURL  https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
+// @include          http*://*geenstijl.nl/mt/archieven/*
+// @include          http*://*geenstijl.tv/*
+// @include          http*://*powned.tv/nieuws/*
+// @include          http*://*dumpert.nl/mediabase/*
+// @include          http*://*daskapital.nl/*
+// @include          http*://*glamora.ma/*
+// @version          2.0
+// @grant            none
 // ==/UserScript==
 
 (function() {

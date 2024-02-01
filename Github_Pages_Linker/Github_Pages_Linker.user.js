@@ -1,23 +1,23 @@
 // ==UserScript==
-// @name            Github Pages Linker
-// @id              Github_Pages_Linker@https://github.com/jerone/UserScripts
-// @namespace       https://github.com/jerone/UserScripts/
-// @description     Add a link to Github Pages (gh-pages) when available.
-// @author          jerone
-// @copyright       2014+, jerone (https://github.com/jerone)
-// @license         CC-BY-NC-SA-4.0; https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
-// @license         GPL-3.0-or-later; http://www.gnu.org/licenses/gpl-3.0.txt
-// @homepage        https://github.com/jerone/UserScripts/tree/master/Github_Pages_Linker
-// @homepageURL     https://github.com/jerone/UserScripts/tree/master/Github_Pages_Linker
-// @downloadURL     https://github.com/jerone/UserScripts/raw/master/Github_Pages_Linker/Github_Pages_Linker.user.js
-// @updateURL       https://github.com/jerone/UserScripts/raw/master/Github_Pages_Linker/Github_Pages_Linker.user.js
-// @supportURL      https://github.com/jerone/UserScripts/issues
-// @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
-// @icon            https://github.githubassets.com/pinned-octocat.svg
-// @version         1.2.5
-// @grant           none
-// @run-at          document-end
-// @include         https://github.com/*
+// @name             Github Pages Linker
+// @id               Github_Pages_Linker@https://github.com/jerone/UserScripts
+// @namespace        https://github.com/jerone/UserScripts/
+// @description      Add a link to Github Pages (gh-pages) when available.
+// @author           jerone
+// @copyright        2014+, jerone (https://github.com/jerone)
+// @license          CC-BY-NC-SA-4.0; https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
+// @license          GPL-3.0-or-later; http://www.gnu.org/licenses/gpl-3.0.txt
+// @homepage         https://github.com/jerone/UserScripts/tree/master/Github_Pages_Linker
+// @homepageURL      https://github.com/jerone/UserScripts/tree/master/Github_Pages_Linker
+// @downloadURL      https://github.com/jerone/UserScripts/raw/master/Github_Pages_Linker/Github_Pages_Linker.user.js
+// @updateURL        https://github.com/jerone/UserScripts/raw/master/Github_Pages_Linker/Github_Pages_Linker.user.js
+// @supportURL       https://github.com/jerone/UserScripts/issues
+// @contributionURL  https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
+// @icon             https://github.githubassets.com/pinned-octocat.svg
+// @version          1.2.5
+// @grant            none
+// @run-at           document-end
+// @include          https://github.com/*
 // ==/UserScript==
 
 (function () {

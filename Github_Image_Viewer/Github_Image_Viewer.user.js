@@ -1,23 +1,23 @@
 // ==UserScript==
-// @name            Github Image Viewer
-// @id              Github_Image_Viewer@https://github.com/jerone/UserScripts
-// @namespace       https://github.com/jerone/UserScripts
-// @description     Preview images from within the listing.
-// @author          jerone
-// @copyright       2014+, jerone (https://github.com/jerone)
-// @license         CC-BY-NC-SA-4.0; https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
-// @license         GPL-3.0-or-later; http://www.gnu.org/licenses/gpl-3.0.txt
-// @homepage        https://github.com/jerone/UserScripts/tree/master/Github_Image_Viewer
-// @homepageURL     https://github.com/jerone/UserScripts/tree/master/Github_Image_Viewer
-// @downloadURL     https://github.com/jerone/UserScripts/raw/master/Github_Image_Viewer/Github_Image_Viewer.user.js
-// @updateURL       https://github.com/jerone/UserScripts/raw/master/Github_Image_Viewer/Github_Image_Viewer.user.js
-// @supportURL      https://github.com/jerone/UserScripts/issues
-// @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
-// @version         0.5.0
-// @icon            https://github.githubassets.com/pinned-octocat.svg
-// @grant           none
-// @run-at          document-end
-// @include         https://github.com/*
+// @name             Github Image Viewer
+// @id               Github_Image_Viewer@https://github.com/jerone/UserScripts
+// @namespace        https://github.com/jerone/UserScripts
+// @description      Preview images from within the listing.
+// @author           jerone
+// @copyright        2014+, jerone (https://github.com/jerone)
+// @license          CC-BY-NC-SA-4.0; https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
+// @license          GPL-3.0-or-later; http://www.gnu.org/licenses/gpl-3.0.txt
+// @homepage         https://github.com/jerone/UserScripts/tree/master/Github_Image_Viewer
+// @homepageURL      https://github.com/jerone/UserScripts/tree/master/Github_Image_Viewer
+// @downloadURL      https://github.com/jerone/UserScripts/raw/master/Github_Image_Viewer/Github_Image_Viewer.user.js
+// @updateURL        https://github.com/jerone/UserScripts/raw/master/Github_Image_Viewer/Github_Image_Viewer.user.js
+// @supportURL       https://github.com/jerone/UserScripts/issues
+// @contributionURL  https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
+// @version          0.5.0
+// @icon             https://github.githubassets.com/pinned-octocat.svg
+// @grant            none
+// @run-at           document-end
+// @include          https://github.com/*
 // ==/UserScript==
 
 (function() {

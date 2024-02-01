@@ -1,19 +1,19 @@
-////////////////////////////////////////////////////////////////////////////
-// ==UserScript===
-// @name            Userscripts.org Diff Extender
-// @author          Jerone UserScript Productions
-// @namespace       http://userscripts.org/users/31497
-// @homepage        http://userscripts.org/scripts/show/38909
-// @description     Add some handy features to the diff.
-// @description     Userscripts.org Diff Extender v2.2.1 Alpha
-// @copyright       2008 - 2012 Jerone
-// @license         CC-BY-NC-SA-4.0; https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
-// @license         GPL-3.0-or-later; http://www.gnu.org/licenses/gpl-3.0.txt
-// @version         v2.2.1 Alpha
-// @browser         FF17
-// @include         *userscripts.org/scripts/diff/*
-// @grant           none
+// ==UserScript==
+// @name         Userscripts.org Diff Extender
+// @author       Jerone UserScript Productions
+// @namespace    http://userscripts.org/users/31497
+// @homepage     http://userscripts.org/scripts/show/38909
+// @homepageURL  http://userscripts.org/scripts/show/38909
+// @description  Add some handy features to the diff.
+// @copyright    2008 - 2012 Jerone
+// @license      CC-BY-NC-SA-4.0; https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
+// @license      GPL-3.0-or-later; http://www.gnu.org/licenses/gpl-3.0.txt
+// @version      v2.2.1-Alpha
+// @browser      FF17
+// @include      *userscripts.org/scripts/diff/*
+// @grant        none
 // ==/UserScript==
+
 /*//////////////////////////////////////////////////////////////////////////
 // ToC:
 // - Copyrights
@@ -57,7 +57,7 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 	[/] fixed working on https://userscripts.org;
 ////////////////////////////////////////////////////////////////////////////
 // Todo:
-// - show inline differences; 
+// - show inline differences;
 ////////////////////////////////////////////////////////////////////////////
 // Note:
 // -
@@ -83,9 +83,9 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 				pre.style.paddingLeft = "15px";
 				pre.style.lineHeight = "17px";
 				pre.style.paddingTop = "0";
-				
+
 				var scrollWidth = (Math.max(parseInt(pre.scrollWidth), 0) || 1000) + "px";
-				
+
 				var css = "																			\
 					.diff {																			\
 						background-color:	#EEEEEE;												\
@@ -133,7 +133,7 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 				wrapper.appendChild(pre.cloneNode(true));
 				pre.parentNode.replaceChild(wrapper, pre);
 				pre = wrapper.firstChild;
-				
+
 				var div = doc.createElement("div");
 				div.className = "diff";
 				pre.parentNode.insertBefore(div, pre);
@@ -145,20 +145,20 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 				table.cellpadding = 0;
 				table.className = "diffNr";
 				div.appendChild(table);
-				
+
 				xPath(".//div[@class='meta']", pre).forEach(function(meta){
 					meta.style.marginLeft = "-15px";
 					meta.style.width = scrollWidth;
-					
+
 					var tr = doc.createElement("tr");
 					table.appendChild(tr);
-					
+
 					var tdDel = doc.createElement("td");
 					tdDel.className = "diffMeta";
 					tdDel.width = "50%";
 					tdDel.appendChild(doc.createTextNode("-"));
 					tr.appendChild(tdDel);
-					
+
 					var tdAdd = doc.createElement("td");
 					tdAdd.className = "diffMeta";
 					tdAdd.width = "50%";
@@ -177,10 +177,10 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 							tdDel = doc.createElement("td");
 							tr.appendChild(tdDel);
-							
+
 							tdAdd = doc.createElement("td");
 							tr.appendChild(tdAdd);
-							
+
 							if(!item.match(/^\+/)){
 								tdDel.className = "diffAdd";
 								tdDel.appendChild(doc.createTextNode(iOld));

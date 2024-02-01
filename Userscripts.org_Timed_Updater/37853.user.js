@@ -1,19 +1,19 @@
-////////////////////////////////////////////////////////////////////////////
-// ==UserScript===
-// @name            Userscripts.org Timed Updater
-// @author          Jerone UserScript Productions
-// @namespace       http://userscripts.org/users/31497
-// @homepage        http://userscripts.org/scripts/show/37853
-// @description     Update or create script at specific time.
-// @description     Userscripts.org Timed Updater v2.0.1 Alpha
-// @copyright       2008 - 2012 Jerone
-// @license         CC-BY-NC-SA-4.0; https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
-// @license         GPL-3.0-or-later; http://www.gnu.org/licenses/gpl-3.0.txt
-// @version         v2.0.1 Alpha
-// @browser         FF17
-// @include         *userscripts.org/scripts/new?form=true
-// @include         *userscripts.org/scripts/edit_src/*
+// ==UserScript==
+// @name         Userscripts.org Timed Updater
+// @author       Jerone UserScript Productions
+// @namespace    http://userscripts.org/users/31497
+// @homepage     http://userscripts.org/scripts/show/37853
+// @homepageURL  http://userscripts.org/scripts/show/37853
+// @description  Update or create script at specific time.
+// @copyright    2008 - 2012 Jerone
+// @license      CC-BY-NC-SA-4.0; https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
+// @license      GPL-3.0-or-later; http://www.gnu.org/licenses/gpl-3.0.txt
+// @version      v2.0.1-Alpha
+// @browser      FF17
+// @include      *userscripts.org/scripts/new?form=true
+// @include      *userscripts.org/scripts/edit_src/*
 // ==/UserScript==
+
 /*//////////////////////////////////////////////////////////////////////////
 // ToC:
 // - Copyrights
@@ -55,7 +55,7 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 // - count down every seconds when below 1 minute;
 ////////////////////////////////////////////////////////////////////////////
 // Note:
-// - 
+// -
 /*//////////////////////////////////////////////////////////////////////////
 
 
@@ -69,15 +69,15 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 		init: function(){
 			var obj;
 			if((obj = doc.getElementById("script_src"))){
-			
+
 				var container = doc.createElement("span");
 				container.style.display = "block";
-			
+
 				var label = doc.createElement("label");
 				label.htmlFor = label.for = "inputHours";
 				label.innerHTML = (/new/i.test(location.href) ? "Create" : "Save") + " script at <code>(h:m)</code>: ";
 				container.appendChild(label);
-			
+
 				var inputHours = doc.createElement("input");
 				inputHours.id = "inputHours";
 				inputHours.value = new Date().getHours() + 1;
@@ -86,9 +86,9 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 				inputHours.title = "Hours";
 				inputHours.style.textAlign = "center";
 				container.appendChild(inputHours);
-				
+
 				container.appendChild(doc.createTextNode(" : "));
-				
+
 				var inputMinutes = doc.createElement("input");
 				inputMinutes.id = "inputMinutes";
 				inputMinutes.value = "00";
@@ -104,12 +104,12 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 				btn.title = "Click here to activate the timer to submit this script at a specific time!";
 				btn.style.marginRight = "10px";
 				container.appendChild(btn);
-			
+
 				var label2 = doc.createElement("label");
 				label2.htmlFor = label2.for = "inputHours";
 				label2.innerHTML = "No timer set yet...";
 				container.appendChild(label2);
-			
+
 				var node = obj.nextSibling;
 				while(node.nodeType==3 || !/\S/.test(node.nodeValue)){
 					node = node.nextSibling;
@@ -170,7 +170,7 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 					label2.innerHTML = "&nbsp;&plusmn;&nbsp;" + humanize(timer) + " remaining.&nbsp;";
 					return timer;
 				}
-				
+
 				function humanize(n, shorten){
 					shorten = shorten || false;
 					var txt = false,

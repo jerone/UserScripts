@@ -1,26 +1,26 @@
 // ==UserScript==
-// @name            Github JSON Dependencies Linker
-// @id              Github_JSON_Dependencies_Linker@https://github.com/jerone/UserScripts
-// @namespace       https://github.com/jerone/UserScripts
-// @description     Linkify all dependencies found in an JSON file.
-// @author          jerone
-// @copyright       2015+, jerone (https://github.com/jerone)
-// @license         CC-BY-NC-SA-4.0; https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
-// @license         GPL-3.0-or-later; http://www.gnu.org/licenses/gpl-3.0.txt
-// @homepage        https://github.com/jerone/UserScripts/tree/master/Github_JSON_Dependencies_Linker
-// @homepageURL     https://github.com/jerone/UserScripts/tree/master/Github_JSON_Dependencies_Linker
-// @downloadURL     https://github.com/jerone/UserScripts/raw/master/Github_JSON_Dependencies_Linker/Github_JSON_Dependencies_Linker.user.js
-// @updateURL       https://github.com/jerone/UserScripts/raw/master/Github_JSON_Dependencies_Linker/Github_JSON_Dependencies_Linker.user.js
-// @supportURL      https://github.com/jerone/UserScripts/issues
-// @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
-// @version         0.3.2
-// @icon            https://github.githubassets.com/pinned-octocat.svg
-// @grant           GM_xmlhttpRequest
-// @run-at          document-end
-// @include         https://github.com/*/package.json
-// @include         https://github.com/*/npm-shrinkwrap.json
-// @include         https://github.com/*/bower.json
-// @include         https://github.com/*/project.json
+// @name             Github JSON Dependencies Linker
+// @id               Github_JSON_Dependencies_Linker@https://github.com/jerone/UserScripts
+// @namespace        https://github.com/jerone/UserScripts
+// @description      Linkify all dependencies found in an JSON file.
+// @author           jerone
+// @copyright        2015+, jerone (https://github.com/jerone)
+// @license          CC-BY-NC-SA-4.0; https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
+// @license          GPL-3.0-or-later; http://www.gnu.org/licenses/gpl-3.0.txt
+// @homepage         https://github.com/jerone/UserScripts/tree/master/Github_JSON_Dependencies_Linker
+// @homepageURL      https://github.com/jerone/UserScripts/tree/master/Github_JSON_Dependencies_Linker
+// @downloadURL      https://github.com/jerone/UserScripts/raw/master/Github_JSON_Dependencies_Linker/Github_JSON_Dependencies_Linker.user.js
+// @updateURL        https://github.com/jerone/UserScripts/raw/master/Github_JSON_Dependencies_Linker/Github_JSON_Dependencies_Linker.user.js
+// @supportURL       https://github.com/jerone/UserScripts/issues
+// @contributionURL  https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
+// @version          0.3.2
+// @icon             https://github.githubassets.com/pinned-octocat.svg
+// @grant            GM_xmlhttpRequest
+// @run-at           document-end
+// @include          https://github.com/*/package.json
+// @include          https://github.com/*/npm-shrinkwrap.json
+// @include          https://github.com/*/bower.json
+// @include          https://github.com/*/project.json
 // ==/UserScript==
 
 /* global GM_xmlhttpRequest */
