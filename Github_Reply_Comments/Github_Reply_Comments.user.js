@@ -1,25 +1,25 @@
 // ==UserScript==
-// @name        Github Reply Comments
-// @namespace   https://github.com/jerone/UserScripts
-// @description Easy reply to Github comments
-// @author      jerone
-// @copyright   2016+, jerone (https://github.com/jerone)
-// @license     CC-BY-NC-SA-4.0; https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
-// @license     GPL-3.0-or-later; http://www.gnu.org/licenses/gpl-3.0.txt
-// @homepage    https://github.com/jerone/UserScripts/tree/master/Github_Reply_Comments
-// @homepageURL https://github.com/jerone/UserScripts/tree/master/Github_Reply_Comments
-// @downloadURL https://github.com/jerone/UserScripts/raw/master/Github_Reply_Comments/Github_Reply_Comments.user.js
-// @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_Reply_Comments/Github_Reply_Comments.user.js
-// @supportURL  https://github.com/jerone/UserScripts/issues
+// @name            Github Reply Comments
+// @namespace       https://github.com/jerone/UserScripts
+// @description     Easy reply to Github comments
+// @author          jerone
+// @copyright       2016+, jerone (https://github.com/jerone)
+// @license         CC-BY-NC-SA-4.0; https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
+// @license         GPL-3.0-or-later; http://www.gnu.org/licenses/gpl-3.0.txt
+// @homepage        https://github.com/jerone/UserScripts/tree/master/Github_Reply_Comments
+// @homepageURL     https://github.com/jerone/UserScripts/tree/master/Github_Reply_Comments
+// @downloadURL     https://github.com/jerone/UserScripts/raw/master/Github_Reply_Comments/Github_Reply_Comments.user.js
+// @updateURL       https://github.com/jerone/UserScripts/raw/master/Github_Reply_Comments/Github_Reply_Comments.user.js
+// @supportURL      https://github.com/jerone/UserScripts/issues
 // @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
-// @version     1.0.5
-// @icon        https://github.githubassets.com/pinned-octocat.svg
-// @grant       none
-// @include     https://github.com/*
-// @include     https://gist.github.com/*
-// @require     https://unpkg.com/turndown@5.0.3/dist/turndown.js
-// @require     https://unpkg.com/turndown-plugin-gfm@1.0.2/dist/turndown-plugin-gfm.js
-// @require     https://unpkg.com/turndown-plugin-github-code-snippet@1.0.2/turndown-plugin-github-code-snippet.js
+// @version         1.0.5
+// @icon            https://github.githubassets.com/pinned-octocat.svg
+// @grant           none
+// @include         https://github.com/*
+// @include         https://gist.github.com/*
+// @require         https://unpkg.com/turndown@5.0.3/dist/turndown.js
+// @require         https://unpkg.com/turndown-plugin-gfm@1.0.2/dist/turndown-plugin-gfm.js
+// @require         https://unpkg.com/turndown-plugin-github-code-snippet@1.0.2/turndown-plugin-github-code-snippet.js
 // ==/UserScript==
 
 (function () {

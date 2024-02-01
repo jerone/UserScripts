@@ -1,22 +1,22 @@
 // ==UserScript==
-// @name        Twitter profile replies hider
-// @namespace   https://github.com/jerone/UserScripts
-// @description Hide replies on Twitter profiles
-// @author      jerone
-// @copyright   2014+, jerone (https://github.com/jerone)
-// @license     CC-BY-NC-SA-4.0; https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
-// @license     GPL-3.0-or-later; http://www.gnu.org/licenses/gpl-3.0.txt
-// @homepage    https://github.com/jerone/UserScripts/tree/master/Hide_replies_on_Twitter_user_account
-// @homepageURL https://github.com/jerone/UserScripts/tree/master/Hide_replies_on_Twitter_user_account
-// @downloadURL https://github.com/jerone/UserScripts/raw/master/Hide_replies_on_Twitter_user_account/163703.user.js
-// @updateURL   https://github.com/jerone/UserScripts/raw/master/Hide_replies_on_Twitter_user_account/163703.user.js
-// @supportURL  https://github.com/jerone/UserScripts/issues
+// @name            Twitter profile replies hider
+// @namespace       https://github.com/jerone/UserScripts
+// @description     Hide replies on Twitter profiles
+// @author          jerone
+// @copyright       2014+, jerone (https://github.com/jerone)
+// @license         CC-BY-NC-SA-4.0; https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
+// @license         GPL-3.0-or-later; http://www.gnu.org/licenses/gpl-3.0.txt
+// @homepage        https://github.com/jerone/UserScripts/tree/master/Hide_replies_on_Twitter_user_account
+// @homepageURL     https://github.com/jerone/UserScripts/tree/master/Hide_replies_on_Twitter_user_account
+// @downloadURL     https://github.com/jerone/UserScripts/raw/master/Hide_replies_on_Twitter_user_account/163703.user.js
+// @updateURL       https://github.com/jerone/UserScripts/raw/master/Hide_replies_on_Twitter_user_account/163703.user.js
+// @supportURL      https://github.com/jerone/UserScripts/issues
 // @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
-// @include     *://twitter.com/*
-// @exclude     *://twitter.com/
-// @exclude     *://twitter.com
-// @version     5
-// @grant       none
+// @include         *://twitter.com/*
+// @exclude         *://twitter.com/
+// @exclude         *://twitter.com
+// @version         5
+// @grant           none
 // ==/UserScript==
 
 (function() {

@@ -1,23 +1,23 @@
 // ==UserScript==
-// @name        Github Commit Diff
-// @namespace   https://github.com/jerone/UserScripts
-// @description Adds button to show diff (or patch) file for commit
-// @author      jerone
-// @copyright   2014+, jerone (https://github.com/jerone)
-// @license     CC-BY-NC-SA-4.0; https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
-// @license     GPL-3.0-or-later; http://www.gnu.org/licenses/gpl-3.0.txt
-// @homepage    https://github.com/jerone/UserScripts/tree/master/Github_Commit_Diff
-// @homepageURL https://github.com/jerone/UserScripts/tree/master/Github_Commit_Diff
-// @downloadURL https://github.com/jerone/UserScripts/raw/master/Github_Commit_Diff/Github_Commit_Diff.user.js
-// @updateURL   https://github.com/jerone/UserScripts/raw/master/Github_Commit_Diff/Github_Commit_Diff.user.js
-// @supportURL  https://github.com/jerone/UserScripts/issues
+// @name            Github Commit Diff
+// @namespace       https://github.com/jerone/UserScripts
+// @description     Adds button to show diff (or patch) file for commit
+// @author          jerone
+// @copyright       2014+, jerone (https://github.com/jerone)
+// @license         CC-BY-NC-SA-4.0; https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
+// @license         GPL-3.0-or-later; http://www.gnu.org/licenses/gpl-3.0.txt
+// @homepage        https://github.com/jerone/UserScripts/tree/master/Github_Commit_Diff
+// @homepageURL     https://github.com/jerone/UserScripts/tree/master/Github_Commit_Diff
+// @downloadURL     https://github.com/jerone/UserScripts/raw/master/Github_Commit_Diff/Github_Commit_Diff.user.js
+// @updateURL       https://github.com/jerone/UserScripts/raw/master/Github_Commit_Diff/Github_Commit_Diff.user.js
+// @supportURL      https://github.com/jerone/UserScripts/issues
 // @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
-// @icon        https://github.githubassets.com/pinned-octocat.svg
-// @include     https://github.com/*
-// @exclude     https://github.com/*/*.diff
-// @exclude     https://github.com/*/*.patch
-// @version     1.6.7
-// @grant       none
+// @icon            https://github.githubassets.com/pinned-octocat.svg
+// @include         https://github.com/*
+// @exclude         https://github.com/*/*.diff
+// @exclude         https://github.com/*/*.patch
+// @version         1.6.7
+// @grant           none
 // ==/UserScript==
 
 (function() {
