@@ -1,6 +1,7 @@
 {
 	"private": true,
 	"name": "jerone-userscripts",
+	"author": "Jeroen van Warmerdam <jeronevw@hotmail.com>",
 	"version": "0.0.0",
 	"scripts": {
 		"lint": "eslint ."
