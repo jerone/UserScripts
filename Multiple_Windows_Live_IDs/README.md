@@ -21,26 +21,26 @@ Easy login with multiple Microsoft accounts.
 
 ## Compatible
 
-*   ![](https://raw.github.com/jerone/UserScripts/master/_resources/Greasemonkey.png) [Greasemonkey](https://addons.mozilla.org/firefox/addon/greasemonkey/) on ![](https://raw.github.com/jerone/UserScripts/master/_resources/Firefox.png) [Mozilla Firefox](http://www.mozilla.org/en-US/firefox/fx/#desktop) desktop.
+-   ![](https://raw.github.com/jerone/UserScripts/master/_resources/Greasemonkey.png) [Greasemonkey](https://addons.mozilla.org/firefox/addon/greasemonkey/) on ![](https://raw.github.com/jerone/UserScripts/master/_resources/Firefox.png) [Mozilla Firefox](http://www.mozilla.org/en-US/firefox/fx/#desktop) desktop.
 
 ## Version History
 
-*   **0.2.0**
+-   **0.2.0**
 
-    *   Rewrite after site changes (fixes [#103][]).
+    -   Rewrite after site changes (fixes [#103][]).
 
-*   **0.1.1**
+-   **0.1.1**
 
-    *   Doing some clean up;
-    *   Fixed info link;
+    -   Doing some clean up;
+    -   Fixed info link;
 
-*   **0.1.0**
+-   **0.1.0**
 
-    *   Initial version;
+    -   Initial version;
 
 ## External links
 
-*   [Greasy Fork](https://greasyfork.org/en/scripts/6277-multiple-windows-live-ids)
-*   [OpenUserJS](https://openuserjs.org/scripts/jerone/Multiple_Windows_Live_IDs)
+-   [Greasy Fork](https://greasyfork.org/en/scripts/6277-multiple-windows-live-ids)
+-   [OpenUserJS](https://openuserjs.org/scripts/jerone/Multiple_Windows_Live_IDs)
 
 [#103]: https://github.com/jerone/UserScripts/issues/103

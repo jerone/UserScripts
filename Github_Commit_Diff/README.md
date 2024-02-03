@@ -17,81 +17,81 @@ This works on commits, pull requests and compare pages.
 
 ## Compatible
 
-*   ![](https://raw.github.com/jerone/UserScripts/master/_resources/Tampermonkey.png) [Tampermonkey](https://addons.mozilla.org/firefox/addon/tampermonkey/) on ![](https://raw.github.com/jerone/UserScripts/master/_resources/Firefox.png) [Mozilla Firefox](http://www.mozilla.org/en-US/firefox/fx/#desktop) desktop.
+-   ![](https://raw.github.com/jerone/UserScripts/master/_resources/Tampermonkey.png) [Tampermonkey](https://addons.mozilla.org/firefox/addon/tampermonkey/) on ![](https://raw.github.com/jerone/UserScripts/master/_resources/Firefox.png) [Mozilla Firefox](http://www.mozilla.org/en-US/firefox/fx/#desktop) desktop.
 
 ## Version History
 
-*   **1.6.7**
+-   **1.6.7**
 
-    *   🐛 Fix broken icon url ([#146](https://github.com/jerone/UserScripts/pull/146)).
+    -   🐛 Fix broken icon url ([#146](https://github.com/jerone/UserScripts/pull/146)).
 
-*   **1.6.6**
+-   **1.6.6**
 
-    *   Shift open `.patch` was broken (fixes [119](https://github.com/jerone/UserScripts/issues/119)).
+    -   Shift open `.patch` was broken (fixes [119](https://github.com/jerone/UserScripts/issues/119)).
 
-*   **1.6.5**
+-   **1.6.5**
 
-    *   Fixed issues after recent layout updates.
+    -   Fixed issues after recent layout updates.
 
-*   **1.6.4**
+-   **1.6.4**
 
-    *   Fixed issues after recent layout updates.
+    -   Fixed issues after recent layout updates.
 
-*   **1.6.3**
+-   **1.6.3**
 
-    *   Fixed issues after recent layout updates.
+    -   Fixed issues after recent layout updates.
 
-*   **1.6.2**
+-   **1.6.2**
 
-    *   Fixed issues after recent layout updates.
+    -   Fixed issues after recent layout updates.
 
-*   **1.6.1**
+-   **1.6.1**
 
-    *   Tooltips now on top.
+    -   Tooltips now on top.
 
-*   **1.6**
+-   **1.6**
 
-    *   Fixed align issue with new split diffs (fixes [24](https://github.com/jerone/UserScripts/issues/24)).
+    -   Fixed align issue with new split diffs (fixes [24](https://github.com/jerone/UserScripts/issues/24)).
 
-*   **1.5**
+-   **1.5**
 
-    *   Fixed issues after recent layout updates (fixes [8](https://github.com/jerone/UserScripts/issues/8)).
+    -   Fixed issues after recent layout updates (fixes [8](https://github.com/jerone/UserScripts/issues/8)).
 
-*   **1.4**
+-   **1.4**
 
-    *   Fixed middle & right mouse clicks.
+    -   Fixed middle & right mouse clicks.
 
-*   **1.3**
+-   **1.3**
 
-    *   Added to pull requests.
-    *   Added to compare page.
+    -   Added to pull requests.
+    -   Added to compare page.
 
-*   **1.2**
+-   **1.2**
 
-    *   Added support for Scriptish.
+    -   Added support for Scriptish.
 
-*   **1.1**
+-   **1.1**
 
-    *   Clean up.
+    -   Clean up.
 
-*   **1.0**
+-   **1.0**
 
-    *   Initial version.
+    -   Initial version.
 
 ## Notes
 
 Use cases:
 
-*   <https://github.com/OpenUserJs/OpenUserJS.org/commit/aac291b83a5d5fa4fb4382080473ef3a4dd908c2> (commit)
+-   <https://github.com/OpenUserJs/OpenUserJS.org/commit/aac291b83a5d5fa4fb4382080473ef3a4dd908c2> (commit)
 
-*   <https://github.com/OpenUserJs/OpenUserJS.org/pull/327/files> (PR)
+-   <https://github.com/OpenUserJs/OpenUserJS.org/pull/327/files> (PR)
 
-*   <https://github.com/OpenUserJs/OpenUserJS.org/pull/327/commits/aac291b83a5d5fa4fb4382080473ef3a4dd908c2>
+-   <https://github.com/OpenUserJs/OpenUserJS.org/pull/327/commits/aac291b83a5d5fa4fb4382080473ef3a4dd908c2>
     (PR commit)
 
-*   <https://github.com/OpenUserJs/OpenUserJS.org/compare/master%40%7B1day%7D...master> (compare)
+-   <https://github.com/OpenUserJs/OpenUserJS.org/compare/master%40%7B1day%7D...master> (compare)
 
 ## External links
 
-*   [Greasy Fork](https://greasyfork.org/scripts/77)
-*   [OpenUserJS](https://openuserjs.org/scripts/jerone/Github_Commit_Diff)
+-   [Greasy Fork](https://greasyfork.org/scripts/77)
+-   [OpenUserJS](https://openuserjs.org/scripts/jerone/Github_Commit_Diff)

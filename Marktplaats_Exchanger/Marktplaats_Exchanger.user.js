@@ -43,13 +43,16 @@
 	selectInput.setAttribute("type", "checkbox");
 	selectInput.addEventListener("change", function selectInputChange() {
 		var checked = selectInput.checked;
-		Array.prototype.forEach.call(document.querySelectorAll(".ad-listing"), function(row) {
-			var isRemoved = row.classList.contains("removed");
-			var checkbox = row.querySelector("input.kopen-select");
-			if (checkbox.checked !== (checked && isRemoved)) {
-				checkbox.click();
-			}
-		});
+		Array.prototype.forEach.call(
+			document.querySelectorAll(".ad-listing"),
+			function (row) {
+				var isRemoved = row.classList.contains("removed");
+				var checkbox = row.querySelector("input.kopen-select");
+				if (checkbox.checked !== (checked && isRemoved)) {
+					checkbox.click();
+				}
+			},
+		);
 	});
 	button.appendChild(selectInput);
 

@@ -21,7 +21,6 @@
 // ==/UserScript==
 
 (function () {
-
 	String.format = function (string) {
 		var args = Array.prototype.slice.call(arguments, 1, arguments.length);
 		return string.replace(/{(\d+)}/g, function (match, number) {
@@ -34,46 +33,63 @@
 			return;
 		}
 
-		var meta = document.querySelector('main h1');
+		var meta = document.querySelector("main h1");
 		if (!meta) {
 			return;
 		}
 
-		var branchSelector = document.querySelector('#branch-select-menu');
+		var branchSelector = document.querySelector("#branch-select-menu");
 		if (!branchSelector) {
 			return;
 		}
 
-		var branch = document.querySelector('.SelectMenu-item[href$="/tree/gh-pages"]');
+		var branch = document.querySelector(
+			'.SelectMenu-item[href$="/tree/gh-pages"]',
+		);
 		if (branch) {
 			createLink(branch);
 		} else {
 			const observer = new MutationObserver(function () {
-				var branch2 = document.querySelector('.SelectMenu-item[href$="/tree/gh-pages"]');
+				var branch2 = document.querySelector(
+					'.SelectMenu-item[href$="/tree/gh-pages"]',
+				);
 				if (branch2) {
 					observer.disconnect();
 					createLink(branch2);
 				}
 			});
 
-			observer.observe(branchSelector, { subtree: true, childList: true });
+			observer.observe(branchSelector, {
+				subtree: true,
+				childList: true,
+			});
 
-			var dropdown = branchSelector.querySelector('ref-selector');
+			var dropdown = branchSelector.querySelector("ref-selector");
 			window.setTimeout(function () {
-				dropdown.dispatchEvent(new CustomEvent('container-mouseover', { bubbles: true }));
+				dropdown.dispatchEvent(
+					new CustomEvent("container-mouseover", { bubbles: true }),
+				);
 			}, 100);
 		}
 
 		function createLink(branch2) {
 			var tree = branch2.getAttribute("href").split("/"); // `/{user}/{repo}/tree/gh-pages`;
-			var url = String.format("{0}//{1}.github.io/{2}/", tree[0], tree[3], tree[4]);
+			var url = String.format(
+				"{0}//{1}.github.io/{2}/",
+				tree[0],
+				tree[3],
+				tree[4],
+			);
 
 			var div = document.createElement("small");
 			div.id = "GithubPagesLinker";
 			meta.parentNode.insertBefore(div, meta.nextSibling);
 
 			var img = document.createElement("img");
-			img.setAttribute("src", "https://github.githubassets.com/images/icons/emoji/octocat.png");
+			img.setAttribute(
+				"src",
+				"https://github.githubassets.com/images/icons/emoji/octocat.png",
+			);
 			img.setAttribute("align", "absmiddle");
 			img.classList.add("emoji");
 			img.style.height = "16px";
@@ -102,6 +118,5 @@
 	addLink();
 
 	// On pjax;
-	document.addEventListener('pjax:end', addLink);
-
+	document.addEventListener("pjax:end", addLink);
 })();

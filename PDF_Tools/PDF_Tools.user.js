@@ -17,8 +17,7 @@
 
 // cSpell:ignore PDF
 
-(function() {
-
+(function () {
 	//console.log(PDFJS.version);  // "1.0.277"
 
 	var mimetype = "png";
@@ -27,33 +26,47 @@
 		opened: false,
 		initialize: function secondaryToolbarInitialize() {
 			this.toolbar = document.createElement("div");
-			this.toolbar.classList.add("secondaryToolbar", "doorHangerRight", "hidden");
+			this.toolbar.classList.add(
+				"secondaryToolbar",
+				"doorHangerRight",
+				"hidden",
+			);
 			this.toolbar.style.right = "180px";
 			document.getElementById("mainContainer").appendChild(this.toolbar);
 
 			this.buttonContainer = document.createElement("div");
-			this.buttonContainer.classList.add("secondaryToolbarButtonContainer");
+			this.buttonContainer.classList.add(
+				"secondaryToolbarButtonContainer",
+			);
 			this.toolbar.appendChild(this.buttonContainer);
 
 			this.attachEvents();
 		},
 
-		attachEvents: function() {
+		attachEvents: function () {
 			/// https://github.com/mozilla/pdf.js/blob/2f5c6d6c3a75f9f44826c776dd356e2f786f35de/web/viewer.js#L2248
-			window.addEventListener("click", function click(evt) {
-				if (SecondaryToolbar.opened && unsafeWindow.PDFView.container.contains(evt.target)) {
-					SecondaryToolbar.close();
-				}
-			}, false);
+			window.addEventListener(
+				"click",
+				function click(evt) {
+					if (
+						SecondaryToolbar.opened &&
+						unsafeWindow.PDFView.container.contains(evt.target)
+					) {
+						SecondaryToolbar.close();
+					}
+				},
+				false,
+			);
 			/// https://github.com/mozilla/pdf.js/blob/2f5c6d6c3a75f9f44826c776dd356e2f786f35de/web/viewer.js#L2381
 			window.addEventListener("keydown", function keydown(evt) {
-				if (SecondaryToolbar.opened && evt.keyCode === 27) {  // esc;
+				if (SecondaryToolbar.opened && evt.keyCode === 27) {
+					// esc;
 					SecondaryToolbar.close();
 				}
 			});
 		},
 
-		render: function() {
+		render: function () {
 			console.log(unsafeWindow.PDFView.pages);
 			console.log(unsafeWindow.PDFView.pages[0].draw);
 
@@ -66,13 +79,18 @@
 				img.classList.add("secondaryToolbarButton", "download");
 				img.dataset.pageIndex = i;
 				img.setAttribute("download", "page" + page.id + "." + mimetype);
-				img.setAttribute("title", "Download 'page" + page.id + "." + mimetype + "'");
+				img.setAttribute(
+					"title",
+					"Download 'page" + page.id + "." + mimetype + "'",
+				);
 				img.style.display = "inline-block";
 				img.style.boxSizing = "border-box";
 				img.appendChild(document.createTextNode("Page " + page.id));
-				img.addEventListener("click", function() {
+				img.addEventListener("click", function () {
 					var page = pages[this.dataset.pageIndex];
-					if (!page.canvas) { page.draw(); }
+					if (!page.canvas) {
+						page.draw();
+					}
 					this.href = page.canvas.toDataURL("image/" + mimetype);
 					//window.open( page.canvas.toDataURL("image/" + mimetype));
 				});
@@ -86,9 +104,11 @@
 				img2.style.height = "16px";
 				img2.style.border = "1px solid red";
 				//img2.src = page.canvas.toDataURL("image/" + mimetype);
-				img2.src = page.canvas && page.canvas.toDataURL("image/" + mimetype) || "";
+				img2.src =
+					(page.canvas &&
+						page.canvas.toDataURL("image/" + mimetype)) ||
+					"";
 				this.buttonContainer.appendChild(img2);
-
 			}
 
 			/*
@@ -128,9 +148,11 @@
 		});*/
 		},
 
-		empty: function() {
+		empty: function () {
 			while (this.buttonContainer.hasChildNodes()) {
-				this.buttonContainer.removeChild(this.buttonContainer.lastChild);
+				this.buttonContainer.removeChild(
+					this.buttonContainer.lastChild,
+				);
 			}
 		},
 
@@ -139,7 +161,7 @@
 				return;
 			}
 			this.opened = true;
-			this.toolbar.classList.remove('hidden');
+			this.toolbar.classList.remove("hidden");
 			this.render();
 		},
 
@@ -150,7 +172,7 @@
 				return;
 			}
 			this.opened = false;
-			this.toolbar.classList.add('hidden');
+			this.toolbar.classList.add("hidden");
 			this.empty();
 		},
 
@@ -160,7 +182,7 @@
 			} else {
 				this.open();
 			}
-		}
+		},
 	};
 
 	SecondaryToolbar.initialize();
@@ -169,8 +191,7 @@
 	var btn = document.createElement("button");
 	btn.classList.add("toolbarButton", "zoomIn");
 	toolbar.insertBefore(btn, toolbar.firstChild);
-	btn.addEventListener("click", function() {
+	btn.addEventListener("click", function () {
 		SecondaryToolbar.toggle();
 	});
-
 })();

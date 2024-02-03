@@ -15,45 +15,45 @@ Add a link to GitHub Pages (gh-pages) when available.
 
 ## Compatible
 
-*   ![](https://raw.github.com/jerone/UserScripts/master/_resources/Tampermonkey.png) [Tampermonkey](https://addons.mozilla.org/firefox/addon/tampermonkey/) on ![](https://raw.github.com/jerone/UserScripts/master/_resources/Firefox.png) [Mozilla Firefox](http://www.mozilla.org/en-US/firefox/fx/#desktop) desktop.
+-   ![](https://raw.github.com/jerone/UserScripts/master/_resources/Tampermonkey.png) [Tampermonkey](https://addons.mozilla.org/firefox/addon/tampermonkey/) on ![](https://raw.github.com/jerone/UserScripts/master/_resources/Firefox.png) [Mozilla Firefox](http://www.mozilla.org/en-US/firefox/fx/#desktop) desktop.
 
 ## Version History
 
-*   **1.2.3**
+-   **1.2.3**
 
-    *   🐛 Fix broken icon url ([#146](https://github.com/jerone/UserScripts/pull/146)).
+    -   🐛 Fix broken icon url ([#146](https://github.com/jerone/UserScripts/pull/146)).
 
-*   **1.2.2**
+-   **1.2.2**
 
-    *   Fixed issues after layout updates
+    -   Fixed issues after layout updates
 
-*   **1.2.1**
+-   **1.2.1**
 
-    *   Fix 301 Moved Permanently redirects. Fixes [#72](https://github.com/jerone/UserScripts/issues/72)
+    -   Fix 301 Moved Permanently redirects. Fixes [#72](https://github.com/jerone/UserScripts/issues/72)
 
-*   **1.2**
+-   **1.2**
 
-    *   Don't add the link if it already exists (closes [#63](https://github.com/jerone/UserScripts/pull/63))
+    -   Don't add the link if it already exists (closes [#63](https://github.com/jerone/UserScripts/pull/63))
 
-*   **1.1**
+-   **1.1**
 
-    *   Added class to identify element
+    -   Added class to identify element
 
-*   **1.0**
+-   **1.0**
 
-    *   Initial version
+    -   Initial version
 
 ## Notes
 
 Test cases:
 
-*   <https://github.com/jerone/Throbber.js> with <https://jerone.github.io/Throbber.js>
+-   <https://github.com/jerone/Throbber.js> with <https://jerone.github.io/Throbber.js>
 
 ## Contributors
 
-*   [Efreak](https://github.com/Efreak)
+-   [Efreak](https://github.com/Efreak)
 
 ## External links
 
-*   [Greasy Fork](https://greasyfork.org/scripts/6519-github-pages-linker)
-*   [OpenUserJS](https://openuserjs.org/scripts/jerone/Github_Pages_Linker)
+-   [Greasy Fork](https://greasyfork.org/scripts/6519-github-pages-linker)
+-   [OpenUserJS](https://openuserjs.org/scripts/jerone/Github_Pages_Linker)

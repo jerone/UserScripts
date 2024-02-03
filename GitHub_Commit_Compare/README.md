@@ -15,27 +15,27 @@ Add controls to compare commits.
 
 ## Compatible
 
-*   ![](https://raw.github.com/jerone/UserScripts/master/_resources/Tampermonkey.png) [Tampermonkey](https://addons.mozilla.org/firefox/addon/tampermonkey/) on ![](https://raw.github.com/jerone/UserScripts/master/_resources/Firefox.png) [Mozilla Firefox](http://www.mozilla.org/en-US/firefox/fx/#desktop) desktop.
+-   ![](https://raw.github.com/jerone/UserScripts/master/_resources/Tampermonkey.png) [Tampermonkey](https://addons.mozilla.org/firefox/addon/tampermonkey/) on ![](https://raw.github.com/jerone/UserScripts/master/_resources/Firefox.png) [Mozilla Firefox](http://www.mozilla.org/en-US/firefox/fx/#desktop) desktop.
 
 ## Version History
 
-*   **0.0.3**
+-   **0.0.3**
 
-    *   🐛 Fix broken icon url ([#146](https://github.com/jerone/UserScripts/pull/146)).
+    -   🐛 Fix broken icon url ([#146](https://github.com/jerone/UserScripts/pull/146)).
 
-*   **0.0.2**
+-   **0.0.2**
 
-    *   🐛 Fix after GitHub site update (fixed by [@darkred](https://github.com/darkred) in [#128](https://github.com/jerone/UserScripts/issues/128)).
+    -   🐛 Fix after GitHub site update (fixed by [@darkred](https://github.com/darkred) in [#128](https://github.com/jerone/UserScripts/issues/128)).
 
-*   **0.0.1**
+-   **0.0.1**
 
-    *   Initial version.
+    -   Initial version.
 
 ## Contributors
 
-*   [darkred](https://github.com/darkred)
+-   [darkred](https://github.com/darkred)
 
 ## External links
 
-*   [Greasy Fork](https://greasyfork.org/en/scripts/33563-github-commit-compare)
-*   [OpenUserJS](https://openuserjs.org/scripts/jerone/GitHub_Commit_Compare)
+-   [Greasy Fork](https://greasyfork.org/en/scripts/33563-github-commit-compare)
+-   [OpenUserJS](https://openuserjs.org/scripts/jerone/GitHub_Commit_Compare)

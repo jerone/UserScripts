@@ -58,26 +58,36 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ////////////////////////////////////////////////////////////////////////////
 // Note:
 // -
-/*//////////////////////////////////////////////////////////////////////////
+/*/ /////////////////////////////////////////////////////////////////////////
 
 // cSpell:ignore plusmn
 
 //*** USERSCRIPT ***//
 (function (win, doc, und) {
-
-	var addEvent = function(node,type,fn,useCapture){if(node.addEventListener){node.addEventListener(type,fn,useCapture);}else if(node.attachEvent){node["e"+type+fn]=fn;node[type+fn]=function(){node["e"+type+fn](win.event);};node.attachEvent("on"+type,node[type+fn]);}};
+	var addEvent = function (node, type, fn, useCapture) {
+		if (node.addEventListener) {
+			node.addEventListener(type, fn, useCapture);
+		} else if (node.attachEvent) {
+			node["e" + type + fn] = fn;
+			node[type + fn] = function () {
+				node["e" + type + fn](win.event);
+			};
+			node.attachEvent("on" + type, node[type + fn]);
+		}
+	};
 
 	var UTU = {
-		init: function(){
+		init: function () {
 			var obj;
-			if((obj = doc.getElementById("script_src"))){
-
+			if ((obj = doc.getElementById("script_src"))) {
 				var container = doc.createElement("span");
 				container.style.display = "block";
 
 				var label = doc.createElement("label");
 				label.htmlFor = label.for = "inputHours";
-				label.innerHTML = (/new/i.test(location.href) ? "Create" : "Save") + " script at <code>(h:m)</code>: ";
+				label.innerHTML =
+					(/new/i.test(location.href) ? "Create" : "Save") +
+					" script at <code>(h:m)</code>: ";
 				container.appendChild(label);
 
 				var inputHours = doc.createElement("input");
@@ -103,7 +113,8 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 				var btn = doc.createElement("input");
 				btn.type = "button";
 				btn.value = "Activate timer";
-				btn.title = "Click here to activate the timer to submit this script at a specific time!";
+				btn.title =
+					"Click here to activate the timer to submit this script at a specific time!";
 				btn.style.marginRight = "10px";
 				container.appendChild(btn);
 
@@ -113,19 +124,25 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 				container.appendChild(label2);
 
 				var node = obj.nextSibling;
-				while(node.nodeType==3 || !/\S/.test(node.nodeValue)){
+				while (node.nodeType == 3 || !/\S/.test(node.nodeValue)) {
 					node = node.nextSibling;
 				}
-				if(/new/i.test(location.href)){
+				if (/new/i.test(location.href)) {
 					node.parentNode.insertBefore(container, node.nextSibling);
 				} else {
 					node.insertBefore(container, node.firstChild);
 				}
 
 				var interval, timeout;
-				addEvent(inputHours, "keyup", function(e){
-					if(e.keyCode==9 || e.keyCode==16 || e.keyCode==17 || e.keyCode==18) return;  // tab, shift, ctrl, alt;
-					if(this.value.length>=2){
+				addEvent(inputHours, "keyup", function (e) {
+					if (
+						e.keyCode == 9 ||
+						e.keyCode == 16 ||
+						e.keyCode == 17 ||
+						e.keyCode == 18
+					)
+						return; // tab, shift, ctrl, alt;
+					if (this.value.length >= 2) {
 						inputMinutes.select();
 					}
 					btn.disabled = false;
@@ -134,9 +151,15 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 					win.clearTimeout(timeout);
 					clock();
 				});
-				addEvent(inputMinutes, "keyup", function(e){
-					if(e.keyCode==9 || e.keyCode==16 || e.keyCode==17 || e.keyCode==18) return;  // tab, shift, ctrl, alt;
-					if(this.value.length>=2){
+				addEvent(inputMinutes, "keyup", function (e) {
+					if (
+						e.keyCode == 9 ||
+						e.keyCode == 16 ||
+						e.keyCode == 17 ||
+						e.keyCode == 18
+					)
+						return; // tab, shift, ctrl, alt;
+					if (this.value.length >= 2) {
 						btn.focus();
 					}
 					btn.disabled = false;
@@ -145,64 +168,112 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 					win.clearTimeout(timeout);
 					clock();
 				});
-				addEvent(btn, "click", function(){
-					if(!this.disabled){
+				addEvent(btn, "click", function () {
+					if (!this.disabled) {
 						this.disabled = true;
 						this.value = "Timer active";
 						this.focus();
-						timeout = win.setTimeout(function(){
-							var form = doc.evaluate("//form[contains(@action, 'create') or contains(@action, 'edit_src')]", doc, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+						timeout = win.setTimeout(function () {
+							var form = doc.evaluate(
+								"//form[contains(@action, 'create') or contains(@action, 'edit_src')]",
+								doc,
+								null,
+								XPathResult.FIRST_ORDERED_NODE_TYPE,
+								null,
+							).singleNodeValue;
 							form && form.submit && form.submit();
 							win.clearInterval(interval);
 							win.clearTimeout(timeout);
 						}, clock());
-						interval = win.setInterval(function(){
+						interval = win.setInterval(function () {
 							clock();
-						}, 30 * 1000);  // every half a minute;
+						}, 30 * 1000); // every half a minute;
 					}
 				});
 
-				function clock(){
+				function clock() {
 					var h = Number(inputHours.value) || 0,
 						m = Number(inputMinutes.value) || 0,
-						timer = (new Date().setHours(h, m, 0, 0) - new Date().getTime());
-					if(timer<0){  // -
-						timer += 24 * 60 * 60 * 1000;  // +24 hour;
+						timer =
+							new Date().setHours(h, m, 0, 0) -
+							new Date().getTime();
+					if (timer < 0) {
+						// -
+						timer += 24 * 60 * 60 * 1000; // +24 hour;
 					}
-					label2.innerHTML = "&nbsp;&plusmn;&nbsp;" + humanize(timer) + " remaining.&nbsp;";
+					label2.innerHTML =
+						"&nbsp;&plusmn;&nbsp;" +
+						humanize(timer) +
+						" remaining.&nbsp;";
 					return timer;
 				}
 
-				function humanize(n, shorten){
+				function humanize(n, shorten) {
 					shorten = shorten || false;
 					var txt = false,
 						unites = [
-							{name: "millisecond",	plural: "milliseconds",	min: 0, max: 1000},
-							{name: "second",		plural: "seconds",		min: 1000, max: 60*1000},
-							{name: "minute",		plural: "minutes",		min: 60*1000, max: 60*60*1000},
-							{name: "hour",			plural: "hours",		min: 60*60*1000, max: 24*60*60*1000},
-							{name: "day",			plural: "days",			min: 24*60*60*1000, max: 7*24*60*60*1000},
-							{name: "week",			plural: "weeks",		min: 7*24*60*60*1000, max: 365*24*60*60*1000},
-							{name: "year",			plural: "years",		min: 365*24*60*60*1000, max: Infinity}],
-						i = 0, unit;
-					for(; unit = unites[i]; i++){
-						if(unit.min<=n && n<unit.max){
+							{
+								name: "millisecond",
+								plural: "milliseconds",
+								min: 0,
+								max: 1000,
+							},
+							{
+								name: "second",
+								plural: "seconds",
+								min: 1000,
+								max: 60 * 1000,
+							},
+							{
+								name: "minute",
+								plural: "minutes",
+								min: 60 * 1000,
+								max: 60 * 60 * 1000,
+							},
+							{
+								name: "hour",
+								plural: "hours",
+								min: 60 * 60 * 1000,
+								max: 24 * 60 * 60 * 1000,
+							},
+							{
+								name: "day",
+								plural: "days",
+								min: 24 * 60 * 60 * 1000,
+								max: 7 * 24 * 60 * 60 * 1000,
+							},
+							{
+								name: "week",
+								plural: "weeks",
+								min: 7 * 24 * 60 * 60 * 1000,
+								max: 365 * 24 * 60 * 60 * 1000,
+							},
+							{
+								name: "year",
+								plural: "years",
+								min: 365 * 24 * 60 * 60 * 1000,
+								max: Infinity,
+							},
+						],
+						i = 0,
+						unit;
+					for (; (unit = unites[i]); i++) {
+						if (unit.min <= n && n < unit.max) {
 							var val = Math.floor(n / (unit.min || 1)),
-								one = val==1;
-							txt = (!one && !shorten ? val + " " : "") + (!one ? unit.plural : unit.name);
+								one = val == 1;
+							txt =
+								(!one && !shorten ? val + " " : "") +
+								(!one ? unit.plural : unit.name);
 						}
 					}
 					return txt;
 				}
 			}
-		}
+		},
 	};
 
 	UTU.init();
-
 })(this, document);
-
-
 
 //*** STATISTICS ***//
 // Chars (exclude spaces): 6.048

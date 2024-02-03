@@ -9,13 +9,13 @@
 
 Share your [GitHub Gist](https://gist.github.com) to:
 
-*   [Twitter](http://twitter.com).
+-   [Twitter](http://twitter.com).
 
-*   UserScript (when a file ends with `.user.js`).
+-   UserScript (when a file ends with `.user.js`).
 
-*   [Dabblet](http://dabblet.com).
+-   [Dabblet](http://dabblet.com).
 
-*   [Bl.ocks](https://bl.ocks.org) (when Gist contains a `index.html` or
+-   [Bl.ocks](https://bl.ocks.org) (when Gist contains a `index.html` or
     `README.md` file).
 
 ## Screenshot
@@ -24,78 +24,78 @@ Share your [GitHub Gist](https://gist.github.com) to:
 
 ## Compatible
 
-*   ![](https://raw.github.com/jerone/UserScripts/master/_resources/Tampermonkey.png) [Tampermonkey](https://addons.mozilla.org/firefox/addon/tampermonkey/) on ![](https://raw.github.com/jerone/UserScripts/master/_resources/Firefox.png) [Mozilla Firefox](http://www.mozilla.org/en-US/firefox/fx/#desktop) desktop.
+-   ![](https://raw.github.com/jerone/UserScripts/master/_resources/Tampermonkey.png) [Tampermonkey](https://addons.mozilla.org/firefox/addon/tampermonkey/) on ![](https://raw.github.com/jerone/UserScripts/master/_resources/Firefox.png) [Mozilla Firefox](http://www.mozilla.org/en-US/firefox/fx/#desktop) desktop.
 
 ## Version History
 
-*   **5.1**
+-   **5.1**
 
-    *   🐛 Fix broken icon url ([#146](https://github.com/jerone/UserScripts/pull/146)).
+    -   🐛 Fix broken icon url ([#146](https://github.com/jerone/UserScripts/pull/146)).
 
-*   **5.0**
+-   **5.0**
 
-    *   Complete rewrite to make it work again.
+    -   Complete rewrite to make it work again.
 
-*   **4.5**
+-   **4.5**
 
-    *   Added Bl.ocks support.
+    -   Added Bl.ocks support.
 
-*   **4.4**
+-   **4.4**
 
-    *   Fixed code after layout changes.
-    *   Removed old code for Github Gist Dabblet.
-    *   Fixed JSHint errors.
+    -   Fixed code after layout changes.
+    -   Removed old code for Github Gist Dabblet.
+    -   Fixed JSHint errors.
 
-*   **4.3**
+-   **4.3**
 
-    *   Converted userscript icon to data uri as USO isn't available anymore.
-    *   Fixed counting files.
-    *   JSHint fixes.
+    -   Converted userscript icon to data uri as USO isn't available anymore.
+    -   Fixed counting files.
+    -   JSHint fixes.
 
-*   **4.2**
+-   **4.2**
 
-    *   Added support for Scriptish.
+    -   Added support for Scriptish.
 
-*   **4.1**
+-   **4.1**
 
-    *   Namespace update.
+    -   Namespace update.
 
-*   **4.0**
+-   **4.0**
 
-    *   Added Userscript support.
+    -   Added Userscript support.
 
-*   **3.0**
+-   **3.0**
 
-    *   Added Dabblet.
+    -   Added Dabblet.
 
-*   **2.0**
+-   **2.0**
 
-    *   Added Twitter.
+    -   Added Twitter.
 
-*   **1.0**
+-   **1.0**
 
-    *   Initial version.
+    -   Initial version.
 
 ## Test case
 
-*   <https://gist.github.com/jerone/9925179> (Twitter with own username
+-   <https://gist.github.com/jerone/9925179> (Twitter with own username
     `Check out my #gist "Github Flavored Markdown Stylesheet for Web
-    Essentials" on @github - 8 stars, 4 forks, 2 revisions -
-    https://gist.github.com/jerone/9925179`).
+Essentials" on @github - 8 stars, 4 forks, 2 revisions -
+https://gist.github.com/jerone/9925179`).
 
-*   <https://gist.github.com/jerone/9925179/forks> (Twitter).
+-   <https://gist.github.com/jerone/9925179/forks> (Twitter).
 
-*   <https://gist.github.com/rog1039/cdad9a8149fb830a97a7> (forked Gist).
+-   <https://gist.github.com/rog1039/cdad9a8149fb830a97a7> (forked Gist).
 
-*   <https://gist.github.com/jerone/e38e8637887559870d84> (two Userscripts).
+-   <https://gist.github.com/jerone/e38e8637887559870d84> (two Userscripts).
 
-*   <https://gist.github.com/jerone/48eeb3344c1251e60a4e5047b9bcc6cf> (Dabblet
+-   <https://gist.github.com/jerone/48eeb3344c1251e60a4e5047b9bcc6cf> (Dabblet
     <http://dabblet.com/gist/48eeb3344c1251e60a4e5047b9bcc6cf>).
 
-*   <https://gist.github.com/jerone/2ef05bf4c8d5102adda0625da5a9720e> (Bl.ocks
+-   <https://gist.github.com/jerone/2ef05bf4c8d5102adda0625da5a9720e> (Bl.ocks
     <https://bl.ocks.org/jerone/2ef05bf4c8d5102adda0625da5a9720e>).
 
 ## External links
 
-*   [Greasy Fork](https://greasyfork.org/scripts/54-github-gist-share)
-*   [OpenUserJS](https://openuserjs.org/scripts/jerone/Github_Gist_Share)
+-   [Greasy Fork](https://greasyfork.org/scripts/54-github-gist-share)
+-   [OpenUserJS](https://openuserjs.org/scripts/jerone/Github_Gist_Share)

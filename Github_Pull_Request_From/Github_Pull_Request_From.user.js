@@ -21,38 +21,48 @@
 // ==/UserScript==
 
 (function () {
-
 	String.format = function (string) {
 		var args = Array.prototype.slice.call(arguments, 1, arguments.length);
 		return string.replace(/{(\d+)}/g, function (match, number) {
-			return typeof args[number] !== 'undefined' ? args[number] : match;
+			return typeof args[number] !== "undefined" ? args[number] : match;
 		});
 	};
 
 	function init() {
-		Array.prototype.filter.call(document.querySelectorAll('.commit-ref[title], .base-ref[title], .head-ref[title]'), function (treeSpan) {
-			return !treeSpan.querySelector('.unknown-repo');
-		}).forEach(function (treeSpan) {
-			const [repo, branch] = treeSpan.title.split(':');
-			var treeParts = treeSpan.querySelectorAll('.css-truncate-target');
-			var treeLink = document.createElement('a');
+		Array.prototype.filter
+			.call(
+				document.querySelectorAll(
+					".commit-ref[title], .base-ref[title], .head-ref[title]",
+				),
+				function (treeSpan) {
+					return !treeSpan.querySelector(".unknown-repo");
+				},
+			)
+			.forEach(function (treeSpan) {
+				const [repo, branch] = treeSpan.title.split(":");
+				var treeParts = treeSpan.querySelectorAll(
+					".css-truncate-target",
+				);
+				var treeLink = document.createElement("a");
 
-			// Show underline on hover.
-			Array.prototype.forEach.call(treeParts, function (part) {
-				part.style.display = 'inline';
+				// Show underline on hover.
+				Array.prototype.forEach.call(treeParts, function (part) {
+					part.style.display = "inline";
+				});
+
+				treeLink.setAttribute(
+					"href",
+					String.format("/{0}/tree/{1}", repo, branch),
+				);
+				treeLink.innerHTML = treeSpan.innerHTML;
+				treeSpan.innerHTML = "";
+				treeSpan.appendChild(treeLink);
 			});
-
-			treeLink.setAttribute('href', String.format('/{0}/tree/{1}', repo, branch));
-			treeLink.innerHTML = treeSpan.innerHTML;
-			treeSpan.innerHTML = '';
-			treeSpan.appendChild(treeLink);
-		});
 	}
 
 	// Page load.
 	init();
 
 	// On pjax.
-	document.addEventListener('pjax:end', init);
-
+	document.addEventListener("pjax:end", init);
 })();

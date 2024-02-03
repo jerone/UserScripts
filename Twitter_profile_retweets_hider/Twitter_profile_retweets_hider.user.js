@@ -19,50 +19,61 @@
 // @grant            none
 // ==/UserScript==
 
-(function() {
-
+(function () {
 	var settingsKey = "userscript_hide_retweets",
 		selector = ".js-stream-tweet[data-retweet-id]",
 		textOn = "Show Retweets",
 		textOff = "Hide Retweets";
 
 	function addMenuItem() {
-
 		// ignore own account;
 		//if(document.body.classList.contains("logged-in") && location.href === document.querySelector(".profile a").href) return;
 
 		// tweets timeline;
-		var timeline = document.getElementById("stream-items-id") || document.getElementsByClassName("GridTimeline")[0];
+		var timeline =
+			document.getElementById("stream-items-id") ||
+			document.getElementsByClassName("GridTimeline")[0];
 		if (!timeline) return;
 
 		// user menu;
-		var menuDivider = document.getElementsByClassName("dropdown-divider is-following")[0];
+		var menuDivider = document.getElementsByClassName(
+			"dropdown-divider is-following",
+		)[0];
 		if (!menuDivider) return;
 
 		// setting;
 		var settingSaved = !!~~localStorage.getItem(settingsKey, +true);
 
 		// work-around to get new tweets;
-		var loadTweets = function() {
+		var loadTweets = function () {
 			var y = 0;
 			function scroll() {
 				y++;
-				window.scrollTo(document.documentElement.scrollLeft, document.documentElement.scrollTop + 1);
+				window.scrollTo(
+					document.documentElement.scrollLeft,
+					document.documentElement.scrollTop + 1,
+				);
 				if (y < 10) {
 					window.setTimeout(scroll, 13);
 				} else {
-					window.scrollTo(document.documentElement.scrollLeft, document.documentElement.scrollTop - y);
+					window.scrollTo(
+						document.documentElement.scrollLeft,
+						document.documentElement.scrollTop - y,
+					);
 				}
 			}
 			window.setTimeout(scroll, 13);
 		};
 
 		// toggle visibility;
-		var toggle = function(hide, init) {
-			window.setTimeout(function() {
-				Array.forEach(document.querySelectorAll(selector), function(tweet) {
-					tweet.style.display = (!hide ? "block" : "none");
-				});
+		var toggle = function (hide, init) {
+			window.setTimeout(function () {
+				Array.forEach(
+					document.querySelectorAll(selector),
+					function (tweet) {
+						tweet.style.display = !hide ? "block" : "none";
+					},
+				);
 
 				if (hide && init) {
 					loadTweets();
@@ -74,16 +85,16 @@
 		var liShow = document.createElement("li");
 		liShow.appendChild(document.createTextNode(textOn));
 		liShow.classList.add("dropdown-link");
-		liShow.style.display = (settingSaved ? "block" : "none");
+		liShow.style.display = settingSaved ? "block" : "none";
 		menuDivider.parentNode.insertBefore(liShow, menuDivider.nextSibling);
 
 		var liHide = document.createElement("li");
 		liHide.appendChild(document.createTextNode(textOff));
 		liHide.classList.add("dropdown-link");
-		liHide.style.display = (!settingSaved ? "block" : "none");
+		liHide.style.display = !settingSaved ? "block" : "none";
 		menuDivider.parentNode.insertBefore(liHide, menuDivider.nextSibling);
 
-		liShow.addEventListener("click", function(e) {
+		liShow.addEventListener("click", function (e) {
 			e.preventDefault();
 			localStorage.setItem(settingsKey, +false);
 			toggle(false);
@@ -92,7 +103,7 @@
 			return false;
 		});
 
-		liHide.addEventListener("click", function(e) {
+		liHide.addEventListener("click", function (e) {
 			e.preventDefault();
 			localStorage.setItem(settingsKey, +true);
 			toggle(true);
@@ -102,8 +113,8 @@
 		});
 
 		// new tweets are loaded, handle accordingly;
-		new MutationObserver(function(mutations) {
-			mutations.forEach(function(mutation) {
+		new MutationObserver(function (mutations) {
+			mutations.forEach(function (mutation) {
 				toggle(!!~~localStorage.getItem(settingsKey, +true));
 			});
 		}).observe(timeline, { childList: true });
@@ -112,10 +123,10 @@
 		toggle(settingSaved, true);
 	}
 
-	window.setTimeout(function() {
+	window.setTimeout(function () {
 		addMenuItem();
 
-		unsafeWindow.$(document).on("uiPageChanged", function() {
+		unsafeWindow.$(document).on("uiPageChanged", function () {
 			addMenuItem();
 		});
 	}, 1);
@@ -149,5 +160,4 @@
 		});
 	};
 	*/
-
 })();

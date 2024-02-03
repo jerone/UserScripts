@@ -14,12 +14,12 @@
 
 // cSpell:ignore transform, aprilfool
 
-if(window.top===window){
+if (window.top === window) {
+	var duration = 2000, // [Integer, positive, milliseconds] This controls the duration of an april fool item;
+		interval = 8000; // [Integer, positive, milliseconds] This controls the interval of the next april fool;
 
-	var duration = 2000,	// [Integer, positive, milliseconds] This controls the duration of an april fool item;
-		interval = 8000;	// [Integer, positive, milliseconds] This controls the interval of the next april fool;
-
-	var aprilFools = [		// [String] April fools in CSS; Use {duration} for a dynamic duration;
+	var aprilFools = [
+			// [String] April fools in CSS; Use {duration} for a dynamic duration;
 			"img {										\
 				-webkit-transform: rotate(180deg);		\
 				   -moz-transform: rotate(180deg);		\
@@ -65,23 +65,37 @@ if(window.top===window){
 				100% { -webkit-filter: hue-rotate(360deg); }				\
 			}",
 		],
-		aprilFool = 0, aprilFooled = 0;
+		aprilFool = 0,
+		aprilFooled = 0;
 
 	interval = Math.abs(interval);
 	duration = Math.max(1000, Math.abs(duration));
 
-	window.setInterval(function(){
-		do { aprilFool = Math.floor(Math.random() * aprilFools.length);
-		} while(aprilFool === aprilFooled);
-		document.documentElement.classList.add("aprilfool" + (aprilFooled = aprilFool));
-		window.console&&console.log("added aprilfool" + aprilFool);
-		window.setTimeout(function(){
-			document.documentElement.classList.remove("aprilfool" + aprilFooled);
-			window.console&&console.log("removed aprilfool" + aprilFool);
-		}, duration);
-	}, interval + duration + 10);
+	window.setInterval(
+		function () {
+			do {
+				aprilFool = Math.floor(Math.random() * aprilFools.length);
+			} while (aprilFool === aprilFooled);
+			document.documentElement.classList.add(
+				"aprilfool" + (aprilFooled = aprilFool),
+			);
+			window.console && console.log("added aprilfool" + aprilFool);
+			window.setTimeout(function () {
+				document.documentElement.classList.remove(
+					"aprilfool" + aprilFooled,
+				);
+				window.console && console.log("removed aprilfool" + aprilFool);
+			}, duration);
+		},
+		interval + duration + 10,
+	);
 
-	for(var aprilFool in aprilFools){
-		GM_addStyle(".aprilfool" + aprilFool + " " + aprilFools[aprilFool].replace("{duration}", duration/1000));
+	for (var aprilFool in aprilFools) {
+		GM_addStyle(
+			".aprilfool" +
+				aprilFool +
+				" " +
+				aprilFools[aprilFool].replace("{duration}", duration / 1000),
+		);
 	}
 }

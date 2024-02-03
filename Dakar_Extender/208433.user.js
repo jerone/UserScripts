@@ -14,17 +14,13 @@
 
 // cSpell:ignore dakar
 
-(function(){
+(function () {
+	var countryCode = "NLD";
 
-    var countryCode = "NLD";
-
-    $(function(){
-        $("tr:contains('\("+countryCode+"\)')").css("font-weight","bold");
-    });
-
+	$(function () {
+		$("tr:contains('(" + countryCode + ")')").css("font-weight", "bold");
+	});
 })();
-
-
 
 // ==UserStats==
 // Chars (excl. spaces): 610

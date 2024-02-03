@@ -63,32 +63,37 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ////////////////////////////////////////////////////////////////////////////
 // Note:
 // -
-/*//////////////////////////////////////////////////////////////////////////
+/*/ /////////////////////////////////////////////////////////////////////////
 
 // cSpell:ignore andale, lucida, cellspacing
 
 //*** USERSCRIPT ***//
-(function(win, doc, und) {
-
-	var xPath = function(xpath, root){
+(function (win, doc, und) {
+	var xPath = function (xpath, root) {
 		var next,
 			got = doc.evaluate(xpath, root || doc, null, null, null),
 			result = [];
-		while((next = got.iterateNext())) result.push(next);
+		while ((next = got.iterateNext())) result.push(next);
 		return result;
 	};
 
 	var UDE = {
-		init: function(){
+		init: function () {
 			var pre;
-			if((pre = doc.getElementById("content").getElementsByTagName("pre")[0])){
+			if (
+				(pre = doc
+					.getElementById("content")
+					.getElementsByTagName("pre")[0])
+			) {
 				pre.style.paddingLeft = "15px";
 				pre.style.lineHeight = "17px";
 				pre.style.paddingTop = "0";
 
-				var scrollWidth = (Math.max(parseInt(pre.scrollWidth), 0) || 1000) + "px";
+				var scrollWidth =
+					(Math.max(parseInt(pre.scrollWidth), 0) || 1000) + "px";
 
-				var css = "																			\
+				var css =
+					"																			\
 					.diff {																			\
 						background-color:	#EEEEEE;												\
 						float:				left;													\
@@ -148,7 +153,7 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 				table.className = "diffNr";
 				div.appendChild(table);
 
-				xPath(".//div[@class='meta']", pre).forEach(function(meta){
+				xPath(".//div[@class='meta']", pre).forEach(function (meta) {
 					meta.style.marginLeft = "-15px";
 					meta.style.width = scrollWidth;
 
@@ -167,13 +172,20 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 					tdAdd.appendChild(doc.createTextNode("+"));
 					tr.appendChild(tdAdd);
 
-					var iOld = meta.textContent.match(/^@@\s\-(\d+),\d+\s\+(\d+),\d+\s@@/)[1];
-					var iNew = meta.textContent.match(/^@@\s\-(\d+),\d+\s\+(\d+),\d+\s@@/)[2];
-					while(meta.nextSibling && meta.nextSibling.className!="meta"){
+					var iOld = meta.textContent.match(
+						/^@@\s\-(\d+),\d+\s\+(\d+),\d+\s@@/,
+					)[1];
+					var iNew = meta.textContent.match(
+						/^@@\s\-(\d+),\d+\s\+(\d+),\d+\s@@/,
+					)[2];
+					while (
+						meta.nextSibling &&
+						meta.nextSibling.className != "meta"
+					) {
 						var temp = meta.nextSibling.textContent.split(/\n/);
 						temp.splice(-1, 1);
 						var tdDel, tdAdd;
-						temp.forEach(function(item){
+						temp.forEach(function (item) {
 							var tr = doc.createElement("tr");
 							table.appendChild(tr);
 
@@ -183,22 +195,25 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 							tdAdd = doc.createElement("td");
 							tr.appendChild(tdAdd);
 
-							if(!item.match(/^\+/)){
+							if (!item.match(/^\+/)) {
 								tdDel.className = "diffAdd";
 								tdDel.appendChild(doc.createTextNode(iOld));
 								iOld++;
 							}
-							if(!item.match(/^\-/)){
+							if (!item.match(/^\-/)) {
 								tdAdd.className = "diffDel";
 								tdAdd.appendChild(doc.createTextNode(iNew));
 								iNew++;
 							}
 						});
-						if(meta.nodeType===3){
+						if (meta.nodeType === 3) {
 							tdDel.style.borderTop = "1px solid #FF8888";
 							tdAdd.style.borderTop = "1px solid #99FF99";
 						}
-						if(meta.nextSibling.nextSibling && meta.nextSibling.nextSibling.nodeType===3){
+						if (
+							meta.nextSibling.nextSibling &&
+							meta.nextSibling.nextSibling.nodeType === 3
+						) {
 							tdDel.style.borderBottom = "1px solid #FF8888";
 							tdAdd.style.borderBottom = "1px solid #99FF99";
 						}
@@ -206,29 +221,41 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 					}
 				});
 
-				xPath(".//div[@class='del' or @class='add']", pre).forEach(function(del){
-					var temp = del.textContent;
-					del.style.width = scrollWidth;
-					del.style.marginLeft = "-15px";
-					del.style.borderColor = (/^\-/.test(temp) ? "#AA3333" : "#33AA33");
-					del.style.borderStyle = "solid";
-					del.style.borderWidth = (del.previousSibling.nodeType==3 ? "1px" : "0px") + " 1px " + (del.nextSibling.nodeType==3 ? "1px" : "0px") + " 1px";
-					while(del.hasChildNodes()) del.removeChild(del.firstChild);
-					del.appendChild(doc.createTextNode(temp.replace(/^[\+\-]/, "")));
-					var span = doc.createElement("span");
-					span.className = (/^\-/.test(temp) ? "diffAdd" : "diffDel") + " diffSim";
-					span.innerHTML = temp.match(/^[\+\-]/);
-					del.insertBefore(span, del.firstChild);
-				});
+				xPath(".//div[@class='del' or @class='add']", pre).forEach(
+					function (del) {
+						var temp = del.textContent;
+						del.style.width = scrollWidth;
+						del.style.marginLeft = "-15px";
+						del.style.borderColor = /^\-/.test(temp)
+							? "#AA3333"
+							: "#33AA33";
+						del.style.borderStyle = "solid";
+						del.style.borderWidth =
+							(del.previousSibling.nodeType == 3
+								? "1px"
+								: "0px") +
+							" 1px " +
+							(del.nextSibling.nodeType == 3 ? "1px" : "0px") +
+							" 1px";
+						while (del.hasChildNodes())
+							del.removeChild(del.firstChild);
+						del.appendChild(
+							doc.createTextNode(temp.replace(/^[\+\-]/, "")),
+						);
+						var span = doc.createElement("span");
+						span.className =
+							(/^\-/.test(temp) ? "diffAdd" : "diffDel") +
+							" diffSim";
+						span.innerHTML = temp.match(/^[\+\-]/);
+						del.insertBefore(span, del.firstChild);
+					},
+				);
 			}
-		}
+		},
 	};
 
-	UDE.init();  // execute;
-
+	UDE.init(); // execute;
 })(this, document);
-
-
 
 //*** STATISTICS ***//
 // Chars (exclude spaces): 6.091

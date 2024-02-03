@@ -59,35 +59,34 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ////////////////////////////////////////////////////////////////////////////
 // Note:
 // -
-/*//////////////////////////////////////////////////////////////////////////
-
+/*/ /////////////////////////////////////////////////////////////////////////
 
 //*** USER SETTINGS ***//
-var updateTime =	3*60*60*1000;	// [Number] update time (we don't want to flood userscripts.org);
-
-
+var updateTime = 3 * 60 * 60 * 1000; // [Number] update time (we don't want to flood userscripts.org);
 
 //*** USERSCRIPT ***//
-(function(win, doc, und) {
+(function (win, doc, und) {
 	try {
-
 		var UTC = {
-			init: function(){
-				var table = doc.getElementById("main").getElementsByClassName("wide forums")[0],
+			init: function () {
+				var table = doc
+						.getElementById("main")
+						.getElementsByClassName("wide forums")[0],
 					trs = table.getElementsByTagName("tr"),
 					ths = trs[0].getElementsByTagName("th"),
 					tds = [],
 					postsIndex,
 					topics = eval(GM_getValue("UTC.topics", {}));
-				Array.forEach(ths, function(th){
-					if(/\bPosts\b/g.test(th.innerHTML)){
+				Array.forEach(ths, function (th) {
+					if (/\bPosts\b/g.test(th.innerHTML)) {
 						postsIndex = th.cellIndex;
 					}
 				});
-				if(trs.length && postsIndex){
-					Array.forEach(trs, function(tr){
+				if (trs.length && postsIndex) {
+					Array.forEach(trs, function (tr) {
 						var column = tr.cells[postsIndex];
-						if(!/scripts\-/.test(tr.id)){  // Header;
+						if (!/scripts\-/.test(tr.id)) {
+							// Header;
 							var th = doc.createElement("th");
 							th.className = "la";
 							th.width = "1%";
@@ -97,7 +96,8 @@ var updateTime =	3*60*60*1000;	// [Number] update time (we don't want to flood u
 							a.href = "/home/scripts?sort=topics";
 							a.innerHTML = "Topics";
 							th.appendChild(a);
-						} else {  // Script row;
+						} else {
+							// Script row;
 							var td = doc.createElement("td");
 							td.className = "inv lp";
 							td.innerHTML = "...";
@@ -107,51 +107,79 @@ var updateTime =	3*60*60*1000;	// [Number] update time (we don't want to flood u
 
 							var nr = tr.id.match(/\d+/)[0],
 								now = new Date().getTime();
-							if(typeof(topics[nr])==="number" && now - parseInt(GM_getValue("UTC.lastCheck", 0), 10) < updateTime){
+							if (
+								typeof topics[nr] === "number" &&
+								now -
+									parseInt(
+										GM_getValue("UTC.lastCheck", 0),
+										10,
+									) <
+									updateTime
+							) {
 								td.innerHTML = topics[nr] || 0;
 							} else {
 								GM_xmlhttpRequest({
-									method:	"GET",
-									url:	"http://userscripts.org/scripts/show/" + nr,
-									onload:	(function(td, nr){
-										return function countTopics(x){
+									method: "GET",
+									url:
+										"http://userscripts.org/scripts/show/" +
+										nr,
+									onload: (function (td, nr) {
+										return function countTopics(x) {
 											var t = 0,
-												n = x.responseText.match(/\"\>(\d+)\s+topics?,\s+\d+\s+posts?/);
-											if(n && n.length && n[1] && !isNaN(n[1])){
+												n = x.responseText.match(
+													/\"\>(\d+)\s+topics?,\s+\d+\s+posts?/,
+												);
+											if (
+												n &&
+												n.length &&
+												n[1] &&
+												!isNaN(n[1])
+											) {
 												t = parseInt(n[1], 10);
 											}
 											td.innerHTML = t;
 											topics[nr] = t;
-											GM_setValue("UTC.topics", topics.toSource());
-											GM_setValue("UTC.lastCheck", new Date().getTime().toString());
+											GM_setValue(
+												"UTC.topics",
+												topics.toSource(),
+											);
+											GM_setValue(
+												"UTC.lastCheck",
+												new Date().getTime().toString(),
+											);
 										};
-									})(td, nr)
+									})(td, nr),
 								});
 							}
 						}
 					});
 
-					if(/scripts\?sort=topics/i.test(win.location.href)){
-						tds.sort(function(a, b){
-							return parseInt(a.innerHTML, 10) - parseInt(b.innerHTML, 10);
+					if (/scripts\?sort=topics/i.test(win.location.href)) {
+						tds.sort(function (a, b) {
+							return (
+								parseInt(a.innerHTML, 10) -
+								parseInt(b.innerHTML, 10)
+							);
 						});
 						var i = tds.length - 1,
 							row;
-						for(; i>=0; i--){
+						for (; i >= 0; i--) {
 							row = tds[i].parentNode.parentNode.lastChild;
-							row.parentNode.insertBefore(tds[i].parentNode, row.nextSibling);
+							row.parentNode.insertBefore(
+								tds[i].parentNode,
+								row.nextSibling,
+							);
 						}
 					}
 				}
-			}
-		}
+			},
+		};
 
-		UTC.init();  // execute;
-
-	} catch(e){ win.console && win.console.log(e); }
+		UTC.init(); // execute;
+	} catch (e) {
+		win.console && win.console.log(e);
+	}
 })(unsafeWindow || this, document);
-
-
 
 //*** STATISTICS ***//
 // Chars (exclude spaces): 4.132

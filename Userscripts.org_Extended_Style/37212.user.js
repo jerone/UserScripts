@@ -10,7 +10,8 @@
 // @grant        GM_addStyle
 // ==/UserScript==
 
-GM_addStyle("												\
+GM_addStyle(
+	"												\
 															\
 	/* script management header link fix */					\
 	#home-scripts th a,										\
@@ -61,9 +62,8 @@ GM_addStyle("												\
 		background-color: AntiqueWhite;						\
 	}														\
 															\
-");
-
-
+",
+);
 
 //*** STATISTICS ***//
 // Chars (exclude spaces): 1.427

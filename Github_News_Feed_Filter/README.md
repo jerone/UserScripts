@@ -13,51 +13,51 @@ This script also works for organizations.
 
 Currently integrated filters:
 
-*   **Actions**
+-   **Actions**
 
-    *   Commits
+    -   Commits
 
-        *   Pushed
-        *   Comments
+        -   Pushed
+        -   Comments
 
-    *   Repo
+    -   Repo
 
-        *   Created
+        -   Created
 
-        *   Public
+        -   Public
 
-        *   Forked
+        -   Forked
 
-        *   Deleted
+        -   Deleted
 
-        *   Release
+        -   Release
 
-        *   Branch
+        -   Branch
 
-            *   Created
-            *   Deleted
+            -   Created
+            -   Deleted
 
-        *   Tag
+        -   Tag
 
-            *   Added
-            *   Removed
+            -   Added
+            -   Removed
 
-    *   Follow
+    -   Follow
 
-    *   Starred
+    -   Starred
 
-    *   Wiki
+    -   Wiki
 
-        *   Created
-        *   Edited
+        -   Created
+        -   Edited
 
-*   **Repositories**
+-   **Repositories**
 
-    *   _Variable on the repos currently in your news list._
+    -   _Variable on the repos currently in your news list._
 
-*   **Users**
+-   **Users**
 
-    *   _Variable on the users currently in your news list._
+    -   _Variable on the users currently in your news list._
 
 ## Screenshot
 
@@ -65,162 +65,162 @@ Currently integrated filters:
 
 ## Compatible
 
-*   ![](https://raw.github.com/jerone/UserScripts/master/_resources/Tampermonkey.png) [Tampermonkey](https://addons.mozilla.org/firefox/addon/tampermonkey/) on ![](https://raw.github.com/jerone/UserScripts/master/_resources/Firefox.png) [Mozilla Firefox](http://www.mozilla.org/en-US/firefox/fx/#desktop) desktop.
+-   ![](https://raw.github.com/jerone/UserScripts/master/_resources/Tampermonkey.png) [Tampermonkey](https://addons.mozilla.org/firefox/addon/tampermonkey/) on ![](https://raw.github.com/jerone/UserScripts/master/_resources/Firefox.png) [Mozilla Firefox](http://www.mozilla.org/en-US/firefox/fx/#desktop) desktop.
 
 ## Version History
 
-*   **8.2.8**
+-   **8.2.8**
 
-    *   🐛 Fix broken icon url ([#146](https://github.com/jerone/UserScripts/pull/146)).
+    -   🐛 Fix broken icon url ([#146](https://github.com/jerone/UserScripts/pull/146)).
 
-*   **8.2.7**
- 
-    *   🐛 Fix after another layout change. Refixes [#68](https://github.com/jerone/UserScripts/issues/68).
+-   **8.2.7**
 
-*   **8.2.6**
- 
-    *   🐛 Fix after another layout change. Refixes [#68](https://github.com/jerone/UserScripts/issues/68) with [#140](https://github.com/jerone/UserScripts/pull/140) (thanks [@darkred](https://github.com/darkred)).
+    -   🐛 Fix after another layout change. Refixes [#68](https://github.com/jerone/UserScripts/issues/68).
 
-*   **8.2.5**
- 
-    *   🐛 Fix showing filter. Fixes [#137](https://github.com/jerone/UserScripts/issues/137).
+-   **8.2.6**
 
-*   **8.2.4**
- 
-    *   🐛 Nav styling. Fixes [#130](https://github.com/jerone/UserScripts/issues/130) and closes [#132](https://github.com/jerone/UserScripts/issues/132) (thanks [@darkred](https://github.com/darkred)).
+    -   🐛 Fix after another layout change. Refixes [#68](https://github.com/jerone/UserScripts/issues/68) with [#140](https://github.com/jerone/UserScripts/pull/140) (thanks [@darkred](https://github.com/darkred)).
 
-*   **8.2.3**
+-   **8.2.5**
 
-    *   ✨ Re-added of the "Issues" filter ( Issues|Labeled ) which was removed per [#121 (comment)](https://github.com/jerone/UserScripts/issues/121#issuecomment-336629514) after another GitHub site update (by [@darkred](https://github.com/darkred)).
+    -   🐛 Fix showing filter. Fixes [#137](https://github.com/jerone/UserScripts/issues/137).
 
-*   **8.2.2**
+-   **8.2.4**
 
-    *   🐛 Fix after another layout change.
+    -   🐛 Nav styling. Fixes [#130](https://github.com/jerone/UserScripts/issues/130) and closes [#132](https://github.com/jerone/UserScripts/issues/132) (thanks [@darkred](https://github.com/darkred)).
 
-*   **8.2.1**
+-   **8.2.3**
 
-    *   🐛 Fix for 'Actions' tab|'Wiki' being empty after GitHub site update (fixed by [@darkred](https://github.com/darkred) in [#127](https://github.com/jerone/UserScripts/issues/127)).
-    *   🐛 Fix missing created repo actions.
+    -   ✨ Re-added of the "Issues" filter ( Issues|Labeled ) which was removed per [#121 (comment)](https://github.com/jerone/UserScripts/issues/121#issuecomment-336629514) after another GitHub site update (by [@darkred](https://github.com/darkred)).
 
-*   **8.2.0**
+-   **8.2.2**
 
-    *   🐛 Fixed issues after GitHub site update ([#124](https://github.com/jerone/UserScripts/issues/124)).
+    -   🐛 Fix after another layout change.
 
-*   **8.1.1**
+-   **8.2.1**
 
-    *   🐛 Fix the 'Repositories' tab being empty ([#124](https://github.com/jerone/UserScripts/issues/124), fixed by [@darkred](https://github.com/darkred) in [#126](https://github.com/jerone/UserScripts/pull/126)).
+    -   🐛 Fix for 'Actions' tab|'Wiki' being empty after GitHub site update (fixed by [@darkred](https://github.com/darkred) in [#127](https://github.com/jerone/UserScripts/issues/127)).
+    -   🐛 Fix missing created repo actions.
 
-*   **8.1.0**
+-   **8.2.0**
 
-    *   🐛 Ignore repo detection on follow alerts.
-    *   ✨ Filter by follow action.
+    -   🐛 Fixed issues after GitHub site update ([#124](https://github.com/jerone/UserScripts/issues/124)).
 
-*   **8.0.0**
+-   **8.1.1**
 
-    *   Fixed issues after GitHub site update ([#121](https://github.com/jerone/UserScripts/issues/121)).
+    -   🐛 Fix the 'Repositories' tab being empty ([#124](https://github.com/jerone/UserScripts/issues/124), fixed by [@darkred](https://github.com/darkred) in [#126](https://github.com/jerone/UserScripts/pull/126)).
+
+-   **8.1.0**
+
+    -   🐛 Ignore repo detection on follow alerts.
+    -   ✨ Filter by follow action.
+
+-   **8.0.0**
+
+    -   Fixed issues after GitHub site update ([#121](https://github.com/jerone/UserScripts/issues/121)).
 
         GitHub completely redesigned the news feed and removed the issue, PR, member adding and gist related news items.
 
-*   **7.2.0**
+-   **7.2.0**
 
-    *   ✨ Filter by user.
+    -   ✨ Filter by user.
 
-*   **7.1.0**
+-   **7.1.0**
 
-    *   🐛 Fixed issues after layout updates. Closes [#114](https://github.com/jerone/UserScripts/pull/114).
+    -   🐛 Fixed issues after layout updates. Closes [#114](https://github.com/jerone/UserScripts/pull/114).
 
-*   **7.0.1**
+-   **7.0.1**
 
-    *   🐛 Fixed falsely identification branch creation and deletion.
+    -   🐛 Fixed falsely identification branch creation and deletion.
 
-*   **7.0.0**
+-   **7.0.0**
 
-    *   Restored icons after GitHub switching to SVG.
+    -   Restored icons after GitHub switching to SVG.
 
-*   **6.2**
+-   **6.2**
 
-    *   ✨ Filter by repo. Fixes [#70](https://github.com/jerone/UserScripts/issues/70).
+    -   ✨ Filter by repo. Fixes [#70](https://github.com/jerone/UserScripts/issues/70).
 
-*   **6.1**
+-   **6.1**
 
-    *   🐛 Fixed counting repo releases as tag actions.
-    *   ✨ Split wiki filter in created and edited.
+    -   🐛 Fixed counting repo releases as tag actions.
+    -   ✨ Split wiki filter in created and edited.
 
-*   **6.0**
+-   **6.0**
 
-    *   Fixed issues after GitHub site update ([#68](https://github.com/jerone/UserScripts/issues/68)).
+    -   Fixed issues after GitHub site update ([#68](https://github.com/jerone/UserScripts/issues/68)).
 
-*   **5.3**
+-   **5.3**
 
-    *   Added filter history support.
+    -   Added filter history support.
 
-*   **5.2**
+-   **5.2**
 
-    *   Fixed issues after GitHub site update ([#6](https://github.com/jerone/UserScripts/issues/6)).
+    -   Fixed issues after GitHub site update ([#6](https://github.com/jerone/UserScripts/issues/6)).
 
-*   **5.1**
+-   **5.1**
 
-    *   Added support for user public activity.
+    -   Added support for user public activity.
 
-*   **5.0**
+-   **5.0**
 
-    *   More filters added.
+    -   More filters added.
 
-*   **4.6**
+-   **4.6**
 
-    *   Show message when filter has no feed items.
+    -   Show message when filter has no feed items.
 
-*   **4.5**
+-   **4.5**
 
-    *   Added branch deleting support.
+    -   Added branch deleting support.
 
-*   **4.4**
+-   **4.4**
 
-    *   Added support for organizations.
-    *   Added commit comments.
+    -   Added support for organizations.
+    -   Added commit comments.
 
-*   **4.3**
+-   **4.3**
 
-    *   Reordered menu.
-    *   Expanded Gist create & update.
-    *   Changed Starred in User actions and added member add.
+    -   Reordered menu.
+    -   Expanded Gist create & update.
+    -   Changed Starred in User actions and added member add.
 
-*   **4.2**
+-   **4.2**
 
-    *   Added support for Scriptish.
+    -   Added support for Scriptish.
 
-*   **4.1**
+-   **4.1**
 
-    *   Added fork filter.
-    *   Added sub-filters for issues (comments, opened, closed, reopened).
+    -   Added fork filter.
+    -   Added sub-filters for issues (comments, opened, closed, reopened).
 
-*   **4.0**
+-   **4.0**
 
-    *   Better integrated menu style.
+    -   Better integrated menu style.
 
-*   **3.1**
+-   **3.1**
 
-    *   Moved PR comments to PR filter.
+    -   Moved PR comments to PR filter.
 
-*   **3.0**
+-   **3.0**
 
-    *   Added Stars, Repo and Wiki filter.
-    *   Moved Comments to Issues filter.
-    *   Made menu lower.
+    -   Added Stars, Repo and Wiki filter.
+    -   Moved Comments to Issues filter.
+    -   Made menu lower.
 
-*   **2.0**
+-   **2.0**
 
-    *   Added Pull Requests filter.
+    -   Added Pull Requests filter.
 
-*   **1.0**
+-   **1.0**
 
-    *   Initial version.
+    -   Initial version.
 
 ## Contributors
 
-*   [darkred](https://github.com/darkred)
+-   [darkred](https://github.com/darkred)
 
 ## External links
 
-*   [Greasy Fork](https://greasyfork.org/scripts/171-github-news-feed-filter)
-*   [OpenUserJS](https://openuserjs.org/scripts/jerone/Github_News_Feed_Filter)
+-   [Greasy Fork](https://greasyfork.org/scripts/171-github-news-feed-filter)
+-   [OpenUserJS](https://openuserjs.org/scripts/jerone/Github_News_Feed_Filter)

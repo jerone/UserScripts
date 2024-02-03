@@ -20,21 +20,20 @@
 // @include          https://github.com/*
 // ==/UserScript==
 
-(function() {
-
-	String.format = function(string) {
+(function () {
+	String.format = function (string) {
 		var args = Array.prototype.slice.call(arguments, 1, arguments.length);
-		return string.replace(/{(\d+)}/g, function(match, number) {
+		return string.replace(/{(\d+)}/g, function (match, number) {
 			return typeof args[number] !== "undefined" ? args[number] : match;
 		});
 	};
 
 	function proxy(fn) {
-		return function() {
+		return function () {
 			var that = this;
-			return function(e) {
-				var args = that.slice(0);  // clone;
-				args.unshift(e);  // prepend event;
+			return function (e) {
+				var args = that.slice(0); // clone;
+				args.unshift(e); // prepend event;
 				fn.apply(this, args);
 			};
 		}.call([].slice.call(arguments, 1));
@@ -47,11 +46,13 @@
 		_floaterMeta: null,
 
 		_imageUrl: null,
-		_loaderSrc: "https://github.githubassets.com/images/spinners/octocat-spinner-32.gif",
+		_loaderSrc:
+			"https://github.githubassets.com/images/spinners/octocat-spinner-32.gif",
 		_imageRegex: /.+(\.jpe?g|\.png|\.gif|\.bmp|\.ico|\.tiff?)$/i,
 
-		Initialize: function() {
-			var floater = GithubImageViewer._floater = document.createElement("div");
+		Initialize: function () {
+			var floater = (GithubImageViewer._floater =
+				document.createElement("div"));
 			floater.style.position = "absolute";
 			floater.style.top = "0";
 			floater.style.left = "0";
@@ -67,9 +68,10 @@
 			floaterMouseAlign.style.fontSize = "11px";
 			floater.appendChild(floaterMouseAlign);
 
-			var floaterTitle = GithubImageViewer._floaterTitle = document.createElement("div");
+			var floaterTitle = (GithubImageViewer._floaterTitle =
+				document.createElement("div"));
 			floaterTitle.style.backgroundColor = "#e6f1f6";
-      		floaterTitle.style.color = "black";
+			floaterTitle.style.color = "black";
 			floaterTitle.style.textAlign = "center";
 			floaterTitle.style.borderBottom = "1px solid #d8e6ec";
 			floaterTitle.style.padding = "3px 5px";
@@ -84,15 +86,18 @@
 			floaterCenter.style.padding = "3px";
 			floaterMouseAlign.appendChild(floaterCenter);
 
-			var floaterImage = GithubImageViewer._floaterImage = document.createElement("img");
+			var floaterImage = (GithubImageViewer._floaterImage =
+				document.createElement("img"));
 			floaterImage.setAttribute("src", GithubImageViewer._loaderSrc);
 			floaterImage.style.margin = "auto";
-			floaterImage.style.maxWidth = floaterImage.style.maxHeight = "200px";
+			floaterImage.style.maxWidth = floaterImage.style.maxHeight =
+				"200px";
 			floaterCenter.appendChild(floaterImage);
 
-			var floaterMeta = GithubImageViewer._floaterMeta = document.createElement("div");
+			var floaterMeta = (GithubImageViewer._floaterMeta =
+				document.createElement("div"));
 			floaterMeta.style.backgroundColor = "#f8f8f8";
-      		floaterMeta.style.color = "black";
+			floaterMeta.style.color = "black";
 			floaterMeta.style.padding = "3px";
 			floaterMeta.style.textAlign = "center";
 			floaterMeta.style.whiteSpace = "nowrap";
@@ -102,45 +107,55 @@
 			GithubImageViewer.Attach();
 		},
 
-		Attach: function() {
-			document.getElementById("js-repo-pjax-container").addEventListener("mousemove", function(e) {
-				var target = e.target;
-				if (target.classList && target.classList.contains("js-navigation-open") &&
-					GithubImageViewer._imageRegex.test(target.href)) {
+		Attach: function () {
+			document
+				.getElementById("js-repo-pjax-container")
+				.addEventListener("mousemove", function (e) {
+					var target = e.target;
+					if (
+						target.classList &&
+						target.classList.contains("js-navigation-open") &&
+						GithubImageViewer._imageRegex.test(target.href)
+					) {
+						if (target.getAttribute("title")) {
+							target.dataset.title = target.getAttribute("title");
+							target.removeAttribute("title");
+						}
 
-					if (target.getAttribute("title")) {
-						target.dataset.title = target.getAttribute("title");
-						target.removeAttribute("title");
-					}
-
-					if (GithubImageViewer._visible) {
-						GithubImageViewer.Show(e.pageX, e.pageY);
-					} else {
-						GithubImageViewer.AddTimer(proxy(function() {
-							GithubImageViewer.ClearTimers();
-
+						if (GithubImageViewer._visible) {
 							GithubImageViewer.Show(e.pageX, e.pageY);
+						} else {
+							GithubImageViewer.AddTimer(
+								proxy(function () {
+									GithubImageViewer.ClearTimers();
 
-							var href = target.href;
-							if (GithubImageViewer._imageUrl !== href) {
-								GithubImageViewer._imageUrl = href;
-								GithubImageViewer.SetImage(GithubImageViewer._imageUrl);
+									GithubImageViewer.Show(e.pageX, e.pageY);
 
-								GithubImageViewer.SetTitle(target.dataset.title);
-							}
-						}));
+									var href = target.href;
+									if (GithubImageViewer._imageUrl !== href) {
+										GithubImageViewer._imageUrl = href;
+										GithubImageViewer.SetImage(
+											GithubImageViewer._imageUrl,
+										);
+
+										GithubImageViewer.SetTitle(
+											target.dataset.title,
+										);
+									}
+								}),
+							);
+						}
+					} else {
+						GithubImageViewer.Dispose();
 					}
-				} else {
-					GithubImageViewer.Dispose();
-				}
-			});
-			document.body.addEventListener("click", function() {
+				});
+			document.body.addEventListener("click", function () {
 				GithubImageViewer.Dispose();
 			});
-			document.body.addEventListener("contextmenu", function() {
+			document.body.addEventListener("contextmenu", function () {
 				GithubImageViewer.Dispose();
 			});
-			document.body.addEventListener("keydown", function(e) {
+			document.body.addEventListener("keydown", function (e) {
 				if (e.keyCode === 27) {
 					GithubImageViewer.Dispose();
 				}
@@ -148,18 +163,18 @@
 		},
 
 		_visible: false,
-		Show: function(x, y) {
+		Show: function (x, y) {
 			GithubImageViewer._visible = true;
 			GithubImageViewer._floater.style.left = x + "px";
 			GithubImageViewer._floater.style.top = y + "px";
 		},
-		Hide: function() {
+		Hide: function () {
 			GithubImageViewer._visible = false;
 			GithubImageViewer._floater.style.left = "-1000px";
 			GithubImageViewer._floater.style.top = "-1000px";
 		},
 
-		Dispose: function() {
+		Dispose: function () {
 			GithubImageViewer.ClearTimers();
 
 			GithubImageViewer.Hide();
@@ -172,25 +187,30 @@
 
 		_timers: [],
 		_timeout: 700,
-		AddTimer: function(fn) {
-			GithubImageViewer._timers.push(window.setTimeout(fn, GithubImageViewer._timeout));
+		AddTimer: function (fn) {
+			GithubImageViewer._timers.push(
+				window.setTimeout(fn, GithubImageViewer._timeout),
+			);
 		},
-		ClearTimers: function() {
-			Array.prototype.forEach.call(GithubImageViewer._timers, function(timer) {
-				window.clearTimeout(timer);
-			});
+		ClearTimers: function () {
+			Array.prototype.forEach.call(
+				GithubImageViewer._timers,
+				function (timer) {
+					window.clearTimeout(timer);
+				},
+			);
 		},
 
-		SetTitle: function(text) {
+		SetTitle: function (text) {
 			GithubImageViewer._floaterTitle.textContent = text;
 		},
 
-		SetImage: function(src) {
+		SetImage: function (src) {
 			src = src.replace("/blob/", "/raw/");
 			if (src !== GithubImageViewer._loaderSrc) {
 				var temp = document.createElement("img");
 				temp.style.visibility = "hidden";
-				temp.addEventListener("load", function() {
+				temp.addEventListener("load", function () {
 					GithubImageViewer.SetMeta(this.width, this.height);
 					this.parentNode.removeChild(temp);
 				});
@@ -203,18 +223,21 @@
 			GithubImageViewer._floaterImage.setAttribute("src", src);
 		},
 
-		SetMeta: function(w, h) {
+		SetMeta: function (w, h) {
 			if (!w && !h) {
 				GithubImageViewer._floaterMeta.style.display = "none";
 			} else {
 				GithubImageViewer._floaterMeta.style.display = "block";
-				GithubImageViewer._floaterMeta.innerHTML = String.format("<strong>W:</strong> {0}px | <strong>H:</strong> {1}px", w, h);
+				GithubImageViewer._floaterMeta.innerHTML = String.format(
+					"<strong>W:</strong> {0}px | <strong>H:</strong> {1}px",
+					w,
+					h,
+				);
 			}
-		}
+		},
 	};
 
 	if (document.getElementById("js-repo-pjax-container")) {
 		GithubImageViewer.Initialize();
 	}
-
 })();
