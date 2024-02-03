@@ -17,6 +17,7 @@
 // @grant        GM_xmlhttpRequest
 // ==/UserScript==
 
+/* cSpell:disable */
 /*//////////////////////////////////////////////////////////////////////////
 THIS  SCRIPT  IS  PROVIDED BY THE AUTHOR `AS IS' AND ANY EXPRESS OR IMPLIED
 WARRANTIES,  INCLUDING, BUT  NOT  LIMITED  TO, THE  IMPLIED  WARRANTIES  OF
@@ -29,6 +30,9 @@ WHETHER  IN  CONTRACT, STRICT  LIABILITY, OR  TORT  (INCLUDING NEGLIGENCE OR
 OTHERWISE)  ARISING  IN  ANY  WAY  OUT  OF  THE  USE OF THIS SCRIPT, EVEN IF
 ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 /*//////////////////////////////////////////////////////////////////////////
+/* cSpell:enable */
+
+// cSpell:ignore UVT
 
 (function() {
 

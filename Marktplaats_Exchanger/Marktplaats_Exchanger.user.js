@@ -19,6 +19,8 @@
 // @include          https://www.marktplaats.*
 // ==/UserScript==
 
+// cSpell:ignore Roboto
+
 (function Marktplaats_Exchanger() {
 	var selectAll = document.getElementById("select-all-container");
 	if (!selectAll) {

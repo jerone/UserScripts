@@ -24,6 +24,8 @@
 // @include          https://gist.github.com/*
 // ==/UserScript==
 
+// cSpell:ignore leaderboard, vcard, transform
+
 (function() {
 
 	function proxy(fn) {
@@ -267,7 +269,7 @@
 		'text-decoration: none;';
 	userOrgs.classList.add('vcard-stat');
 	userOrgs.setAttribute('target', '_blank');
-	userOrgs.setAttribute('title', 'Public organisations');
+	userOrgs.setAttribute('title', 'Public organizations');
 	userCounts.appendChild(userOrgs);
 	var userOrgsCount = document.createElement('strong');
 	userOrgsCount.style =
@@ -565,7 +567,7 @@
 
 	function init() {
 		var avatars = document.querySelectorAll([
-			'.avatar[alt^="@"]', // Logged-in user & commits author & issuse participant & users organization & organization member
+			'.avatar[alt^="@"]', // Logged-in user & commits author & issue participant & users organization & organization member
 			'.avatar-child[alt^="@"]', // Authored committed users
 			'.gravatar[alt^="@"]', // Following & followers page
 			'.timeline-comment-avatar[alt^="@"]', // GitHub comments author

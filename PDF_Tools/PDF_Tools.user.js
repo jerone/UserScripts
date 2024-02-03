@@ -15,6 +15,8 @@
 // @run-at           document-end
 // ==/UserScript==
 
+// cSpell:ignore PDF
+
 (function() {
 
 	//console.log(PDFJS.version);  // "1.0.277"

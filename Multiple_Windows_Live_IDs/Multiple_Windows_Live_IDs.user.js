@@ -20,6 +20,7 @@
 // @include          http*://login.live.com*
 // ==/UserScript==
 
+// cSpell:ignore MWLID, maincontent, phholder, transform
 /* global GM_getValue,GM_setValue */
 
 (function() {

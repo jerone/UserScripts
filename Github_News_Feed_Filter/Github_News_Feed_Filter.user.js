@@ -21,6 +21,8 @@
 // @grant            none
 // ==/UserScript==
 
+// cSpell:ignore transform, osvg, opath, gollum, hovercards, profilecols
+
 (function () {
 
 	var ICONS = {};

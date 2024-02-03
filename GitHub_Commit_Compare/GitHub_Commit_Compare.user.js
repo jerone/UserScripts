@@ -22,6 +22,8 @@
 // @grant            none
 // ==/UserScript==
 
+// cSpell:ignore tooltipped, Consolas, Menlo, compareAdisabled, compareBdisabled
+
 (function () {
 
   function addButton() {

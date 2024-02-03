@@ -20,6 +20,8 @@
 // @grant            none
 // ==/UserScript==
 
+// cSpell:ignore tooltipped, diffbar
+
 (function() {
 
     function addButton() {

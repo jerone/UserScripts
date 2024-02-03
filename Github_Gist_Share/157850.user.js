@@ -18,6 +18,8 @@
 // @grant            none
 // ==/UserScript==
 
+// cSpell:ignore Dabblet, Bl.ocks, itemprop, tweetbutton
+
 (function() {
 
     String.format = function(string) {

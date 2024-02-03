@@ -23,6 +23,7 @@
 // @include          https://github.com/*/project.json
 // ==/UserScript==
 
+// cSpell:ignore linkify, Sindre Sorhus
 /* global GM_xmlhttpRequest */
 
 (function() {

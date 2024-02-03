@@ -22,6 +22,8 @@
 // @grant            none
 // ==/UserScript==
 
+// cSpell:ignore Dumpert, dumpert, geenstijl, powned, daskapital, glamora, perma
+
 (function() {
 
 	function proxy(fn) {

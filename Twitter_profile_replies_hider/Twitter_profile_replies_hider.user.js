@@ -101,7 +101,7 @@
 			return false;
 		});
 
-		// new tweets are loaded, handle accourdanly;
+		// new tweets are loaded, handle accordingly;
 		new MutationObserver(function(mutations) {
 			mutations.forEach(function(mutation) {
 				toggle(!!~~localStorage.getItem(settingsKey, +true));

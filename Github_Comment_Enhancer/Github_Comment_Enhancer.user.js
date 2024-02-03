@@ -21,6 +21,7 @@
 // @include          https://gist.github.com/*
 // ==/UserScript==
 
+// cSpell:ignore gollum, tooltipped, jssuggester, tabnav, facebox, msie
 /* global unsafeWindow */
 
 (function(unsafeWindow) {
@@ -570,6 +571,7 @@
 	}
 
 	var codeSyntaxTop = ["JavaScript", "Java", "Ruby", "PHP", "Python", "CSS", "C++", "C#", "C", "HTML"]; // https://github.com/blog/2047-language-trends-on-github
+	/* cSpell: disable */
 	var codeSyntaxList = ["ABAP", "abl", "aconf", "ActionScript", "actionscript 3",
 		"actionscript3", "Ada", "ada2005", "ada95", "advpl", "Agda", "ags",
 		"AGS Script", "ahk", "Alloy", "AMPL", "Ant Build System", "ANTLR",
@@ -656,6 +658,7 @@
 		"XS", "xsd", "xsl", "XSLT", "xten", "Xtend", "Yacc", "YAML", "yml",
 		"Zephir", "Zimpl", "zsh"
 	]; // https://github.com/jerone/UserScripts/issues/18
+	/* cSpell: enable */
 	var codeSyntaxes = [].concat(codeSyntaxTop, codeSyntaxList).filter(function(a, b, c) {
 		return c.indexOf(a) === b;
 	});
@@ -1011,12 +1014,12 @@
 	/*
 	 * to-markdown - an HTML to Markdown converter
 	 * Copyright 2011, Dom Christie
-	 * Licenced under the MIT licence
+	 * Licensed under the MIT license
 	 * Source: https://github.com/domchristie/to-markdown
 	 *
 	 * Code is altered:
 	 * - Added task list support: https://github.com/domchristie/to-markdown/pull/62
-	 * - He dependecy is removed
+	 * - He dependency is removed
 	 */
 	var toMarkdown = function(string) {
 
@@ -1181,7 +1184,7 @@
 		function cleanUp(string) {
 			string = string.replace(/^[\t\r\n]+|[\t\r\n]+$/g, ''); // trim leading/trailing whitespace
 			string = string.replace(/\n\s+\n/g, '\n\n');
-			string = string.replace(/\n{3,}/g, '\n\n'); // limit consecutive linebreaks to 2
+			string = string.replace(/\n{3,}/g, '\n\n'); // limit consecutive line-breaks to 2
 			return string;
 		}
 

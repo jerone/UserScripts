@@ -1,0 +1,25 @@
+// cSpell Settings
+{
+	"version": "0.2",
+	// language - current active spelling language
+	"language": "en,nl",
+	// words - list of words to be always considered correct
+	"words": [
+		"absmiddle",
+		"ajax",
+		"blockquotes",
+		"darkred",
+		"datetime",
+		"greasemonkey",
+		"jerone",
+		"maxlength",
+		"nofollow",
+		"octicon",
+		"pjax",
+		"tampermonkey",
+		"userscript",
+		"userscripts",
+		"violentmonkey",
+		"whitespaces"
+	]
+}

@@ -12,10 +12,12 @@
 // @version          1.0
 // ==/UserScript==
 
+// cSpell:ignore transform, aprilfool
+
 if(window.top===window){
 
-	var duration = 2000,	// [Integer, positive, miliseconds] This controls the duration of an april fool item;
-		interval = 8000;	// [Integer, positive, miliseconds] This controls the interval of the next april fool;
+	var duration = 2000,	// [Integer, positive, milliseconds] This controls the duration of an april fool item;
+		interval = 8000;	// [Integer, positive, milliseconds] This controls the interval of the next april fool;
 
 	var aprilFools = [		// [String] April fools in CSS; Use {duration} for a dynamic duration;
 			"img {										\

@@ -18,6 +18,8 @@
 // @grant            none
 // ==/UserScript==
 
+// cSpell:ignore tooltipped, diffbar
+
 (function() {
 
     function addButton() {
@@ -29,7 +31,7 @@
                 r.parentElement.removeChild(r)
             }
 
-            var on = /w=/.test(location.search) // Any occurense results in enabling
+            var on = /w=/.test(location.search) // Any occurrence results in enabling
 
             var b = e.querySelector('.toc-diff-stats')
 
@@ -56,7 +58,7 @@
                 r.parentElement.removeChild(r)
             }
 
-            var on = /w=/.test(location.search) // Any occurense result in enabling
+            var on = /w=/.test(location.search) // Any occurrence result in enabling
 
             var a = document.createElement('a')
             a.classList.add('btn', 'btn-sm', 'btn-outline', 'tooltipped', 'tooltipped-s')
