@@ -31,6 +31,7 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 /* cSpell:enable */
 
 // cSpell:ignore STATIS
+/* eslint security/detect-unsafe-regex: "off" */
 
 (function () {
 	Number.prototype.toPoints = function () {

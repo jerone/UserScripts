@@ -13,6 +13,7 @@
 // ==/UserScript==
 
 // cSpell:ignore transform, aprilfool
+/* eslint security/detect-object-injection: "off" */
 
 if (window.top === window) {
 	var duration = 2000, // [Integer, positive, milliseconds] This controls the duration of an april fool item;

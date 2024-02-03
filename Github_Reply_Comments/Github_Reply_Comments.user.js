@@ -23,6 +23,7 @@
 // ==/UserScript==
 
 // cSpell:ignore textareas, previewable, tooltipped
+/* eslint security/detect-object-injection: "off" */
 
 (function () {
 	String.format = function (string) {

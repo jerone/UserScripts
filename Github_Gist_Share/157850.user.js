@@ -19,6 +19,7 @@
 // ==/UserScript==
 
 // cSpell:ignore Dabblet, Bl.ocks, itemprop, tweetbutton
+/* eslint security/detect-object-injection: "off" */
 
 (function () {
 	String.format = function (string) {

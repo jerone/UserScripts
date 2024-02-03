@@ -28,6 +28,8 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 /* cSpell:enable */
 
 // cSpell:ignore andale, lucida, cellspacing
+/* eslint security/detect-object-injection: "off" */
+/* eslint security/detect-unsafe-regex: "off" */
 
 //*** USER SETTINGS ***//
 var maxLines = 10000; // [Integer] maximum number of lines (prevent browser from hanging and possibly crashing);

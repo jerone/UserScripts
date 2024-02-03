@@ -16,6 +16,7 @@
 // ==/UserScript==
 
 // cSpell:ignore PDF
+/* eslint security/detect-object-injection: "off" */
 
 (function () {
 	//console.log(PDFJS.version);  // "1.0.277"

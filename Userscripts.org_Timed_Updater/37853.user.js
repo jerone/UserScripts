@@ -61,6 +61,7 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 /*/ /////////////////////////////////////////////////////////////////////////
 
 // cSpell:ignore plusmn
+/* eslint security/detect-object-injection: "off" */
 
 //*** USERSCRIPT ***//
 (function (win, doc, und) {

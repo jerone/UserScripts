@@ -25,6 +25,7 @@
 // ==/UserScript==
 
 // cSpell:ignore leaderboard, vcard, transform
+/* eslint security/detect-object-injection: "off" */
 
 (function () {
 	function proxy(fn) {

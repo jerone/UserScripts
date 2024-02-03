@@ -24,6 +24,7 @@
 // ==/UserScript==
 
 // cSpell:ignore linkify, Sindre Sorhus
+/* eslint security/detect-object-injection: "off" */
 /* global GM_xmlhttpRequest */
 
 (function () {

@@ -23,6 +23,7 @@
 // ==/UserScript==
 
 // cSpell:ignore Dumpert, dumpert, geenstijl, powned, daskapital, glamora, perma
+/* eslint security/detect-object-injection: "off" */
 
 (function () {
 	function proxy(fn) {

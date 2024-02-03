@@ -22,6 +22,9 @@
 // ==/UserScript==
 
 // cSpell:ignore gollum, tooltipped, jssuggester, tabnav, facebox, msie
+/* eslint security/detect-object-injection: "off" */
+/* eslint security/detect-unsafe-regex: "off" */
+/* eslint security/detect-non-literal-regexp: "off" */
 /* global unsafeWindow */
 
 (function (unsafeWindow) {

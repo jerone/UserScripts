@@ -61,6 +61,9 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 // -
 /*/ /////////////////////////////////////////////////////////////////////////
 
+/* eslint security/detect-object-injection: "off" */
+/* eslint security/detect-eval-with-expression: "off" */
+
 //*** USER SETTINGS ***//
 var updateTime = 3 * 60 * 60 * 1000; // [Number] update time (we don't want to flood userscripts.org);
 

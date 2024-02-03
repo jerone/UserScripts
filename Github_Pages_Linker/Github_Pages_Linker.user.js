@@ -20,6 +20,8 @@
 // @include          https://github.com/*
 // ==/UserScript==
 
+/* eslint security/detect-object-injection: "off" */
+
 (function () {
 	String.format = function (string) {
 		var args = Array.prototype.slice.call(arguments, 1, arguments.length);

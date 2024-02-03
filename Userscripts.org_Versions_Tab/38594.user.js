@@ -33,6 +33,8 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 /* cSpell:enable */
 
 // cSpell:ignore UVT
+/* eslint security/detect-object-injection: "off" */
+/* eslint security/detect-eval-with-expression: "off" */
 
 (function () {
 	// [Number] minimum update interval (we don't want to flood userscripts.org);

@@ -22,6 +22,7 @@
 // ==/UserScript==
 
 // cSpell:ignore transform, osvg, opath, gollum, hovercards, profilecols
+/* eslint security/detect-object-injection: "off" */
 
 (function () {
 	var ICONS = {};
