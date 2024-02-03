@@ -26,7 +26,7 @@ Supported file extensions are:
 
 ## Compatible
 
--   [![](https://raw.github.com/jerone/UserScripts/master/_resources/Tampermonkey.png) Tampermonkey](https://addons.mozilla.org/firefox/addon/tampermonkey/) on [![](https://raw.github.com/jerone/UserScripts/master/_resources/Firefox.png) Mozilla Firefox](http://www.mozilla.org/en-US/firefox/fx/#desktop) desktop.
+-   [![Tampermonkey](https://raw.github.com/jerone/UserScripts/master/_resources/Tampermonkey.png) Tampermonkey](https://addons.mozilla.org/firefox/addon/tampermonkey/) on [![Mozilla Firefox](https://raw.github.com/jerone/UserScripts/master/_resources/Firefox.png) Mozilla Firefox](http://www.mozilla.org/en-US/firefox/fx/#desktop) desktop.
 
 ## Version History
 
@@ -39,13 +39,13 @@ Supported file extensions are:
 -   **0.4.1**
     -   Fixed issues after GitHub site update.
 -   **0.4.0**
-    -   Added Bitmap `.bmp` support (closes https://github.com/jerone/UserScripts/issues/82).
-    -   Detect upper-case extensions (fixes https://github.com/jerone/UserScripts/issues/82).
-    -   Images should now have a name, temping to exclude folder named as image extensions (fixes https://github.com/jerone/UserScripts/issues/82).
+    -   Added Bitmap `.bmp` support (closes [#82](https://github.com/jerone/UserScripts/issues/82)).
+    -   Detect upper-case extensions (fixes [#82](https://github.com/jerone/UserScripts/issues/82)).
+    -   Images should now have a name, temping to exclude folder named as image extensions (fixes [#82](https://github.com/jerone/UserScripts/issues/82)).
 -   **0.3.0**
     -   Removed tooltips.
 -   **0.2.0**
-    -   Fixed hiding preview on some conditions (fixes https://github.com/jerone/UserScripts/issues/31).
+    -   Fixed hiding preview on some conditions (fixes [#31](https://github.com/jerone/UserScripts/issues/31)).
 -   **0.1.1**
     -   Small z-index fix.
 -   **0.1.0**
@@ -55,7 +55,7 @@ Supported file extensions are:
 
 Use cases:
 
--   https://github.com/jerone/UserScripts/tree/master/_resources
+-   <https://github.com/jerone/UserScripts/tree/master/_resources>
 
 ## External links
 

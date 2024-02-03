@@ -11,12 +11,12 @@ Add features to enhance comments on GeenStijl & Powned & Dumpert & more.
 
 Currently supported sites:
 
--   http://geenstijl.nl
--   http://geenstijl.tv
--   http://powned.tv
--   http://dumpert.nl
--   http://daskapital.nl
--   http://glamora.ma
+-   <http://geenstijl.nl>
+-   <http://geenstijl.tv>
+-   <http://powned.tv>
+-   <http://dumpert.nl>
+-   <http://daskapital.nl>
+-   <http://glamora.ma>
 
 ## Screenshot
 
@@ -24,7 +24,7 @@ Currently supported sites:
 
 ## Compatible
 
--   [![](https://raw.github.com/jerone/UserScripts/master/_resources/Tampermonkey.png) Tampermonkey](https://addons.mozilla.org/firefox/addon/tampermonkey/) on [![](https://raw.github.com/jerone/UserScripts/master/_resources/Firefox.png) Mozilla Firefox](http://www.mozilla.org/en-US/firefox/fx/#desktop) desktop.
+-   [![Tampermonkey](https://raw.github.com/jerone/UserScripts/master/_resources/Tampermonkey.png) Tampermonkey](https://addons.mozilla.org/firefox/addon/tampermonkey/) on [![Mozilla Firefox](https://raw.github.com/jerone/UserScripts/master/_resources/Firefox.png) Mozilla Firefox](http://www.mozilla.org/en-US/firefox/fx/#desktop) desktop.
 
 ## Version History
 

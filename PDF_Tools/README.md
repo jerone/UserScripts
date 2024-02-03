@@ -16,7 +16,7 @@ An userscript that enhances the pdf.js window in Firefox.
 
 ## Compatible
 
--   [![](https://raw.github.com/jerone/UserScripts/master/_resources/Scriptish.png) Scriptish](https://addons.mozilla.org/firefox/addon/scriptish/) on [![](https://raw.github.com/jerone/UserScripts/master/_resources/Firefox.png) Mozilla Firefox](http://www.mozilla.org/en-US/firefox/fx/#desktop) desktop.
+-   [![Scriptish](https://raw.github.com/jerone/UserScripts/master/_resources/Scriptish.png) Scriptish](https://addons.mozilla.org/firefox/addon/scriptish/) on [![Mozilla Firefox](https://raw.github.com/jerone/UserScripts/master/_resources/Firefox.png) Mozilla Firefox](http://www.mozilla.org/en-US/firefox/fx/#desktop) desktop.
 
 ## Version History
 
@@ -27,11 +27,11 @@ An userscript that enhances the pdf.js window in Firefox.
 
 Documentation:
 
--   https://github.com/mozilla/pdf.js
+-   <https://github.com/mozilla/pdf.js>
 
 Test case:
 
--   http://mozilla.github.io/pdf.js/web/viewer.html?file=compressed.tracemonkey-pldi-09.pdf
+-   <http://mozilla.github.io/pdf.js/web/viewer.html?file=compressed.tracemonkey-pldi-09.pdf>
 
 ## External links
 

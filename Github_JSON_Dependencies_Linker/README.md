@@ -32,7 +32,7 @@ In the JSON file it will search for the following dependency keys:
 
 ## Compatible
 
--   [![](https://raw.github.com/jerone/UserScripts/master/_resources/Tampermonkey.png) Tampermonkey](https://addons.mozilla.org/firefox/addon/tampermonkey/) on [![](https://raw.github.com/jerone/UserScripts/master/_resources/Firefox.png) Mozilla Firefox](http://www.mozilla.org/en-US/firefox/fx/#desktop) desktop.
+-   [![Tampermonkey](https://raw.github.com/jerone/UserScripts/master/_resources/Tampermonkey.png) Tampermonkey](https://addons.mozilla.org/firefox/addon/tampermonkey/) on [![Mozilla Firefox](https://raw.github.com/jerone/UserScripts/master/_resources/Firefox.png) Mozilla Firefox](http://www.mozilla.org/en-US/firefox/fx/#desktop) desktop.
 
 ## Version History
 
@@ -51,15 +51,15 @@ In the JSON file it will search for the following dependency keys:
 
 ## Test cases
 
--   https://github.com/jerone/PackageSize/blob/master/package.json (multiple package.json dependencies);
--   https://github.com/npm/npm/tree/07f020a09e94ae393c67526985444e128ef6f83c/test/disabled/bundlerecurs/package.json
--   https://github.com/npm/npm/tree/07f020a09e94ae393c67526985444e128ef6f83c/test/packages/npm-test-optional-deps/package.json (optionalDependencies & different semver);
--   https://github.com/npm/npm/tree/07f020a09e94ae393c67526985444e128ef6f83c/test/packages/npm-test-bundled-git/package.json (git semver & bundledDependencies);
--   https://github.com/npm/npm/tree/07f020a09e94ae393c67526985444e128ef6f83c/test/packages/npm-test-shrinkwrap/npm-shrinkwrap.json (npm-shrinkwrap.json);
--   https://github.com/npm/npm/tree/07f020a09e94ae393c67526985444e128ef6f83c/test/packages/npm-test-url-dep/package.json (url semver);
--   https://github.com/aspnet/MusicStore/blob/8ce50e3fb34cbfc73537b9cf995fce3608c007fa/samples/MusicStore/project.json (ASP.NET project.json with COMMENTS);
--   https://github.com/atom/atom/blob/master/package.json (Atom package.json packageDependencies atomShellVersion);
--   https://github.com/suda/toolbar-main/blob/master/package.json (Atom package.json packageDependencies engines.atom);
+-   <https://github.com/jerone/PackageSize/blob/master/package.json> (multiple package.json dependencies);
+-   <https://github.com/npm/npm/tree/07f020a09e94ae393c67526985444e128ef6f83c/test/disabled/bundlerecurs/package.json>
+-   <https://github.com/npm/npm/tree/07f020a09e94ae393c67526985444e128ef6f83c/test/packages/npm-test-optional-deps/package.json> (optionalDependencies & different semver);
+-   <https://github.com/npm/npm/tree/07f020a09e94ae393c67526985444e128ef6f83c/test/packages/npm-test-bundled-git/package.json> (git semver & bundledDependencies);
+-   <https://github.com/npm/npm/tree/07f020a09e94ae393c67526985444e128ef6f83c/test/packages/npm-test-shrinkwrap/npm-shrinkwrap.json> (npm-shrinkwrap.json);
+-   <https://github.com/npm/npm/tree/07f020a09e94ae393c67526985444e128ef6f83c/test/packages/npm-test-url-dep/package.json> (url semver);
+-   <https://github.com/aspnet/MusicStore/blob/8ce50e3fb34cbfc73537b9cf995fce3608c007fa/samples/MusicStore/project.json> (ASP.NET project.json with COMMENTS);
+-   <https://github.com/atom/atom/blob/master/package.json> (Atom package.json packageDependencies atomShellVersion);
+-   <https://github.com/suda/toolbar-main/blob/master/package.json> (Atom package.json packageDependencies engines.atom);
 
 ## Dependencies
 
