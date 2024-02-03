@@ -61,10 +61,11 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 /*/ /////////////////////////////////////////////////////////////////////////
 
 // cSpell:ignore plusmn
+/* eslint no-inner-declarations: "off" */
 /* eslint security/detect-object-injection: "off" */
 
 //*** USERSCRIPT ***//
-(function (win, doc, und) {
+(function (win, doc, _und) {
 	var addEvent = function (node, type, fn, useCapture) {
 		if (node.addEventListener) {
 			node.addEventListener(type, fn, useCapture);

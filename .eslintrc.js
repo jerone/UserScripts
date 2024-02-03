@@ -1,3 +1,4 @@
+/* eslint-env node */
 module.exports = {
 	root: true,
 	env: {
@@ -9,6 +10,7 @@ module.exports = {
 		ecmaVersion: "latest",
 	},
 	extends: [
+		"eslint:recommended",
 		"plugin:@cspell/recommended",
 		"plugin:security/recommended-legacy",
 
@@ -18,7 +20,9 @@ module.exports = {
 
 		//! Prettier should always be the last configuration in the extends array.
 	],
-	rules: {},
+	rules: {
+		"no-unused-vars": ["error", { argsIgnorePattern: "^_" }], // Ignore variables whose names begin with an underscore.
+	},
 	overrides: [
 		/*
 		 * Userscript files.

@@ -91,12 +91,15 @@ if (window.top === window) {
 		interval + duration + 10,
 	);
 
-	for (var aprilFool in aprilFools) {
+	for (var aprilFoolText in aprilFools) {
 		GM_addStyle(
 			".aprilfool" +
-				aprilFool +
+				aprilFoolText +
 				" " +
-				aprilFools[aprilFool].replace("{duration}", duration / 1000),
+				aprilFools[aprilFoolText].replace(
+					"{duration}",
+					duration / 1000,
+				),
 		);
 	}
 }

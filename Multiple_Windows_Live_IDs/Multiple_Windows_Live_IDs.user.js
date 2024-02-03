@@ -22,7 +22,6 @@
 
 // cSpell:ignore MWLID, maincontent, phholder, transform
 /* eslint security/detect-object-injection: "off" */
-/* global GM_getValue,GM_setValue */
 
 (function () {
 	var autoLogin = true;

@@ -68,7 +68,7 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 var updateTime = 3 * 60 * 60 * 1000; // [Number] update time (we don't want to flood userscripts.org);
 
 //*** USERSCRIPT ***//
-(function (win, doc, und) {
+(function (win, doc, _und) {
 	try {
 		var UTC = {
 			init: function () {
@@ -88,7 +88,7 @@ var updateTime = 3 * 60 * 60 * 1000; // [Number] update time (we don't want to f
 				if (trs.length && postsIndex) {
 					Array.forEach(trs, function (tr) {
 						var column = tr.cells[postsIndex];
-						if (!/scripts\-/.test(tr.id)) {
+						if (!/scripts-/.test(tr.id)) {
 							// Header;
 							var th = doc.createElement("th");
 							th.className = "la";
@@ -130,7 +130,7 @@ var updateTime = 3 * 60 * 60 * 1000; // [Number] update time (we don't want to f
 										return function countTopics(x) {
 											var t = 0,
 												n = x.responseText.match(
-													/\"\>(\d+)\s+topics?,\s+\d+\s+posts?/,
+													/">(\d+)\s+topics?,\s+\d+\s+posts?/,
 												);
 											if (
 												n &&

@@ -28,16 +28,16 @@
 				/\/compare\//.test(location.href)) &&
 			(e = document.getElementById("toc"))
 		) {
-			var r = e.querySelector(".GithubCommitWhitespaceButton");
+			let r = e.querySelector(".GithubCommitWhitespaceButton");
 			if (r) {
 				r.parentElement.removeChild(r);
 			}
 
-			var on = /w=/.test(location.search); // Any occurrence results in enabling
+			let on = /w=/.test(location.search); // Any occurrence results in enabling
 
-			var b = e.querySelector(".toc-diff-stats");
+			let b = e.querySelector(".toc-diff-stats");
 
-			var a = document.createElement("a");
+			let a = document.createElement("a");
 			a.classList.add("btn", "btn-sm", "tooltipped", "tooltipped-n");
 			if (on) {
 				a.classList.add("selected");
@@ -50,7 +50,7 @@
 			);
 			a.appendChild(document.createTextNode("\u2423"));
 
-			var g = document.createElement("div");
+			let g = document.createElement("div");
 			g.classList.add("GithubCommitWhitespaceButton", "float-right");
 			g.style.margin = "0 10px 0 0"; // Give us some room
 			g.appendChild(a);
@@ -62,14 +62,14 @@
 				"#files_bucket .pr-toolbar .diffbar > .pr-review-tools",
 			))
 		) {
-			var r = e.querySelector(".GithubCommitWhitespaceButton");
+			let r = e.querySelector(".GithubCommitWhitespaceButton");
 			if (r) {
 				r.parentElement.removeChild(r);
 			}
 
-			var on = /w=/.test(location.search); // Any occurrence result in enabling
+			let on = /w=/.test(location.search); // Any occurrence result in enabling
 
-			var a = document.createElement("a");
+			let a = document.createElement("a");
 			a.classList.add(
 				"btn",
 				"btn-sm",
@@ -85,7 +85,7 @@
 			);
 			a.appendChild(document.createTextNode("\u2423"));
 
-			var g = document.createElement("div");
+			let g = document.createElement("div");
 			g.classList.add("GithubCommitWhitespaceButton", "diffbar-item");
 			g.appendChild(a);
 

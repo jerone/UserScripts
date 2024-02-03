@@ -69,7 +69,7 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 var updateTime = 3 * 60 * 60 * 1000; // [Integer] update time (we don't want to flood userscripts.org);
 
 //*** USERSCRIPT ***//
-(function (win, doc, und) {
+(function (win, doc, _und) {
 	try {
 		var UVC = {
 			init: function () {
@@ -89,7 +89,7 @@ var updateTime = 3 * 60 * 60 * 1000; // [Integer] update time (we don't want to 
 				if (trs.length && postsIndex) {
 					Array.forEach(trs, function (tr) {
 						var column = tr.cells[postsIndex];
-						if (!/scripts\-/.test(tr.id)) {
+						if (!/scripts-/.test(tr.id)) {
 							// Header;
 							var th = doc.createElement("th");
 							th.className = "la";
@@ -131,7 +131,7 @@ var updateTime = 3 * 60 * 60 * 1000; // [Integer] update time (we don't want to 
 										return function count(x) {
 											var i = 0,
 												n = x.responseText.match(
-													/\"\>(\d+)\s+previous versions?<\/a\>/,
+													/">(\d+)\s+previous versions?<\/a>/,
 												);
 											if (
 												n &&

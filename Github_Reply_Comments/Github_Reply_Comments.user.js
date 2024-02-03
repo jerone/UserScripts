@@ -24,6 +24,7 @@
 
 // cSpell:ignore textareas, previewable, tooltipped
 /* eslint security/detect-object-injection: "off" */
+/* global TurndownService,turndownPluginGfm,turndownPluginGithubCodeSnippet */
 
 (function () {
 	String.format = function (string) {

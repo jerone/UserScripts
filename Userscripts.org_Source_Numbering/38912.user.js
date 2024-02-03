@@ -35,7 +35,7 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 var maxLines = 10000; // [Integer] maximum number of lines (prevent browser from hanging and possibly crashing);
 
 //*** USERSCRIPT ***//
-(function (win, doc, und) {
+(function (win, doc, _und) {
 	try {
 		var getStyle = function (node, attr) {
 			if (doc.defaultView && doc.defaultView.getComputedStyle) {

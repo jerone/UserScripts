@@ -13,6 +13,7 @@
 // ==/UserScript==
 
 // cSpell:ignore dakar
+/* global $ */
 
 (function () {
 	var countryCode = "NLD";

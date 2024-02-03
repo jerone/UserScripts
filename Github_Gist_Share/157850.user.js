@@ -195,6 +195,7 @@
 			const menu = new Menu(nav);
 
 			// Twitter
+			// eslint-disable-next-line no-constant-condition
 			if (true) {
 				const stats = [];
 				if (data.files > 1) {

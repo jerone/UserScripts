@@ -81,12 +81,12 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 		if (location.href.match(/scripts\/versions\/\d*/)) {
 			li.className = "current";
-			var i = document.querySelectorAll("#content > ul > li").length;
+			let i = document.querySelectorAll("#content > ul > li").length;
 			span.innerHTML = i;
 			versions[nr] = [i, new Date().getTime().toString()];
 			GM_setValue("UVT.versions", versions.toSource());
 		} else if (location.href.match(/scripts\/review\/\d*/)) {
-			var i = parseInt(
+			let i = parseInt(
 				document
 					.querySelector("#content > p > a")
 					.innerHTML.match(/(\d+)\s+previous versions?/)[1],
@@ -122,7 +122,7 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 						return function count(x) {
 							var i = 0,
 								n = x.responseText.match(
-									/\"\>(\d+)\s+previous versions?<\/a\>/,
+									/">(\d+)\s+previous versions?<\/a>/,
 								);
 							if (
 								n &&

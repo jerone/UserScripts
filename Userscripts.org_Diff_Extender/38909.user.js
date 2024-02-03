@@ -66,9 +66,10 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 /*/ /////////////////////////////////////////////////////////////////////////
 
 // cSpell:ignore andale, lucida, cellspacing
+/* eslint no-redeclare: "off" */
 
 //*** USERSCRIPT ***//
-(function (win, doc, und) {
+(function (win, doc, _und) {
 	var xPath = function (xpath, root) {
 		var next,
 			got = doc.evaluate(xpath, root || doc, null, null, null),
@@ -173,10 +174,10 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 					tr.appendChild(tdAdd);
 
 					var iOld = meta.textContent.match(
-						/^@@\s\-(\d+),\d+\s\+(\d+),\d+\s@@/,
+						/^@@\s-(\d+),\d+\s\+(\d+),\d+\s@@/,
 					)[1];
 					var iNew = meta.textContent.match(
-						/^@@\s\-(\d+),\d+\s\+(\d+),\d+\s@@/,
+						/^@@\s-(\d+),\d+\s\+(\d+),\d+\s@@/,
 					)[2];
 					while (
 						meta.nextSibling &&
@@ -200,7 +201,7 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 								tdDel.appendChild(doc.createTextNode(iOld));
 								iOld++;
 							}
-							if (!item.match(/^\-/)) {
+							if (!item.match(/^-/)) {
 								tdAdd.className = "diffDel";
 								tdAdd.appendChild(doc.createTextNode(iNew));
 								iNew++;
@@ -226,7 +227,7 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 						var temp = del.textContent;
 						del.style.width = scrollWidth;
 						del.style.marginLeft = "-15px";
-						del.style.borderColor = /^\-/.test(temp)
+						del.style.borderColor = /^-/.test(temp)
 							? "#AA3333"
 							: "#33AA33";
 						del.style.borderStyle = "solid";
@@ -240,13 +241,13 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 						while (del.hasChildNodes())
 							del.removeChild(del.firstChild);
 						del.appendChild(
-							doc.createTextNode(temp.replace(/^[\+\-]/, "")),
+							doc.createTextNode(temp.replace(/^[+-]/, "")),
 						);
 						var span = doc.createElement("span");
 						span.className =
-							(/^\-/.test(temp) ? "diffAdd" : "diffDel") +
+							(/^-/.test(temp) ? "diffAdd" : "diffDel") +
 							" diffSim";
-						span.innerHTML = temp.match(/^[\+\-]/);
+						span.innerHTML = temp.match(/^[+-]/);
 						del.insertBefore(span, del.firstChild);
 					},
 				);

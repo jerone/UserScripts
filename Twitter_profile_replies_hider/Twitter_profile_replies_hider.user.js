@@ -114,7 +114,7 @@
 
 		// new tweets are loaded, handle accordingly;
 		new MutationObserver(function (mutations) {
-			mutations.forEach(function (mutation) {
+			mutations.forEach(function () {
 				toggle(!!~~localStorage.getItem(settingsKey, +true));
 			});
 		}).observe(timeline, { childList: true });

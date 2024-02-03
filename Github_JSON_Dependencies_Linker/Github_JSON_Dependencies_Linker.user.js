@@ -25,7 +25,6 @@
 
 // cSpell:ignore linkify, Sindre Sorhus
 /* eslint security/detect-object-injection: "off" */
-/* global GM_xmlhttpRequest */
 
 (function () {
 	var blobElm = document.querySelector(".highlight"),
@@ -182,10 +181,10 @@
 		modules[dependencyKey].forEach(function (module) {
 			if (isAtom && dependencyKey === "packageDependencies") {
 				// Atom needs to be before NPM.
-				var url = "https://atom.io/packages/" + module;
+				let url = "https://atom.io/packages/" + module;
 				linkify(module, url);
 			} else if (isNPM) {
-				var url = "https://www.npmjs.org/package/" + module;
+				let url = "https://www.npmjs.org/package/" + module;
 				linkify(module, url);
 			} else if (isBower) {
 				GM_xmlhttpRequest({
@@ -193,7 +192,7 @@
 					url: "http://bower.herokuapp.com/packages/" + module,
 					onload: function (response) {
 						var data = JSON.parse(response.responseText);
-						var re = /github\.com\/([\w\-\.]+)\/([\w\-\.]+)/i;
+						var re = /github\.com\/([\w\-.]+)\/([\w\-.]+)/i;
 						var parsedUrl = re.exec(data.url.replace(/\.git$/, ""));
 						if (parsedUrl) {
 							var user = parsedUrl[1];

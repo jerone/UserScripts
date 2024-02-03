@@ -30,12 +30,12 @@
 				/\/compare\//.test(location.href)) &&
 			(e = document.getElementById("toc"))
 		) {
-			var r = e.querySelector(".GithubCommitDiffButton");
+			let r = e.querySelector(".GithubCommitDiffButton");
 			if (r) {
 				r.parentElement.removeChild(r);
 			}
 
-			var b = e.querySelector(".toc-diff-stats");
+			let b = e.querySelector(".toc-diff-stats");
 
 			const s = document.createElementNS(
 				"http://www.w3.org/2000/svg",
@@ -57,7 +57,7 @@
 			);
 			s.appendChild(p);
 
-			var a = document.createElement("a");
+			let a = document.createElement("a");
 			a.classList.add("btn", "btn-sm", "tooltipped", "tooltipped-n");
 			a.setAttribute("href", getPatchOrDiffHref("diff"));
 			a.setAttribute("rel", "nofollow");
@@ -68,7 +68,7 @@
 			a.appendChild(s);
 			a.appendChild(document.createTextNode(" Diff"));
 
-			var g = document.createElement("div");
+			let g = document.createElement("div");
 			g.classList.add("GithubCommitDiffButton", "float-right");
 			g.style.margin = "0 10px 0 0"; // Give us some room
 			g.appendChild(a);
@@ -89,7 +89,7 @@
 				"#files_bucket .pr-toolbar .diffbar > .float-right",
 			))
 		) {
-			var r = e.querySelector(".GithubCommitDiffButton");
+			let r = e.querySelector(".GithubCommitDiffButton");
 			if (r) {
 				r.parentElement.removeChild(r);
 			}
@@ -114,7 +114,7 @@
 			);
 			s.appendChild(p);
 
-			var a = document.createElement("a");
+			let a = document.createElement("a");
 			a.classList.add(
 				"btn",
 				"btn-sm",
@@ -131,7 +131,7 @@
 			a.appendChild(s);
 			a.appendChild(document.createTextNode(" Diff"));
 
-			var g = document.createElement("div");
+			let g = document.createElement("div");
 			g.classList.add("GithubCommitDiffButton", "diffbar-item");
 			g.appendChild(a);
 
