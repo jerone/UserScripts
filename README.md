@@ -10,16 +10,16 @@ This repo contains a few of my UserScripts that I've build since [2007](http://u
 ### Github
 
 -   [Github Reply Comments](https://github.com/jerone/UserScripts/tree/master/Github_Reply_Comments#readme) - Easy reply to Github comments.
--   ~~[Github JSON Dependencies Linker](https://github.com/jerone/UserScripts/tree/master/Github_JSON_Dependencies_Linker#readme) - Linkify all dependencies found in an JSON file.~~ <sup>(deprecated)</sup>
--   ~~[Github News Feed Filter](https://github.com/jerone/UserScripts/tree/master/Github_News_Feed_Filter#readme) - Add filters for Github homepage news feed items.~~ <sup>(deprecated)</sup>
--   ~~[Github Commit Diff](https://github.com/jerone/UserScripts/tree/master/Github_Commit_Diff#readme) - Adds button to show diff (or patch) file for commit.~~ <sup>(deprecated)</sup>
--   ~~[Github Commit Whitespace](https://github.com/jerone/UserScripts/tree/master/Github_Commit_Whitespace#readme) - Adds button to hide whitespaces from commit.~~ <sup>(deprecated)</sup>
--   ~~[Github Commit Compare](https://github.com/jerone/UserScripts/tree/master/GitHub_Commit_Compare#readme) - Add controls to compare commits.~~ <sup>(deprecated)</sup>
--   ~~[Github User Info](https://github.com/jerone/UserScripts/tree/master/Github_User_Info#readme) - Show user information on avatar hover.~~ <sup>(deprecated)</sup>
--   ~~[Github Image Viewer](https://github.com/jerone/UserScripts/tree/master/Github_Image_Viewer#readme) - Preview images from within the listing.~~ <sup>(deprecated)</sup>
--   ~~[Github Pull Request From Link](https://github.com/jerone/UserScripts/tree/master/Github_Pull_Request_From#readme) - Make pull request branches linkable.~~ <sup>(deprecated)</sup>
--   ~~[Github Pages Linker](https://github.com/jerone/UserScripts/tree/master/Github_Pages_Linker#readme) - Add a link to Github Pages (gh-pages) when available.~~ <sup>(deprecated)</sup>
--   ~~[Github Gist Share](https://github.com/jerone/UserScripts/tree/master/Github_Gist_Share#readme) - Share your GitHub Gist to Twitter, Dabblet & as userscript.~~ <sup>(deprecated)</sup>
+-   ~~[Github JSON Dependencies Linker](https://github.com/jerone/UserScripts/tree/master/Github_JSON_Dependencies_Linker#readme) - Linkify all dependencies found in an JSON file.~~ <sup>(abandoned)</sup>
+-   ~~[Github News Feed Filter](https://github.com/jerone/UserScripts/tree/master/Github_News_Feed_Filter#readme) - Add filters for Github homepage news feed items.~~ <sup>(abandoned)</sup>
+-   ~~[Github Commit Diff](https://github.com/jerone/UserScripts/tree/master/Github_Commit_Diff#readme) - Adds button to show diff (or patch) file for commit.~~ <sup>(abandoned)</sup>
+-   ~~[Github Commit Whitespace](https://github.com/jerone/UserScripts/tree/master/Github_Commit_Whitespace#readme) - Adds button to hide whitespaces from commit.~~ <sup>(abandoned)</sup>
+-   ~~[Github Commit Compare](https://github.com/jerone/UserScripts/tree/master/GitHub_Commit_Compare#readme) - Add controls to compare commits.~~ <sup>(abandoned)</sup>
+-   ~~[Github User Info](https://github.com/jerone/UserScripts/tree/master/Github_User_Info#readme) - Show user information on avatar hover.~~ <sup>(abandoned)</sup>
+-   ~~[Github Image Viewer](https://github.com/jerone/UserScripts/tree/master/Github_Image_Viewer#readme) - Preview images from within the listing.~~ <sup>(abandoned)</sup>
+-   ~~[Github Pull Request From Link](https://github.com/jerone/UserScripts/tree/master/Github_Pull_Request_From#readme) - Make pull request branches linkable.~~ <sup>(abandoned)</sup>
+-   ~~[Github Pages Linker](https://github.com/jerone/UserScripts/tree/master/Github_Pages_Linker#readme) - Add a link to Github Pages (gh-pages) when available.~~ <sup>(abandoned)</sup>
+-   ~~[Github Gist Share](https://github.com/jerone/UserScripts/tree/master/Github_Gist_Share#readme) - Share your GitHub Gist to Twitter, Dabblet & as userscript.~~ <sup>(abandoned)</sup>
 -   ~~[Github Comment Enhancer](https://github.com/jerone/UserScripts/tree/master/Github_Comment_Enhancer#readme) - Add features to enhance comments on Github.~~ <sup>(deprecated)</sup>
 -   For more GitHub related UserScripts, check out [Mottie's UserScripts](https://github.com/Mottie/GitHub-userscripts#readme).
 
@@ -37,7 +37,7 @@ This repo contains a few of my UserScripts that I've build since [2007](http://u
 
 -   ~~[Horizon TV Fixer](https://github.com/jerone/UserScripts/tree/master/Horizon_TV_Fixer#readme) - Improves the Horizon TV Gids.~~ <sup>(deprecated)</sup>
 -   ~~[GeenStijl & Powned & Dumpert Comment Enhancer](https://github.com/jerone/UserScripts/tree/master/GeenStijl_Powned_Dumpert_Comment_Enhancer#readme) - Add features to enhance comments on the sites GeenStijl & Powned & Dumpert & more.~~ <sup>(deprecated)</sup>
--   ~~[Marktplaats Exchanger](https://github.com/jerone/UserScripts/tree/master/Marktplaats_Exchanger#readme) - Exchange Marktplaats.nl.~~ <sup>(deprecated)</sup>
+-   ~~[Marktplaats Exchanger](https://github.com/jerone/UserScripts/tree/master/Marktplaats_Exchanger#readme) - Exchange Marktplaats.nl.~~ <sup>(abandoned)</sup>
 
 ### Extra & proof-of-concepts
 
