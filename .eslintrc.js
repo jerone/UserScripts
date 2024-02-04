@@ -105,7 +105,7 @@ module.exports = {
 					{
 						indent: 4,
 					},
-				], // For compatibility with Prettier.
+				], // For compatibility with Prettier. See https://github.com/DavidAnson/markdownlint/blob/main/doc/Prettier.md
 				"markdownlint/md030": [
 					"error",
 					{
@@ -114,7 +114,7 @@ module.exports = {
 						ul_multi: 3,
 						ul_single: 3,
 					},
-				], // For compatibility with Prettier.
+				], // For compatibility with Prettier. See https://github.com/DavidAnson/markdownlint/blob/main/doc/Prettier.md
 				"markdownlint/md013": "off", // Disable line length.
 				"markdownlint/md033": [
 					"error",
