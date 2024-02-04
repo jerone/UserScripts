@@ -5,12 +5,13 @@
 	"license": "GPL-3.0-or-later",
 	"author": "Jeroen van Warmerdam <jeronevw@hotmail.com>",
 	"scripts": {
-		"lint": "lockfile-lint && eslint -f checklist --report-unused-disable-directives .",
+		"lint": "lockfile-lint && editorconfig-checker && eslint -f checklist --report-unused-disable-directives .",
 		"lint:fix": "prettier --write \"**/*\" & eslint -f checklist --fix ."
 	},
 	"devDependencies": {
 		"@cspell/dict-nl-nl": "^2.3.0",
 		"@cspell/eslint-plugin": "^8.3.2",
+		"editorconfig-checker": "^5.1.3",
 		"eslint": "^8.56.0",
 		"eslint-config-prettier": "^9.1.0",
 		"eslint-formatter-checklist": "^0.1.0",

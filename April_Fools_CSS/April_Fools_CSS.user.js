@@ -19,8 +19,9 @@ if (window.top === window) {
 	var duration = 2000, // [Integer, positive, milliseconds] This controls the duration of an april fool item;
 		interval = 8000; // [Integer, positive, milliseconds] This controls the interval of the next april fool;
 
+	// [String] April fools in CSS; Use {duration} for a dynamic duration;
 	var aprilFools = [
-			// [String] April fools in CSS; Use {duration} for a dynamic duration;
+			// editorconfig-checker-disable
 			"img {										\
 				-webkit-transform: rotate(180deg);		\
 				   -moz-transform: rotate(180deg);		\
@@ -65,6 +66,7 @@ if (window.top === window) {
 			@-webkit-keyframes rainbow {									\
 				100% { -webkit-filter: hue-rotate(360deg); }				\
 			}",
+			// editorconfig-checker-enable
 		],
 		aprilFool = 0,
 		aprilFooled = 0;

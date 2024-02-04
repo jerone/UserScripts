@@ -69,19 +69,19 @@
 			l.classList.add("tooltipped", "tooltipped-n");
 			l.setAttribute("aria-label", "Show commit compare buttons");
 			l.style.cssText = `
-        float: left;
-        padding: 3px 10px;
-        font-size: 12px;
-        font-weight: 600;
-        line-height: 20px;
-        color: #24292e;
-        vertical-align: middle;
-        background-color: #fff;
-        border: 1px solid rgba(27,31,35,0.2);
-        border-right: 0;
-        border-top-left-radius: 3px;
-        border-bottom-left-radius: 3px;
-      `;
+				float: left;
+				padding: 3px 10px;
+				font-size: 12px;
+				font-weight: 600;
+				line-height: 20px;
+				color: #24292e;
+				vertical-align: middle;
+				background-color: #fff;
+				border: 1px solid rgba(27,31,35,0.2);
+				border-right: 0;
+				border-top-left-radius: 3px;
+				border-bottom-left-radius: 3px;
+			`;
 			l.appendChild(c);
 
 			const p = document.createElementNS(
@@ -117,10 +117,10 @@
 			a.setAttribute("rel", "nofollow");
 			a.setAttribute("aria-label", "Compare these commits");
 			a.style.cssText = `
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
-        font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
-      `;
+				border-top-left-radius: 0;
+				border-bottom-left-radius: 0;
+				font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+			`;
 			a.appendChild(s);
 			a.appendChild(document.createElement("span"));
 
