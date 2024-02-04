@@ -9,6 +9,7 @@
 		"lint:fix": "prettier --write \"**/*\" & eslint -f checklist --fix ."
 	},
 	"devDependencies": {
+		"@cspell/dict-nl-nl": "^2.3.0",
 		"@cspell/eslint-plugin": "^8.3.2",
 		"eslint": "^8.56.0",
 		"eslint-config-prettier": "^9.1.0",

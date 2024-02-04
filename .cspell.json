@@ -3,6 +3,7 @@
 	"version": "0.2",
 	// language - current active spelling language
 	"language": "en,nl",
+	"import": ["@cspell/dict-nl-nl/cspell-ext.json"],
 	// words - list of words to be always considered correct
 	"words": [
 		"absmiddle",
@@ -10,6 +11,7 @@
 		"blockquotes",
 		"darkred",
 		"datetime",
+		"GM_xmlhttpRequest",
 		"greasemonkey",
 		"jerone",
 		"maxlength",
