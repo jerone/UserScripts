@@ -20,7 +20,7 @@
 		"eslint-plugin-security": "^2.1.0",
 		"eslint-plugin-userscripts": "^0.5.2",
 		"lockfile-lint": "^4.12.1",
-		"prettier": "^3.2.4"
+		"prettier": "^3.2.5"
 	},
 	"engines": {
 		"node": ">=16.0.0"
