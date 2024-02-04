@@ -1,10 +1,13 @@
 // cSpell Settings
 {
 	"version": "0.2",
-	// language - current active spelling language
+	// language - current active spelling language.
 	"language": "en,nl",
-	"import": ["@cspell/dict-nl-nl/cspell-ext.json"],
-	// words - list of words to be always considered correct
+	// import - import dictionaries.
+	"import": [
+		"@cspell/dict-nl-nl/cspell-ext.json"
+	],
+	// words - list of words to be always considered correct.
 	"words": [
 		"absmiddle",
 		"ajax",
@@ -13,6 +16,7 @@
 		"datetime",
 		"GM_xmlhttpRequest",
 		"greasemonkey",
+		"issuetracker",
 		"jerone",
 		"maxlength",
 		"nofollow",
