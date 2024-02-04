@@ -5,7 +5,7 @@
 	"license": "GPL-3.0-or-later",
 	"author": "Jeroen van Warmerdam <jeronevw@hotmail.com>",
 	"scripts": {
-		"lint": "lockfile-lint && eslint -f checklist .",
+		"lint": "lockfile-lint && eslint -f checklist --report-unused-disable-directives .",
 		"lint:fix": "prettier --write \"**/*\" & eslint -f checklist --fix ."
 	},
 	"devDependencies": {
