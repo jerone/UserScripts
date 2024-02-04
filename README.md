@@ -1,6 +1,5 @@
 # [UserScripts](https://github.com/jerone/UserScripts)
 
-[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/jerone/UserScripts?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 [![Mentioned in Awesome Userscripts](https://awesome.re/mentioned-badge.svg)](https://github.com/brunocvcunha/awesome-userscripts#readme)
 
 ## Description
