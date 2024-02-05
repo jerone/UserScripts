@@ -1,23 +1,23 @@
 {
-	"Version": "2.8.0",
-	"Verbose": false,
-	"Format": "",
+	"AllowedContentTypes": [],
 	"Debug": false,
-	"IgnoreDefaults": false,
-	"SpacesAftertabs": false,
-	"NoColor": false,
+	"Disable": {
+		"EndOfLine": false,
+		"IndentSize": false,
+		"Indentation": false,
+		"InsertFinalNewline": false,
+		"MaxLineLength": false,
+		"TrimTrailingWhitespace": false
+	},
 	"Exclude": [
 		"Horizon_TV_Fixer/",
 		"LICENSE.txt"
 	],
-	"AllowedContentTypes": [],
+	"Format": "",
+	"IgnoreDefaults": false,
+	"NoColor": false,
 	"PassedFiles": [],
-	"Disable": {
-		"EndOfLine": false,
-		"Indentation": false,
-		"InsertFinalNewline": false,
-		"TrimTrailingWhitespace": false,
-		"IndentSize": false,
-		"MaxLineLength": false
-	}
+	"SpacesAftertabs": false,
+	"Verbose": false,
+	"Version": "2.8.0"
 }

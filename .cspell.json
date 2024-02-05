@@ -4,9 +4,7 @@
 	// language - current active spelling language.
 	"language": "en,nl",
 	// import - import dictionaries.
-	"import": [
-		"@cspell/dict-nl-nl/cspell-ext.json"
-	],
+	"import": ["@cspell/dict-nl-nl/cspell-ext.json"],
 	// words - list of words to be always considered correct.
 	"words": [
 		"absmiddle",
