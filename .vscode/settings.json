@@ -25,11 +25,5 @@
 		"source.fixAll": "explicit"
 	},
 	// Show ESLint errors in the editor. Languages should match supported files `.eslintrc.js`.
-	"eslint.validate": [
-		"javascript",
-		"json",
-		"jsonc",
-		"yaml",
-		"markdown"
-	]
+	"eslint.validate": ["javascript", "json", "jsonc", "yaml", "markdown"]
 }
