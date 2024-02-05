@@ -22,7 +22,7 @@
 	"editor.formatOnSave": true,
 	"editor.formatOnType": true,
 	"editor.codeActionsOnSave": {
-		"source.fixAll": "explicit"
+		"source.fixAll": "explicit" // Fix all fixable errors on explicit save.
 	},
 	// Show ESLint errors in the editor. Languages should match supported files `.eslintrc.js`.
 	"eslint.validate": ["javascript", "json", "jsonc", "yaml", "markdown"]
