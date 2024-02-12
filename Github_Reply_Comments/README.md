@@ -20,6 +20,10 @@ reply button on an comment.
 
 ## Version History
 
+-   version **1.0.6**
+
+    -   🐛 Fix broken comment form. Fixes ([#168](https://github.com/jerone/UserScripts/issues/168)).
+
 -   version **1.0.5**
 
     -   🐛 Enable the Comment button. Fixes ([#152](https://github.com/jerone/UserScripts/issues/152)).

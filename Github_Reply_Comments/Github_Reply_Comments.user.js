@@ -12,7 +12,7 @@
 // @updateURL        https://github.com/jerone/UserScripts/raw/master/Github_Reply_Comments/Github_Reply_Comments.user.js
 // @supportURL       https://github.com/jerone/UserScripts/issues
 // @contributionURL  https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCYMHWQ7ZMBKW
-// @version          1.0.5
+// @version          1.0.6
 // @icon             https://github.githubassets.com/pinned-octocat.svg
 // @grant            none
 // @include          https://github.com/*
@@ -59,7 +59,7 @@
 		}
 
 		var textareas = newComment.querySelectorAll(
-			":scope > :not(.last-review-thread) .comment-form-textarea:not(.github-writer-ckeditor)",
+			":scope > :not(.last-review-thread) .js-comment-field:not(.github-writer-ckeditor)",
 		);
 		return textareas[textareas.length - 1];
 	}
@@ -68,7 +68,7 @@
 		var commentText = "";
 
 		// Use raw comment when available.
-		var commentForm = comment.querySelector(".comment-form-textarea");
+		var commentForm = comment.querySelector(".js-comment-field");
 		if (commentForm) {
 			commentText = commentForm.value;
 		}
@@ -85,6 +85,14 @@
 				commentBody.querySelectorAll(".ghd-wrap-toggle"),
 				function (ghd) {
 					ghd.remove();
+				},
+			);
+
+			// Refined GitHub adds a small avatar to username mention. See https://github.com/refined-github/refined-github/blob/main/source/features/small-user-avatars.tsx
+			Array.prototype.forEach.call(
+				commentBody.querySelectorAll(".rgh-small-user-avatars"),
+				function (rgh) {
+					rgh.remove();
 				},
 			);
 
