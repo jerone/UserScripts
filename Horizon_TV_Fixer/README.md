@@ -1,4 +1,4 @@
-# [Horizon / Ziggo TV Fixer](https://github.com/jerone/UserScripts/tree/master/Horizon_TV_Fixer)
+# [Horizon / Ziggo TV Fixer](https://github.com/jerone/UserScripts/tree/master/Horizon_TV_Fixer) <sup>(deprecated)</sup>
 
 [![Install](https://raw.github.com/jerone/UserScripts/master/_resources/Install-button.png)](https://github.com/jerone/UserScripts/raw/master/Horizon_TV_Fixer/155147.user.js)
 [![Source](https://raw.github.com/jerone/UserScripts/master/_resources/Source-button.png)](https://github.com/jerone/UserScripts/blob/master/Horizon_TV_Fixer/155147.user.js)

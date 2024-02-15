@@ -1,4 +1,4 @@
-# [Github Commit Diff](https://github.com/jerone/UserScripts/tree/master/Github_Commit_Diff)
+# [Github Commit Diff](https://github.com/jerone/UserScripts/tree/master/Github_Commit_Diff) <sup>(abandoned)</sup>
 
 [![Install](https://raw.github.com/jerone/UserScripts/master/_resources/Install-button.png)](https://github.com/jerone/UserScripts/raw/master/Github_Commit_Diff/Github_Commit_Diff.user.js)
 [![Source](https://raw.github.com/jerone/UserScripts/master/_resources/Source-button.png)](https://github.com/jerone/UserScripts/blob/master/Github_Commit_Diff/Github_Commit_Diff.user.js)

@@ -1,4 +1,4 @@
-# [Github Pages Linker](https://github.com/jerone/UserScripts/tree/master/Github_Pages_Linker)
+# [Github Pages Linker](https://github.com/jerone/UserScripts/tree/master/Github_Pages_Linker) <sup>(abandoned)</sup>
 
 [![Install](https://raw.github.com/jerone/UserScripts/master/_resources/Install-button.png)](https://github.com/jerone/UserScripts/raw/master/Github_Pages_Linker/Github_Pages_Linker.user.js)
 [![Source](https://raw.github.com/jerone/UserScripts/master/_resources/Source-button.png)](https://github.com/jerone/UserScripts/blob/master/Github_Pages_Linker/Github_Pages_Linker.user.js)

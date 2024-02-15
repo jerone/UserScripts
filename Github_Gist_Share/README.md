@@ -1,4 +1,4 @@
-# [Github Gist Share](https://github.com/jerone/UserScripts/tree/master/Github_Gist_Share)
+# [Github Gist Share](https://github.com/jerone/UserScripts/tree/master/Github_Gist_Share) <sup>(abandoned)</sup>
 
 [![Install](https://raw.github.com/jerone/UserScripts/master/_resources/Install-button.png)](https://github.com/jerone/UserScripts/raw/master/Github_Gist_Share/157850.user.js)
 [![Source](https://raw.github.com/jerone/UserScripts/master/_resources/Source-button.png)](https://github.com/jerone/UserScripts/blob/master/Github_Gist_Share/157850.user.js)

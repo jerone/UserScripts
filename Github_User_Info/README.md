@@ -1,4 +1,4 @@
-# [Github User Info](https://github.com/jerone/UserScripts/tree/master/Github_User_Info)
+# [Github User Info](https://github.com/jerone/UserScripts/tree/master/Github_User_Info) <sup>(abandoned)</sup>
 
 [![Install](https://raw.github.com/jerone/UserScripts/master/_resources/Install-button.png)](https://github.com/jerone/UserScripts/raw/master/Github_User_Info/Github_User_Info.user.js)
 [![Source](https://raw.github.com/jerone/UserScripts/master/_resources/Source-button.png)](https://github.com/jerone/UserScripts/blob/master/Github_User_Info/Github_User_Info.user.js)

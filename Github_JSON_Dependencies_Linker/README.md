@@ -1,4 +1,4 @@
-# [Github JSON Dependencies Linker](https://github.com/jerone/UserScripts/tree/master/Github_JSON_Dependencies_Linker)
+# [Github JSON Dependencies Linker](https://github.com/jerone/UserScripts/tree/master/Github_JSON_Dependencies_Linker) <sup>(abandoned)</sup>
 
 [![Install](https://raw.github.com/jerone/UserScripts/master/_resources/Install-button.png)](https://github.com/jerone/UserScripts/raw/master/Github_JSON_Dependencies_Linker/Github_JSON_Dependencies_Linker.user.js)
 [![Source](https://raw.github.com/jerone/UserScripts/master/_resources/Source-button.png)](https://github.com/jerone/UserScripts/blob/master/Github_JSON_Dependencies_Linker/Github_JSON_Dependencies_Linker.user.js)

@@ -1,4 +1,4 @@
-# [PDF Tools](https://github.com/jerone/UserScripts/tree/master/PDF_Tools)
+# [PDF Tools](https://github.com/jerone/UserScripts/tree/master/PDF_Tools) <sup>(deprecated)</sup>
 
 [![Install](https://raw.github.com/jerone/UserScripts/master/_resources/Install-button.png)](https://github.com/jerone/UserScripts/raw/master/PDF_Tools/PDF_Tools.user.js)
 [![Source](https://raw.github.com/jerone/UserScripts/master/_resources/Source-button.png)](https://github.com/jerone/UserScripts/blob/master/PDF_Tools/PDF_Tools.user.js)

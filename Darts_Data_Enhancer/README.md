@@ -1,4 +1,4 @@
-# [Darts Data Enhancer](https://github.com/jerone/UserScripts/tree/master/Darts_Data_Enhancer)
+# [Darts Data Enhancer](https://github.com/jerone/UserScripts/tree/master/Darts_Data_Enhancer) <sup>(deprecated)</sup>
 
 [![Install](https://raw.github.com/jerone/UserScripts/master/_resources/Install-button.png)](https://github.com/jerone/UserScripts/raw/master/Darts_Data_Enhancer/Darts_Data_Enhancer.user.js)
 [![Source](https://raw.github.com/jerone/UserScripts/master/_resources/Source-button.png)](https://github.com/jerone/UserScripts/blob/master/Darts_Data_Enhancer/Darts_Data_Enhancer.user.js)

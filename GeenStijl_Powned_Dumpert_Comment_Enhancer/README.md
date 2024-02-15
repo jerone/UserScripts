@@ -1,4 +1,4 @@
-# [GeenStijl & Powned & Dumpert Comment Enhancer](https://github.com/jerone/UserScripts/tree/master/GeenStijl_Powned_Dumpert_Comment_Enhancer)
+# [GeenStijl & Powned & Dumpert Comment Enhancer](https://github.com/jerone/UserScripts/tree/master/GeenStijl_Powned_Dumpert_Comment_Enhancer) <sup>(deprecated)</sup>
 
 [![Install](https://raw.github.com/jerone/UserScripts/master/_resources/Install-button.png)](https://github.com/jerone/UserScripts/raw/master/GeenStijl_Powned_Dumpert_Comment_Enhancer/GeenStijl_Powned_Dumpert_Comment_Enhancer.user.js)
 [![Source](https://raw.github.com/jerone/UserScripts/master/_resources/Source-button.png)](https://github.com/jerone/UserScripts/blob/master/GeenStijl_Powned_Dumpert_Comment_Enhancer/GeenStijl_Powned_Dumpert_Comment_Enhancer.user.js)

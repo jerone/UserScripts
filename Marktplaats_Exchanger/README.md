@@ -1,4 +1,4 @@
-# [Marktplaats Exchanger](https://github.com/jerone/UserScripts/tree/master/Marktplaats_Exchanger)
+# [Marktplaats Exchanger](https://github.com/jerone/UserScripts/tree/master/Marktplaats_Exchanger) <sup>(deprecated)</sup>
 
 [![Install](https://raw.github.com/jerone/UserScripts/master/_resources/Install-button.png)](https://github.com/jerone/UserScripts/raw/master/Marktplaats_Exchanger/Marktplaats_Exchanger.user.js)
 [![Source](https://raw.github.com/jerone/UserScripts/master/_resources/Source-button.png)](https://github.com/jerone/UserScripts/blob/master/Marktplaats_Exchanger/Marktplaats_Exchanger.user.js)

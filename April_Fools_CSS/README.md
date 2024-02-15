@@ -1,4 +1,4 @@
-# [April Fools CSS](https://github.com/jerone/UserScripts/tree/master/April_Fools_CSS)
+# [April Fools CSS](https://github.com/jerone/UserScripts/tree/master/April_Fools_CSS) <sup>(deprecated)</sup>
 
 [![Install](https://raw.github.com/jerone/UserScripts/master/_resources/Install-button.png)](https://github.com/jerone/UserScripts/raw/master/April_Fools_CSS/April_Fools_CSS.user.js)
 [![Source](https://raw.github.com/jerone/UserScripts/master/_resources/Source-button.png)](https://github.com/jerone/UserScripts/blob/master/April_Fools_CSS/April_Fools_CSS.user.js)

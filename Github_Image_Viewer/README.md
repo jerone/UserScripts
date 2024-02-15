@@ -1,4 +1,4 @@
-# [Github Image Viewer](https://github.com/jerone/UserScripts/tree/master/Github_Image_Viewer)
+# [Github Image Viewer](https://github.com/jerone/UserScripts/tree/master/Github_Image_Viewer) <sup>(abandoned)</sup>
 
 [![Install](https://raw.github.com/jerone/UserScripts/master/_resources/Install-button.png)](https://github.com/jerone/UserScripts/raw/master/Github_Image_Viewer/Github_Image_Viewer.user.js)
 [![Source](https://raw.github.com/jerone/UserScripts/master/_resources/Source-button.png)](https://github.com/jerone/UserScripts/blob/master/Github_Image_Viewer/Github_Image_Viewer.user.js)

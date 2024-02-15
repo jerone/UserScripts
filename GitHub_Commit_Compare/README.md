@@ -1,4 +1,4 @@
-# [GitHub Commit Compare](https://github.com/jerone/UserScripts/tree/master/GitHub_Commit_Compare)
+# [GitHub Commit Compare](https://github.com/jerone/UserScripts/tree/master/GitHub_Commit_Compare) <sup>(abandoned)</sup>
 
 [![Install](https://raw.github.com/jerone/UserScripts/master/_resources/Install-button.png)](https://github.com/jerone/UserScripts/raw/master/GitHub_Commit_Compare/GitHub_Commit_Compare.user.js)
 [![Source](https://raw.github.com/jerone/UserScripts/master/_resources/Source-button.png)](https://github.com/jerone/UserScripts/blob/master/GitHub_Commit_Compare/GitHub_Commit_Compare.user.js)

@@ -1,4 +1,4 @@
-# [Github News Feed Filter](https://github.com/jerone/UserScripts/tree/master/Github_News_Feed_Filter)
+# [Github News Feed Filter](https://github.com/jerone/UserScripts/tree/master/Github_News_Feed_Filter) <sup>(abandoned)</sup>
 
 [![Install](https://raw.github.com/jerone/UserScripts/master/_resources/Install-button.png)](https://github.com/jerone/UserScripts/raw/master/Github_News_Feed_Filter/Github_News_Feed_Filter.user.js)
 [![Source](https://raw.github.com/jerone/UserScripts/master/_resources/Source-button.png)](https://github.com/jerone/UserScripts/blob/master/Github_News_Feed_Filter/Github_News_Feed_Filter.user.js)

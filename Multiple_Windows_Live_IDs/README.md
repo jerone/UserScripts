@@ -1,4 +1,4 @@
-# [Multiple Windows Live IDs](https://github.com/jerone/UserScripts/tree/master/Multiple_Windows_Live_IDs)
+# [Multiple Windows Live IDs](https://github.com/jerone/UserScripts/tree/master/Multiple_Windows_Live_IDs) <sup>(deprecated)</sup>
 
 [![Install](https://raw.github.com/jerone/UserScripts/master/_resources/Install-button.png)](https://github.com/jerone/UserScripts/raw/master/Multiple_Windows_Live_IDs/Multiple_Windows_Live_IDs.user.js)
 [![Source](https://raw.github.com/jerone/UserScripts/master/_resources/Source-button.png)](https://github.com/jerone/UserScripts/blob/master/Multiple_Windows_Live_IDs/Multiple_Windows_Live_IDs.user.js)

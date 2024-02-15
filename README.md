@@ -6,6 +6,10 @@
 
 This repo contains a few of my UserScripts that I've build since [2007](http://userscripts-mirror.org/users/jerone).
 
+> [!IMPORTANT]
+> As of 2024 many of my UserScripts are either abandoned or deprecated.<br/>
+> If you want to revive one of them, send me a PR and I'll be happy to review it.
+
 ### Github
 
 -   [Github Reply Comments](https://github.com/jerone/UserScripts/tree/master/Github_Reply_Comments#readme) - Easy reply to Github comments.
@@ -20,7 +24,10 @@ This repo contains a few of my UserScripts that I've build since [2007](http://u
 -   ~~[Github Pages Linker](https://github.com/jerone/UserScripts/tree/master/Github_Pages_Linker#readme) - Add a link to Github Pages (gh-pages) when available.~~ <sup>(abandoned)</sup>
 -   ~~[Github Gist Share](https://github.com/jerone/UserScripts/tree/master/Github_Gist_Share#readme) - Share your GitHub Gist to Twitter, Dabblet & as userscript.~~ <sup>(abandoned)</sup>
 -   ~~[Github Comment Enhancer](https://github.com/jerone/UserScripts/tree/master/Github_Comment_Enhancer#readme) - Add features to enhance comments on Github.~~ <sup>(deprecated)</sup>
--   For more GitHub related UserScripts, check out [Mottie's UserScripts](https://github.com/Mottie/GitHub-userscripts#readme).
+
+> [!TIP]
+> For more GitHub related UserScripts, check out [Mottie's UserScripts](https://github.com/Mottie/GitHub-userscripts#readme).<br/>
+> Or install [Refined GitHub](https://github.com/refined-github/refined-github/#-refined-github) for lots of GitHub features.
 
 ### Twitter
 

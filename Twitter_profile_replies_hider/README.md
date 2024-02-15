@@ -1,4 +1,4 @@
-# [Twitter profile replies hider](https://github.com/jerone/UserScripts/tree/master/Twitter_profile_replies_hider)
+# [Twitter profile replies hider](https://github.com/jerone/UserScripts/tree/master/Twitter_profile_replies_hider) <sup>(deprecated)</sup>
 
 [![Install](https://raw.github.com/jerone/UserScripts/master/_resources/Install-button.png)](https://github.com/jerone/UserScripts/raw/master/Twitter_profile_replies_hider/Twitter_profile_replies_hider.user.js)
 [![Source](https://raw.github.com/jerone/UserScripts/master/_resources/Source-button.png)](https://github.com/jerone/UserScripts/blob/master/Twitter_profile_replies_hider/Twitter_profile_replies_hider.user.js)
