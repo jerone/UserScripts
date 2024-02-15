@@ -68,7 +68,10 @@
 		var commentText = "";
 
 		// Use raw comment when available.
-		var commentForm = comment.querySelector(".js-comment-field");
+		// Extra scope is needed to get the correct comment field, which is not an "Reference new issue" modal (with org rights).
+		var commentForm = comment.querySelector(
+			":scope > .js-comment-update .js-comment-field",
+		);
 		if (commentForm) {
 			commentText = commentForm.value;
 		}

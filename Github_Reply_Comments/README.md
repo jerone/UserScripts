@@ -20,6 +20,10 @@ reply button on an comment.
 
 ## Version History
 
+-   version **next**
+
+    -   🐛 Ignore "Reference new issue" modals when quoting.
+
 -   version **1.0.6**
 
     -   🐛 Fix broken comment form. Fixes ([#168](https://github.com/jerone/UserScripts/issues/168)).
