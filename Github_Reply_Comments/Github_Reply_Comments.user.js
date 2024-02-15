@@ -83,6 +83,15 @@
 				.querySelector(".comment-body")
 				.cloneNode(true);
 
+			// Skip empty PR description.
+			if (
+				commentBody
+					.querySelector("em")
+					?.innerText.includes("No description provided.")
+			) {
+				return "";
+			}
+
 			// Remove 'Toggle code wrap' buttons from https://greasyfork.org/en/scripts/18789-github-toggle-code-wrap
 			Array.prototype.forEach.call(
 				commentBody.querySelectorAll(".ghd-wrap-toggle"),

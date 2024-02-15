@@ -23,6 +23,7 @@ reply button on an comment.
 -   version **next**
 
     -   🐛 Ignore "Reference new issue" modals when quoting.
+    -   🐛 Skip empty PR description.
 
 -   version **1.0.6**
 
