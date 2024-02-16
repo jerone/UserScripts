@@ -34,6 +34,29 @@
 		});
 	};
 
+	function turndownPluginGitHubAlert(turndownService) {
+		turndownService.addRule("gfm-alert", {
+			filter: function (node, _options) {
+				return (
+					node.nodeName === "DIV" &&
+					node.classList.contains("markdown-alert")
+				);
+			},
+			replacement: function (content, node, options) {
+				const variant = node
+					.querySelector(".markdown-alert-title")
+					.innerText.trim();
+				content = content.replace(/^\n+|\n+$/g, "");
+				content = content.replace(
+					// eslint-disable-next-line security/detect-non-literal-regexp
+					new RegExp("^" + variant),
+					"[!" + variant.toUpperCase() + "]",
+				);
+				return options.rules.blockquote.replacement(content);
+			},
+		});
+	}
+
 	var turndownService = new TurndownService({
 		headingStyle: "atx",
 		codeBlockStyle: "fenced",
@@ -41,6 +64,7 @@
 	});
 	turndownService.use(turndownPluginGfm.gfm);
 	turndownService.use(turndownPluginGithubCodeSnippet);
+	turndownService.use(turndownPluginGitHubAlert);
 
 	function getCommentTextarea(replyBtn) {
 		var newComment = replyBtn;

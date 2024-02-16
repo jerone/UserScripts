@@ -24,6 +24,7 @@ reply button on an comment.
 
     -   🐛 Ignore "Reference new issue" modals when quoting.
     -   🐛 Skip empty PR description.
+    -   Add support for [GitHub alerts](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts).
 
 -   version **1.0.6**
 
