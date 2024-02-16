@@ -4,11 +4,12 @@
 
 	// List of extensions which should be recommended for users of this workspace.
 	"recommendations": [
-		"streetsidesoftware.code-spell-checker",
-		"streetsidesoftware.code-spell-checker-dutch",
-		"editorconfig.editorconfig",
+		"andywang.vscode-scriptmonkey",
 		"dbaeumer.vscode-eslint",
-		"esbenp.prettier-vscode"
+		"editorconfig.editorconfig",
+		"esbenp.prettier-vscode",
+		"streetsidesoftware.code-spell-checker-dutch",
+		"streetsidesoftware.code-spell-checker"
 	],
 
 	// List of extensions recommended by VS Code that should not be recommended for users of this workspace.
