@@ -25,5 +25,11 @@
 		"source.fixAll": "explicit" // Fix all fixable errors on explicit save.
 	},
 	// Show ESLint errors in the editor. Languages should match supported files `.eslintrc.js`.
-	"eslint.validate": ["javascript", "json", "jsonc", "yaml", "markdown"]
+	"eslint.validate": ["javascript", "json", "jsonc", "yaml", "markdown"],
+
+	/**
+	 * Scriptmonkey.
+	 */
+	"scriptmonkey.metaData.default.author": "jerone",
+	"scriptmonkey.metaData.default.namespace": "https://github.com/jerone/UserScripts"
 }
